@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui;
+package in.gov.cgg.redcrossphase1.ui_cgcitizen;
 
 
 import android.app.ProgressDialog;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -18,7 +19,9 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.databinding.ActivityLoginBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
@@ -34,18 +37,23 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     private String name, password;
     private JsonObject gsonObject;
+    ActivityLoginBinding binding;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("Please wait");
 
-        buttonlogin = findViewById(R.id.btn_submit);
-        etName = findViewById(R.id.name_edit_text);
-        etPwd = findViewById(R.id.password_edit_text);
+        buttonlogin = binding.btnSubmit;
+        etName = binding.nameEditText;
+        etPwd = binding.passwordEditText;
 
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,11 +98,19 @@ public class LoginActivity extends AppCompatActivity {
                         //Log.d("Login", "onResponse: "+response.body().getAsString());
                         String message = response.body().get("message").toString();
                         String status = response.body().get("status").toString();
-                        String role = response.body().get("status").toString();
+
 
                         if (status.equals("200")) {
+
+                            String role = response.body().get("role").toString();
+                            String districtId = response.body().get("districtId").toString();
+                            String userID = response.body().get("userID").toString();
+                            GlobalDeclaration.role = role;
+                            GlobalDeclaration.districtId = districtId;
+                            GlobalDeclaration.userID = userID;
+
                             Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                             finish();
                         } else if (status.equals("100")) {
                             Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
