@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_district">
+
+    <fragment
+        android:id="@+id/nav_district"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
+        tools:layout="@layout/fragemt_home_officer" />
+    <fragment
+
+        android:id="@+id/nav_top5"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
+        tools:layout="@layout/fragemt_home_officer" />
+
+
+    <!--    app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"-->
+
+
+    <fragment
+        android:id="@+id/nav_gender"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseFragment"
+        tools:layout="@layout/fragment_genderwise" />
+
+    <fragment
+        android:id="@+id/nav_blood"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodwiseFragment"
+        tools:layout="@layout/fragment_bloodwise" />
+
+    <fragment
+        android:id="@+id/nav_age"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.agewise.AgewiseFragment"
+        tools:layout="@layout/fragment_agewise" />
+
+    <fragment
+        android:id="@+id/nav_govtpvt"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtFragment"
+        tools:layout="@layout/fragment_agewise" />
+
+</navigation>

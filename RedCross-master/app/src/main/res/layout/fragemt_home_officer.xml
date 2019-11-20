@@ -1,0 +1,580 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="6">
+
+
+            <!--
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            android:background="@color/colorPrimaryDark"
+                            app:titleTextColor="@color/white" />
+            -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="@dimen/dp_10"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="5dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll_picker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dp">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:padding="1dp"
+                            android:src="@drawable/baseline_date_range_black_48dp" />
+
+                        <!--
+                                                <TextView
+                                                    android:id="@+id/tv_fromtodate"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_weight="9"
+                                                    android:gravity="center_vertical"
+                                                    android:paddingLeft="5dp"
+                                                    android:text="Selet date "
+                                                    android:textColor="#000"
+                                                    android:textSize="16sp"
+                                                    android:textStyle="bold" />
+                        -->
+
+                        <Spinner
+                            android:id="@+id/spn_financialyear"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3.5"
+                            android:entries="@array/query_suggestions" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/ll_jrc"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/tab_background_selected"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_jrcnme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/dp_5"
+                                android:text="JRC"
+                                android:textAlignment="center"
+                                android:textColor="@color/white"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/tv_jrccount"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@color/white" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_yrc"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/tab_background_unselected"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_yrcnme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/dp_5"
+                                android:text="YRC"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tv_yrccount"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_lm"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/tab_background_unselected"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_lmname"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/dp_5"
+                                android:text="Membership"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tv_lmcount"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--
+                                    <TextView
+                                        android:id="@+id/tv"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:text="Top 5 Districts/Mandals"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/black" />
+                    -->
+                    <TextView
+                        android:id="@+id/tv_topp5distrct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:padding="@dimen/dp_5"
+                        android:text="Top 5 Districts Enrollments"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/tab_background_unselected"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:weightSum="5">
+
+                        <TextView
+                            android:id="@+id/tv_dname"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="2"
+                            android:text="Name"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_weight="1.5"
+                            android:text="Enrollments"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_weight="1.5"
+                            android:text="Rank"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5" />
+
+
+                    <!--                    <com.github.mikephil.charting.charts.BarChart-->
+                    <!--                        android:id="@+id/barchart_district"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="400dp"-->
+                    <!--                        android:visibility="gone"-->
+                    <!--                        android:layout_margin="20dp"-->
+                    <!--                        android:padding="@dimen/dp_5" />-->
+
+                    <TextView
+                        android:id="@+id/tv_btm5distrct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:background="@color/colorPrimary"
+                        android:padding="@dimen/dp_5"
+                        android:text="Bottom 5 Districts"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/tab_background_unselected"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:weightSum="5">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="2"
+                            android:text="Name"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_weight="1.5"
+                            android:text="Enrollments"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_weight="1.5"
+                            android:text="Rank"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5" />
+                    <!--                    <com.github.mikephil.charting.charts.BarChart-->
+                    <!--                        android:id="@+id/barchart_btm5"-->
+                    <!--                        android:visibility="gone"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="400dp"-->
+                    <!--                        android:layout_margin="20dp"-->
+                    <!--                        android:padding="@dimen/dp_5" />-->
+
+
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:background="@color/colorPrimary"
+                        android:padding="@dimen/dp_5"
+                        android:text="Age wise"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barchart_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_margin="@dimen/dp_10"
+                        android:padding="@dimen/dp_5" />
+
+                    <TextView
+                        android:id="@+id/tv_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:background="@color/colorPrimary"
+                        android:padding="@dimen/dp_5"
+                        android:text="Gender wise"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/barchart_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_margin="20dp"
+                        android:padding="@dimen/dp_5" />
+
+                    <TextView
+                        android:id="@+id/tv_blg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:background="@color/colorPrimary"
+                        android:padding="@dimen/dp_5"
+                        android:text="Blood group wise"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/barchart_blodd"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_margin="20dp"
+                        android:padding="@dimen/dp_5" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <!--
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:id="@+id/tv_top5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="0.5dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:textColor="@color/white" />
+
+                                <Button
+                                    android:id="@+id/tv_bottom5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="0.5dp"
+                                    android:layout_weight="1"
+                                    android:background="@color/colorPrimary"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                &lt;!&ndash;
+                                                    <androidx.recyclerview.widget.RecyclerView
+                                                        android:id="@+id/recyclerview_top"
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_marginTop="@dimen/dp_5"
+                                                        android:layout_weight="1" />
+                                &ndash;&gt;
+
+                                &lt;!&ndash;  <androidx.recyclerview.widget.RecyclerView
+                                      android:id="@+id/recyclerview_bottom"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:layout_marginTop="@dimen/dp_5"
+                                      android:layout_weight="1" />&ndash;&gt;
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+            -->
+
+            <!--
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.5"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:id="@+id/button_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#B6B6B6"
+                                android:text="Top 5 Districts/Mandal"
+
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+            -->
+
+        </LinearLayout>
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_10"
+            android:elevation="5dp"
+            app:layout_anchorGravity="center_horizontal"
+            app:menu_colorNormal="@color/colorPrimary"
+            app:menu_colorPressed="@color/white"
+            app:menu_colorRipple="@color/white"
+            app:menu_labels_colorPressed="@color/white"
+            app:menu_openDirection="up">
+
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabdistrcit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:tint="@color/white"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                app:fab_label="Top 5 Districts"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab_btm5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:tint="@color/white"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                app:fab_label="Bottom 5 Districts"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:tint="@color/white"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                app:fab_label="Age wise"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabgender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:tint="@color/white"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                app:fab_label="Gender wise"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fabblood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/report"
+                android:tint="@color/white"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimary"
+                app:fab_label="Blood group wise"
+                app:fab_size="mini" />
+
+
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </RelativeLayout>
+
+    <!-- <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="Welcome to Dashbaord"
+         android:gravity="center"
+         android:textSize="18sp"
+         android:textColor="@color/colorPrimary"/>-->
+
+</FrameLayout>
+

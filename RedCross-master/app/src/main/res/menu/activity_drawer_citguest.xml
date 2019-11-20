@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item android:title="About IRCS">
+
+            <menu>
+
+                <item
+                    android:id="@+id/whoweare"
+                    android:title="Who we are" />
+                <item
+                    android:id="@+id/nav_History"
+                    android:title="History" />
+
+                <item
+                    android:id="@+id/nav_Principles"
+                    android:title="Seven Fundamental Principles" />
+                <item
+                    android:id="@+id/nav_Vision"
+                    android:title="Vision" />
+                <item
+                    android:id="@+id/nav_mytrade"
+                    android:title="Mission" />
+
+                <item
+                    android:id="@+id/nav_Structure"
+                    android:title="Organization Structure" />
+                <item
+                    android:id="@+id/nav_Contact"
+                    android:title="Contact us" />
+
+
+            </menu>
+        </item>
+
+    </group>
+
+    <group>
+        <item android:title="Enrollment">
+            <menu>
+                <item
+                    android:id="@+id/nav_ideabox"
+                    android:title="Life time Membership" />
+                <item
+                    android:id="@+id/nav_nmos"
+                    android:title="Blood donor Registrion" />
+                <item
+                    android:id="@+id/nav_propery_tax"
+                    android:title="Home nursing Registrion" />
+                <item
+                    android:id="@+id/nav_trade_lic"
+                    android:title="Online donations" />
+                <item
+                    android:id="@+id/nav_lrs"
+                    android:title="Training" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Services">
+            <menu>
+                <item
+                    android:title="Home Nursing"
+                    android:visible="false" />
+
+                <item android:title="Blood donate" />
+                <item android:title="Locate Blood banks" />
+
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Info">
+            <menu>
+
+
+                <item
+                    android:id="@+id/nav_privacy"
+                    android:title="Privacy Policy" />
+
+                <item
+                    android:id="@+id/nav_tc"
+                    android:title="Terms &amp; Conditions" />
+
+                <item
+                    android:id="@+id/nav_inbox"
+                    android:title="Inbox" />
+
+
+            </menu>
+
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_theme"
+                    android:title="Themes" />
+                <item
+                    android:id="@+id/nav_help"
+                    android:title="Help" />
+
+                <item
+                    android:id="@+id/nav_share"
+                    android:title="Share" />
+
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:title="Rate Us" />
+
+                <item
+
+                    android:title="Change MPIN" />
+
+
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
+
