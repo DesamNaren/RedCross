@@ -12,4 +12,6 @@ public class GlobalDeclaration {
     public static String sharedUname = "";
     public static String sharedUPswd = "";
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
+
+    //Test Commit
 }
