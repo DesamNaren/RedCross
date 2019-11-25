@@ -5,7 +5,9 @@ import com.google.gson.JsonObject;
 
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.DrillDownResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtVsPvtResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.DistrictResponse;
@@ -24,7 +26,7 @@ public interface ApiInterface {
 
 
     @GET("AgeWiseService")
-    Call<AgeResponse> ageWiseService(@Header("districtId") String districtId,
+    Call<AgeResponse> ageWiseService(@Query("districtId") String districtId,
                                      @Query("enrollmentType") String enrollmentType,
                                      @Header("fyId") String fyId,
                                      @Header("userId") String userId);
@@ -55,13 +57,15 @@ public interface ApiInterface {
                                                         @Query("type") String type);
 
     @GET("getMemberCountsForDashboard")
-    Call<DashboardCountResponse> getMemberCountsForDashboard();
+    Call<DashboardCountResponse> getMemberCountsForDashboard(@Query("districtId") String districtId);
 
-    @POST("GovPvtService ")
-    Call<GovtVsPvtResponse> GovPvtService(@Header("districtId") String districtId,
-                                          @Header("enrollmentType") String enrollmentType,
-                                          @Header("fyId") String fyId,
-                                          @Header("userId") String userId);
+    @GET("GovPvtService")
+    Call<GovtVsPvtResponse> GovPvtService();
 
+    @GET("getFullDrillDownDataWs")
+    Call<DrillDownResponse> getFullDrillDownDataWs();
+
+    @GET("DistrictWiseEnrollmentsService")
+    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
 
 }

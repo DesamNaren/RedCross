@@ -14,9 +14,9 @@ import in.gov.cgg.redcrossphase1.R;
 public class ShowDistrictMandal extends AppCompatActivity {
 
     RecyclerView recyclerView_top, recyclerView_bottom;
-    DistrictAdapter adapter1, adapter2;
+    TBDistrictAdapter adapter1, adapter2;
 
-    List<DistrictAdapter> districtAdapterList;
+    List<TBDistrictAdapter> TBDistrictAdapterList;
     List<DistrictResponse> topdistrictResponseList = new ArrayList<>();
     List<DistrictResponse> bottomdistrictResponseList = new ArrayList<>();
 
@@ -31,13 +31,13 @@ public class ShowDistrictMandal extends AppCompatActivity {
 //
 //        recyclerView_top.setHasFixedSize(true);
 //        recyclerView_top.setLayoutManager(new LinearLayoutManager(ShowDistrictMandal.this));
-//        adapter1 = new DistrictAdapter(ShowDistrictMandal.this, topdistrictResponseList);
+//        adapter1 = new TBDistrictAdapter(ShowDistrictMandal.this, topdistrictResponseList);
 //        recyclerView_top.setAdapter(adapter1);
 //
 //
 //        recyclerView_bottom.setHasFixedSize(true);
 //        recyclerView_bottom.setLayoutManager(new LinearLayoutManager(ShowDistrictMandal.this));
-//        adapter2 = new DistrictAdapter(ShowDistrictMandal.this, bottomdistrictResponseList);
+//        adapter2 = new TBDistrictAdapter(ShowDistrictMandal.this, bottomdistrictResponseList);
 //        recyclerView_bottom.setAdapter(adapter2);
 
         DistrictViewModel model = ViewModelProviders.of(this).get(DistrictViewModel.class);
@@ -48,7 +48,7 @@ public class ShowDistrictMandal extends AppCompatActivity {
 //        model.getHeroes().observe(this, new Observer<DistrictResponse>() {
 //            @Override
 //            public void onChanged(@Nullable DistrictResponse districtResponse) {
-//                adapter = new DistrictAdapter(ShowDistrictMandal.this, districtResponseList);
+//                adapter = new TBDistrictAdapter(ShowDistrictMandal.this, districtResponseList);
 //                recyclerView_top.setAdapter(adapter);
 //            }
 //        });

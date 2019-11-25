@@ -2,6 +2,7 @@ package in.gov.cgg.redcrossphase1.ui_officer.govtpvt;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -18,13 +19,13 @@ import retrofit2.Response;
 
 public class GovtPvtViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<GovType>> goListMutableLiveData;
+    private MutableLiveData<List<Last10day>> goListMutableLiveData;
 
     public GovtPvtViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<GovType>> getGender(String role, String districtid, String userid) {
+    public LiveData<List<Last10day>> getGovtPvt(String role, String districtid, String userid) {
 
         // if (genderResponseMutableLiveData == null) {
         goListMutableLiveData = new MutableLiveData<>();
@@ -36,7 +37,7 @@ public class GovtPvtViewModel extends AndroidViewModel {
     private void loadGovtPvt(String userid, String districtid, String role) {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<GovtVsPvtResponse> call = apiInterface.GovPvtService(districtid, role, "1920", userid);
+        Call<GovtVsPvtResponse> call = apiInterface.GovPvtService();
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<GovtVsPvtResponse>() {
@@ -44,9 +45,9 @@ public class GovtPvtViewModel extends AndroidViewModel {
             public void onResponse(Call<GovtVsPvtResponse> call, Response<GovtVsPvtResponse> response) {
 
                 if (response.body() != null) {
-                    goListMutableLiveData.setValue(response.body().getTypes());
+                    goListMutableLiveData.setValue(response.body().getLast10days());
                 } else {
-                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
 
             }

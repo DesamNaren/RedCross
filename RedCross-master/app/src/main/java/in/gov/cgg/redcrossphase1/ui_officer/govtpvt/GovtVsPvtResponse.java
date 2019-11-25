@@ -6,44 +6,39 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class GovtVsPvtResponse {
-    @SerializedName("dataGraph")
+    @SerializedName("last10days")
     @Expose
-    private String dataGraph;
-    @SerializedName("types")
+    private List<Last10day> last10days = null;
+    @SerializedName("dates")
     @Expose
-    private List<GovType> types = null;
-    @SerializedName("dateGraph")
-    @Expose
-    private String dateGraph;
+    private String dates;
     @SerializedName("message")
     @Expose
     private String message;
+    @SerializedName("gov")
+    @Expose
+    private String gov;
+    @SerializedName("pvt")
+    @Expose
+    private String pvt;
     @SerializedName("status")
     @Expose
     private Integer status;
 
-    public String getDataGraph() {
-        return dataGraph;
+    public List<Last10day> getLast10days() {
+        return last10days;
     }
 
-    public void setDataGraph(String dataGraph) {
-        this.dataGraph = dataGraph;
+    public void setLast10days(List<Last10day> last10days) {
+        this.last10days = last10days;
     }
 
-    public List<GovType> getTypes() {
-        return types;
+    public String getDates() {
+        return dates;
     }
 
-    public void setTypes(List<GovType> types) {
-        this.types = types;
-    }
-
-    public String getDateGraph() {
-        return dateGraph;
-    }
-
-    public void setDateGraph(String dateGraph) {
-        this.dateGraph = dateGraph;
+    public void setDates(String dates) {
+        this.dates = dates;
     }
 
     public String getMessage() {
@@ -54,6 +49,22 @@ public class GovtVsPvtResponse {
         this.message = message;
     }
 
+    public String getGov() {
+        return gov;
+    }
+
+    public void setGov(String gov) {
+        this.gov = gov;
+    }
+
+    public String getPvt() {
+        return pvt;
+    }
+
+    public void setPvt(String pvt) {
+        this.pvt = pvt;
+    }
+
     public Integer getStatus() {
         return status;
     }
@@ -61,5 +72,4 @@ public class GovtVsPvtResponse {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
 }

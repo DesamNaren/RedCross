@@ -14,8 +14,8 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_officer_main">OfficerMainActivity</string>
+    <string name="indian_red_cross_society_telangana">Indian Red Cross Society,\n Telangana</string>
     <string-array name="query_suggestions">
-        <item>Select Financial year</item>
         <item>2019-2020</item>
     </string-array>
 </resources>

@@ -1,43 +1,48 @@
 package in.gov.cgg.redcrossphase1.ui_officer.home_distrcit;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.RectF;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -47,74 +52,61 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.Age;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgewiseViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodGroups;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodwiseViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.Genders;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.Last10day;
+import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
 import static in.gov.cgg.redcrossphase1.R.color.colorPrimary;
 import static in.gov.cgg.redcrossphase1.R.color.white;
 
 public class OfficerHomeFragment extends Fragment implements OnChartValueSelectedListener {
-    private static final float END_SCALE = 0.7f;
     private final RectF onValueSelectedRectF = new RectF();
-    LinearLayout l_datepicker, ll_jrc, ll_yrc, ll_lm;
-    String from_date, to_date;
-    SimpleDateFormat dateFormat;
-    ArrayList<String> datesList;
-    ArrayList<String> datesEntryList;
-    ImageView home;
-    Fragment fragment = null;
-    List<String> list = new ArrayList<>();
-    TextView tv_fromtodate;
-    Spinner spinYear;
-    Button button_list;
-    //    BarChart barChart_distrcit, barChart_btm5;
-    BarChart barchart_age;
-    PieChart barchart_gender, bar_blood;
-    DistrictViewModel districtViewModel;
-    TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname;
-    RecyclerView recyclerView_top, recyclerView_bottom;
-    DistrictAdapter adapter1, adapter2;
-    List<DistrictAdapter> districtAdapterList;
-    List<DistrictResponse> topdistrictResponseList = new ArrayList<>();
-    List<DistrictResponse> bottomdistrictResponseList = new ArrayList<>();
-    FloatingActionMenu fabmenu;
-    //  FragemtHomeBinding binding;
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    //   BarChart chart;
-    private Toolbar toolbar;
-    //    private TextView labelView;
-    private View contentView;
-    private TabHost tabHost;
-    //    private TabAdapter adapter;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private int pos;
-    private FloatingActionButton fab_distrcit, fab_age, fab_blood, fab_gender, fab_btm5;
-    private ScrollView scroll;
+    ProgressDialog pd;
+    private LinearLayout ll_jrc;
+    private LinearLayout ll_yrc;
+    private LinearLayout ll_lm;
+    private BarChart barchart_age;
+    private PieChart barchart_gender, bar_blood;
+    private DistrictViewModel districtViewModel;
+    private TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname;
+    private RecyclerView recyclerView_top, recyclerView_bottom;
+    private FloatingActionMenu fabmenu;
+    private FloatingActionButton fab_distrcit, fab_age, fab_blood, fab_gender, fab_btm5, fab_drill, fab_districtwise;
     private AgewiseViewModel agewiseViewModel;
     private BloodwiseViewModel bloodwiseVm;
     private GenderwiseViewModel genderwiseViewModel;
     private TextView tv_top5district, tv_gender, tv_blg, tv_age, tv_bottom5;
+    private NestedScrollView scroll;
+    private LinearLayout ll_tp5, ll_bm5, ll_genderwise, ll_agewise, ll_blodwise, ll_govtpvt;
+    private String gender, bloodwise, age, top5, btm5;
+    private Fragment fragment;
+    private LineChart lineChart;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragemt_home_officer, container, false);
+
+        pd = new ProgressDialog(getActivity());
+        pd.setMessage("Loading ,Please wait");
 
         districtViewModel =
                 ViewModelProviders.of(this).get(DistrictViewModel.class);
@@ -125,103 +117,147 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         genderwiseViewModel =
                 ViewModelProviders.of(this).get(GenderwiseViewModel.class);
 
+        GovtPvtViewModel govtPvtViewModel = ViewModelProviders.of(this).get(GovtPvtViewModel.class);
 
+        GlobalDeclaration.home = true;
         findAllVIEWS(root);
 
         if (GlobalDeclaration.role != null) {
             if (GlobalDeclaration.role.contains("D")) {
-                getActivity().setTitle("Top 5 Mandals");
+                Objects.requireNonNull(getActivity()).setTitle("Dashboard");
                 tv_top5district.setText("Top 5 Mandals");
                 tv_bottom5.setText("Bottom 5 Mandals");
-            } else if (GlobalDeclaration.role.contains("S")) {
-                getActivity().setTitle("Top 5 Districts");
-                //tv_bottom5.setText("Bottom 5 Mandals");
-                tv_top5district.setText("Top 5 Districts");
-                tv_bottom5.setText("Bottom 5 Districts");
-            } else if (GlobalDeclaration.role.contains("G")) {
-                getActivity().setTitle("Top 5 Districts");
-                //tv_bottom5.setText("Bottom 5 Mandals");
-                tv_top5district.setText("Top 5 Districts");
-                tv_bottom5.setText("Bottom 5 Districts");
+                //ll_govtpvt.setVisibility(View.GONE);
+
+
             } else {
-                getActivity().setTitle("Dashboard");
-                tv_bottom5.setText("");
-                tv_top5district.setText("");
+                Objects.requireNonNull(getActivity()).setTitle("Dashboard");
+                //tv_bottom5.setText("Bottom 5 Mandals");
+                tv_top5district.setText("Top 5 Districts");
+                tv_bottom5.setText("Bottom 5 Districts");
+                // ll_govtpvt.setVisibility(View.VISIBLE);
 
             }
         }
-        districtViewModel.getDashboardCounts("JRC", GlobalDeclaration.userID, GlobalDeclaration.districtId)
-                .observe(getActivity(), new Observer<DashboardCountResponse>() {
-                    @Override
-                    public void onChanged(@Nullable DashboardCountResponse dashboardCountResponse) {
-                        if (dashboardCountResponse != null) {
-                            GlobalDeclaration.counts = dashboardCountResponse;
-                            setCountsForDashboard(dashboardCountResponse);
+        if (CheckInternet.isOnline(getActivity())) {
 
-                        }
-                    }
-                });
-        districtViewModel.getTopDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                observe(getActivity(), new Observer<List<Top5>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Top5> top5List) {
-                        if (top5List != null) {
+            districtViewModel.getDashboardCounts("JRC", GlobalDeclaration.userID, GlobalDeclaration.districtId)
+                    .observe(Objects.requireNonNull(getActivity()), new Observer<DashboardCountResponse>() {
+                        @Override
+                        public void onChanged(@Nullable DashboardCountResponse dashboardCountResponse) {
+                            if (dashboardCountResponse != null) {
+                                GlobalDeclaration.counts = dashboardCountResponse;
+                                setCountsForDashboard(dashboardCountResponse);
 
-                            setDataForTopList(top5List);
+                            }
+                        }
+                    });
+            districtViewModel.getTopDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                    observe(getActivity(), new Observer<List<Top5>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Top5> top5List) {
+                            if (top5List != null) {
 
-                        }
-                    }
-                });
-        districtViewModel.getBottomDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                .observe(getActivity(), new Observer<List<Top5>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Top5> bottom5list) {
-                        if (bottom5list != null) {
-                            //generateTop5Districts(top5List);
-                            // drawGraph(bottom5list);
-                            setDataForBottomList(bottom5list);
-                        }
-                    }
-                });
+                                setDataForTopList(top5List);
 
-        agewiseViewModel.getAges("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                observe(getActivity(), new Observer<List<Age>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Age> ageList) {
-                        if (ageList != null) {
-                            //generateDataLine(ageList);
-                            drawAge2BarGraph(ageList);
+                            }
                         }
-                    }
-                });
+                    });
+            districtViewModel.getBottomDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                    .observe(getActivity(), new Observer<List<Top5>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Top5> bottom5list) {
+                            if (bottom5list != null) {
+                                //generateTop5Districts(top5List);
+                                // drawGraph(bottom5list);
+                                setDataForBottomList(bottom5list);
+                            }
+                        }
+                    });
 
-        bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                observe(getActivity(), new Observer<List<BloodGroups>>() {
-                    @Override
-                    public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                        if (bloodGroupsList != null) {
-                            generateDataPie(bloodGroupsList);
+            agewiseViewModel.getAges("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                    observe(getActivity(), new Observer<List<Age>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Age> ageList) {
+                            if (ageList != null) {
+                                //generateDataLine(ageList);
+                                drawAge2BarGraph(ageList);
+                            }
                         }
-                    }
-                });
-        genderwiseViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                observe(getActivity(), new Observer<List<Genders>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Genders> gendersList) {
-                        if (gendersList != null) {
-                            generateGenderPiechart(gendersList);
+                    });
+
+            bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                    observe(getActivity(), new Observer<List<BloodGroups>>() {
+                        @Override
+                        public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+                            if (bloodGroupsList != null) {
+                                generateDataPie(bloodGroupsList);
+                            }
                         }
-                    }
-                });
+                    });
+            genderwiseViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                    observe(getActivity(), new Observer<List<Genders>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Genders> gendersList) {
+                            if (gendersList != null) {
+                                generateGenderPiechart(gendersList);
+                            }
+                        }
+                    });
+
+
+            govtPvtViewModel.getGovtPvt("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                    observe(getActivity(), new Observer<List<Last10day>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Last10day> last10dayList) {
+                            if (last10dayList != null) {
+                                generateDataLine(last10dayList);
+                            }
+                        }
+                    });
+
+        } else {
+            Snackbar snackbar = Snackbar
+                    .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
+
+
+        fab_drill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new GetDrilldownFragment();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_officer, fragment);
+                fragmentTransaction.commit();
+            }
+        });
+
+        fab_districtwise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragment = new AllDistrictsFragment();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.nav_host_fragment_officer, fragment);
+                fragmentTransaction.commit();
+            }
+        });
 
         fab_distrcit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                top5 = "d";
+                gender = "";
+                age = "";
+                bloodwise = "";
+                top5 = "";
+                btm5 = "";
+
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        scroll.scrollTo(0, tv_top5district.getTop());
+                        scroll.scrollTo(0, ll_tp5.getTop());
                         fabmenu.close(true);
 
                         //fabmenu.hideMenu(true);
@@ -234,10 +270,17 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             @Override
             public void onClick(View v) {
 
+                top5 = "";
+                gender = "";
+                age = "";
+                bloodwise = "";
+                top5 = "";
+                btm5 = "b";
+
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        scroll.scrollTo(0, tv_bottom5.getTop());
+                        scroll.scrollTo(0, ll_bm5.getTop());
                         fabmenu.close(true);
 
                         //fabmenu.hideMenu(true);
@@ -249,10 +292,16 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         fab_age.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                top5 = "";
+                gender = "";
+                age = "a";
+                bloodwise = "";
+                top5 = "";
+                btm5 = "";
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        scroll.scrollTo(0, tv_age.getTop());
+                        scroll.scrollTo(0, ll_agewise.getTop());
                         fabmenu.close(true);
                         //fabmenu.hideMenu(true);
 
@@ -265,10 +314,16 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         fab_gender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                top5 = "";
+                gender = "g";
+                age = "";
+                bloodwise = "";
+                top5 = "";
+                btm5 = "";
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        scroll.scrollTo(0, tv_gender.getTop());
+                        scroll.scrollTo(0, ll_genderwise.getTop());
                         fabmenu.close(true);
                         //fabmenu.hideMenu(true);
 
@@ -281,10 +336,17 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         fab_blood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                top5 = "";
+                gender = "";
+                age = "";
+                bloodwise = "bl";
+                top5 = "";
+                btm5 = "";
+
                 new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        scroll.scrollTo(0, tv_blg.getTop());
+                        scroll.scrollTo(0, ll_blodwise.getTop());
                         fabmenu.close(true);
                         //fabmenu.hideMenu(true);
 
@@ -297,213 +359,282 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             @Override
             public void onClick(View v) {
 
-                ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                tv_jrcocunt.setTextColor(getResources().getColor(white));
-                tv_jrcname.setTextColor(getResources().getColor(white));
+                if (CheckInternet.isOnline(getActivity())) {
+
+
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    tv_jrcocunt.setTextColor(getResources().getColor(white));
+                    tv_jrcname.setTextColor(getResources().getColor(white));
 //
-                ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
 
 
-                ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
 
 
-                bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<BloodGroups>>() {
-                            @Override
-                            public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                if (bloodGroupsList != null) {
-                                    generateDataPie(bloodGroupsList);
+                    bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<BloodGroups>>() {
+                                @Override
+                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+                                    if (bloodGroupsList != null) {
+                                        generateDataPie(bloodGroupsList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                genderwiseViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Genders>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Genders> gendersList) {
-                                if (gendersList != null) {
-                                    generateGenderPiechart(gendersList);
+                    genderwiseViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Genders>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Genders> gendersList) {
+                                    if (gendersList != null) {
+                                        generateGenderPiechart(gendersList);
+                                    }
                                 }
-                            }
-                        });
-                agewiseViewModel.getAges("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<Age>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Age> ageList) {
-                                if (ageList != null) {
-                                    drawAge2BarGraph(ageList);
-                                    //  generateDataLine1(ageList);
+                            });
+                    agewiseViewModel.getAges("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<Age>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Age> ageList) {
+                                    if (ageList != null) {
+                                        drawAge2BarGraph(ageList);
+                                        //  generateDataLine1(ageList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                districtViewModel.getTopDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Top5> top5List) {
-                        if (top5List != null) {
-                            //generateTop5Districts(top5List);
-                            // drawGraph(top5List);
-                            setDataForTopList(top5List);
+                    districtViewModel.getTopDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Top5> top5List) {
+                            if (top5List != null) {
+                                //generateTop5Districts(top5List);
+                                // drawGraph(top5List);
+                                setDataForTopList(top5List);
+                            }
                         }
-                    }
-                });
-                districtViewModel.getBottomDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Top5>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Top5> bottom5list) {
-                                if (bottom5list != null) {
-                                    //generateTop5Districts(top5List);
-                                    // drawGraph(bottom5list);
-                                    setDataForBottomList(bottom5list);
+                    });
+                    districtViewModel.getBottomDistricts("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Top5>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Top5> bottom5list) {
+                                    if (bottom5list != null) {
+                                        //generateTop5Districts(top5List);
+                                        // drawGraph(bottom5list);
+                                        setDataForBottomList(bottom5list);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
+
+//                    if (top5.equalsIgnoreCase("d")) {
+//                        scroll.scrollTo(0, ll_tp5.getTop());
+//                    } else if (age.equalsIgnoreCase("a")) {
+//                        scroll.scrollTo(0, ll_agewise.getTop());
+//
+//                    } else if (bloodwise.equalsIgnoreCase("bl")) {
+//                        scroll.scrollTo(0, ll_blodwise.getTop());
+//
+//                    } else if (gender.equalsIgnoreCase("g")) {
+//                        scroll.scrollTo(0, ll_genderwise.getTop());
+//
+//                    } else if (btm5.equalsIgnoreCase("b")) {
+//                        scroll.scrollTo(0, ll_bm5.getTop());
+//
+//                    }
+
+
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
             }
+
         });
 
         ll_yrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-                tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+                if (CheckInternet.isOnline(getActivity())) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
 //
-                ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                tv_yrcname.setTextColor(getResources().getColor(white));
-                tv_yrccount.setTextColor(getResources().getColor(white));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    tv_yrcname.setTextColor(getResources().getColor(white));
+                    tv_yrccount.setTextColor(getResources().getColor(white));
 
-                ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
 
-                bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<BloodGroups>>() {
-                            @Override
-                            public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                if (bloodGroupsList != null) {
-                                    generateDataPie(bloodGroupsList);
+                    bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<BloodGroups>>() {
+                                @Override
+                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+                                    if (bloodGroupsList != null) {
+                                        generateDataPie(bloodGroupsList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                genderwiseViewModel.getGender("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Genders>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Genders> gendersList) {
-                                if (gendersList != null) {
-                                    generateGenderPiechart(gendersList);
+                    genderwiseViewModel.getGender("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Genders>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Genders> gendersList) {
+                                    if (gendersList != null) {
+                                        generateGenderPiechart(gendersList);
+                                    }
                                 }
-                            }
-                        });
-                agewiseViewModel.getAges("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<Age>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Age> ageList) {
-                                if (ageList != null) {
-                                    drawAge2BarGraph(ageList);
-                                    //  generateDataLine1(ageList);
+                            });
+                    agewiseViewModel.getAges("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<Age>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Age> ageList) {
+                                    if (ageList != null) {
+                                        drawAge2BarGraph(ageList);
+                                        //  generateDataLine1(ageList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                districtViewModel.getTopDistricts("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Top5> top5List) {
-                        if (top5List != null) {
-                            //generateTop5Districts(top5List);
-                            // drawGraph(top5List);
-                            setDataForTopList(top5List);
+                    districtViewModel.getTopDistricts("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Top5> top5List) {
+                            if (top5List != null) {
+                                //generateTop5Districts(top5List);
+                                // drawGraph(top5List);
+                                setDataForTopList(top5List);
+                            }
                         }
-                    }
-                });
-                districtViewModel.getBottomDistricts("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Top5>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Top5> bottom5list) {
-                                if (bottom5list != null) {
-                                    //generateTop5Districts(top5List);
-                                    // drawGraph(bottom5list);
-                                    setDataForBottomList(bottom5list);
+                    });
+                    districtViewModel.getBottomDistricts("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Top5>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Top5> bottom5list) {
+                                    if (bottom5list != null) {
+                                        //generateTop5Districts(top5List);
+                                        // drawGraph(bottom5list);
+                                        setDataForBottomList(bottom5list);
+                                    }
                                 }
-                            }
-                        });
+                            });
+//                    if (top5.equalsIgnoreCase("d")) {
+//                        scroll.scrollTo(0, ll_tp5.getTop());
+//                    } else if (age.equalsIgnoreCase("a")) {
+//                        scroll.scrollTo(0, ll_agewise.getTop());
+//
+//                    } else if (bloodwise.equalsIgnoreCase("bl")) {
+//                        scroll.scrollTo(0, ll_blodwise.getTop());
+//
+//                    } else if (gender.equalsIgnoreCase("g")) {
+//                        scroll.scrollTo(0, ll_genderwise.getTop());
+//
+//                    } else if (btm5.equalsIgnoreCase("b")) {
+//                        scroll.scrollTo(0, ll_bm5.getTop());
+//
+//                    }
 
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(ll_yrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
             }
+
         });
         ll_lm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                tv_lmcount.setTextColor(getResources().getColor(white));
-                tv_lmname.setTextColor(getResources().getColor(white));
+                if (CheckInternet.isOnline(getActivity())) {
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    tv_lmcount.setTextColor(getResources().getColor(white));
+                    tv_lmname.setTextColor(getResources().getColor(white));
 //
-                ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
 
-                ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-                tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
 
-                bloodwiseVm.getBlood("LM", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<BloodGroups>>() {
-                            @Override
-                            public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                if (bloodGroupsList != null) {
-                                    generateDataPie(bloodGroupsList);
+                    bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<BloodGroups>>() {
+                                @Override
+                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+                                    if (bloodGroupsList != null) {
+                                        generateDataPie(bloodGroupsList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                genderwiseViewModel.getGender("LM", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Genders>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Genders> gendersList) {
-                                if (gendersList != null) {
-                                    generateGenderPiechart(gendersList);
+                    genderwiseViewModel.getGender("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Genders>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Genders> gendersList) {
+                                    if (gendersList != null) {
+                                        generateGenderPiechart(gendersList);
+                                    }
                                 }
-                            }
-                        });
-                agewiseViewModel.getAges("LM", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                        observe(getActivity(), new Observer<List<Age>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Age> ageList) {
-                                if (ageList != null) {
-                                    drawAge2BarGraph(ageList);
-                                    //  generateDataLine1(ageList);
+                            });
+                    agewiseViewModel.getAges("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                            observe(getActivity(), new Observer<List<Age>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Age> ageList) {
+                                    if (ageList != null) {
+                                        drawAge2BarGraph(ageList);
+                                        //  generateDataLine1(ageList);
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                districtViewModel.getTopDistricts("LM", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
-                    @Override
-                    public void onChanged(@Nullable List<Top5> top5List) {
-                        if (top5List != null) {
-                            //generateTop5Districts(top5List);
-                            // drawGraph(top5List);
-                            setDataForTopList(top5List);
+                    districtViewModel.getTopDistricts("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).observe(getActivity(), new Observer<List<Top5>>() {
+                        @Override
+                        public void onChanged(@Nullable List<Top5> top5List) {
+                            if (top5List != null) {
+                                //generateTop5Districts(top5List);
+                                // drawGraph(top5List);
+                                setDataForTopList(top5List);
+                            }
                         }
-                    }
-                });
-                districtViewModel.getBottomDistricts("LM", GlobalDeclaration.districtId, GlobalDeclaration.userID)
-                        .observe(getActivity(), new Observer<List<Top5>>() {
-                            @Override
-                            public void onChanged(@Nullable List<Top5> bottom5list) {
-                                if (bottom5list != null) {
-                                    //generateTop5Districts(top5List);
-                                    // drawGraph(bottom5list);
-                                    setDataForBottomList(bottom5list);
+                    });
+                    districtViewModel.getBottomDistricts("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID)
+                            .observe(getActivity(), new Observer<List<Top5>>() {
+                                @Override
+                                public void onChanged(@Nullable List<Top5> bottom5list) {
+                                    if (bottom5list != null) {
+                                        //generateTop5Districts(top5List);
+                                        // drawGraph(bottom5list);
+                                        setDataForBottomList(bottom5list);
+                                    }
                                 }
-                            }
-                        });
+                            });
+//                    if (top5.equalsIgnoreCase("d")) {
+//                        scroll.scrollTo(0, ll_tp5.getTop());
+//                    } else if (age.equalsIgnoreCase("a")) {
+//                        scroll.scrollTo(0, ll_agewise.getTop());
+//
+//                    } else if (bloodwise.equalsIgnoreCase("bl")) {
+//                        scroll.scrollTo(0, ll_blodwise.getTop());
+//
+//                    } else if (gender.equalsIgnoreCase("g")) {
+//                        scroll.scrollTo(0, ll_genderwise.getTop());
+//
+//                    } else if (btm5.equalsIgnoreCase("b")) {
+//                        scroll.scrollTo(0, ll_bm5.getTop());
+//
+//                    }
 
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(ll_lm, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
             }
         });
 
@@ -512,24 +643,127 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
     }
 
+
     private void generateGenderPiechart(List<Genders> gendersList) {
 
-        ArrayList<PieEntry> entries = new ArrayList<>();
-
+//        ArrayList<PieEntry> entries = new ArrayList<>();
+//
+//        for (int i = 0; i < gendersList.size(); i++) {
+//            entries.add(new PieEntry(Float.parseFloat(gendersList.get(i).getCount()), gendersList.get(i).getGender()));
 //        }
-        barchart_gender.getDescription().setEnabled(false);
+//
+//        PieDataSet d = new PieDataSet(entries, "Enrollments ");
+//
+//        Legend l = barchart_gender.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+//        l.setDrawInside(true);
+//        l.setXEntrySpace(7f);
+//        l.setYEntrySpace(0f);
+//        l.setYOffset(0f);
+//        //piechart.setUsePercentValues(true);
+//        barchart_gender.getDescription().setEnabled(false);
+//        barchart_gender.setExtraOffsets(5, 10, 5, 5);
+//
+//        barchart_gender.setDragDecelerationFrictionCoef(0.95f);
+//        barchart_gender.animateY(1400, Easing.EaseInOutQuad);
+//
+//        // pieChart.setCenterTextTypeface(tfLight);
+//        //pieChart.setCenterText(generateCenterSpannableText());
+//
+//
+//        barchart_gender.setMaxAngle(180f); // HALF CHART
+//        barchart_gender.setRotationAngle(180f);
+//        barchart_gender.setCenterTextOffset(0, -20);
+//
+//        barchart_gender.setDrawHoleEnabled(true);
+//        barchart_gender.setHoleColor(Color.WHITE);
+//        d.setValueTextColor(Color.WHITE);
+//        d.setValueTextSize(10f);
+//        barchart_gender.setTransparentCircleColor(Color.WHITE);
+//        barchart_gender.setTransparentCircleAlpha(110);
+//
+//        barchart_gender.setHoleRadius(58f);
+//        barchart_gender.setTransparentCircleRadius(61f);
+//
+//        barchart_gender.setDrawCenterText(true);
+//
+//        barchart_gender.setRotationAngle(0);
+//        //enable rotation of the chart by touch
+//        barchart_gender.setRotationEnabled(true);
+//        barchart_gender.setHighlightPerTapEnabled(true);
+//        // space between slices
+//        d.setSliceSpace(2f);
+//        d.setColors(ColorTemplate.JOYFUL_COLORS);
+//
+//        PieData pieData = new PieData(d);
+//
+//        barchart_gender.setData(pieData);
+//        barchart_gender.invalidate();
+
+        ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < gendersList.size(); i++) {
             entries.add(new PieEntry(Float.parseFloat(gendersList.get(i).getCount()), gendersList.get(i).getGender()));
         }
 
+        PieDataSet d = new PieDataSet(entries, "Enrollments");
+        d.setValueTextColor(Color.WHITE);
+        d.setValueTextSize(10f);
+        d.setColors(ColorTemplate.JOYFUL_COLORS);
+
+        Legend l = barchart_gender.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+        l.setDrawInside(true);
+//        Legend l = barchart_gender.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+//        l.setDrawInside(true);
+//        l.setXEntrySpace(7f);
+//        l.setYEntrySpace(0f);
+//        l.setYOffset(0f);
+//        //piechart.setUsePercentValues(true);
+//        piechart.getDescription().setEnabled(false);
+//        piechart.setExtraOffsets(5, 10, 5, 5);
+//
+//
+//
+//        piechart.setMaxAngle(180f); // HALF CHART
+//        piechart.setRotationAngle(180f);
+//        piechart.setCenterTextOffset(0, -20);
+//
+//
+//        piechart.setDragDecelerationFrictionCoef(0.95f);
+//
+//        // pieChart.setCenterTextTypeface(tfLight);
+//        //pieChart.setCenterText(generateCenterSpannableText());
+//
+//        piechart.setDrawHoleEnabled(true);
+//        piechart.setHoleColor(Color.WHITE);
+//        d.setValueTextColor(Color.WHITE);
+//        d.setValueTextSize(10f);
+//        piechart.setTransparentCircleColor(Color.WHITE);
+//        piechart.setTransparentCircleAlpha(110);
+//
+//        piechart.setHoleRadius(58f);
+//        piechart.setTransparentCircleRadius(61f);
+//
+//        piechart.setDrawCenterText(true);
+//
+//        piechart.setRotationAngle(0);
+//        piechart.animateY(1400, Easing.EaseInOutQuad);
+//        //enable rotation of the chart by touch
+//        piechart.setRotationEnabled(true);
+//        piechart.setHighlightPerTapEnabled(true);
+//        // space between slices
+//        d.setSliceSpace(2f);
+//        d.setColors(ColorTemplate.JOYFUL_COLORS);
+
         barchart_gender.getDescription().setEnabled(false);
-        barchart_gender.setExtraOffsets(5, 10, 5, 5);
-
-        barchart_gender.setDragDecelerationFrictionCoef(0.95f);
-
-        // barchart_gender.setCenterTextTypeface(tfLight);
-        //barchart_gender.setCenterText(generateCenterSpannableText());
 
         barchart_gender.setDrawHoleEnabled(true);
         barchart_gender.setHoleColor(Color.WHITE);
@@ -542,98 +776,99 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         barchart_gender.setDrawCenterText(true);
 
-        barchart_gender.setRotationAngle(0);
-        // enable rotation of the chart by touch
-        barchart_gender.setRotationEnabled(true);
+        barchart_gender.setRotationEnabled(false);
         barchart_gender.setHighlightPerTapEnabled(true);
 
-        // chart.setUnit(" €");
-        // chart.setDrawUnitsInChart(true);
+        barchart_gender.setMaxAngle(180f); // HALF CHART
+        barchart_gender.setRotationAngle(180f);
+        barchart_gender.setCenterTextOffset(0, -20);
 
-        PieDataSet d = new PieDataSet(entries, "");
-        d.setSliceSpace(2f);
-        // d.setValueLinePart1OffsetPercentage(80.f);
-        //d.setValueLinePart1Length(0.2f);
-        //d.setValueLinePart2Length(0.4f);
-        //dataSet.setUsingSliceColorAsValueLineColor(true);
 
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        //d.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        barchart_gender.animateY(1400, Easing.EaseInOutQuad);
 
-        d.setColors(ColorTemplate.JOYFUL_COLORS);
-        d.setSliceSpace(2f);
-        d.setValueTextColor(Color.WHITE);
-        d.setValueTextSize(10f);
-        d.setSliceSpace(5f);
+//        Legend l = chart.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+//        l.setDrawInside(false);
+//        l.setXEntrySpace(7f);
+//        l.setYEntrySpace(0f);
+//        l.setYOffset(0f);
+
+        // entry label styling
+        barchart_gender.setEntryLabelColor(Color.WHITE);
+        barchart_gender.setEntryLabelTextSize(12f);
         PieData pieData = new PieData(d);
-        //  pieData.setValueFormatter(new PercentFormatter());
-        //pieData.setValueTextSize(11f);
-        //  pieData.setValueTextColor(Color.BLACK);
+
         barchart_gender.setData(pieData);
-        barchart_gender.animateY(1500);
-
-
         barchart_gender.invalidate();
-
     }
+
 
     private void generateDataPie(List<BloodGroups> bloodGroupsList) {
 
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-//        ArrayList<String> groups = new ArrayList<>();
-//
-//        groups.add(0, "Male");
-//        groups.add(1, "Female");
-
-
-//        for (int i = 0; i < 2; i++) {
-//            entries.add(new PieEntry((float) ((Math.random() * 70) + 30), groups.get(i)));
-//        }
-        bar_blood.getDescription().setEnabled(false);
-
         for (int i = 0; i < bloodGroupsList.size(); i++) {
             entries.add(new PieEntry(Float.parseFloat(bloodGroupsList.get(i).getCount()), bloodGroupsList.get(i).getBloodGroup()));
         }
 
-        // entries.add(new PieEntry(Float.parseFloat(genderResponse.getCount()), genderResponse.getGender()));
+        bar_blood.getDescription().setEnabled(false);
+        bar_blood.setNoDataText("No Data available");
+
+        Legend l = bar_blood.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(false);
+        l.setXEntrySpace(7f);
+        l.setYEntrySpace(0f);
+        l.setYOffset(0f);
+        bar_blood.setDrawCenterText(true);
+        bar_blood.setRotationEnabled(true);
+
+        //.setUsePercentValues(true);
+        bar_blood.setDrawHoleEnabled(true);
+        bar_blood.setHoleColor(Color.WHITE);
+        bar_blood.setTransparentCircleColor(Color.WHITE);
+        bar_blood.setTransparentCircleAlpha(110);
+        bar_blood.setHoleRadius(58f);
+        bar_blood.setTransparentCircleRadius(61f);
+        bar_blood.setDrawCenterText(true);
+        bar_blood.setHighlightPerTapEnabled(true);
+        bar_blood.animateY(1400, Easing.EaseInOutQuad);
 
 
-        PieDataSet d = new PieDataSet(entries, "Count");
+        PieDataSet d = new PieDataSet(entries, "Enrollments ");
         d.setSliceSpace(2f);
         d.setValueLinePart1OffsetPercentage(80.f);
         d.setValueLinePart1Length(0.2f);
         d.setValueLinePart2Length(0.4f);
-        //dataSet.setUsingSliceColorAsValueLineColor(true);
-
-        //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         d.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-
         d.setColors(ColorTemplate.MATERIAL_COLORS);
-//        d.setSliceSpace(2f);
-//        d.setValueTextColor(Color.WHITE);
-//        d.setValueTextSize(10f);
-//        d.setSliceSpace(5f);
+        d.setSliceSpace(2f);
+        d.setValueTextColor(Color.WHITE);
+        d.setValueTextSize(10f);
+        d.setSliceSpace(5f);
+
+
         PieData pieData = new PieData(d);
         pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(11f);
         pieData.setValueTextColor(Color.BLACK);
-        bar_blood.animateY(1500);
-
         bar_blood.setData(pieData);
-
         bar_blood.invalidate();
     }
 
 
     private void findAllVIEWS(View root) {
         //labelView = (TextView) findViewById(R.id.label);
-        l_datepicker = root.findViewById(R.id.ll_picker);
+        LinearLayout l_datepicker = root.findViewById(R.id.ll_picker);
         ll_jrc = root.findViewById(R.id.ll_jrc);
         ll_yrc = root.findViewById(R.id.ll_yrc);
         ll_lm = root.findViewById(R.id.ll_lm);
-        spinYear = root.findViewById(R.id.spn_financialyear);
+        Spinner spinYear = root.findViewById(R.id.spn_financialyear);
         // button_list = root.findViewById(R.id.button_list);
         //    barChart_distrcit = root.findViewById(R.id.barchart_district);
         //barChart_btm5 = root.findViewById(R.id.barchart_btm5);
@@ -657,6 +892,8 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         fab_age = root.findViewById(R.id.fabage);
         fab_gender = root.findViewById(R.id.fabgender);
         fabmenu = root.findViewById(R.id.fab_main);
+        fab_districtwise = root.findViewById(R.id.fab_districtwise);
+        fab_drill = root.findViewById(R.id.fab_drilldown);
         scroll = root.findViewById(R.id.scroll);
 
         tv_top5district = root.findViewById(R.id.tv_topp5distrct);
@@ -665,12 +902,22 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         tv_blg = root.findViewById(R.id.tv_blg);
         tv_age = root.findViewById(R.id.tv_age);
 
+        ll_tp5 = root.findViewById(R.id.ll_top5);
+        ll_bm5 = root.findViewById(R.id.ll_btm5);
+        ll_genderwise = root.findViewById(R.id.ll_genderwise);
+        ll_blodwise = root.findViewById(R.id.ll_bloodwise);
+        ll_agewise = root.findViewById(R.id.ll_agewise);
+        ll_govtpvt = root.findViewById(R.id.ll_govtpvt);
+
+        lineChart = root.findViewById(R.id.chart_govtpvt);
+
+
     }
 
     private void setDataForTopList(List<Top5> top5List) {
         recyclerView_top.setHasFixedSize(true);
         recyclerView_top.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter1 = new DistrictAdapter(getActivity(), top5List);
+        TBDistrictAdapter adapter1 = new TBDistrictAdapter(getActivity(), top5List, false);
         recyclerView_top.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
 
@@ -680,7 +927,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         recyclerView_bottom.setHasFixedSize(true);
         recyclerView_bottom.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter2 = new DistrictAdapter(getActivity(), bottomList);
+        TBDistrictAdapter adapter2 = new TBDistrictAdapter(getActivity(), bottomList, true);
         recyclerView_bottom.setAdapter(adapter2);
         adapter2.notifyDataSetChanged();
 
@@ -694,9 +941,10 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             entries.add(new BarEntry(Float.parseFloat(ageList.get(i).getAge()), Float.parseFloat(ageList.get(i).getCount())));
         }
 
-        BarDataSet d = new BarDataSet(entries, "");
+        BarDataSet d = new BarDataSet(entries, "Enrollments");
         d.setColors(ColorTemplate.JOYFUL_COLORS);
         d.setHighLightAlpha(255);
+        d.setValueTextSize(11f);
 
         BarData cd = new BarData(d);
         cd.setBarWidth(0.9f);
@@ -764,8 +1012,8 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         Log.i("bounds", bounds.toString());
         Log.i("position", position.toString());
 
-        Log.i("x-index",
-                "low: " + barchart_age.getLowestVisibleX() + ", high: "
+        Log.i("Age:",
+                "low: " + barchart_age.getLowestVisibleX() + ", Count: "
                         + barchart_age.getHighestVisibleX());
 
         MPPointF.recycleInstance(position);
@@ -776,7 +1024,87 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
     }
 
-    public class DayAxisValueFormatter extends ValueFormatter {
+    private void generateDataLine(List<Last10day> ageList) {
+
+        ArrayList<Entry> entriesGov = new ArrayList<>();
+        ArrayList<Entry> entriesPvt = new ArrayList<>();
+
+        for (int i = 0; i < ageList.size(); i++) {
+            entriesGov.add(new Entry(((i)), Float.parseFloat(ageList.get(i).getGov())));
+        }
+
+        for (int i = 0; i < ageList.size(); i++) {
+            entriesPvt.add(new Entry(((i)), Float.parseFloat(ageList.get(i).getPvt())));
+        }
+
+        LineDataSet lineDataSetGov = new LineDataSet(entriesGov, "Gov Enrollments");
+        lineDataSetGov.setLineWidth(2.5f);
+        lineDataSetGov.setCircleRadius(4.5f);
+        lineDataSetGov.setDrawValues(false);
+
+
+        LineDataSet lineDataSetPvt = new LineDataSet(entriesPvt, "Pvt Enrollments");
+        lineDataSetPvt.setLineWidth(2.5f);
+        lineDataSetPvt.setCircleRadius(4.5f);
+        lineDataSetPvt.setDrawValues(false);
+
+
+        lineDataSetGov.setColor(ContextCompat.getColor(getActivity(), R.color.green));
+        lineDataSetGov.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+        lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(9f);
+        final List<String> stringList = new ArrayList<>();
+
+        for (int i = 0; i < ageList.size(); i++) {
+            stringList.add(ageList.get(i).getDate());
+        }
+        //final String[] months = new String[]{"Jan", "Feb", "Mar", "Apr","March","test"};
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return stringList.get((int) value);
+            }
+
+        };
+
+        LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+        mv.setChartView(lineChart);
+        lineChart.setMarker(mv);
+
+
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(formatter);
+
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setGranularity(1f);
+
+        // get the legend (only possible after setting data)
+        Legend l = lineChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(false);
+        l.setXEntrySpace(7f);
+        l.setYEntrySpace(0f);
+        l.setYOffset(0f);
+
+
+        LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
+        lineChart.setData(data);
+        lineChart.getDescription().setEnabled(false);
+        lineChart.animateX(1500);
+        lineChart.invalidate();
+    }
+
+    public static class DayAxisValueFormatter extends ValueFormatter {
         private final BarLineChartBase<?> chart;
 
 
@@ -787,6 +1115,11 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         @Override
         public String getFormattedValue(float value) {
             return "" + (value);
+        }
+
+        @Override
+        public String getBarLabel(BarEntry barEntry) {
+            return "" + (barEntry);
         }
     }
 

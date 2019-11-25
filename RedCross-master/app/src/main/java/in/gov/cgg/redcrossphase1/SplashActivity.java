@@ -22,24 +22,25 @@ public class SplashActivity extends Activity {
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
 
-        uname = prefs.getString("un", "");
-        pswd = prefs.getString("pw", "");
-        isCheked = prefs.getBoolean("is", false);
+//        uname = prefs.getString("un", "");
+//        pswd = prefs.getString("pw", "");
+//        isCheked = prefs.getBoolean("is", false);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //showAlert();
 
-                if (isCheked) {
-                    GlobalDeclaration.sharedUname = uname;
-                    GlobalDeclaration.sharedUPswd = pswd;
+//                if (isCheked) {
+//                    GlobalDeclaration.sharedUname = uname;
+//                    GlobalDeclaration.sharedUPswd = pswd;
+//                    GlobalDeclaration.ischecked = isCheked;
+//                    startActivity(new Intent(SplashActivity.this, TabLoginActivity.class));
+//                    finish();
+//                } else {
                     startActivity(new Intent(SplashActivity.this, TabLoginActivity.class));
                     finish();
-                } else {
-                    startActivity(new Intent(SplashActivity.this, TabLoginActivity.class));
-                    finish();
-                }
+                //}
 
             }
         }, 2000);

@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer.govtpvt;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +8,20 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +31,9 @@ import in.gov.cgg.redcrossphase1.R;
 
 public class GovtPvtFragment extends Fragment {
 
-    LineChart lineChart;
+    private LineChart lineChart;
 
-    GovtPvtViewModel govtPvtViewModel;
+    private GovtPvtViewModel govtPvtViewModel;
     // FragmentGenderwiseBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,55 +47,92 @@ public class GovtPvtFragment extends Fragment {
                 ViewModelProviders.of(this).get(GovtPvtViewModel.class);
 
         getActivity().setTitle("Gov Vs Pvt Graph");
+        lineChart = root.findViewById(R.id.chart_govtpvt);
 
+        GlobalDeclaration.home = false;
 
-        govtPvtViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                observe(getActivity(), new Observer<List<GovType>>() {
+        govtPvtViewModel.getGovtPvt("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+                observe(getActivity(), new Observer<List<Last10day>>() {
                     @Override
-                    public void onChanged(@Nullable List<GovType> govTypeList) {
-                        if (govTypeList != null) {
-                            generateLine(govTypeList);
+                    public void onChanged(@Nullable List<Last10day> last10dayList) {
+                        if (last10dayList != null) {
+                            generateDataLine(last10dayList);
                         }
                     }
                 });
-
-        lineChart = root.findViewById(R.id.chart_govtpvt);
 
 
         return root;
     }
 
 
-    private void generateLine(List<GovType> govTypeList) {
-        int cnt = 50;
-        ArrayList<Entry> values1 = new ArrayList<>();
+    private void generateDataLine(List<Last10day> ageList) {
 
-        for (int i = 0; i < 12; i++) {
-            values1.add(new Entry(i, (int) (Math.random() * 65) + 40));
+        ArrayList<Entry> entriesGov = new ArrayList<>();
+        ArrayList<Entry> entriesPvt = new ArrayList<>();
+
+        for (int i = 0; i < ageList.size(); i++) {
+            entriesGov.add(new Entry(((i)), Float.parseFloat(ageList.get(i).getGov())));
         }
 
-        LineDataSet d1 = new LineDataSet(values1, "Govt" + cnt + ", (1)");
-        d1.setLineWidth(2.5f);
-        d1.setCircleRadius(4.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
-        d1.setDrawValues(false);
-
-        ArrayList<Entry> values2 = new ArrayList<>();
-
-        for (int i = 0; i < 12; i++) {
-            values2.add(new Entry(i, values1.get(i).getY() - 30));
+        for (int i = 0; i < ageList.size(); i++) {
+            entriesPvt.add(new Entry(((i)), Float.parseFloat(ageList.get(i).getPvt())));
         }
 
-        LineDataSet d2 = new LineDataSet(values2, "Pvt" + cnt + ", (2)");
-        d2.setLineWidth(2.5f);
-        d2.setCircleRadius(4.5f);
-        d2.setHighLightColor(Color.rgb(244, 117, 117));
-        d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setDrawValues(false);
+        LineDataSet lineDataSetGov = new LineDataSet(entriesGov, "Gov Enrollments");
+        lineDataSetGov.setLineWidth(2.5f);
+        lineDataSetGov.setCircleRadius(4.5f);
+        lineDataSetGov.setDrawValues(false);
 
-        LineData data = new LineData(d1, d2);
+        LineDataSet lineDataSetPvt = new LineDataSet(entriesPvt, "Pvt Enrollments");
+        lineDataSetPvt.setLineWidth(2.5f);
+        lineDataSetPvt.setCircleRadius(4.5f);
+        lineDataSetPvt.setDrawValues(false);
+
+
+        lineDataSetGov.setColor(ContextCompat.getColor(getActivity(), R.color.green));
+        lineDataSetGov.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+        lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+        lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        final List<String> stringList = new ArrayList<>();
+
+        for (int i = 0; i < ageList.size(); i++) {
+            stringList.add(ageList.get(i).getDate());
+        }
+        //final String[] months = new String[]{"Jan", "Feb", "Mar", "Apr","March","test"};
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return stringList.get((int) value);
+            }
+        };
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(formatter);
+
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+        yAxisLeft.setGranularity(1f);
+
+        // get the legend (only possible after setting data)
+        Legend l = lineChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        l.setDrawInside(false);
+        l.setXEntrySpace(7f);
+        l.setYEntrySpace(0f);
+        l.setYOffset(0f);
+
+
+        LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
         lineChart.setData(data);
+        lineChart.getDescription().setEnabled(false);
         lineChart.animateX(1500);
         lineChart.invalidate();
     }

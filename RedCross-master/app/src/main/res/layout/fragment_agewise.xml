@@ -91,6 +91,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_lmname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dp_5"
@@ -116,7 +117,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart_age"
         android:layout_width="match_parent"
         android:layout_height="0dp"

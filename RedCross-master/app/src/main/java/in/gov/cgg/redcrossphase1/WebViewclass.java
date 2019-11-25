@@ -24,6 +24,8 @@ public class WebViewclass extends AppCompatActivity {
         mWebview = findViewById(R.id.help_webview);
         WebSettings webSettings = mWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setDisplayZoomControls(true);
+
 //        webSettings.setUseWideViewPort(true);
 //        webSettings.setLoadWithOverviewMode(true);
 
@@ -38,7 +40,7 @@ public class WebViewclass extends AppCompatActivity {
 
         });
 
-        mWebview.loadUrl("http://qa2.cgg.gov.in:8081/redcross/DayWiseReportPage");
+        mWebview.loadUrl("http://dev2.cgg.gov.in/redcross/terms");
 
     }
 }

@@ -69,13 +69,14 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
 
-        uname = prefs.getString("un", "");
-        pswd = prefs.getString("pw", "");
-        isCheked = prefs.getBoolean("is", false);
-        if (isCheked) {
-            GlobalDeclaration.sharedUname = uname;
-            GlobalDeclaration.sharedUPswd = pswd;
-        }
+//        uname = prefs.getString("un", "");
+//        pswd = prefs.getString("pw", "");
+//        isCheked = prefs.getBoolean("is", false);
+//        if (isCheked) {
+//            GlobalDeclaration.sharedUname = uname;
+//            GlobalDeclaration.sharedUPswd = pswd;
+//            GlobalDeclaration.ischecked = isCheked;
+//        }
 
         progressDialog = new ProgressDialog(TabLoginActivity.this);
         progressDialog.setMessage("Please wait");
@@ -162,7 +163,8 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_register:
-                startActivity(new Intent(TabLoginActivity.this, RegisterActivity.class));
+//                startActivity(new Intent(TabLoginActivity.this, RegisterActivity.class));
+                Toast.makeText(this, "Registrations will be availed soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_cntinueguest:
                 startActivity(new Intent(TabLoginActivity.this, CitiGuestMainActivity.class));

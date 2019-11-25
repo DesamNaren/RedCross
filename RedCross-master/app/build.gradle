@@ -22,6 +22,13 @@ android {
         }
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     dataBinding {
         enabled = true
     }
@@ -43,6 +50,11 @@ android {
             signingConfig signingConfigs.release
 
         }
+        local {
+            buildConfigField("String", "SERVER_URL", "\"http://10.2.9.43:8083/redcross/\"")
+            signingConfig signingConfigs.release
+
+        }
         qa {
             buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
 
@@ -53,6 +65,43 @@ android {
         uat {
             buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
             signingConfig signingConfigs.release
+            release {
+                buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
+
+                signingConfig signingConfigs.release
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            }
+
+            debug {
+                buildConfigField("String", "SERVER_URL", "\"http://dev2.cgg.gov.in/redcross/\"")
+
+                signingConfig signingConfigs.release
+
+            }
+            qa {
+                buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
+
+                signingConfig signingConfigs.release
+                debuggable true
+
+            }
+            uat {
+                buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
+                signingConfig signingConfigs.release
+                debuggable true
+
+
+            }
+
+/**/
+            /*       release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+    */
+
 
         }
 
@@ -94,8 +143,6 @@ dependencies {
     implementation 'com.chaos.view:pinview:1.4.3'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.github.clans:fab:1.6.4'
-
-
 
 
 }

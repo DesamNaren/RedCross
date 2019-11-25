@@ -43,10 +43,12 @@ public class OfficerLoginFragment extends Fragment {
     LinearLayout ll_rememberme;
     CheckBox check_rememberme;
     ProgressDialog progressDialog;
-    boolean isChecked;
     private JsonObject gsonObject;
     private String name, pwd;
     private SharedPreferences sharedpreferences;
+    private boolean locaisChecked;
+    private String shareuname, sharepswd;
+    private boolean isSharedCheked;
 
     public OfficerLoginFragment() {
         // Required empty public constructor
@@ -71,12 +73,19 @@ public class OfficerLoginFragment extends Fragment {
         ll_rememberme = v.findViewById(R.id.ll_rememberme);
         check_rememberme = v.findViewById(R.id.checkremember);
 
+        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        shareuname = prefs.getString("un", "");
+        sharepswd = prefs.getString("pw", "");
+        isSharedCheked = prefs.getBoolean("is", false);
+
 
         btn_login = v.findViewById(R.id.btn_loginofficer);
 
-        if (GlobalDeclaration.sharedUname != null && GlobalDeclaration.sharedUPswd != null) {
-            et_name.setText(GlobalDeclaration.sharedUname);
-            et_pswd.setText(GlobalDeclaration.sharedUPswd);
+        if (shareuname != null && sharepswd != null && isSharedCheked) {
+            et_name.setText(shareuname);
+            et_pswd.setText(sharepswd);
+            check_rememberme.setChecked(true);
         }
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -90,25 +99,29 @@ public class OfficerLoginFragment extends Fragment {
             }
         });
 
-        check_rememberme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getActivity(), "cHECKED", Toast.LENGTH_SHORT).show();
-                // Toast.makeText(getActivity(), "UN", Toast.LENGTH_SHORT).show();
-                isChecked = check_rememberme.isChecked();
-            }
-        });
+//        check_rememberme.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Toast.makeText(getActivity(), "cHECKED", Toast.LENGTH_SHORT).show();
+//                // Toast.makeText(getActivity(), "UN", Toast.LENGTH_SHORT).show();
+//                isChecked = check_rememberme.isChecked();
+//            }
+//        });
 
         return v;
     }
 
     private void storeinSharedPrefs() {
+
         sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+
         editor.putString("un", name);
         editor.putString("pw", pwd);
-        editor.putBoolean("is", isChecked);
-        editor.commit();
+        editor.putBoolean("is", locaisChecked);
+        editor.apply();
     }
 
     private void callLoginRequest() {
@@ -147,8 +160,15 @@ public class OfficerLoginFragment extends Fragment {
                             GlobalDeclaration.userID = userID;
                             GlobalDeclaration.username = name;
 
-                            if (isChecked) {
+                            if (locaisChecked) {
                                 storeinSharedPrefs();
+                            } else {
+                                sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString("un", "");
+                                editor.putString("pw", "");
+                                editor.putBoolean("is", false);
+                                editor.apply();
                             }
 
                             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
@@ -183,6 +203,7 @@ public class OfficerLoginFragment extends Fragment {
 
         name = et_name.getText().toString();
         pwd = et_pswd.getText().toString();
+        locaisChecked = check_rememberme.isChecked();
 
         if (et_name.getText().toString().trim().equalsIgnoreCase("")) {
             Toast.makeText(getActivity(), "Please enter valid username", Toast.LENGTH_LONG).show();

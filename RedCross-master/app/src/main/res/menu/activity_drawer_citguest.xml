@@ -9,7 +9,7 @@
             <menu>
 
                 <item
-                    android:id="@+id/whoweare"
+                    android:id="@+id/nav_whoweare"
                     android:title="Who we are" />
                 <item
                     android:id="@+id/nav_History"
@@ -22,12 +22,13 @@
                     android:id="@+id/nav_Vision"
                     android:title="Vision" />
                 <item
-                    android:id="@+id/nav_mytrade"
+                    android:id="@+id/nav_mission"
                     android:title="Mission" />
 
                 <item
                     android:id="@+id/nav_Structure"
-                    android:title="Organization Structure" />
+                    android:title="Organogram"
+                    android:visible="false" />
                 <item
                     android:id="@+id/nav_Contact"
                     android:title="Contact us" />
@@ -39,22 +40,22 @@
     </group>
 
     <group>
-        <item android:title="Enrollment">
+        <item android:title="How">
             <menu>
                 <item
-                    android:id="@+id/nav_ideabox"
+                    android:id="@+id/nav_lifetimemember"
                     android:title="Life time Membership" />
                 <item
-                    android:id="@+id/nav_nmos"
+                    android:id="@+id/nav_blooddonorreg"
                     android:title="Blood donor Registrion" />
                 <item
-                    android:id="@+id/nav_propery_tax"
+                    android:id="@+id/nav_hnreg"
                     android:title="Home nursing Registrion" />
                 <item
-                    android:id="@+id/nav_trade_lic"
+                    android:id="@+id/nav_onlinedonations"
                     android:title="Online donations" />
                 <item
-                    android:id="@+id/nav_lrs"
+                    android:id="@+id/nav_training"
                     android:title="Training" />
             </menu>
         </item>
@@ -65,10 +66,14 @@
             <menu>
                 <item
                     android:title="Home Nursing"
-                    android:visible="false" />
+                    android:id="@+id/nav_hn" />
 
-                <item android:title="Blood donate" />
-                <item android:title="Locate Blood banks" />
+                <item
+                    android:id="@+id/nav_doateblood"
+                    android:title="Blood donate" />
+                <item
+                    android:id="@+id/nav_locatebloodbanks"
+                    android:title="Bloodbanks Details" />
 
 
             </menu>
@@ -90,7 +95,8 @@
 
                 <item
                     android:id="@+id/nav_inbox"
-                    android:title="Inbox" />
+                    android:title="Inbox"
+                    android:visible="false" />
 
 
             </menu>
@@ -98,27 +104,31 @@
         </item>
     </group>
 
-    <group>
+    <group android:visible="false">
         <item android:title="Settings">
             <menu>
                 <item
                     android:id="@+id/nav_theme"
-                    android:title="Themes" />
+                    android:title="Themes"
+                    android:visible="false" />
                 <item
                     android:id="@+id/nav_help"
-                    android:title="Help" />
+                    android:title="Help"
+                    android:visible="false" />
 
                 <item
                     android:id="@+id/nav_share"
-                    android:title="Share" />
+                    android:title="Share"
+                    android:visible="false" />
 
                 <item
                     android:id="@+id/nav_rate_us"
-                    android:title="Rate Us" />
+                    android:title="Rate Us"
+                    android:visible="false" />
 
                 <item
-
-                    android:title="Change MPIN" />
+                    android:title="Change MPIN"
+                    android:visible="false" />
 
 
             </menu>

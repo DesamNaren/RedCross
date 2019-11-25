@@ -132,7 +132,7 @@ public class DistrictViewModel extends AndroidViewModel {
 
     private void loadDashboardCounts(String type, String userid, String districtId) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DashboardCountResponse> call = apiInterface.getMemberCountsForDashboard();
+        Call<DashboardCountResponse> call = apiInterface.getMemberCountsForDashboard(districtId);
 
         Log.e("  url", call.request().url().toString());
 

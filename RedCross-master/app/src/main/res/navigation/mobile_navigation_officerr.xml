@@ -9,11 +9,6 @@
         android:id="@+id/nav_district"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
         tools:layout="@layout/fragemt_home_officer" />
-    <fragment
-
-        android:id="@+id/nav_top5"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
-        tools:layout="@layout/fragemt_home_officer" />
 
 
     <!--    app:enterAnim="@anim/slide_in_right"
@@ -26,6 +21,10 @@
         android:id="@+id/nav_gender"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseFragment"
         tools:layout="@layout/fragment_genderwise" />
+    <fragment
+        android:id="@+id/nav_drill"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment"
+        tools:layout="@layout/fragment_drilldown" />
 
     <fragment
         android:id="@+id/nav_blood"
@@ -38,8 +37,26 @@
         tools:layout="@layout/fragment_agewise" />
 
     <fragment
+
+        android:id="@+id/nav_top5"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
+        tools:layout="@layout/fragemt_home_officer" />
+
+    <fragment
         android:id="@+id/nav_govtpvt"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtFragment"
         tools:layout="@layout/fragment_agewise" />
+    <fragment
+        android:id="@+id/nav_alldistricts"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment"
+        tools:layout="@layout/fragment_aldistrict" />
+    <fragment
+        android:id="@+id/nav_tc"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.TCFragment"
+        tools:layout="@layout/fragment_tc" />
+    <fragment
+        android:id="@+id/nav_privacy"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment"
+        tools:layout="@layout/fragment_pp" />
 
 </navigation>
