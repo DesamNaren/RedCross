@@ -14,17 +14,23 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17bfec0c-ed84-4ca6-8231-3fe37f355453" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contactus.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_vision.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_ourbloodbanks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_sevenprinciples.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_vision.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_ui_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_ui_2_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +41,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -60,11 +66,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseViewModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="46" column="79" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="43" column="67" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1219">
+              <caret line="146" column="94" selection-start-line="146" selection-start-column="94" selection-end-line="146" selection-end-column="94" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="136" column="58" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="75" column="76" lean-forward="true" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/Genders.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -135,18 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/XYMarkerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/MyMarkerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/YourMarkerView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/ShowDistrictMandal.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseViewModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/bloodwise/BloodwiseViewModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_citizen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_agewise.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_bloodwise.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_genderwise.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/Age.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgeResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/EnterMPinActivity.java" />
@@ -171,7 +231,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/DashboardCountResponse.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/govtpvt/GovtPvtViewModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java" />
@@ -186,11 +245,25 @@
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_marker_view.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/WhoWeAreFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_tc.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_sevenprinciples.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_vision.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/SevenFundamentalFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/VisionFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/ContactusFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_contactus.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_pp.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_ourbloodbanks.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/LocateBloodbanksFragment.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="18" />
+    <option name="y" value="8" />
     <option name="width" value="1917" />
     <option name="height" value="1040" />
   </component>
@@ -198,22 +271,22 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DEBUGGABLE_DEVICE" value="motorola-motorola_one_power-ZF6223RPPV" />
     <property name="DEBUGGABLE_PROCESS" value="in.gov.cgg.redcrossphase1" />
     <property name="DEBUGGER_ID" value="Auto" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ee8ea81d7d29" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-17T11:42:57.177Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_XL_API_28" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-11-25T05:49:01.024Z" />
     <property name="ExportApk.ApkPath" value="E:\GitWorkspace\RedCross_Workspace\Redcross_Code\RedCrossPhase1" />
     <property name="ExportApk.BuildVariants" value="uat" />
     <property name="ExportApk.SignV1" value="true" />
@@ -272,7 +345,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android App.RedCross-master-app">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -475,15 +548,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574246485637</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="citizen ui">
+      <created>1574744551608</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574744551608</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49099836" visible="true" weight="0.21558245" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49099836" visible="true" weight="0.21588486" />
       <window_info id="Structure" order="2" sideWeight="0.505" side_tool="true" weight="0.2072893" />
       <window_info id="Build Variants" order="3" sideWeight="0.5090016" side_tool="true" weight="0.21633889" />
       <window_info id="Image Layers" order="4" />
@@ -492,53 +571,24 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.32569557" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.5008183" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.40411702" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3535188" />
       <window_info anchor="bottom" id="Terminal" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50075644" side_tool="true" weight="0.56666666" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32827735" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.44026187" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.32733223" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.43987" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.32719395" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.45499182" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32953683" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32942432" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" weight="0.3290469" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.29954615" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.3065032" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49099836" visible="true" weight="0.21633889" />
-      <window_info id="Structure" order="2" sideWeight="0.505" side_tool="true" weight="0.2072893" />
-      <window_info id="Build Variants" order="3" sideWeight="0.5090016" side_tool="true" weight="0.21633889" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.32569557" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.5008183" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.3535188" />
-      <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50075644" side_tool="true" weight="0.56666666" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.44189852" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.32733223" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.455" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32980332" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" weight="0.32953683" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Fabric" order="4" weight="0.3290469" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.29954615" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-    </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
@@ -554,7 +604,8 @@
     <MESSAGE value="minor" />
     <MESSAGE value="test user" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="citizen ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="citizen ui" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -570,7 +621,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>203</line>
+          <line>258</line>
           <properties />
           <option name="timeStamp" value="44" />
         </line-breakpoint>
@@ -581,20 +632,8 @@
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictAdapter.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictAdapter.java</url>
-          <line>33</line>
-          <properties />
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>221</line>
+          <line>272</line>
           <properties />
           <option name="timeStamp" value="64" />
         </line-breakpoint>
@@ -648,19 +687,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>239</line>
+          <line>276</line>
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>94</line>
+          <line>114</line>
           <properties />
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>89</line>
+          <line>109</line>
           <properties />
           <option name="timeStamp" value="101" />
         </line-breakpoint>
@@ -672,13 +711,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>119</line>
+          <line>149</line>
           <properties />
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>114</line>
+          <line>144</line>
           <properties />
           <option name="timeStamp" value="112" />
         </line-breakpoint>
@@ -702,85 +741,85 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>79</line>
+          <line>89</line>
           <properties />
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>682</line>
+          <line>929</line>
           <properties />
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>672</line>
+          <line>919</line>
           <properties />
           <option name="timeStamp" value="128" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java</url>
-          <line>121</line>
+          <line>127</line>
           <properties />
           <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>144</line>
+          <line>157</line>
           <properties />
           <option name="timeStamp" value="140" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>145</line>
+          <line>158</line>
           <properties />
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>146</line>
+          <line>159</line>
           <properties />
           <option name="timeStamp" value="142" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>147</line>
+          <line>160</line>
           <properties />
           <option name="timeStamp" value="143" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>123</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>115</line>
+          <line>128</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>86</line>
+          <line>95</line>
           <properties />
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>134</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="148" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>158</line>
+          <line>147</line>
           <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>152</line>
+          <line>141</line>
           <properties />
           <option name="timeStamp" value="154" />
         </line-breakpoint>
@@ -792,7 +831,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>157</line>
+          <line>146</line>
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
@@ -816,14 +855,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>157</line>
+          <line>267</line>
           <properties class="in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseFragment" />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>297</line>
-          <properties method="onClick" />
+          <line>359</line>
+          <properties />
           <option name="timeStamp" value="116" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -834,20 +873,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>669</line>
-          <properties class="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment" method="setDataForTopList" />
+          <line>916</line>
+          <properties class="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment" />
           <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>678</line>
-          <properties class="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment" method="setDataForBottomList" />
+          <line>925</line>
+          <properties class="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment" />
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>83</line>
-          <properties method="onClick" />
+          <line>92</line>
+          <properties />
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -909,62 +948,25 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/govtpvt/GovtVsPvtResponse.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_genderwise.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_govtpvt.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/govtpvt/GovtPvtFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_officer_main_drawer.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_officer_main.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_officer_main.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_officer_main.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_bloodwise.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_agewise.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.4.0/451207353948708405a08287e2a315c3f23553fe/retrofit-2.4.0-sources.jar!/retrofit2/http/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="68" column="3" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.1.0/45d3ce505f744a595313d5eb84efd3ca3c8d2d04/MPAndroidChart-v3.1.0-sources.jar!/com/github/mikephil/charting/charts/Chart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="281" column="16" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/textview_top.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tab_background_unselected.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tv_top.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictAdapter.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_view_layout.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictName.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictResponse.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/Top5.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseViewModel.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/bloodwise/BloodwiseViewModel.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/red.jpeg" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/bloodwise/BloodwiseFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/DashboardCountResponse.java" />
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-29/data/res/drawable-hdpi/ic_menu_report_image.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/report.png" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictViewModel.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/govtpvt/GovtPvtViewModel.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragemt_home_officer.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_officer.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/SplashActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TabLoginActivity.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.1.0/45d3ce505f744a595313d5eb84efd3ca3c8d2d04/MPAndroidChart-v3.1.0-sources.jar!/com/github/mikephil/charting/listener/OnChartValueSelectedListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -975,20 +977,647 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_marker_view.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/XYMarkerView.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-    <entry file="file://$PROJECT_DIR$/build.gradle" />
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/in/gov/cgg/redcrossphase1/ExampleInstrumentedTest.java" />
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_citizen.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_drawer_citguest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/HistoryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_tc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/fragment_vision.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_vision.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/BlankFragment.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_vision.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="52" lean-forward="true" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <folding>
+            <element signature="e#581#599#0" expanded="true" />
+            <element signature="e#903#916#0" expanded="true" />
+            <element signature="e#1261#1274#0" expanded="true" />
+            <element signature="e#1375#1388#0" expanded="true" />
+            <element signature="e#1430#1443#0" expanded="true" />
+            <element signature="e#1488#1501#0" expanded="true" />
+            <element signature="e#1563#1576#0" expanded="true" />
+            <element signature="e#1611#1629#0" expanded="true" />
+            <element signature="e#2957#2970#0" expanded="true" />
+            <element signature="e#3480#3493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/WhoWeAreFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="32" column="80" selection-start-line="32" selection-start-column="80" selection-end-line="32" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/VisionFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/MissionFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="42" column="104" lean-forward="true" selection-start-line="42" selection-start-column="104" selection-end-line="42" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contactus.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="1215" column="57" lean-forward="true" selection-start-line="1215" selection-start-column="57" selection-end-line="1215" selection-end-column="57" />
+          <folding>
+            <element signature="e#1126#3612#0" />
+            <element signature="e#3625#5786#0" />
+            <element signature="e#5799#7957#0" />
+            <element signature="e#7970#10072#0" />
+            <element signature="e#10085#12272#0" />
+            <element signature="e#12285#14395#0" />
+            <element signature="e#14408#16533#0" />
+            <element signature="e#16546#18652#0" />
+            <element signature="e#18665#20778#0" />
+            <element signature="e#20791#22935#0" />
+            <element signature="e#22948#25051#0" />
+            <element signature="e#25064#27185#0" />
+            <element signature="e#25439#25457#0" expanded="true" />
+            <element signature="e#27198#29319#0" />
+            <element signature="e#29548#29561#0" expanded="true" />
+            <element signature="e#29681#29694#0" expanded="true" />
+            <element signature="e#29729#29747#0" expanded="true" />
+            <element signature="e#30365#30378#0" expanded="true" />
+            <element signature="e#30477#30490#0" expanded="true" />
+            <element signature="e#30537#30550#0" expanded="true" />
+            <element signature="e#31335#31348#0" expanded="true" />
+            <element signature="e#31392#31405#0" expanded="true" />
+            <element signature="e#31452#31465#0" expanded="true" />
+            <element signature="e#31880#31893#0" expanded="true" />
+            <element signature="e#32013#32026#0" expanded="true" />
+            <element signature="e#32061#32079#0" expanded="true" />
+            <element signature="e#32697#32710#0" expanded="true" />
+            <element signature="e#32809#32822#0" expanded="true" />
+            <element signature="e#32869#32882#0" expanded="true" />
+            <element signature="e#33667#33680#0" expanded="true" />
+            <element signature="e#33724#33737#0" expanded="true" />
+            <element signature="e#33784#33797#0" expanded="true" />
+            <element signature="e#34212#34225#0" expanded="true" />
+            <element signature="e#34345#34358#0" expanded="true" />
+            <element signature="e#34393#34411#0" expanded="true" />
+            <element signature="e#35029#35042#0" expanded="true" />
+            <element signature="e#35141#35154#0" expanded="true" />
+            <element signature="e#35201#35214#0" expanded="true" />
+            <element signature="e#35999#36012#0" expanded="true" />
+            <element signature="e#36056#36069#0" expanded="true" />
+            <element signature="e#36116#36129#0" expanded="true" />
+            <element signature="e#36544#36557#0" expanded="true" />
+            <element signature="e#36677#36690#0" expanded="true" />
+            <element signature="e#36725#36743#0" expanded="true" />
+            <element signature="e#37361#37374#0" expanded="true" />
+            <element signature="e#37473#37486#0" expanded="true" />
+            <element signature="e#37533#37546#0" expanded="true" />
+            <element signature="e#38331#38344#0" expanded="true" />
+            <element signature="e#38388#38401#0" expanded="true" />
+            <element signature="e#38448#38461#0" expanded="true" />
+            <element signature="e#38876#38889#0" expanded="true" />
+            <element signature="e#39009#39022#0" expanded="true" />
+            <element signature="e#39057#39075#0" expanded="true" />
+            <element signature="e#39693#39706#0" expanded="true" />
+            <element signature="e#39805#39818#0" expanded="true" />
+            <element signature="e#39865#39878#0" expanded="true" />
+            <element signature="e#40663#40676#0" expanded="true" />
+            <element signature="e#40720#40733#0" expanded="true" />
+            <element signature="e#40780#40793#0" expanded="true" />
+            <element signature="e#41208#41221#0" expanded="true" />
+            <element signature="e#41341#41354#0" expanded="true" />
+            <element signature="e#41389#41407#0" expanded="true" />
+            <element signature="e#42025#42038#0" expanded="true" />
+            <element signature="e#42137#42150#0" expanded="true" />
+            <element signature="e#42197#42210#0" expanded="true" />
+            <element signature="e#42995#43008#0" expanded="true" />
+            <element signature="e#43052#43065#0" expanded="true" />
+            <element signature="e#43112#43125#0" expanded="true" />
+            <element signature="e#43540#43553#0" expanded="true" />
+            <element signature="e#43673#43686#0" expanded="true" />
+            <element signature="e#43721#43739#0" expanded="true" />
+            <element signature="e#44357#44370#0" expanded="true" />
+            <element signature="e#44469#44482#0" expanded="true" />
+            <element signature="e#44529#44542#0" expanded="true" />
+            <element signature="e#45327#45340#0" expanded="true" />
+            <element signature="e#45384#45397#0" expanded="true" />
+            <element signature="e#45444#45457#0" expanded="true" />
+            <element signature="e#45872#45885#0" expanded="true" />
+            <element signature="e#46005#46018#0" expanded="true" />
+            <element signature="e#46053#46071#0" expanded="true" />
+            <element signature="e#46689#46702#0" expanded="true" />
+            <element signature="e#46801#46814#0" expanded="true" />
+            <element signature="e#46861#46874#0" expanded="true" />
+            <element signature="e#47659#47672#0" expanded="true" />
+            <element signature="e#47716#47729#0" expanded="true" />
+            <element signature="e#47776#47789#0" expanded="true" />
+            <element signature="e#48204#48217#0" expanded="true" />
+            <element signature="e#48337#48350#0" expanded="true" />
+            <element signature="e#48385#48403#0" expanded="true" />
+            <element signature="e#49021#49034#0" expanded="true" />
+            <element signature="e#49133#49146#0" expanded="true" />
+            <element signature="e#49193#49206#0" expanded="true" />
+            <element signature="e#49991#50004#0" expanded="true" />
+            <element signature="e#50048#50061#0" expanded="true" />
+            <element signature="e#50108#50121#0" expanded="true" />
+            <element signature="e#50536#50549#0" expanded="true" />
+            <element signature="e#50669#50682#0" expanded="true" />
+            <element signature="e#50717#50735#0" expanded="true" />
+            <element signature="e#51353#51366#0" expanded="true" />
+            <element signature="e#51465#51478#0" expanded="true" />
+            <element signature="e#51525#51538#0" expanded="true" />
+            <element signature="e#52323#52336#0" expanded="true" />
+            <element signature="e#52380#52393#0" expanded="true" />
+            <element signature="e#52440#52453#0" expanded="true" />
+            <element signature="e#52868#52881#0" expanded="true" />
+            <element signature="e#53001#53014#0" expanded="true" />
+            <element signature="e#53049#53067#0" expanded="true" />
+            <element signature="e#53685#53698#0" expanded="true" />
+            <element signature="e#53797#53810#0" expanded="true" />
+            <element signature="e#53857#53870#0" expanded="true" />
+            <element signature="e#54655#54668#0" expanded="true" />
+            <element signature="e#54712#54725#0" expanded="true" />
+            <element signature="e#54772#54785#0" expanded="true" />
+            <element signature="e#55200#55213#0" expanded="true" />
+            <element signature="e#55333#55346#0" expanded="true" />
+            <element signature="e#55381#55399#0" expanded="true" />
+            <element signature="e#56017#56030#0" expanded="true" />
+            <element signature="e#56129#56142#0" expanded="true" />
+            <element signature="e#56189#56202#0" expanded="true" />
+            <element signature="e#56976#56989#0" expanded="true" />
+            <element signature="e#57033#57046#0" expanded="true" />
+            <element signature="e#57093#57106#0" expanded="true" />
+            <element signature="e#57532#57545#0" expanded="true" />
+            <element signature="e#57665#57678#0" expanded="true" />
+            <element signature="e#57713#57731#0" expanded="true" />
+            <element signature="e#58349#58362#0" expanded="true" />
+            <element signature="e#58461#58474#0" expanded="true" />
+            <element signature="e#58521#58534#0" expanded="true" />
+            <element signature="e#59319#59332#0" expanded="true" />
+            <element signature="e#59376#59389#0" expanded="true" />
+            <element signature="e#59436#59449#0" expanded="true" />
+            <element signature="e#59779#59792#0" expanded="true" />
+            <element signature="e#59912#59925#0" expanded="true" />
+            <element signature="e#59960#59978#0" expanded="true" />
+            <element signature="e#60596#60609#0" expanded="true" />
+            <element signature="e#60708#60721#0" expanded="true" />
+            <element signature="e#60768#60781#0" expanded="true" />
+            <element signature="e#61502#61515#0" expanded="true" />
+            <element signature="e#61559#61572#0" expanded="true" />
+            <element signature="e#61619#61632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/SevenFundamentalFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="60" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sevenprinciples.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="70" column="60" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="70" selection-end-column="60" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ourbloodbanks.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="1184" lean-forward="true" selection-start-line="1184" selection-end-line="1184" />
+          <folding>
+            <element signature="e#546#564#0" expanded="true" />
+            <element signature="e#863#876#0" expanded="true" />
+            <element signature="e#1071#3172#0" />
+            <element signature="e#1230#1243#0" expanded="true" />
+            <element signature="e#1363#1376#0" expanded="true" />
+            <element signature="e#1411#1429#0" expanded="true" />
+            <element signature="e#2315#2328#0" expanded="true" />
+            <element signature="e#2372#2385#0" expanded="true" />
+            <element signature="e#2432#2445#0" expanded="true" />
+            <element signature="e#2962#2975#0" expanded="true" />
+            <element signature="e#3019#3032#0" expanded="true" />
+            <element signature="e#3079#3092#0" expanded="true" />
+            <element signature="e#3934#3947#0" expanded="true" />
+            <element signature="e#3995#4008#0" expanded="true" />
+            <element signature="e#4059#4072#0" expanded="true" />
+            <element signature="e#4629#4642#0" expanded="true" />
+            <element signature="e#4690#4703#0" expanded="true" />
+            <element signature="e#4754#4767#0" expanded="true" />
+            <element signature="e#5621#5634#0" expanded="true" />
+            <element signature="e#5682#5695#0" expanded="true" />
+            <element signature="e#5746#5759#0" expanded="true" />
+            <element signature="e#6316#6329#0" expanded="true" />
+            <element signature="e#6377#6390#0" expanded="true" />
+            <element signature="e#6441#6454#0" expanded="true" />
+            <element signature="e#7308#7321#0" expanded="true" />
+            <element signature="e#7369#7382#0" expanded="true" />
+            <element signature="e#7433#7446#0" expanded="true" />
+            <element signature="e#8003#8016#0" expanded="true" />
+            <element signature="e#8064#8077#0" expanded="true" />
+            <element signature="e#8128#8141#0" expanded="true" />
+            <element signature="e#8696#8709#0" expanded="true" />
+            <element signature="e#8829#8842#0" expanded="true" />
+            <element signature="e#8877#8895#0" expanded="true" />
+            <element signature="e#9781#9794#0" expanded="true" />
+            <element signature="e#9838#9851#0" expanded="true" />
+            <element signature="e#9898#9911#0" expanded="true" />
+            <element signature="e#10428#10441#0" expanded="true" />
+            <element signature="e#10485#10498#0" expanded="true" />
+            <element signature="e#10545#10558#0" expanded="true" />
+            <element signature="e#11419#11432#0" expanded="true" />
+            <element signature="e#11480#11493#0" expanded="true" />
+            <element signature="e#11544#11557#0" expanded="true" />
+            <element signature="e#12114#12127#0" expanded="true" />
+            <element signature="e#12175#12188#0" expanded="true" />
+            <element signature="e#12239#12252#0" expanded="true" />
+            <element signature="e#13126#13139#0" expanded="true" />
+            <element signature="e#13187#13200#0" expanded="true" />
+            <element signature="e#13251#13264#0" expanded="true" />
+            <element signature="e#13821#13834#0" expanded="true" />
+            <element signature="e#13882#13895#0" expanded="true" />
+            <element signature="e#13946#13959#0" expanded="true" />
+            <element signature="e#14819#14832#0" expanded="true" />
+            <element signature="e#14880#14893#0" expanded="true" />
+            <element signature="e#14944#14957#0" expanded="true" />
+            <element signature="e#15514#15527#0" expanded="true" />
+            <element signature="e#15575#15588#0" expanded="true" />
+            <element signature="e#15639#15652#0" expanded="true" />
+            <element signature="e#16109#16122#0" expanded="true" />
+            <element signature="e#16242#16255#0" expanded="true" />
+            <element signature="e#16290#16308#0" expanded="true" />
+            <element signature="e#17194#17207#0" expanded="true" />
+            <element signature="e#17251#17264#0" expanded="true" />
+            <element signature="e#17311#17324#0" expanded="true" />
+            <element signature="e#17841#17854#0" expanded="true" />
+            <element signature="e#17898#17911#0" expanded="true" />
+            <element signature="e#17958#17971#0" expanded="true" />
+            <element signature="e#18832#18845#0" expanded="true" />
+            <element signature="e#18893#18906#0" expanded="true" />
+            <element signature="e#18957#18970#0" expanded="true" />
+            <element signature="e#19527#19540#0" expanded="true" />
+            <element signature="e#19588#19601#0" expanded="true" />
+            <element signature="e#19652#19665#0" expanded="true" />
+            <element signature="e#20539#20552#0" expanded="true" />
+            <element signature="e#20600#20613#0" expanded="true" />
+            <element signature="e#20664#20677#0" expanded="true" />
+            <element signature="e#21234#21247#0" expanded="true" />
+            <element signature="e#21295#21308#0" expanded="true" />
+            <element signature="e#21359#21372#0" expanded="true" />
+            <element signature="e#22232#22245#0" expanded="true" />
+            <element signature="e#22293#22306#0" expanded="true" />
+            <element signature="e#22357#22370#0" expanded="true" />
+            <element signature="e#22927#22940#0" expanded="true" />
+            <element signature="e#22988#23001#0" expanded="true" />
+            <element signature="e#23052#23065#0" expanded="true" />
+            <element signature="e#23522#23535#0" expanded="true" />
+            <element signature="e#23655#23668#0" expanded="true" />
+            <element signature="e#23703#23721#0" expanded="true" />
+            <element signature="e#24607#24620#0" expanded="true" />
+            <element signature="e#24664#24677#0" expanded="true" />
+            <element signature="e#24724#24737#0" expanded="true" />
+            <element signature="e#25254#25267#0" expanded="true" />
+            <element signature="e#25311#25324#0" expanded="true" />
+            <element signature="e#25371#25384#0" expanded="true" />
+            <element signature="e#26245#26258#0" expanded="true" />
+            <element signature="e#26306#26319#0" expanded="true" />
+            <element signature="e#26370#26383#0" expanded="true" />
+            <element signature="e#26940#26953#0" expanded="true" />
+            <element signature="e#27001#27014#0" expanded="true" />
+            <element signature="e#27065#27078#0" expanded="true" />
+            <element signature="e#27952#27965#0" expanded="true" />
+            <element signature="e#28013#28026#0" expanded="true" />
+            <element signature="e#28077#28090#0" expanded="true" />
+            <element signature="e#28647#28660#0" expanded="true" />
+            <element signature="e#28708#28721#0" expanded="true" />
+            <element signature="e#28772#28785#0" expanded="true" />
+            <element signature="e#29645#29658#0" expanded="true" />
+            <element signature="e#29706#29719#0" expanded="true" />
+            <element signature="e#29770#29783#0" expanded="true" />
+            <element signature="e#30340#30353#0" expanded="true" />
+            <element signature="e#30401#30414#0" expanded="true" />
+            <element signature="e#30465#30478#0" expanded="true" />
+            <element signature="e#30935#30948#0" expanded="true" />
+            <element signature="e#31068#31081#0" expanded="true" />
+            <element signature="e#31116#31134#0" expanded="true" />
+            <element signature="e#32020#32033#0" expanded="true" />
+            <element signature="e#32077#32090#0" expanded="true" />
+            <element signature="e#32137#32150#0" expanded="true" />
+            <element signature="e#32667#32680#0" expanded="true" />
+            <element signature="e#32724#32737#0" expanded="true" />
+            <element signature="e#32784#32797#0" expanded="true" />
+            <element signature="e#33658#33671#0" expanded="true" />
+            <element signature="e#33719#33732#0" expanded="true" />
+            <element signature="e#33783#33796#0" expanded="true" />
+            <element signature="e#34353#34366#0" expanded="true" />
+            <element signature="e#34414#34427#0" expanded="true" />
+            <element signature="e#34478#34491#0" expanded="true" />
+            <element signature="e#35365#35378#0" expanded="true" />
+            <element signature="e#35426#35439#0" expanded="true" />
+            <element signature="e#35490#35503#0" expanded="true" />
+            <element signature="e#36060#36073#0" expanded="true" />
+            <element signature="e#36121#36134#0" expanded="true" />
+            <element signature="e#36185#36198#0" expanded="true" />
+            <element signature="e#37058#37071#0" expanded="true" />
+            <element signature="e#37119#37132#0" expanded="true" />
+            <element signature="e#37183#37196#0" expanded="true" />
+            <element signature="e#37753#37766#0" expanded="true" />
+            <element signature="e#37814#37827#0" expanded="true" />
+            <element signature="e#37878#37891#0" expanded="true" />
+            <element signature="e#38348#38361#0" expanded="true" />
+            <element signature="e#38481#38494#0" expanded="true" />
+            <element signature="e#38529#38547#0" expanded="true" />
+            <element signature="e#39433#39446#0" expanded="true" />
+            <element signature="e#39490#39503#0" expanded="true" />
+            <element signature="e#39550#39563#0" expanded="true" />
+            <element signature="e#40080#40093#0" expanded="true" />
+            <element signature="e#40137#40150#0" expanded="true" />
+            <element signature="e#40197#40210#0" expanded="true" />
+            <element signature="e#41071#41084#0" expanded="true" />
+            <element signature="e#41132#41145#0" expanded="true" />
+            <element signature="e#41196#41209#0" expanded="true" />
+            <element signature="e#41766#41779#0" expanded="true" />
+            <element signature="e#41827#41840#0" expanded="true" />
+            <element signature="e#41891#41904#0" expanded="true" />
+            <element signature="e#42778#42791#0" expanded="true" />
+            <element signature="e#42839#42852#0" expanded="true" />
+            <element signature="e#42903#42916#0" expanded="true" />
+            <element signature="e#43473#43486#0" expanded="true" />
+            <element signature="e#43534#43547#0" expanded="true" />
+            <element signature="e#43598#43611#0" expanded="true" />
+            <element signature="e#44471#44484#0" expanded="true" />
+            <element signature="e#44532#44545#0" expanded="true" />
+            <element signature="e#44596#44609#0" expanded="true" />
+            <element signature="e#45166#45179#0" expanded="true" />
+            <element signature="e#45227#45240#0" expanded="true" />
+            <element signature="e#45291#45304#0" expanded="true" />
+            <element signature="e#45761#45774#0" expanded="true" />
+            <element signature="e#45894#45907#0" expanded="true" />
+            <element signature="e#45942#45960#0" expanded="true" />
+            <element signature="e#46846#46859#0" expanded="true" />
+            <element signature="e#46903#46916#0" expanded="true" />
+            <element signature="e#46963#46976#0" expanded="true" />
+            <element signature="e#47493#47506#0" expanded="true" />
+            <element signature="e#47550#47563#0" expanded="true" />
+            <element signature="e#47610#47623#0" expanded="true" />
+            <element signature="e#48484#48497#0" expanded="true" />
+            <element signature="e#48545#48558#0" expanded="true" />
+            <element signature="e#48609#48622#0" expanded="true" />
+            <element signature="e#49179#49192#0" expanded="true" />
+            <element signature="e#49240#49253#0" expanded="true" />
+            <element signature="e#49304#49317#0" expanded="true" />
+            <element signature="e#50191#50204#0" expanded="true" />
+            <element signature="e#50252#50265#0" expanded="true" />
+            <element signature="e#50316#50329#0" expanded="true" />
+            <element signature="e#50886#50899#0" expanded="true" />
+            <element signature="e#50947#50960#0" expanded="true" />
+            <element signature="e#51011#51024#0" expanded="true" />
+            <element signature="e#51884#51897#0" expanded="true" />
+            <element signature="e#51945#51958#0" expanded="true" />
+            <element signature="e#52009#52022#0" expanded="true" />
+            <element signature="e#52579#52592#0" expanded="true" />
+            <element signature="e#52640#52653#0" expanded="true" />
+            <element signature="e#52704#52717#0" expanded="true" />
+            <element signature="e#53174#53187#0" expanded="true" />
+            <element signature="e#53307#53320#0" expanded="true" />
+            <element signature="e#53355#53373#0" expanded="true" />
+            <element signature="e#54259#54272#0" expanded="true" />
+            <element signature="e#54316#54329#0" expanded="true" />
+            <element signature="e#54376#54389#0" expanded="true" />
+            <element signature="e#54906#54919#0" expanded="true" />
+            <element signature="e#54963#54976#0" expanded="true" />
+            <element signature="e#55023#55036#0" expanded="true" />
+            <element signature="e#55897#55910#0" expanded="true" />
+            <element signature="e#55958#55971#0" expanded="true" />
+            <element signature="e#56022#56035#0" expanded="true" />
+            <element signature="e#56592#56605#0" expanded="true" />
+            <element signature="e#56653#56666#0" expanded="true" />
+            <element signature="e#56717#56730#0" expanded="true" />
+            <element signature="e#57604#57617#0" expanded="true" />
+            <element signature="e#57665#57678#0" expanded="true" />
+            <element signature="e#57729#57742#0" expanded="true" />
+            <element signature="e#58299#58312#0" expanded="true" />
+            <element signature="e#58360#58373#0" expanded="true" />
+            <element signature="e#58424#58437#0" expanded="true" />
+            <element signature="e#59297#59310#0" expanded="true" />
+            <element signature="e#59358#59371#0" expanded="true" />
+            <element signature="e#59422#59435#0" expanded="true" />
+            <element signature="e#59992#60005#0" expanded="true" />
+            <element signature="e#60053#60066#0" expanded="true" />
+            <element signature="e#60117#60130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/LocateBloodbanksFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/ContactusFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1156">
+          <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1892">
+          <caret line="166" column="31" lean-forward="true" selection-start-line="166" selection-start-column="31" selection-end-line="166" selection-end-column="31" />
+          <folding>
+            <element signature="e#5266#5719#0" expanded="true" />
+            <element signature="e#5718#5719#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgeResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+          <folding>
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#519#520#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#807#808#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding>
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/Age.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="46" column="79" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="43" column="67" selection-start-line="43" selection-start-column="67" selection-end-line="43" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/Genders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1219">
+          <caret line="146" column="94" selection-start-line="146" selection-start-column="94" selection-end-line="146" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="136" column="58" selection-start-line="136" selection-start-column="58" selection-end-line="136" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="75" column="76" lean-forward="true" selection-start-line="75" selection-start-column="76" selection-end-line="75" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
