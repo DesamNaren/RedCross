@@ -51,7 +51,7 @@ public class GovtPvtFragment extends Fragment {
 
         GlobalDeclaration.home = false;
 
-        govtPvtViewModel.getGovtPvt("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+        govtPvtViewModel.getGovtPvt(GlobalDeclaration.districtId).
                 observe(getActivity(), new Observer<List<Last10day>>() {
                     @Override
                     public void onChanged(@Nullable List<Last10day> last10dayList) {

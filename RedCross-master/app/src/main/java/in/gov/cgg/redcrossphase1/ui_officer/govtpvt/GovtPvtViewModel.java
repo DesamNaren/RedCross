@@ -25,19 +25,19 @@ public class GovtPvtViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<List<Last10day>> getGovtPvt(String role, String districtid, String userid) {
+    public LiveData<List<Last10day>> getGovtPvt(String districtid) {
 
         // if (genderResponseMutableLiveData == null) {
         goListMutableLiveData = new MutableLiveData<>();
-        loadGovtPvt(userid, districtid, role);
+        loadGovtPvt(districtid);
         //}
         return goListMutableLiveData;
     }
 
-    private void loadGovtPvt(String userid, String districtid, String role) {
+    private void loadGovtPvt(String districtid) {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<GovtVsPvtResponse> call = apiInterface.GovPvtService();
+        Call<GovtVsPvtResponse> call = apiInterface.GovPvtService(districtid);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<GovtVsPvtResponse>() {

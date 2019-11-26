@@ -8,8 +8,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import java.util.List;
-
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import retrofit2.Call;
@@ -18,35 +16,34 @@ import retrofit2.Response;
 
 public class DrilldownViewmodel extends AndroidViewModel {
 
-    private MutableLiveData<List<String>> headerslist;
-    private MutableLiveData<List<List<String>>> studentlist;
+    private MutableLiveData<DrillDownResponse> drillDownList;
 
     public DrilldownViewmodel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<String>> getHeaders() {
+    public LiveData<DrillDownResponse> getDrillDownList(String jrc, String fyear, String entrydate, String did) {
 
         // if (genderResponseMutableLiveData == null) {
-        headerslist = new MutableLiveData<>();
-        loadDrilldown();
+        drillDownList = new MutableLiveData<>();
+        loadDrilldown(jrc, fyear, entrydate, did);
         //}
-        return headerslist;
+        return drillDownList;
     }
 
-    public LiveData<List<List<String>>> getStudentList() {
+//    public LiveData<List<List<String>>> getStudentList() {
+//
+//        // if (genderResponseMutableLiveData == null) {
+//        studentlist = new MutableLiveData<>();
+//        loadDrilldown();
+//        //}
+//        return studentlist;
+//    }
 
-        // if (genderResponseMutableLiveData == null) {
-        studentlist = new MutableLiveData<>();
-        loadDrilldown();
-        //}
-        return studentlist;
-    }
-
-    private void loadDrilldown() {
+    private void loadDrilldown(String jrc, String fyear, String entrydate, String did) {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs();
+        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs(jrc, fyear, entrydate, did);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<DrillDownResponse>() {
@@ -54,8 +51,7 @@ public class DrilldownViewmodel extends AndroidViewModel {
             public void onResponse(Call<DrillDownResponse> call, Response<DrillDownResponse> response) {
 
                 if (response.body() != null) {
-                    headerslist.setValue(response.body().getHeaders());
-                    studentlist.setValue(response.body().getStudentsList());
+                    drillDownList.setValue(response.body());
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }

@@ -50,11 +50,6 @@ android {
             signingConfig signingConfigs.release
 
         }
-        local {
-            buildConfigField("String", "SERVER_URL", "\"http://10.2.9.43:8083/redcross/\"")
-            signingConfig signingConfigs.release
-
-        }
         qa {
             buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
 

@@ -37,10 +37,14 @@
         tools:layout="@layout/fragment_agewise" />
 
     <fragment
-
         android:id="@+id/nav_top5"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"
         tools:layout="@layout/fragemt_home_officer" />
+
+    <fragment
+        android:id="@+id/nav_daywise"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment"
+        tools:layout="@layout/fragment_daywise" />
 
     <fragment
         android:id="@+id/nav_govtpvt"

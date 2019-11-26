@@ -58,6 +58,7 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
                     holder.info.setVisibility(View.VISIBLE);
                     holder.tv_chairmename.setText(districtResponses.get(position).getChairmanName());
                     holder.tv_number.setText(String.format("Phone No :%s", districtResponses.get(position).getChairmanPhoneNo()));
+                    holder.tv_email.setText(String.format("Email Id :%s", districtResponses.get(position).getChairmanEmailId()));
 
                 } else {
                     holder.info.setVisibility(View.INVISIBLE);
@@ -83,9 +84,55 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
                 if (GlobalDeclaration.role != null) {
                     if (!GlobalDeclaration.role.contains("D")) {
                         if (!districtResponses.get(position).getChairmanPhoneNo().trim().equals("")) {
-                            Intent intent = new Intent(Intent.ACTION_DIAL,
-                                    Uri.fromParts("tel", districtResponses.get(position).getChairmanPhoneNo(), null));
-                            mCtx.startActivity(intent);
+                            try {
+                                Intent intent = new Intent(Intent.ACTION_DIAL,
+                                        Uri.fromParts("tel", districtResponses.get(position).getChairmanPhoneNo(), null));
+                                mCtx.startActivity(intent);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(mCtx, "Mobile number is empty", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
+        holder.img_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (GlobalDeclaration.role != null) {
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        if (!districtResponses.get(position).getChairmanPhoneNo().trim().equals("")) {
+                            try {
+                                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("mailto:" + districtResponses.get(position)
+                                        .getChairmanEmailId()));
+                                mCtx.startActivity(intent);
+                            } catch (Exception e) {
+                                Toast.makeText(mCtx, "Sorry...You don't have any mail app", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(mCtx, "Mobile number is empty", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        });
+
+        holder.img_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (GlobalDeclaration.role != null) {
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        if (!districtResponses.get(position).getChairmanPhoneNo().trim().equals("")) {
+                            try {
+                                mCtx.startActivity(new Intent(Intent.ACTION_VIEW,
+                                        Uri.fromParts("sms", districtResponses.get(position).getChairmanPhoneNo().trim(),
+                                                null)));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
                             Toast.makeText(mCtx, "Mobile number is empty", Toast.LENGTH_SHORT).show();
                         }
@@ -103,8 +150,8 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
 
     class DistrictViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewname, tv_enrol, tv_rank, tv_chairmename, tv_number;
-        ImageView info, img_call;
+        TextView textViewname, tv_enrol, tv_rank, tv_chairmename, tv_number, tv_email;
+        ImageView info, img_call, img_message, img_email;
         LinearLayout ll_chairman;
 
         public DistrictViewHolder(View itemView) {
@@ -113,11 +160,13 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
             textViewname = itemView.findViewById(R.id.tv_topdname);
             tv_enrol = itemView.findViewById(R.id.tv_topenrolment);
             tv_rank = itemView.findViewById(R.id.tv_torank);
-            tv_rank = itemView.findViewById(R.id.tv_torank);
+            tv_email = itemView.findViewById(R.id.tv_email);
             tv_chairmename = itemView.findViewById(R.id.tv_card_dname);
             tv_number = itemView.findViewById(R.id.tv_mobilenumber);
             info = itemView.findViewById(R.id.info);
             img_call = itemView.findViewById(R.id.card_call);
+            img_message = itemView.findViewById(R.id.card_message);
+            img_email = itemView.findViewById(R.id.card_email);
             ll_chairman = itemView.findViewById(R.id.ll_chirman);
         }
     }
