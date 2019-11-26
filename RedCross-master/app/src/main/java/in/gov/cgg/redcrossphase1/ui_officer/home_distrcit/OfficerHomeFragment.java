@@ -206,7 +206,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                     });
 
 
-            govtPvtViewModel.getGovtPvt("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+            govtPvtViewModel.getGovtPvt(GlobalDeclaration.districtId).
                     observe(getActivity(), new Observer<List<Last10day>>() {
                         @Override
                         public void onChanged(@Nullable List<Last10day> last10dayList) {
@@ -864,7 +864,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
     private void findAllVIEWS(View root) {
         //labelView = (TextView) findViewById(R.id.label);
-        LinearLayout l_datepicker = root.findViewById(R.id.ll_picker);
         ll_jrc = root.findViewById(R.id.ll_jrc);
         ll_yrc = root.findViewById(R.id.ll_yrc);
         ll_lm = root.findViewById(R.id.ll_lm);

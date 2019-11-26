@@ -3,10 +3,13 @@ package in.gov.cgg.redcrossphase1.retrofit;
 
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DayWiseReportCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.drilldown.DrillDownResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtVsPvtResponse;
@@ -60,10 +63,18 @@ public interface ApiInterface {
     Call<DashboardCountResponse> getMemberCountsForDashboard(@Query("districtId") String districtId);
 
     @GET("GovPvtService")
-    Call<GovtVsPvtResponse> GovPvtService();
+    Call<GovtVsPvtResponse> GovPvtService(@Query("districtId") String districtId);
+
+    @GET("DayWiseReportDataWS")
+    Call<List<DayWiseReportCountResponse>> DayWiseReportDataWS(@Query("districtId") String districtId,
+                                                               @Query("finyrId") String finyrId,
+                                                               @Query("monthId") String monthId);
 
     @GET("getFullDrillDownDataWs")
-    Call<DrillDownResponse> getFullDrillDownDataWs();
+    Call<DrillDownResponse> getFullDrillDownDataWs(@Query("enrollmentType") String enrollmentType,
+                                                   @Query("fyId") String fyId,
+                                                   @Query("entryDate") String entryDate,
+                                                   @Query("districtId") String districtId);
 
     @GET("DistrictWiseEnrollmentsService")
     Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);

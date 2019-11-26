@@ -7,9 +7,15 @@ public class Top5 {
     @SerializedName("districtId")
     @Expose
     private String districtId;
+
     @SerializedName("chairmanPhoneNo")
     @Expose
     private String chairmanPhoneNo;
+
+    @SerializedName("chairmanEmailId")
+    @Expose
+    private String chairmanEmailId;
+
     @SerializedName("chairmanName")
     @Expose
     private String chairmanName;
@@ -25,6 +31,15 @@ public class Top5 {
     @SerializedName("rank")
     @Expose
     private String rank;
+
+
+    public String getChairmanEmailId() {
+        return chairmanEmailId;
+    }
+
+    public void setChairmanEmailId(String chairmanEmailId) {
+        this.chairmanEmailId = chairmanEmailId;
+    }
 
     public String getDistrictId() {
         return districtId;

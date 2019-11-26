@@ -82,7 +82,7 @@ public class GetDrilldownFragment extends Fragment {
 
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs();
+        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs("", "", "", "");
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<DrillDownResponse>() {
