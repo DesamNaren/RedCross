@@ -2,14 +2,9 @@ package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.BulletSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,11 +18,16 @@ import in.gov.cgg.redcrossphase1.R;
 public class SevenFundamentalFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
 
-        View root = inflater.inflate(R.layout.fragment_tc, container, false);
+        return inflater.inflate(R.layout.fragment_sevenprinciples, container, false);
 
+    }
+
+/*
         Objects.requireNonNull(getActivity()).setTitle("Seven Fundamental Principles");
 
         TextView tv_first = root.findViewById(R.id.text1);
@@ -78,5 +78,7 @@ public class SevenFundamentalFragment extends Fragment {
     private float dp(int dp) {
         return getResources().getDisplayMetrics().density * dp;
     }
+*/
+
 
 }
