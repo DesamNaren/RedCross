@@ -7,7 +7,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
-import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DayWiseReportCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.drilldown.DrillDownResponse;
@@ -75,8 +75,22 @@ public interface ApiInterface {
                                                    @Query("fyId") String fyId,
                                                    @Query("entryDate") String entryDate,
                                                    @Query("districtId") String districtId);
+//
+//    @GET("DistrictWiseEnrollmentsService")
+//    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
 
-    @GET("DistrictWiseEnrollmentsService")
-    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
+    @GET("getDrillDownCountLevelWiseWs")
+    Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs1(@Query("level") String level,
+                                                                                  @Query("fyId") String fyId);
+
+    @GET("getDrillDownCountLevelWiseWs")
+    Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs2(@Query("level") String level,
+                                                                                  @Query("fyId") String fyId,
+                                                                                  @Query("districtId") String districtId);
+
+    @GET("getDrillDownCountLevelWiseWs")
+    Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs3(@Query("level") String level,
+                                                                                  @Query("fyId") String fyId,
+                                                                                  @Query("mandalId") String mandalId);
 
 }

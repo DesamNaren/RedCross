@@ -27,10 +27,11 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 
-public class AllDistrictsFragment extends Fragment {
+public class AllMandalsFragment extends Fragment {
 
 
     ProgressDialog pd;
+    String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
     // private RecyclerView rv_district;
@@ -54,15 +55,20 @@ public class AllDistrictsFragment extends Fragment {
         pd.setMessage("Loading ,Please wait");
         pd.show();
         allDistrictsViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).get(AllDistrictsViewModel.class);
-        Objects.requireNonNull(getActivity()).setTitle("District wise");
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).
+                        get(AllDistrictsViewModel.class);
+        Objects.requireNonNull(getActivity()).setTitle("Mandal wise");
+
+        if (getArguments() != null) {
+            value = getArguments().getString("did");
+        }
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 binding.refreshLayout.setRefreshing(false);
                 // code on swipe refresh
-                allDistrictsViewModel.getAllDistrcts("DistrictWise", "3").
+                allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
                         observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
                             @Override
                             public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
@@ -76,7 +82,7 @@ public class AllDistrictsFragment extends Fragment {
         });
         binding.refreshLayout.setColorSchemeColors(Color.RED);
 
-        allDistrictsViewModel.getAllDistrcts("DistrictWise", "3").
+        allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
                 observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
                     @Override
                     public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
@@ -106,7 +112,7 @@ public class AllDistrictsFragment extends Fragment {
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
         binding.rvAlldistrictwise.setHasFixedSize(true);
         binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-        LevelAdapter adapter1 = new LevelAdapter(getActivity(), allDistrictList, "d");
+        LevelAdapter adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m");
         binding.rvAlldistrictwise.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
 

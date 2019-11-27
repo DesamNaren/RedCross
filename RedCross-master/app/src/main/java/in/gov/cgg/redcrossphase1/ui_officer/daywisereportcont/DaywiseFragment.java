@@ -1,6 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.List;
 import java.util.Objects;
@@ -53,6 +55,26 @@ public class DaywiseFragment extends Fragment {
         daywiseViewModel =
                 ViewModelProviders.of(this).get(DaywiseViewModel.class);
         Objects.requireNonNull(getActivity()).setTitle("Day wise");
+
+        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.refreshLayout.setRefreshing(false);
+                // code on swipe refresh
+                daywiseViewModel.getDaysCount("3", GlobalDeclaration.districtId, "11").
+                        observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+                            @Override
+                            public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+                                if (alldaywisecounts != null) {
+                                    setDataforRV(alldaywisecounts);
+                                    pd.dismiss();
+
+                                }
+                            }
+                        });
+            }
+        });
+        binding.refreshLayout.setColorSchemeColors(Color.RED);
 
 
         daywiseViewModel.getDaysCount("3", GlobalDeclaration.districtId, "11").

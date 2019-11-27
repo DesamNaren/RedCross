@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_5"
+        android:id="@+id/cv_district"
         app:cardCornerRadius="@dimen/dp_5"
         app:cardElevation="3dp">
 
@@ -63,7 +64,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="10"
+                        android:text=""
                         android:textAlignment="center" />
 
 
@@ -92,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="10"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -123,7 +124,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="10"
+                        android:text=""
                         android:textAlignment="center" />
 
 
