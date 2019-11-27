@@ -72,6 +72,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.Last10day;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
+import static android.content.Context.MODE_PRIVATE;
 import static in.gov.cgg.redcrossphase1.R.color.colorPrimary;
 import static in.gov.cgg.redcrossphase1.R.color.white;
 
@@ -98,7 +99,8 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
     private Fragment fragment;
     private LineChart lineChart;
     GovtPvtViewModel govtPvtViewModel;
-    private TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname, tv_totalcount;
+    int selectedThemeColor = 0;
+    private TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname, tv_totalcount, tv_govtpvt;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -122,7 +124,34 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         GlobalDeclaration.home = true;
         findAllVIEWS(root);
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                tv_age.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_top5district.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_bottom5.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_gender.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_blg.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_jrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_jrcocunt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_govtpvt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                fabmenu.setMenuButtonColorNormal(getResources().getColor(selectedThemeColor));
+            } else {
+                tv_age.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_top5district.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_bottom5.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_gender.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_blg.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_jrcname.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_jrcocunt.setBackgroundColor(getResources().getColor(colorPrimary));
+                tv_govtpvt.setBackgroundColor(getResources().getColor(colorPrimary));
+                fabmenu.setMenuButtonColorNormal(getResources().getColor(colorPrimary));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            //  ll_nav_header.setBackgroundResource(R.drawable.bg);
 
+        }
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -195,19 +224,21 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
                 if (CheckInternet.isOnline(getActivity())) {
 
+                    if (selectedThemeColor != -1) {
+                        tv_jrcocunt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_jrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_jrcocunt.setTextColor(getResources().getColor(white));
+                        tv_jrcname.setTextColor(getResources().getColor(white));
+                        tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+                        tv_yrcname.setBackgroundColor(getResources().getColor(white));
+                        tv_yrccount.setBackgroundColor(getResources().getColor(white));
+                        tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+                        tv_lmname.setBackgroundColor(getResources().getColor(white));
+                        tv_lmcount.setBackgroundColor(getResources().getColor(white));
 
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_jrcocunt.setTextColor(getResources().getColor(white));
-                    tv_jrcname.setTextColor(getResources().getColor(white));
-//
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
-
-
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                    }
 
 
                     bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
@@ -276,17 +307,23 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             @Override
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-//
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_yrcname.setTextColor(getResources().getColor(white));
-                    tv_yrccount.setTextColor(getResources().getColor(white));
 
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                    if (selectedThemeColor != -1) {
+                        tv_yrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_yrccount.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_yrcname.setTextColor(getResources().getColor(white));
+                        tv_yrccount.setTextColor(getResources().getColor(white));
+
+                        tv_jrcname.setBackgroundColor(getResources().getColor(white));
+                        tv_jrcocunt.setBackgroundColor(getResources().getColor(white));
+                        tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+
+                        tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+                        tv_lmname.setBackgroundColor(getResources().getColor(white));
+                        tv_lmcount.setBackgroundColor(getResources().getColor(white));
+                    }
 
                     bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                             observe(getActivity(), new Observer<List<BloodGroups>>() {
@@ -353,17 +390,25 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             public void onClick(View v) {
 
                 if (CheckInternet.isOnline(getActivity())) {
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_lmcount.setTextColor(getResources().getColor(white));
-                    tv_lmname.setTextColor(getResources().getColor(white));
-//
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
 
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                    if (selectedThemeColor != -1) {
+                        tv_lmname.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_lmcount.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                        tv_lmname.setTextColor(getResources().getColor(white));
+                        tv_lmcount.setTextColor(getResources().getColor(white));
+                        tv_yrcname.setBackgroundColor(getResources().getColor(white));
+                        tv_yrccount.setBackgroundColor(getResources().getColor(white));
+                        tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+
+
+                        tv_jrcname.setBackgroundColor(getResources().getColor(white));
+                        tv_jrcocunt.setBackgroundColor(getResources().getColor(white));
+                        tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+                        tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+
+
+                    }
 
                     bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                             observe(getActivity(), new Observer<List<BloodGroups>>() {
@@ -686,6 +731,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         tv_totalcount = root.findViewById(R.id.tv_totalcount);
         tv_jrcocunt = root.findViewById(R.id.tv_jrccount);
+        tv_govtpvt = root.findViewById(R.id.tv_govtpvt);
         tv_yrccount = root.findViewById(R.id.tv_yrccount);
         tv_lmcount = root.findViewById(R.id.tv_lmcount);
         tv_lmname = root.findViewById(R.id.tv_lmname);

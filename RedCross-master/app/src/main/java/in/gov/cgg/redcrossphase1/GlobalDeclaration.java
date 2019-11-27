@@ -13,6 +13,8 @@ public class GlobalDeclaration {
     public static String sharedUPswd = "";
     public static boolean ischecked;
     public static boolean home;
+    public static String FARG_TAG = "";
+
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 
     //Test Commit

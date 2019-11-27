@@ -48,9 +48,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         toolbar = findViewById(R.id.toolbar);
-
         contentView = findViewById(R.id.content);
-
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -84,6 +82,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 } else if (destination.getId() == R.id.nav_doateblood) {
                     showChangeLangDialog();
                 }
+
             }
         });
 
@@ -116,6 +115,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         );
 
     }
+
 
     private void showChangeLangDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);
@@ -151,12 +151,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-//                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.putString("un", "");
-//                editor.putString("pw", "");
-//                editor.putBoolean("is", false);
-//                editor.apply();
+
                 startActivity(new Intent(CitiGuestMainActivity.this, TabLoginActivity.class));
                 finish();
             }
@@ -164,12 +159,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.officer_main, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -177,4 +166,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

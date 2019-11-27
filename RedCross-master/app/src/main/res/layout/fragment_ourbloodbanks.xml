@@ -1,1265 +1,1272 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/redcross_splashscreen_bg">
 
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bloodBankDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
-        <LinearLayout
+    <!--
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/dimen_5dp">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_mainHeading"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/dp_5"
-                android:text="Our Blood banks"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_5dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/tv_mainHeading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:padding="@dimen/dp_5"
+                    android:text="Our Blood banks"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Bhadrachalam"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.S.N.Kantha Rao"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Red Cross Blood Bank D.No.9-1-18/14,IRCS Flood Shelter Building, Medical Colony,
-Kunavaram Road,
-Bhadrachalam,
-Bhadradrikothagudem."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="9849172902"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Bhadrachalam"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Hyderabad"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.S.N.Kantha Rao"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Red Cross Blood Bank D.No.9-1-18/14,IRCS Flood Shelter Building, Medical Colony,
+    Kunavaram Road,
+    Bhadrachalam,
+    Bhadradrikothagudem."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="9849172902"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.K.Pitchi Reddy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="H.No.1-9-310,
-Near: Spencers Super Market,
-Vidya Nagar,
-Hyderabad-500044."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Ph.No.(040)27633087\n(040) 27627973\n7032888001."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Hyderabad"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Karimnagar"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.K.Pitchi Reddy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="H.No.1-9-310,
+    Near: Spencers Super Market,
+    Vidya Nagar,
+    Hyderabad-500044."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Ph.No.(040)27633087\n(040) 27627973\n7032888001."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.M.L.N. Reddy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Red Cross Blood Bank,H.No.4-1-22,
-Opp: to Andhra Bank Main Branch,
-Osmanpura,
-Karimnagar."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="9849518963"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Karimnagar"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Mahaboob Nagar"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.M.L.N. Reddy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Red Cross Blood Bank,H.No.4-1-22,
+    Opp: to Andhra Bank Main Branch,
+    Osmanpura,
+    Karimnagar."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="9849518963"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.P.M.Janardhan Reddy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Red Cross Blood Bank,
-H.NO.1-6-65/5/A,
-Modern School Chourastha,
-Mahaboob Nagar"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="08542-246225(Ph)\nCell:9912460747"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Mahaboob Nagar"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Mancherial"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.P.M.Janardhan Reddy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Red Cross Blood Bank,
+    H.NO.1-6-65/5/A,
+    Modern School Chourastha,
+    Mahaboob Nagar"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="08542-246225(Ph)\nCell:9912460747"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.D.Vishnu Murthy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Indian Red Cross Society Blood Bank,Ground Floor,Area Hospital,Mancherial"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="08736-259259\nCell: 9492557337"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Mancherial"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Nalgonda"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.D.Vishnu Murthy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Indian Red Cross Society Blood Bank,Ground Floor,Area Hospital,Mancherial"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="08736-259259\nCell: 9492557337"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.D.Santosh Reddy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Indian Red Cross Society Blood Bank,
-D.No.5-6-300 Red Cross Bhavan,
-Near:RTCBusstnad,
-Nalgonda-508001."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="(08682)245790\nCell:9010401091"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Nalgonda"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Nizamabad"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.D.Santosh Reddy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Indian Red Cross Society Blood Bank,
+    D.No.5-6-300 Red Cross Bhavan,
+    Near:RTCBusstnad,
+    Nalgonda-508001."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="(08682)245790\nCell:9010401091"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
+                </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.T.Nageshwara Reddy"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="
-Indian Red Cross Society Blood Bank,
-Khaleelwadi,
-Beside Joint Collector Residence,
-Nizamabad"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="08462-222002\nCell: 9849459065"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_2"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="@dimen/dp_2"
-                app:cardElevation="@dimen/dimen_4dp">
-
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="District"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Nizamabad"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Warangal"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.T.Nageshwara Reddy"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="
+    Indian Red Cross Society Blood Bank,
+    Khaleelwadi,
+    Beside Joint Collector Residence,
+    Nizamabad"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="08462-222002\nCell: 9849459065"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="@dimen/dp_2"
+                    app:cardElevation="@dimen/dimen_4dp">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Name of the Medical Officer"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="0dp"
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="District"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Warangal"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Dr.G.Prabhakar Rao"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Name of the Medical Officer"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Dr.G.Prabhakar Rao"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Place of the IRCS Blood Bank"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="
+    Indian Red Cross Society Blood Bank,
+    Red Cross Building Opp: District Collectorate,
+    Subedari,
+    Hanamkonda,
+    Warangal District."
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Contact Number"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="(0870) 2456765(Ph)\nCell:9441413175"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Place of the IRCS Blood Bank"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="
-Indian Red Cross Society Blood Bank,
-Red Cross Building Opp: District Collectorate,
-Subedari,
-Hanamkonda,
-Warangal District."
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Contact Number"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="(0870) 2456765(Ph)\nCell:9441413175"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
 
-        </LinearLayout>
-    </ScrollView>
+            </LinearLayout>
+        </ScrollView>
+    -->
 
 </LinearLayout>
