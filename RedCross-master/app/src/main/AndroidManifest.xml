@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/red"
+        android:icon="@drawable/redcross_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/red"
+        android:roundIcon="@drawable/redcross_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">

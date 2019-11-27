@@ -29,7 +29,11 @@ public class DaywiseViewModel extends AndroidViewModel {
     public LiveData<List<DayWiseReportCountResponse>> getDaysCount(String finanyear, String distid, String monthid) {
 
         dayListMutableLiveData = new MutableLiveData<>();
-        loadDaywiseCounts(finanyear, distid, monthid);
+        if (distid.equalsIgnoreCase("0")) {
+            loadDaywiseCounts(finanyear, "", monthid);
+        } else {
+            loadDaywiseCounts(finanyear, distid, monthid);
+        }
         return dayListMutableLiveData;
     }
 

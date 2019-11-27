@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -97,17 +98,27 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
                     tabLayout.setTabIconTint(ColorStateList.valueOf(getResources().getColor(R.color.white)));
                     checkfrag = "c";
 
-//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
-//                    params.setMargins(30, 10, 30, 10);
-//                    binding.viewpager.setLayoutParams(params);
+//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                            ViewGroup.LayoutParams.WRAP_CONTENT);
+//                    params.setMargins(10, 5, 10, 50);
+//                    binding.llCard.setLayoutParams(params);
+//                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
+//                    params.setMargins(30, 10, 30, 50);
+//                    binding.cvMain.setLayoutParams(params);
+                    ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) binding.cvMain.getLayoutParams();
+                    cardViewMarginParams.setMargins(15, 5, 15, 40);
+                    binding.cvMain.requestLayout();
                 } else {
                     binding.llRegister.setVisibility(View.GONE);
                     //binding.llRememberme.setVisibility(View.VISIBLE);
 
                     checkfrag = "o";
+                    ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) binding.cvMain.getLayoutParams();
+                    cardViewMarginParams.setMargins(15, 5, 15, 0);
+                    binding.cvMain.requestLayout();
 
-
-//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
+//                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                            ViewGroup.LayoutParams.MATCH_PARENT);
 //                    params.setMargins(30, 10, 30, 10);
 //                    binding.viewpager.setLayoutParams(params);
                 }

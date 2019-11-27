@@ -1,13 +1,12 @@
 package in.gov.cgg.redcrossphase1.ui_officer.agewise;
 
-import android.app.Application;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
@@ -17,14 +16,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AgewiseViewModel extends AndroidViewModel {
+public class AgewiseViewModel extends ViewModel {
 
     private MutableLiveData<List<Age>> ageListMutableLiveData;
 
     //List<Age>  ageList=new ArrayList<>();
+    Context context;
+    ProgressDialog pd;
 
-    public AgewiseViewModel(@NonNull Application application) {
-        super(application);
+    public AgewiseViewModel(Context application) {
+        this.context = application;
+        pd = new ProgressDialog(context);
+        pd.setMessage("Loading ,Please wait");
+
     }
 
     public LiveData<List<Age>> getAges(String role, String distid, String uid) {
@@ -36,6 +40,7 @@ public class AgewiseViewModel extends AndroidViewModel {
 
     private void loadAges(String role, String distid, String uid) {
 
+        pd.dismiss();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<AgeResponse> call = apiInterface.ageWiseService(distid, role, "1920", uid);
 
@@ -50,10 +55,12 @@ public class AgewiseViewModel extends AndroidViewModel {
 
                     //ageList.addAll(response.body().getAges());
                     ageListMutableLiveData.setValue(response.body().getAges());
+                    pd.dismiss();
 
 
                 } else {
-                    Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
                 }
 
             }
@@ -62,6 +69,7 @@ public class AgewiseViewModel extends AndroidViewModel {
             public void onFailure(Call<AgeResponse> call, Throwable t) {
 
                 t.printStackTrace();
+                pd.dismiss();
             }
         });
 

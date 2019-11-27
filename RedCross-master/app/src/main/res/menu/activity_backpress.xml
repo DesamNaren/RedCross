@@ -7,8 +7,7 @@
 
     <item
         android:id="@+id/logout"
-        android:icon="@drawable/ic_white1"
-        android:iconTint="@color/white"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
         android:title="Logout"
         app:showAsAction="always" />
 

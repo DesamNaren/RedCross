@@ -22,8 +22,8 @@ import in.gov.cgg.redcrossphase1.R;
 public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.DistrictViewHolder> {
     Context mCtx;
     List<Top5> districtResponses;
-    int i = 1;
-    boolean colorchek;
+
+    boolean colorchek, click;
 
 
     public TBDistrictAdapter(Context mCtx, List<Top5> districtResponses, boolean b) {
@@ -53,27 +53,42 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
         holder.tv_rank.setText(districtResponses.get(position).getRank());
         if (GlobalDeclaration.role != null) {
             if (!GlobalDeclaration.role.contains("D")) {
-                if (districtResponses.get(position).getChairmanName().length() > 3 &&
-                        districtResponses.get(position).getChairmanPhoneNo().length() > 3) {
-                    holder.info.setVisibility(View.VISIBLE);
+                if (districtResponses.get(position).getChairmanName().length() > 1 &&
+                        districtResponses.get(position).getChairmanPhoneNo().length() > 1) {
+                    holder.ll_chairman.setVisibility(View.VISIBLE);
                     holder.tv_chairmename.setText(districtResponses.get(position).getChairmanName());
-                    holder.tv_number.setText(String.format("Phone No :%s", districtResponses.get(position).getChairmanPhoneNo()));
-                    holder.tv_email.setText(String.format("Email Id :%s", districtResponses.get(position).getChairmanEmailId()));
+                    holder.tv_number.setText(String.format("%s", districtResponses.get(position).getChairmanPhoneNo()));
+                    if (districtResponses.get(position).getChairmanEmailId().length() > 1) {
+                        holder.ll_email.setVisibility(View.VISIBLE);
+                        holder.tv_email.setText(String.format("%s", districtResponses.get(position).getChairmanEmailId()));
+                    } else {
+                        holder.ll_email.setVisibility(View.GONE);
+                    }
 
                 } else {
-                    holder.info.setVisibility(View.INVISIBLE);
-
+                    holder.ll_chairman.setVisibility(View.GONE);
                 }
+
             }
         }
-        holder.info.setOnClickListener(new View.OnClickListener() {
+        holder.ll_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i++;
-                if (i % 2 != 0) {
-                    holder.ll_chairman.setVisibility(View.GONE);
+                if (click) {
+                    click = false;
+                    holder.ll_content.setVisibility(View.GONE);
+                    if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
+                            !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
+                        Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
-                    holder.ll_chairman.setVisibility(View.VISIBLE);
+                    click = true;
+                    holder.ll_content.setVisibility(View.VISIBLE);
+                    if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
+                            !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
+                        Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -151,8 +166,8 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
     class DistrictViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewname, tv_enrol, tv_rank, tv_chairmename, tv_number, tv_email;
-        ImageView info, img_call, img_message, img_email;
-        LinearLayout ll_chairman;
+        ImageView img_call, img_message, img_email;
+        LinearLayout ll_chairman, ll_click, ll_email, ll_content;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
@@ -163,11 +178,14 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
             tv_email = itemView.findViewById(R.id.tv_email);
             tv_chairmename = itemView.findViewById(R.id.tv_card_dname);
             tv_number = itemView.findViewById(R.id.tv_mobilenumber);
-            info = itemView.findViewById(R.id.info);
+//            info = itemView.findViewById(R.id.info);
             img_call = itemView.findViewById(R.id.card_call);
             img_message = itemView.findViewById(R.id.card_message);
             img_email = itemView.findViewById(R.id.card_email);
             ll_chairman = itemView.findViewById(R.id.ll_chirman);
+            ll_click = itemView.findViewById(R.id.ll_click);
+            ll_email = itemView.findViewById(R.id.ll_email);
+            ll_content = itemView.findViewById(R.id.ll_content);
         }
     }
 }

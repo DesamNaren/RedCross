@@ -1,12 +1,12 @@
 package in.gov.cgg.redcrossphase1.ui_officer.genderwise;
 
-import android.app.Application;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
@@ -16,12 +16,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GenderwiseViewModel extends AndroidViewModel {
+public class GenderwiseViewModel extends ViewModel {
 
     private MutableLiveData<List<Genders>> genderResponseMutableLiveData;
 
-    public GenderwiseViewModel(@NonNull Application application) {
-        super(application);
+    Context context;
+    ProgressDialog pd;
+
+    public GenderwiseViewModel(Context context) {
+        this.context = context;
+        pd = new ProgressDialog(context);
+        pd.setMessage("Loading ,Please wait");
+
     }
 
     public LiveData<List<Genders>> getGender(String role, String districtid, String userid) {
@@ -35,6 +41,7 @@ public class GenderwiseViewModel extends AndroidViewModel {
 
     private void loadGenders(String userid, String districtid, String role) {
 
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<GenderResponse> call = apiInterface.GenderWiseService(districtid, role, "1920", userid);
         Log.e("  url", call.request().url().toString());
@@ -45,8 +52,11 @@ public class GenderwiseViewModel extends AndroidViewModel {
 
                 if (response.body() != null) {
                     genderResponseMutableLiveData.setValue(response.body().getGenders());
+                    pd.dismiss();
+
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    pd.dismiss();
                 }
 
             }
@@ -55,6 +65,7 @@ public class GenderwiseViewModel extends AndroidViewModel {
             public void onFailure(Call<GenderResponse> call, Throwable t) {
 
                 t.printStackTrace();
+                pd.dismiss();
             }
         });
 

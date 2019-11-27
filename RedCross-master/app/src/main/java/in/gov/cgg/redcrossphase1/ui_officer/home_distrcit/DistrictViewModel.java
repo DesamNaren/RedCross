@@ -1,12 +1,12 @@
 package in.gov.cgg.redcrossphase1.ui_officer.home_distrcit;
 
-import android.app.Application;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
@@ -18,13 +18,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DistrictViewModel extends AndroidViewModel {
+public class DistrictViewModel extends ViewModel {
     private MutableLiveData<List<Top5>> districtResponseMutableLiveData, bottomDistrcitsList;
 
+    Context context;
+    ProgressDialog pd;
     private MutableLiveData<DashboardCountResponse> dashboardCountResponseMutableLiveData;
 
-    public DistrictViewModel(@NonNull Application application) {
-        super(application);
+
+    public DistrictViewModel(Context application) {
+        this.context = application;
+        pd = new ProgressDialog(context);
+        pd.setMessage("Loading ,Please wait");
+
     }
 
 
@@ -60,6 +66,7 @@ public class DistrictViewModel extends AndroidViewModel {
     }
 
     private void loadBottomDistricts(String role, String did, String uid) {
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DistrictResponse> call = apiInterface.Bottom5DistMandalWiseService(did, role,
                 "1920", uid, "btm");
@@ -70,9 +77,11 @@ public class DistrictViewModel extends AndroidViewModel {
 
                 if (response.body() != null) {
                     bottomDistrcitsList.setValue(response.body().getTop5());
+                    pd.dismiss();
                 } else {
                     //Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                     Log.e("district view model", "onResponse: Response null");
+                    pd.dismiss();
                 }
 
             }
@@ -83,6 +92,7 @@ public class DistrictViewModel extends AndroidViewModel {
                 // Toast.makeText(getActivity(), "error failure", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 Log.e("district view model", "onFailure");
+                pd.dismiss();
 
             }
         });
@@ -90,6 +100,7 @@ public class DistrictViewModel extends AndroidViewModel {
 
     private void loadTopDistricts(String role, String did, String uid) {
 
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DistrictResponse> call = apiInterface.Top5DistMandalWiseService(did, role, "1920", uid);
 
@@ -98,11 +109,12 @@ public class DistrictViewModel extends AndroidViewModel {
             public void onResponse(Call<DistrictResponse> call, Response<DistrictResponse> response) {
 
                 if (response.body() != null) {
-
                     districtResponseMutableLiveData.setValue(response.body().getTop5());
+                    pd.dismiss();
                 } else {
                     //Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                     Log.e("district view model", "onResponse: Response null");
+                    pd.dismiss();
                 }
 
             }
@@ -111,6 +123,7 @@ public class DistrictViewModel extends AndroidViewModel {
             public void onFailure(Call<DistrictResponse> call, Throwable t) {
 
                 // Toast.makeText(getActivity(), "error failure", Toast.LENGTH_SHORT).show();
+                pd.dismiss();
                 t.printStackTrace();
                 Log.e("district view model", "onFailure");
 
@@ -131,6 +144,7 @@ public class DistrictViewModel extends AndroidViewModel {
     }
 
     private void loadDashboardCounts(String type, String userid, String districtId) {
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DashboardCountResponse> call = apiInterface.getMemberCountsForDashboard(districtId);
 
@@ -140,11 +154,14 @@ public class DistrictViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<DashboardCountResponse> call, Response<DashboardCountResponse> response) {
 
+
                 if (response.body().getStatus().equalsIgnoreCase("200")) {
+                    pd.dismiss();
                     dashboardCountResponseMutableLiveData.setValue(response.body());
                 } else {
                     //Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                     Log.e("district view model", "onResponse: Response null");
+                    pd.dismiss();
                 }
 
             }
@@ -155,9 +172,14 @@ public class DistrictViewModel extends AndroidViewModel {
                 // Toast.makeText(getActivity(), "error failure", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 Log.e("vm counts", "onFailure");
+                pd.dismiss();
 
             }
         });
     }
+
+
+    //Progress dialog
+
 
 }

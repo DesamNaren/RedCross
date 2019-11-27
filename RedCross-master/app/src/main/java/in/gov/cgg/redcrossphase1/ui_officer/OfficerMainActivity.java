@@ -11,11 +11,14 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -39,6 +42,8 @@ public class OfficerMainActivity extends AppCompatActivity {
     private int pos;
     private TextView tv_name;
     FloatingActionButton fabmain;
+    private Menu mMenu;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,54 +81,17 @@ public class OfficerMainActivity extends AppCompatActivity {
         }
 
 
-//        fabmain.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                drawerLayout.openDrawer(Gravity.LEFT);
-//            }
-//        });
-
-        // actionBarDrawerToggle.syncState();
-
-//
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawerLayout.setDrawerListener(toggle);
-////        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-
-        //navigationView.setNavigationItemSelectedListener(this);
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_age, R.id.nav_gender, R.id.nav_district,
                 R.id.nav_blood, R.id.nav_top5, R.id.nav_govtpvt, R.id.nav_alldistricts, R.id.nav_tc, R.id.nav_privacy,
                 R.id.nav_drill, R.id.nav_daywise)
                 .setDrawerLayout(drawerLayout)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//        navigationView.setCheckedItem(R.id.home);
-//        Fragment fragment = new OfficerHomeFragment();
-//        displaySelectedFragment(fragment);
 
-//         toolbar.setTitle("Home");
-//        toolbar.setNavigationIcon(new DrawerArrowDrawable(this));
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//                                                 @Override
-//                                                 public void onClick(View v) {
-//                                                     if (drawerLayout.isDrawerOpen(navigationView)) {
-//                                                         drawerLayout.closeDrawer(navigationView);
-//                                                     } else {
-//                                                         drawerLayout.openDrawer(navigationView);
-//                                                     }
-//                                                 }
-//                                             }
-//        );
         if (GlobalDeclaration.username != null) {
             if (GlobalDeclaration.role.contains("D")) {
                 tv_name.setText("Welcome to Chairman" + "\n" + GlobalDeclaration.username);
@@ -201,9 +169,62 @@ public class OfficerMainActivity extends AppCompatActivity {
 //    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_backpress, menu);
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller,
+                                             @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                if (destination.getId() == R.id.nav_daywise) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+
+                } else if (destination.getId() == R.id.nav_district) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            callHomeAlert();
+                            return true;
+                        }
+                    });
+                } else if (destination.getId() == R.id.nav_alldistricts) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+                } else if (destination.getId() == R.id.nav_tc) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+                } else if (destination.getId() == R.id.nav_privacy) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+                }
+            }
+        });
         return true;
     }
 
@@ -213,7 +234,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         if (GlobalDeclaration.home) {
             callHomeAlert();
         } else {
-            callAllAlert();
+//            mMenu.findItem(R.id.logout).setIcon(R.drawable.home_white);
         }
     }
 
@@ -257,23 +278,6 @@ public class OfficerMainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.logout:
-
-                if (GlobalDeclaration.home) {
-                    callHomeAlert();
-                } else {
-                    callAllAlert();
-                }
-
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void callAllAlert() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(OfficerMainActivity.this);
@@ -316,6 +320,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {
