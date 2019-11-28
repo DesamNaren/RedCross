@@ -41,6 +41,7 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 
@@ -66,6 +67,7 @@ public class OfficerMainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private LinearLayout ll_nav_header;
     private Fragment selectedFragment;
+    Menu nav_Menu;
     private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
 
     @Override
@@ -84,7 +86,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         TextView tv_name = headerView.findViewById(R.id.textView_name);
 
         setSupportActionBar(toolbar);
-        Menu nav_Menu = navigationView.getMenu();
+        nav_Menu = navigationView.getMenu();
         GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
         //default fragment
         selectedFragment = new OfficerHomeFragment();
@@ -136,14 +138,12 @@ public class OfficerMainActivity extends AppCompatActivity {
 
         if (GlobalDeclaration.role != null) {
             if (!GlobalDeclaration.role.contains("D")) {
+                nav_Menu.findItem(R.id.nav_allmandals).setVisible(false);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(true);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
 
-                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
-                drawerLayout.setScrimColor(Color.TRANSPARENT);
             } else {
-                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
-                drawerLayout.setScrimColor(Color.TRANSPARENT);
+                nav_Menu.findItem(R.id.nav_allmandals).setVisible(true);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(false);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
             }
@@ -153,7 +153,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_age, R.id.nav_gender, R.id.nav_district,
                 R.id.nav_blood, R.id.nav_top5, R.id.nav_govtpvt, R.id.nav_alldistricts, R.id.nav_tc, R.id.nav_privacy,
-                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme)
+                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme, R.id.nav_allmandals)
                 .setDrawerLayout(drawerLayout)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
@@ -253,6 +253,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                         }
                     });
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (menuItem.getItemId() == R.id.nav_district) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -266,6 +267,8 @@ public class OfficerMainActivity extends AppCompatActivity {
                     selectedFragment = new OfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+
+
                 } else if (menuItem.getItemId() == R.id.nav_alldistricts) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -277,6 +280,20 @@ public class OfficerMainActivity extends AppCompatActivity {
                     });
                     GlobalDeclaration.FARG_TAG = AllDistrictsFragment.class.getSimpleName();
                     selectedFragment = new AllDistrictsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+
+                } else if (menuItem.getItemId() == R.id.nav_allmandals) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+                    GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
+                    selectedFragment = new AllMandalsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
@@ -639,5 +656,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }
 

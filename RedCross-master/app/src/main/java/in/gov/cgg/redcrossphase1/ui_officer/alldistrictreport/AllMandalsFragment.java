@@ -4,15 +4,18 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,14 +30,14 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 
-public class AllMandalsFragment extends Fragment {
+public class AllMandalsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
 
     ProgressDialog pd;
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    // private RecyclerView rv_district;
+    private LevelAdapter adapter1;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,6 +53,11 @@ public class AllMandalsFragment extends Fragment {
         if (GlobalDeclaration.counts != null) {
             setCountsForDashboard(GlobalDeclaration.counts);
         }
+        binding.searchView.setIconifiedByDefault(false);
+        binding.searchView.setOnQueryTextListener(this);
+        binding.searchView.setSubmitButtonEnabled(true);
+        binding.searchView.setQueryHint("Search By Name");
+
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
@@ -61,6 +69,8 @@ public class AllMandalsFragment extends Fragment {
 
         if (getArguments() != null) {
             value = getArguments().getString("did");
+        } else {
+            value = GlobalDeclaration.districtId;
         }
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -112,10 +122,48 @@ public class AllMandalsFragment extends Fragment {
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
         binding.rvAlldistrictwise.setHasFixedSize(true);
         binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-        LevelAdapter adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m");
+        adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m");
         binding.rvAlldistrictwise.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
 
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    //Pressed return button - returns to the results menu
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(getView()).setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentActivity activity = (FragmentActivity) v.getContext();
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        Fragment frag = new AllDistrictsFragment();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                                frag).addToBackStack(null).commit();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (adapter1 != null) {
+            adapter1.filter(newText);
+        }
+        return true;
     }
 }

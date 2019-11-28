@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +19,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
@@ -27,13 +31,15 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 
-public class AllDistrictsFragment extends Fragment {
+public class AllDistrictsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
 
     ProgressDialog pd;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    // private RecyclerView rv_district;
+    LevelAdapter adapter1;
+    private ArrayList byNameList = new ArrayList();
+    private Set<String> byNameListSet = new LinkedHashSet<>();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +49,14 @@ public class AllDistrictsFragment extends Fragment {
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_aldistrict, container, false);
 
+//        binding.searchView.setEllipsize(true);
+//        binding.searchView.setHint("Search by Name");
+//        binding.searchView.setMenuItem(binding.searchimage);
+
+        binding.searchView.setIconifiedByDefault(false);
+        binding.searchView.setOnQueryTextListener(this);
+        binding.searchView.setSubmitButtonEnabled(true);
+        binding.searchView.setQueryHint("Search By Name");
 
         GlobalDeclaration.home = false;
 
@@ -54,7 +68,8 @@ public class AllDistrictsFragment extends Fragment {
         pd.setMessage("Loading ,Please wait");
         pd.show();
         allDistrictsViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).get(AllDistrictsViewModel.class);
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(),
+                        "alldistrict")).get(AllDistrictsViewModel.class);
         Objects.requireNonNull(getActivity()).setTitle("District wise");
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -68,6 +83,7 @@ public class AllDistrictsFragment extends Fragment {
                             public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
                                 if (allDistrictList != null) {
                                     setDataforRV(allDistrictList);
+                                    //setUpearchView(allDistrictList);
                                     pd.dismiss();
                                 }
                             }
@@ -88,9 +104,48 @@ public class AllDistrictsFragment extends Fragment {
                 });
 
 
+   /*     binding.searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+//                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
+//                        .show();
+//                Toast.makeText(Main2Activity.this,query,Toast.LENGTH_LONG).show();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                //  Toast.makeText(Main2Activity.this, newText, Toast.LENGTH_LONG).show();
+
+                if (adapter1 != null) {
+                    adapter1.filter(newText);
+                }
+                return true;
+            }
+        });
+
+
+
+        binding.searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+                binding.searchView.setVisibility(View.VISIBLE);
+                binding.searchView.setSuggestions(null);
+                binding.searchView.setHint("Search by Name");
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+                binding.searchView.setVisibility(View.GONE);
+            }
+        });*/
+
+
         return binding.getRoot();
 
     }
+
 
     private void setCountsForDashboard(DashboardCountResponse dashboardCountResponse) {
         if (dashboardCountResponse != null) {
@@ -106,10 +161,21 @@ public class AllDistrictsFragment extends Fragment {
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
         binding.rvAlldistrictwise.setHasFixedSize(true);
         binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-        LevelAdapter adapter1 = new LevelAdapter(getActivity(), allDistrictList, "d");
+        adapter1 = new LevelAdapter(getActivity(), allDistrictList, "d");
         binding.rvAlldistrictwise.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
+    }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
 
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (adapter1 != null) {
+            adapter1.filter(newText);
+        }
+        return true;
     }
 }

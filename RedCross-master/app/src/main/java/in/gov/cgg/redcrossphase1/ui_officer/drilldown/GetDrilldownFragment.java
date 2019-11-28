@@ -4,13 +4,16 @@ import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,18 +25,23 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetDrilldownFragment extends Fragment {
+public class GetDrilldownFragment extends Fragment implements SearchView.OnQueryTextListener {
 
 
     RecyclerView rv_rilldown;
     ProgressDialog pd;
+    SearchView searchView;
     private DrilldownViewmodel drilldownViewmodel;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
+    DrillDownAdapter adapter1;
+    String mid = "", did = "";
+    private List<StudentListBean> studentListBeanList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +52,17 @@ public class GetDrilldownFragment extends Fragment {
         Objects.requireNonNull(getActivity()).setTitle("Enrollments List");
         GlobalDeclaration.home = false;
         rv_rilldown = root.findViewById(R.id.rv_drilldown);
+        searchView = root.findViewById(R.id.searchView);
+
+        if (getArguments() != null) {
+            mid = getArguments().getString("mid");
+            did = getArguments().getString("did");
+        }
+
+        searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(this);
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setQueryHint("Search ");
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
@@ -82,7 +101,7 @@ public class GetDrilldownFragment extends Fragment {
 
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs("", "", "", "");
+        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs("", "3", did, mid);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<DrillDownResponse>() {
@@ -93,30 +112,85 @@ public class GetDrilldownFragment extends Fragment {
 
                     headersList = response.body().getHeaders();
                     studentList = response.body().getStudentsList();
+                    studentListBeanList.clear();
+
+                    for (int position = 0; position < studentList.size(); position++) {
+
+
+                        StudentListBean studentListBean = new StudentListBean();
+                        if (studentList.get(position).get(0) == null) {
+                            studentListBean.setDisrtict("");
+                        } else {
+                            studentListBean.setDisrtict(studentList.get(position).get(0));
+                        }
+
+                        if (studentList.get(position).get(1) == null) {
+                            studentListBean.setMandal("");
+                        } else {
+                            studentListBean.setMandal(studentList.get(position).get(1));
+                        }
+                        if (studentList.get(position).get(2) == null) {
+                            studentListBean.setVillage("");
+                        } else {
+                            studentListBean.setVillage(studentList.get(position).get(2));
+                        }
+                        if (studentList.get(position).get(3) == null) {
+                            studentListBean.setName("");
+                        } else {
+                            studentListBean.setName(studentList.get(position).get(3));
+                        }
+                        if (studentList.get(position).get(4) != null) {
+                            studentListBean.setGender("");
+                        } else {
+                            studentListBean.setGender(studentList.get(position).get(4));
+                        }
+                        if (studentList.get(position).get(5) == null) {
+                            studentListBean.setDob("");
+                        } else {
+                            studentListBean.setDob(studentList.get(position).get(5));
+                        }
+                        if (studentList.get(position).get(6) == null) {
+                            studentListBean.setPhone("");
+                        } else {
+                            studentListBean.setPhone(studentList.get(position).get(6));
+                        }
+                        if (studentList.get(position).get(7) == null) {
+                            studentListBean.setBloodgp("");
+                        } else {
+                            studentListBean.setBloodgp(studentList.get(position).get(7));
+                        }
+                        if (studentList.get(position).get(8) == null) {
+                            studentListBean.setEmail("");
+                        } else {
+                            studentListBean.setEmail(studentList.get(position).get(8));
+                        }
+                        if (studentList.get(position).get(9) == null) {
+                            studentListBean.setClassName("");
+
+                        } else {
+                            studentListBean.setClassName(studentList.get(position).get(9));
+                        }
+                        if (studentList.get(position).get(10) == null) {
+                            studentListBean.setSchoolname("");
+
+                        } else {
+                            studentListBean.setSchoolname(studentList.get(position).get(10));
+                        }
+                        if (studentList.get(position).get(11) == null) {
+                            studentListBean.setSchooltype("");
+                        } else {
+                            studentListBean.setSchooltype(studentList.get(position).get(11));
+                        }
+
+                        studentListBeanList.add(studentListBean);
+                    }
 
                     rv_rilldown.setHasFixedSize(true);
                     rv_rilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    DrillDownAdapter adapter1 = new DrillDownAdapter(getActivity(), headersList, studentList);
+                    adapter1 = new DrillDownAdapter(getActivity(), headersList, studentListBeanList);
                     rv_rilldown.setAdapter(adapter1);
                     adapter1.notifyDataSetChanged();
                     pd.dismiss();
-
-
-//                    HashMap<String, String> map = new HashMap<>();
-//
-//                    for (int i = 0; i < studentList.size(); i++) {
-//
-//                        map.put(headersList.get(i), studentList.get(i).get(i));
-//                    }
-//                    //map.put(headersList.get(0),studentList.get(0).get(0));
-//
-//                    Set set = map.entrySet();
-//                    Iterator iterator = set.iterator();
-//                    while(iterator.hasNext()) {
-//                        Map.Entry mentry = (Map.Entry)iterator.next();
-//                        System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
-//                        System.out.println(mentry.getValue());
-//                    }
 
 
                 } else {
@@ -135,4 +209,40 @@ public class GetDrilldownFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    //Pressed return button - returns to the results menu
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(getView()).setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentActivity activity = (FragmentActivity) v.getContext();
+                    Fragment frag = new AllVillageFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                    return true;
+
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (adapter1 != null) {
+            adapter1.filter(newText);
+        }
+        return true;
+    }
 }

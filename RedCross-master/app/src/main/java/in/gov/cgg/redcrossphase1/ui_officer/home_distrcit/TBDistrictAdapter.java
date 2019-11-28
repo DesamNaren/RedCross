@@ -75,19 +75,24 @@ public class TBDistrictAdapter extends RecyclerView.Adapter<TBDistrictAdapter.Di
             @Override
             public void onClick(View v) {
                 if (click) {
-                    click = false;
-                    holder.ll_content.setVisibility(View.GONE);
-                    if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
-                            !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
-                        Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        click = false;
+                        holder.ll_content.setVisibility(View.GONE);
+                        if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
+                                !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
+                            Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
+
                 } else {
-                    click = true;
-                    holder.ll_content.setVisibility(View.VISIBLE);
-                    if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
-                            !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
-                        Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        click = true;
+                        holder.ll_content.setVisibility(View.VISIBLE);
+                        if (!(districtResponses.get(position).getChairmanName().length() > 1) ||
+                                !(districtResponses.get(position).getChairmanPhoneNo().length() > 1)) {
+                            Toast.makeText(mCtx, "No Contact Details", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

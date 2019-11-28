@@ -125,7 +125,7 @@ public class AllDistrictsViewModel extends ViewModel {
 
         pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<StatelevelDistrictViewCountResponse>> call = apiInterface.getDrillDownCountLevelWiseWs2(role, fyid, mandalId);
+        Call<List<StatelevelDistrictViewCountResponse>> call = apiInterface.getDrillDownCountLevelWiseWs3(role, fyid, mandalId);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<List<StatelevelDistrictViewCountResponse>>() {

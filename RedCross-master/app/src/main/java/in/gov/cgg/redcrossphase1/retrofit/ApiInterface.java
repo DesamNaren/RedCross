@@ -73,8 +73,9 @@ public interface ApiInterface {
     @GET("getFullDrillDownDataWs")
     Call<DrillDownResponse> getFullDrillDownDataWs(@Query("enrollmentType") String enrollmentType,
                                                    @Query("fyId") String fyId,
-                                                   @Query("entryDate") String entryDate,
-                                                   @Query("districtId") String districtId);
+//                                                   @Query("entryDate") String entryDate,
+                                                   @Query("districtId") String districtId,
+                                                   @Query("mandalId") String mandalId);
 //
 //    @GET("DistrictWiseEnrollmentsService")
 //    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);

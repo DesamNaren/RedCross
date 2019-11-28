@@ -54,4 +54,7 @@
     <dimen name="dimen_13sp">13sp</dimen>
     <dimen name="dimen_14sp">14sp</dimen>
 
+    <dimen name="search_icon_padding">12dp</dimen>
+    <dimen name="search_view_text_padding">65dp</dimen>
+
 </resources>

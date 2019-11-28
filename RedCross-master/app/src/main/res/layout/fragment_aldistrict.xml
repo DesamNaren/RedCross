@@ -15,10 +15,49 @@
                 android:id="@+id/customCount"
                 layout="@layout/custom_count_layout" />
 
+            <!--
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <in.gov.cgg.redcrossphase1.utils.MaterialSearchView
+                                android:id="@+id/search_view"
+                                android:layout_width="0dp"
+                                android:layout_weight="9.3"
+                                android:layout_height="wrap_content"
+                                android:hint="Search By Name"
+                                android:visibility="visible" />
+
+                            <ImageView
+                                android:id="@+id/searchimage"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.7"
+                                android:paddingRight="5dp"
+                                android:paddingLeft="5dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/search_icon"/>
+
+
+                        </LinearLayout>
+            -->
+
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:queryHint="Search here"
+                android:visibility="visible" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_alldistrictwise"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/redcross_splashscreen_bg" />
 
 
         </LinearLayout>

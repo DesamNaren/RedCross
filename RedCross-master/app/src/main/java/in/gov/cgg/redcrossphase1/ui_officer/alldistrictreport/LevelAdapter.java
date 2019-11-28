@@ -13,11 +13,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
 
 public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictViewHolder> {
+    private final ArrayList<StatelevelDistrictViewCountResponse> data_dashbord;
     Context mCtx;
     List<StatelevelDistrictViewCountResponse> allDistricts;
     String type;
@@ -25,8 +30,11 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
     public LevelAdapter(Context mCtx, List<StatelevelDistrictViewCountResponse> allDistricts, String type) {
         this.mCtx = mCtx;
-        this.allDistricts = allDistricts;
         this.type = type;
+
+        this.allDistricts = allDistricts;
+        this.data_dashbord = new ArrayList<StatelevelDistrictViewCountResponse>();
+        this.data_dashbord.addAll(allDistricts);
     }
 
     @NonNull
@@ -40,11 +48,11 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
 
 
-        holder.tv_alldname.setText(allDistricts.get(position).getName());
+        holder.tv_alldname.setText(data_dashbord.get(position).getName());
         //  holder.tv_jrcount.setText(allDistricts.toString());
         //holder.tv_yrccount.setText(String.valueOf(allDistricts.getYRC()));
         // holder.tv_lmcunt.setText(String.valueOf(allDistricts.getMembership()));
-        holder.tv_totalcount.setText(String.valueOf(allDistricts.get(position).getCount()));
+        holder.tv_totalcount.setText(String.valueOf(data_dashbord.get(position).getCount()));
 
         holder.cd_district.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +62,9 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Fragment frag = new AllMandalsFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
-                    args.putString("did", String.valueOf(allDistricts.get(position).getId()));
+                    args.putString("did", String.valueOf(data_dashbord.get(position).getId()));
                     frag.setArguments(args);
+                    GlobalDeclaration.localDid = data_dashbord.get(position).getId();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
                 } else if (type.equalsIgnoreCase("m")) {
@@ -64,12 +73,23 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Fragment frag = new AllVillageFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
-                    args.putString("mid", String.valueOf(allDistricts.get(position).getId()));
+                    args.putString("mid", String.valueOf(data_dashbord.get(position).getId()));
                     frag.setArguments(args);
+                    GlobalDeclaration.localMid = data_dashbord.get(position).getId();
+
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
 
-                } else {
+                } else if (type.equalsIgnoreCase("v")) {
+
+                    FragmentActivity activity = (FragmentActivity) v.getContext();
+                    Fragment frag = new GetDrilldownFragment();
+//                String backStateName = frag.getClass().getName();
+                    //   Bundle args = new Bundle();
+                    // args.putString("mid", String.valueOf(allDistricts.get(position).getId()));
+                    //frag.setArguments(args);
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
 
                 }
 
@@ -80,7 +100,25 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
     @Override
     public int getItemCount() {
-        return allDistricts.size();
+        return data_dashbord.size();
+    }
+
+    public void filter(String newText) {
+        android.util.Log.e("Searchletter", newText);
+        newText = newText.toLowerCase(Locale.getDefault());
+        data_dashbord.clear();
+        if (newText.length() == 0) {
+            data_dashbord.addAll(allDistricts);
+        } else {
+            for (StatelevelDistrictViewCountResponse wp : allDistricts) {
+
+                if (wp.getName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase())) {
+                    data_dashbord.add(wp);
+                }
+            }
+
+        }
+        notifyDataSetChanged();
     }
 
     class DistrictViewHolder extends RecyclerView.ViewHolder {
@@ -104,4 +142,6 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
         }
     }
+
+
 }
