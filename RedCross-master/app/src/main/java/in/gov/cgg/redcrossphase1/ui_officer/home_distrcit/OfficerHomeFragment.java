@@ -82,6 +82,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
     private LinearLayout ll_jrc;
     private LinearLayout ll_yrc;
     private LinearLayout ll_lm;
+    int selectedThemeColor = -1;
     private BarChart barchart_age;
     private PieChart barchart_gender, bar_blood;
     private DistrictViewModel districtViewModel;
@@ -99,8 +100,8 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
     private Fragment fragment;
     private LineChart lineChart;
     GovtPvtViewModel govtPvtViewModel;
-    int selectedThemeColor = 0;
-    private TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname, tv_totalcount, tv_govtpvt;
+    private LinearLayout ll_nameenrollRankTop, ll_nameenrollRankBottom;
+    private TextView tv_jrcocunt, tv_yrccount, tv_lmcount, tv_yrcname, tv_jrcname, tv_lmname, tv_totalcount, tv_govtpvt, tv_top5distName, tv_top5distEnrollement, tv_top5distRank, tv_btm5distrctName, tv_btm5distrctEnrollement, tv_btm5distrctRank, tv_total;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -122,34 +123,132 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
 
+
         GlobalDeclaration.home = true;
         findAllVIEWS(root);
+
+
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
+
+                //set theme for age gender top 5 bottom 5 name enrollement rank totalcount fab textcolour and backgrounds
                 tv_age.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 tv_top5district.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 tv_bottom5.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 tv_gender.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 tv_blg.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                tv_jrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                tv_jrcocunt.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 tv_govtpvt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                tv_top5distName.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_top5distEnrollement.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_top5distRank.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_btm5distrctName.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_btm5distrctEnrollement.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_btm5distrctRank.setTextColor(getResources().getColor(selectedThemeColor));
                 fabmenu.setMenuButtonColorNormal(getResources().getColor(selectedThemeColor));
+                tv_total.setTextColor(getResources().getColor(selectedThemeColor));
+                countColorSelection();
+                ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                tv_jrcname.setTextColor(getResources().getColor(white));
+                tv_jrcocunt.setTextColor(getResources().getColor(white));
+                tv_yrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_yrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_lmname.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_lmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+                tv_yrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_yrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_lmname.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_lmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    tv_jrcocunt.setTextColor(getResources().getColor(white));
+                    tv_jrcocunt.setTextColor(getResources().getColor(white));
+
+                    ll_nameenrollRankTop.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    ll_nameenrollRankBottom.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                }
             } else {
                 tv_age.setBackgroundColor(getResources().getColor(colorPrimary));
                 tv_top5district.setBackgroundColor(getResources().getColor(colorPrimary));
                 tv_bottom5.setBackgroundColor(getResources().getColor(colorPrimary));
                 tv_gender.setBackgroundColor(getResources().getColor(colorPrimary));
                 tv_blg.setBackgroundColor(getResources().getColor(colorPrimary));
-                tv_jrcname.setBackgroundColor(getResources().getColor(colorPrimary));
-                tv_jrcocunt.setBackgroundColor(getResources().getColor(colorPrimary));
                 tv_govtpvt.setBackgroundColor(getResources().getColor(colorPrimary));
                 fabmenu.setMenuButtonColorNormal(getResources().getColor(colorPrimary));
+                tv_top5distName.setTextColor(getResources().getColor(colorPrimary));
+                tv_top5distEnrollement.setTextColor(getResources().getColor(colorPrimary));
+                tv_top5distRank.setTextColor(getResources().getColor(colorPrimary));
+                tv_btm5distrctName.setTextColor(getResources().getColor(colorPrimary));
+                tv_btm5distrctEnrollement.setTextColor(getResources().getColor(colorPrimary));
+                tv_btm5distrctRank.setTextColor(getResources().getColor(colorPrimary));
+                tv_total.setTextColor(getResources().getColor(colorPrimary));
+                tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+                tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+                tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+                tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+                tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+
+                tv_jrcname.setTextColor(getResources().getColor(white));
+                tv_jrcocunt.setTextColor(getResources().getColor(white));
+                countColorSelection();
+                ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
-            //  ll_nav_header.setBackgroundResource(R.drawable.bg);
 
         }
 
@@ -165,9 +264,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         swipeRefreshLayout.setColorSchemeColors(Color.YELLOW);
 
 
-        ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-        tv_jrcocunt.setTextColor(getResources().getColor(white));
-        tv_jrcname.setTextColor(getResources().getColor(white));
 //
         if (GlobalDeclaration.role != null) {
             if (GlobalDeclaration.role.contains("D")) {
@@ -191,8 +287,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             callDashboardServices();
 
         } else {
-            Snackbar snackbar = Snackbar
-                    .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
 
@@ -218,6 +313,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         });
 
 
+
         ll_jrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,18 +321,52 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                 if (CheckInternet.isOnline(getActivity())) {
 
                     if (selectedThemeColor != -1) {
-                        tv_jrcocunt.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                        tv_jrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                         tv_jrcocunt.setTextColor(getResources().getColor(white));
                         tv_jrcname.setTextColor(getResources().getColor(white));
-                        tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
-                        tv_yrcname.setBackgroundColor(getResources().getColor(white));
-                        tv_yrccount.setBackgroundColor(getResources().getColor(white));
-                        tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                        tv_lmname.setBackgroundColor(getResources().getColor(white));
-                        tv_lmcount.setBackgroundColor(getResources().getColor(white));
+                        tv_yrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_yrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_lmname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_lmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+                        countColorSelection();
+                        ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+                        if (selectedThemeColor == R.color.redcroosbg_1) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                        } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                        } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                        } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                        } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                        }
+
+
+
 
                     }
 
@@ -295,8 +425,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
 
                 } else {
-                    Snackbar snackbar = Snackbar
-                            .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
             }
@@ -309,21 +438,57 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                 if (CheckInternet.isOnline(getActivity())) {
 
                     if (selectedThemeColor != -1) {
-                        tv_yrcname.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                        tv_yrccount.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                         tv_yrcname.setTextColor(getResources().getColor(white));
                         tv_yrccount.setTextColor(getResources().getColor(white));
+                        tv_jrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_jrcocunt.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_lmname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_lmcount.setTextColor(getResources().getColor(selectedThemeColor));
 
-                        tv_jrcname.setBackgroundColor(getResources().getColor(white));
-                        tv_jrcocunt.setBackgroundColor(getResources().getColor(white));
-                        tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                        countColorSelection();
+                        ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
 
-                        tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                        tv_lmname.setBackgroundColor(getResources().getColor(white));
-                        tv_lmcount.setBackgroundColor(getResources().getColor(white));
+                        if (selectedThemeColor == R.color.redcroosbg_1) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+
+                        }
+
                     }
+
 
                     bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                             observe(getActivity(), new Observer<List<BloodGroups>>() {
@@ -392,24 +557,57 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                 if (CheckInternet.isOnline(getActivity())) {
 
                     if (selectedThemeColor != -1) {
-                        tv_lmname.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                        tv_lmcount.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                         tv_lmname.setTextColor(getResources().getColor(white));
                         tv_lmcount.setTextColor(getResources().getColor(white));
-                        tv_yrcname.setBackgroundColor(getResources().getColor(white));
-                        tv_yrccount.setBackgroundColor(getResources().getColor(white));
-                        tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+                        tv_yrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_yrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_jrcname.setTextColor(getResources().getColor(selectedThemeColor));
+                        tv_jrcocunt.setTextColor(getResources().getColor(selectedThemeColor));
 
+                        countColorSelection();
+                        ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
 
-                        tv_jrcname.setBackgroundColor(getResources().getColor(white));
-                        tv_jrcocunt.setBackgroundColor(getResources().getColor(white));
-                        tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-                        tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+                        if (selectedThemeColor == R.color.redcroosbg_1) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+
+                        } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                            ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                            ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                            ll_jrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+
+                        }
+
 
 
                     }
-
                     bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                             observe(getActivity(), new Observer<List<BloodGroups>>() {
                                 @Override
@@ -473,6 +671,12 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         return root;
 
+    }
+
+    private void countColorSelection() {
+        ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+        ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+        ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -765,6 +969,20 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         ll_govtpvt = root.findViewById(R.id.ll_govtpvt);
 
         lineChart = root.findViewById(R.id.chart_govtpvt);
+
+
+        tv_top5distName = root.findViewById(R.id.tv_top5distName);
+        tv_top5distEnrollement = root.findViewById(R.id.tv_top5distEnrollement);
+        tv_top5distRank = root.findViewById(R.id.tv_top5distRank);
+        tv_btm5distrctName = root.findViewById(R.id.tv_btm5distrctName);
+        tv_btm5distrctEnrollement = root.findViewById(R.id.tv_btm5distrctEnrollement);
+        tv_btm5distrctRank = root.findViewById(R.id.tv_btm5distrctRank);
+        tv_total = root.findViewById(R.id.tv_total);
+
+        ll_nameenrollRankTop = root.findViewById(R.id.ll_nameenrollRankTop);
+        ll_nameenrollRankBottom = root.findViewById(R.id.ll_nameenrollRankBottom);
+
+
 
 
     }

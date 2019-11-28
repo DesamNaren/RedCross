@@ -41,7 +41,6 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 
@@ -59,7 +58,7 @@ public class OfficerMainActivity extends AppCompatActivity {
     FloatingActionButton fabmain;
     private Menu mMenu;
     private NavController navController;
-    int selectedThemeColor = 0;
+    int selectedThemeColor = -1;
     NavigationView navigationView;
     Toolbar toolbar;
     View header;
@@ -67,7 +66,8 @@ public class OfficerMainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private LinearLayout ll_nav_header;
     private Fragment selectedFragment;
-    Menu nav_Menu;
+    SharedPreferences settings;
+    SharedPreferences.Editor editor;
     private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
 
     @Override
@@ -86,14 +86,13 @@ public class OfficerMainActivity extends AppCompatActivity {
         TextView tv_name = headerView.findViewById(R.id.textView_name);
 
         setSupportActionBar(toolbar);
-        nav_Menu = navigationView.getMenu();
+        Menu nav_Menu = navigationView.getMenu();
         GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
         //default fragment
         selectedFragment = new OfficerHomeFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-        selectedThemeColor = R.color.colorPrimary;
-        storesInsharedPref(selectedThemeColor);
-        //after logout set theme for navheader and navview
+
+
         try {
             selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
@@ -122,13 +121,19 @@ public class OfficerMainActivity extends AppCompatActivity {
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                } else {
+                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    selectedThemeColor = R.color.colorPrimary;
+                    toolbar.setBackgroundResource(selectedThemeColor);
+                    sharedPreferenceMethod(selectedThemeColor);
                 }
             } else {
                 ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 selectedThemeColor = R.color.colorPrimary;
                 toolbar.setBackgroundResource(selectedThemeColor);
-
+                sharedPreferenceMethod(selectedThemeColor);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -138,12 +143,14 @@ public class OfficerMainActivity extends AppCompatActivity {
 
         if (GlobalDeclaration.role != null) {
             if (!GlobalDeclaration.role.contains("D")) {
-                nav_Menu.findItem(R.id.nav_allmandals).setVisible(false);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(true);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
 
+                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
+                drawerLayout.setScrimColor(Color.TRANSPARENT);
             } else {
-                nav_Menu.findItem(R.id.nav_allmandals).setVisible(true);
+                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
+                drawerLayout.setScrimColor(Color.TRANSPARENT);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(false);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
             }
@@ -153,7 +160,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_age, R.id.nav_gender, R.id.nav_district,
                 R.id.nav_blood, R.id.nav_top5, R.id.nav_govtpvt, R.id.nav_alldistricts, R.id.nav_tc, R.id.nav_privacy,
-                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme, R.id.nav_allmandals)
+                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme)
                 .setDrawerLayout(drawerLayout)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
@@ -201,12 +208,16 @@ public class OfficerMainActivity extends AppCompatActivity {
         );
     }
 
-    // creating sharred preferences
-    public void storesInsharedPref(int selectedThemeColor) {
-        SharedPreferences settings = getSharedPreferences("THEMECOLOR_PREF", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
+    private void sharedPreferenceMethod(int selectedThemeColor) {
+        settings = getSharedPreferences("THEMECOLOR_PREF", Activity.MODE_PRIVATE);
+        editor = settings.edit();
         editor.putInt("theme_color", selectedThemeColor);
         editor.commit();
+    }
+
+    // creating sharred preferences
+    public void storesInsharedPref(int selectedThemeColor) {
+        sharedPreferenceMethod(selectedThemeColor);
 
         // CustomRelativeLayout.changeStatusBarColor(this);
         //refersh of same fragment
@@ -253,7 +264,6 @@ public class OfficerMainActivity extends AppCompatActivity {
                         }
                     });
                     drawerLayout.closeDrawer(GravityCompat.START);
-
                 } else if (menuItem.getItemId() == R.id.nav_district) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -267,8 +277,6 @@ public class OfficerMainActivity extends AppCompatActivity {
                     selectedFragment = new OfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-
-
                 } else if (menuItem.getItemId() == R.id.nav_alldistricts) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -280,20 +288,6 @@ public class OfficerMainActivity extends AppCompatActivity {
                     });
                     GlobalDeclaration.FARG_TAG = AllDistrictsFragment.class.getSimpleName();
                     selectedFragment = new AllDistrictsFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-
-                } else if (menuItem.getItemId() == R.id.nav_allmandals) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
-                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
-                            return true;
-                        }
-                    });
-                    GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
-                    selectedFragment = new AllMandalsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
@@ -656,7 +650,5 @@ public class OfficerMainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-
 }
 
