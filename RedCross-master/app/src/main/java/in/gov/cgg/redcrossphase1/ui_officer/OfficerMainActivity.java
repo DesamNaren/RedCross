@@ -69,6 +69,8 @@ public class OfficerMainActivity extends AppCompatActivity {
     private Fragment selectedFragment;
     SharedPreferences settings;
     SharedPreferences.Editor editor;
+    private Menu Mmenu;
+
     private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
 
     @Override
@@ -234,6 +236,8 @@ public class OfficerMainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_backpress, menu);
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -255,27 +259,27 @@ public class OfficerMainActivity extends AppCompatActivity {
                     });
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_district) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
+         /*           menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             callHomeAlert();
                             return true;
                         }
-                    });
+                    });*/
                     GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
                     selectedFragment = new OfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_alldistricts) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                   /* menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
                             return true;
                         }
-                    });
+                    });*/
                     GlobalDeclaration.FARG_TAG = AllDistrictsFragment.class.getSimpleName();
                     selectedFragment = new AllDistrictsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
@@ -307,14 +311,14 @@ public class OfficerMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_allmandals) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                   /* menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
                             return true;
                         }
-                    });
+                    });*/
                     GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
                     selectedFragment = new AllMandalsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);

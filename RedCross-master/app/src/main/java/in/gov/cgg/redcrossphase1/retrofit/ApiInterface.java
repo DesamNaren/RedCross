@@ -81,15 +81,18 @@ public interface ApiInterface {
 //    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
 
     @GET("getDrillDownCountLevelWiseWs")
+        //State level will get village count
     Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs1(@Query("level") String level,
                                                                                   @Query("fyId") String fyId);
 
     @GET("getDrillDownCountLevelWiseWs")
+        //District level will get manal count
     Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs2(@Query("level") String level,
                                                                                   @Query("fyId") String fyId,
                                                                                   @Query("districtId") String districtId);
 
     @GET("getDrillDownCountLevelWiseWs")
+        //Mandal Level will get village count
     Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs3(@Query("level") String level,
                                                                                   @Query("fyId") String fyId,
                                                                                   @Query("mandalId") String mandalId);

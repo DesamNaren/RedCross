@@ -1,17 +1,22 @@
 package in.gov.cgg.redcrossphase1.ui_officer.drilldown;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,24 +30,25 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GetDrilldownFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class GetDrilldownFragment extends Fragment {
 
 
     RecyclerView rv_rilldown;
     ProgressDialog pd;
-    SearchView searchView;
     private DrilldownViewmodel drilldownViewmodel;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
     DrillDownAdapter adapter1;
     String mid = "", did = "";
     private List<StudentListBean> studentListBeanList = new ArrayList<>();
-
+    private androidx.appcompat.widget.SearchView searchView;
+    private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,10 +65,10 @@ public class GetDrilldownFragment extends Fragment implements SearchView.OnQuery
             did = getArguments().getString("did");
         }
 
-        searchView.setIconifiedByDefault(false);
+   /*     searchView.setIconifiedByDefault(false);
         searchView.setOnQueryTextListener(this);
         searchView.setSubmitButtonEnabled(true);
-        searchView.setQueryHint("Search ");
+        searchView.setQueryHint("Search ");*/
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
@@ -139,7 +145,7 @@ public class GetDrilldownFragment extends Fragment implements SearchView.OnQuery
                         } else {
                             studentListBean.setName(studentList.get(position).get(3));
                         }
-                        if (studentList.get(position).get(4) != null) {
+                        if (studentList.get(position).get(4) == null) {
                             studentListBean.setGender("");
                         } else {
                             studentListBean.setGender(studentList.get(position).get(4));
@@ -233,16 +239,79 @@ public class GetDrilldownFragment extends Fragment implements SearchView.OnQuery
         });
     }
 
+    /*    @Override
+        public boolean onQueryTextSubmit(String query) {
+            return false;
+        }
+
+        @Override
+        public boolean onQueryTextChange(String newText) {
+            if (adapter1 != null) {
+                adapter1.filter(newText);
+            }
+            return true;
+        }*/
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
-        if (adapter1 != null) {
-            adapter1.filter(newText);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                return true;
+            }
+        });
+
+        if (searchItem != null) {
+            searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
         }
-        return true;
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+                    if (adapter1 != null) {
+                        adapter1.filter(newText);
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // Not implemented here
+                return false;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
+    }
+
 }

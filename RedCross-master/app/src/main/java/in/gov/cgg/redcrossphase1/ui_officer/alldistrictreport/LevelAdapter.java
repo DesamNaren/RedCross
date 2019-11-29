@@ -26,7 +26,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
     Context mCtx;
     List<StatelevelDistrictViewCountResponse> allDistricts;
     String type;
-
+    int total;
 
     public LevelAdapter(Context mCtx, List<StatelevelDistrictViewCountResponse> allDistricts, String type) {
         this.mCtx = mCtx;
@@ -47,16 +47,19 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
     @Override
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
 
+        total = allDistricts.get(position).getJRC() + allDistricts.get(position).getYRC() + allDistricts.get(position).getMembership();
 
         holder.tv_alldname.setText(data_dashbord.get(position).getName());
-        //  holder.tv_jrcount.setText(allDistricts.toString());
-        //holder.tv_yrccount.setText(String.valueOf(allDistricts.getYRC()));
-        // holder.tv_lmcunt.setText(String.valueOf(allDistricts.getMembership()));
-        holder.tv_totalcount.setText(String.valueOf(data_dashbord.get(position).getCount()));
+        holder.tv_jrcount.setText(String.valueOf(allDistricts.get(position).getJRC()));
+        holder.tv_yrccount.setText(String.valueOf(allDistricts.get(position).getYRC()));
+        holder.tv_lmcunt.setText(String.valueOf(allDistricts.get(position).getMembership()));
+        holder.tv_totalcount.setText(String.valueOf(total));
 
         holder.cd_district.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if (type.equalsIgnoreCase("d")) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
                     Fragment frag = new AllMandalsFragment();

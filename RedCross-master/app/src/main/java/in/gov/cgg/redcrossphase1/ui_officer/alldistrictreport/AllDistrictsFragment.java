@@ -1,17 +1,24 @@
 package in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport;
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -29,9 +36,10 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 
-public class AllDistrictsFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class AllDistrictsFragment extends Fragment {
 
 
     ProgressDialog pd;
@@ -40,6 +48,9 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
     LevelAdapter adapter1;
     private ArrayList byNameList = new ArrayList();
     private Set<String> byNameListSet = new LinkedHashSet<>();
+    private SearchView searchView;
+    private SearchView.OnQueryTextListener queryTextListener;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,10 +64,10 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
 //        binding.searchView.setHint("Search by Name");
 //        binding.searchView.setMenuItem(binding.searchimage);
 
-        binding.searchView.setIconifiedByDefault(false);
+     /*   binding.searchView.setIconifiedByDefault(false);
         binding.searchView.setOnQueryTextListener(this);
         binding.searchView.setSubmitButtonEnabled(true);
-        binding.searchView.setQueryHint("Search By Name");
+        binding.searchView.setQueryHint("Search By Name");*/
 
         binding.customCount.llPicker.setVisibility(View.VISIBLE);
 
@@ -161,14 +172,19 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
     }
 
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
-        binding.rvAlldistrictwise.setHasFixedSize(true);
-        binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter1 = new LevelAdapter(getActivity(), allDistrictList, "d");
-        binding.rvAlldistrictwise.setAdapter(adapter1);
-        adapter1.notifyDataSetChanged();
+
+        if (allDistrictList.size() > 0) {
+
+            binding.rvAlldistrictwise.setHasFixedSize(true);
+            binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "d");
+            binding.rvAlldistrictwise.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+
+        }
     }
 
-    @Override
+/*    @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
     }
@@ -179,6 +195,70 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
             adapter1.filter(newText);
         }
         return true;
+    }*/
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                return true;
+            }
+        });
+
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+                    if (adapter1 != null) {
+                        adapter1.filter(newText);
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // Not implemented here
+                return false;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
     }
 
 

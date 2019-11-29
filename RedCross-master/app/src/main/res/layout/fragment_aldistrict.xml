@@ -23,12 +23,14 @@
                 android:layout_margin="5dp"
                 android:background="@color/white"
                 android:queryHint="Search here"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_alldistrictwise"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:scrollbarThumbVertical="@color/colorPrimary"
+                android:scrollbars="vertical" />
 
 
         </LinearLayout>

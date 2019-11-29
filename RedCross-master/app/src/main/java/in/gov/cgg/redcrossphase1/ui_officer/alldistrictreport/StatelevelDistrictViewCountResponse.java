@@ -4,15 +4,37 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class StatelevelDistrictViewCountResponse {
+    @SerializedName("Membership")
+    @Expose
+    private Integer membership;
+    @SerializedName("JRC")
+    @Expose
+    private Integer jRC;
     @SerializedName("Id")
     @Expose
     private Integer id;
-    @SerializedName("Count")
+    @SerializedName("YRC")
     @Expose
-    private Integer count;
+    private Integer yRC;
     @SerializedName("Name")
     @Expose
     private String name;
+
+    public Integer getMembership() {
+        return membership;
+    }
+
+    public void setMembership(Integer membership) {
+        this.membership = membership;
+    }
+
+    public Integer getJRC() {
+        return jRC;
+    }
+
+    public void setJRC(Integer jRC) {
+        this.jRC = jRC;
+    }
 
     public Integer getId() {
         return id;
@@ -22,12 +44,12 @@ public class StatelevelDistrictViewCountResponse {
         this.id = id;
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getYRC() {
+        return yRC;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setYRC(Integer yRC) {
+        this.yRC = yRC;
     }
 
     public String getName() {

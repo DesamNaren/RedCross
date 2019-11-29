@@ -1,5 +1,8 @@
 package in.gov.cgg.redcrossphase1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 
 public class GlobalDeclaration {
@@ -18,6 +21,7 @@ public class GlobalDeclaration {
     public static Integer localDid;
     public static Integer localMid;
     public static Integer localVid;
+    public static List<Integer> levCountList = new ArrayList<>();
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 
