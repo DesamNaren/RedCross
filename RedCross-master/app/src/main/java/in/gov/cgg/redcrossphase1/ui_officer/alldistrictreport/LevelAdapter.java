@@ -85,9 +85,11 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     FragmentActivity activity = (FragmentActivity) v.getContext();
                     Fragment frag = new GetDrilldownFragment();
 //                String backStateName = frag.getClass().getName();
-                    //   Bundle args = new Bundle();
-                    // args.putString("mid", String.valueOf(allDistricts.get(position).getId()));
-                    //frag.setArguments(args);
+                    Bundle args = new Bundle();
+                    args.putString("vid", String.valueOf(allDistricts.get(position).getId()));
+                    frag.setArguments(args);
+                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
+
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
 

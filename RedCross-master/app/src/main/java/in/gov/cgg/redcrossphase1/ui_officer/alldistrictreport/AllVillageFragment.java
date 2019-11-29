@@ -59,6 +59,8 @@ public class AllVillageFragment extends Fragment implements SearchView.OnQueryTe
         binding.searchView.setSubmitButtonEnabled(true);
         binding.searchView.setQueryHint("Search By Name");
 
+        binding.customCount.llPicker.setVisibility(View.GONE);
+
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
         pd.show();
@@ -69,6 +71,8 @@ public class AllVillageFragment extends Fragment implements SearchView.OnQueryTe
 
         if (getArguments() != null) {
             value = getArguments().getString("mid");
+        } else {
+            value = String.valueOf(GlobalDeclaration.localMid);
         }
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

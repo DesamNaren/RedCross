@@ -58,6 +58,8 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
         binding.searchView.setSubmitButtonEnabled(true);
         binding.searchView.setQueryHint("Search By Name");
 
+        binding.customCount.llPicker.setVisibility(View.VISIBLE);
+
         GlobalDeclaration.home = false;
 
         if (GlobalDeclaration.counts != null) {
@@ -178,4 +180,6 @@ public class AllDistrictsFragment extends Fragment implements SearchView.OnQuery
         }
         return true;
     }
+
+
 }

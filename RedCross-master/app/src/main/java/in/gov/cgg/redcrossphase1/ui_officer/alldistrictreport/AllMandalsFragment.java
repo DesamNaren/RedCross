@@ -58,6 +58,8 @@ public class AllMandalsFragment extends Fragment implements SearchView.OnQueryTe
         binding.searchView.setSubmitButtonEnabled(true);
         binding.searchView.setQueryHint("Search By Name");
 
+        binding.customCount.llPicker.setVisibility(View.GONE);
+
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
@@ -70,7 +72,12 @@ public class AllMandalsFragment extends Fragment implements SearchView.OnQueryTe
         if (getArguments() != null) {
             value = getArguments().getString("did");
         } else {
-            value = GlobalDeclaration.districtId;
+            if (!GlobalDeclaration.role.contains("D")) {
+                value = String.valueOf(GlobalDeclaration.localDid);
+            } else {
+                value = GlobalDeclaration.districtId;
+            }
+
         }
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -41,6 +41,7 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 
@@ -140,17 +141,14 @@ public class OfficerMainActivity extends AppCompatActivity {
 
         }
 
-
         if (GlobalDeclaration.role != null) {
             if (!GlobalDeclaration.role.contains("D")) {
+                nav_Menu.findItem(R.id.nav_allmandals).setVisible(false);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(true);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
 
-                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
-                drawerLayout.setScrimColor(Color.TRANSPARENT);
             } else {
-                nav_Menu.findItem(R.id.nav_govtpvt).setVisible(false);
-                drawerLayout.setScrimColor(Color.TRANSPARENT);
+                nav_Menu.findItem(R.id.nav_allmandals).setVisible(true);
                 nav_Menu.findItem(R.id.nav_alldistricts).setVisible(false);
                 drawerLayout.setScrimColor(Color.TRANSPARENT);
             }
@@ -168,21 +166,13 @@ public class OfficerMainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        if (GlobalDeclaration.username != null) {
-            if (GlobalDeclaration.role.contains("D")) {
-                tv_name.setText("Welcome to Chairman" + "\n" + GlobalDeclaration.username);
-            } else if (GlobalDeclaration.role.contains("S")) {
-                tv_name.setText("Welcome to Secretary" + "\n" + GlobalDeclaration.username);
+        if (GlobalDeclaration.username != null && GlobalDeclaration.designation != null) {
+            tv_name.setText("Welcome to" + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
+        } else {
+            tv_name.setText("Welcome to" + GlobalDeclaration.username);
 
-            } else if (GlobalDeclaration.role.contains("G")) {
-                tv_name.setText("Welcome to Governor");
-            } else {
-
-            }
         }
-
-
-        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+     /*   drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
                                            @Override
                                            public void onDrawerSlide(View drawerView, float slideOffset) {
                                                //labelView.setVisibility(slideOffset > 0 ? View.VISIBLE : View.GONE);
@@ -204,8 +194,8 @@ public class OfficerMainActivity extends AppCompatActivity {
                                            public void onDrawerClosed(View drawerView) {
 //                                               labelView.setVisibility(View.GONE);
                                            }
-                                       }
-        );
+                                       }*/
+        // );
     }
 
     private void sharedPreferenceMethod(int selectedThemeColor) {
@@ -316,10 +306,24 @@ public class OfficerMainActivity extends AppCompatActivity {
                     selectedFragment = new PrivacyPolicyFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_allmandals) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+                    GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
+                    selectedFragment = new AllMandalsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_ofctheme) {
                     showThemePicker();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
+
                 return true;
             }
         });

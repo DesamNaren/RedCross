@@ -94,6 +94,7 @@
                         android:theme="@style/Base.Widget.Design.TabLayout"
                         app:tabInlineLabel="true"
                         app:tabMode="fixed"
+                        app:tabGravity="fill"
                         app:tabRippleColor="@color/colorPrimary"
                         app:tabSelectedTextColor="#fff" />
 
