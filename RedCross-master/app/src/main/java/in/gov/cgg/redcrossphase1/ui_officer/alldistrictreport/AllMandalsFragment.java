@@ -128,9 +128,9 @@ public class AllMandalsFragment extends Fragment {
         if (dashboardCountResponse != null) {
             int total = 0, jrc = 0, yrc = 0, m = 0;
             for (int i = 0; i < dashboardCountResponse.size(); i++) {
-                jrc = +dashboardCountResponse.get(i).getJRC();
-                yrc = +dashboardCountResponse.get(i).getYRC();
-                m = +dashboardCountResponse.get(i).getMembership();
+                jrc = jrc + dashboardCountResponse.get(i).getJRC();
+                yrc = yrc + dashboardCountResponse.get(i).getYRC();
+                m = m + dashboardCountResponse.get(i).getMembership();
             }
             total = jrc + yrc + m;
             binding.customCount.tvJrccount.setText(String.valueOf(jrc));

@@ -22,6 +22,7 @@ public class GlobalDeclaration {
     public static Integer localMid;
     public static Integer localVid;
     public static List<Integer> levCountList = new ArrayList<>();
+    public static String type = "";
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 

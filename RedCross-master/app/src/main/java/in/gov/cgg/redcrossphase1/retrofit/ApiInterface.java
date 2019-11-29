@@ -75,8 +75,9 @@ public interface ApiInterface {
                                                    @Query("fyId") String fyId,
 //                                                   @Query("entryDate") String entryDate,
                                                    @Query("districtId") String districtId,
-                                                   @Query("mandalId") String mandalId);
-//
+                                                   @Query("mandalId") String mandalId,
+                                                   @Query("villageId") String villageId);
+    //
 //    @GET("DistrictWiseEnrollmentsService")
 //    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
 

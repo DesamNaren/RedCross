@@ -87,7 +87,6 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:padding="@dimen/dp_5"
-                            android:text="56"
                             android:textAlignment="center"
                             android:textColor="@color/colorPrimary" />
 

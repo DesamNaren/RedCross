@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -100,8 +101,46 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
             }
         });
+//        holder.ll_jrc.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                if (type.equalsIgnoreCase("v")) {
+////
+////                    GlobalDeclaration.type = "JRC";
+////                }
+////            }
+////        });
+////        holder.ll_yrc.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                if (type.equalsIgnoreCase("v")) {
+////
+////                    GlobalDeclaration.type = "YRC";
+////                }
+////            }
+////        });
+////        holder.ll_membership.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                if (type.equalsIgnoreCase("v")) {
+////
+////                    GlobalDeclaration.type = "Membership";
+////                }
+////            }
+////        });
 
+        holder.ll_total.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (type.equalsIgnoreCase("v")) {
+
+                    GlobalDeclaration.type = "";
+                }
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -130,6 +169,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
         TextView tv_alldname, tv_jrcname, tv_yrcname, tv_lmname, tv_jrcount, tv_yrccount, tv_lmcunt, tv_totalcount;
         CardView cd_district;
+        LinearLayout ll_jrc, ll_yrc, ll_membership, ll_total;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
@@ -143,6 +183,10 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
             tv_lmname = itemView.findViewById(R.id.tv_lmname);
             tv_totalcount = itemView.findViewById(R.id.tv_totalcount);
             cd_district = itemView.findViewById(R.id.cv_district);
+            ll_jrc = itemView.findViewById(R.id.ll_jrc);
+            ll_yrc = itemView.findViewById(R.id.ll_yrc);
+            ll_membership = itemView.findViewById(R.id.ll_lm);
+            ll_total = itemView.findViewById(R.id.ll_total);
 
 
         }

@@ -41,14 +41,14 @@ public class GetDrilldownFragment extends Fragment {
 
     RecyclerView rv_rilldown;
     ProgressDialog pd;
-    private DrilldownViewmodel drilldownViewmodel;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
     DrillDownAdapter adapter1;
-    String mid = "", did = "";
+    String mid = "", did = "", vid = "";
     private List<StudentListBean> studentListBeanList = new ArrayList<>();
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +63,16 @@ public class GetDrilldownFragment extends Fragment {
         if (getArguments() != null) {
             mid = getArguments().getString("mid");
             did = getArguments().getString("did");
+            vid = getArguments().getString("vid");
+        } else {
+            if (!GlobalDeclaration.role.contains("D")) {
+                did = String.valueOf(GlobalDeclaration.localDid);
+                mid = String.valueOf(GlobalDeclaration.localMid);
+                vid = String.valueOf(GlobalDeclaration.localVid);
+            } else {
+                did = GlobalDeclaration.districtId;
+            }
+
         }
 
    /*     searchView.setIconifiedByDefault(false);
@@ -107,7 +117,7 @@ public class GetDrilldownFragment extends Fragment {
 
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs("", "3", did, mid);
+        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs(GlobalDeclaration.type, "3", did, mid, vid);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<DrillDownResponse>() {
