@@ -3,12 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_seach"
-        android:icon="@drawable/searh32"
+        android:icon="@drawable/srch24"
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView">
 
     </item>
+    <item
+        android:id="@+id/action_exit"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        android:title="Search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView">
 
+    </item>
 
 </menu>

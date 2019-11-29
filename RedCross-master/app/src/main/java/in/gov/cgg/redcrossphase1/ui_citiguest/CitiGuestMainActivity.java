@@ -4,6 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TabHost;
@@ -14,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -36,6 +40,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     private View contentView;
     private TabHost tabHost;
     private int pos;
+    private Fragment selectedFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,9 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
         toolbar = findViewById(R.id.toolbar);
         contentView = findViewById(R.id.content);
+        Menu nav_Menu = navigationView.getMenu();
+
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -63,10 +72,13 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
+
+
                 if (destination.getId() == R.id.nav_onlinedonations) {
                     showChangeLangDialog();
                 } else if (destination.getId() == R.id.nav_training) {
@@ -83,8 +95,19 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     showChangeLangDialog();
                 }
 
+
+                /*menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                        return true;
+                    }
+                });*/
+
             }
         });
+
 
         //Adding animation to drawer
 
@@ -117,6 +140,27 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_backpress, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.logout:
+                // search action
+                onClickExit();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     private void showChangeLangDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);
 
@@ -133,13 +177,27 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    @Override
-    public void onBackPressed() {
+    //    private void sexitDailouge() {
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);
+//
+//        alertDialogBuilder.setMessage("Do you want to exit ?");
+//        // set positive button: Yes message
+//        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int id) {
+//                dialog.dismiss();
+//            }
+//        });
+//        final AlertDialog alertDialog = alertDialogBuilder.create();
+//
+//        // show alert
+//        alertDialog.show();
+//    }
+    public void onClickExit() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(CitiGuestMainActivity.this);
         final AlertDialog alertDialog1 = alertDialog.create();
 
 
-        alertDialog.setMessage("Do you want to logout ?");
+        alertDialog.setMessage("Do you want to exit ?");
         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

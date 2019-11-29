@@ -7,7 +7,9 @@
         <item android:title="About IRCS">
 
             <menu>
-
+                <item
+                    android:id="@+id/nav_Principles"
+                    android:title="Fundamental Principles" />
                 <item
                     android:id="@+id/nav_whoweare"
                     android:title="Who we are" />
@@ -15,9 +17,6 @@
                     android:id="@+id/nav_History"
                     android:title="History" />
 
-                <item
-                    android:id="@+id/nav_Principles"
-                    android:title="Seven Fundamental Principles" />
                 <item
                     android:id="@+id/nav_Vision"
                     android:title="Vision" />

@@ -1,5 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
@@ -22,18 +25,20 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TabLoginActivity;
 
 public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQueryTextListener {
     RecyclerView recyclerView;
     BloodbankAdaptor adapter;
     ArrayList<BloodBankdetails_Bean> detailsarrayList;
+    private FragmentActivity c;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Objects.requireNonNull(getActivity()).setTitle("Bloodbanks Details");
-        final FragmentActivity c = getActivity();
+        c = getActivity();
         setHasOptionsMenu(true);//Make sure you have this line of code.
         detailsarrayList = new ArrayList<>();
         View rootView = inflater.inflate(R.layout.fragment_ourbloodbanks, container, false);
@@ -82,12 +87,56 @@ public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQ
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
         inflater.inflate(R.menu.menu_item, menu);
         MenuItem menuItem = menu.findItem(R.id.action_seach);
         // SearchView searchView =(SearchView) MenuItemCompat.getActionView(menuItem);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.action_exit:
+                // search action
+                onClickExit();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void onClickExit() {
+
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+
+        final AlertDialog alertDialog1 = alertDialog.create();
+
+
+        alertDialog.setMessage("Do you want to exit ?");
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //alertDialog1.dismiss();\
+
+                alertDialog1.dismiss();
+            }
+        });
+        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                startActivity(new Intent(c, TabLoginActivity.class));
+                getActivity().finish();
+            }
+        });
+        alertDialog.show();
+    }
+
 
 
     @Override

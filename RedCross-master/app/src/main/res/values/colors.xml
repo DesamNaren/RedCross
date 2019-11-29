@@ -18,5 +18,8 @@
     <item name="redcroosbg_7" type="color">#5927c4</item>
     <item name="redcroosbg_8" type="color">#ED1C24</item>
 
+    <item name="my_great_color" type="color">#FFFFFF</item>
+    <item name="colorControlNormal" type="color">@color/my_great_color</item>
+
 
 </resources>
