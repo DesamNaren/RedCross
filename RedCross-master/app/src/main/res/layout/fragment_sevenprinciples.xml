@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_sevenPrinciples"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/redcross_splashscreen_bg"
@@ -327,7 +328,7 @@
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
-                        android:text="Independence"
+                        android:text="Universality"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16sp" />
 

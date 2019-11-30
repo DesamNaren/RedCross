@@ -17,10 +17,14 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
 
     ArrayList<ContactusDetails_Bean> contactarrayList;
     Context context;
+    int selectedThemeColor = -1;
 
-    Contactus_adaptor(ArrayList<ContactusDetails_Bean> arrayList, Context context) {
+
+    Contactus_adaptor(ArrayList<ContactusDetails_Bean> arrayList, Context context, int selectedThemeColor) {
         this.contactarrayList = arrayList;
         this.context = context;
+        this.selectedThemeColor = selectedThemeColor;
+
     }
 
     @Override
@@ -34,6 +38,8 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
 
         holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
         holder.address.setText(contactarrayList.get(position).getAdress());
+        holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
+
 
     }
 

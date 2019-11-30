@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,13 @@ public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myVi
 
     ArrayList<BloodBankdetails_Bean> arrayList;
     Context context;
+    int selectedThemeColor = -1;
 
-    BloodbankAdaptor(ArrayList<BloodBankdetails_Bean> arrayList, Context context) {
+
+    BloodbankAdaptor(ArrayList<BloodBankdetails_Bean> arrayList, Context context, int selectedThemeColor) {
         this.arrayList = arrayList;
         this.context = context;
+        this.selectedThemeColor = selectedThemeColor;
     }
 
     @Override
@@ -29,6 +33,7 @@ public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myVi
         return new myViewHolder(view);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
 
@@ -36,6 +41,11 @@ public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myVi
         holder.officerName.setText(arrayList.get(position).getOfficerName());
         holder.ofcAddress.setText(arrayList.get(position).getOfcaddress());
         holder.contactNumber.setText(arrayList.get(position).getContactNumber());
+
+        holder.tv_distHeading.setTextColor(context.getResources().getColor(selectedThemeColor));
+        holder.tv_placeHeading.setTextColor(context.getResources().getColor(selectedThemeColor));
+        holder.tv_contactHeading.setTextColor(context.getResources().getColor(selectedThemeColor));
+        holder.tv_medicalofcerHeading.setTextColor(context.getResources().getColor(selectedThemeColor));
     }
 
     @Override
@@ -57,12 +67,23 @@ public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myVi
         TextView ofcAddress;
         TextView contactNumber;
 
+        TextView tv_distHeading;
+        TextView tv_placeHeading;
+        TextView tv_contactHeading;
+        TextView tv_medicalofcerHeading;
+
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             districtNmae = itemView.findViewById(R.id.tv_district);
             officerName = itemView.findViewById(R.id.tv_ofcrName);
             ofcAddress = itemView.findViewById(R.id.tv_adress);
             contactNumber = itemView.findViewById(R.id.tv_contactNumber);
+
+
+            tv_distHeading = itemView.findViewById(R.id.tv_distHeading);
+            tv_placeHeading = itemView.findViewById(R.id.tv_placeHeading);
+            tv_contactHeading = itemView.findViewById(R.id.tv_contactHeading);
+            tv_medicalofcerHeading = itemView.findViewById(R.id.tv_medicalofcerHeading);
 
         }
     }

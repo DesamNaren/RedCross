@@ -1,10 +1,13 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -14,8 +17,15 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class SevenFundamentalFragment extends Fragment {
+    SharedPreferences settings;
+    SharedPreferences.Editor editor;
+    int selectedThemeColor = -1;
+    LinearLayout ll_sevenPrinciples;
+    TextView tv_humanityHeading, tv_ImpartialityHeading, tv_NeutralityHeading, tv_IndependenceyHeading, tv_VoluntaryService, tv_UnityHeading, tv_UniversalityHeading;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 
@@ -23,62 +33,116 @@ public class SevenFundamentalFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
 
-        return inflater.inflate(R.layout.fragment_sevenprinciples, container, false);
+        View root = inflater.inflate(R.layout.fragment_sevenprinciples, container, false);
+        findViews(root);
 
-    }
 
-/*
-        Objects.requireNonNull(getActivity()).setTitle("Seven Fundamental Principles");
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross1_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross2_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross3_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
 
-        TextView tv_first = root.findViewById(R.id.text1);
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross4_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross5_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross6_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
 
-        String longDescription = "Humanity\n" +
-                "The International Red Cross and Red Crescent Movement, born of a desire to bring assistance without discrimination to the wounded on the battlefield, endeavors, in its international and national capacity, to prevent and alleviate human suffering wherever it may be found. Its purpose is to protect life and health and to ensure respect for the human being. It promotes mutual understanding, friendship, cooperation and lasting peace amongst all peoples.\n" +
-                "\n" +
-                "Impartiality\n" +
-                "It makes no discrimination as to nationally, race, religious beliefs, class or political opinions. It endeavors to relieve the suffering of individuals, being solely by their needs, and to give priority to the most urgent cases of distress.\n" +
-                "\n" +
-                "Neutrality\n" +
-                "In order to enjoy the confidence of all, the Movement may not take sides in hostilities or engage in controversies of a political, racial, religious or ideological nature.\n" +
-                "\n" +
-                "Independence\n" +
-                "The Movement is independent. The National Societies, while auxiliaries in the humanitarian services of their governments and subject to the laws of their respective countries, must always maintain their autonomy so that they may be able at all times to act in accordance with the principles of the Movement.\n" +
-                "\n" +
-                "Voluntary Service\n" +
-                "It is voluntary relief movement not prompted in any manner by desire for gain.\n" +
-                "\n" +
-                "Unity\n" +
-                "There can be only one Red Cross Or Red Crescent in any one country. It must be open to all. It must carry on its humanitarian work throughout its territory.\n" +
-                "\n" +
-                "Universality\n" +
-                "The International Red Cross and Red Crescent Movement, in which all societies have equal status and share equal responsibilities and duties in helping each other, is worldwide.";
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross7_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
 
-        String[] arr = longDescription.split("\n");
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    tv_humanityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_ImpartialityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_NeutralityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_IndependenceyHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_VoluntaryService.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UniversalityHeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    tv_UnityHeading.setTextColor(getResources().getColor(selectedThemeColor));
 
-        int bulletGap = (int) dp(10);
+                }
 
-        SpannableStringBuilder ssb = new SpannableStringBuilder();
-        for (int i = 0; i < arr.length; i++) {
-            String line = arr[i];
-            SpannableString ss = new SpannableString(line);
-            ss.setSpan(new BulletSpan(bulletGap), 0, line.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            ssb.append(ss);
+            }
 
-            //avoid last "\n"
-            if (i + 1 < arr.length)
-                ssb.append("\n");
+        } catch (Exception e) {
+            e.printStackTrace();
 
         }
-
-        tv_first.setText(ssb);
         return root;
-
     }
 
-    private float dp(int dp) {
-        return getResources().getDisplayMetrics().density * dp;
+    private void findViews(View root) {
+        ll_sevenPrinciples = root.findViewById(R.id.ll_sevenPrinciples);
+        tv_humanityHeading = root.findViewById(R.id.tv_humanityHeading);
+        tv_ImpartialityHeading = root.findViewById(R.id.tv_ImpartialityHeading);
+        tv_NeutralityHeading = root.findViewById(R.id.tv_NeutralityHeading);
+        tv_IndependenceyHeading = root.findViewById(R.id.tv_IndependenceyHeading);
+        tv_VoluntaryService = root.findViewById(R.id.tv_VoluntaryService);
+        tv_UnityHeading = root.findViewById(R.id.tv_UnityHeading);
+        tv_UniversalityHeading = root.findViewById(R.id.tv_UniversalityHeading);
     }
-*/
 
+ /*   private void sharedPreferenceMethod ( int selectedThemeColor){
+        settings = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE);
+        editor = settings.edit();
+        editor.putInt("theme_color", selectedThemeColor);
+        editor.commit();
+    }*/
 
 }
