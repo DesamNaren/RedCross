@@ -2,6 +2,7 @@ package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,9 +39,11 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class DaywiseFragment extends Fragment {
 
-
+    int selectedThemeColor = -1;
     ProgressDialog pd;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
@@ -62,7 +65,47 @@ public class DaywiseFragment extends Fragment {
         if (GlobalDeclaration.counts != null) {
             setCountsForDashboard(GlobalDeclaration.counts);
         }
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
 
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                }
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
         pd.show();
@@ -126,7 +169,7 @@ public class DaywiseFragment extends Fragment {
         Collections.reverse(daywisecount);
         binding.rvDaywiselist.setHasFixedSize(true);
         binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
-        DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount);
+        DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount, selectedThemeColor);
         binding.rvDaywiselist.setAdapter(adapter1);
         adapter1.notifyDataSetChanged();
 

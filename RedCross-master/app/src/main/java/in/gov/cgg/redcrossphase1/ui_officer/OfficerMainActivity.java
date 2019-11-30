@@ -396,6 +396,23 @@ public class OfficerMainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void setFragment(String fargTag) {
+
+        if (fargTag.equalsIgnoreCase("DaywiseFragment")) {
+            selectedFragment = new DaywiseFragment();
+        } else if (fargTag.equalsIgnoreCase("OfficerHomeFragment")) {
+            selectedFragment = new OfficerHomeFragment();
+        } else if (fargTag.equalsIgnoreCase("AllDistrictsFragment")) {
+            selectedFragment = new AllDistrictsFragment();
+        } else if (fargTag.equalsIgnoreCase("PrivacyPolicyFragment")) {
+            selectedFragment = new PrivacyPolicyFragment();
+        } else if (fargTag.equalsIgnoreCase("AllMandalsFragment")) {
+            selectedFragment = new AllMandalsFragment();
+        } else {
+            GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
+            selectedFragment = new OfficerHomeFragment();
+        }
+    }
     //call this method for selection of themes in menu
     private void showThemePicker() {
         selectedThemeColor = -1;
@@ -440,8 +457,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -457,7 +475,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -473,7 +493,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -489,7 +511,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -505,7 +529,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -521,7 +547,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -537,7 +565,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
@@ -553,7 +583,9 @@ public class OfficerMainActivity extends AppCompatActivity {
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
-
+                    setFragment(GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
