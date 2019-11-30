@@ -113,6 +113,9 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     args.putString("did", String.valueOf(data_dashbord.get(position).getId()));
                     frag.setArguments(args);
                     GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                    GlobalDeclaration.type = "";
+                    GlobalDeclaration.leveDName = data_dashbord.get(position).getName();
+
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
                 } else if (type.equalsIgnoreCase("m")) {
@@ -125,6 +128,8 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     args.putString("mid", String.valueOf(data_dashbord.get(position).getId()));
                     frag.setArguments(args);
                     GlobalDeclaration.localMid = data_dashbord.get(position).getId();
+                    GlobalDeclaration.type = "";
+                    GlobalDeclaration.leveMName = data_dashbord.get(position).getName();
 
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
@@ -139,49 +144,15 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     args.putString("vid", String.valueOf(allDistricts.get(position).getId()));
                     frag.setArguments(args);
                     GlobalDeclaration.localVid = data_dashbord.get(position).getId();
+                    GlobalDeclaration.type = "";
+                    GlobalDeclaration.leveVName = data_dashbord.get(position).getName();
+
 
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                             frag).addToBackStack(null).commit();
 
                 }
 
-            }
-        });
-//        holder.ll_jrc.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                if (type.equalsIgnoreCase("v")) {
-////
-////                    GlobalDeclaration.type = "JRC";
-////                }
-////            }
-////        });
-////        holder.ll_yrc.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                if (type.equalsIgnoreCase("v")) {
-////
-////                    GlobalDeclaration.type = "YRC";
-////                }
-////            }
-////        });
-////        holder.ll_membership.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                if (type.equalsIgnoreCase("v")) {
-////
-////                    GlobalDeclaration.type = "Membership";
-////                }
-////            }
-////        });
-
-        holder.ll_total.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (type.equalsIgnoreCase("v")) {
-
-                    GlobalDeclaration.type = "";
-                }
             }
         });
     }

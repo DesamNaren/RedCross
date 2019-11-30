@@ -313,7 +313,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         });
 
 
-
         ll_jrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -364,8 +363,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                             ll_yrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                             ll_lm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                         }
-
-
 
 
                     }
@@ -606,7 +603,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                         }
 
 
-
                     }
                     bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                             observe(getActivity(), new Observer<List<BloodGroups>>() {
@@ -749,7 +745,15 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                     @Override
                     public void onChanged(@Nullable List<Last10day> last10dayList) {
                         if (last10dayList != null) {
-                            generateDataLine(last10dayList);
+                            try {
+                                if (last10dayList.size() > 2) {
+                                    generateDataLine(last10dayList);
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+
+                            }
                         }
                     }
                 });
@@ -983,8 +987,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         ll_nameenrollRankBottom = root.findViewById(R.id.ll_nameenrollRankBottom);
 
 
-
-
     }
 
     private void setDataForTopList(List<Top5> top5List) {
@@ -1139,6 +1141,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             stringList.add(ageList.get(i).getDate());
         }
         //final String[] months = new String[]{"Jan", "Feb", "Mar", "Apr","March","test"};
+
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
@@ -1147,36 +1150,42 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         };
 
-        LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
-        mv.setChartView(lineChart);
-        lineChart.setMarker(mv);
+        try {
+            LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+            mv.setChartView(lineChart);
+            lineChart.setMarker(mv);
+
+            xAxis.setGranularity(1f);
+            xAxis.setValueFormatter(formatter);
+
+            YAxis yAxisRight = lineChart.getAxisRight();
+            yAxisRight.setEnabled(false);
+
+            YAxis yAxisLeft = lineChart.getAxisLeft();
+            yAxisLeft.setGranularity(1f);
+
+            // get the legend (only possible after setting data)
+            Legend l = lineChart.getLegend();
+            l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+            l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+            l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+            l.setDrawInside(false);
+            l.setXEntrySpace(7f);
+            l.setYEntrySpace(0f);
+            l.setYOffset(0f);
 
 
-        xAxis.setGranularity(1f);
-        xAxis.setValueFormatter(formatter);
-
-        YAxis yAxisRight = lineChart.getAxisRight();
-        yAxisRight.setEnabled(false);
-
-        YAxis yAxisLeft = lineChart.getAxisLeft();
-        yAxisLeft.setGranularity(1f);
-
-        // get the legend (only possible after setting data)
-        Legend l = lineChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
+            LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
+            lineChart.setData(data);
+            lineChart.getDescription().setEnabled(false);
+            lineChart.animateX(1500);
+            lineChart.invalidate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-        LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
-        lineChart.setData(data);
-        lineChart.getDescription().setEnabled(false);
-        lineChart.animateX(1500);
-        lineChart.invalidate();
+
     }
 
     public static class DayAxisValueFormatter extends ValueFormatter {

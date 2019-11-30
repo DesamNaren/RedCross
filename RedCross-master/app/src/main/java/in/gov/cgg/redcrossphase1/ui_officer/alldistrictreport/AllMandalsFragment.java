@@ -71,6 +71,24 @@ public class AllMandalsFragment extends Fragment {
         binding.searchView.setQueryHint("Search By Name");
 */
         binding.customCount.llPicker.setVisibility(View.GONE);
+        binding.customCount.cvName.setVisibility(View.VISIBLE);
+
+
+//        if (GlobalDeclaration.role != null) {
+//            if (GlobalDeclaration.role.contains("D")) {
+//                binding.customCount.cvName.setVisibility(View.GONE);
+//            } else {
+//                binding.customCount.cvName.setVisibility(View.GONE);
+//            }
+//
+//        }  else {
+//            binding.customCount.cvName.setVisibility(View.GONE);
+//        }
+        if (GlobalDeclaration.leveDName != null) {
+            binding.customCount.tvlevelname.setText(GlobalDeclaration.leveDName);
+        } else {
+            binding.customCount.cvName.setVisibility(View.GONE);
+        }
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
@@ -78,35 +96,43 @@ public class AllMandalsFragment extends Fragment {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                 }
                 binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
@@ -115,20 +141,34 @@ public class AllMandalsFragment extends Fragment {
                 binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
+
             }
-        } catch (Resources.NotFoundException e) {
+        } catch (
+                Resources.NotFoundException e) {
             e.printStackTrace();
         }
 
-        pd = new ProgressDialog(getActivity());
+        pd = new
+
+                ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
         pd.show();
         allDistrictsViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).
-                        get(AllDistrictsViewModel.class);
-        Objects.requireNonNull(getActivity()).setTitle("Mandal wise");
+                ViewModelProviders.of(this, new
 
-        if (getArguments() != null) {
+                        CustomDistricClass(getActivity(), "alldistrict")).
+
+                        get(AllDistrictsViewModel.class);
+        Objects.requireNonNull(
+
+                getActivity()).
+
+                setTitle("Mandal wise");
+
+        if (
+
+                getArguments() != null) {
             value = getArguments().getString("did");
         } else {
             if (!GlobalDeclaration.role.contains("D")) {
@@ -140,9 +180,11 @@ public class AllMandalsFragment extends Fragment {
         }
 
         allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
+
                 observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
                     @Override
-                    public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+                    public void onChanged
+                            (@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
                         if (allDistrictList != null) {
                             setDataforRV(allDistrictList);
                             setCountsForDashboard(allDistrictList);
@@ -175,7 +217,8 @@ public class AllMandalsFragment extends Fragment {
 
     }
 
-    private void setCountsForDashboard(List<StatelevelDistrictViewCountResponse> dashboardCountResponse) {
+    private void setCountsForDashboard
+            (List<StatelevelDistrictViewCountResponse> dashboardCountResponse) {
         if (dashboardCountResponse != null) {
             int total = 0, jrc = 0, yrc = 0, m = 0;
             for (int i = 0; i < dashboardCountResponse.size(); i++) {
@@ -188,6 +231,7 @@ public class AllMandalsFragment extends Fragment {
             binding.customCount.tvTotalcount.setText(String.valueOf(total));
             binding.customCount.tvYrccount.setText(String.valueOf(yrc));
             binding.customCount.tvLmcount.setText(String.valueOf(m));
+
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }

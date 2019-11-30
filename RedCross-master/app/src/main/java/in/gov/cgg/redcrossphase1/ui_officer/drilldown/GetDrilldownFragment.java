@@ -66,19 +66,26 @@ public class GetDrilldownFragment extends Fragment {
         searchView = root.findViewById(R.id.searchView);
 
         if (getArguments() != null) {
-            mid = getArguments().getString("mid");
-            did = getArguments().getString("did");
-            vid = getArguments().getString("vid");
-        } else {
-            if (!GlobalDeclaration.role.contains("D")) {
-                did = String.valueOf(GlobalDeclaration.localDid);
-                mid = String.valueOf(GlobalDeclaration.localMid);
-                vid = String.valueOf(GlobalDeclaration.localVid);
+            if (getArguments().getString("mid") != null) {
+                mid = getArguments().getString("mid");
             } else {
-                did = GlobalDeclaration.districtId;
-            }
+                mid = String.valueOf(GlobalDeclaration.localMid);
 
+            }
+            if (getArguments().getString("did") != null) {
+                did = getArguments().getString("did");
+            } else {
+                did = String.valueOf(GlobalDeclaration.localDid);
+
+            }
+            if (getArguments().getString("vid") != null) {
+
+                vid = getArguments().getString("vid");
+            } else {
+                vid = String.valueOf(GlobalDeclaration.localVid);
+            }
         }
+
         ll_drilldown = root.findViewById(R.id.ll_drilldown);
         loadDrilldown();
         loaTheam();
@@ -113,6 +120,7 @@ public class GetDrilldownFragment extends Fragment {
             ll_drilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
         }
     }
+
     private void loadDrilldown() {
 
         pd = new ProgressDialog(getActivity());
@@ -136,27 +144,39 @@ public class GetDrilldownFragment extends Fragment {
 
 
                         StudentListBean studentListBean = new StudentListBean();
-                        if (studentList.get(position).get(0) == null) {
-                            studentListBean.setDisrtict("");
-                        } else {
-                            studentListBean.setDisrtict(studentList.get(position).get(0));
-                        }
+//                        if (studentList.get(position).get(0) == null) {
+//                            studentListBean.setDisrtict("");
+//                        } else {
+//                            studentListBean.setDisrtict(studentList.get(position).get(0));
+//                        }
 
-                        if (studentList.get(position).get(1) == null) {
+
+                        if (studentList.get(position).get(0) == null) {
                             studentListBean.setMandal("");
                         } else {
-                            studentListBean.setMandal(studentList.get(position).get(1));
+                            studentListBean.setMandal(studentList.get(position).get(0));
                         }
-                        if (studentList.get(position).get(2) == null) {
+
+
+                        if (studentList.get(position).get(1) == null) {
                             studentListBean.setVillage("");
                         } else {
-                            studentListBean.setVillage(studentList.get(position).get(2));
+                            studentListBean.setVillage(studentList.get(position).get(1));
+                        }
+
+
+                        if (studentList.get(position).get(2) == null) {
+                            studentListBean.setMemberId("");
+                        } else {
+                            studentListBean.setMemberId(studentList.get(position).get(2));
                         }
                         if (studentList.get(position).get(3) == null) {
                             studentListBean.setName("");
                         } else {
                             studentListBean.setName(studentList.get(position).get(3));
                         }
+
+
                         if (studentList.get(position).get(4) == null) {
                             studentListBean.setGender("");
                         } else {
@@ -199,13 +219,17 @@ public class GetDrilldownFragment extends Fragment {
                         } else {
                             studentListBean.setSchooltype(studentList.get(position).get(11));
                         }
-
+                        if (studentList.get(position).get(12) == null) {
+                            studentListBean.setEndDate("");
+                        } else {
+                            studentListBean.setEndDate(studentList.get(position).get(12));
+                        }
                         studentListBeanList.add(studentListBean);
                     }
 
                     rv_rilldown.setHasFixedSize(true);
                     rv_rilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    adapter1 = new DrillDownAdapter(getActivity(), headersList, studentListBeanList);
+                    adapter1 = new DrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
                     rv_rilldown.setAdapter(adapter1);
                     adapter1.notifyDataSetChanged();
                     pd.dismiss();

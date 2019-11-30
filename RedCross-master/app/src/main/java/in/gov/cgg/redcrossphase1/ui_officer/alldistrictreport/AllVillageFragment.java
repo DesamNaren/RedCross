@@ -46,7 +46,7 @@ public class AllVillageFragment extends Fragment {
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    private VillageLevelAdapter adapter1;
+    private LevelAdapter adapter1;
     int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
@@ -68,6 +68,7 @@ public class AllVillageFragment extends Fragment {
         binding.searchView.setQueryHint("Search By Name");*/
 
         binding.customCount.llPicker.setVisibility(View.GONE);
+        binding.customCount.cvName.setVisibility(View.VISIBLE);
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
@@ -75,31 +76,38 @@ public class AllVillageFragment extends Fragment {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
@@ -112,6 +120,7 @@ public class AllVillageFragment extends Fragment {
                 binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
             }
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
@@ -179,6 +188,11 @@ public class AllVillageFragment extends Fragment {
             binding.customCount.tvTotalcount.setText(String.valueOf(total));
             binding.customCount.tvYrccount.setText(String.valueOf(yrc));
             binding.customCount.tvLmcount.setText(String.valueOf(m));
+            if (GlobalDeclaration.leveMName != null) {
+                binding.customCount.tvlevelname.setText(GlobalDeclaration.leveMName);
+            } else {
+                binding.customCount.cvName.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -186,7 +200,7 @@ public class AllVillageFragment extends Fragment {
         if (allDistrictList.size() > 0) {
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
+            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

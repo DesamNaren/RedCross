@@ -14,6 +14,24 @@ public class StudentListBean {
     private String className;
     private String schoolname;
     private String schooltype;
+    private String memberId;
+    private String endDate;
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
     public String getDisrtict() {
         return Disrtict;

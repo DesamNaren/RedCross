@@ -47,6 +47,8 @@ import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class OfficerMainActivity extends AppCompatActivity {
 
@@ -419,6 +421,7 @@ public class OfficerMainActivity extends AppCompatActivity {
             selectedFragment = new OfficerHomeFragment();
         }
     }
+
     //call this method for selection of themes in menu
     private void showThemePicker() {
         selectedThemeColor = -1;
@@ -609,43 +612,65 @@ public class OfficerMainActivity extends AppCompatActivity {
     }
 
     private void callHomeAlert() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(OfficerMainActivity.this);
-        final AlertDialog alertDialog1 = alertDialog.create();
-
-
-        alertDialog.setMessage("Do you want to logout ?");
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //alertDialog1.dismiss();
-                alertDialog1.dismiss();
-            }
-        });
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-//                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.putString("un", "");
-//                editor.putString("pw", "");
-//                editor.putBoolean("is", false);
-//                editor.apply();
-                startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
-                finish();
-            }
-        });
-
-//        alertDialog.setNeutralButton("JUST LOGOUT", new DialogInterface.OnClickListener() {
+//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(OfficerMainActivity.this);
+//        final AlertDialog alertDialog1 = alertDialog.create();
+//
+//
+//        alertDialog.setMessage("Do you want to logout ?");
+//        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialogInterface, int i) {
 //                //alertDialog1.dismiss();
+//                alertDialog1.dismiss();
+//            }
+//        });
+//        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+////                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+////                SharedPreferences.Editor editor = sharedpreferences.edit();
+////                editor.putString("un", "");
+////                editor.putString("pw", "");
+////                editor.putBoolean("is", false);
+////                editor.apply();
 //                startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
 //                finish();
 //            }
 //        });
+//
+////        alertDialog.setNeutralButton("JUST LOGOUT", new DialogInterface.OnClickListener() {
+////            @Override
+////            public void onClick(DialogInterface dialogInterface, int i) {
+////                //alertDialog1.dismiss();
+////                startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
+////                finish();
+////            }
+////        });
+//
+//        alertDialog.show();
+        final PrettyDialog dialog = new PrettyDialog(this);
+        dialog
+                .setTitle("Red cross")
+                .setMessage("Do you want to Logout?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
+                        finish();
+                    }
+                })
+                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-        alertDialog.show();
+        dialog.show();
     }
 
 

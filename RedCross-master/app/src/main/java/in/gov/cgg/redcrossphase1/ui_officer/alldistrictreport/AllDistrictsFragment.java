@@ -74,6 +74,7 @@ public class AllDistrictsFragment extends Fragment {
         binding.searchView.setQueryHint("Search By Name");*/
 
         binding.customCount.llPicker.setVisibility(View.VISIBLE);
+        binding.customCount.cvName.setVisibility(View.VISIBLE);
 
         GlobalDeclaration.home = false;
 
@@ -87,35 +88,43 @@ public class AllDistrictsFragment extends Fragment {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                 }
                 binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
@@ -168,44 +177,6 @@ public class AllDistrictsFragment extends Fragment {
                 });
 
 
-   /*     binding.searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-//                Snackbar.make(findViewById(R.id.container), "Query: " + query, Snackbar.LENGTH_LONG)
-//                        .show();
-//                Toast.makeText(Main2Activity.this,query,Toast.LENGTH_LONG).show();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                //  Toast.makeText(Main2Activity.this, newText, Toast.LENGTH_LONG).show();
-
-                if (adapter1 != null) {
-                    adapter1.filter(newText);
-                }
-                return true;
-            }
-        });
-
-
-
-        binding.searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-                binding.searchView.setVisibility(View.VISIBLE);
-                binding.searchView.setSuggestions(null);
-                binding.searchView.setHint("Search by Name");
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-                binding.searchView.setVisibility(View.GONE);
-            }
-        });*/
-
-
         return binding.getRoot();
 
     }
@@ -218,6 +189,7 @@ public class AllDistrictsFragment extends Fragment {
             binding.customCount.tvTotalcount.setText(String.valueOf(total));
             binding.customCount.tvYrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
             binding.customCount.tvLmcount.setText(String.valueOf(dashboardCountResponse.getMs()));
+
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }
@@ -234,19 +206,6 @@ public class AllDistrictsFragment extends Fragment {
 
         }
     }
-
-/*    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        if (adapter1 != null) {
-            adapter1.filter(newText);
-        }
-        return true;
-    }*/
 
 
     @Override
