@@ -105,6 +105,8 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
                 if (type.equalsIgnoreCase("d")) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
+
+                    GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
                     Fragment frag = new AllMandalsFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
@@ -116,6 +118,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                 } else if (type.equalsIgnoreCase("m")) {
 
                     FragmentActivity activity = (FragmentActivity) v.getContext();
+                    GlobalDeclaration.FARG_TAG = AllVillageFragment.class.getSimpleName();
                     Fragment frag = new AllVillageFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
@@ -129,6 +132,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                 } else if (type.equalsIgnoreCase("v")) {
 
                     FragmentActivity activity = (FragmentActivity) v.getContext();
+                    GlobalDeclaration.FARG_TAG = GetDrilldownFragment.class.getSimpleName();
                     Fragment frag = new GetDrilldownFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();

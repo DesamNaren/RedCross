@@ -135,9 +135,12 @@ dependencies {
     //Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    //Third party
     implementation 'com.chaos.view:pinview:1.4.3'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.github.mjn1369:prettydialog:1.0.4'
+
 
 
 }

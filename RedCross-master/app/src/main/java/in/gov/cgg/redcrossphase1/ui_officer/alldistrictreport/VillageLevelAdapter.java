@@ -30,13 +30,14 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
     int total;
     int selectedThemeColor = -1;
 
-    public VillageLevelAdapter(Context mCtx, List<StatelevelDistrictViewCountResponse> allDistricts, String type) {
+    public VillageLevelAdapter(Context mCtx, List<StatelevelDistrictViewCountResponse> allDistricts, String type, int selectedThemeColor) {
         this.mCtx = mCtx;
         this.type = type;
 
         this.allDistricts = allDistricts;
         this.data_dashbord = new ArrayList<StatelevelDistrictViewCountResponse>();
         this.data_dashbord.addAll(allDistricts);
+        this.selectedThemeColor = selectedThemeColor;
     }
 
     @NonNull
@@ -148,6 +149,7 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
 
     private void replaceFragment(int position, View v) {
         FragmentActivity activity = (FragmentActivity) v.getContext();
+        GlobalDeclaration.FARG_TAG = GetDrilldownFragment.class.getSimpleName();
         Fragment frag = new GetDrilldownFragment();
 //                String backStateName = frag.getClass().getName();
         Bundle args = new Bundle();

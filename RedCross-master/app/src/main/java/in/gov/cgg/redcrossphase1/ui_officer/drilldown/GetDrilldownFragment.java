@@ -80,79 +80,44 @@ public class GetDrilldownFragment extends Fragment {
 
         }
         ll_drilldown = root.findViewById(R.id.ll_drilldown);
-        try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-
-
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                }
-
-            }
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-
-   /*     searchView.setIconifiedByDefault(false);
-        searchView.setOnQueryTextListener(this);
-        searchView.setSubmitButtonEnabled(true);
-        searchView.setQueryHint("Search ");*/
-
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Loading ,Please wait");
-        pd.show();
-//
-//        drilldownViewmodel =
-//                ViewModelProviders.of(this).get(DrilldownViewmodel.class);
-//        Objects.requireNonNull(getActivity()).setTitle("Drilldown Report");
-//
-
-//        drilldownViewmodel.getHeaders().
-//                observe(getActivity(), new Observer<List<String>>() {
-//                    @Override
-//                    public void onChanged(@Nullable List<String> heaStringList) {
-//                        if (heaStringList != null) {
-//
-//                        }
-//                    }
-//                });
-//        drilldownViewmodel.getStudentList().
-//                observe(getActivity(), new Observer<List<List<String>>>() {
-//                    @Override
-//                    public void onChanged(@Nullable List<List<String>> stuListList) {
-//                        if (stuListList != null) {
-//
-//                        }
-//                    }
-//                });
-
         loadDrilldown();
+        loaTheam();
 
         return root;
     }
 
+    private void loaTheam() {
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                }
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+            ll_drilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+        }
+    }
     private void loadDrilldown() {
 
-
+        pd = new ProgressDialog(getActivity());
+        pd.setMessage("Loading ,Please wait");
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs(GlobalDeclaration.type, "3", did, mid, vid);
         Log.e("  url", call.request().url().toString());
@@ -254,7 +219,7 @@ public class GetDrilldownFragment extends Fragment {
 
             @Override
             public void onFailure(Call<DrillDownResponse> call, Throwable t) {
-
+                pd.dismiss();
                 t.printStackTrace();
             }
         });

@@ -186,7 +186,7 @@ public class AllVillageFragment extends Fragment {
         if (allDistrictList.size() > 0) {
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v");
+            adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

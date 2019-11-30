@@ -43,7 +43,9 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 
 public class OfficerMainActivity extends AppCompatActivity {
@@ -408,6 +410,10 @@ public class OfficerMainActivity extends AppCompatActivity {
             selectedFragment = new PrivacyPolicyFragment();
         } else if (fargTag.equalsIgnoreCase("AllMandalsFragment")) {
             selectedFragment = new AllMandalsFragment();
+        } else if (fargTag.equalsIgnoreCase("AllVillageFragment")) {
+            selectedFragment = new AllVillageFragment();
+        } else if (fargTag.equalsIgnoreCase("GetDrilldownFragment")) {
+            selectedFragment = new GetDrilldownFragment();
         } else {
             GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
             selectedFragment = new OfficerHomeFragment();
