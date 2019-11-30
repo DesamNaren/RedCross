@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class AllMandalsFragment extends Fragment {
 
 
@@ -44,6 +47,7 @@ public class AllMandalsFragment extends Fragment {
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
     private LevelAdapter adapter1;
+    int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
 
@@ -67,7 +71,54 @@ public class AllMandalsFragment extends Fragment {
         binding.searchView.setQueryHint("Search By Name");
 */
         binding.customCount.llPicker.setVisibility(View.GONE);
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
 
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                }
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
 
         pd = new ProgressDialog(getActivity());
         pd.setMessage("Loading ,Please wait");
@@ -146,7 +197,7 @@ public class AllMandalsFragment extends Fragment {
         if (allDistrictList.size() > 0) {
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m");
+            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

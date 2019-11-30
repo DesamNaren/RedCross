@@ -28,6 +28,7 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
     List<StatelevelDistrictViewCountResponse> allDistricts;
     String type;
     int total;
+    int selectedThemeColor = -1;
 
     public VillageLevelAdapter(Context mCtx, List<StatelevelDistrictViewCountResponse> allDistricts, String type) {
         this.mCtx = mCtx;
@@ -56,6 +57,44 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
         holder.tv_lmcunt.setText(String.valueOf(allDistricts.get(position).getMembership()));
         holder.tv_totalcount.setText(String.valueOf(total));
 
+        holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+        holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+        if (selectedThemeColor != -1) {
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+            }
+        }
         holder.ll_jrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,9 +183,9 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
 
     class DistrictViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_alldname, tv_jrcname, tv_yrcname, tv_lmname, tv_jrcount, tv_yrccount, tv_lmcunt, tv_totalcount;
+        TextView tv_alldname, tv_jrcname, tv_yrcname, tv_lmname, tv_jrcount, tv_yrccount, tv_lmcunt, tv_totalcount, tv_totaltext;
         CardView cd_district;
-        LinearLayout ll_jrc, ll_yrc, ll_membership, ll_total;
+        LinearLayout ll_jrc, ll_yrc, ll_membership, ll_total, ll_alldlist, ll_lm;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
@@ -164,8 +203,9 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
             ll_yrc = itemView.findViewById(R.id.ll_yrc);
             ll_membership = itemView.findViewById(R.id.ll_lm);
             ll_total = itemView.findViewById(R.id.ll_total);
-
-
+            ll_lm = itemView.findViewById(R.id.ll_lm);
+            ll_alldlist = itemView.findViewById(R.id.ll_alldlist);
+            tv_totaltext = itemView.findViewById(R.id.tv_totaltext);
         }
     }
 

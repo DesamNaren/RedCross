@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -36,10 +38,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class GetDrilldownFragment extends Fragment {
 
-
+    int selectedThemeColor = -1;
     RecyclerView rv_rilldown;
+    LinearLayout ll_drilldown;
     ProgressDialog pd;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
@@ -74,6 +79,38 @@ public class GetDrilldownFragment extends Fragment {
             }
 
         }
+        ll_drilldown = root.findViewById(R.id.ll_drilldown);
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                }
+
+            }
+        } catch (Resources.NotFoundException e) {
+            e.printStackTrace();
+        }
+
+
 
    /*     searchView.setIconifiedByDefault(false);
         searchView.setOnQueryTextListener(this);
