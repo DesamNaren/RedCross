@@ -43,7 +43,7 @@
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
 
-
+    <!--test-->
     <fragment
         android:id="@+id/nav_privacy"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment"
