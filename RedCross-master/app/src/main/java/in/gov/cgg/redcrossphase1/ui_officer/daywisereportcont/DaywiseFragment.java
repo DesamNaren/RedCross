@@ -102,6 +102,13 @@ public class DaywiseFragment extends Fragment {
                     binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                     binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
                 }
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
             }
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
