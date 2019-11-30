@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -169,9 +170,9 @@ public class OfficerMainActivity extends AppCompatActivity {
 
 
         if (GlobalDeclaration.username != null && GlobalDeclaration.designation != null) {
-            tv_name.setText("Welcome to" + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
+            tv_name.setText("Welcome to " + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
         } else {
-            tv_name.setText("Welcome to" + GlobalDeclaration.username);
+            tv_name.setText("Welcome to " + GlobalDeclaration.username);
 
         }
      /*   drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
@@ -235,7 +236,8 @@ public class OfficerMainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_backpress, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_backpress, menu);
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -246,17 +248,17 @@ public class OfficerMainActivity extends AppCompatActivity {
 //
 //                }else
                 if (menuItem.getItemId() == R.id.nav_daywise) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    // menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     GlobalDeclaration.FARG_TAG = DaywiseFragment.class.getSimpleName();
                     selectedFragment = new DaywiseFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
-                            return true;
-                        }
-                    });
+//                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//                        @Override
+//                        public boolean onMenuItemClick(MenuItem item) {
+//                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+//                            return true;
+//                        }
+//                    });
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_district) {
          /*           menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
@@ -293,8 +295,8 @@ public class OfficerMainActivity extends AppCompatActivity {
                             return true;
                         }
                     });
-                    GlobalDeclaration.FARG_TAG = TCFragment.class.getSimpleName();
-                    selectedFragment = new TCFragment();
+                    GlobalDeclaration.FARG_TAG = NewTCFragment.class.getSimpleName();
+                    selectedFragment = new NewTCFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_privacy) {

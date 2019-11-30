@@ -27,7 +27,12 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class TestChart extends AppCompatActivity {
 
@@ -47,9 +52,56 @@ public class TestChart extends AppCompatActivity {
 
         //  tfLight = Typeface.createFromAsset(getAssets(), "droid_serif.ttf");
 
-        generateDataPie();
-        generateDataBar(50);
-        // generateDataLine(50);
+        //generateDataPie();
+        // generateDataBar(50);
+        // sortDates();
+        // TEST(50);
+
+
+    }
+
+    private void sortDates() {
+//        List<String> values = new ArrayList<String>();
+//        values.add("30-03-2012");
+//        values.add("28-03-2013");
+//        values.add("31-03-2012");
+//        Collections.sort(values, new Comparator<String>() {
+//
+//            @Override
+//            public int compare(String arg0, String arg1) {
+//                SimpleDateFormat format = new SimpleDateFormat(
+//                        "dd-MM-yyyy");
+//                int compareResult = 0;
+//                Date arg0Date = null,arg1Date = null;
+//                try {
+//                    arg0Date = format.parse(arg0);
+//                    arg1Date = format.parse(arg1);
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(TestChart.this, "exception", Toast.LENGTH_SHORT).show();
+//                }
+//                compareResult = arg0Date.compareTo(arg1Date);
+//                return compareResult;
+//            }
+//        });
+
+        List<String> values = new ArrayList<String>();
+        values.add("30-03-2012");
+        values.add("28-03-2013");
+        values.add("31-03-2012");
+        class StringDateComparator implements Comparator<String> {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+            public int compare(String lhs, String rhs) {
+                try {
+                    return dateFormat.parse(lhs).compareTo(dateFormat.parse(rhs));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }
+        }
+        Collections.sort(values, new StringDateComparator());
 
 
     }

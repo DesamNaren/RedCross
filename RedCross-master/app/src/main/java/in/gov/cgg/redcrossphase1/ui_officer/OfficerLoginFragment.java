@@ -156,12 +156,16 @@ public class OfficerLoginFragment extends Fragment {
                             String role = response.body().get("role").toString();
                             String districtId = response.body().get("districtId").toString();
                             String userID = response.body().get("userID").toString();
-                            //String designation = response.body().get("designation").toString();
+                            if (response.body().get("designation") != null) {
+                                String designation = String.valueOf(response.body().get("designation"));
+                                designation = designation.replace("\"", "");
+                                GlobalDeclaration.designation = designation;
+
+                            }
                             GlobalDeclaration.role = role;
                             GlobalDeclaration.districtId = districtId;
                             GlobalDeclaration.userID = userID;
                             GlobalDeclaration.username = name;
-                            //GlobalDeclaration.designation = designation;
 
                             if (locaisChecked) {
                                 storeinSharedPrefs();

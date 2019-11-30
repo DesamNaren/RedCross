@@ -1,10 +1,15 @@
 package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,6 +23,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +36,7 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 
 public class DaywiseFragment extends Fragment {
 
@@ -32,6 +44,8 @@ public class DaywiseFragment extends Fragment {
     ProgressDialog pd;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
+    private List<DayWiseReportCountResponse> reveList = new ArrayList<>();
+
     // private RecyclerView rv_district;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -107,6 +121,9 @@ public class DaywiseFragment extends Fragment {
 
     private void setDataforRV(List<DayWiseReportCountResponse> daywisecount) {
 
+        //int r= sortDatesHere();
+
+        Collections.reverse(daywisecount);
         binding.rvDaywiselist.setHasFixedSize(true);
         binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
         DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount);
@@ -114,5 +131,67 @@ public class DaywiseFragment extends Fragment {
         adapter1.notifyDataSetChanged();
 
 
+    }
+
+    private int sortDatesHere() {
+        List<String> values = new ArrayList<String>();
+        values.add("30-03-2012");
+        values.add("28-03-2013");
+        values.add("31-03-2012");
+        Collections.sort(values, new Comparator<String>() {
+
+            @Override
+            public int compare(String arg0, String arg1) {
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                int compareResult = 0;
+                try {
+                    Date arg0Date = format.parse(arg0);
+                    Date arg1Date = format.parse(arg1);
+                    compareResult = arg0Date.compareTo(arg1Date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    compareResult = arg0.compareTo(arg1);
+                    Log.e("sorted", String.valueOf(compareResult));
+                }
+                return compareResult;
+            }
+        });
+        return 0;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
+        inflater.inflate(R.menu.activity_backpress, menu);
+        MenuItem logout = menu.findItem(R.id.logout);
+        logout.setIcon(R.drawable.ic_home_white_48dp);
+
+        logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // Not implemented here
+                return false;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

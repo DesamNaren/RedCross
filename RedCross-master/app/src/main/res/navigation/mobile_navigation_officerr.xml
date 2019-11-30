@@ -60,8 +60,8 @@
         tools:layout="@layout/fragment_aldistrict" />
     <fragment
         android:id="@+id/nav_tc"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.TCFragment"
-        tools:layout="@layout/fragment_tc" />
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.NewTCFragment"
+        tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_privacy"
         android:name="in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment"
