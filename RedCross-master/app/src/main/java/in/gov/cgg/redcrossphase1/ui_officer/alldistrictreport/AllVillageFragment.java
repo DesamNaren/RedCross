@@ -46,7 +46,7 @@ public class AllVillageFragment extends Fragment {
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    private LevelAdapter adapter1;
+    private VillageLevelAdapter adapter1;
     int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
@@ -200,7 +200,7 @@ public class AllVillageFragment extends Fragment {
         if (allDistrictList.size() > 0) {
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
+            adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

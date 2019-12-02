@@ -291,7 +291,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    //menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
@@ -304,7 +304,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_privacy) {
-                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    // menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
@@ -416,10 +416,14 @@ public class OfficerMainActivity extends AppCompatActivity {
             selectedFragment = new AllVillageFragment();
         } else if (fargTag.equalsIgnoreCase("GetDrilldownFragment")) {
             selectedFragment = new GetDrilldownFragment();
+
+        } else if (fargTag.equalsIgnoreCase("NewTCFragment")) {
+            selectedFragment = new NewTCFragment();
         } else {
             GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
             selectedFragment = new OfficerHomeFragment();
         }
+
     }
 
     //call this method for selection of themes in menu

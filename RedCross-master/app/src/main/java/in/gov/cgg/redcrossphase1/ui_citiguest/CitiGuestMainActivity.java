@@ -37,9 +37,9 @@ import com.google.android.material.navigation.NavigationView;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
-import in.gov.cgg.redcrossphase1.ui_officer.NewTCFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class CitiGuestMainActivity extends AppCompatActivity {
 
@@ -153,13 +153,13 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.nav_doateblood) {
                     showChangeLangDialog();
                 } else if (menuItem.getItemId() == R.id.nav_privacy) {
-                    GlobalDeclaration.FARG_TAG = PrivacyPolicyFragment.class.getSimpleName();
-                    selectedFragment = new PrivacyPolicyFragment();
+                    GlobalDeclaration.FARG_TAG = CitiPrivacyPolicyFragment.class.getSimpleName();
+                    selectedFragment = new CitiPrivacyPolicyFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
-                    GlobalDeclaration.FARG_TAG = NewTCFragment.class.getSimpleName();
-                    selectedFragment = new NewTCFragment();
+                    GlobalDeclaration.FARG_TAG = CitiNewTCFragment.class.getSimpleName();
+                    selectedFragment = new CitiNewTCFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_continueasGuestthemes) {
@@ -477,10 +477,10 @@ public class CitiGuestMainActivity extends AppCompatActivity {
             selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("LocateBloodbanksFragment")) {
             selectedFragment = new LocateBloodbanksFragment();
-        } else if (fargTag.equalsIgnoreCase("NewTCFragment")) {
-            selectedFragment = new NewTCFragment();
-        } else if (fargTag.equalsIgnoreCase("PrivacyPolicyFragment")) {
-            selectedFragment = new PrivacyPolicyFragment();
+        } else if (fargTag.equalsIgnoreCase("CitiNewTCFragment")) {
+            selectedFragment = new CitiNewTCFragment();
+        } else if (fargTag.equalsIgnoreCase("CitiPrivacyPolicyFragment")) {
+            selectedFragment = new CitiPrivacyPolicyFragment();
         } else {
             GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
             selectedFragment = new SevenFundamentalFragment();
@@ -489,6 +489,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_backpress, menu);
 
@@ -540,28 +541,28 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 //        alertDialog.show();
 //    }
     public void onClickExit() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(CitiGuestMainActivity.this);
-        final AlertDialog alertDialog1 = alertDialog.create();
+        final PrettyDialog dialog = new PrettyDialog(this);
+        dialog
+                .setTitle("")
+                .setMessage("Do you want to Logout?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        startActivity(new Intent(CitiGuestMainActivity.this, TabLoginActivity.class));
+                        finish();
+                    }
+                })
+                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-
-        alertDialog.setMessage("Do you want to exit ?");
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //alertDialog1.dismiss();
-                alertDialog1.dismiss();
-            }
-        });
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-
-                startActivity(new Intent(CitiGuestMainActivity.this, TabLoginActivity.class));
-                finish();
-            }
-        });
-        alertDialog.show();
+        dialog.show();
     }
 
 

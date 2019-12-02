@@ -96,43 +96,43 @@ public class VillageLevelAdapter extends RecyclerView.Adapter<VillageLevelAdapte
                 holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
             }
         }
-        holder.ll_jrc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (type.equalsIgnoreCase("v")) {
-                    replaceFragment(position, v);
-                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
-                    GlobalDeclaration.type = "JRC";
-                }
-
-            }
-        });
-        holder.ll_yrc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (type.equalsIgnoreCase("v")) {
-                    replaceFragment(position, v);
-                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
-                    GlobalDeclaration.type = "YRC";
-                }
-
-            }
-        });
-        holder.ll_yrc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (type.equalsIgnoreCase("v")) {
-                    replaceFragment(position, v);
-                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
-                    GlobalDeclaration.type = "Membership";
-                }
-
-            }
-        });
-        holder.ll_total.setOnClickListener(new View.OnClickListener() {
+//        holder.ll_jrc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (type.equalsIgnoreCase("v")) {
+//                    replaceFragment(position, v);
+//                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
+//                    GlobalDeclaration.type = "JRC";
+//                }
+//
+//            }
+//        });
+//        holder.ll_yrc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (type.equalsIgnoreCase("v")) {
+//                    replaceFragment(position, v);
+//                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
+//                    GlobalDeclaration.type = "YRC";
+//                }
+//
+//            }
+//        });
+//        holder.ll_lm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (type.equalsIgnoreCase("v")) {
+//                    replaceFragment(position, v);
+//                    GlobalDeclaration.localVid = data_dashbord.get(position).getId();
+//                    GlobalDeclaration.type = "Membership";
+//                }
+//
+//            }
+//        });
+        holder.cd_district.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

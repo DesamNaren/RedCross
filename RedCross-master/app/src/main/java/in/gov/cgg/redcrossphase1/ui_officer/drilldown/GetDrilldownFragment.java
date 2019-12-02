@@ -74,9 +74,10 @@ public class GetDrilldownFragment extends Fragment {
             }
             if (getArguments().getString("did") != null) {
                 did = getArguments().getString("did");
-            } else {
+            } else if (!(GlobalDeclaration.localDid == null)) {
                 did = String.valueOf(GlobalDeclaration.localDid);
-
+            } else {
+                did = GlobalDeclaration.districtId;
             }
             if (getArguments().getString("vid") != null) {
 

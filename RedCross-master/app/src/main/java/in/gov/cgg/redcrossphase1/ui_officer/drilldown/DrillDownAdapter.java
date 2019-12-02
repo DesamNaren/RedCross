@@ -44,6 +44,11 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
 
     @Override
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
+//        if(GlobalDeclaration.type.equalsIgnoreCase("Membership")){
+//
+//        }else{
+//
+//        }
         //  holder.htv_district.setText(headStringList.get(0)); //district
         holder.htv_mandal.setText(headStringList.get(0));
         holder.htv_village.setText(headStringList.get(1));
@@ -115,7 +120,7 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
         } else {
             for (StudentListBean wp : studentList) {
 //
-                if (wp.getDisrtict().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                if (
                         wp.getMandal().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
                         wp.getVillage().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
                         wp.getName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
