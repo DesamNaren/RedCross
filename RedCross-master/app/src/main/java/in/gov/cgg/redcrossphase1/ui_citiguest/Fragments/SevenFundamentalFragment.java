@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.content.SharedPreferences;
 import android.os.Build;

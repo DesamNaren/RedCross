@@ -12,35 +12,35 @@
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_whoweare"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_lifetimemember"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_blooddonorreg"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_hnreg"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_onlinedonations"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_training"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_doateblood"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_hn"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.WhoWeAreFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment"
         tools:layout="@layout/fragment_tc" />
 
     <!--test-->
@@ -50,31 +50,31 @@
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_Structure"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.OrgonamFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.OrgonamFragment"
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_locatebloodbanks"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.LocateBloodbanksFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment"
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_History"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.HistoryFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_Contact"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.ContactusFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_Vision"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.VisionFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_mission"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.MissionFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment"
         tools:layout="@layout/fragment_tc" />
     <fragment
         android:id="@+id/nav_Principles"
-        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.SevenFundamentalFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment"
         tools:layout="@layout/fragment_tc" />
 
 </navigation>

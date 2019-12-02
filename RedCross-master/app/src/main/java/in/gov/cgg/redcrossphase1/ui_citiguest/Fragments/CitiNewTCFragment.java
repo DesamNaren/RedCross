@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Build;
@@ -17,11 +17,11 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 
-public class OrgonamFragment extends Fragment {
+public class CitiNewTCFragment extends Fragment {
 
     private WebView wb;
 
-    // private TextView tv_first;
+    //private TextView tv_first;
     private ProgressDialog pd;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -30,13 +30,14 @@ public class OrgonamFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_pp, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle("Organogram");
+        Objects.requireNonNull(getActivity()).setTitle("Terms & Conditions");
 
         //tv_first = root.findViewById(R.id.text1);
         wb = root.findViewById(R.id.help_webview);
 
 
-        String url = "http://uat2.cgg.gov.in:8081/redcross/aboutus";
+        String url = "https://www.cgg.gov.in/mgov-terms-conditions";
+        //String url = "http://mobileapps.cgg.gov.in/privacy.html";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";
 
 
@@ -47,7 +48,7 @@ public class OrgonamFragment extends Fragment {
         pd.show();
         wb.setWebViewClient(new MyWebViewHelpClient());
         wb.getSettings().setJavaScriptEnabled(true);
-        wb.getSettings().setBuiltInZoomControls(true);
+//        wb.getSettings().setBuiltInZoomControls(true);
         wb.loadUrl(url);
 
 
@@ -100,5 +101,42 @@ public class OrgonamFragment extends Fragment {
 
         }
     }
+
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setHasOptionsMenu(true);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
+//        inflater.inflate(R.menu.activity_backpress, menu);
+//        MenuItem logout = menu.findItem(R.id.logout);
+//        logout.setIcon(R.drawable.ic_home_white_48dp);
+//
+//        logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));
+//                return false;
+//            }
+//        });
+//
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_search:
+//                // Not implemented here
+//                return false;
+//            default:
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
 }

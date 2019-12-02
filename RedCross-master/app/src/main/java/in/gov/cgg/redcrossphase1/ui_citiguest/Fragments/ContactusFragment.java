@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +26,8 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.Contactus_adaptor;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 
 import static android.content.Context.MODE_PRIVATE;
 

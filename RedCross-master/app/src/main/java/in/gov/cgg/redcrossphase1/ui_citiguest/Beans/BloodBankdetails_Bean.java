@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Beans;
 
 public class BloodBankdetails_Bean {
     private String distictName;

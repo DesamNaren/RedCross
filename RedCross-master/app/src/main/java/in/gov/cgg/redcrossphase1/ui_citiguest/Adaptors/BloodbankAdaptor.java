@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodBankdetails_Bean;
 
 public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myViewHolder> {
 
@@ -21,7 +22,7 @@ public class BloodbankAdaptor extends RecyclerView.Adapter<BloodbankAdaptor.myVi
     int selectedThemeColor = -1;
 
 
-    BloodbankAdaptor(ArrayList<BloodBankdetails_Bean> arrayList, Context context, int selectedThemeColor) {
+    public BloodbankAdaptor(ArrayList<BloodBankdetails_Bean> arrayList, Context context, int selectedThemeColor) {
         this.arrayList = arrayList;
         this.context = context;
         this.selectedThemeColor = selectedThemeColor;

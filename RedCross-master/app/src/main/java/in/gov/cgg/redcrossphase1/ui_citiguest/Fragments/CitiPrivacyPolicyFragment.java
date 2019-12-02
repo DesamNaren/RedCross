@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Build;
@@ -17,7 +17,7 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 
-public class CitiNewTCFragment extends Fragment {
+public class CitiPrivacyPolicyFragment extends Fragment {
 
     private WebView wb;
 
@@ -30,13 +30,13 @@ public class CitiNewTCFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_pp, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle("Terms & Conditions");
+        Objects.requireNonNull(getActivity()).setTitle("Privacy Policy");
 
         //tv_first = root.findViewById(R.id.text1);
         wb = root.findViewById(R.id.help_webview);
 
 
-        String url = "https://www.cgg.gov.in/mgov-terms-conditions";
+        String url = "https://www.cgg.gov.in/mgov-privacy-policy";
         //String url = "http://mobileapps.cgg.gov.in/privacy.html";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";
 
