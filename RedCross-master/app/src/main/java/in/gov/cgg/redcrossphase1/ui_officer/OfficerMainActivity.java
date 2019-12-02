@@ -292,26 +292,26 @@ public class OfficerMainActivity extends AppCompatActivity {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
                     //menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
-                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
-                            return true;
-                        }
-                    });
+//                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//                        @Override
+//                        public boolean onMenuItemClick(MenuItem item) {
+//                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+//                            return true;
+//                        }
+//                    });
                     GlobalDeclaration.FARG_TAG = NewTCFragment.class.getSimpleName();
                     selectedFragment = new NewTCFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_privacy) {
                     // menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
-                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
-                            return true;
-                        }
-                    });
+//                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//                        @Override
+//                        public boolean onMenuItemClick(MenuItem item) {
+//                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+//                            return true;
+//                        }
+//                    });
                     GlobalDeclaration.FARG_TAG = PrivacyPolicyFragment.class.getSimpleName();
                     selectedFragment = new PrivacyPolicyFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);

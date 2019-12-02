@@ -25,7 +25,7 @@ public class VisionFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
+        Objects.requireNonNull(getActivity()).setTitle("Vision");
 
         View root = inflater.inflate(R.layout.fragment_vision, container, false);
         findViews(root);

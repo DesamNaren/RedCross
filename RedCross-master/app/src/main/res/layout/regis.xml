@@ -24,7 +24,7 @@
                     android:layout_marginTop="20dp"
                     android:padding="10dp"
                     android:visibility="visible"
-                    app:srcCompat="@drawable/redcross_logo" />
+                    app:srcCompat="@drawable/redcross_logo_for_dashboard" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                 android:layout_gravity="bottom"
                 android:background="@color/colorBackground"
                 android:padding="@dimen/dp_5"
-                android:src="@drawable/footer">
+                android:src="@drawable/footernew">
 
             </ImageView>
         </LinearLayout>

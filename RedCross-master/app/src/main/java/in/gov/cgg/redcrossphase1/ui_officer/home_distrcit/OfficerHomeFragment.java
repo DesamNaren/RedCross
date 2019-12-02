@@ -746,7 +746,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
                     public void onChanged(@Nullable List<Last10day> last10dayList) {
                         if (last10dayList != null) {
                             try {
-                                if (last10dayList.size() > 2) {
+                                if (last10dayList.size() > 1) {
                                     generateDataLine(last10dayList);
                                 }
 
