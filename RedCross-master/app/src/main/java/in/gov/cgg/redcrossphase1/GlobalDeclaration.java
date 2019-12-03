@@ -10,6 +10,7 @@ public class GlobalDeclaration {
     public static String userID = "";
     public static String districtId = "";
     public static String role = "";
+    public static String citizenrole = "";
     public static DashboardCountResponse counts;
     public static String username = "";
     public static String designation = "";

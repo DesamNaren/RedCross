@@ -37,7 +37,8 @@ import in.gov.cgg.redcrossphase1.databinding.ActivityTabloginBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
-import in.gov.cgg.redcrossphase1.ui_officer.CitizenLoginFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitizenLoginFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.RegisterActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerLoginFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
@@ -174,8 +175,8 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_register:
-//                startActivity(new Intent(TabLoginActivity.this, RegisterActivity.class));
-                Toast.makeText(this, "Registrations will be availed soon", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(TabLoginActivity.this, RegisterActivity.class));
+                //      Toast.makeText(this, "Registrations will be availed soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_cntinueguest:
                 startActivity(new Intent(TabLoginActivity.this, CitiGuestMainActivity.class));

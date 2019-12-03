@@ -1,0 +1,1 @@
+[{"outputType":{"type":"BUNDLE_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"app-uat.apk","fullName":"uat","baseName":"uat"},"path":"AndroidManifest.xml","properties":{"packageId":"in.gov.cgg.redcrossphase1","split":"","minSdkVersion":"16"}}]
