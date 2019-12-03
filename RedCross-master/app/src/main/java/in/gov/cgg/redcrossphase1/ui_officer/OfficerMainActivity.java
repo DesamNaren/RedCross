@@ -277,6 +277,19 @@ public class OfficerMainActivity extends AppCompatActivity {
                     selectedFragment = new OfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_age) {
+         /*           menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            callHomeAlert();
+                            return true;
+                        }
+                    });*/
+                    GlobalDeclaration.FARG_TAG = PhotoUploadActivity.class.getSimpleName();
+                    selectedFragment = new PhotoUploadActivity();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_alldistricts) {
                    /* menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
