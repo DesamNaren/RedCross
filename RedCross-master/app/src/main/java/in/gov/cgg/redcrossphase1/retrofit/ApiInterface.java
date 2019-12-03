@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
@@ -26,6 +28,13 @@ public interface ApiInterface {
 
     @POST("loginService")
     Call<JsonObject> callLogin(@Body JsonObject jsonBody);
+
+    @POST("citizenRegistration")
+    Call<JsonObject> callCitizenRegistration(@Body JsonObject jsonBody);
+
+    @POST("verifyCitizen")
+    Call<CitizenLoginResponse> callCitizenLogin(@Body CitizenLoginRequest req);
+
 
 
     @GET("AgeWiseService")
