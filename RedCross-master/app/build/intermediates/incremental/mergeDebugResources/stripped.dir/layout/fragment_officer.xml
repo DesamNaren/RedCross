@@ -1,0 +1,93 @@
+                                                                   
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:tag="layout/fragment_officer_0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp_10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_text_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_rememberme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <CheckBox
+                    android:id="@+id/checkremember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:layout_gravity="center"
+                    android:text="Remember me"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/dp_5"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_loginofficer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:background="@color/colorPrimary"
+                android:text="Login"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+    </FrameLayout>
+         

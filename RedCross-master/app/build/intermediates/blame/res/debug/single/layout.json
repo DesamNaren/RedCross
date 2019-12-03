@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\custom_count_layout.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\custom_count_layout.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_tablogin.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\activity_tablogin.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_aldistrict.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\fragment_aldistrict.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_photoupload.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\fragment_photoupload.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\recycler_view_layout.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\recycler_view_layout.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\drilldown_adapter.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\drilldown_adapter.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_showlist.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\activity_showlist.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\main2.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\main2.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\regis_01.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\regis_01.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_daywise.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\fragment_daywise.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\mainnew2.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\mainnew2.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_officer.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\fragment_officer.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_citizen.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\fragment_citizen.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\main.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\regis.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\regis.xml"
+    },
+    {
+        "merged": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_tab_date.xml",
+        "source": "G:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\src\\main\\res\\layout\\activity_tab_date.xml"
+    }
+]

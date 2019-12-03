@@ -1,4 +1,0 @@
-#Mon Dec 02 16:31:40 IST 2019
-base.0=G\:\\Git_Workspace\\RedCross_Workspace\\RedCross_Code\\RedCross-master\\app\\build\\intermediates\\dex\\uat\\mergeDexUat\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

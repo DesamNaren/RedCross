@@ -1,0 +1,573 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/customCount"
+                        layout="@layout/custom_count_layout" />
+
+                    <!--<LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:visibility="gone"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:padding="@dimen/dp_10"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:id="@+id/ll_picker"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:padding="1dp"
+                                    android:src="@drawable/baseline_date_range_black_48dp" />
+
+                                &lt;!&ndash;
+                                                        <TextView
+                                                            android:id="@+id/tv_fromtodate"
+                                                            android:layout_width="0dp"
+                                                            android:layout_height="match_parent"
+                                                            android:layout_weight="9"
+                                                            android:gravity="center_vertical"
+                                                            android:paddingLeft="5dp"
+                                                            android:text="Selet date "
+                                                            android:textColor="#000"
+                                                            android:textSize="16sp"
+                                                            android:textStyle="bold" />
+                                &ndash;&gt;
+
+                                <Spinner
+                                    android:id="@+id/spn_financialyear"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.5"
+                                    android:entries="@array/query_suggestions" />
+
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/dp_5"
+                            android:layout_weight="2"
+                            android:padding="5dp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardElevation="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_jrc"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="0.5dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/tab_background_selected"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_jrcnme"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_5"
+                                        android:text="JRC"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white"
+                                        android:textSize="17sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_jrccount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/white" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_yrc"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0.5dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/tab_background_unselected"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_yrcnme"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_5"
+                                        android:text="YRC"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_yrccount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_lm"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="0.5dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/tab_background_unselected"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_lmname"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_5"
+                                        android:text="Membership"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/tv_lmcount"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>-->
+
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_top5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_topp5distrct"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="10dp"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_nameenrollRankTop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/tab_background_unselected"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/tv_top5distName"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:paddingLeft="@dimen/dp_10"
+                                        android:text="Name"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_top5distEnrollement"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:text="Enrollments"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_top5distRank"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.8"
+                                        android:text="Rank"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerview_top"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:nestedScrollingEnabled="false" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_btm5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_btm5distrct"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="@dimen/dp_10"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_nameenrollRankBottom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/tab_background_unselected"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/tv_btm5distrctName"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:paddingLeft="@dimen/dp_10"
+                                        android:text="Name"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_btm5distrctEnrollement"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:text="Enrollments"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_btm5distrctRank"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.8"
+                                        android:text="Rank"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerview_bottom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:nestedScrollingEnabled="false" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/ll_agewise"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_age"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="@dimen/dp_10"
+                                    android:text="Age wise"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <com.github.mikephil.charting.charts.BarChart
+                                    android:id="@+id/barchart_age"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="400dp"
+                                    android:layout_margin="@dimen/dp_10"
+                                    android:padding="@dimen/dp_5" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_genderwise"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_gender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="@dimen/dp_10"
+                                    android:text="Gender wise"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <com.github.mikephil.charting.charts.PieChart
+                                    android:id="@+id/barchart_gender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="300dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="10dp"
+                                    android:padding="@dimen/dp_5" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_bloodwise"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_blg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="@dimen/dp_10"
+                                    android:text="Blood group wise"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <com.github.mikephil.charting.charts.PieChart
+                                    android:id="@+id/barchart_blodd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="400dp"
+                                    android:layout_margin="20dp"
+                                    android:padding="@dimen/dp_5" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_govtpvt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/dp_40"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_govtpvt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_20"
+                                    android:background="@color/colorPrimary"
+                                    android:padding="@dimen/dp_10"
+                                    android:text="Govt VS Pvt"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp" />
+
+                                <com.github.mikephil.charting.charts.LineChart
+                                    android:id="@+id/chart_govtpvt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="400dp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </LinearLayout>
+
+                <com.github.clans.fab.FloatingActionMenu
+                    android:id="@+id/fab_main"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/dp_10"
+                    android:elevation="5dp"
+                    app:layout_anchorGravity="center_horizontal"
+                    app:menu_colorNormal="@color/colorPrimary"
+                    app:menu_colorPressed="@color/white"
+                    app:menu_colorRipple="@color/white"
+                    app:menu_labels_colorPressed="@color/white"
+                    app:menu_openDirection="up">
+
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fabdistrcit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Top 5 Districts"
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fab_btm5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Bottom 5 Districts"
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fabage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Age wise"
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fabgender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Gender wise"
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fabblood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Blood group wise"
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fab_districtwise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="District wise "
+                        app:fab_size="mini" />
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/fab_drilldown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/report"
+                        android:tint="@color/white"
+                        android:visibility="gone"
+                        app:fab_colorNormal="@color/white"
+                        app:fab_colorPressed="@color/colorPrimary"
+                        app:fab_colorRipple="@color/colorPrimary"
+                        app:fab_label="Enrollments List"
+                        app:fab_size="mini" />
+
+
+                </com.github.clans.fab.FloatingActionMenu>
+
+            </RelativeLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>
+
+</RelativeLayout>
