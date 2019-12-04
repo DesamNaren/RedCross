@@ -34,13 +34,12 @@
                 android:text="Districtname"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_adress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/droid_serif"
                 android:lineHeight="20dp"
                 android:paddingLeft="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
@@ -48,7 +47,7 @@
                 android:text="Adress"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

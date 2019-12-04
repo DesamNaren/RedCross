@@ -39,27 +39,27 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:text="District"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_district"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -74,27 +74,27 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:text="Name of the Medical Officer"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_ofcrName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -109,27 +109,27 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:text="Place of the IRCS Blood Bank"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_adress"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -143,27 +143,27 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:text="Contact Number"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tv_contactNumber"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/droid_serif"
+
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:paddingTop="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_5"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 

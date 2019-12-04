@@ -53,7 +53,6 @@ import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class CitiGuestMainActivity extends AppCompatActivity {
-
     private static final float END_SCALE = 0.7f;
     Spinner spinYear;
     private AppBarConfiguration mAppBarConfiguration;
@@ -68,9 +67,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     SharedPreferences settings;
     private Fragment selectedFragment;
     SharedPreferences.Editor editor;
-    LinearLayout ll_sevenPrinciples;
     private LinearLayout ll_nav_header;
-    private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
 
     TextView tv_name1, tv_name2;
 
@@ -101,7 +98,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 R.id.nav_History, R.id.nav_Principles, R.id.nav_whoweare, R.id.nav_Vision, R.id.nav_mission
                 , R.id.nav_Structure, R.id.nav_Contact, R.id.nav_lifetimemember, R.id.nav_blooddonorreg, R.id.nav_hnreg,
                 R.id.nav_onlinedonations, R.id.nav_training, R.id.nav_hn, R.id.nav_doateblood, R.id.nav_locatebloodbanks
-                , R.id.nav_privacy, R.id.nav_tc)
+                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_dashboard)
                 .setDrawerLayout(drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -109,7 +106,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
+        GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
         //default fragment
         selectedFragment = new CitizendashboardFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
@@ -118,7 +115,12 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.nav_Principles) {
+                if (menuItem.getItemId() == R.id.nav_Dashboard) {
+                    GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                    selectedFragment = new CitizendashboardFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_Principles) {
                     GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
                     selectedFragment = new SevenFundamentalFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
@@ -222,28 +224,28 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 toolbar.setBackgroundResource(selectedThemeColor);
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross1_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross2_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross3_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross4_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross5_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross6_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross6_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross7_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     //  navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
@@ -289,14 +291,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         ImageView iv_color7 = dialog.findViewById(R.id.color7);
         ImageView iv_color8 = dialog.findViewById(R.id.color8);
 
-        iv_color1_selected = dialog.findViewById(R.id.color1_selected);
-        iv_color2_selected = dialog.findViewById(R.id.color2_selected);
-        iv_color3_selected = dialog.findViewById(R.id.color3_selected);
-        iv_color4_selected = dialog.findViewById(R.id.color4_selected);
-        iv_color5_selected = dialog.findViewById(R.id.color5_selected);
-        iv_color6_selected = dialog.findViewById(R.id.color6_selected);
-        iv_color7_selected = dialog.findViewById(R.id.color7_selected);
-        iv_color8_selected = dialog.findViewById(R.id.color8_selected);
+
         Button bt_cancel_color = dialog.findViewById(R.id.bt_cancel_color);
 
         bt_cancel_color.setOnClickListener(new View.OnClickListener() {
@@ -477,7 +472,9 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
     private void setFragment(String fargTag) {
 
-        if (fargTag.equalsIgnoreCase("SevenFundamentalFragment")) {
+        if (fargTag.equalsIgnoreCase("CitizendashboardFragment")) {
+            selectedFragment = new CitizendashboardFragment();
+        } else if (fargTag.equalsIgnoreCase("SevenFundamentalFragment")) {
             selectedFragment = new SevenFundamentalFragment();
         } else if (fargTag.equalsIgnoreCase("WhoWeAreFragment")) {
             selectedFragment = new WhoWeAreFragment();
@@ -496,8 +493,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         } else if (fargTag.equalsIgnoreCase("CitiPrivacyPolicyFragment")) {
             selectedFragment = new CitiPrivacyPolicyFragment();
         } else {
-            GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
-            selectedFragment = new SevenFundamentalFragment();
+            GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+            selectedFragment = new CitizendashboardFragment();
         }
     }
 
@@ -566,6 +563,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     public void onClick() {
                         dialog.dismiss();
                         startActivity(new Intent(CitiGuestMainActivity.this, TabLoginActivity.class));
+
                         finish();
                     }
                 })

@@ -14,18 +14,20 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dimen_70dp"
-            android:src="@drawable/red" />
+            android:src="@drawable/user_pro"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
             android:text="Hello rekha"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -44,18 +46,25 @@
             android:layout_margin="@dimen/dp_10"
             android:orientation="horizontal">
 
+
             <LinearLayout
+                android:id="@+id/ll_wwa"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dimen_100dp"
+                android:layout_gravity="center"
                 android:layout_margin="@dimen/dp_10"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_whoweAre"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/whoweare64" />
 
                 <TextView
@@ -67,18 +76,24 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="@dimen/dp_10"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
+
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_history"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_10dp"
                     android:src="@drawable/history64" />
 
                 <TextView
@@ -90,18 +105,33 @@
                     android:textColor="@color/white" />
             </LinearLayout>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
                 android:layout_margin="@dimen/dp_10"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
+
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_vission"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_10dp"
                     android:src="@drawable/vision64" />
 
                 <TextView
@@ -110,6 +140,36 @@
                     android:layout_gravity="center"
                     android:padding="@dimen/dp_5"
                     android:text="Vission"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
+
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_mission"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_10dp"
+
+                    android:src="@drawable/mission64" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/dp_5"
+                    android:text="Mission"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
@@ -122,39 +182,22 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="@dimen/dp_10"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
 
-                <ImageView
-                    android:id="@+id/iv_mission"
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_gravity="center"
-                    android:src="@drawable/mission64" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="@dimen/dp_5"
-                    android:text="Mission"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_contactUs"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
                     android:layout_gravity="center"
+
+                    android:layout_marginTop="@dimen/dimen_10dp"
                     android:src="@drawable/contact_us" />
 
                 <TextView
@@ -168,20 +211,24 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_margin="@dimen/dp_10"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:background="#21000000"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/iv_bloodbankDetails"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
+
                     android:layout_gravity="center"
                     android:src="@drawable/bloodbankdetails" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="@dimen/dp_5"

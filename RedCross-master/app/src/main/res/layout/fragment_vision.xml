@@ -24,7 +24,7 @@
                 android:padding="@dimen/dp_5"
                 android:text="Strategic objectives"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
 
@@ -46,13 +46,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:fontFamily="@font/droid_serif"
                         android:lineHeight="20dp"
                         android:paddingLeft="@dimen/dp_5"
                         android:padding="@dimen/dp_5"
                         android:text="Enhance the capacity of Indian Red Cross to deliver its humanitarain message both within and outside the society, and to advocate tolerance and coexistence in the communities."
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -68,12 +67,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:fontFamily="@font/droid_serif"
                         android:lineHeight="20dp"
                         android:padding="@dimen/dp_5"
                         android:text="Increase the capacity in disaster preparedness and disaster response in disaster prone branches and State HeadQuarters and reduce the vulnerability of communities in key disaster prone areas"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -91,11 +89,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dp_5"
                         android:padding="@dimen/dp_5"
-                        android:fontFamily="@font/droid_serif"
                         android:lineHeight="20dp"
                         android:text="Increase the capacity in health and care in branches and State HeadQuarters and improve the health of vulnerable people and communities."
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
     int selectedThemeColor = -1;
     RelativeLayout fragment_citizendashboard;
     private FragmentActivity c;
+    LinearLayout ll_1;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -38,13 +40,16 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
         c = getActivity();
         setHasOptionsMenu(true);
         findViews(root);
+
+
         iv_whoweAre.setOnClickListener(this);
         iv_history.setOnClickListener(this);
         iv_vission.setOnClickListener(this);
         iv_mission.setOnClickListener(this);
         iv_contactUs.setOnClickListener(this);
         iv_bloodbankDetails.setOnClickListener(this);
-        tv_username.setText("Hello" + GlobalDeclaration.loginresponse.getName());
+
+        tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
@@ -89,6 +94,7 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
         iv_bloodbankDetails = root.findViewById(R.id.iv_bloodbankDetails);
         tv_username = root.findViewById(R.id.tv_username);
         fragment_citizendashboard = root.findViewById(R.id.fragment_citizendashboard);
+
 
     }
 

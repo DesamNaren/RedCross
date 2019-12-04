@@ -8,6 +8,10 @@
 
             <menu>
                 <item
+                    android:id="@+id/nav_Dashboard"
+                    android:icon="@drawable/principles24"
+                    android:title="Fundamental Principles" />
+                <item
                     android:id="@+id/nav_Principles"
                     android:icon="@drawable/principles24"
                     android:title="Fundamental Principles" />
