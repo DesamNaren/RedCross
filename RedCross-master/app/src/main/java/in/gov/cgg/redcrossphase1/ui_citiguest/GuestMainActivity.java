@@ -41,8 +41,8 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
-import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.GuestdashboardFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
@@ -53,9 +53,14 @@ import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
-public class CitiGuestMainActivity extends AppCompatActivity {
+public class GuestMainActivity extends AppCompatActivity {
     private static final float END_SCALE = 0.7f;
     Spinner spinYear;
+    View header;
+    int selectedThemeColor = -1;
+    SharedPreferences settings;
+    SharedPreferences.Editor editor;
+    TextView tv_name1, tv_name2;
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -63,14 +68,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     private View contentView;
     private TabHost tabHost;
     private int pos;
-    View header;
-    int selectedThemeColor = -1;
-    SharedPreferences settings;
     private Fragment selectedFragment;
-    SharedPreferences.Editor editor;
     private LinearLayout ll_nav_header;
-
-    TextView tv_name1, tv_name2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,24 +88,14 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         tv_name2 = header.findViewById(R.id.tv_name2);
         Menu nav_Menu = navigationView.getMenu();
 
-        try {
-
-            if (GlobalDeclaration.guest != null) {
-                if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
-                    tv_name1.setText("Guest user");
-                    tv_name2.setText("");
-                } else {
-                    if (GlobalDeclaration.loginresponse != null) {
-                        tv_name1.setText(GlobalDeclaration.loginresponse.getName());
-                        tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
-                    }
-
-                }
-            }
-        } catch (Exception e) {
-
-        }
-
+//        if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
+        tv_name1.setText("Guest user");
+        tv_name2.setText("");
+//        } else {
+//            tv_name1.setText(GlobalDeclaration.loginresponse.getName());
+//            tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
+//
+//        }
 
 
         // Passing each menu ID as a set of Ids because each
@@ -123,9 +112,9 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+        GlobalDeclaration.FARG_TAG = GuestdashboardFragment.class.getSimpleName();
         //default fragment
-        selectedFragment = new CitizendashboardFragment();
+        selectedFragment = new GuestdashboardFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
 
 
@@ -133,8 +122,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 if (menuItem.getItemId() == R.id.nav_Dashboard) {
-                    GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
-                    selectedFragment = new CitizendashboardFragment();
+                    GlobalDeclaration.FARG_TAG = GuestdashboardFragment.class.getSimpleName();
+                    selectedFragment = new GuestdashboardFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Principles) {
@@ -295,7 +284,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
     private void showThemePicker() {
         selectedThemeColor = -1;
-        final Dialog dialog = new Dialog(CitiGuestMainActivity.this);
+        final Dialog dialog = new Dialog(GuestMainActivity.this);
         dialog.setTitle("Select Theme Color");
         dialog.setContentView(R.layout.fragment_themes);
 
@@ -489,8 +478,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
     private void setFragment(String fargTag) {
 
-        if (fargTag.equalsIgnoreCase("CitizendashboardFragment")) {
-            selectedFragment = new CitizendashboardFragment();
+        if (fargTag.equalsIgnoreCase("GuestdashboardFragment")) {
+            selectedFragment = new GuestdashboardFragment();
         } else if (fargTag.equalsIgnoreCase("SevenFundamentalFragment")) {
             selectedFragment = new SevenFundamentalFragment();
         } else if (fargTag.equalsIgnoreCase("WhoWeAreFragment")) {
@@ -510,8 +499,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         } else if (fargTag.equalsIgnoreCase("CitiPrivacyPolicyFragment")) {
             selectedFragment = new CitiPrivacyPolicyFragment();
         } else {
-            GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
-            selectedFragment = new CitizendashboardFragment();
+            GlobalDeclaration.FARG_TAG = GuestdashboardFragment.class.getSimpleName();
+            selectedFragment = new GuestdashboardFragment();
         }
     }
 
@@ -539,7 +528,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     }
 
     private void showChangeLangDialog() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GuestMainActivity.this);
 
         alertDialogBuilder.setMessage("Availed soon");
         // set positive button: Yes message
@@ -579,7 +568,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     @Override
                     public void onClick() {
                         dialog.dismiss();
-                        startActivity(new Intent(CitiGuestMainActivity.this, TabLoginActivity.class));
+                        startActivity(new Intent(GuestMainActivity.this, TabLoginActivity.class));
 
                         finish();
                     }

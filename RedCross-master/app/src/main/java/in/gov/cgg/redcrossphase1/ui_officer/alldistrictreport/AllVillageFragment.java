@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport;
 
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +27,9 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,13 +38,14 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class AllVillageFragment extends Fragment {
 
 
-    ProgressDialog pd;
+    CustomProgressDialog pd;
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
@@ -125,8 +128,7 @@ public class AllVillageFragment extends Fragment {
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Loading ,Please wait");
+        pd = new CustomProgressDialog(getActivity());
         pd.show();
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).
@@ -198,6 +200,22 @@ public class AllVillageFragment extends Fragment {
 
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
         if (allDistrictList.size() > 0) {
+            for (int i = 0; i < allDistrictList.size(); i++) {
+                allDistrictList.get(i).setTotalCounts((allDistrictList.get(i).getJRC() +
+                        allDistrictList.get(i).getYRC() +
+                        allDistrictList.get(i).getMembership()));
+            }
+            List<StatelevelDistrictViewCountResponse> newlist = new ArrayList<>();
+            newlist.addAll(allDistrictList);
+
+            Collections.sort(newlist, new Comparator<StatelevelDistrictViewCountResponse>() {
+                @Override
+                public int compare(StatelevelDistrictViewCountResponse lhs, StatelevelDistrictViewCountResponse rhs) {
+                    return lhs.getTotalCounts().compareTo(rhs.getTotalCounts());
+                }
+            });
+
+            Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
             adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);

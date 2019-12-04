@@ -167,6 +167,7 @@ public class OfficerLoginFragment extends Fragment {
                             GlobalDeclaration.districtId = districtId;
                             GlobalDeclaration.userID = userID;
                             GlobalDeclaration.username = name;
+                            GlobalDeclaration.guest = "";
 
                             if (locaisChecked) {
                                 storeinSharedPrefs();

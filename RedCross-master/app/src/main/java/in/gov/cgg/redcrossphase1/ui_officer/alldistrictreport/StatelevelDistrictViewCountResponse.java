@@ -10,15 +10,27 @@ public class StatelevelDistrictViewCountResponse {
     @SerializedName("JRC")
     @Expose
     private Integer jRC;
+
+    private Integer totalCounts;
+
+    public Integer getTotalCounts() {
+        return totalCounts;
+    }
+
     @SerializedName("Id")
     @Expose
     private Integer id;
     @SerializedName("YRC")
     @Expose
     private Integer yRC;
+
     @SerializedName("Name")
     @Expose
     private String name;
+
+    public void setTotalCounts(Integer totalCounts) {
+        this.totalCounts = totalCounts;
+    }
 
     public Integer getMembership() {
         return membership;

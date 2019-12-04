@@ -174,7 +174,7 @@ public class OfficerMainActivity extends AppCompatActivity {
 
 
         if (GlobalDeclaration.username != null && GlobalDeclaration.designation != null) {
-            tv_name.setText("Welcome to " + "\n" + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
+            tv_name.setText("Welcome to " + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
         } else {
             tv_name.setText("Welcome to " + GlobalDeclaration.username);
 

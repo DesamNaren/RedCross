@@ -107,7 +107,7 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
 //                    params.setMargins(30, 10, 30, 50);
 //                    binding.cvMain.setLayoutParams(params);
                     ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) binding.cvMain.getLayoutParams();
-                    cardViewMarginParams.setMargins(15, 5, 15, 40);
+                    cardViewMarginParams.setMargins(15, 5, 15, 30);
                     binding.cvMain.requestLayout();
                 } else {
                     binding.llRegister.setVisibility(View.GONE);

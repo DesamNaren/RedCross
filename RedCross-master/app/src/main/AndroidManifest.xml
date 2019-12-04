@@ -44,6 +44,9 @@
         <activity
             android:name=".ui_citiguest.EnterMPinActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui_citiguest.GuestMainActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
