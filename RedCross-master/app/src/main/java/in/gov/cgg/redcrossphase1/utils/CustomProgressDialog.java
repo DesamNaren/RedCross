@@ -14,7 +14,7 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import in.gov.cgg.redcrossphase1.R;
 
 public class CustomProgressDialog extends Dialog {
-
+    private CustomProgressDialog customProgressDialog;
     public CustomProgressDialog(Context context) {
         super(context);
         try {
@@ -22,7 +22,8 @@ public class CustomProgressDialog extends Dialog {
             View view = LayoutInflater.from(context).inflate(R.layout.custom_progress_layout, null);
             ImageView imageprogress = view.findViewById(R.id.imageprogress);
             GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageprogress);
-            Glide.with(context).load(R.drawable.spinner).into(imageViewTarget);
+            Glide.with(context).load(R.drawable.loader_black1).into(imageViewTarget);
+            //  customProgressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             setContentView(view);
             if (getWindow() != null)
                 this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);

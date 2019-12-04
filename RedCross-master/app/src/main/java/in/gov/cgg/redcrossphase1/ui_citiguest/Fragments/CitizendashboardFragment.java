@@ -36,7 +36,7 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_citizendashboard, container, false);
-        Objects.requireNonNull(getActivity()).setTitle("Red cross Society");
+        Objects.requireNonNull(getActivity()).setTitle("Dashboard");
         c = getActivity();
         setHasOptionsMenu(true);
         findViews(root);
@@ -49,7 +49,13 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
         iv_contactUs.setOnClickListener(this);
         iv_bloodbankDetails.setOnClickListener(this);
 
-        tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
+        if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
+            tv_username.setText("Hello  " + "Guest");
+
+        } else {
+            tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
+
+        }
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);

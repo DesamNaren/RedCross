@@ -9,5 +9,5 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/spinner" />
+        app:srcCompat="@drawable/loader_black1" />
 </RelativeLayout>

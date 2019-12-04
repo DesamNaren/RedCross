@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +24,7 @@ import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +34,7 @@ public class CitizenLoginFragment extends Fragment {
     FragmentCitizenBinding binding;
     TextInputEditText et_mobile;
     Button btn_login;
-    ProgressDialog progressDialog;
+    CustomProgressDialog progressDialog;
     private JsonObject gsonObject;
 
 
@@ -49,10 +49,12 @@ public class CitizenLoginFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_citizen, container, false);
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait");
+        progressDialog = new CustomProgressDialog(getActivity());
+        //  progressDialog.show();
+
+        //  progressDialog.setMessage("Please wait");
         et_mobile = binding.mobileEditText;
-        et_mobile.setText("9999999998");
+        //   et_mobile.setText("9999999998");
 
 
         binding.btnLogincitizen.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +62,7 @@ public class CitizenLoginFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
                     if (validate()) {
+                        GlobalDeclaration.guest = "";
                         callcitizenLoginRequest();
 
                     }

@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -88,8 +89,16 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         tv_name2 = header.findViewById(R.id.tv_name2);
         Menu nav_Menu = navigationView.getMenu();
 
-        tv_name1.setText(GlobalDeclaration.loginresponse.getName());
-        tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
+        if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
+            tv_name1.setText("Guest user");
+            tv_name2.setText("");
+        } else {
+            tv_name1.setText(GlobalDeclaration.loginresponse.getName());
+            tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
+
+        }
+
+
 
 
         // Passing each menu ID as a set of Ids because each

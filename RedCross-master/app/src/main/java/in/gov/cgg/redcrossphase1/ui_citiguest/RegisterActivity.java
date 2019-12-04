@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,13 +22,14 @@ import in.gov.cgg.redcrossphase1.databinding.RegisBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    ProgressDialog progressDialog;
+    CustomProgressDialog progressDialog;
     RegisBinding binding;
     TextInputEditText et_name;
     TextInputEditText et_email;
@@ -52,9 +52,9 @@ public class RegisterActivity extends AppCompatActivity {
         et_email = binding.emailEditText;
         et_mobile = binding.mobileEditText;
 
-
-        progressDialog = new ProgressDialog(RegisterActivity.this);
-        progressDialog.setMessage("Please wait");
+        progressDialog = new CustomProgressDialog(RegisterActivity.this);
+        //   progressDialog = new ProgressDialog(RegisterActivity.this);
+        //   progressDialog.setMessage("Please wait");
 
 
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {

@@ -180,6 +180,7 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.tv_cntinueguest:
                 startActivity(new Intent(TabLoginActivity.this, CitiGuestMainActivity.class));
+                GlobalDeclaration.guest = "y";
                 break;
 
 //            case R.id.btn_submit:

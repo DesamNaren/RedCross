@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
@@ -29,6 +27,8 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BloodbankAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodBankdetails_Bean;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -146,30 +146,29 @@ public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQ
 
     public void onClickExit() {
 
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("")
+                .setMessage("Do you want to Logout?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        startActivity(new Intent(getActivity(), TabLoginActivity.class));
 
-        final AlertDialog alertDialog1 = alertDialog.create();
+                        getActivity().finish();
+                    }
+                })
+                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-
-        alertDialog.setMessage("Do you want to exit ?");
-        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //alertDialog1.dismiss();\
-
-                alertDialog1.dismiss();
-            }
-        });
-        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-
-                startActivity(new Intent(c, TabLoginActivity.class));
-                getActivity().finish();
-            }
-        });
-        alertDialog.show();
+        dialog.show();
     }
 
 
