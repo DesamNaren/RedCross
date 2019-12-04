@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/nav_header_desc"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:layout_marginLeft="@dimen/dp_5"
             android:src="@drawable/user" />
 
         <TextView
@@ -27,9 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/dp_5"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
             android:text="Welcome Guest"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
             android:textColor="@color/white" />
 
         <TextView
@@ -44,6 +47,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:visibility="gone"
         android:layout_marginTop="10dp"
         android:background="@color/white" />
 

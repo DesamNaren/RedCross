@@ -6,7 +6,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +24,7 @@ public class WhoWeAreFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     int selectedThemeColor = -1;
-    LinearLayout ll_whoweAre;
+    RelativeLayout ll_whoweAre;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,

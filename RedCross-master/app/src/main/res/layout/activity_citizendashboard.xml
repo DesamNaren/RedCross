@@ -14,15 +14,13 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="@drawable/redcross_splashscreen_bg"
         android:fitsSystemWindows="true"
-        android:theme="@style/NavigationView"
         app:headerLayout="@layout/nav_header_main"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
         app:menu="@menu/activity_drawer_citguest" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

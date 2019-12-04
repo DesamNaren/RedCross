@@ -131,14 +131,14 @@ public class OfficerMainActivity extends AppCompatActivity {
                     navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    //    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     selectedThemeColor = R.color.colorPrimary;
                     toolbar.setBackgroundResource(selectedThemeColor);
                     sharedPreferenceMethod(selectedThemeColor);
                 }
             } else {
                 ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 selectedThemeColor = R.color.colorPrimary;
                 toolbar.setBackgroundResource(selectedThemeColor);
                 sharedPreferenceMethod(selectedThemeColor);

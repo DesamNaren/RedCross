@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +40,7 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment;
@@ -70,7 +72,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     private LinearLayout ll_nav_header;
     private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
 
-
+    TextView tv_name1, tv_name2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +87,12 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         contentView = findViewById(R.id.content);
         header = navigationView.getHeaderView(0);
         ll_nav_header = header.findViewById(R.id.ll_dashboard_header);
+        tv_name1 = header.findViewById(R.id.tv_name1);
+        tv_name2 = header.findViewById(R.id.tv_name2);
         Menu nav_Menu = navigationView.getMenu();
 
+        tv_name1.setText(GlobalDeclaration.loginresponse.getName());
+        tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
 
 
         // Passing each menu ID as a set of Ids because each
@@ -105,7 +111,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
         GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
         //default fragment
-        selectedFragment = new SevenFundamentalFragment();
+        selectedFragment = new CitizendashboardFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
 
 
@@ -202,7 +208,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 }
 
 
-
             }
         });
 
@@ -241,14 +246,14 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    //  navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     selectedThemeColor = R.color.colorPrimary;
                     toolbar.setBackgroundResource(selectedThemeColor);
                     sharedPreferenceMethod(selectedThemeColor);
                 }
             } else {
                 ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 selectedThemeColor = R.color.colorPrimary;
                 toolbar.setBackgroundResource(selectedThemeColor);
                 sharedPreferenceMethod(selectedThemeColor);
@@ -307,7 +312,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 selectedThemeColor = R.color.redcroosbg_1;
                 if (selectedThemeColor != -1) {
                     //  ll.setBackgroundResource(selectedThemeColor);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                    //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
                     dialog.dismiss();
@@ -326,7 +331,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     //  int[] colorsIds = getResources().getIntArray(R.array.theme_colors_id);
                     //  layout_main.setBackgroundColor(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -344,7 +349,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //   layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -362,7 +367,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //    layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                     toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -380,7 +385,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -398,7 +403,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                    //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -416,7 +421,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -434,7 +439,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                    //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -518,6 +523,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     private void showChangeLangDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);
 

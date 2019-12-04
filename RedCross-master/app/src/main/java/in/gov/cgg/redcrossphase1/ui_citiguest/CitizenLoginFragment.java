@@ -52,6 +52,7 @@ public class CitizenLoginFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait");
         et_mobile = binding.mobileEditText;
+        et_mobile.setText("9999999998");
 
 
         binding.btnLogincitizen.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +101,7 @@ public class CitizenLoginFragment extends Fragment {
                         String name = response.body().getName();
                         String emailID = response.body().getEmailId();
                         GlobalDeclaration.citizenrole = role;
+                        GlobalDeclaration.loginresponse = response.body();
 
                         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));

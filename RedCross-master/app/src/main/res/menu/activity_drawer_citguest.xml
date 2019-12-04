@@ -9,19 +9,24 @@
             <menu>
                 <item
                     android:id="@+id/nav_Principles"
+                    android:icon="@drawable/principles24"
                     android:title="Fundamental Principles" />
                 <item
                     android:id="@+id/nav_whoweare"
+                    android:icon="@drawable/whoweare24"
                     android:title="Who we are" />
                 <item
                     android:id="@+id/nav_History"
+                    android:icon="@drawable/history32"
                     android:title="History" />
 
                 <item
                     android:id="@+id/nav_Vision"
+                    android:icon="@drawable/vision64"
                     android:title="Vision" />
                 <item
                     android:id="@+id/nav_mission"
+                    android:icon="@drawable/mission64"
                     android:title="Mission" />
 
                 <item
@@ -30,6 +35,7 @@
                     android:visible="false" />
                 <item
                     android:id="@+id/nav_Contact"
+                    android:icon="@drawable/contact_us"
                     android:title="Contact us" />
 
 
@@ -43,18 +49,23 @@
             <menu>
                 <item
                     android:id="@+id/nav_lifetimemember"
+                    android:icon="@drawable/membership24"
                     android:title="Life time Membership" />
                 <item
                     android:id="@+id/nav_blooddonorreg"
+                    android:icon="@drawable/blooddonorreg24"
                     android:title="Blood donor Registrion" />
                 <item
                     android:id="@+id/nav_hnreg"
+                    android:icon="@drawable/homenurse24"
                     android:title="Home nursing Registrion" />
                 <item
                     android:id="@+id/nav_onlinedonations"
+                    android:icon="@drawable/blooddonor24"
                     android:title="Online donations" />
                 <item
                     android:id="@+id/nav_training"
+                    android:icon="@drawable/training24"
                     android:title="Training" />
             </menu>
         </item>
@@ -65,13 +76,16 @@
             <menu>
                 <item
                     android:title="Home Nursing"
-                    android:id="@+id/nav_hn" />
+                    android:id="@+id/nav_hn"
+                    android:icon="@drawable/homenurse24" />
 
                 <item
                     android:id="@+id/nav_doateblood"
+                    android:icon="@drawable/blooddonor24"
                     android:title="Blood donate" />
                 <item
                     android:id="@+id/nav_locatebloodbanks"
+                    android:icon="@drawable/bloodbankdetails"
                     android:title="Bloodbanks Details" />
 
 
@@ -85,13 +99,16 @@
 
                 <item
                     android:id="@+id/nav_continueasGuestthemes"
+                    android:icon="@drawable/themes24"
                     android:title="Themes" />
                 <item
                     android:id="@+id/nav_privacy"
+                    android:icon="@drawable/privacypolicy24"
                     android:title="Privacy Policy" />
 
                 <item
                     android:id="@+id/nav_tc"
+                    android:icon="@drawable/terms_and_conditions24"
                     android:title="Terms &amp; Conditions" />
 
                 <item
