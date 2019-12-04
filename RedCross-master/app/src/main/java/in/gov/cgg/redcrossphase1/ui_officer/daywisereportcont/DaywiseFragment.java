@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -38,13 +37,15 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
+import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class DaywiseFragment extends Fragment {
 
     int selectedThemeColor = -1;
-    ProgressDialog pd;
+    CustomProgressDialog pd;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
     private List<DayWiseReportCountResponse> reveList = new ArrayList<>();
@@ -113,11 +114,11 @@ public class DaywiseFragment extends Fragment {
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Loading ,Please wait");
-        pd.show();
+        pd = new CustomProgressDialog(getActivity());
+        //pd.setMessage("Loading ,Please wait");
+        // pd.show();
         daywiseViewModel =
-                ViewModelProviders.of(this).get(DaywiseViewModel.class);
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "day")).get(DaywiseViewModel.class);
         Objects.requireNonNull(getActivity()).setTitle("Day wise");
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

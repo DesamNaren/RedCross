@@ -13,17 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
         android:fitsSystemWindows="true"
-        android:theme="@style/NavigationView"
         app:headerLayout="@layout/nav_header_officer_main"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/activity_officer_main_drawer" />
-
+        android:background="@color/white"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/activity_officer_main_drawer2" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

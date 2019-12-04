@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.home_distrcit;
 
-import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.RectF;
 import android.os.Build;
@@ -78,7 +77,7 @@ import static in.gov.cgg.redcrossphase1.R.color.white;
 
 public class OfficerHomeFragment extends Fragment implements OnChartValueSelectedListener {
     private final RectF onValueSelectedRectF = new RectF();
-    ProgressDialog pd;
+    // ProgressDialog pd;
     private LinearLayout ll_jrc;
     private LinearLayout ll_yrc;
     private LinearLayout ll_lm;
@@ -109,8 +108,8 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
 
         View root = inflater.inflate(R.layout.fragemt_home_officer, container, false);
 
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Loading ,Please wait");
+//        pd = new ProgressDialog(getActivity());
+//        pd.setMessage("Loading ,Please wait");
 
         districtViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "district")).get(DistrictViewModel.class);

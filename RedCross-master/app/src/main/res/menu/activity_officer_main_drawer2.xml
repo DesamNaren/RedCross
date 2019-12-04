@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_district"
+            android:title="Dashboard"
+            android:visible="true" />
+    </group>
+
+    <group>
+        <item android:title="Reports">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_daywise"
+                    android:icon="@drawable/dayreport"
+                    android:title="Day wise" />
+                <item
+                    android:id="@+id/nav_allmandals"
+                    android:icon="@drawable/newspaper"
+                    android:title="Mandal wise" />
+
+                <item
+                    android:id="@+id/nav_alldistricts"
+                    android:icon="@drawable/newspaper"
+                    android:title="District wise" />
+
+            </menu>
+        </item>
+    </group>
+    <group>
+
+        <item android:title="Info">
+            <menu>
+                <item
+                    android:id="@+id/nav_privacy"
+                    android:icon="@drawable/principles24"
+                    android:title="Privacy Policy" />
+                <item
+                    android:id="@+id/nav_tc"
+                    android:icon="@drawable/tc"
+                    android:title="Terms &amp; Conditions" />
+                <item
+                    android:id="@+id/nav_ofctheme"
+                    android:icon="@drawable/themes24"
+                    android:title="Themes" />
+
+            </menu>
+        </item>
+    </group>
+
+</menu>
+

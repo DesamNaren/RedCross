@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgewiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodwiseViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtViewModel;
 
@@ -40,6 +41,8 @@ public class CustomDistricClass implements ViewModelProvider.Factory {
             return (T) new GovtPvtViewModel(context);
         } else if (vtype.equalsIgnoreCase("alldistrict")) {
             return (T) new AllDistrictsViewModel(context);
+        } else if (vtype.equalsIgnoreCase("day")) {
+            return (T) new DaywiseViewModel(context);
         }
 
 

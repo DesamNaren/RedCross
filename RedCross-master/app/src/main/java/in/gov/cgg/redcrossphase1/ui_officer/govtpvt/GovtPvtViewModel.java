@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.govtpvt;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -12,21 +11,25 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class GovtPvtViewModel extends ViewModel {
 
+    private final CustomProgressDialog pd;
     private MutableLiveData<List<Last10day>> goListMutableLiveData;
 
     Context context;
-    ProgressDialog pd;
+    // ProgressDialog pd;
 
     public GovtPvtViewModel(Context context) {
         this.context = context;
-        pd = new ProgressDialog(context);
-        pd.setMessage("Loading ,Please wait");
+//        pd = new ProgressDialog(context);
+//        pd.setMessage("Loading ,Please wait");
+        pd = new CustomProgressDialog(context);
+
 
     }
 

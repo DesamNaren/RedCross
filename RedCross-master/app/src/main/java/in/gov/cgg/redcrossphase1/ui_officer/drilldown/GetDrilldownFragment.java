@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.drilldown;
 
-import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +33,7 @@ import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,7 +45,7 @@ public class GetDrilldownFragment extends Fragment {
     int selectedThemeColor = -1;
     RecyclerView rv_rilldown;
     LinearLayout ll_drilldown;
-    ProgressDialog pd;
+    //ProgressDialog pd;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
     DrillDownAdapter adapter1;
@@ -53,6 +53,7 @@ public class GetDrilldownFragment extends Fragment {
     private List<StudentListBean> studentListBeanList = new ArrayList<>();
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
+    private CustomProgressDialog pd;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,6 +65,8 @@ public class GetDrilldownFragment extends Fragment {
         GlobalDeclaration.home = false;
         rv_rilldown = root.findViewById(R.id.rv_drilldown);
         searchView = root.findViewById(R.id.searchView);
+
+        pd = new CustomProgressDialog(getActivity());
 
         if (getArguments() != null) {
             if (getArguments().getString("mid") != null) {
@@ -124,9 +127,7 @@ public class GetDrilldownFragment extends Fragment {
 
     private void loadDrilldown() {
 
-        pd = new ProgressDialog(getActivity());
-        pd.setMessage("Loading ,Please wait");
-        pd.show();
+
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs(GlobalDeclaration.type, "3", did, mid, vid);
         Log.e("  url", call.request().url().toString());

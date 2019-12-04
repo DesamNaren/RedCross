@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer;
 
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,6 +29,7 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentOfficerBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,13 +42,14 @@ public class OfficerLoginFragment extends Fragment {
     Button btn_login;
     LinearLayout ll_rememberme;
     CheckBox check_rememberme;
-    ProgressDialog progressDialog;
+    //ProgressDialog progressDialog;
     private JsonObject gsonObject;
     private String name, pwd;
     private SharedPreferences sharedpreferences;
     private boolean locaisChecked;
     private String shareuname, sharepswd;
     private boolean isSharedCheked;
+    private CustomProgressDialog progressDialog;
 
     public OfficerLoginFragment() {
         // Required empty public constructor
@@ -64,8 +65,8 @@ public class OfficerLoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait");
+        progressDialog = new CustomProgressDialog(getActivity());
+//        progressDialog.setMessage("Please wait");
         View v = inflater.inflate(R.layout.fragment_officer, container, false);
 
         et_name = v.findViewById(R.id.name_edit_text);

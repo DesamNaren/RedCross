@@ -1,29 +1,38 @@
 package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
-import android.app.Application;
+import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DaywiseViewModel extends AndroidViewModel {
+public class DaywiseViewModel extends ViewModel {
 
+    private final CustomProgressDialog pd;
     private MutableLiveData<List<DayWiseReportCountResponse>> dayListMutableLiveData;
 
 
-    public DaywiseViewModel(@NonNull Application application) {
-        super(application);
+    Context context;
+    //ProgressDialog pd;
+
+
+    public DaywiseViewModel(Context application) {
+        this.context = application;
+        // pd = new ProgressDialog(context);
+        //pd.setMessage("Loading ,Please wait");
+        pd = new CustomProgressDialog(context);
+
+
     }
 
     public LiveData<List<DayWiseReportCountResponse>> getDaysCount(String finanyear, String distid, String monthid) {
@@ -39,6 +48,7 @@ public class DaywiseViewModel extends AndroidViewModel {
 
     private void loadDaywiseCounts(String finanyear, String distid, String monthid) {
 
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<DayWiseReportCountResponse>> call = apiInterface.DayWiseReportDataWS(distid, finanyear, "11");
 
@@ -48,7 +58,7 @@ public class DaywiseViewModel extends AndroidViewModel {
         call.enqueue(new Callback<List<DayWiseReportCountResponse>>() {
             @Override
             public void onResponse(Call<List<DayWiseReportCountResponse>> call, Response<List<DayWiseReportCountResponse>> response) {
-
+                pd.dismiss();
                 if (response.body() != null) {
 
                     //ageList.addAll(response.body().getAges());
@@ -56,7 +66,7 @@ public class DaywiseViewModel extends AndroidViewModel {
 
 
                 } else {
-                    Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -64,6 +74,7 @@ public class DaywiseViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<List<DayWiseReportCountResponse>> call, Throwable t) {
 
+                pd.dismiss();
                 t.printStackTrace();
             }
         });

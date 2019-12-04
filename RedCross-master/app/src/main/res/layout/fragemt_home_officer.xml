@@ -458,13 +458,13 @@
 
                 <com.github.clans.fab.FloatingActionMenu
                     android:id="@+id/fab_main"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
                     android:layout_margin="@dimen/dp_10"
                     android:elevation="5dp"
+                    android:visibility="gone"
                     app:layout_anchorGravity="center_horizontal"
                     app:menu_colorNormal="@color/colorPrimary"
                     app:menu_colorPressed="@color/white"
@@ -567,7 +567,9 @@
                 </com.github.clans.fab.FloatingActionMenu>
 
             </RelativeLayout>
+
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</FrameLayout>
+    </FrameLayout>
 
 </RelativeLayout>

@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.agewise;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -12,22 +11,26 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AgewiseViewModel extends ViewModel {
 
+    private final CustomProgressDialog pd;
     private MutableLiveData<List<Age>> ageListMutableLiveData;
 
     //List<Age>  ageList=new ArrayList<>();
     Context context;
-    ProgressDialog pd;
+    //ProgressDialog pd;
 
     public AgewiseViewModel(Context application) {
         this.context = application;
-        pd = new ProgressDialog(context);
-        pd.setMessage("Loading ,Please wait");
+//        pd = new ProgressDialog(context);
+//        pd.setMessage("Loading ,Please wait");
+        pd = new CustomProgressDialog(context);
+
 
     }
 

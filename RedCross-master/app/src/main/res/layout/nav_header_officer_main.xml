@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@string/nav_header_desc"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
             android:src="@drawable/user" />
 
         <LinearLayout

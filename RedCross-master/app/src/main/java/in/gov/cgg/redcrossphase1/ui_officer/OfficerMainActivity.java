@@ -107,28 +107,28 @@ public class OfficerMainActivity extends AppCompatActivity {
                 toolbar.setBackgroundResource(selectedThemeColor);
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross1_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross2_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross3_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross4_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross5_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross6_bg);
+                    // navigationView.setBackgroundResource(R.drawable.redcross6_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross7_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     //    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
@@ -174,7 +174,7 @@ public class OfficerMainActivity extends AppCompatActivity {
 
 
         if (GlobalDeclaration.username != null && GlobalDeclaration.designation != null) {
-            tv_name.setText("Welcome to " + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
+            tv_name.setText("Welcome to " + "\n" + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
         } else {
             tv_name.setText("Welcome to " + GlobalDeclaration.username);
 
@@ -478,7 +478,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 selectedThemeColor = R.color.redcroosbg_1;
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
                     dialog.dismiss();
@@ -497,7 +497,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     //  int[] colorsIds = getResources().getIntArray(R.array.theme_colors_id);
                     layout_main.setBackgroundColor(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -515,7 +515,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -533,7 +533,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                     toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -551,7 +551,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -569,7 +569,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -587,7 +587,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);
@@ -605,7 +605,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                 if (selectedThemeColor != -1) {
                     layout_main.setBackgroundResource(selectedThemeColor);
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
                     storesInsharedPref(selectedThemeColor);

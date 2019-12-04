@@ -1,4 +1,0 @@
-# Referenced at G:\Git_Workspace\RedCross_Workspace\RedCross_Code\RedCross-master\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:15
--keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at G:\Git_Workspace\RedCross_Workspace\RedCross_Code\RedCross-master\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:15
--keep class androidx.multidex.MultiDexApplication { <init>(); }
