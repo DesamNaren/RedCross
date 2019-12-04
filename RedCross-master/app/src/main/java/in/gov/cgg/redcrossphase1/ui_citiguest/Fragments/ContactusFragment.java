@@ -318,6 +318,9 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
     private void findViews(View root) {
         ll_contactUs = root.findViewById(R.id.ll_contactUs);
     }
+
+    public interface OnFragmentInteractionListener {
+    }
 }
 
 

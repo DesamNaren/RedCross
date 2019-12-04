@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -81,4 +82,8 @@ public class WhoWeAreFragment extends Fragment {
         return getResources().getDisplayMetrics().density * dp;
     }
 
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
 }

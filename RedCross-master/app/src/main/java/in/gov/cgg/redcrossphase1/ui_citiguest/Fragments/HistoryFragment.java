@@ -82,4 +82,6 @@ public class HistoryFragment extends Fragment {
         return getResources().getDisplayMetrics().density * dp;
     }
 
+    public interface OnFragmentInteractionListener {
+    }
 }

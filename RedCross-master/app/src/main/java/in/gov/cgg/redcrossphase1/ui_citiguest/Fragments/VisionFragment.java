@@ -64,5 +64,7 @@ public class VisionFragment extends Fragment {
         ll_vision = root.findViewById(R.id.ll_vision);
     }
 
+    public interface OnFragmentInteractionListener {
+    }
 }
 

@@ -196,4 +196,6 @@ public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQ
     }
 
 
+    public interface OnFragmentInteractionListener {
+    }
 }

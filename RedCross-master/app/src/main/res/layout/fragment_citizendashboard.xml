@@ -85,6 +85,7 @@
                 android:background="#21000000"
                 android:elevation="10dp"
                 android:orientation="vertical"
+                android:id="@+id/ll_history"
 
                 android:padding="10dp">
 
@@ -123,6 +124,7 @@
                 android:background="#21000000"
                 android:elevation="10dp"
                 android:orientation="vertical"
+                android:id="@+id/ll_vision"
 
                 android:padding="10dp">
 
@@ -152,6 +154,7 @@
                 android:background="#21000000"
                 android:elevation="10dp"
                 android:orientation="vertical"
+                android:id="@+id/ll_mission"
 
                 android:padding="10dp">
 
@@ -188,6 +191,7 @@
                 android:background="#21000000"
                 android:elevation="10dp"
                 android:orientation="vertical"
+                android:id="@+id/ll_contactus"
 
                 android:padding="10dp">
 
@@ -216,6 +220,8 @@
                 android:layout_weight="1"
                 android:background="#21000000"
                 android:elevation="10dp"
+                android:id="@+id/ll_bloodbankDetails"
+
                 android:orientation="vertical"
                 android:padding="10dp">
 
