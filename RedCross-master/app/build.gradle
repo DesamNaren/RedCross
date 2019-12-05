@@ -42,6 +42,8 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+
 
         }
 
@@ -61,6 +63,8 @@ android {
         uat {
             buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
             signingConfig signingConfigs.release
+            debuggable true
+
 //            release {
 //                buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
 //

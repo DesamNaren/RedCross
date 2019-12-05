@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,17 +40,16 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
-import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class DaywiseFragment extends Fragment {
 
     int selectedThemeColor = -1;
-    CustomProgressDialog pd;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
     private List<DayWiseReportCountResponse> reveList = new ArrayList<>();
+    String spn_year, spn_month;
 
     // private RecyclerView rv_district;
 
@@ -62,7 +63,10 @@ public class DaywiseFragment extends Fragment {
 
 
         GlobalDeclaration.home = false;
-
+        daywiseViewModel =
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "day")).get(DaywiseViewModel.class);
+        Objects.requireNonNull(getActivity()).setTitle("Day wise");
+        binding.cvDay.setVisibility(View.VISIBLE);
         if (GlobalDeclaration.counts != null) {
             setCountsForDashboard(GlobalDeclaration.counts);
         }
@@ -114,25 +118,100 @@ public class DaywiseFragment extends Fragment {
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
-        pd = new CustomProgressDialog(getActivity());
-        //pd.setMessage("Loading ,Please wait");
-        // pd.show();
-        daywiseViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "day")).get(DaywiseViewModel.class);
-        Objects.requireNonNull(getActivity()).setTitle("Day wise");
+
+
+        binding.spnFinancialyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (binding.spnFinancialyear.getSelectedItem().toString().contains("2019")) {
+                    spn_year = "3";
+                    if (binding.spnMonth.getSelectedItem().toString().contains("Select")) {
+                        Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
+                        binding.rvDaywiselist.setVisibility(View.GONE);
+
+                    }
+
+                } else if (binding.spnFinancialyear.getSelectedItem().toString().contains("Select")) {
+                    spn_year = "";
+                    if (binding.spnMonth.getSelectedItem().toString().contains("Select")) {
+                        Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
+                    }
+                    Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+                    binding.rvDaywiselist.setVisibility(View.GONE);
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (binding.spnMonth.getSelectedItem().toString().contains("Novem")) {
+                    spn_month = "11";
+                    if (!spn_year.equalsIgnoreCase("")) {
+                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+                                    @Override
+                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+                                        if (alldaywisecounts != null) {
+                                            setDataforRV(alldaywisecounts);
+                                        }
+                                    }
+                                });
+                    } else {
+                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+                        binding.rvDaywiselist.setVisibility(View.GONE);
+
+                    }
+                } else if (binding.spnMonth.getSelectedItem().toString().contains("Decem")) {
+                    spn_month = "12";
+                    if (!spn_year.equalsIgnoreCase("")) {
+                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+                                    @Override
+                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+                                        if (alldaywisecounts != null) {
+                                            setDataforRV(alldaywisecounts);
+
+                                        }
+                                    }
+                                });
+                    } else {
+                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+                        binding.rvDaywiselist.setVisibility(View.GONE);
+
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
+                    binding.rvDaywiselist.setVisibility(View.GONE);
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 binding.refreshLayout.setRefreshing(false);
                 // code on swipe refresh
-                daywiseViewModel.getDaysCount("3", GlobalDeclaration.districtId, "11").
+                daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
                         observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
                             @Override
                             public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
                                 if (alldaywisecounts != null) {
                                     setDataforRV(alldaywisecounts);
-                                    pd.dismiss();
 
                                 }
                             }
@@ -140,19 +219,6 @@ public class DaywiseFragment extends Fragment {
             }
         });
         binding.refreshLayout.setColorSchemeColors(Color.RED);
-
-
-        daywiseViewModel.getDaysCount("3", GlobalDeclaration.districtId, "11").
-                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
-                    @Override
-                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
-                        if (alldaywisecounts != null) {
-                            setDataforRV(alldaywisecounts);
-                            pd.dismiss();
-
-                        }
-                    }
-                });
 
 
         return binding.getRoot();
@@ -173,13 +239,20 @@ public class DaywiseFragment extends Fragment {
     private void setDataforRV(List<DayWiseReportCountResponse> daywisecount) {
 
         //int r= sortDatesHere();
+        if (daywisecount.size() > 0) {
+            binding.rvDaywiselist.setVisibility(View.VISIBLE);
 
-        Collections.reverse(daywisecount);
-        binding.rvDaywiselist.setHasFixedSize(true);
-        binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
-        DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount, selectedThemeColor);
-        binding.rvDaywiselist.setAdapter(adapter1);
-        adapter1.notifyDataSetChanged();
+            Collections.reverse(daywisecount);
+            binding.rvDaywiselist.setHasFixedSize(true);
+            binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
+            DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount, selectedThemeColor);
+            binding.rvDaywiselist.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+        } else {
+            binding.rvDaywiselist.setVisibility(View.GONE);
+            binding.tvNodata.setVisibility(View.VISIBLE);
+
+        }
 
 
     }

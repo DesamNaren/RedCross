@@ -50,6 +50,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
     @Override
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
 
+
         total = allDistricts.get(position).getJRC() + allDistricts.get(position).getYRC() + allDistricts.get(position).getMembership();
         //total = allDistricts.get(position).getTotalCounts();
 
