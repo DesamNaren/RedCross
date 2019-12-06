@@ -61,9 +61,9 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
         holder.tv_totalcount.setText(String.valueOf(total));
 
 
-        holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
-        holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
-        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+        // holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+        // holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+//        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
         if (selectedThemeColor != -1) {
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));

@@ -41,6 +41,11 @@
         <item name="tabBackground">@drawable/tab_background</item>
     </style>
 
+    <style name="Custom.Widget.Design.TabLayout" parent="android:Widget">
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/tab_background</item>
+    </style>
+
     <style name="MaterialSearchViewStyle">
         <!-- Background for the search bar -->
         <item name="searchBackground">@color/colorPrimary</item>
@@ -68,6 +73,11 @@
         <item name="android:hint">@string/search_hint</item>
     </style>
 
+    <style name="CustomTextAppearanceTab" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
 
     <string name="search_hint">Search</string>
 </resources>

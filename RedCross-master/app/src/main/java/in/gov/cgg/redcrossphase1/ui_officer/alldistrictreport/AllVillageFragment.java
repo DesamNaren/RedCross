@@ -3,7 +3,6 @@ package in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,8 +39,6 @@ import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class AllVillageFragment extends Fragment {
 
 
@@ -70,64 +67,64 @@ public class AllVillageFragment extends Fragment {
         binding.searchView.setSubmitButtonEnabled(true);
         binding.searchView.setQueryHint("Search By Name");*/
 
-        binding.customCount.llPicker.setVisibility(View.GONE);
-        binding.customCount.cvName.setVisibility(View.VISIBLE);
-        try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                }
-                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
-            }
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-        }
+//        binding.customCount.llPicker.setVisibility(View.GONE);
+//        binding.customCount.cvName.setVisibility(View.VISIBLE);
+//        try {
+//            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+//            if (selectedThemeColor != -1) {
+//                if (selectedThemeColor == R.color.redcroosbg_1) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llName.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                }
+//                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
+//            }
+//        } catch (Resources.NotFoundException e) {
+//            e.printStackTrace();
+//        }
         pd = new CustomProgressDialog(getActivity());
         pd.show();
         allDistrictsViewModel =
@@ -147,7 +144,7 @@ public class AllVillageFragment extends Fragment {
                     public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
                         if (allDistrictList != null) {
                             setDataforRV(allDistrictList);
-                            setCountsForDashboard(allDistrictList);
+                            //setCountsForDashboard(allDistrictList);
                             pd.dismiss();
                         }
                     }
@@ -177,26 +174,6 @@ public class AllVillageFragment extends Fragment {
 
     }
 
-    private void setCountsForDashboard(List<StatelevelDistrictViewCountResponse> dashboardCountResponse) {
-        if (dashboardCountResponse != null) {
-            int total = 0, jrc = 0, yrc = 0, m = 0;
-            for (int i = 0; i < dashboardCountResponse.size(); i++) {
-                jrc = jrc + dashboardCountResponse.get(i).getJRC();
-                yrc = yrc + dashboardCountResponse.get(i).getYRC();
-                m = m + dashboardCountResponse.get(i).getMembership();
-            }
-            total = jrc + yrc + m;
-            binding.customCount.tvJrccount.setText(String.valueOf(jrc));
-            binding.customCount.tvTotalcount.setText(String.valueOf(total));
-            binding.customCount.tvYrccount.setText(String.valueOf(yrc));
-            binding.customCount.tvLmcount.setText(String.valueOf(m));
-            if (GlobalDeclaration.leveMName != null) {
-                binding.customCount.tvlevelname.setText(GlobalDeclaration.leveMName);
-            } else {
-                binding.customCount.cvName.setVisibility(View.GONE);
-            }
-        }
-    }
 
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
         if (allDistrictList.size() > 0) {

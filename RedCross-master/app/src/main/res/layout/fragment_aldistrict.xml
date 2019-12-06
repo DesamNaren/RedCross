@@ -21,9 +21,11 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/customCount"
-                layout="@layout/custom_count_layout" />
+            <!--
+                        <include
+                            android:id="@+id/customCount"
+                            layout="@layout/custom_count_layout" />
+            -->
 
             <LinearLayout
                 android:id="@+id/ll_share"

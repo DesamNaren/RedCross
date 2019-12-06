@@ -980,7 +980,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         tv_btm5distrctName = root.findViewById(R.id.tv_btm5distrctName);
         tv_btm5distrctEnrollement = root.findViewById(R.id.tv_btm5distrctEnrollement);
         tv_btm5distrctRank = root.findViewById(R.id.tv_btm5distrctRank);
-        tv_total = root.findViewById(R.id.tv_total);
 
         ll_nameenrollRankTop = root.findViewById(R.id.ll_nameenrollRankTop);
         ll_nameenrollRankBottom = root.findViewById(R.id.ll_nameenrollRankBottom);
@@ -1070,7 +1069,6 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
             tv_jrcocunt.setText(String.valueOf(dashboardCountResponse.getJrc()));
             tv_yrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
             tv_lmcount.setText(String.valueOf(dashboardCountResponse.getMs()));
-            tv_totalcount.setText(String.valueOf(total));
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }

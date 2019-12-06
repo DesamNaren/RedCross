@@ -7,18 +7,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -29,54 +27,35 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.databinding.FragmentBloodwiseBinding;
+import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
-
-import static in.gov.cgg.redcrossphase1.R.color.colorPrimary;
-import static in.gov.cgg.redcrossphase1.R.color.white;
 
 public class BloodwiseFragment extends Fragment {
 
-    private PieChart pieChart;
-    private BloodwiseViewModel bloodwiseViewModel;
-    private TextView tv_jrcocunt;
-    private TextView tv_yrccount, tv_lmcount;
-    private TextView tv_yrcname;
-    private TextView tv_jrcname, tv_lmname;
-    private LinearLayout ll_jrc;
-    private LinearLayout ll_yrc, ll_lm;
+    FragmentBloodwiseBinding binding;
+    private BloodwiseViewModel bloodwiseVm;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_bloodwise, container, false);
-        bloodwiseViewModel =
-                ViewModelProviders.of(this).get(BloodwiseViewModel.class);
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_bloodwise, container, false);
 
+        bloodwiseVm =
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "blood")).get(BloodwiseViewModel.class);
 
-        pieChart = root.findViewById(R.id.chart_blood);
         GlobalDeclaration.home = false;
 
-        ll_jrc = root.findViewById(R.id.ll_jrc);
-        ll_yrc = root.findViewById(R.id.ll_yrc);
-        ll_lm = root.findViewById(R.id.ll_lm);
-        tv_jrcocunt = root.findViewById(R.id.tv_jrccount);
-        tv_yrccount = root.findViewById(R.id.tv_yrccount);
-        tv_lmcount = root.findViewById(R.id.tv_lmcount);
-        tv_lmname = root.findViewById(R.id.tv_lmname);
-        tv_jrcname = root.findViewById(R.id.tv_jrcnme);
-        tv_yrcname = root.findViewById(R.id.tv_yrcnme);
 
-        Objects.requireNonNull(getActivity()).setTitle("Blood group wise");
+//        Objects.requireNonNull(getActivity()).setTitle("Blood group wise");
 
-        setCountsForDashboard(GlobalDeclaration.counts);
         if (CheckInternet.isOnline(getActivity())) {
-            bloodwiseViewModel.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+            bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
                     observe(getActivity(), new Observer<List<BloodGroups>>() {
                         @Override
                         public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
@@ -87,126 +66,117 @@ public class BloodwiseFragment extends Fragment {
                     });
         } else {
             Snackbar snackbar = Snackbar
-                    .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    .make(binding.chartBlood, "No Internet Connection", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
 
-        ll_jrc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (CheckInternet.isOnline(getActivity())) {
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_jrcocunt.setTextColor(getResources().getColor(white));
-                    tv_jrcname.setTextColor(getResources().getColor(white));
+//        ll_jrc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
-
-
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-
-
-                    bloodwiseViewModel.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                            observe(getActivity(), new Observer<List<BloodGroups>>() {
-                                @Override
-                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                    if (bloodGroupsList != null) {
-                                        generateDataPie(bloodGroupsList);
-                                    }
-                                }
-                            });
-                } else {
-                    Snackbar snackbar = Snackbar
-                            .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-
-            }
-        });
-
-        ll_yrc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (CheckInternet.isOnline(getActivity())) {
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+//                if (CheckInternet.isOnline(getActivity())) {
+//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+//                    tv_jrcocunt.setTextColor(getResources().getColor(white));
+//                    tv_jrcname.setTextColor(getResources().getColor(white));
+////
+//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
 //
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_yrcname.setTextColor(getResources().getColor(white));
-                    tv_yrccount.setTextColor(getResources().getColor(white));
-
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-
-                    bloodwiseViewModel.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
-                                @Override
-                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                    if (bloodGroupsList != null) {
-                                        generateDataPie(bloodGroupsList);
-                                    }
-                                }
-                            });
-                } else {
-                    Snackbar snackbar = Snackbar
-                            .make(ll_yrc, "No Internet Connection", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-            }
-        });
-        ll_lm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (CheckInternet.isOnline(getActivity())) {
-                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-                    tv_lmcount.setTextColor(getResources().getColor(white));
-                    tv_lmname.setTextColor(getResources().getColor(white));
 //
-                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+//
+//
+//                    bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+//                            observe(getActivity(), new Observer<List<BloodGroups>>() {
+//                                @Override
+//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+//                                    if (bloodGroupsList != null) {
+//                                        generateDataPie(bloodGroupsList);
+//                                    }
+//                                }
+//                            });
+//                } else {
+//                    Snackbar snackbar = Snackbar
+//                            .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+//                    snackbar.show();
+//                }
+//
+//            }
+//        });
+//
+//        ll_yrc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (CheckInternet.isOnline(getActivity())) {
+//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+////
+//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+//                    tv_yrcname.setTextColor(getResources().getColor(white));
+//                    tv_yrccount.setTextColor(getResources().getColor(white));
+//
+//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
+//
+//                    bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+//                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
+//                                @Override
+//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+//                                    if (bloodGroupsList != null) {
+//                                        generateDataPie(bloodGroupsList);
+//                                    }
+//                                }
+//                            });
+//                } else {
+//                    Snackbar snackbar = Snackbar
+//                            .make(ll_yrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+//                    snackbar.show();
+//                }
+//            }
+//        });
+//        ll_lm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (CheckInternet.isOnline(getActivity())) {
+//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+//                    tv_lmcount.setTextColor(getResources().getColor(white));
+//                    tv_lmname.setTextColor(getResources().getColor(white));
+////
+//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
+//
+//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
+//                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
+//
+//                    bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+//                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
+//                                @Override
+//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
+//                                    if (bloodGroupsList != null) {
+//                                        generateDataPie(bloodGroupsList);
+//                                    }
+//                                }
+//                            });
+//                } else {
+//                    Snackbar snackbar = Snackbar
+//                            .make(ll_lm, "No Internet Connection", Snackbar.LENGTH_LONG);
+//                    snackbar.show();
+//                }
+//            }
+//        });
 
-                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-
-                    bloodwiseViewModel.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
-                                @Override
-                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-                                    if (bloodGroupsList != null) {
-                                        generateDataPie(bloodGroupsList);
-                                    }
-                                }
-                            });
-                } else {
-                    Snackbar snackbar = Snackbar
-                            .make(ll_lm, "No Internet Connection", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-            }
-        });
-
-        return root;
+        return binding.getRoot();
     }
 
-    private void setCountsForDashboard(DashboardCountResponse dashboardCountResponse) {
-        if (dashboardCountResponse != null) {
-
-            tv_jrcocunt.setText(String.valueOf(dashboardCountResponse.getJrc()));
-            tv_yrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
-            tv_lmcount.setText(String.valueOf(dashboardCountResponse.getYrc()));
-        }
-        //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
-    }
 
     private void generateDataPie(List<BloodGroups> bloodGroupsList) {
 
@@ -217,10 +187,10 @@ public class BloodwiseFragment extends Fragment {
             entries.add(new PieEntry(Float.parseFloat(bloodGroupsList.get(i).getCount()), bloodGroupsList.get(i).getBloodGroup()));
         }
 
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setNoDataText("No Data available");
+        binding.chartBlood.getDescription().setEnabled(false);
+        binding.chartBlood.setNoDataText("No Data available");
 
-        Legend l = pieChart.getLegend();
+        Legend l = binding.chartBlood.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
@@ -230,21 +200,21 @@ public class BloodwiseFragment extends Fragment {
         l.setYOffset(0f);
 
 
-        pieChart.setRotationEnabled(true);
-        pieChart.setDrawCenterText(true);
-        pieChart.setRotationEnabled(true);
+        binding.chartBlood.setRotationEnabled(true);
+        binding.chartBlood.setDrawCenterText(true);
+        binding.chartBlood.setRotationEnabled(true);
 
         //.setUsePercentValues(true);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleColor(Color.WHITE);
-        pieChart.setTransparentCircleAlpha(110);
-        pieChart.setHoleRadius(58f);
-        pieChart.setTransparentCircleRadius(61f);
-        pieChart.setDrawCenterText(true);
-        pieChart.setHighlightPerTapEnabled(true);
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        binding.chartBlood.getDescription().setEnabled(false);
+        binding.chartBlood.setDrawHoleEnabled(true);
+        binding.chartBlood.setHoleColor(Color.WHITE);
+        binding.chartBlood.setTransparentCircleColor(Color.WHITE);
+        binding.chartBlood.setTransparentCircleAlpha(110);
+        binding.chartBlood.setHoleRadius(58f);
+        binding.chartBlood.setTransparentCircleRadius(61f);
+        binding.chartBlood.setDrawCenterText(true);
+        binding.chartBlood.setHighlightPerTapEnabled(true);
+        binding.chartBlood.animateY(1400, Easing.EaseInOutQuad);
 
 
         PieDataSet d = new PieDataSet(entries, "Enrollments ");
@@ -264,8 +234,8 @@ public class BloodwiseFragment extends Fragment {
         pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(11f);
         pieData.setValueTextColor(Color.BLACK);
-        pieChart.setData(pieData);
-        pieChart.invalidate();
+        binding.chartBlood.setData(pieData);
+        binding.chartBlood.invalidate();
     }
 
 

@@ -113,7 +113,6 @@ public class DaywiseFragment extends Fragment {
                 binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvTotal.setTextColor(getResources().getColor(selectedThemeColor));
             }
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
@@ -229,9 +228,9 @@ public class DaywiseFragment extends Fragment {
         if (dashboardCountResponse != null) {
             int total = dashboardCountResponse.getJrc() + dashboardCountResponse.getYrc() + dashboardCountResponse.getMs();
             binding.customCount.tvJrccount.setText(String.valueOf(dashboardCountResponse.getJrc()));
-            binding.customCount.tvTotalcount.setText(String.valueOf(total));
             binding.customCount.tvYrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
             binding.customCount.tvLmcount.setText(String.valueOf(dashboardCountResponse.getMs()));
+            binding.customCount.tvAllcount.setText(String.valueOf(total));
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }

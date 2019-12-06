@@ -28,6 +28,7 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentOfficerBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
@@ -181,7 +182,7 @@ public class OfficerLoginFragment extends Fragment {
                             }
 
                             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                            startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                             getActivity().finish();
                         } else if (status.equals("100")) {
                             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();

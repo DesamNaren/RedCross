@@ -68,7 +68,7 @@
         tools:layout="@layout/fragment_pp" />
     <!--    <fragment-->
     <!--        android:id="@+id/nav_ofctheme"-->
-    <!--        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment"-->
+    <!--        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.NewOfficerHomeFragment"-->
     <!--        tools:layout="@layout/fragemt_home_officer" />-->
 
 

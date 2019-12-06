@@ -168,7 +168,9 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_lifetimemember) {
+
                     showChangeLangDialog();
+
                 } else if (menuItem.getItemId() == R.id.nav_locatebloodbanks) {
                     GlobalDeclaration.FARG_TAG = LocateBloodbanksFragment.class.getSimpleName();
                     selectedFragment = new LocateBloodbanksFragment();

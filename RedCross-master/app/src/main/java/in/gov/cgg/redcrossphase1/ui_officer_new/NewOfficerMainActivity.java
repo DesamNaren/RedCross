@@ -1,8 +1,7 @@
-package in.gov.cgg.redcrossphase1.ui_officer;
+package in.gov.cgg.redcrossphase1.ui_officer_new;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -15,13 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -34,49 +30,44 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.ui_officer.NewTCFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.PhotoUploadActivity;
+import in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
-public class OfficerMainActivity extends AppCompatActivity {
+public class NewOfficerMainActivity extends AppCompatActivity {
 
 
-    public static final String MyPREFERENCES = "MyPrefs";
-    private static final float END_SCALE = 0.7f;
-    Spinner spinYear;
-    private View contentView;
-    private TabHost tabHost;
-    private AppBarConfiguration mAppBarConfiguration;
-    private int pos;
-    private TextView tv_name;
-    FloatingActionButton fabmain;
-    private Menu mMenu;
-    private NavController navController;
     int selectedThemeColor = -1;
     NavigationView navigationView;
     Toolbar toolbar;
     View header;
     RelativeLayout layout_main;
     DrawerLayout drawerLayout;
+    SharedPreferences settings;
+    ViewPager viewPager_home;
+    SharedPreferences.Editor editor;
+    private View contentView;
+    private AppBarConfiguration mAppBarConfiguration;
+    private NavController navController;
     private LinearLayout ll_nav_header;
     private Fragment selectedFragment;
-    SharedPreferences settings;
-    SharedPreferences.Editor editor;
-    private Menu Mmenu;
-
     private ImageView iv_color1_selected, iv_color2_selected, iv_color3_selected, iv_color4_selected, iv_color5_selected, iv_color6_selected, iv_color7_selected, iv_color8_selected;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +84,19 @@ public class OfficerMainActivity extends AppCompatActivity {
         contentView = findViewById(R.id.content);
         TextView tv_name = headerView.findViewById(R.id.textView_name);
 
+//        viewPager_home = findViewById(R.id.viewpager_home);
+//
         setSupportActionBar(toolbar);
         Menu nav_Menu = navigationView.getMenu();
-        GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
+//
+//        setupViewPager(viewPager_home);
+//        tabLayout = findViewById(R.id.tabs_home);
+//        tabLayout.setupWithViewPager(viewPager_home);
+        //setupTabIcons();
+
+        GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
         //default fragment
-        selectedFragment = new OfficerHomeFragment();
+        selectedFragment = new NewOfficerHomeFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
 
 
@@ -179,31 +178,14 @@ public class OfficerMainActivity extends AppCompatActivity {
             tv_name.setText("Welcome to " + GlobalDeclaration.username);
 
         }
-     /*   drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-                                           @Override
-                                           public void onDrawerSlide(View drawerView, float slideOffset) {
-                                               //labelView.setVisibility(slideOffset > 0 ? View.VISIBLE : View.GONE);
 
-                                               // Scale the View based on current slide offset
-                                               final float diffScaledOffset = slideOffset * (1 - END_SCALE);
-                                               final float offsetScale = 1 - diffScaledOffset;
-                                               contentView.setScaleX(offsetScale);
-                                               contentView.setScaleY(offsetScale);
-
-                                               // Translate the View, accounting for the scaled width
-                                               final float xOffset = drawerView.getWidth() * slideOffset;
-                                               final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
-                                               final float xTranslation = xOffset - xOffsetDiff;
-                                               contentView.setTranslationX(xTranslation);
-                                           }
-
-                                           @Override
-                                           public void onDrawerClosed(View drawerView) {
-//                                               labelView.setVisibility(View.GONE);
-                                           }
-                                       }*/
-        // );
     }
+
+
+//    private void setupTabIcons() {
+//        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+//    }
 
     private void sharedPreferenceMethod(int selectedThemeColor) {
         settings = getSharedPreferences("THEMECOLOR_PREF", Activity.MODE_PRIVATE);
@@ -219,7 +201,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         // CustomRelativeLayout.changeStatusBarColor(this);
         //refersh of same fragment
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_officer);
-        if (currentFragment instanceof OfficerHomeFragment) {
+        if (currentFragment instanceof NewOfficerHomeFragment) {
             FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
             fragTransaction.detach(currentFragment);
             fragTransaction.attach(currentFragment);
@@ -273,8 +255,8 @@ public class OfficerMainActivity extends AppCompatActivity {
                             return true;
                         }
                     });*/
-                    GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
-                    selectedFragment = new OfficerHomeFragment();
+                    GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
+                    selectedFragment = new NewOfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_age) {
@@ -363,7 +345,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
                             return true;
                         }
                     });
@@ -382,7 +364,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
                             return true;
                         }
                     });
@@ -391,7 +373,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
                             return true;
                         }
                     });
@@ -400,7 +382,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(OfficerMainActivity.this, OfficerMainActivity.class));
+                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
                             return true;
                         }
                     });
@@ -418,7 +400,7 @@ public class OfficerMainActivity extends AppCompatActivity {
         if (fargTag.equalsIgnoreCase("DaywiseFragment")) {
             selectedFragment = new DaywiseFragment();
         } else if (fargTag.equalsIgnoreCase("NewOfficerHomeFragment")) {
-            selectedFragment = new OfficerHomeFragment();
+            selectedFragment = new NewOfficerHomeFragment();
         } else if (fargTag.equalsIgnoreCase("NewAllDistrictsFragment")) {
             selectedFragment = new AllDistrictsFragment();
         } else if (fargTag.equalsIgnoreCase("PrivacyPolicyFragment")) {
@@ -433,8 +415,8 @@ public class OfficerMainActivity extends AppCompatActivity {
         } else if (fargTag.equalsIgnoreCase("NewTCFragment")) {
             selectedFragment = new NewTCFragment();
         } else {
-            GlobalDeclaration.FARG_TAG = OfficerHomeFragment.class.getSimpleName();
-            selectedFragment = new OfficerHomeFragment();
+            GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
+            selectedFragment = new NewOfficerHomeFragment();
         }
 
     }
@@ -442,7 +424,7 @@ public class OfficerMainActivity extends AppCompatActivity {
     //call this method for selection of themes in menu
     private void showThemePicker() {
         selectedThemeColor = -1;
-        final Dialog dialog = new Dialog(OfficerMainActivity.this);
+        final Dialog dialog = new Dialog(NewOfficerMainActivity.this);
         dialog.setTitle("Select Theme Color");
         dialog.setContentView(R.layout.fragment_themes);
 
@@ -629,43 +611,7 @@ public class OfficerMainActivity extends AppCompatActivity {
     }
 
     private void callHomeAlert() {
-//        AlertDialog.Builder alertDialog = new AlertDialog.Builder(OfficerMainActivity.this);
-//        final AlertDialog alertDialog1 = alertDialog.create();
-//
-//
-//        alertDialog.setMessage("Do you want to logout ?");
-//        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                //alertDialog1.dismiss();
-//                alertDialog1.dismiss();
-//            }
-//        });
-//        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//
-////                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-////                SharedPreferences.Editor editor = sharedpreferences.edit();
-////                editor.putString("un", "");
-////                editor.putString("pw", "");
-////                editor.putBoolean("is", false);
-////                editor.apply();
-//                startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
-//                finish();
-//            }
-//        });
-//
-////        alertDialog.setNeutralButton("JUST LOGOUT", new DialogInterface.OnClickListener() {
-////            @Override
-////            public void onClick(DialogInterface dialogInterface, int i) {
-////                //alertDialog1.dismiss();
-////                startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
-////                finish();
-////            }
-////        });
-//
-//        alertDialog.show();
+
         final PrettyDialog dialog = new PrettyDialog(this);
         dialog
                 .setTitle("Red cross")
@@ -675,7 +621,7 @@ public class OfficerMainActivity extends AppCompatActivity {
                     @Override
                     public void onClick() {
                         dialog.dismiss();
-                        startActivity(new Intent(OfficerMainActivity.this, TabLoginActivity.class));
+                        startActivity(new Intent(NewOfficerMainActivity.this, TabLoginActivity.class));
                         finish();
                     }
                 })
@@ -691,54 +637,14 @@ public class OfficerMainActivity extends AppCompatActivity {
     }
 
 
-    private void callAllAlert() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(OfficerMainActivity.this);
-
-        alertDialogBuilder.setTitle("");
-        alertDialogBuilder.setMessage("Do you want to?");
-        // set positive button: Yes message
-        alertDialogBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // go to a new activity of the app
-                Intent positveActivity = new Intent(OfficerMainActivity.this,
-                        TabLoginActivity.class);
-                startActivity(positveActivity);
-                finish();
-            }
-        });
-        // set negative button: No message
-        alertDialogBuilder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // cancel the alert box and put a Toast to the user
-//                        dialog.cancel();
-////                        Toast.makeText(getApplicationContext(), "You chose a negative answer",
-////                                Toast.LENGTH_LONG).show();
-                finishAffinity();
-            }
-        });
-        // set neutral button: Exit the app message
-        alertDialogBuilder.setNeutralButton("Go Home", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // exit the app and go to the HOME
-                dialog.dismiss();
-                Intent positveActivity = new Intent(getApplicationContext(),
-                        OfficerMainActivity.class);
-                startActivity(positveActivity);
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        // show alert
-        alertDialog.show();
-
-    }
-
-
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }
+
 

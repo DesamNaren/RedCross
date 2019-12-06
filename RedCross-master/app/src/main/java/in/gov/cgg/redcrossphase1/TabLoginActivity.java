@@ -40,7 +40,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitizenLoginFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.RegisterActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.OfficerLoginFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,14 +71,6 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
 
-//        uname = prefs.getString("un", "");
-//        pswd = prefs.getString("pw", "");
-//        isCheked = prefs.getBoolean("is", false);
-//        if (isCheked) {
-//            GlobalDeclaration.sharedUname = uname;
-//            GlobalDeclaration.sharedUPswd = pswd;
-//            GlobalDeclaration.ischecked = isCheked;
-//        }
 
         progressDialog = new ProgressDialog(TabLoginActivity.this);
         progressDialog.setMessage("Please wait");
@@ -250,7 +242,7 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
 
 
                             Toast.makeText(TabLoginActivity.this, message, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(TabLoginActivity.this, OfficerMainActivity.class));
+                            startActivity(new Intent(TabLoginActivity.this, NewOfficerMainActivity.class));
                             finish();
                         } else if (status.equals("100")) {
                             Toast.makeText(TabLoginActivity.this, message, Toast.LENGTH_SHORT).show();
