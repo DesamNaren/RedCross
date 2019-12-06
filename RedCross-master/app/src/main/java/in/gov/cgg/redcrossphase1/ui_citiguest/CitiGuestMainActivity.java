@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,6 +38,7 @@ import com.google.android.material.navigation.NavigationView;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CapacityBuildingsFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
@@ -49,7 +49,6 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
@@ -61,7 +60,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private Toolbar toolbar;
     private View contentView;
-    private TabHost tabHost;
     private int pos;
     View header;
     int selectedThemeColor = -1;
@@ -115,7 +113,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 R.id.nav_History, R.id.nav_Principles, R.id.nav_whoweare, R.id.nav_Vision, R.id.nav_mission
                 , R.id.nav_Structure, R.id.nav_Contact, R.id.nav_lifetimemember, R.id.nav_blooddonorreg, R.id.nav_hnreg,
                 R.id.nav_onlinedonations, R.id.nav_training, R.id.nav_hn, R.id.nav_doateblood, R.id.nav_locatebloodbanks
-                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_dashboard)
+                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_dashboard, R.id.nav_capacityBuildings)
                 .setDrawerLayout(drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -123,11 +121,11 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+      /*  GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
         //default fragment
         selectedFragment = new CitizendashboardFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-
+*/
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -168,7 +166,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_lifetimemember) {
-
                     showChangeLangDialog();
 
                 } else if (menuItem.getItemId() == R.id.nav_locatebloodbanks) {
@@ -176,6 +173,12 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     selectedFragment = new LocateBloodbanksFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_capacityBuildings) {
+                    showChangeLangDialog();
+                   /* GlobalDeclaration.FARG_TAG = CapacityBuildingsFragment.class.getSimpleName();
+                    selectedFragment = new CapacityBuildingsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);*/
                 } else if (menuItem.getItemId() == R.id.nav_blooddonorreg) {
                     showChangeLangDialog();
                 } else if (menuItem.getItemId() == R.id.nav_hn) {
@@ -286,6 +289,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
 
     }
+
 
     void callFragment(Fragment fragment, String name) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -475,11 +479,9 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
     public void storesInsharedPref(int selectedThemeColor) {
         sharedPreferenceMethod(selectedThemeColor);
-
-        // CustomRelativeLayout.changeStatusBarColor(this);
         //refersh of same fragment
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_officer);
-        if (currentFragment instanceof OfficerHomeFragment) {
+        if (currentFragment instanceof CitizendashboardFragment) {
             FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
             fragTransaction.detach(currentFragment);
             fragTransaction.attach(currentFragment);
@@ -511,6 +513,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
             selectedFragment = new CitiNewTCFragment();
         } else if (fargTag.equalsIgnoreCase("CitiPrivacyPolicyFragment")) {
             selectedFragment = new CitiPrivacyPolicyFragment();
+        } else if (fargTag.equalsIgnoreCase("CapacityBuildingsFragment")) {
+            selectedFragment = new CapacityBuildingsFragment();
         } else {
             GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
             selectedFragment = new CitizendashboardFragment();

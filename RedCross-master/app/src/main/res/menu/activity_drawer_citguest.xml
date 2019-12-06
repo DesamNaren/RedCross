@@ -91,6 +91,15 @@
                     android:id="@+id/nav_locatebloodbanks"
                     android:icon="@drawable/bloodbankdetails"
                     android:title="Bloodbanks Details" />
+                <item
+                    android:id="@+id/nav_capacityBuildings"
+                    android:icon="@drawable/capacitybuildings"
+                    android:title="Capacity Buildings" />
+                <item
+                    android:id="@+id/nav_nearMe"
+                    android:icon="@drawable/bloodbankdetails"
+                    android:title="Near me"
+                    android:visible="false" />
 
 
             </menu>
