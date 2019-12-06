@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -67,15 +67,51 @@
 
             <include
                 android:id="@+id/customCount"
-                layout="@layout/custom_count_layout" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_daywiselist"
+                layout="@layout/custom_count_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbarSize="5dp"
-                android:scrollbars="vertical"
+                android:layout_below="@+id/cv_day" />
+
+
+            <com.wajahatkarim3.easyflipview.EasyFlipView
+                android:id="@+id/easyFlipView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/btn_flip"
+                android:layout_below="@id/customCount"
+                app:flipDuration="500"
+                app:flipEnabled="true"
+                app:flipFrom="back"
+                app:flipOnTouch="false"
+                app:flipType="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_daywiselist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbarSize="5dp"
+                    android:scrollbars="vertical"
+                    android:visibility="visible" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart_daywise"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/dp_30" />
+
+
+            </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+            <TextView
+                android:id="@+id/btn_flip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/tab_background_unselected"
+                android:padding="@dimen/dp_5"
+                android:text="View "
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
                 android:visibility="gone" />
 
             <TextView
@@ -90,6 +126,6 @@
                 android:textSize="@dimen/dp_20"
                 android:visibility="gone" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

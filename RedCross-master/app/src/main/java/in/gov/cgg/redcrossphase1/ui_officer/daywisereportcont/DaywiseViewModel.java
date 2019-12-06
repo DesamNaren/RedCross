@@ -50,7 +50,7 @@ public class DaywiseViewModel extends ViewModel {
 
         pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<DayWiseReportCountResponse>> call = apiInterface.DayWiseReportDataWS(distid, finanyear, monthid);
+        Call<List<DayWiseReportCountResponse>> call = apiInterface.DayWiseReportDataWS(distid, "3", "12");
 
         Log.e("  url", call.request().url().toString());
 

@@ -41,9 +41,12 @@ public class DaywiseAdapter extends RecyclerView.Adapter<DaywiseAdapter.District
         holder.tv_yrccount.setText(String.valueOf(dayWiseReportCountResponses.get(position).getYRC()));
         holder.tv_lmcunt.setText(String.valueOf(dayWiseReportCountResponses.get(position).getMembership()));
         holder.tv_totalcount.setText(String.valueOf(dayWiseReportCountResponses.get(position).getTotal()));
-        holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+        holder.tv_alldname.setBackgroundColor(selectedThemeColor);
         holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+        holder.ll_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
         holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+
         if (selectedThemeColor != -1) {
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -78,6 +81,8 @@ public class DaywiseAdapter extends RecyclerView.Adapter<DaywiseAdapter.District
                 holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
                 holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
             }
+        } else {
+
         }
 
 
@@ -91,7 +96,7 @@ public class DaywiseAdapter extends RecyclerView.Adapter<DaywiseAdapter.District
     class DistrictViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv_alldname, tv_jrcname, tv_yrcname, tv_lmname, tv_jrcount, tv_yrccount, tv_lmcunt, tv_totalcount, tv_totaltext;
-        LinearLayout ll_alldlist, ll_jrc, ll_yrc, ll_lm;
+        LinearLayout ll_alldlist, ll_jrc, ll_yrc, ll_lm, ll_alldname;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
@@ -109,6 +114,7 @@ public class DaywiseAdapter extends RecyclerView.Adapter<DaywiseAdapter.District
             ll_jrc = itemView.findViewById(R.id.ll_jrc);
             ll_yrc = itemView.findViewById(R.id.ll_yrc);
             ll_lm = itemView.findViewById(R.id.ll_lm);
+            ll_alldname = itemView.findViewById(R.id.ll_alldname);
 
 
         }

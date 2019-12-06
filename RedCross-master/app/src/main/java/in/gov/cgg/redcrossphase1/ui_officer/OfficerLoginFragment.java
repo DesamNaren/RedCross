@@ -130,7 +130,6 @@ public class OfficerLoginFragment extends Fragment {
 
         progressDialog.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-
         JSONObject object = new JSONObject();
         try {
             object.put("userName", name);
