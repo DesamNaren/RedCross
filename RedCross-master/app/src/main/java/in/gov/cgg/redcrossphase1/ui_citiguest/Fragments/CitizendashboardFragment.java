@@ -25,7 +25,7 @@ import in.gov.cgg.redcrossphase1.R;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class CitizendashboardFragment extends Fragment implements View.OnClickListener, WhoWeAreFragment.OnFragmentInteractionListener, ContactusFragment.OnFragmentInteractionListener, HistoryFragment.OnFragmentInteractionListener, MissionFragment.OnFragmentInteractionListener, VisionFragment.OnFragmentInteractionListener, LocateBloodbanksFragment.OnFragmentInteractionListener {
+public class CitizendashboardFragment extends Fragment implements WhoWeAreFragment.OnFragmentInteractionListener, ContactusFragment.OnFragmentInteractionListener, HistoryFragment.OnFragmentInteractionListener, MissionFragment.OnFragmentInteractionListener, VisionFragment.OnFragmentInteractionListener, LocateBloodbanksFragment.OnFragmentInteractionListener {
     ImageView iv_whoweAre, iv_history, iv_vission, iv_mission, iv_contactUs, iv_bloodbankDetails;
     TextView tv_username;
     int selectedThemeColor = -1;
@@ -168,58 +168,58 @@ public class CitizendashboardFragment extends Fragment implements View.OnClickLi
         transaction.commitAllowingStateLoss();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.iv_whoweAre:
-                WhoWeAreFragment nextFrag = new WhoWeAreFragment();
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.iv_whoweAre:
+//                WhoWeAreFragment nextFrag = new WhoWeAreFragment();
+////                getActivity().getSupportFragmentManager().beginTransaction()
+////                        .replace(R.id.fragment_citizendashboard, nextFrag, "findThisFragment")
+////                        .addToBackStack(null)
+////                        .commit();
+//                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+//                selectedFragment = new CitizendashboardFragment();
+//                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                break;
+//            case R.id.iv_history:
+//                HistoryFragment nextFrag1 = new HistoryFragment();
 //                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_citizendashboard, nextFrag, "findThisFragment")
+//                        .replace(R.id.fragment_citizendashboard, nextFrag1, "findThisFragment")
 //                        .addToBackStack(null)
 //                        .commit();
-                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
-                selectedFragment = new CitizendashboardFragment();
-                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                break;
-            case R.id.iv_history:
-                HistoryFragment nextFrag1 = new HistoryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_citizendashboard, nextFrag1, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.iv_vission:
-                VisionFragment nextFrag2 = new VisionFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_citizendashboard, nextFrag2, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.iv_mission:
-                MissionFragment nextFrag3 = new MissionFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_citizendashboard, nextFrag3, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.iv_contactUs:
-                ContactusFragment nextFrag4 = new ContactusFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_citizendashboard, nextFrag4, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            case R.id.iv_bloodbankDetails:
-                LocateBloodbanksFragment nextFrag5 = new LocateBloodbanksFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_citizendashboard, nextFrag5, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            default:
-                break;
-        }
-    }
+//                break;
+//            case R.id.iv_vission:
+//                VisionFragment nextFrag2 = new VisionFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.fragment_citizendashboard, nextFrag2, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//                break;
+//            case R.id.iv_mission:
+//                MissionFragment nextFrag3 = new MissionFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.fragment_citizendashboard, nextFrag3, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//                break;
+//            case R.id.iv_contactUs:
+//                ContactusFragment nextFrag4 = new ContactusFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.fragment_citizendashboard, nextFrag4, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//                break;
+//            case R.id.iv_bloodbankDetails:
+//                LocateBloodbanksFragment nextFrag5 = new LocateBloodbanksFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.fragment_citizendashboard, nextFrag5, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

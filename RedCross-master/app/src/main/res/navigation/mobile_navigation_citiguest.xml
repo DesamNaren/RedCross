@@ -63,22 +63,28 @@
     <fragment
         android:id="@+id/nav_History"
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment"
-        tools:layout="@layout/fragment_tc" />
+        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/nav_Contact"
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment"
-        tools:layout="@layout/fragment_tc" />
+        tools:layout="@layout/fragment_contactus" />
     <fragment
         android:id="@+id/nav_Vision"
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment"
-        tools:layout="@layout/fragment_tc" />
+        tools:layout="@layout/fragment_vision" />
     <fragment
         android:id="@+id/nav_mission"
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment"
-        tools:layout="@layout/fragment_tc" />
+        tools:layout="@layout/fragment_mission" />
     <fragment
         android:id="@+id/nav_Principles"
         android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment"
-        tools:layout="@layout/fragment_tc" />
+        tools:layout="@layout/fragment_sevenprinciples" />
+    <fragment
+        android:id="@+id/nav_capacityBuildings"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment" />
+    <fragment
+        android:id="@+id/nav_nearMe"
+        android:name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment" />
 
 </navigation>
