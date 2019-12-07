@@ -6,9 +6,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/rl"
@@ -24,12 +22,13 @@
                     android:layout_height="300dp"
                     android:background="@drawable/tab_background_unselected" />
 
-
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/chart_age"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:background="@drawable/tab_background_unselected" />
+
+
             </LinearLayout>
 
             <TextView
@@ -44,6 +43,7 @@
                 android:visibility="gone" />
 
         </RelativeLayout>
+
     </ScrollView>
 
 

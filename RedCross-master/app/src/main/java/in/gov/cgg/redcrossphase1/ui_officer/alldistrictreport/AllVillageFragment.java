@@ -34,7 +34,6 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
-import in.gov.cgg.redcrossphase1.ui_officer_new.DistrictLevelAdapter;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
@@ -45,7 +44,7 @@ public class AllVillageFragment extends Fragment {
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    private DistrictLevelAdapter adapter1;
+    private LevelAdapter adapter1;
     int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
@@ -63,7 +62,8 @@ public class AllVillageFragment extends Fragment {
 
         if (GlobalDeclaration.leveMName != null) {
             binding.cvName.setVisibility(View.VISIBLE);
-            binding.tvlevelname.setText(GlobalDeclaration.leveMName);
+            binding.tvlevelname.setText(GlobalDeclaration.leveDName);
+            binding.tvmname.setText(GlobalDeclaration.leveMName);
         } else {
             binding.cvName.setVisibility(View.GONE);
         }
@@ -200,7 +200,7 @@ public class AllVillageFragment extends Fragment {
             Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new DistrictLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
+            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

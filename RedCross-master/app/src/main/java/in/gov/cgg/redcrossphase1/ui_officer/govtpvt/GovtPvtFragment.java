@@ -49,7 +49,6 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
 
         govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
 
-        getActivity().setTitle("Gov Vs Pvt Graph");
         chart = root.findViewById(R.id.chart_govtpvt);
 
         GlobalDeclaration.home = false;

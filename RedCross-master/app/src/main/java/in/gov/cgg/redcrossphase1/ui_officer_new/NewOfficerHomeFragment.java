@@ -34,12 +34,14 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragemtHomeOfficerNewBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgewiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgewiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodwiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.bloodwise.BloodwiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.genderwise.OnlyGenderwiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
@@ -93,7 +95,7 @@ public class NewOfficerHomeFragment extends Fragment {
 
         GlobalDeclaration.home = true;
 //        GlobalDeclaration.Selection_type = "JRC";
-//        reload();
+        reload();
 
 
         binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
@@ -268,7 +270,7 @@ public class NewOfficerHomeFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
                     {
-                        setupViewPagerOther(binding.viewpagerHome);
+                        setupViewPagerJRC(binding.viewpagerHome);
 
 
                         binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
@@ -801,6 +803,17 @@ public class NewOfficerHomeFragment extends Fragment {
         // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
+        adapter.addFragment(new GovtPvtFragment(), "GovtVsPvt", type);
+        viewPager_homer.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        binding.viewpagerHome.invalidate();
+    }
+
+    private void setupViewPagerJRC(ViewPager viewPager_homer) {
+        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
+        adapter.addFragment(new OnlyGenderwiseFragment(), "Gender", type);
+        adapter.addFragment(new AgewiseFragment(), "Age", type);
         adapter.addFragment(new GovtPvtFragment(), "GovtVsPvt", type);
         viewPager_homer.setAdapter(adapter);
         adapter.notifyDataSetChanged();

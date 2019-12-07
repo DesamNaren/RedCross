@@ -51,6 +51,7 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsViewModel;
+import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.LevelAdapter;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
@@ -62,8 +63,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class NewAllDistrictsFragment extends Fragment {
 
 
-    CustomProgressDialog pd;
-    DistrictLevelAdapter adapter1;
+    LevelAdapter adapter1;
     int selectedThemeColor = -1;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
@@ -157,8 +157,7 @@ public class NewAllDistrictsFragment extends Fragment {
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
-        pd = new CustomProgressDialog(getActivity());
-        pd.show();
+
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(),
                         "alldistrict")).get(AllDistrictsViewModel.class);
@@ -191,7 +190,6 @@ public class NewAllDistrictsFragment extends Fragment {
                     public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
                         if (allDistrictList != null) {
                             setDataforRV(allDistrictList);
-                            pd.dismiss();
                         }
                     }
                 });
@@ -226,7 +224,7 @@ public class NewAllDistrictsFragment extends Fragment {
             Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new DistrictLevelAdapter(getActivity(), newlist, "d", selectedThemeColor);
+            adapter1 = new LevelAdapter(getActivity(), newlist, "d", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
 

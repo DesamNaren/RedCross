@@ -46,7 +46,7 @@ public class DistrictLevelAdapter extends RecyclerView.Adapter<DistrictLevelAdap
     @NonNull
     @Override
     public DistrictViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.districtlevel_adapter, parent, false);
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.all_district_adapter, parent, false);
         return new DistrictViewHolder(view);
     }
 
