@@ -3,8 +3,9 @@
     android:id="@+id/ll_lifetime_membership"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
+    android:background="@drawable/redcross_splashscreen_bg"
     android:focusable="true"
+    android:clickable="true"
     android:orientation="vertical">
 
     <ScrollView
@@ -27,23 +28,22 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="Type of Membership"
                     android:layout_weight="1"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/droid_serif"
                     android:padding="@dimen/dp_10"
-                    android:text="Type of Membership"
-                    android:textColor="@color/white"
                     android:textStyle="bold">
 
                 </TextView>
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/droid_serif"
+                    android:textColor="@color/white"
                     android:padding="@dimen/dp_10"
                     android:text="Rates of Subscription"
-                    android:textColor="@color/white"
                     android:textStyle="bold">
 
                 </TextView>
@@ -65,7 +65,6 @@
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/select_type_ll"
                 android:layout_width="match_parent"

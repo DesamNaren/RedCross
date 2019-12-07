@@ -25,7 +25,95 @@
         <item>December</item>
         <item>November</item>
     </string-array>
+    <string name="FormHeading">Application For Annual Member </string>
+    <string-array name="Membership_type">
+        <item>Select Type of Membership</item>
+        <item>Vice Patron</item>
+        <item>Life Member</item>
+        <item>Patron</item>
+        <item>Life Associate</item>
+        <item>Annual Member</item>
+        <item>Institutional Member</item>
+        <item>Annual Associate</item>
+    </string-array>
 
+    <string-array name="blood_groups">
+        <item>Select Blood Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
+
+    <string-array name="Education">
+        <item>Select Educational Qualification</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
+
+    <string-array name="District">
+        <item>Select District</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
+
+    <string-array name="Mandal">
+        <item>Select Mandal</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
+
+    <string-array name="Town_Village">
+        <item>Select Town/Village</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
+
+    <string-array name="Activities">
+        <item>Select Activities interested</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

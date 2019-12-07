@@ -1,6 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -22,6 +24,7 @@ import java.util.Objects;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDetailsAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.MembershipRegFormActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -35,6 +38,8 @@ public class MembershipFragment extends Fragment {
     Button Proceed;
     Spinner TypeSpinner;
     private FragmentActivity c;
+    String selectedType;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -42,7 +47,7 @@ public class MembershipFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View root = inflater.inflate(R.layout.fragment_membership, container, false);
+        View root = inflater.inflate(R.layout.membership_selection_fragment, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Membership");
 
         c = getActivity();
@@ -50,14 +55,18 @@ public class MembershipFragment extends Fragment {
         Parent_layout = root.findViewById(R.id.Parent_layout);
         ll_LTM_types = root.findViewById(R.id.ll_LTM_types);
         Proceed = root.findViewById(R.id.Proceed_bt);
+        TypeSpinner = root.findViewById(R.id.type_spinner);
         Proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
-               /* Intent i= new Intent(c, MembershipRegFormActivity.class);
-                startActivity(i);*/
+                if (TypeSpinner.getSelectedItem().toString().trim().equals("Select Type of Membership")) {
+                    Toast.makeText(c, "Select Type of Membership", Toast.LENGTH_SHORT).show();
+                } else {
+                    selectedType = TypeSpinner.getSelectedItem().toString();
+                    Intent i = new Intent(c, MembershipRegFormActivity.class);
+                    startActivity(i);
+                }
             }
         });
 
