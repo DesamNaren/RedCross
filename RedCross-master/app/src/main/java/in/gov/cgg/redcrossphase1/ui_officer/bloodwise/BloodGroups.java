@@ -10,7 +10,7 @@ public class BloodGroups {
     private String bloodGroup;
     @SerializedName("count")
     @Expose
-    private String count;
+    private int count;
 
     public String getBloodGroup() {
         return bloodGroup;
@@ -20,11 +20,11 @@ public class BloodGroups {
         this.bloodGroup = bloodGroup;
     }
 
-    public String getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(String count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 }

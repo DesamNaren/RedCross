@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:src="@android:drawable/ic_menu_share"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
 
             </LinearLayout>
@@ -104,6 +104,7 @@
                     android:text="Total"
                     android:textAlignment="center"
                     android:textColor="#000"
+                    android:textSize="@dimen/dimen_12sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -125,7 +126,7 @@
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="@color/redcroosbg_6"
+                android:background="@drawable/tab_background_selected"
 
                 />
 
@@ -146,6 +147,7 @@
                     android:padding="@dimen/dp_5"
                     android:text="JRC"
                     android:textAlignment="center"
+                    android:textSize="@dimen/dimen_12sp"
                     android:textColor="@color/black" />
 
                 <TextView
@@ -165,7 +167,7 @@
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="@color/redcroosbg_6" />
+                android:background="@drawable/tab_background_selected" />
 
             <LinearLayout
                 android:id="@+id/ll_yrc"
@@ -179,6 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/dimen_12sp"
                     android:text="YRC"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
@@ -200,7 +203,7 @@
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="@color/redcroosbg_6" />
+                android:background="@drawable/tab_background_selected" />
 
             <LinearLayout
                 android:id="@+id/ll_lm"

@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,10 +36,12 @@ import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -54,14 +56,13 @@ import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class DaywiseFragment extends Fragment {
 
     int selectedThemeColor = -1;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
     String spn_year, spn_month;
+    int i = 0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -83,74 +84,87 @@ public class DaywiseFragment extends Fragment {
         if (GlobalDeclaration.counts != null) {
             setCountsForDashboard(GlobalDeclaration.counts);
         }
-        try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//        try {
+//            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+//            if (selectedThemeColor != -1) {
+//                if (selectedThemeColor == R.color.redcroosbg_1) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+//                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//                    binding.btnFlip.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+//
+//                }
+//                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+//                binding.btnFlip.setTextColor(getResources().getColor(selectedThemeColor));
+//
+//            }
+//        } catch (Resources.NotFoundException e) {
+//            e.printStackTrace();
+//        }
+        Calendar c = Calendar.getInstance();
+        String[] monthName = {"January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November",
+                "December"};
+        String month = monthName[c.get(Calendar.MONTH)];
+        Log.e("fjsdjdf............", "Month name:" + month);
 
-                }
-                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
-                binding.btnFlip.setTextColor(getResources().getColor(selectedThemeColor));
 
-            }
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-        }
+        ArrayAdapter dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, monthName);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spnMonth.setAdapter(dataAdapter);
 
+        int selectionPosition = dataAdapter.getPosition(month);
+        binding.spnMonth.setSelection(selectionPosition);
 
         binding.spnFinancialyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -203,45 +217,63 @@ public class DaywiseFragment extends Fragment {
         binding.spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (binding.spnMonth.getSelectedItem().toString().contains("Novem")) {
-                    spn_month = "11";
-                    if (!spn_year.equalsIgnoreCase("")) {
-                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
-                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
-                                    @Override
-                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
-                                        if (alldaywisecounts != null) {
-                                            setDataforRV(alldaywisecounts);
-                                        }
+//                if (binding.spnMonth.getSelectedItem().toString().contains("Novem")) {
+//                    spn_month = "11";
+//                    if (!spn_year.equalsIgnoreCase("")) {
+//                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+//                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+//                                    @Override
+//                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+//                                        if (alldaywisecounts != null) {
+//                                            setDataforRV(alldaywisecounts);
+//                                        }
+//                                    }
+//                                });
+//                    } else {
+//                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+//                        binding.rvDaywiselist.setVisibility(View.GONE);
+//
+//                    }
+//                } else if (binding.spnMonth.getSelectedItem().toString().contains("Decem")) {
+//                    spn_month = "12";
+//                    if (!spn_year.equalsIgnoreCase("")) {
+//                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+//                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+//                                    @Override
+//                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+//                                        if (alldaywisecounts != null) {
+//                                            setDataforRV(alldaywisecounts);
+//
+//                                        }
+//                                    }
+//                                });
+//                    } else {
+//                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
+//                        binding.rvDaywiselist.setVisibility(View.GONE);
+//
+//                    }
+//                } else {
+//                    Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
+//                    binding.rvDaywiselist.setVisibility(View.GONE);
+//
+//                }
+                spn_month = String.valueOf(binding.spnMonth.getSelectedItemPosition() + 1);
+                Log.e("position............", "Month Id:" + spn_month);
+
+                if (!spn_year.equalsIgnoreCase("")) {
+
+                    daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                            observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+                                @Override
+                                public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+                                    if (alldaywisecounts != null) {
+                                        setDataforRV(alldaywisecounts);
                                     }
-                                });
-                    } else {
-                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
-                        binding.rvDaywiselist.setVisibility(View.GONE);
-
-                    }
-                } else if (binding.spnMonth.getSelectedItem().toString().contains("Decem")) {
-                    spn_month = "12";
-                    if (!spn_year.equalsIgnoreCase("")) {
-                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
-                                observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
-                                    @Override
-                                    public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
-                                        if (alldaywisecounts != null) {
-                                            setDataforRV(alldaywisecounts);
-
-                                        }
-                                    }
-                                });
-                    } else {
-                        Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
-                        binding.rvDaywiselist.setVisibility(View.GONE);
-
-                    }
+                                }
+                            });
                 } else {
-                    Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please select Financial year", Toast.LENGTH_SHORT).show();
                     binding.rvDaywiselist.setVisibility(View.GONE);
-
                 }
 
             }
@@ -274,10 +306,24 @@ public class DaywiseFragment extends Fragment {
         binding.btnFlip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                i++;
                 binding.easyFlipView.flipTheView();
-                binding.btnFlip.setText("View");
+
             }
         });
+        binding.easyFlipView.setOnFlipListener(new EasyFlipView.OnFlipAnimationListener() {
+            @Override
+            public void onViewFlipCompleted(EasyFlipView easyFlipView, EasyFlipView.FlipState newCurrentSide) {
+                if (i % 2 == 0) {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Data");
+                } else {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Chart");
+                }
+            }
+        });
+
 
         return binding.getRoot();
 
@@ -423,7 +469,9 @@ public class DaywiseFragment extends Fragment {
 
         //int r= sortDatesHere();
         if (daywisecount.size() > 0) {
+            binding.chartDaywise.setVisibility(View.VISIBLE);
             binding.btnFlip.setVisibility(View.VISIBLE);
+            binding.tvNodata.setVisibility(View.GONE);
             Collections.reverse(daywisecount);
             binding.rvDaywiselist.setHasFixedSize(true);
             binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -437,6 +485,7 @@ public class DaywiseFragment extends Fragment {
 
         } else {
             binding.btnFlip.setVisibility(View.GONE);
+            binding.chartDaywise.setVisibility(View.GONE);
             binding.rvDaywiselist.setVisibility(View.GONE);
             binding.tvNodata.setVisibility(View.VISIBLE);
 
@@ -489,7 +538,7 @@ public class DaywiseFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
-                return true;
+                return false;
             }
         });
 

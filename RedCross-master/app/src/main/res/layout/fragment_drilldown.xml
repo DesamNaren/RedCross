@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_drilldown"
-    android:background="@drawable/redcross_splashscreen_bg"
+    android:background="@drawable/redcross6_bg"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView

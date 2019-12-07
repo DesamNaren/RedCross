@@ -41,6 +41,25 @@
             </menu>
         </item>
     </group>
+
+    <group>
+
+        <item android:title="Settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_logoutmenu"
+                    android:icon="@drawable/log2"
+                    android:title="Logout" />
+                <item
+                    android:id="@+id/nav_ofctheme"
+                    android:icon="@drawable/themes24"
+                    android:title="Themes" />
+
+
+            </menu>
+        </item>
+    </group>
+
     <group>
 
         <item android:title="Info">
@@ -53,10 +72,6 @@
                     android:id="@+id/nav_tc"
                     android:icon="@drawable/tc"
                     android:title="Terms &amp; Conditions" />
-                <item
-                    android:id="@+id/nav_ofctheme"
-                    android:icon="@drawable/themes24"
-                    android:title="Themes" />
 
             </menu>
         </item>

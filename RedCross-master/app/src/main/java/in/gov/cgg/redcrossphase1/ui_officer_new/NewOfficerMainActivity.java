@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer_new;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -87,7 +86,7 @@ public class NewOfficerMainActivity extends AppCompatActivity implements IHomeLi
 //        viewPager_home = findViewById(R.id.viewpager_home);
 //
         setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+        toolbar.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
 
         Menu nav_Menu = navigationView.getMenu();
 //
@@ -189,16 +188,16 @@ public class NewOfficerMainActivity extends AppCompatActivity implements IHomeLi
 //        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
 //    }
 
-    private void sharedPreferenceMethod(int selectedThemeColor) {
-        settings = getSharedPreferences("THEMECOLOR_PREF", Activity.MODE_PRIVATE);
-        editor = settings.edit();
-        editor.putInt("theme_color", selectedThemeColor);
-        editor.commit();
-    }
+//    private void sharedPreferenceMethod(int selectedThemeColor) {
+//        settings = getSharedPreferences("THEMECOLOR_PREF", Activity.MODE_PRIVATE);
+//        editor = settings.edit();
+//        editor.putInt("theme_color", selectedThemeColor);
+//        editor.commit();
+//    }
 
     // creating sharred preferences
     public void storesInsharedPref(int selectedThemeColor) {
-        sharedPreferenceMethod(selectedThemeColor);
+        // sharedPreferenceMethod(selectedThemeColor);
 
         // CustomRelativeLayout.changeStatusBarColor(this);
         //refersh of same fragment
@@ -339,6 +338,11 @@ public class NewOfficerMainActivity extends AppCompatActivity implements IHomeLi
                     selectedFragment = new AllMandalsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_logoutmenu) {
+
+                    startActivity(new Intent(NewOfficerMainActivity.this, TabLoginActivity.class));
+                    finish();
+                    return true;
                 } else if (menuItem.getItemId() == R.id.nav_ofctheme) {
                     showThemePicker();
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -397,7 +401,7 @@ public class NewOfficerMainActivity extends AppCompatActivity implements IHomeLi
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
+                            callHomeAlert();
                             return true;
                         }
                     });

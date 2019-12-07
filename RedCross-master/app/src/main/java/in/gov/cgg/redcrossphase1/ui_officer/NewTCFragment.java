@@ -125,7 +125,7 @@ public class NewTCFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
-                return false;
+                return true;
             }
         });
 

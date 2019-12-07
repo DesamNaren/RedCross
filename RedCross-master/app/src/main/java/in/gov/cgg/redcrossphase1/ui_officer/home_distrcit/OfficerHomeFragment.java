@@ -872,7 +872,7 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < bloodGroupsList.size(); i++) {
-            entries.add(new PieEntry(Float.parseFloat(bloodGroupsList.get(i).getCount()), bloodGroupsList.get(i).getBloodGroup()));
+            entries.add(new PieEntry((bloodGroupsList.get(i).getCount()), bloodGroupsList.get(i).getBloodGroup()));
         }
 
         bar_blood.getDescription().setEnabled(false);

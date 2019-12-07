@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -166,6 +167,13 @@ public class DistrictLevelAdapter extends RecyclerView.Adapter<DistrictLevelAdap
             }
         });
 
+        holder.img_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     @Override
@@ -196,6 +204,7 @@ public class DistrictLevelAdapter extends RecyclerView.Adapter<DistrictLevelAdap
 
         TextView tv_dname, tv_count, ll_line, ll_line0, ll_all, ll_line1, tv_jrccount, tv_yrccount, tv_lmcount, tvallname, tv_allcount;
         RelativeLayout mainLayout;
+        ImageView img_share;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
@@ -211,9 +220,53 @@ public class DistrictLevelAdapter extends RecyclerView.Adapter<DistrictLevelAdap
             ll_line0 = itemView.findViewById(R.id.ll_line0);
 //                ll_all = itemView.findViewById(R.id.ll_all);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+            img_share = itemView.findViewById(R.id.img_share);
 
         }
     }
+
+/*
+    private void shareImage() {
+
+        // binding.llShare.setVisibility(View.GONE);
+        CustomProgressDialog dialog = new CustomProgressDialog(mCtx);
+        // dialog.setMessage("Loading...");
+        dialog.show();
+
+//        Bitmap bitmap1 = getBitmapFromView(binding.rvAlldistrictwise, binding.rvAlldistrictwise.getChildAt(0).getHeight(),
+//                binding.rvAlldistrictwise.getChildAt(0).getWidth());
+
+        Bitmap bitmap1 = getScreenshotFromRecyclerView(binding.rvAlldistrictwise);
+
+        try {
+            File cachePath = new File(getActivity().getCacheDir(), "images");
+            cachePath.mkdirs(); // don't forget to make the directory
+            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png");
+            // overwrites this image every time
+            bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            stream.close();
+            dialog.dismiss();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File imagePath = new File(getActivity().getCacheDir(), "images");
+        File newFile = new File(imagePath, "image.png");
+        Uri contentUri = FileProvider.getUriForFile(getActivity(), BuildConfig.APPLICATION_ID + ".fileprovider",
+                newFile);
+
+        if (contentUri != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
+            shareIntent.setDataAndType(contentUri, getActivity().getContentResolver().getType(contentUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            shareIntent.setType("image/png");
+            getActivity().startActivity(Intent.createChooser(shareIntent, "Share via"));
+        }
+    }
+*/
+
 
 
 }

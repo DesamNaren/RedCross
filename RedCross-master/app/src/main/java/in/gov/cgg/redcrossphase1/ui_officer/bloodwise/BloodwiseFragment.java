@@ -16,17 +16,20 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.snackbar.Snackbar;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
@@ -39,6 +42,7 @@ public class BloodwiseFragment extends Fragment {
 
     FragmentBloodwiseBinding binding;
     private BloodwiseViewModel bloodwiseVm;
+    int i = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -62,7 +66,8 @@ public class BloodwiseFragment extends Fragment {
                         @Override
                         public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
                             if (bloodGroupsList != null) {
-                                generateDataPie(bloodGroupsList);
+                                setDataforRV(bloodGroupsList);
+
                             }
                         }
                     });
@@ -72,6 +77,26 @@ public class BloodwiseFragment extends Fragment {
             snackbar.show();
         }
 
+        binding.btnFlip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i++;
+                binding.easyFlipView.flipTheView();
+
+            }
+        });
+        binding.easyFlipView.setOnFlipListener(new EasyFlipView.OnFlipAnimationListener() {
+            @Override
+            public void onViewFlipCompleted(EasyFlipView easyFlipView, EasyFlipView.FlipState newCurrentSide) {
+                if (i % 2 == 0) {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Data");
+                } else {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Chart");
+                }
+            }
+        });
 //        ll_jrc.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -179,14 +204,48 @@ public class BloodwiseFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void setDataforRV(List<BloodGroups> bloodGroupsList) {
 
+        //int r= sortDatesHere();
+        if (bloodGroupsList.size() > 0) {
+            binding.chartBlood.setVisibility(View.VISIBLE);
+            binding.btnFlip.setVisibility(View.VISIBLE);
+            binding.tvNodata.setVisibility(View.GONE);
+            binding.rvBloodList.setHasFixedSize(true);
+            binding.rvBloodList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+            Collections.sort(bloodGroupsList, new Comparator<BloodGroups>() {
+                @Override
+                public int compare(BloodGroups lhs, BloodGroups rhs) {
+                    return lhs.getCount().compareTo(rhs.getCount());
+                }
+            });
+            Collections.reverse(bloodGroupsList);
+
+            BloodAdapter adapter1 = new BloodAdapter(getActivity(), bloodGroupsList);
+            binding.rvBloodList.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+            generateDataPie(bloodGroupsList);
+
+
+        } else {
+            binding.btnFlip.setVisibility(View.GONE);
+            binding.chartBlood.setVisibility(View.GONE);
+            binding.rvBloodList.setVisibility(View.GONE);
+            binding.tvNodata.setVisibility(View.VISIBLE);
+
+        }
+
+
+    }
     private void generateDataPie(List<BloodGroups> bloodGroupsList) {
 
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < bloodGroupsList.size(); i++) {
-            entries.add(new PieEntry(Float.parseFloat(bloodGroupsList.get(i).getCount()), bloodGroupsList.get(i).getBloodGroup()));
+            entries.add(new PieEntry(bloodGroupsList.get(i).getCount(), bloodGroupsList.get(i).getBloodGroup()));
         }
 
         binding.chartBlood.getDescription().setEnabled(false);
@@ -202,40 +261,49 @@ public class BloodwiseFragment extends Fragment {
         l.setYOffset(0f);
 
 
-        binding.chartBlood.setRotationEnabled(true);
-        binding.chartBlood.setDrawCenterText(true);
+        // binding.chartBlood.setRotationEnabled(true);
+        // binding.chartBlood.setDrawCenterText(true);
         binding.chartBlood.setRotationEnabled(true);
 
         //.setUsePercentValues(true);
         binding.chartBlood.getDescription().setEnabled(false);
-        binding.chartBlood.setDrawHoleEnabled(true);
+        // binding.chartBlood.setDrawHoleEnabled(true);
         binding.chartBlood.setHoleColor(Color.WHITE);
         binding.chartBlood.setTransparentCircleColor(Color.WHITE);
         binding.chartBlood.setTransparentCircleAlpha(110);
-        binding.chartBlood.setHoleRadius(58f);
+        // binding.chartBlood.setHoleRadius(58f);
         binding.chartBlood.setTransparentCircleRadius(61f);
-        binding.chartBlood.setDrawCenterText(true);
+        // binding.chartBlood.setDrawCenterText(true);
         binding.chartBlood.setHighlightPerTapEnabled(true);
         binding.chartBlood.animateY(1400, Easing.EaseInOutQuad);
 
+        binding.chartBlood.setDrawSliceText(false); // To remove slice text
+        binding.chartBlood.setDrawMarkers(false); // To remove markers when click
+        binding.chartBlood.setDrawEntryLabels(false); // To remove labels from piece of pie
+
+        // l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER); // set vertical alignment for legend
+        // l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT); // set horizontal alignment for legend
+        //l.setOrientation(Legend.LegendOrientation.VERTICAL); // set orientation for legend
+        //l.setDrawInside(false); // set if legend should be drawn inside or not
 
         PieDataSet d = new PieDataSet(entries, "Enrollments ");
-        d.setSliceSpace(2f);
-        d.setValueLinePart1OffsetPercentage(80.f);
-        d.setValueLinePart1Length(0.2f);
-        d.setValueLinePart2Length(0.4f);
-        d.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+//        d.setSliceSpace(2f);
+//        d.setValueLinePart1OffsetPercentage(80.f);
+//        d.setValueLinePart1Length(0.2f);
+//        d.setValueLinePart2Length(0.4f);
+//        d.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         d.setColors(ColorTemplate.COLORFUL_COLORS);
-        d.setSliceSpace(2f);
+        // d.setSliceSpace(2f);
         d.setValueTextColor(Color.WHITE);
-        d.setValueTextSize(10f);
-        d.setSliceSpace(5f);
+        d.setValueTextSize(9f);
+        // d.setSliceSpace(5f);
+
 
 
         PieData pieData = new PieData(d);
-        pieData.setValueFormatter(new PercentFormatter());
-        pieData.setValueTextSize(11f);
-        pieData.setValueTextColor(Color.BLACK);
+        // pieData.setValueFormatter(new PercentFormatter());
+        // pieData.setValueTextSize(11f);
+        // pieData.setValueTextColor(Color.BLACK);
         binding.chartBlood.setData(pieData);
         binding.chartBlood.invalidate();
     }

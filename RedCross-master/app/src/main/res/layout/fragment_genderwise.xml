@@ -1,14 +1,51 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/chart_gender"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_20"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/chart_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/tab_background_unselected" />
+
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/chart_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:background="@drawable/tab_background_unselected" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:text="No Data available"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_20"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
 </layout>
+

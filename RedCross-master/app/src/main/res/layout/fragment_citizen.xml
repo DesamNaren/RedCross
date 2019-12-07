@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/tab_background_selected"
                 android:text="Login"
                 android:textColor="@color/white" />
 

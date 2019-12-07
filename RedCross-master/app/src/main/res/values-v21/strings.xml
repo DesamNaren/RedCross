@@ -23,6 +23,7 @@
     </string-array>
     <string-array name="financial_month">
         <item>December</item>
+        <item>November</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

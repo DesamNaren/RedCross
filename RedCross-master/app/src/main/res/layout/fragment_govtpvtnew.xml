@@ -2,12 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.BarChart
+    <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart_govtpvt"
+        android:layout_margin="@dimen/dp_30"
         android:layout_width="match_parent"
+        android:background="@drawable/tab_background_unselected"
         android:layout_height="match_parent" />
 
 </LinearLayout>

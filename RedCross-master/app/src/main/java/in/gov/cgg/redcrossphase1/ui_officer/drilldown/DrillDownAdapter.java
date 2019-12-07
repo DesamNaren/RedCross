@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -80,6 +81,19 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
         holder.tv_insttpe.setText(data_dashbord.get(position).getSchooltype());
         holder.tv_enddate.setText(data_dashbord.get(position).getEndDate());
 
+        holder.clicktv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.ll_show.getVisibility() == View.GONE) {
+                    holder.ll_show.setVisibility(View.VISIBLE);
+                    holder.clicktv.setText("Hide");
+                } else {
+                    holder.ll_show.setVisibility(View.GONE);
+                    holder.clicktv.setText("View Data");
+                }
+            }
+        });
+
         //Themes
         if (selectedThemeColor != -1) {
             holder.htv_district.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
@@ -122,19 +136,19 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
 //
                 if (
                         wp.getMandal().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getVillage().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getGender().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getBloodgp().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getDob().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getPhone().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getEmail().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getVillage().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getGender().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getBloodgp().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getDob().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getPhone().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getEmail().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
 
-                        wp.getClassName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getSchoolname().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getMemberId().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getEndDate().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
-                        wp.getSchooltype().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase())
+                                wp.getClassName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getSchoolname().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getMemberId().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getEndDate().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase()) ||
+                                wp.getSchooltype().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase())
                 ) {
                     data_dashbord.add(wp);
                 }
@@ -149,13 +163,15 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
         TextView tv_name, tv_gender, tv_dob, tv_mobile, tv_bloodgroup, tv_email, tv_class, tv_instname,
                 tv_insttpe, tv_district, tv_mandal, tv_village;
         TextView htv_name, htv_gender, htv_dob, htv_mobile, htv_bloodgroup, htv_email, htv_class, htv_instname, htv_insttpe,
-                htv_district, htv_mandal, htv_village, tv_merId, htv_merId, htv_enddate, tv_enddate;
+                htv_district, htv_mandal, htv_village, tv_merId, htv_merId, htv_enddate, tv_enddate, clicktv;
+        LinearLayout ll_show;
 
         public DistrictViewHolder(View itemView) {
             super(itemView);
 
 
             htv_name = itemView.findViewById(R.id.tv_headername);
+            ll_show = itemView.findViewById(R.id.ll_show);
             htv_enddate = itemView.findViewById(R.id.tv_headerenddate);
             htv_merId = itemView.findViewById(R.id.tv_headermeberId);
             htv_gender = itemView.findViewById(R.id.tv_headergender);
@@ -185,6 +201,7 @@ public class DrillDownAdapter extends RecyclerView.Adapter<DrillDownAdapter.Dist
             tv_district = itemView.findViewById(R.id.tv_district);
             tv_mandal = itemView.findViewById(R.id.tv_mandal);
             tv_village = itemView.findViewById(R.id.tv_village);
+            clicktv = itemView.findViewById(R.id.clicktv);
 
 
         }

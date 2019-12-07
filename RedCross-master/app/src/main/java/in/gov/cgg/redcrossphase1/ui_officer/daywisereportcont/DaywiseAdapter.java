@@ -42,48 +42,48 @@ public class DaywiseAdapter extends RecyclerView.Adapter<DaywiseAdapter.District
         holder.tv_lmcunt.setText(String.valueOf(dayWiseReportCountResponses.get(position).getMembership()));
         holder.tv_totalcount.setText(String.valueOf(dayWiseReportCountResponses.get(position).getTotal()));
 
-        holder.tv_alldname.setBackgroundColor(selectedThemeColor);
-        holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
-        holder.ll_alldname.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
-        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+        holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+        holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+        holder.ll_alldname.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(R.color.colorPrimary));
 
-        if (selectedThemeColor != -1) {
-            if (selectedThemeColor == R.color.redcroosbg_1) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
-            } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
-                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
-                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
-            }
-        } else {
-
-        }
+//        if (selectedThemeColor != -1) {
+//            if (selectedThemeColor == R.color.redcroosbg_1) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+//            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+//                holder.ll_jrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+//                holder.ll_yrc.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+//                holder.ll_lm.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+//            }
+//        } else {
+//
+//        }
 
 
     }

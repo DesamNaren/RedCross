@@ -8,24 +8,34 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
 
 public class GovtPvtFragment extends Fragment implements OnChartValueSelectedListener {
 
-    private BarChart chart;
+    private LineChart chart;
 
     private GovtPvtViewModel govtPvtViewModel;
     // FragmentGenderwiseBinding binding;
@@ -49,8 +59,9 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
                     @Override
                     public void onChanged(@Nullable List<Last10day> last10dayList) {
                         if (last10dayList != null) {
-                            //generateDataLine(last10dayList);
-                            //generateDataBar(last10dayList);
+                            generateDataLine(last10dayList);
+//                            generateDataBar(last10dayList);
+                            //test(last10dayList);
                         }
                     }
                 });
@@ -165,117 +176,126 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
     }
 */
 
-    /*   public  void test()
-       {
-           chart.setOnChartValueSelectedListener(this);
-           chart.getDescription().setEnabled(false);
+    /*
+     */
+//   public  void test(List<Last10day> last10dayList)
+//       {
+//           float groupSpace = 0.08f;
+//           float barSpace = 0.03f; // x4 DataSet
+//           float barWidth = 0.2f; // x4 DataSet
+//           // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
+//
+////           int startYear = 1980;
+//           chart.setOnChartValueSelectedListener(this);
+//           chart.getDescription().setEnabled(false);
+//
+//   //        chart.setDrawBorders(true);
+//
+//           // scaling can now only be done on x- and y-axis separately
+//           chart.setPinchZoom(false);
+//
+//           chart.setDrawBarShadow(false);
+//
+//           chart.setDrawGridBackground(false);
+//
+//
+//
+//           Legend l = chart.getLegend();
+//           l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+//           l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+//           l.setOrientation(Legend.LegendOrientation.VERTICAL);
+//           l.setDrawInside(true);
+//           l.setYOffset(0f);
+//           l.setXOffset(10f);
+//           l.setYEntrySpace(0f);
+//           l.setTextSize(8f);
+//
+//           XAxis xAxis = chart.getXAxis();
+//           xAxis.setGranularity(1f);
+//           xAxis.setCenterAxisLabels(true);
+//           ValueFormatter valueFormatter=new DayAxisValueFormatter(chart);
+//           xAxis.setValueFormatter(new ValueFormatter() {
+//               @Override
+//               public String getFormattedValue(float value) {
+//                   return String.valueOf((int) value);
+//               }
+//           });
+//
+//           YAxis leftAxis = chart.getAxisLeft();
+//           leftAxis.setDrawGridLines(false);
+//           leftAxis.setSpaceTop(35f);
+//           leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+//
+//           // create a custom MarkerView (extend MarkerView) and specify the layout
+//           // to use for it
+////           MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+////           mv.setChartView(chart); // For bounds control
+////           chart.setMarker(mv); // Set the marker to the chart
+//
+//           GovtXYMarkerView mv = new GovtXYMarkerView(getActivity(), valueFormatter);
+//           mv.setChartView(chart); // For bounds control
+//           chart.setMarker(mv);
+//
+//           chart.getAxisRight().setEnabled(false);
+//
+//           ArrayList<BarEntry> values1 = new ArrayList<>();
+//           ArrayList<BarEntry> values2 = new ArrayList<>();
+//
+//
+////           for (int i = 1; i < 10; i++) {
+////               values1.add(new BarEntry(i, (float) (Math.random() * 5)));
+////               values2.add(new BarEntry(i, (float) (Math.random() * 6)));
+////
+////           }
+//
+//
+//           for (int i = 0; i < last10dayList.size(); i++) {
+//               values1.add(new BarEntry(((i)), Float.parseFloat(last10dayList.get(i).getGov())));
+//           }
+//
+//           for (int i = 0; i < last10dayList.size(); i++) {
+//               values1.add(new BarEntry(((i)), Float.parseFloat(last10dayList.get(i).getPvt())));
+//           }
+//
+//           BarDataSet set1, set2;
+//
+//           if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
+//
+//               set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
+//               set2 = (BarDataSet) chart.getData().getDataSetByIndex(1);
+//
+//               set1.setValues(values1);
+//               set2.setValues(values2);
+//
+//               chart.getData().notifyDataChanged();
+//               chart.notifyDataSetChanged();
+//
+//           } else {
+//               // create 4 DataSets
+//               set1 = new BarDataSet(values1, "Govt");
+//               set1.setColor(Color.rgb(104, 241, 175));
+//               set2 = new BarDataSet(values2, "Pvt");
+//               set2.setColor(Color.rgb(164, 228, 251));
+//
+//               BarData data = new BarData(set1, set2);
+//               data.setValueFormatter(new LargeValueFormatter());
+//
+//               chart.setData(data);
+//           }
+//
+//           // specify the width each bar should have
+//           chart.getBarData().setBarWidth(barWidth);
+//
+//           // restrict the x-axis range
+////           chart.getXAxis().setAxisMinimum(startYear);
+//
+//           // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
+//           chart.getXAxis().setAxisMaximum( chart.getBarData().getGroupWidth(groupSpace, barSpace) * last10dayList.size());
+//           chart.groupBars(1, groupSpace, barSpace);
+//           chart.invalidate();
+//       }
 
-   //        chart.setDrawBorders(true);
 
-           // scaling can now only be done on x- and y-axis separately
-           chart.setPinchZoom(false);
-
-           chart.setDrawBarShadow(false);
-
-           chart.setDrawGridBackground(false);
-
-           // create a custom MarkerView (extend MarkerView) and specify the layout
-           // to use for it
-           MyMarkerView mv = new MyMarkerView(this, R.layout.custom_marker_view);
-           mv.setChartView(chart); // For bounds control
-           chart.setMarker(mv); // Set the marker to the chart
-
-           seekBarX.setProgress(10);
-           seekBarY.setProgress(100);
-
-           Legend l = chart.getLegend();
-           l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-           l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-           l.setOrientation(Legend.LegendOrientation.VERTICAL);
-           l.setDrawInside(true);
-           l.setTypeface(tfLight);
-           l.setYOffset(0f);
-           l.setXOffset(10f);
-           l.setYEntrySpace(0f);
-           l.setTextSize(8f);
-
-           XAxis xAxis = chart.getXAxis();
-           xAxis.setTypeface(tfLight);
-           xAxis.setGranularity(1f);
-           xAxis.setCenterAxisLabels(true);
-           xAxis.setValueFormatter(new ValueFormatter() {
-               @Override
-               public String getFormattedValue(float value) {
-                   return String.valueOf((int) value);
-               }
-           });
-
-           YAxis leftAxis = chart.getAxisLeft();
-           leftAxis.setTypeface(tfLight);
-           leftAxis.setValueFormatter(new LargeValueFormatter());
-           leftAxis.setDrawGridLines(false);
-           leftAxis.setSpaceTop(35f);
-           leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-
-           chart.getAxisRight().setEnabled(false);
-
-           ArrayList<BarEntry> values1 = new ArrayList<>();
-           ArrayList<BarEntry> values2 = new ArrayList<>();
-           ArrayList<BarEntry> values3 = new ArrayList<>();
-           ArrayList<BarEntry> values4 = new ArrayList<>();
-
-
-           for (int i = startYear; i < endYear; i++) {
-               values1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-               values2.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-               values3.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-               values4.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-           }
-
-           BarDataSet set1, set2, set3, set4;
-
-           if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
-
-               set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
-               set2 = (BarDataSet) chart.getData().getDataSetByIndex(1);
-               set3 = (BarDataSet) chart.getData().getDataSetByIndex(2);
-               set4 = (BarDataSet) chart.getData().getDataSetByIndex(3);
-               set1.setValues(values1);
-               set2.setValues(values2);
-               set3.setValues(values3);
-               set4.setValues(values4);
-               chart.getData().notifyDataChanged();
-               chart.notifyDataSetChanged();
-
-           } else {
-               // create 4 DataSets
-               set1 = new BarDataSet(values1, "Company A");
-               set1.setColor(Color.rgb(104, 241, 175));
-               set2 = new BarDataSet(values2, "Company B");
-               set2.setColor(Color.rgb(164, 228, 251));
-               set3 = new BarDataSet(values3, "Company C");
-               set3.setColor(Color.rgb(242, 247, 158));
-               set4 = new BarDataSet(values4, "Company D");
-               set4.setColor(Color.rgb(255, 102, 0));
-
-               BarData data = new BarData(set1, set2, set3, set4);
-               data.setValueFormatter(new LargeValueFormatter());
-
-               chart.setData(data);
-           }
-
-           // specify the width each bar should have
-           chart.getBarData().setBarWidth(barWidth);
-
-           // restrict the x-axis range
-           chart.getXAxis().setAxisMinimum(startYear);
-
-           // barData.getGroupWith(...) is a helper that calculates the width each group needs based on the provided parameters
-           chart.getXAxis().setAxisMaximum(startYear + chart.getBarData().getGroupWidth(groupSpace, barSpace) * groupCount);
-           chart.groupBars(startYear, groupSpace, barSpace);
-           chart.invalidate();
-       }
-   */
     @Override
     public void onValueSelected(Entry e, Highlight h) {
 
@@ -286,9 +306,26 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
 
     }
 
+//    public static class DayAxisValueFormatter extends ValueFormatter {
+//        private final BarLineChartBase<?> chart;
+//
+//
+//        public DayAxisValueFormatter(BarLineChartBase<?> chart) {
+//            this.chart = chart;
+//        }
+//
+//        @Override
+//        public String getFormattedValue(float value) {
+//            return "" + (value);
+//        }
+//
+//        @Override
+//        public String getBarLabel(BarEntry barEntry) {
+//            return "" + (barEntry);
+//        }
+//    }
 
 
-/*
     private void generateDataLine(List<Last10day> ageList) {
 
         ArrayList<Entry> entriesGov = new ArrayList<>();
@@ -319,7 +356,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        XAxis xAxis = lineChart.getXAxis();
+        XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final List<String> stringList = new ArrayList<>();
 
@@ -333,17 +370,22 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
                 return stringList.get((int) value);
             }
         };
+
+        LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+        mv.setChartView(chart);
+        chart.setMarker(mv);
+
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
 
-        YAxis yAxisRight = lineChart.getAxisRight();
+        YAxis yAxisRight = chart.getAxisRight();
         yAxisRight.setEnabled(false);
 
-        YAxis yAxisLeft = lineChart.getAxisLeft();
+        YAxis yAxisLeft = chart.getAxisLeft();
         yAxisLeft.setGranularity(1f);
 
         // get the legend (only possible after setting data)
-        Legend l = lineChart.getLegend();
+        Legend l = chart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
@@ -352,14 +394,16 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         l.setYEntrySpace(0f);
         l.setYOffset(0f);
 
+        lineDataSetGov.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
+        lineDataSetPvt.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
+
 
         LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
-        lineChart.setData(data);
-        lineChart.getDescription().setEnabled(false);
-        lineChart.animateX(1500);
-        lineChart.invalidate();
+        chart.setData(data);
+        chart.getDescription().setEnabled(false);
+        chart.animateX(1500);
+        chart.invalidate();
     }
-*/
 
 
 }
