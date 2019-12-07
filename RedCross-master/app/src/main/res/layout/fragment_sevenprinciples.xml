@@ -1,344 +1,346 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ll_sevenPrinciples"
-    android:layout_width="match_parent"
-    android:background="@drawable/redcross_splashscreen_bg"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/ll_sevenPrinciples"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="vertical">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/dimen_5dp">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_mainHeading"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dp_5"
-                    android:text="Seven Fundamental Principles"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_5dp">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/tv_mainHeading"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:padding="@dimen/dp_5"
+                        android:text="Seven Fundamental Principles"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tv_humanityHeading"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Humanity"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/tv_humanitycontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
-                            android:text="The International Red Cross and Red Crescent Movement, born of a desire to bring assistance without discrimination to the wounded on the battlefield, endeavors, in its international and national capacity, to prevent and alleviate human suffering wherever it may be found. Its purpose is to protect life and health and to ensure respect for the human being. It promotes mutual understanding, friendship, cooperation and lasting peace amongst all peoples."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_ImpartialityHeading"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Impartiality"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_Impartialitycontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            <TextView
+                                android:id="@+id/tv_humanityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Humanity"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
 
-                            android:text="It makes no discrimination as to nationally, race, religious beliefs, class or political opinions. It endeavors to relieve the suffering of individuals, being solely by their needs, and to give priority to the most urgent cases of distress."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tv_humanitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="The International Red Cross and Red Crescent Movement, born of a desire to bring assistance without discrimination to the wounded on the battlefield, endeavors, in its international and national capacity, to prevent and alleviate human suffering wherever it may be found. Its purpose is to protect life and health and to ensure respect for the human being. It promotes mutual understanding, friendship, cooperation and lasting peace amongst all peoples."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_NeutralityHeading"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Neutrality"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_Neutralitycontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            <TextView
+                                android:id="@+id/tv_ImpartialityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Impartiality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
 
-                            android:text="In order to enjoy the confidence of all, the Movement may not take sides in hostilities or engage in controversies of a political, racial, religious or ideological nature."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tv_Impartialitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="It makes no discrimination as to nationally, race, religious beliefs, class or political opinions. It endeavors to relieve the suffering of individuals, being solely by their needs, and to give priority to the most urgent cases of distress."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_IndependenceyHeading"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:paddingLeft="@dimen/dp_5"
-                            android:paddingTop="@dimen/dp_5"
-                            android:paddingBottom="@dimen/dp_5"
-                            android:text="Independence"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_Independencecontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            <TextView
+                                android:id="@+id/tv_NeutralityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Neutrality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
 
-                            android:text="The Movement is independent. The National Societies, while auxiliaries in the humanitarian services of their governments and subject to the laws of their respective countries, must always maintain their autonomy so that they may be able at all times to act in accordance with the principles of the Movement."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tv_Neutralitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="In order to enjoy the confidence of all, the Movement may not take sides in hostilities or engage in controversies of a political, racial, religious or ideological nature."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_VoluntaryService"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                            android:text="Voluntary Service"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/tv_IndependenceyHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="Independence"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
 
-                        <TextView
-                            android:id="@+id/tv_VoluntaryServicecontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            <TextView
+                                android:id="@+id/tv_Independencecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
 
-                            android:text="It is voluntary relief movement not prompted in any manner by desire for gain."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                                android:text="The Movement is independent. The National Societies, while auxiliaries in the humanitarian services of their governments and subject to the laws of their respective countries, must always maintain their autonomy so that they may be able at all times to act in accordance with the principles of the Movement."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_UnityHeading"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                            android:text="Unity"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/tv_VoluntaryService"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
 
-                        <TextView
-                            android:id="@+id/tv_Unitycecontent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
+                                android:text="Voluntary Service"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
 
-                            android:text="There can be only one Red Cross Or Red Crescent in any one country. It must be open to all. It must carry on its humanitarian work throughout its territory."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tv_VoluntaryServicecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="It is voluntary relief movement not prompted in any manner by desire for gain."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_2"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_4dp">
-
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
 
-                        <TextView
-                            android:id="@+id/tv_UniversalityHeading"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/droid_serif"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
-                            android:text="Universality"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:background="@color/white"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_Universalitycontent"
+                            <TextView
+                                android:id="@+id/tv_UnityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="Unity"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tv_Unitycecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="There can be only one Red Cross Or Red Crescent in any one country. It must be open to all. It must carry on its humanitarian work throughout its territory."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
-                            android:text="The International Red Cross and Red Crescent Movement, in which all societies have equal status and share equal responsibilities and duties in helping each other, is worldwide."
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_UniversalityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/droid_serif"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="Universality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tv_Universalitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="The International Red Cross and Red Crescent Movement, in which all societies have equal status and share equal responsibilities and duties in helping each other, is worldwide."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </ScrollView>
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

@@ -6,43 +6,34 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:background="@drawable/redcross_splashscreen_bg"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cd1"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="@dimen/dp_2"
-            app:cardElevation="@dimen/dimen_5dp">
+        android:orientation="vertical">
 
-            <LinearLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_aboutusCitizen"
+            style="@style/Custom.Widget.Design.TabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="@dimen/dimen_5dp">
-
-                <TextView
-                    android:id="@+id/text1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineHeight="20dp"
-                    android:paddingLeft="@dimen/dp_5"
-                    android:paddingTop="@dimen/dp_5"
-                    android:paddingBottom="@dimen/dp_5"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            android:minHeight="?actionBarSize"
+            app:tabGravity="fill"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabInlineLabel="true"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/CustomTextAppearanceTab" />
 
 
-        </com.google.android.material.card.MaterialCardView>
-    </ScrollView>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_aboutus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>

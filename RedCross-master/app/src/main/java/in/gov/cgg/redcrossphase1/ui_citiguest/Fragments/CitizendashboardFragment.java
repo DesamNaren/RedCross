@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,13 +24,13 @@ import in.gov.cgg.redcrossphase1.R;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class CitizendashboardFragment extends Fragment implements WhoWeAreFragment.OnFragmentInteractionListener, ContactusFragment.OnFragmentInteractionListener, HistoryFragment.OnFragmentInteractionListener, MissionFragment.OnFragmentInteractionListener, VisionFragment.OnFragmentInteractionListener, LocateBloodbanksFragment.OnFragmentInteractionListener {
+public class CitizendashboardFragment extends Fragment {
     ImageView iv_whoweAre, iv_history, iv_vission, iv_mission, iv_contactUs, iv_bloodbankDetails;
     TextView tv_username;
     int selectedThemeColor = -1;
     RelativeLayout fragment_citizendashboard;
     private FragmentActivity c;
-    LinearLayout ll_1, ll_history, ll_vision, ll_mission, ll_contactus, ll_bloodbankDetails;
+    LinearLayout ll_wwa, ll_mebership, ll_capityBuildings, ll_loate, ll_Serices, ll_hoeNursing, ll_bloodbankInfo, ll_contactUs;
     private Fragment selectedFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -46,7 +45,7 @@ public class CitizendashboardFragment extends Fragment implements WhoWeAreFragme
         findViews(root);
 
 
-        ll_1.setOnClickListener(new View.OnClickListener() {
+        ll_wwa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
@@ -54,43 +53,61 @@ public class CitizendashboardFragment extends Fragment implements WhoWeAreFragme
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
-        ll_history.setOnClickListener(new View.OnClickListener() {
+        ll_mebership.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.FARG_TAG = HistoryFragment.class.getSimpleName();
-                selectedFragment = new HistoryFragment();
+                GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
+                selectedFragment = new MembershipFragment();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
-        ll_vision.setOnClickListener(new View.OnClickListener() {
+        ll_capityBuildings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.FARG_TAG = VisionFragment.class.getSimpleName();
-                selectedFragment = new VisionFragment();
+                GlobalDeclaration.FARG_TAG = CapacityBuildingsFragment.class.getSimpleName();
+                selectedFragment = new CapacityBuildingsFragment();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
-        ll_mission.setOnClickListener(new View.OnClickListener() {
+        ll_loate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.FARG_TAG = MissionFragment.class.getSimpleName();
-                selectedFragment = new MissionFragment();
+               /* Intent i = new Intent(getActivity(), MapsActivity.class);
+                startActivity(i)*/
+               /* GlobalDeclaration.FARG_TAG = LocationsFragment.class.getSimpleName();
+                selectedFragment = new LocationsFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);*/
+            }
+        });
+        ll_Serices.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = ServicesFragment.class.getSimpleName();
+                selectedFragment = new ServicesFragment();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
-        ll_contactus.setOnClickListener(new View.OnClickListener() {
+        ll_hoeNursing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = HomenursingFragment.class.getSimpleName();
+                selectedFragment = new HomenursingFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            }
+        });
+        ll_bloodbankInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = BloodbankInfoFragment.class.getSimpleName();
+                selectedFragment = new BloodbankInfoFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            }
+        });
+        ll_contactUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
                 selectedFragment = new ContactusFragment();
-                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-            }
-        });
-        ll_bloodbankDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GlobalDeclaration.FARG_TAG = LocateBloodbanksFragment.class.getSimpleName();
-                selectedFragment = new LocateBloodbanksFragment();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
@@ -149,13 +166,25 @@ public class CitizendashboardFragment extends Fragment implements WhoWeAreFragme
         iv_contactUs = root.findViewById(R.id.iv_contactUs);
         iv_bloodbankDetails = root.findViewById(R.id.iv_bloodbankDetails);
         tv_username = root.findViewById(R.id.tv_username);
-        ll_1 = root.findViewById(R.id.ll_wwa);
-        ll_bloodbankDetails = root.findViewById(R.id.ll_bloodbankDetails);
-        ll_contactus = root.findViewById(R.id.ll_contactus);
-        ll_vision = root.findViewById(R.id.ll_vision);
-        ll_mission = root.findViewById(R.id.ll_mission);
-        ll_history = root.findViewById(R.id.ll_history);
+        //    ll_1 = root.findViewById(R.id.ll_wwa);
+        //    ll_bloodbankDetails = root.findViewById(R.id.ll_bloodbankDetails);
+        //     ll_contactus = root.findViewById(R.id.ll_contactus);
+        //    ll_vision = root.findViewById(R.id.ll_vision);
+        //    ll_mission = root.findViewById(R.id.ll_mission);
+        //    ll_history = root.findViewById(R.id.ll_history);
         fragment_citizendashboard = root.findViewById(R.id.fragment_citizendashboard);
+
+
+        ll_wwa = root.findViewById(R.id.ll_wwa);
+        ll_mebership = root.findViewById(R.id.ll_mebership);
+        ll_capityBuildings = root.findViewById(R.id.ll_capityBuildings);
+        ll_loate = root.findViewById(R.id.ll_loate);
+        ll_Serices = root.findViewById(R.id.ll_Serices);
+        ll_hoeNursing = root.findViewById(R.id.ll_hoeNursing);
+        ll_bloodbankInfo = root.findViewById(R.id.ll_bloodbankInfo);
+        ll_contactUs = root.findViewById(R.id.ll_contactUs);
+
+
 
 
     }
@@ -221,8 +250,5 @@ public class CitizendashboardFragment extends Fragment implements WhoWeAreFragme
 //        }
 //    }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 }

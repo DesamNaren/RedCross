@@ -14,7 +14,8 @@ import java.util.Objects;
 import in.gov.cgg.redcrossphase1.R;
 
 
-public class CapacityBuildingsFragment extends Fragment {
+public class ServicesFragment extends Fragment {
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,11 +28,12 @@ public class CapacityBuildingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View root = inflater.inflate(R.layout.fragment_capacity_buildings, container, false);
-        Objects.requireNonNull(getActivity()).setTitle("Capacity Buildings");
+        View root = inflater.inflate(R.layout.fragment_locations, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("Services");
         return root;
     }
 
 
 }
+
+

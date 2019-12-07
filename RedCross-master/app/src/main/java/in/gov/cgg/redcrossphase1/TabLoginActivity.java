@@ -175,9 +175,7 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
                 GlobalDeclaration.guest = "y";
                 break;
 
-//            case R.id.btn_submit:
-//                checkLoginType();
-//                break;
+
         }
     }
 

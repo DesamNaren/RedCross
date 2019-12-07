@@ -1,9 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +9,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
@@ -26,6 +32,8 @@ public class WhoWeAreFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     int selectedThemeColor = -1;
     RelativeLayout ll_whoweAre;
+    HomeViewPagerAdapter adaptor;
+    ViewPager viewpager;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,13 +43,27 @@ public class WhoWeAreFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tc, container, false);
         ll_whoweAre = root.findViewById(R.id.ll_whoweAre);
 
-        Objects.requireNonNull(getActivity()).setTitle("Who we are");
+        Objects.requireNonNull(getActivity()).setTitle("About Us");
         TextView tv_first = root.findViewById(R.id.text1);
-        String longDescription = "Indian Red Cross Society was incorporated under Parliament Act XV of 1920. In the princely state of Hyderabad, under the rule of the Nizams, the Red Cross Society was established in 1920 in a small building in St. Mary's road, Secunderabad as a child welfare center.\r\n\nThe British Resident at Hyderabad was its President at that time. Indian Red Cross Society, Telangana State Branch has come into existence in the year 2014. Hon'ble Governor of Telangana is the President of Telangana State Branch. Indian Red Cross Society, Telangana State Branch is having 10 District Branches.\r\n\nDistrict Collector is the President for a District Branch and Mandal Revenue Officer/Tahsildar is President for a District Sub-Branch. Red Cross has been in the fore front, alleviating peoples suffering caused either by natural disasters or by calamities like earthquakes, cyclones, heavy rains and floods, tsunamis etc,. The coastal areas of the State experience many cyclones, which occur every year. \r\n\nIndian Red Cross Society, Telangana Branch is well prepared to play a significant role in evacuating inhabitants from vulnerable areas to safer places well before an impending disaster and also in organizing rescue, relief and rehabilitation operations when a calamity strikes.\r\n\nThe important aspect of such operations is to minimize the effect of calamity in terms of loss of life and suffering of the victims. Apart from this, Indian Red Cross Society, Telangana Branch is active in promoting Health Education, Health Care, free Medical Aid and Medicines to the poor people, Blood Donations, Junior Red Cross and Youth Red Cross associations. In addition the Society also conducts vocational training programmes, runs orphanages and Senior Citizen Resort for elders.";
-        tv_first.setText(longDescription);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        viewpager = root.findViewById(R.id.viewpager_aboutus);
+        TabLayout tabsLayout = root.findViewById(R.id.tabs_aboutusCitizen);
+
+        setupViewPager(viewpager);
+        tabsLayout.setupWithViewPager(viewpager);
+//        Objects.requireNonNull(
+//
+//                getActivity()).
+//
+//                setTitle("Dashboard");
+
+//        GlobalDeclaration.home = true;
+//        GlobalDeclaration.Selection_type = "JRC";
+        reload();
+
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             tv_first.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        }
+        }*/
+
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
@@ -78,12 +100,61 @@ public class WhoWeAreFragment extends Fragment {
 
     }
 
-    private float dp(int dp) {
-        return getResources().getDisplayMetrics().density * dp;
+    private void reload() {
+
+        adaptor.notifyDataSetChanged();
+        viewpager.invalidate();
+
+        //pager.setCurrentItem(0);
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    private void setupViewPager(ViewPager viewpager) {
+        adaptor = new HomeViewPagerAdapter(getChildFragmentManager());
+        adaptor.addFragment(new SevenFundamentalFragment(), "Principles");
+        adaptor.addFragment(new HistoryFragment(), "History");
+        adaptor.addFragment(new VisionFragment(), "Vision");
+        adaptor.addFragment(new MissionFragment(), "Mission");
+        viewpager.setAdapter(adaptor);
+        adaptor.notifyDataSetChanged();
+        viewpager.invalidate();
+    }
+
+    class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+        private FragmentManager mFragmentManager;
+
+        HomeViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+// POSITION_NONE makes it possible to reload the PagerAdapter
+            return POSITION_NONE;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
     }
 }
+
+
