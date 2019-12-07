@@ -31,8 +31,8 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -306,7 +306,7 @@ public class GetDrilldownFragment extends Fragment {
         menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                 return true;
             }
         });

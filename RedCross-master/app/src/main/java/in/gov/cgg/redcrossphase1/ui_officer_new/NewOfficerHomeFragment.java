@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer_new;
 
+import android.app.Activity;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,13 +14,16 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.DistrictViewModel;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
+import static android.content.Context.MODE_PRIVATE;
 import static in.gov.cgg.redcrossphase1.R.color.white;
 
 public class NewOfficerHomeFragment extends Fragment {
@@ -57,6 +62,10 @@ public class NewOfficerHomeFragment extends Fragment {
     private Fragment fragment;
     private LineChart lineChart;
     private FragemtHomeOfficerNewBinding binding;
+    private String D_TYPE;
+    private IHomeListener ihomeListener;
+    private String type;
+    private HomeViewPagerAdapter adapter;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -81,9 +90,143 @@ public class NewOfficerHomeFragment extends Fragment {
 
         govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
 
+        Objects.requireNonNull(
+
+                getActivity()).
+
+                setTitle("Dashboard");
 
         GlobalDeclaration.home = true;
+        GlobalDeclaration.Selection_type = "JRC";
+        reload();
 
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
+                binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
+
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                    binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
+                    binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
+
+                }
+            } else {
+                countColorSelection();
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+/*
+        binding.viewpagerHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.d("position", "--------------------" + position);
+
+                if (position == 0) {
+
+                    Fragment frag = new NewAllDistrictsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+
+                } else if (position == 1) {
+                    Fragment frag = new GenderwiseFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                } else if (position == 2) {
+                    Fragment frag = new BloodwiseFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                } else if (position == 3) {
+                    Fragment frag = new AgewiseFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                }
+                else
+                {
+                    Fragment frag = new NewAllDistrictsFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+*/
 
         districtViewModel.getDashboardCounts("JRC", GlobalDeclaration.userID, GlobalDeclaration.districtId)
                 .observe(Objects.requireNonNull(getActivity()), new Observer<DashboardCountResponse>() {
@@ -108,70 +251,415 @@ public class NewOfficerHomeFragment extends Fragment {
         });
 
 
+        binding.customCount.llJrc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckInternet.isOnline(getActivity())) {
+                    {
 
+                        try {
+                            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+                            if (selectedThemeColor != -1) {
+
+                                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+
+                                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+//
+//                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                                if (selectedThemeColor == R.color.redcroosbg_1) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                                }
+                            } else {
+                                countColorSelection();
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+
+                        GlobalDeclaration.Selection_type = "JRC";
+                        reload();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(binding.customCount.llJrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+
+        });
         binding.customCount.llYrc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
-
-                    if (selectedThemeColor != -1) {
-
-                        binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
-                        binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
-                        binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-                        binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
-                        binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
-                        binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-                        binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
-                        binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
-
-                        countColorSelection();
-                        binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-
-                        if (selectedThemeColor == R.color.redcroosbg_1) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                    {
 
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                        try {
+                            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+                            if (selectedThemeColor != -1) {
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
+                                binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
 
-                        } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
-                            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
-                            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+//
+//                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                                if (selectedThemeColor == R.color.redcroosbg_1) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                                }
+                            } else {
+                                countColorSelection();
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
 
                         }
-
+                        GlobalDeclaration.Selection_type = "YRC";
+                        reload();
                     }
-
-
                 } else {
                     Snackbar snackbar = Snackbar
-                            .make(binding.customCount.llAll, "No Internet Connection", Snackbar.LENGTH_LONG);
+                            .make(binding.customCount.llJrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+
+        });
+        binding.customCount.llLm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckInternet.isOnline(getActivity())) {
+                    {
+                        try {
+                            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+                            if (selectedThemeColor != -1) {
+
+                                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
+                                binding.customCount.tvLmname.setTextColor(getResources().getColor(white));
+
+                                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+//
+//                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                                if (selectedThemeColor == R.color.redcroosbg_1) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                                }
+                            } else {
+                                countColorSelection();
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+                        GlobalDeclaration.Selection_type = "Membership";
+                        reload();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(binding.customCount.llJrc, "No Internet Connection", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+
+        });
+        binding.customCount.llAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheckInternet.isOnline(getActivity())) {
+                    {
+
+
+                        try {
+                            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+                            if (selectedThemeColor != -1) {
+
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
+                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
+
+                                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvYrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+
+                                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+
+//
+//                                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+//                                binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+//                                binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
+
+
+                                //set themes for linearlayouts for jrc yrc member top5 bottom5
+                                if (selectedThemeColor == R.color.redcroosbg_1) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+                                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                                    binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                                    binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                                    binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+                                }
+                            } else {
+                                countColorSelection();
+                                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+                        GlobalDeclaration.Selection_type = "JRC";
+                        reload();
+                    }
+                } else {
+                    Snackbar snackbar = Snackbar
+                            .make(binding.customCount.llJrc, "No Internet Connection", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
             }
@@ -183,20 +671,51 @@ public class NewOfficerHomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDetach() {
+        ihomeListener = null; // => avoid leaking, thanks @Deepscorn
+        super.onDetach();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            ihomeListener = (IHomeListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement TextClicked");
+        }
+    }
+
     private void countColorSelection() {
         binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
         binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
         binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+        binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+    }
+
+    private void reload() {
+
+        adapter.notifyDataSetChanged();
+        binding.viewpagerHome.invalidate();
+
+        //pager.setCurrentItem(0);
     }
 
     private void setupViewPager(ViewPager viewPager_homer) {
-        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new NewAllDistrictsFragment(), "Districtwise");
-        adapter.addFragment(new GenderwiseFragment(), "Genderwise");
-        adapter.addFragment(new BloodwiseFragment(), "BloodGroupwise");
-        adapter.addFragment(new AgewiseFragment(), "Agewise");
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new NewAllDistrictsFragment(), "Districtwise", type);
+        adapter.addFragment(new GenderwiseFragment(), "Genderwise", type);
+        adapter.addFragment(new BloodwiseFragment(), "BloodGroupwise", type);
+        adapter.addFragment(new AgewiseFragment(), "Agewise", type);
 
         viewPager_homer.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        binding.viewpagerHome.invalidate();
     }
 
     private void setCountsForDashboard(DashboardCountResponse dashboardCountResponse) {
@@ -211,8 +730,26 @@ public class NewOfficerHomeFragment extends Fragment {
         }
     }
 
+    public static class DayAxisValueFormatter extends ValueFormatter {
+        private final BarLineChartBase<?> chart;
 
-    class HomeViewPagerAdapter extends FragmentPagerAdapter {
+
+        public DayAxisValueFormatter(BarLineChartBase<?> chart) {
+            this.chart = chart;
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            return "" + (value);
+        }
+
+        @Override
+        public String getBarLabel(BarEntry barEntry) {
+            return "" + (barEntry);
+        }
+    }
+
+    class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
         private FragmentManager mFragmentManager;
@@ -226,7 +763,7 @@ public class NewOfficerHomeFragment extends Fragment {
             return mFragmentList.get(position);
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        public void addFragment(Fragment fragment, String title, String type) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }

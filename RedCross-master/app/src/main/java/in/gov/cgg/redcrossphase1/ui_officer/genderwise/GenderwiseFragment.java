@@ -54,7 +54,7 @@ public class GenderwiseFragment extends Fragment {
 
 
         if (CheckInternet.isOnline(getActivity())) {
-            genderwiseViewModel.getGender("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+            genderwiseViewModel.getGender(GlobalDeclaration.Selection_type, GlobalDeclaration.districtId, GlobalDeclaration.userID).
                     observe(getActivity(), new Observer<List<Genders>>() {
                         @Override
                         public void onChanged(@Nullable List<Genders> gendersList) {

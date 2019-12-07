@@ -18,7 +18,7 @@ import com.chaos.view.PinView;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 
 public class EnterMPinActivity extends Activity {
 
@@ -104,7 +104,7 @@ public class EnterMPinActivity extends Activity {
                     pmpin = pinView.getText().toString();
                     if (pmpin.equalsIgnoreCase("1234")) {
                         tv_wrong.setVisibility(View.GONE);
-                        startActivity(new Intent(EnterMPinActivity.this, OfficerMainActivity.class));
+                        startActivity(new Intent(EnterMPinActivity.this, NewOfficerMainActivity.class));
 
                     } else {
 

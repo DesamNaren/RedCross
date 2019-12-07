@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 
 public class PrivacyPolicyFragment extends Fragment {
 
@@ -123,7 +124,7 @@ public class PrivacyPolicyFragment extends Fragment {
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                 return false;
             }
         });

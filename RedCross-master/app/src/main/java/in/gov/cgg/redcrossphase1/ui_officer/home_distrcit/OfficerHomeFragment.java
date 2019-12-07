@@ -69,6 +69,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.genderwise.Genders;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.Last10day;
+import in.gov.cgg.redcrossphase1.ui_officer_new.MyMarkerView;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -1129,6 +1130,13 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
+        // create a custom MarkerView (extend MarkerView) and specify the layout
+        // to use for it
+        MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
+        mv.setChartView(lineChart); // For bounds control
+        lineChart.setMarker(mv); // Set the marker to the chart
+
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(9f);
@@ -1148,9 +1156,9 @@ public class OfficerHomeFragment extends Fragment implements OnChartValueSelecte
         };
 
         try {
-            LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
-            mv.setChartView(lineChart);
-            lineChart.setMarker(mv);
+//            LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+//            mv.setChartView(lineChart);
+//            lineChart.setMarker(mv);
 
             xAxis.setGranularity(1f);
             xAxis.setValueFormatter(formatter);

@@ -46,7 +46,7 @@ public class GenderwiseViewModel extends ViewModel {
 
         pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<GenderResponse> call = apiInterface.GenderWiseService(districtid, role, "1920", userid);
+        Call<GenderResponse> call = apiInterface.GenderWiseService(districtid, role, "3", userid);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<GenderResponse>() {

@@ -41,15 +41,15 @@ import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.NewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.PhotoUploadActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllDistrictsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtPvtFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
-public class NewOfficerMainActivity extends AppCompatActivity {
+public class NewOfficerMainActivity extends AppCompatActivity implements IHomeListener {
 
 
     int selectedThemeColor = -1;
@@ -87,6 +87,8 @@ public class NewOfficerMainActivity extends AppCompatActivity {
 //        viewPager_home = findViewById(R.id.viewpager_home);
 //
         setSupportActionBar(toolbar);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+
         Menu nav_Menu = navigationView.getMenu();
 //
 //        setupViewPager(viewPager_home);
@@ -95,57 +97,57 @@ public class NewOfficerMainActivity extends AppCompatActivity {
         //setupTabIcons();
 
         GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
-        //default fragment
+        //default fragmentl
         selectedFragment = new NewOfficerHomeFragment();
         callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
 
 
-        try {
-            selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                toolbar.setBackgroundResource(selectedThemeColor);
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    // navigationView.setBackgroundResource(R.drawable.redcross6_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                } else {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    //    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    selectedThemeColor = R.color.colorPrimary;
-                    toolbar.setBackgroundResource(selectedThemeColor);
-                    sharedPreferenceMethod(selectedThemeColor);
-                }
-            } else {
-                ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                selectedThemeColor = R.color.colorPrimary;
-                toolbar.setBackgroundResource(selectedThemeColor);
-                sharedPreferenceMethod(selectedThemeColor);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
+//        try {
+//            selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+//            if (selectedThemeColor != -1) {
+//                toolbar.setBackgroundResource(selectedThemeColor);
+//                if (selectedThemeColor == R.color.redcroosbg_1) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
+//                    // navigationView.setBackgroundResource(R.drawable.redcross6_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
+//                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                    //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                } else {
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                    //    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                    selectedThemeColor = R.color.colorPrimary;
+//                    toolbar.setBackgroundResource(selectedThemeColor);
+//                    sharedPreferenceMethod(selectedThemeColor);
+//                }
+//            } else {
+//                ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                selectedThemeColor = R.color.colorPrimary;
+//                //toolbar.setBackgroundResource(selectedThemeColor);
+//                sharedPreferenceMethod(selectedThemeColor);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//
+//        }
 
         if (GlobalDeclaration.role != null) {
             if (!GlobalDeclaration.role.contains("D")) {
@@ -259,6 +261,19 @@ public class NewOfficerMainActivity extends AppCompatActivity {
                     selectedFragment = new NewOfficerHomeFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_govtpvt) {
+         /*           menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            callHomeAlert();
+                            return true;
+                        }
+                    });*/
+                    GlobalDeclaration.FARG_TAG = GovtPvtFragment.class.getSimpleName();
+                    selectedFragment = new GovtPvtFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_age) {
          /*           menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -281,8 +296,8 @@ public class NewOfficerMainActivity extends AppCompatActivity {
                             return true;
                         }
                     });*/
-                    GlobalDeclaration.FARG_TAG = AllDistrictsFragment.class.getSimpleName();
-                    selectedFragment = new AllDistrictsFragment();
+                    GlobalDeclaration.FARG_TAG = NewAllDistrictsFragment.class.getSimpleName();
+                    selectedFragment = new NewAllDistrictsFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
@@ -359,12 +374,21 @@ public class NewOfficerMainActivity extends AppCompatActivity {
                             return true;
                         }
                     });
+                } else if (destination.getId() == R.id.nav_govtpvt) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_power_settings_new_black_24dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            callHomeAlert();
+                            return true;
+                        }
+                    });
                 } else if (destination.getId() == R.id.nav_alldistricts) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
-                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
+                            callHomeAlert();
                             return true;
                         }
                     });
@@ -402,7 +426,7 @@ public class NewOfficerMainActivity extends AppCompatActivity {
         } else if (fargTag.equalsIgnoreCase("NewOfficerHomeFragment")) {
             selectedFragment = new NewOfficerHomeFragment();
         } else if (fargTag.equalsIgnoreCase("NewAllDistrictsFragment")) {
-            selectedFragment = new AllDistrictsFragment();
+            selectedFragment = new NewAllDistrictsFragment();
         } else if (fargTag.equalsIgnoreCase("PrivacyPolicyFragment")) {
             selectedFragment = new PrivacyPolicyFragment();
         } else if (fargTag.equalsIgnoreCase("AllMandalsFragment")) {
@@ -454,149 +478,149 @@ public class NewOfficerMainActivity extends AppCompatActivity {
             }
         });
 
-        iv_color1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectedThemeColor = R.color.redcroosbg_1;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectedThemeColor = R.color.redcroosbg_2;
-                if (selectedThemeColor != -1) {
-                    //  int[] colorsIds = getResources().getIntArray(R.array.theme_colors_id);
-                    layout_main.setBackgroundColor(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_3;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_4;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_5;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_6;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_7;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
-        iv_color8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                selectedThemeColor = R.color.redcroosbg_8;
-                if (selectedThemeColor != -1) {
-                    layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
-                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    dialog.dismiss();
-                    storesInsharedPref(selectedThemeColor);
-                    setFragment(GlobalDeclaration.FARG_TAG);
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                }
-            }
-        });
+//        iv_color1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                selectedThemeColor = R.color.redcroosbg_1;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                selectedThemeColor = R.color.redcroosbg_2;
+//                if (selectedThemeColor != -1) {
+//                    //  int[] colorsIds = getResources().getIntArray(R.array.theme_colors_id);
+//                    layout_main.setBackgroundColor(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
+//                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_3;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
+//                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_4;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
+//                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_5;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
+//                    // navigationView.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_6;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
+//                    //   navigationView.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color7.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_7;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
+//                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
+//        iv_color8.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                selectedThemeColor = R.color.redcroosbg_8;
+//                if (selectedThemeColor != -1) {
+//                    layout_main.setBackgroundResource(selectedThemeColor);
+//                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                    //  navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+//                    toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//                    dialog.dismiss();
+//                    storesInsharedPref(selectedThemeColor);
+//                    setFragment(GlobalDeclaration.FARG_TAG);
+//                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+//                    drawerLayout.closeDrawer(GravityCompat.START);
+//                }
+//            }
+//        });
         dialog.show();
     }
 
@@ -645,6 +669,16 @@ public class NewOfficerMainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void callDistrcitFragment(String type) {
+        GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
+        selectedFragment = new NewOfficerHomeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("D_TYPE", type);
+        selectedFragment.setArguments(bundle);
+        setFragment(GlobalDeclaration.FARG_TAG);
+        callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+    }
 }
 
 

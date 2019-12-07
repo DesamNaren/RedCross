@@ -2,7 +2,6 @@ package in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,7 +24,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -52,9 +50,9 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -254,24 +252,24 @@ public class DaywiseFragment extends Fragment {
             }
         });
 
-
-        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                binding.refreshLayout.setRefreshing(false);
-                // code on swipe refresh
-                daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
-                        observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
-                            @Override
-                            public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
-                                if (alldaywisecounts != null) {
-                                    setDataforRV(alldaywisecounts);
-                                }
-                            }
-                        });
-            }
-        });
-        binding.refreshLayout.setColorSchemeColors(Color.RED);
+//
+//        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                binding.refreshLayout.setRefreshing(false);
+//                // code on swipe refresh
+//                daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+//                        observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
+//                            @Override
+//                            public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
+//                                if (alldaywisecounts != null) {
+//                                    setDataforRV(alldaywisecounts);
+//                                }
+//                            }
+//                        });
+//            }
+//        });
+//        binding.refreshLayout.setColorSchemeColors(Color.RED);
 
         binding.btnFlip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -429,6 +427,8 @@ public class DaywiseFragment extends Fragment {
             Collections.reverse(daywisecount);
             binding.rvDaywiselist.setHasFixedSize(true);
             binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            Collections.reverse(daywisecount);
             DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount, selectedThemeColor);
             binding.rvDaywiselist.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
@@ -471,6 +471,7 @@ public class DaywiseFragment extends Fragment {
         return 0;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -487,8 +488,8 @@ public class DaywiseFragment extends Fragment {
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
-                return false;
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
+                return true;
             }
         });
 

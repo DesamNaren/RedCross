@@ -46,8 +46,8 @@ import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class AllDistrictsFragment extends Fragment {
@@ -244,11 +244,11 @@ public class AllDistrictsFragment extends Fragment {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-        menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        //  menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
         menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                 return true;
             }
         });

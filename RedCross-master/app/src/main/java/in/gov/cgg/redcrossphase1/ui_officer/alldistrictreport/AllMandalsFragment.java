@@ -3,7 +3,6 @@ package in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +23,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,8 +33,10 @@ import java.util.Objects;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer_new.DistrictLevelAdapter;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class AllMandalsFragment extends Fragment {
@@ -46,7 +46,7 @@ public class AllMandalsFragment extends Fragment {
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    private LevelAdapter adapter1;
+    private DistrictLevelAdapter adapter1;
     int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
@@ -74,21 +74,21 @@ public class AllMandalsFragment extends Fragment {
 //        binding.customCount.cvName.setVisibility(View.VISIBLE);
 
 
-//        if (GlobalDeclaration.role != null) {
-//            if (GlobalDeclaration.role.contains("D")) {
-//                binding.customCount.cvName.setVisibility(View.GONE);
-//            } else {
-//                binding.customCount.cvName.setVisibility(View.GONE);
-//            }
-//
-//        }  else {
-//            binding.customCount.cvName.setVisibility(View.GONE);
-//        }
-//        if (GlobalDeclaration.leveDName != null) {
-//            binding.customCount.tvlevelname.setText(GlobalDeclaration.leveDName);
-//        } else {
-//            binding.customCount.cvName.setVisibility(View.GONE);
-//        }
+        if (GlobalDeclaration.role != null) {
+            if (GlobalDeclaration.role.contains("D")) {
+                binding.cvName.setVisibility(View.GONE);
+            } else {
+                binding.cvName.setVisibility(View.VISIBLE);
+            }
+
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
+        if (GlobalDeclaration.leveDName != null) {
+            binding.tvlevelname.setText(GlobalDeclaration.leveDName);
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
 //        try {
 //            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
 //            if (selectedThemeColor != -1) {
@@ -190,30 +190,29 @@ public class AllMandalsFragment extends Fragment {
                     }
                 });
 
-        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                binding.refreshLayout.setRefreshing(false);
-                // code on swipe refresh
-                allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
-                        observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
-                            @Override
-                            public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
-                                if (allDistrictList != null) {
-                                    setDataforRV(allDistrictList);
-                                    pd.dismiss();
-                                }
-                            }
-                        });
-            }
-        });
-        binding.refreshLayout.setColorSchemeColors(Color.RED);
+//        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                binding.refreshLayout.setRefreshing(false);
+//                // code on swipe refresh
+//                allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
+//                        observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
+//                            @Override
+//                            public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+//                                if (allDistrictList != null) {
+//                                    setDataforRV(allDistrictList);
+//                                    pd.dismiss();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
+//        binding.refreshLayout.setColorSchemeColors(Color.RED);
 
 
         return binding.getRoot();
 
     }
-
 
 
     private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
@@ -241,7 +240,7 @@ public class AllMandalsFragment extends Fragment {
 
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m", selectedThemeColor);
+            adapter1 = new DistrictLevelAdapter(getActivity(), allDistrictList, "m", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }
@@ -263,7 +262,7 @@ public class AllMandalsFragment extends Fragment {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
                     if (!GlobalDeclaration.role.contains("D")) {
-                        Fragment frag = new AllDistrictsFragment();
+                        Fragment frag = new NewOfficerHomeFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                                 frag).addToBackStack(null).commit();
                         return true;
@@ -304,7 +303,7 @@ public class AllMandalsFragment extends Fragment {
         menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                 return true;
             }
         });

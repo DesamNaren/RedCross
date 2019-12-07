@@ -3,6 +3,7 @@ package in.gov.cgg.redcrossphase1.ui_officer.agewise;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +32,8 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAgewiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
-import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.XYMarkerView;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
 public class AgewiseFragment extends Fragment {
@@ -55,7 +56,8 @@ public class AgewiseFragment extends Fragment {
         
 
         if (CheckInternet.isOnline(getActivity())) {
-            agewiseViewModel.getAges("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+            Log.e("Selection_type", "........age............" + GlobalDeclaration.Selection_type);
+            agewiseViewModel.getAges(GlobalDeclaration.Selection_type, GlobalDeclaration.districtId, GlobalDeclaration.userID).
                     observe(getActivity(), new Observer<List<Age>>() {
                         @Override
                         public void onChanged(@Nullable List<Age> ageList) {
@@ -125,7 +127,7 @@ public class AgewiseFragment extends Fragment {
         binding.chartAge.animateY(1500);
 
         // barChart.getLegend().setEnabled(false);
-        ValueFormatter xAxisFormatter = new OfficerHomeFragment.DayAxisValueFormatter(binding.chartAge);
+        ValueFormatter xAxisFormatter = new NewOfficerHomeFragment.DayAxisValueFormatter(binding.chartAge);
 
 
         xAxis.setValueFormatter(xAxisFormatter);

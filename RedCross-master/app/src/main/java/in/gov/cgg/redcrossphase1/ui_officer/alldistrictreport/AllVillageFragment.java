@@ -3,7 +3,6 @@ package in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +23,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,8 +33,9 @@ import java.util.Objects;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
-import in.gov.cgg.redcrossphase1.ui_officer.OfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer_new.DistrictLevelAdapter;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class AllVillageFragment extends Fragment {
@@ -46,7 +45,7 @@ public class AllVillageFragment extends Fragment {
     String value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
-    private VillageLevelAdapter adapter1;
+    private DistrictLevelAdapter adapter1;
     int selectedThemeColor = -1;
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
@@ -62,6 +61,12 @@ public class AllVillageFragment extends Fragment {
 
         GlobalDeclaration.home = false;
 
+        if (GlobalDeclaration.leveMName != null) {
+            binding.cvName.setVisibility(View.VISIBLE);
+            binding.tvlevelname.setText(GlobalDeclaration.leveMName);
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
        /* binding.searchView.setIconifiedByDefault(false);
         binding.searchView.setOnQueryTextListener(this);
         binding.searchView.setSubmitButtonEnabled(true);
@@ -150,24 +155,24 @@ public class AllVillageFragment extends Fragment {
                     }
                 });
 
-        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                binding.refreshLayout.setRefreshing(false);
-                // code on swipe refresh
-                allDistrictsViewModel.getAllVillages("VillageWise", "3", value).
-                        observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
-                            @Override
-                            public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
-                                if (allDistrictList != null) {
-                                    setDataforRV(allDistrictList);
-                                    pd.dismiss();
-                                }
-                            }
-                        });
-            }
-        });
-        binding.refreshLayout.setColorSchemeColors(Color.RED);
+//        binding.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                binding.refreshLayout.setRefreshing(false);
+//                // code on swipe refresh
+//                allDistrictsViewModel.getAllVillages("VillageWise", "3", value).
+//                        observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
+//                            @Override
+//                            public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+//                                if (allDistrictList != null) {
+//                                    setDataforRV(allDistrictList);
+//                                    pd.dismiss();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
+//        binding.refreshLayout.setColorSchemeColors(Color.RED);
 
 
         return binding.getRoot();
@@ -195,7 +200,7 @@ public class AllVillageFragment extends Fragment {
             Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new VillageLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
+            adapter1 = new DistrictLevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }
@@ -255,7 +260,7 @@ public class AllVillageFragment extends Fragment {
         menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                startActivity(new Intent(getActivity(), OfficerMainActivity.class));
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
                 return true;
             }
         });

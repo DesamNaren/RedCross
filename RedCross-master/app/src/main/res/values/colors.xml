@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ED1C24</color>
+    <color name="colorPrimary">#013f76</color>
     <!--    <color name="colorPrimaryDark">#F45900</color>-->
-    <color name="colorPrimaryDark">#ED1C24</color>
+    <color name="colorPrimaryDark">#013f76</color>
     <color name="colorShadeRed">#F45900</color>
     <color name="colorAccent">#000</color>
     <color name="black">#000</color>
@@ -17,7 +17,6 @@
     <item name="redcroosbg_6" type="color">#013f76</item>
     <item name="redcroosbg_7" type="color">#5927c4</item>
     <item name="redcroosbg_8" type="color">#ED1C24</item>
-
     <item name="my_great_color" type="color">#FFFFFF</item>
     <item name="colorControlNormal" type="color">@color/my_great_color</item>
 

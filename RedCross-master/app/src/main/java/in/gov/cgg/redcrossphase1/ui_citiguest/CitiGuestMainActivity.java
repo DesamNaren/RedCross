@@ -49,7 +49,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment;
-import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
@@ -479,7 +479,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         // CustomRelativeLayout.changeStatusBarColor(this);
         //refersh of same fragment
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_officer);
-        if (currentFragment instanceof OfficerHomeFragment) {
+        if (currentFragment instanceof NewOfficerHomeFragment) {
             FragmentTransaction fragTransaction = getSupportFragmentManager().beginTransaction();
             fragTransaction.detach(currentFragment);
             fragTransaction.attach(currentFragment);

@@ -4,6 +4,7 @@ package in.gov.cgg.redcrossphase1.ui_officer.bloodwise;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,8 @@ public class BloodwiseFragment extends Fragment {
 //        Objects.requireNonNull(getActivity()).setTitle("Blood group wise");
 
         if (CheckInternet.isOnline(getActivity())) {
-            bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
+            Log.e("Selection_type", ".........blood..........." + GlobalDeclaration.Selection_type);
+            bloodwiseVm.getBlood(GlobalDeclaration.Selection_type, GlobalDeclaration.districtId, GlobalDeclaration.userID).
                     observe(getActivity(), new Observer<List<BloodGroups>>() {
                         @Override
                         public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
@@ -223,7 +225,7 @@ public class BloodwiseFragment extends Fragment {
         d.setValueLinePart1Length(0.2f);
         d.setValueLinePart2Length(0.4f);
         d.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        d.setColors(ColorTemplate.MATERIAL_COLORS);
+        d.setColors(ColorTemplate.COLORFUL_COLORS);
         d.setSliceSpace(2f);
         d.setValueTextColor(Color.WHITE);
         d.setValueTextSize(10f);

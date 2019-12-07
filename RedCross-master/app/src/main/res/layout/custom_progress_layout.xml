@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/imageprogress"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:tint="@color/colorPrimary"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/loader_black1" />
 </RelativeLayout>
