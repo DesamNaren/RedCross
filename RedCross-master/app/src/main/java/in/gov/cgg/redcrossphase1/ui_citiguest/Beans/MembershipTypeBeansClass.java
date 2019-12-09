@@ -3,7 +3,8 @@ package in.gov.cgg.redcrossphase1.ui_citiguest.Beans;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MembershipDetails_Bean {
+public class MembershipTypeBeansClass {
+
 
     @SerializedName("id")
     @Expose
@@ -71,5 +72,4 @@ public class MembershipDetails_Bean {
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
-
 }

@@ -10,18 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 
 public class MembershipDetailsAdaptor extends RecyclerView.Adapter<MembershipDetailsAdaptor.myViewHolder> {
 
-    ArrayList<MembershipDetails_Bean> MembershipTypeList;
+    List<MembershipDetails_Bean> MembershipTypeList;
     Context context;
     int selectedThemeColor = -1;
 
 
-    public MembershipDetailsAdaptor(ArrayList<MembershipDetails_Bean> arrayList, Context context, int selectedThemeColor) {
+    public MembershipDetailsAdaptor(List<MembershipDetails_Bean> arrayList, Context context, int selectedThemeColor) {
         this.MembershipTypeList = arrayList;
         this.context = context;
         this.selectedThemeColor = selectedThemeColor;
@@ -40,8 +41,9 @@ public class MembershipDetailsAdaptor extends RecyclerView.Adapter<MembershipDet
         //holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
         //holder.address.setText(contactarrayList.get(position).getAdress());
         // holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
-        holder.ROS.setText(MembershipTypeList.get(position).getRatesOfSubscription());
-        holder.TOM.setText(MembershipTypeList.get(position).getTypeOfMembership());
+
+        holder.ROS.setText(String.valueOf(MembershipTypeList.get(position).getFees()));
+        holder.TOM.setText(MembershipTypeList.get(position).getMembershipType());
 
 
     }
@@ -63,12 +65,15 @@ public class MembershipDetailsAdaptor extends RecyclerView.Adapter<MembershipDet
 
         TextView TOM;
         TextView ROS;
+        //CardView header;
 
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             TOM = itemView.findViewById(R.id.tv_TOM);
             ROS = itemView.findViewById(R.id.tv_ROS);
+            //header = itemView.findViewById(R.id.header);
+
 
 
         }

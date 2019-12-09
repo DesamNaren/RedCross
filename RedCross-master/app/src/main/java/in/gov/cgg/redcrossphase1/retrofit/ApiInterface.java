@@ -7,6 +7,11 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
@@ -21,6 +26,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -34,7 +40,6 @@ public interface ApiInterface {
 
     @POST("verifyCitizen")
     Call<CitizenLoginResponse> callCitizenLogin(@Body CitizenLoginRequest req);
-
 
 
     @GET("AgeWiseService")
@@ -108,7 +113,48 @@ public interface ApiInterface {
                                                                                   @Query("mandalId") String mandalId);
 
     //Citizen
-/*    @GET("getmandalsBasedOnDist"
-    )*/
+    @GET("getActivitiesList")
+    Call<List<MemberActivitiesResponse>> getActivitiesForMemReg();
 
+    @GET("getMembershipTypes")
+    Call<List<MembershipDetails_Bean>> getMembershipTypes();
+
+    @GET("getdistrictsBasedOnStateId/{stateId}")
+    Call<List<MembersipDistResponse>> getDistrictsForMemReg(@Path("stateId") String stateId);
+//    @GET
+//    Call<List<MembersipDistResponse>> getDistrictsForMemReg(@Url String url);
+
+    @GET("getmandalsBasedOnDist/{distId}")
+    Call<List<MembershipMandalsResponse>> getMandalsForMemReg(@Path("distId") String DistID);
+
+    @GET("getVillagesForphotoUpl/{mandalId}")
+    Call<List<MembershipVillagesResponse>> getVillagesForMemReg(@Path("mandalId") String mandID);
+
+    @POST("saveMembershipMemberData")
+    Call<JsonObject> SendDetails(@Body JsonObject jsonBody);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
