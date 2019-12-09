@@ -18,8 +18,6 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -35,9 +33,13 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
+
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BlooddonorRegistrationFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
@@ -176,7 +178,11 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_blooddonorreg) {
-                    showChangeLangDialog();
+                    GlobalDeclaration.FARG_TAG = BlooddonorRegistrationFragment.class.getSimpleName();
+                    selectedFragment = new BlooddonorRegistrationFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    //  showChangeLangDialog();
                 } else if (menuItem.getItemId() == R.id.nav_hn) {
                     showChangeLangDialog();
                 } else if (menuItem.getItemId() == R.id.nav_onlinedonations) {
@@ -220,7 +226,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 } else if (destination.getId() == R.id.nav_hnreg) {
                     showChangeLangDialog();
                 } else if (destination.getId() == R.id.nav_blooddonorreg) {
-                    showChangeLangDialog();
+                    //   showChangeLangDialog();
                 } else if (destination.getId() == R.id.nav_hn) {
                     showChangeLangDialog();
                 } else if (destination.getId() == R.id.nav_doateblood) {

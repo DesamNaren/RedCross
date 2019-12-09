@@ -25,8 +25,8 @@ import in.gov.cgg.redcrossphase1.R;
 public class BlooddonorRegistrationFragment extends Fragment {
 
     Button btn_donorRegNext;
-    ImageView iv_date, iv_time;
-    EditText Et_date, et_time;
+    ImageView iv_date, iv_time, iv_dateofLastDonation;
+    EditText Et_date, et_time, et_dateofLastdonation;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -92,6 +92,28 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 timePickerDialog.show();
             }
         });
+        iv_dateofLastDonation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get Current Time
+                final Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMinute = c.get(Calendar.MINUTE);
+
+                // Launch Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                et_dateofLastdonation.setText(hourOfDay + ":" + minute);
+                            }
+                        }, mHour, mMinute, false);
+                timePickerDialog.show();
+            }
+        });
         return root;
     }
 
@@ -101,5 +123,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         Et_date = root.findViewById(R.id.Et_date);
         iv_time = root.findViewById(R.id.iv_time);
         et_time = root.findViewById(R.id.et_time);
+        iv_dateofLastDonation = root.findViewById(R.id.iv_dateoflastDonation);
+        et_dateofLastdonation = root.findViewById(R.id.et_dateoflastDonation);
     }
 }

@@ -270,7 +270,6 @@
                     android:layout_margin="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bg"
-
                     android:hint="Age"
                     android:paddingLeft="@dimen/dp_5"
 
@@ -372,7 +371,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/District_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -404,21 +402,38 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="Date of Last Donation"
+                    android:text="Date"
                     android:textColor="@color/black" />
 
-                <EditText
-                    android:id="@+id/et_dateofLastdonation"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_margin="@dimen/dp_5"
-                    android:background="@drawable/edittext_bg"
-                    android:hint="Date Of Last Donation"
-                    android:paddingLeft="@dimen/dp_5"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/et_dateoflastDonation"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittext_bg"
+
+                        android:hint="Select Date"
+                        android:paddingLeft="@dimen/dp_5"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/iv_dateoflastDonation"
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:paddingLeft="@dimen/dp_5"
+                        android:paddingRight="@dimen/dp_5"
+                        android:src="@drawable/downarrow" />
+                </LinearLayout>
+
             </LinearLayout>
 
 
@@ -444,7 +459,6 @@
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bg"
                     android:hint="Address"
-
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
             </LinearLayout>
