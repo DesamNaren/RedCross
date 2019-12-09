@@ -5,8 +5,32 @@
     android:layout_height="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:background="@drawable/redcross_splashscreen_bg">
+    android:background="?android:windowBackground"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_sateCordinators"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_background_selected"
+            android:text="State coordinators"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_districtCordinators"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/tab_background_unselected"
+            android:text="District contact details" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_contactUs"
         android:layout_width="match_parent"

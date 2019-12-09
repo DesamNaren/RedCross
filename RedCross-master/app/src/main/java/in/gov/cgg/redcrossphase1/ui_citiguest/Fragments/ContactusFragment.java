@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -22,14 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.Contactus_adaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class ContactusFragment extends Fragment implements SearchView.OnQueryTextListener {
@@ -38,6 +38,8 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
     ArrayList<ContactusDetails_Bean> contactUsarrayList;
     private FragmentActivity c;
     LinearLayout ll_contactUs;
+    Button btn_sateCordinators, btn_districtCordinators;
+
     int selectedThemeColor = -1;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -50,16 +52,17 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         setHasOptionsMenu(true);//Make sure you have this line of code.
 
         findViews(root);
+        GlobalDeclaration.cordinatorType = "s";
 
 
-        try {
+
+       /* try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross1_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross2_bg);
-
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross3_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
@@ -78,141 +81,204 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         } catch (Exception e) {
             e.printStackTrace();
 
-        }
+        }*/
 
         contactUsarrayList = new ArrayList<>();
         recyclerView = root.findViewById(R.id.rv_contactUs);
         // 2. set layoutManger
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        prepareStateCordinatorsData();
+        adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        btn_districtCordinators.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.cordinatorType = "";
+
+                // 2. set layoutManger
+                contactUsarrayList.clear();
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                prepareDistrictCordinatorsData();
+                adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                btn_districtCordinators.setBackgroundResource(R.color.redcroosbg_6);
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackgroundResource(R.color.white);
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
 
 
-        ContactusDetails_Bean details = new ContactusDetails_Bean("ADILABAD DISTRICT", "Indian Red Cross Society,\n" +
+            }
+        });
+        btn_sateCordinators.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.cordinatorType = "s";
+
+
+                // 2. set layoutManger
+                contactUsarrayList.clear();
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                prepareStateCordinatorsData();
+                adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                btn_districtCordinators.setBackgroundResource(R.color.white);
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
+                btn_sateCordinators.setBackgroundResource(R.color.redcroosbg_6);
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+
+
+            }
+
+
+        });
+        
+
+
+
+
+        return root;
+    }
+
+    private void prepareStateCordinatorsData() {
+        ContactusDetails_Bean detail26 = new ContactusDetails_Bean("", "P. Vijaya Kumar Babu,\n" +
+                "State Coordinator – Disaster ManagementManager – RCSMH,\n" +
+                "Focal Person – Family News Service & ICRC Cooperation Activities, \n" + "In-charge – Resource Mobilization\n" + "Indian Red Cross Society,\n" + "Telangana State Branch,\n" + "Mobile: 9849555393,\n" + "E-Mail: vijay_redcross@yahoo.co.in");
+        contactUsarrayList.add(detail26);
+        ContactusDetails_Bean detail27 = new ContactusDetails_Bean("", " Ramana,\n" +
+                " First Aid &JRC/YRC,\n" +
+                "Indian Red Cross Society, \n" + "Mobile: 9948633398\n" + "E-Mail:ramanagmsw@gmail.com");
+        contactUsarrayList.add(detail27);
+    }
+
+    private void prepareDistrictCordinatorsData() {
+        ContactusDetails_Bean details = new ContactusDetails_Bean("Adilabad ", "Indian Red Cross Society,\n" +
                 "Adilabad District Branch,\n" +
                 "Adilabad 504001");
         contactUsarrayList.add(details);
 
-        ContactusDetails_Bean details1 = new ContactusDetails_Bean("BHADRADRI KOTTAGUDEM DISTRICT", "Indian Red Cross Society,\n" +
+        ContactusDetails_Bean details1 = new ContactusDetails_Bean("Bhadradri kottagudem", "Indian Red Cross Society,\n" +
                 "Old LIC Office Road,\n" +
                 "Bhadrachalam, Bhadradri -Kothagudem-507111");
         contactUsarrayList.add(details1);
 
 
-        ContactusDetails_Bean details2 = new ContactusDetails_Bean("HYDERABAD DISTRICT", "Indian Red Cross Society,\n" +
+        ContactusDetails_Bean details2 = new ContactusDetails_Bean("Hyderabad ", "Indian Red Cross Society,\n" +
                 "District Collectorate Office,\n" +
                 "Nampally Station Road, Abids,\n" +
                 "HYDERABAD -500001.");
         contactUsarrayList.add(details2);
 
-        ContactusDetails_Bean details3 = new ContactusDetails_Bean("JAGTIAL DISTRICT", "H.No.1-4-181, Balaji Nagar,\n" +
+        ContactusDetails_Bean details3 = new ContactusDetails_Bean("Jagital ", "H.No.1-4-181, Balaji Nagar,\n" +
                 "Jagityal Dist-505327");
         contactUsarrayList.add(details3);
-
-        ContactusDetails_Bean details4 = new ContactusDetails_Bean("KUMARAM BHEEM ASIFABAD DISTRICT", "H.No.1-16-273/6,\n" +
+        ContactusDetails_Bean details4 = new ContactusDetails_Bean("Kumaram bheem asifabad ", "H.No.1-16-273/6,\n" +
                 "Opp: Indian Oil Petrol Pump, Industrial Area,\n" +
                 "Sirpur Khagaz Nagar - Komaram Bheem Asifabad Dist-504299");
         contactUsarrayList.add(details4);
 
-        ContactusDetails_Bean details5 = new ContactusDetails_Bean("MAHABUBABAD DISTRICT", "D.No.4-4-10/1,U.Town,\n" +
+        ContactusDetails_Bean details5 = new ContactusDetails_Bean("Mahabubabad ", "D.No.4-4-10/1,U.Town,\n" +
                 "Mahaboobabad District.-506101");
         contactUsarrayList.add(details5);
 
-        ContactusDetails_Bean details6 = new ContactusDetails_Bean("MAHABUBNAGAR DISTRICT", "H.No.6-1-92/C, Ganesh Nagar,\n" +
+        ContactusDetails_Bean details6 = new ContactusDetails_Bean("Mahabubnagar", "H.No.6-1-92/C, Ganesh Nagar,\n" +
                 "Near Rto Office, Mahabubnagar-509001");
         contactUsarrayList.add(details6);
 
-        ContactusDetails_Bean details7 = new ContactusDetails_Bean("MANCHERIAL DISTRICT", "Blood Bank,I B Chowrasta\n" +
+        ContactusDetails_Bean details7 = new ContactusDetails_Bean("Mancherial ", "Blood Bank,I B Chowrasta\n" +
                 "Mancherial Dist.-504208");
         contactUsarrayList.add(details7);
 
-        ContactusDetails_Bean details8 = new ContactusDetails_Bean("MEDAK DISTRICT", "H.No:- 16-83, Reddy Colony,\n" +
+        ContactusDetails_Bean details8 = new ContactusDetails_Bean("Medak", "H.No:- 16-83, Reddy Colony,\n" +
                 "Ramayanpet,\n" +
                 "Medak District-502101");
         contactUsarrayList.add(details8);
 
-        ContactusDetails_Bean details9 = new ContactusDetails_Bean("MEDCHAL MALKAJGIRI DISTRICT", "C/o. Misrilal Mangilal Maternity & Children Hospital Premises, Bowenpally, Sec-bad");
+        ContactusDetails_Bean details9 = new ContactusDetails_Bean("Medchal malkajgiri", "C/o. Misrilal Mangilal Maternity & Children Hospital Premises, Bowenpally, Sec-bad");
         contactUsarrayList.add(details9);
 
-        ContactusDetails_Bean details10 = new ContactusDetails_Bean("MULUGU DISTRICT", "H.No.5-38,\n" +
+        ContactusDetails_Bean details10 = new ContactusDetails_Bean("Mulugu", "H.No.5-38,\n" +
                 "Govindaraopet,(Village & Mandal),\n" +
                 "Mulugu District -506344");
         contactUsarrayList.add(details10);
 
-        ContactusDetails_Bean details11 = new ContactusDetails_Bean("NAGAR KURNOOL DISTRICT", "DM&HO and Chairman,\n" +
+        ContactusDetails_Bean details11 = new ContactusDetails_Bean("Nagar kurnool", "DM&HO and Chairman,\n" +
                 "Indian Red Cross Society,\n" +
                 "DM&HO, Office\n" +
                 "Nagarkurnool District-509209");
         contactUsarrayList.add(details11);
 
-        ContactusDetails_Bean details12 = new ContactusDetails_Bean("NARAYANPET DISTRICT", "H.No.1-7-48/4,\n" +
+        ContactusDetails_Bean details12 = new ContactusDetails_Bean("Narayanpet", "H.No.1-7-48/4,\n" +
                 "Teachers Colony,\n" +
                 "Narayanapet -509210");
         contactUsarrayList.add(details12);
 
-        ContactusDetails_Bean details13 = new ContactusDetails_Bean("NALGONDA DISTRICT", "H.No.5-6-300,\n" +
+        ContactusDetails_Bean details13 = new ContactusDetails_Bean("Nalgonda ", "H.No.5-6-300,\n" +
                 "Red Cross Bhavan,\n" +
                 "Near Bus Stand,\n" +
                 "Nalgonda-508001");
         contactUsarrayList.add(details13);
 
-        ContactusDetails_Bean details14 = new ContactusDetails_Bean("NIRMAL DISTRICT", "Plot No.26,\n" +
+        ContactusDetails_Bean details14 = new ContactusDetails_Bean("Nirmal ", "Plot No.26,\n" +
                 "52 G N R Colony,\n" +
                 "Nirmal District - 504106");
         contactUsarrayList.add(details14);
 
 
-        ContactusDetails_Bean details15 = new ContactusDetails_Bean("NIZAMABAD DISTRICT", "Behind: Tahasildar Office,\n" +
+        ContactusDetails_Bean details15 = new ContactusDetails_Bean("Nizamabad", "Behind: Tahasildar Office,\n" +
                 "KhaleelWadi,\n" +
                 "Nizamabad-503001");
         contactUsarrayList.add(details15);
 
-        ContactusDetails_Bean details16 = new ContactusDetails_Bean("PEDDAPALLY DISTRICT", "Office of D.M&H.O,\n" +
+        ContactusDetails_Bean details16 = new ContactusDetails_Bean("Peddapally ", "Office of D.M&H.O,\n" +
                 "Railway Station Road,\n" +
                 "Peddapally District -505172");
         contactUsarrayList.add(details16);
 
-        ContactusDetails_Bean details17 = new ContactusDetails_Bean("RAJANNA SIRICILLA DISTRICT", "H.No.6-7-34, Vidya Nagar,\n" +
+        ContactusDetails_Bean details17 = new ContactusDetails_Bean("Rajanna sirisilla", "H.No.6-7-34, Vidya Nagar,\n" +
                 "Siricilla, Rajanna siricilla District - 505301");
         contactUsarrayList.add(details17);
 
-        ContactusDetails_Bean details18 = new ContactusDetails_Bean("RANGA REDDY DISTRICT", "Collectorate Campus,\n" +
+        ContactusDetails_Bean details18 = new ContactusDetails_Bean("Ranga reddy", "Collectorate Campus,\n" +
                 "lakdikapool, Hyd");
         contactUsarrayList.add(details18);
 
-        ContactusDetails_Bean details19 = new ContactusDetails_Bean("SANGA REDDY DISTRICT", "Opp:Shree Gayathri School,\n" +
+        ContactusDetails_Bean details19 = new ContactusDetails_Bean("Sanga reddy", "Opp:Shree Gayathri School,\n" +
                 "Behind: I.B.Sanga Reddy,\n" +
                 "SANGA REDDY District.-502001");
         contactUsarrayList.add(details19);
 
-        ContactusDetails_Bean details20 = new ContactusDetails_Bean("SURYAPET DISTRICT", "H.No.1-9-37/B,\n" +
+        ContactusDetails_Bean details20 = new ContactusDetails_Bean("Suryapet", "H.No.1-9-37/B,\n" +
                 "Main Road,\n" +
                 "C/o.Bharat Gas Office,\n" +
                 "Gopalpuram,\n" +
                 "Suryapet District-508213");
         contactUsarrayList.add(details20);
 
-        ContactusDetails_Bean details21 = new ContactusDetails_Bean("WANAPARTHY DISTRICT", "R.No:-124, Dist Hospital,\n" +
+        ContactusDetails_Bean details21 = new ContactusDetails_Bean("Wanaparthy ", "R.No:-124, Dist Hospital,\n" +
                 "wanaparthy district-509103");
         contactUsarrayList.add(details21);
 
-        ContactusDetails_Bean details22 = new ContactusDetails_Bean("WARANGAL (RURAL) DISTRICT", "DM&HO Office,\n" +
+        ContactusDetails_Bean details22 = new ContactusDetails_Bean("Warangal (RURAL)", "DM&HO Office,\n" +
                 "Warangal (Rural)-506164");
         contactUsarrayList.add(details22);
 
-        ContactusDetails_Bean details23 = new ContactusDetails_Bean("WARANGAL (URBAN) DISTRICT", "Opp: District Collect rate,\n" +
+        ContactusDetails_Bean details23 = new ContactusDetails_Bean("Warangal (URBAN)", "Opp: District Collect rate,\n" +
                 "Subedari, Hanamkonda - 506001");
         contactUsarrayList.add(details23);
 
-        ContactusDetails_Bean details24 = new ContactusDetails_Bean("SIDDIPET DISTRICT", "Collector Office");
+        ContactusDetails_Bean details24 = new ContactusDetails_Bean("Siddipet ", "Collector Office");
         contactUsarrayList.add(details24);
 
-        ContactusDetails_Bean details25 = new ContactusDetails_Bean("VIKARABAD DISTRICT", "Collector Office");
+        ContactusDetails_Bean details25 = new ContactusDetails_Bean("Vikarabad", "Collector Office");
         contactUsarrayList.add(details25);
 
 
-        adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
-        recyclerView.setAdapter(adapter);
-
-        return root;
     }
 
     @Override
@@ -317,6 +383,8 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
 
     private void findViews(View root) {
         ll_contactUs = root.findViewById(R.id.ll_contactUs);
+        btn_sateCordinators = root.findViewById(R.id.btn_sateCordinators);
+        btn_districtCordinators = root.findViewById(R.id.btn_districtCordinators);
     }
 
     public interface OnFragmentInteractionListener {

@@ -31,6 +31,7 @@ public class GlobalDeclaration {
     public static CitizenLoginResponse loginresponse;
     public static String guest;
     public static String Selection_type = "";
+    public static String cordinatorType = "";
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 

@@ -37,7 +37,6 @@
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:background="@drawable/edittext_bg"
-
                     android:hint="Enter Full Name"
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
@@ -63,7 +62,6 @@
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:layout_weight="1"
-
                     android:background="@drawable/edittext_bg"
                     android:hint="Father's/Husband's Name"
                     android:paddingLeft="@dimen/dp_5"
@@ -86,17 +84,15 @@
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/DOB_res"
+                    android:id="@+id/et_mobileNumber"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bg"
-                    android:focusable="false"
                     android:hint="Mobile Number"
                     android:inputType="number"
                     android:paddingLeft="@dimen/dp_5"
-
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -115,14 +111,12 @@
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/et_office"
+                    android:id="@+id/et_officeNumber"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:background="@drawable/edittext_bg"
-                    android:focusable="false"
                     android:hint="Office Number"
-
                     android:inputType="number"
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
@@ -136,7 +130,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Age_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -145,15 +138,13 @@
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/Age_res"
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bg"
                     android:hint="Email"
-                    android:inputType="text"
-
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -170,7 +161,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Date"
+                    android:text="Date of Birth"
                     android:textColor="@color/black" />
 
                 <LinearLayout
@@ -186,7 +177,6 @@
                         android:layout_margin="@dimen/dp_5"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_bg"
-
                         android:hint="Select Date"
                         android:paddingLeft="@dimen/dp_5"
                         android:textColor="@color/black" />
@@ -214,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Time"
+                    android:text="Blood Group"
                     android:textColor="@color/black" />
 
                 <LinearLayout
@@ -224,21 +214,19 @@
 
 
                     <EditText
-                        android:id="@+id/et_time"
+                        android:id="@+id/et_bloodGroup"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
                         android:layout_margin="@dimen/dp_5"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_bg"
-
-
                         android:focusable="false"
-                        android:hint="Select Time"
+                        android:hint="Blood Group"
                         android:paddingLeft="@dimen/dp_5"
                         android:textColor="@color/black" />
 
                     <ImageView
-                        android:id="@+id/iv_time"
+                        android:id="@+id/iv_bloodGroup"
                         android:layout_width="@dimen/dp_20"
                         android:layout_height="@dimen/dp_20"
                         android:layout_marginTop="@dimen/dp_20"
@@ -255,24 +243,23 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/House_no_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="Age"
+                    android:text="Number of previous donations"
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/House_no_res"
+                    android:id="@+id/et_age"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bg"
-                    android:hint="Age"
+                    android:hint="Number of previous donations"
+                    android:inputType="number"
                     android:paddingLeft="@dimen/dp_5"
-
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -295,7 +282,7 @@
                     android:orientation="horizontal">
 
                     <Spinner
-                        android:id="@+id/spn_sex"
+                        android:id="@+id/spn_gender"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_40"
                         android:layout_margin="@dimen/dp_5"
@@ -330,7 +317,6 @@
                     android:layout_margin="@dimen/dp_5"
                     android:background="@drawable/edittext_bg"
                     android:entries="@array/Gender"
-
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
 
@@ -359,7 +345,6 @@
                     android:background="@drawable/edittext_bg"
                     android:hint="Occupation"
                     android:paddingLeft="@dimen/dp_5"
-
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -387,11 +372,36 @@
                     android:background="@drawable/edittext_bg"
                     android:entries="@array/Married"
                     android:paddingLeft="@dimen/dp_5"
-
                     android:textColor="@color/black" />
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="Married"
+                    android:textColor="@color/black" />
+
+
+                <Spinner
+                    android:id="@+id/spn_willingtodaonateEarly"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_margin="@dimen/dp_5"
+                    android:background="@drawable/edittext_bg"
+                    android:entries="@array/Married"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -419,7 +429,6 @@
                         android:layout_margin="@dimen/dp_5"
                         android:layout_weight="1"
                         android:background="@drawable/edittext_bg"
-
                         android:hint="Select Date"
                         android:paddingLeft="@dimen/dp_5"
                         android:textColor="@color/black" />
@@ -453,6 +462,77 @@
 
                 <EditText
                     android:id="@+id/et_adress"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_margin="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext_bg"
+                    android:hint="Address"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Willing to donate blood"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <RadioButton
+                            android:id="@+id/radioButton41"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:text="Yes" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton42"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:text="No" />
+                    </LinearLayout>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="Address"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/et_typeofDonation"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_40"
                     android:layout_margin="@dimen/dp_5"

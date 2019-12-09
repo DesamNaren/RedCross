@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -70,7 +68,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             }
 
         });
-        iv_time.setOnClickListener(new View.OnClickListener() {
+     /*   iv_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Get Current Time
@@ -91,29 +89,34 @@ public class BlooddonorRegistrationFragment extends Fragment {
                         }, mHour, mMinute, false);
                 timePickerDialog.show();
             }
-        });
+        });*/
         iv_dateofLastDonation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get Current Time
+                // Get Current Date
                 final Calendar c = Calendar.getInstance();
-                mHour = c.get(Calendar.HOUR_OF_DAY);
-                mMinute = c.get(Calendar.MINUTE);
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                // Launch Time Picker Dialog
-                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
-                        new TimePickerDialog.OnTimeSetListener() {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
 
                             @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                  int minute) {
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
 
-                                et_dateofLastdonation.setText(hourOfDay + ":" + minute);
+                                et_dateofLastdonation.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
                             }
-                        }, mHour, mMinute, false);
-                timePickerDialog.show();
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
             }
+
         });
+
+
         return root;
     }
 
@@ -121,8 +124,8 @@ public class BlooddonorRegistrationFragment extends Fragment {
         btn_donorRegNext = root.findViewById(R.id.btn_donorRegNext);
         iv_date = root.findViewById(R.id.iv_date);
         Et_date = root.findViewById(R.id.Et_date);
-        iv_time = root.findViewById(R.id.iv_time);
-        et_time = root.findViewById(R.id.et_time);
+    /*    iv_time = root.findViewById(R.id.iv_time);
+        et_time = root.findViewById(R.id.et_time)*/
         iv_dateofLastDonation = root.findViewById(R.id.iv_dateoflastDonation);
         et_dateofLastdonation = root.findViewById(R.id.et_dateoflastDonation);
     }

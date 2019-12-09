@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 
@@ -30,16 +31,34 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
 
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rvcontactus_item, parent, false);
+
+
+        View view = null;
+        if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
+
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_statecordinators, parent, false);
+
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rvcontactus_item, parent, false);
+        }
         return new myViewHolder(view);
+
+        //   return new DistrictViewHolder(view);
+
+
+        //   View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rvcontactus_item, parent, false);
     }
 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
 
-        holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
-        holder.address.setText(contactarrayList.get(position).getAdress());
-        holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
+        if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
+            holder.address.setText(contactarrayList.get(position).getAdress());
+        } else {
+            holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
+            holder.address.setText(contactarrayList.get(position).getAdress());
+        }
+        //   holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
 
 
     }
