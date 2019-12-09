@@ -1,55 +1,1058 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_blooddonorReg"
+    android:id="@+id/memberregEdit"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
-    android:orientation="vertical">
+    android:background="?android:windowBackground">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/droid_serif"
-            android:text="Donor Registration"
-            android:textSize="@dimen/dimen_16sp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        </TextView>
+            <include
+                layout="@layout/donor_reg_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        <!--
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cd1"
+            <!--
+                <LinearLayout
+                    android:id="@+id/ll_registrationForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="@dimen/dp_2"
-                    app:cardElevation="@dimen/dimen_5dp">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dimen_5dp">
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/text1"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:lineHeight="20dp"
-                            android:padding="@dimen/dp_5"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:layout_weight="1"
+                            android:text="Full Name"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/et_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Enter Full Name"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            android:text="Father's/Husband's Name "
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/et_fathersName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Father's/Husband's Name"
+                            android:textColor="@color/black" />
                     </LinearLayout>
 
 
-                </com.google.android.material.card.MaterialCardView>
-        -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mobile Number"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/DOB_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:focusable="false"
+                            android:hint="Mobile Number"
+                            android:inputType="number"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Age_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Email"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/Age_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Email"
+                            android:inputType="text"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Mob_num_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mobile Number"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/Mob_num_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:digits="1234567890"
+                            android:inputType="number"
+                            android:hint="Enter Mobile Number"
+                            android:maxLength="10"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Email_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Date"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/Email_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Date"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Occupation_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Time"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/Occupation_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Time"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/House_no_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Age"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/House_no_res"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Age"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sex"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+
+                        <Spinner
+                            android:id="@+id/spn_sex"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_weight="1"
+                            android:entries="@array/Gender"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Education"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+
+                        <Spinner
+                            android:id="@+id/spn_education"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_weight="1"
+                            android:entries="@array/Gender"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Street_area_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Occupation"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/et_occupation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Occupation"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/District_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Married"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+
+                        <Spinner
+                            android:id="@+id/spn_married"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_weight="1"
+                            android:entries="@array/Married"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Date of Last Donation"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/et_dateofLastdonation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Date Of Last Donation"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Address"
+                            android:padding="5dp"
+                            android:textColor="@color/black" />
+
+                        <EditText
+                            android:id="@+id/et_adress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Address"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_donorRegNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            -->
+            <!--
+                      <LinearLayout
+                          android:id="@+id/ll_helathHistoryForm"
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:text="Health History Form"
+                              android:textColor="@color/black"
+                              android:padding="@dimen/dp_5"/>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Are you in good health" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup1"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                  <RadioButton
+                                      android:id="@+id/radioButton11"
+                                      android:layout_width="0dp"
+                                      android:layout_weight="1"
+                                      android:layout_height="wrap_content"
+                                      android:text="Yes"
+                                      android:layout_gravity="center_horizontal"
+                                      android:checked="false" />
+
+                                  <RadioButton
+                                      android:id="@+id/radioButton12"
+                                      android:layout_width="0dp"
+                                      android:layout_height="wrap_content"
+                                      android:text="No"
+                                      android:layout_gravity="center_horizontal"
+                                      android:checked="false"
+                                      android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Do you weigh more than 45kgs" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup2"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton21"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Yes"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton22"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="No"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Have you ever had epilepsy(fits)" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup3"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton31"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Yes"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton32"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="No"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Tuberculosis,Kidney disease,Heart disease" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup4"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton41"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Yes"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton42"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="No"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Cancer" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup5"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton51"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton52"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Liver Disease" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup6"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton61"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton62"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Leprosy" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup7"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton71"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton72"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Polycthemaia Bleeding Tendecy" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup8"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton81"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton82"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Do you have diabetes" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup9"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton91"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton92"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Hypertension" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup12"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton121"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton122"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Did you have jaundice or tested positive for Hepatities 'B'" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup13"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton131"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton132"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+
+
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Were you exposed to anyone with jaundice" />
+
+                              <RadioGroup
+                                  android:id="@+id/radioGroup10"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton101"
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:id="@+id/radioButton102"
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+                          </LinearLayout>
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:padding="5dp"
+                                  android:textColor="@color/black"
+                                  android:textSize="16sp"
+                                  android:text="Do you have diabetes" />
+
+                              <RadioGroup
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content">
+                                  <LinearLayout
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+
+
+                                      <RadioButton
+                                          android:layout_width="0dp"
+                                          android:layout_weight="1"
+                                          android:layout_height="wrap_content"
+                                          android:text="Male"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false" />
+
+                                      <RadioButton
+                                          android:layout_width="0dp"
+                                          android:layout_height="wrap_content"
+                                          android:text="Female"
+                                          android:layout_gravity="center_horizontal"
+                                          android:checked="false"
+                                          android:layout_weight="1" />
+                                  </LinearLayout>
+                              </RadioGroup>
+
+                              <LinearLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+
+                                  <TextView
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:padding="5dp"
+                                      android:textColor="@color/black"
+                                      android:textSize="16sp"
+                                      android:text="Hypertension" />
+
+                                  <RadioGroup
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content">
+                                      <LinearLayout
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:orientation="horizontal">
+
+
+                                          <RadioButton
+                                              android:layout_width="0dp"
+                                              android:layout_weight="1"
+                                              android:layout_height="wrap_content"
+                                              android:text="Male"
+                                              android:layout_gravity="center_horizontal"
+                                              android:checked="false" />
+
+                                          <RadioButton
+                                              android:layout_width="0dp"
+                                              android:layout_height="wrap_content"
+                                              android:text="Female"
+                                              android:layout_gravity="center_horizontal"
+                                              android:checked="false"
+                                              android:layout_weight="1" />
+                                      </LinearLayout>
+                                  </RadioGroup>
+                              </LinearLayout>
+                              <LinearLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+
+                                  <TextView
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:padding="5dp"
+                                      android:textColor="@color/black"
+                                      android:textSize="16sp"
+                                      android:text="Have you Recived blood transfusion accupencture tatoo,ear or nose piercing" />
+
+                                  <RadioGroup
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content">
+                                      <LinearLayout
+                                          android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:orientation="horizontal">
+
+
+                                          <RadioButton
+                                              android:layout_width="0dp"
+                                              android:layout_weight="1"
+                                              android:layout_height="wrap_content"
+                                              android:text="Male"
+                                              android:layout_gravity="center_horizontal"
+                                              android:checked="false" />
+
+                                          <RadioButton
+                                              android:layout_width="0dp"
+                                              android:layout_height="wrap_content"
+                                              android:text="Female"
+                                              android:layout_gravity="center_horizontal"
+                                              android:checked="false"
+                                              android:layout_weight="1" />
+                                      </LinearLayout>
+                                  </RadioGroup>
+                              </LinearLayout>
+
+
+                          </LinearLayout>
+
+
+                      </LinearLayout>
+            -->
+        </LinearLayout>
+
+
     </ScrollView>
+
+
 </LinearLayout>
+

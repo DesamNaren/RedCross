@@ -57,7 +57,7 @@ public class BloodbankInfoFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewpager) {
         adaptor = new HomeViewPagerAdapter(getChildFragmentManager());
-        adaptor.addFragment(new BlooddonorRegistration(), "Blood Donor Registration");
+        adaptor.addFragment(new BlooddonorRegistrationFragment(), "Blood Donor Registration");
         adaptor.addFragment(new HowToBecomeDoner(), "Become A Doner");
         adaptor.addFragment(new UpdateBloodDonationDetails(), "Vision");
         adaptor.addFragment(new SearchBloodDonors(), "Mission");
