@@ -38,7 +38,7 @@
     </string-array>
 
     <string-array name="blood_groups">
-        <item>Select Blood Group</item>
+        <item> --Select-- </item>
         <item>A+</item>
         <item>A-</item>
         <item>B+</item>
@@ -51,7 +51,7 @@
     </string-array>
 
     <string-array name="Education">
-        <item>Select Educational Qualification</item>
+        <item>--Select-- </item>
         <item>A+</item>
         <item>A-</item>
         <item>B+</item>

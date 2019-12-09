@@ -69,25 +69,35 @@
                 android:id="@+id/select_type_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Membership Type" />
+
 
                 <Spinner
                     android:id="@+id/type_spinner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:entries="@array/Membership_type">
 
                 </Spinner>
+            </LinearLayout>
 
-                <Button
+
+            <Button
                     android:id="@+id/Proceed_bt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                android:layout_gravity="center"
                     android:text="Proceed">
 
                 </Button>
 
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

@@ -107,4 +107,8 @@ public interface ApiInterface {
                                                                                   @Query("fyId") String fyId,
                                                                                   @Query("mandalId") String mandalId);
 
+    //Citizen
+/*    @GET("getmandalsBasedOnDist"
+    )*/
+
 }
