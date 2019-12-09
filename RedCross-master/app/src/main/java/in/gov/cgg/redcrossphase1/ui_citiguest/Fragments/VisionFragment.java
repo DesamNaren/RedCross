@@ -10,9 +10,6 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -25,7 +22,7 @@ public class VisionFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Objects.requireNonNull(getActivity()).setTitle("Vision");
+        // Objects.requireNonNull(getActivity()).setTitle("Vision");
 
         View root = inflater.inflate(R.layout.fragment_vision, container, false);
         findViews(root);

@@ -13,9 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 
@@ -31,7 +28,7 @@ public class SevenFundamentalFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
+        //   Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
 
         View root = inflater.inflate(R.layout.fragment_sevenprinciples, container, false);
 

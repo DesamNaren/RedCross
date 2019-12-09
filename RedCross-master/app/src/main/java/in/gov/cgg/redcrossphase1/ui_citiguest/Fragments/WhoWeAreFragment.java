@@ -8,6 +8,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -15,13 +21,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -50,6 +49,8 @@ public class WhoWeAreFragment extends Fragment {
 
         setupViewPager(viewpager);
         tabsLayout.setupWithViewPager(viewpager);
+
+
 //        Objects.requireNonNull(
 //
 //                getActivity()).
@@ -109,7 +110,7 @@ public class WhoWeAreFragment extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewpager) {
-        adaptor = new HomeViewPagerAdapter(getChildFragmentManager());
+        adaptor = new HomeViewPagerAdapter(getFragmentManager());
         adaptor.addFragment(new SevenFundamentalFragment(), "Principles");
         adaptor.addFragment(new HistoryFragment(), "History");
         adaptor.addFragment(new VisionFragment(), "Vision");

@@ -13,9 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -31,7 +28,7 @@ public class MissionFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_mission, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle("Mission");
+        // Objects.requireNonNull(getActivity()).setTitle("Mission");
 
         TextView tv_first = root.findViewById(R.id.text1);
 

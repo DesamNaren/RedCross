@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -33,9 +35,6 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
@@ -93,7 +92,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
             if (GlobalDeclaration.guest != null) {
                 if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
-                    tv_name1.setText("Guest user");
+                    tv_name1.setText("Welcome to IRSC");
                     tv_name2.setText("");
                 } else {
                     if (GlobalDeclaration.loginresponse != null) {
@@ -138,8 +137,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Principles) {
-                    GlobalDeclaration.FARG_TAG = SevenFundamentalFragment.class.getSimpleName();
-                    selectedFragment = new SevenFundamentalFragment();
+                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
+                    selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_whoweare) {
@@ -148,18 +147,18 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_History) {
-                    GlobalDeclaration.FARG_TAG = HistoryFragment.class.getSimpleName();
-                    selectedFragment = new HistoryFragment();
+                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
+                    selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Vision) {
-                    GlobalDeclaration.FARG_TAG = VisionFragment.class.getSimpleName();
-                    selectedFragment = new VisionFragment();
+                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
+                    selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_mission) {
-                    GlobalDeclaration.FARG_TAG = MissionFragment.class.getSimpleName();
-                    selectedFragment = new MissionFragment();
+                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
+                    selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Contact) {

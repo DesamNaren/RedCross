@@ -5,343 +5,410 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/redcross_splashscreen_bg"
-    android:orientation="vertical"
     android:clickable="true"
     android:focusable="true"
+    android:orientation="vertical"
     tools:context=".ui_citiguest.Fragments.CitizendashboardFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="Hello rekha"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/ll_profile"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/dp_50"
-                android:layout_height="@dimen/dp_50"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen_10dp"
-                android:src="@drawable/user_pro"
-                android:visibility="visible" />
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/indian_red_cross_society_telangana1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/indian_red_cross_society_telangana2"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_username1"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_username"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
+                android:layout_below="@+id/ll1"
                 android:text="Hello rekha"
+                android:layout_marginTop="30dp"
+                android:gravity="center_horizontal"
                 android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+                android:textSize="16sp" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ll_profile"
             android:layout_centerInParent="true"
+
             android:orientation="vertical">
 
+
             <LinearLayout
+                android:id="@+id/ll_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-
-                <LinearLayout
-                    android:id="@+id/ll_wwa"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dimen_100dp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/dp_50"
+                    android:layout_height="@dimen/dp_50"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_marginTop="@dimen/dimen_10dp"
+                    android:src="@drawable/user_pro"
+                    android:visibility="visible" />
 
-                    <ImageView
-                        android:id="@+id/iv_whoweAre"
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/whoweare64" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="About us"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/ll_mebership"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-
-
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/iv_history"
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:src="@drawable/history64" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Membership"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/ll_capityBuildings"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
+                <TextView
+                    android:id="@+id/tv_username1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Hello rekha"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/iv_vission"
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:src="@drawable/capacitybuildings"
-                        android:tint="@color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Capacity Buildings"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_loate"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:id="@+id/iv_mission"
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-
-                        android:src="@drawable/location" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Loacte"
-                        android:textColor="@color/white" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:orientation="horizontal">
+                android:layout_below="@id/ll_profile"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_Serices"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:src="@drawable/contact_us" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/ll_wwa"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_100dp"
                         android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="SERV"
-                        android:textColor="@color/white" />
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_whoweAre"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/whoweare64" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="About us"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_mebership"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+
+
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_history"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/history64" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Membership"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_capityBuildings"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_vission"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/capacitybuildings"
+                            android:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Trainings"
+                            android:textAlignment="center"
+
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_hoeNursing"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/iv_bloodbankDetails"
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
+                    <LinearLayout
+                        android:id="@+id/ll_bloodbankInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:src="@drawable/nurse64" />
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        <ImageView
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/bloodbankdetails" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Blood Banks"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/virtuo_logo"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
                         android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Home nursing"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
+                        android:layout_weight="1"
+                        android:background="#21000000"
+                        android:padding="10dp"
+                        android:src="@drawable/redcross_logo_for_dashboard"
+                        android:visibility="visible" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_hoeNursing"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_bloodbankDetails"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:src="@drawable/nurse64" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Home Nursing"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_loate"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_mission"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+
+                            android:src="@drawable/location" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Loacte"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+
+
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:visibility="gone">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_Serices"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dimen_10dp"
+                            android:src="@drawable/contact_us" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="SERV"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_contactUs"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:src="@drawable/bloodbankdetails" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Contact us"
+                            android:textAlignment="center"
+
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/ll_bloodbankInfo"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dimen_10dp"
-                        android:src="@drawable/contact_us" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Blood Bank Info"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_contactUs"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="@dimen/dp_10"
-                    android:layout_weight="1"
-                    android:background="#21000000"
-                    android:elevation="10dp"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="@dimen/dp_40"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:src="@drawable/bloodbankdetails" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:padding="@dimen/dp_5"
-                        android:text="Contact Us"
-                        android:textAlignment="center"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-            </LinearLayout>
-
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/img_footer"
+        android:id="@+id/ll_pic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-
-        android:orientation="vertical">
+        android:background="#80000000">
 
         <ImageView
+            android:id="@+id/img_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/footernew"
-            android:orientation="vertical">
+            android:layout_gravity="bottom"
+            android:background="@color/colorBackground"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/footernew">
 
         </ImageView>
     </LinearLayout>

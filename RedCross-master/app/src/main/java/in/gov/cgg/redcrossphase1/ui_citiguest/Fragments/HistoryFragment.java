@@ -12,9 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -30,7 +27,7 @@ public class HistoryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_history, container, false);
-        Objects.requireNonNull(getActivity()).setTitle("History");
+        //Objects.requireNonNull(getActivity()).setTitle("History");
         TextView tv_first = root.findViewById(R.id.text1);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             tv_first.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);

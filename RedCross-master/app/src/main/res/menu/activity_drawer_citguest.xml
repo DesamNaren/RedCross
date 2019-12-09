@@ -4,21 +4,22 @@
     tools:showIn="navigation_view">
 
     <group>
+        <item
+            android:id="@+id/nav_Dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard" />
         <item android:title="About IRCS">
 
             <menu>
-                <item
-                    android:id="@+id/nav_Dashboard"
-                    android:icon="@drawable/dashboard"
-                    android:title="Dashboard" />
+
                 <item
                     android:id="@+id/nav_Principles"
                     android:icon="@drawable/principles24"
                     android:title="Fundamental Principles" />
-                <item
-                    android:id="@+id/nav_whoweare"
-                    android:icon="@drawable/whoweare24"
-                    android:title="Who we are" />
+                <!-- <item
+                     android:id="@+id/nav_whoweare"
+                     android:icon="@drawable/whoweare24"
+                     android:title="Who we are" />-->
                 <item
                     android:id="@+id/nav_History"
                     android:icon="@drawable/history32"
@@ -37,10 +38,7 @@
                     android:id="@+id/nav_Structure"
                     android:title="Organogram"
                     android:visible="false" />
-                <item
-                    android:id="@+id/nav_Contact"
-                    android:icon="@drawable/contact_us"
-                    android:title="Contact us" />
+
 
 
             </menu>
@@ -109,7 +107,10 @@
     <group>
         <item android:title="Info">
             <menu>
-
+                <item
+                    android:id="@+id/nav_Contact"
+                    android:icon="@drawable/contact_us"
+                    android:title="Contact us" />
                 <item
                     android:id="@+id/nav_continueasGuestthemes"
                     android:icon="@drawable/themes24"

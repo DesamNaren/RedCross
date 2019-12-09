@@ -10,14 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 
@@ -114,7 +113,7 @@ public class CitizendashboardFragment extends Fragment {
         try {
             if (GlobalDeclaration.guest != null) {
                 if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
-                    tv_username.setText("Hello  " + "Guest");
+                    tv_username.setText("Welcome");
 
                 } else {
                     tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
