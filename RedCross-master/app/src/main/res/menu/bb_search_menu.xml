@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.activities.MyActivity">
+
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/searh32"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_power_settings_new_black_24dp"
+        android:orderInCategory="300"
+        android:title="Logout"
+        app:showAsAction="always" />
+
+</menu>

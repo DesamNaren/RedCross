@@ -19,6 +19,7 @@
     <item name="redcroosbg_8" type="color">#ED1C24</item>
     <item name="my_great_color" type="color">#FFFFFF</item>
     <item name="colorControlNormal" type="color">@color/my_great_color</item>
+    <color name="li_gray">#BDBDBD</color>
 
 
 </resources>

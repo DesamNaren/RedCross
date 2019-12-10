@@ -3,8 +3,10 @@ package in.gov.cgg.redcrossphase1.retrofit;
 
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
@@ -16,6 +18,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
@@ -162,6 +165,13 @@ public interface ApiInterface {
                                                          @Query("gender") String gender,
                                                          @Query("bloodGroup") String bloodGroup
     );
+
+
+    @GET("state")
+    Call<ArrayList<eRaktkoshResponseBean>> callERaktakoshInfo(@Query("state") String state, @Query("source") String source, @Query("key") String key);
+
+    @GET("searchDonor")
+    Call<ArrayList<BloodDonorResponse>> getBloodDonorsResponse();
 }
 
 

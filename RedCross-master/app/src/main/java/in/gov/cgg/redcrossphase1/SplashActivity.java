@@ -22,8 +22,8 @@ public class SplashActivity extends Activity {
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
 
-//        uname = prefs.getString("un", "");
-//        pswd = prefs.getString("pw", "");
+        uname = prefs.getString("un", "");
+        pswd = prefs.getString("pw", "");
 //        isCheked = prefs.getBoolean("is", false);
 
         new Handler().postDelayed(new Runnable() {
@@ -44,5 +44,9 @@ public class SplashActivity extends Activity {
 
             }
         }, 2000);
+
+
     }
+
+
 }

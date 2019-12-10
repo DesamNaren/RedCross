@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
+    useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -48,6 +50,8 @@ android {
         }
 
         debug {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+
             buildConfigField("String", "SERVER_URL", "\"http://dev2.cgg.gov.in/redcross/\"")
 
             signingConfig signingConfigs.release
@@ -61,6 +65,7 @@ android {
 
         }
         uat {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
             buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
             signingConfig signingConfigs.release
             debuggable true
@@ -153,4 +158,12 @@ dependencies {
     /* implementation 'com.google.android.gms:play-services:4.2.42'
 
     compile files('src/main/libs/gson-2.2.4.jar')*/
+
+
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.google.android.gms:play-services-places:11.8.0'
+    implementation 'com.karumi:dexter:4.2.0'
+
 }
+apply plugin: 'com.google.gms.google-services'
