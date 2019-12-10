@@ -53,6 +53,7 @@ public class HomenursingFragment extends Fragment {
                 //Intent i = Intent
                 become_home_nurse_layout.setVisibility(View.VISIBLE);
                 homeNurse.setVisibility(View.GONE);
+
             }
         });
 
