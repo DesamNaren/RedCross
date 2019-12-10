@@ -1,4 +1,4 @@
-package in.gov.cgg.redcrossphase1.ui_officer.drilldown;
+package in.gov.cgg.redcrossphase1;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,20 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
-import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.EnrolledMemberEditFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.StudentListBean;
 
-public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapter.DistrictViewHolder> {
-    private final List<StudentListBean> studentList;
+public class FilterDrillDownAdapter extends RecyclerView.Adapter<FilterDrillDownAdapter.DistrictViewHolder> {
     Context mCtx;
     List<String> headStringList;
     int selectedThemeColor = -1;
-
+    private List<StudentListBean> studentList;
     private ArrayList<StudentListBean> data_dashbord;
 
 
-    public NewDrillDownAdapter(FragmentActivity activity, List<String> headersList, List<StudentListBean> studentList,
-                               int selectedThemeColor) {
+    public FilterDrillDownAdapter(FragmentActivity activity, List<String> headersList, List<StudentListBean> studentList,
+                                  int selectedThemeColor) {
 
 
         this.mCtx = activity;
@@ -49,7 +48,7 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final DistrictViewHolder holder, int position) {
 
 //        holder.htv_id.setText(headStringList.get(2));
 //        holder.htv_name.setText(headStringList.get(3));
@@ -59,19 +58,20 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
             holder.tv_name.setText(data_dashbord.get(position).getName());//Here paramters are changed run and see result
             holder.tv_id.setText(data_dashbord.get(position).getMemberId());
             holder.tv_gender.setText(data_dashbord.get(position).getGender());
-            if (!data_dashbord.get(position).getBloodgp().equalsIgnoreCase("")) {
+            if (!studentList.get(position).getBloodgp().equalsIgnoreCase("")) {
                 holder.tv_type.setText(data_dashbord.get(position).getBloodgp());
             } else {
                 holder.tv_type.setText("-");
             }
         }
 
+        final int finalPosition = position;
         holder.cv_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentActivity activity = (FragmentActivity) mCtx;
                 Fragment frag = new EnrolledMemberEditFragment();
-                GlobalDeclaration.drilldownResponse = data_dashbord.get(position);
+                GlobalDeclaration.drilldownResponse = data_dashbord.get(finalPosition);
                 GlobalDeclaration.headStringList = headStringList;
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                         frag).addToBackStack(null).commit();

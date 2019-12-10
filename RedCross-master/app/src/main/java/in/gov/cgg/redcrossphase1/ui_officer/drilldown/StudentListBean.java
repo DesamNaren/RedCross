@@ -2,7 +2,7 @@ package in.gov.cgg.redcrossphase1.ui_officer.drilldown;
 
 public class StudentListBean {
 
-    private String Disrtict;
+    //    private String Disrtict;
     private String Mandal;
     private String Village;
     private String Name;
@@ -42,13 +42,13 @@ public class StudentListBean {
         this.endDate = endDate;
     }
 
-    public String getDisrtict() {
-        return Disrtict;
-    }
+//    public String getDisrtict() {
+//        return Disrtict;
+//    }
 
-    public void setDisrtict(String disrtict) {
-        Disrtict = disrtict;
-    }
+//    public void setDisrtict(String disrtict) {
+//        Disrtict = disrtict;
+//    }
 
     public String getMandal() {
         return Mandal;

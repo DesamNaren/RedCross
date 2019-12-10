@@ -36,6 +36,9 @@ public class GlobalDeclaration {
     public static String Selection_MEMbership_type = "";
     public static StudentListBean drilldownResponse;
     public static List<String> headStringList;
+    public static int typePos;
+    public static int genPos;
+    public static int bgPos;
 
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";

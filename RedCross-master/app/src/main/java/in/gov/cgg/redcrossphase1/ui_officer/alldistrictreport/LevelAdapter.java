@@ -141,7 +141,11 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Bundle args = new Bundle();
                     args.putInt("did", data_dashbord.get(position).getId());
                     frag.setArguments(args);
-                    GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                    if (GlobalDeclaration.role.contains("D")) {
+                        GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
+                    } else {
+                        GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                    }
                     GlobalDeclaration.type = "";
                     GlobalDeclaration.leveDName = data_dashbord.get(position).getName();
 
@@ -156,7 +160,20 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
                     args.putInt("mid", data_dashbord.get(position).getId());
-                    args.putInt("did", GlobalDeclaration.localDid);
+//                    if (!GlobalDeclaration.role.contains("D")) {
+////                        args.putInt("did", GlobalDeclaration.localDid);
+////                    } else {
+////                        args.putInt("did", Integer.parseInt(GlobalDeclaration.districtId));
+////                    }
+                    if (GlobalDeclaration.role.contains("D")) {
+                        GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
+                        args.putInt("did", GlobalDeclaration.localDid);
+
+                    } else {
+                        GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                        args.putInt("did", GlobalDeclaration.localDid);
+
+                    }
                     frag.setArguments(args);
                     GlobalDeclaration.localMid = data_dashbord.get(position).getId();
                     GlobalDeclaration.type = "";
@@ -174,7 +191,15 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Bundle args = new Bundle();
                     args.putInt("vid", allDistricts.get(position).getId());
                     args.putInt("mid", GlobalDeclaration.localMid);
-                    args.putInt("did", GlobalDeclaration.localDid);
+                    if (GlobalDeclaration.role.contains("D")) {
+                        GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
+                        args.putInt("did", GlobalDeclaration.localDid);
+
+                    } else {
+                        GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                        args.putInt("did", GlobalDeclaration.localDid);
+
+                    }
                     frag.setArguments(args);
                     GlobalDeclaration.localVid = data_dashbord.get(position).getId();
                     GlobalDeclaration.type = "";

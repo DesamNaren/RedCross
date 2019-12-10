@@ -87,7 +87,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:entries="@array/blood_groups" />
+            android:entries="@array/offcicer_blood_groups" />
 
 
     </LinearLayout>

@@ -62,7 +62,11 @@ public class AllVillageFragment extends Fragment {
 
         if (GlobalDeclaration.leveMName != null) {
             binding.cvName.setVisibility(View.VISIBLE);
-            binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
+            if (GlobalDeclaration.leveDName != null) {
+                binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
+            } else {
+                binding.tvlevelname.setText("");
+            }
             binding.tvmname.setText("Mndl: " + GlobalDeclaration.leveMName);
         } else {
             binding.cvName.setVisibility(View.GONE);

@@ -44,8 +44,8 @@ public class EnrolledMemberEditFragment extends Fragment {
 //header
         binding.tvHeadermandal.setText(headStringList.get(0));
         binding.tvHeadervillage.setText(headStringList.get(1));
-        binding.tvHeadername.setText(headStringList.get(2));
-        binding.tvHeadermeberId.setText(headStringList.get(3));
+        binding.tvHeadername.setText(headStringList.get(3));
+        binding.tvHeadermeberId.setText(headStringList.get(2));
         binding.tvHeadergender.setText(headStringList.get(4));
         binding.tvHeaderdob.setText(headStringList.get(5));
         binding.tvHeadermobile.setText(headStringList.get(6));

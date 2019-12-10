@@ -182,16 +182,30 @@ public class NewAllDistrictsFragment extends Fragment {
 //            }
 //        });
 //        binding.refreshLayout.setColorSchemeColors(Color.RED);
-
-        allDistrictsViewModel.getAllDistrcts("DistrictWise", "3").
-                observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
-                    @Override
-                    public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
-                        if (allDistrictList != null) {
-                            setDataforRV(allDistrictList);
+        if (!GlobalDeclaration.role.contains("D")) {
+            allDistrictsViewModel.getAllDistrcts("DistrictWise", "3").
+                    observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
+                        @Override
+                        public void onChanged(@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+                            if (allDistrictList != null) {
+                                setDataforRVDistrict(allDistrictList);
+                            }
                         }
-                    }
-                });
+                    });
+        } else {
+            allDistrictsViewModel.getAllMandals("MandalWise", "3", Integer.parseInt(GlobalDeclaration.districtId)).
+
+                    observe(getActivity(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
+                        @Override
+                        public void onChanged
+                                (@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+                            if (allDistrictList != null) {
+                                setDataforRV(allDistrictList);
+                                //  setCountsForDashboard(allDistrictList);
+                            }
+                        }
+                    });
+        }
 
 
         return binding.getRoot();
@@ -199,7 +213,7 @@ public class NewAllDistrictsFragment extends Fragment {
     }
 
 
-    private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
+    private void setDataforRVDistrict(List<StatelevelDistrictViewCountResponse> allDistrictList) {
 
         if (allDistrictList.size() > 0) {
 
@@ -231,6 +245,40 @@ public class NewAllDistrictsFragment extends Fragment {
             Toast.makeText(getActivity(), "no data", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
+
+        if (allDistrictList.size() > 0) {
+
+            for (int i = 0; i < allDistrictList.size(); i++) {
+                allDistrictList.get(i).setTotalCounts((allDistrictList.get(i).getJRC() +
+                        allDistrictList.get(i).getYRC() +
+                        allDistrictList.get(i).getMembership()));
+            }
+
+            List<StatelevelDistrictViewCountResponse> newlist = new ArrayList<>();
+            newlist.addAll(allDistrictList);
+
+            Collections.sort(newlist, new Comparator<StatelevelDistrictViewCountResponse>() {
+                @Override
+                public int compare(StatelevelDistrictViewCountResponse lhs, StatelevelDistrictViewCountResponse rhs) {
+                    return lhs.getTotalCounts().compareTo(rhs.getTotalCounts());
+                }
+            });
+
+            Collections.reverse(newlist);
+
+
+            binding.rvAlldistrictwise.setHasFixedSize(true);
+            binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m", selectedThemeColor);
+            binding.rvAlldistrictwise.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+        }
+
+
+    }
+
 
 
     @Override

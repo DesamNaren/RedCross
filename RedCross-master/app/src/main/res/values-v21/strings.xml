@@ -15,6 +15,8 @@
     <string name="menu_send">Send</string>
     <string name="title_activity_officer_main">OfficerMainActivity</string>
     <string name="indian_red_cross_society_telangana">Indian Red Cross Society,\n Telangana State Branch</string>
+    <string name="indian_red_cross_society_telangana1">Indian Red Cross Society</string>
+    <string name="indian_red_cross_society_telangana2">Telangana State Branch</string>
     <string name="tcText1">\u2022 Fee once paid will not be given refund. Candidate should go through the Detailed Notification and ensure the eligibility before making payment.</string>
     <string name="tcText2">When a candidate makes double payment by mistake, refund can be considered only on bringing it to the notice of RED CROSS by mail within 7 days of making such payment. Any kind of requests beyond this 7 days period will not be entertained. The refund process via same source of payments made in such cases will be initiated in Three to Five working days after receiving the refund request in all eligible cases of refund. This clause is applicable only in case of multiple payments by a candidate for the notification.</string>
     <string name="tcText3">During the process of making payment , by any chance the amount is deducted and the same has not reached RED CROSS account is automatically refunded by the Payment gateway provider on bringing the issue to the notice of Payment Gateway service provider.</string>
@@ -37,6 +39,19 @@
         <item>Annual Associate</item>
     </string-array>
 
+
+    <string-array name="genders">
+        <item>All</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+    </string-array>
+
+    <string-array name="types">
+        <item>All</item>
+        <item>JRC</item>
+        <item>YRC</item>
+        <item>Membership</item>
+    </string-array>
     <string-array name="blood_groups">
         <item>Select Blood Group</item>
         <item>A+</item>
@@ -49,6 +64,22 @@
         <item>O-</item>
 
     </string-array>
+
+    <string-array name="offcicer_blood_groups">
+        <item>All</item>
+        <item>A +ve</item>
+        <item>A -ve</item>
+        <item>B +ve</item>
+        <item>B -ve</item>
+        <item>AB +ve</item>
+        <item>AB -ve</item>
+        <item>O +ve</item>
+        <item>O -ve</item>
+
+    </string-array>
+
+
+    <string name="INFO_ABOUT">Inspired by the narration of experiences of war of Solferino by Henry Dunant, the Red Cross Organisation was formed in the year 1864. The first "Geneva Convention" has adopted Red Cross and its emblem for the ameloration of conditions of wounded in the battle field. The nucleus of Indian Red Cross Society which is a part of international movement was formed in the year 1920, through an act of Parliament(Act XV of 1920). The Honorable Governer of Telangana is its President.Red Cross provides assistance to victims of war, Natural Calamities, Disaster, Epidemics without discrimination of race, religion, creed, nationality, political opinions. In addition to it relief activities in emergencies, it promotes and undertakes activities of development and prevention of ill health. disease and preparedness for disasters.Any person can help this international humanitarian effort by donation in cash or kind, and by enrolling as a member and serving voluntarily in any of its activities.</string>
 
     <string-array name="Education">
         <item>Select Educational Qualification</item>
@@ -82,18 +113,19 @@
         <item>Select Activities interested</item>
 
     </string-array>
-        <string-array name="Married">
-            <item>--Select--</item>
-            <item>Single</item>
-            <item>Married</item>
-        </string-array>
 
-        <string-array name="Gender">
-            <item>--Select--</item>
-            <item>Male</item>
-            <item>Female</item>
+    <string-array name="Married">
+        <item>--Select--</item>
+        <item>Single</item>
+        <item>Married</item>
+    </string-array>
+    <string-array name="Gender">
+        <item>--Select--</item>
+        <item>Male</item>
+        <item>Female</item>
 
-        </string-array>
+
+    </string-array>
 
 
     <!-- TODO: Remove or change this placeholder text -->

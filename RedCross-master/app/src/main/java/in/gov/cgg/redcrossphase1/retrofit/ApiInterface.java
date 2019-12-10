@@ -140,6 +140,17 @@ public interface ApiInterface {
     @Multipart
     @POST("uploadPhotoMembAdd")
     Call<PhotoBean> SendPhoto(@Part MultipartBody.Part photoUpload);
+
+
+    @GET("getFullDrillDownDataWs")
+    Call<DrillDownResponse> getFullDrillDownDataWsFilter(@Query("enrollmentType") String enrollmentType,
+                                                         @Query("fyId") String fyId,
+                                                         @Query("districtId") int districtId,
+                                                         @Query("mandalId") int mandalId,
+                                                         @Query("villageId") int villageId,
+                                                         @Query("gender") String gender,
+                                                         @Query("bloodGroup") String bloodGroup
+    );
 }
 
 
