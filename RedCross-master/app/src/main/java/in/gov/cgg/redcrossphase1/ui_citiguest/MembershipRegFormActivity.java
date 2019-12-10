@@ -61,7 +61,11 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -89,6 +93,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     TextView mob_num_View, email_View, BloodGroup_View, Education_View, occupation_View;
     TextView house_no_View, locatlity_View, street_View, District_View, Mandal_View;
     TextView Village_View, pincode_View, Activities_View, hours_View;
+    ImageView image_view_Res;
     File imageFile;
     CustomProgressDialog progressDialog;
     MembershipDistAdaptor adapter;
@@ -103,7 +108,8 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     private List<MemberActivitiesResponse> MembersipActivityResponseList = new ArrayList<>();
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
-
+    Bitmap bm;
+    String Image_name;
     //CONVERT IMAGE TO BASE 64 CODE
     public static String encodeToBase64(Bitmap image,
                                         Bitmap.CompressFormat compressFormat, int quality) {
@@ -171,51 +177,13 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         pincode_View = findViewById(R.id.Pincode_res_view);
         Activities_View = findViewById(R.id.Activities_res_view);
         hours_View = findViewById(R.id.No_of_hours_res_view);
+        image_view_Res = findViewById(R.id.image_view_Res);
         Edit = findViewById(R.id.Edit);
         Next = findViewById(R.id.Next);
 
         try {
             selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-//            if (selectedThemeColor != -1) {
-//                toolbar.setBackgroundResource(selectedThemeColor);
-//                if (selectedThemeColor == R.color.redcroosbg_1) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross6_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
-//                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                    //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                } else {
-//                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                    //  navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                    selectedThemeColor = R.color.colorPrimary;
-//                    toolbar.setBackgroundResource(selectedThemeColor);
-//                    sharedPreferenceMethod(selectedThemeColor);
-//                }
-//            } else {
-//                ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-//                selectedThemeColor = R.color.colorPrimary;
-//                toolbar.setBackgroundResource(selectedThemeColor);
-//                sharedPreferenceMethod(selectedThemeColor);
-//            }
+
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -227,35 +195,32 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 enablePermissions();
+                if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
+                    if (validateFields()) {
 
-                // if (validateFields()) {
+                        Full_name_View.setText(Full_name.getText().toString().trim());
+                        fatherHusbName_View.setText(fatherHusbName.getText().toString().trim());
+                        Gender_View.setText(Selected_gender);
+                        DOB_View.setText(DOB.getText().toString().trim());
+                        Age_View.setText(ageResult.getText().toString().trim());
+                        mob_num_View.setText(mob_num.getText().toString().trim());
+                        email_View.setText(email.getText().toString().trim());
+                        BloodGroup_View.setText(Bloodgroup.getSelectedItem().toString().trim());
+                        Education_View.setText(education.getSelectedItem().toString().trim());
+                        occupation_View.setText(occupation.getText().toString().trim());
+                        house_no_View.setText(house_no.getText().toString().trim());
+                        locatlity_View.setText(locatlity.getText().toString().trim());
+                        street_View.setText(street.getText().toString().trim());
+                        pincode_View.setText(pincode.getText().toString().trim());
+                        hours_View.setText(hours.getText().toString().trim());
+                        memberRegistration_edit.setVisibility(View.GONE);
+                        memberRegistration_view.setVisibility(View.VISIBLE);
+                        image_view_Res.setImageBitmap(bm);
 
-                    Full_name_View.setText(Full_name.getText().toString().trim());
-                    fatherHusbName_View.setText(fatherHusbName.getText().toString().trim());
-                    Gender_View.setText(Selected_gender);
-                    DOB_View.setText(DOB.getText().toString().trim());
-                    Age_View.setText(ageResult.getText().toString().trim());
-                    mob_num_View.setText(mob_num.getText().toString().trim());
-                    email_View.setText(email.getText().toString().trim());
-                    BloodGroup_View.setText(Bloodgroup.getSelectedItem().toString().trim());
-                    Education_View.setText(education.getSelectedItem().toString().trim());
-                    occupation_View.setText(occupation.getText().toString().trim());
-                    house_no_View.setText(house_no.getText().toString().trim());
-                    locatlity_View.setText(locatlity.getText().toString().trim());
-                    street_View.setText(street.getText().toString().trim());
-
-
-                Village_View.setText(village.getSelectedItem().toString().trim());
-                    pincode_View.setText(pincode.getText().toString().trim());
-
-                    hours_View.setText(hours.getText().toString().trim());
-
-                    memberRegistration_edit.setVisibility(View.GONE);
-                    memberRegistration_view.setVisibility(View.VISIBLE);
-
-                //} else {
-
-                // }
+                    }
+                } else {
+                    Toast.makeText(MembershipRegFormActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -271,7 +236,8 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callSetMembershipDetails();
+                PhotoUpload(bm);
+                //callSetMembershipDetails();
             }
         });
 
@@ -296,16 +262,18 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                distId = MembersipDistResponseList.get(i).getDistrictID();
-                District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
-                if (distId != 0) {
-                    callgetMandalsListRequest("" + distId);
-                } else {
-                    MembershipMandalsResponseList.clear();
-                    MembershipMandalsResponse membershipmandResponse = new MembershipMandalsResponse();
-                    membershipmandResponse.setMandalID(0);
-                    membershipmandResponse.setMandalName("Select Mandal");
-                    MembershipMandalsResponseList.add(membershipmandResponse);
+                if (MembersipDistResponseList.size() > 0) {
+                    distId = MembersipDistResponseList.get(i).getDistrictID();
+                    District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
+                    if (distId != 0) {
+                        callgetMandalsListRequest("" + distId);
+                    } else {
+                        MembershipMandalsResponseList.clear();
+                        MembershipMandalsResponse membershipmandResponse = new MembershipMandalsResponse();
+                        membershipmandResponse.setMandalID(0);
+                        membershipmandResponse.setMandalName("Select Mandal");
+                        MembershipMandalsResponseList.add(membershipmandResponse);
+                    }
                 }
             }
 
@@ -317,17 +285,19 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         mandal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                manId = MembershipMandalsResponseList.get(i).getMandalID();
-                Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
-                if (distId != 0 && manId != 0) {
-                    callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
-                    Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
-                } else {
-                    MembersipVillagesResponseList.clear();
-                    MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
-                    membershipVillagesResponse.setVillageID(0);
-                    membershipVillagesResponse.setVillageName("Select Village");
-                    MembersipVillagesResponseList.add(membershipVillagesResponse);
+                if (MembershipMandalsResponseList.size() > 0) {
+                    manId = MembershipMandalsResponseList.get(i).getMandalID();
+                    Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
+                    if (distId != 0 && manId != 0) {
+                        callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
+                        Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
+                    } else {
+                        MembersipVillagesResponseList.clear();
+                        MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
+                        membershipVillagesResponse.setVillageID(0);
+                        membershipVillagesResponse.setVillageName("Select Village");
+                        MembersipVillagesResponseList.add(membershipVillagesResponse);
+                    }
                 }
             }
 
@@ -339,7 +309,10 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                villageID = MembersipVillagesResponseList.get(i).getVillageID();
+                if (MembersipVillagesResponseList.size() > 0) {
+                    villageID = MembersipVillagesResponseList.get(i).getVillageID();
+                    Village_View.setText(MembersipVillagesResponseList.get(i).getVillageName());
+                }
             }
 
             @Override
@@ -388,7 +361,74 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         });
 
     }
+    //SERVICE CALL FOR PHOT UPLOAD
 
+    private void PhotoUpload(Bitmap bmp) {
+
+
+        if (bmp == null) {
+            Toast.makeText(this, "Image can't be empty", Toast.LENGTH_SHORT).show();
+        } else {
+            FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
+
+
+            File file = new File(FilePath);
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+            progressDialog.show();
+
+
+            if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
+                //updateLocationPresenter.UploadImageServiceCall(body);
+                //calluploadPhotoMembAdd(body);
+            } else {
+                Toast.makeText(MembershipRegFormActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+
+    private void calluploadPhotoMembAdd(final MultipartBody body) {
+
+//        progressDialog.show();
+//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//        Call<List<MembershipVillagesResponse>> call = apiInterface.getVillagesForMemReg(body);
+//        Log.e("  url", call.request().url().toString());
+//
+//        MembersipVillagesResponseList.clear();
+//        MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
+//        membershipVillagesResponse.setVillageID(0);
+//        membershipVillagesResponse.setVillageName("Select Village");
+//        MembersipVillagesResponseList.add(membershipVillagesResponse);
+//
+//        call.enqueue(new Callback<List<MembershipVillagesResponse>>() {
+//            @Override
+//            public void onResponse(Call<List<MembershipVillagesResponse>> call, Response<List<MembershipVillagesResponse>> response) {
+//
+//                progressDialog.dismiss();
+//                if (response.body() != null) {
+//                    Log.d("Activity ", "Response = " + response.body().toString());
+//                    //goListMutableLiveData.setValue(response.body().getLast10days());
+//                    MembersipVillagesResponseList.addAll(response.body());
+//                    villageadapter = new MembershipvillageAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembersipVillagesResponseList);
+//                    village.setAdapter(villageadapter);
+//                } else {
+//                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<MembershipVillagesResponse>> call, Throwable t) {
+//
+//                progressDialog.dismiss();
+//                t.printStackTrace();
+//            }
+//        });
+
+
+    }
     //SERVICE CALL OF VILLAGES
 
     private void callgetVillagesListRequest(String MandID) {
@@ -783,6 +823,9 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         } else if (hours.getText().toString().trim().length() == 0) {
             Toast.makeText(MembershipRegFormActivity.this, "Enter number of hours", Toast.LENGTH_LONG).show();
             return false;
+        } else if (bm != null) {
+            Toast.makeText(MembershipRegFormActivity.this, "Choose photo", Toast.LENGTH_LONG).show();
+            return false;
         }
         return true;
     }
@@ -865,17 +908,17 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 FilePath = Environment.getExternalStorageDirectory() + "/Android/data/"
                         + "Files/" + IMAGE_DIRECTORY_NAME;
 
-                String Image_name = 1 + ".jpg";
+                Image_name = 1 + ".jpg";
                 FilePath = FilePath + "/" + Image_name;
 
                 File file = new File(FilePath);
                 long length = file.length() / 1024;
                 Log.d("BEFORE", " = " + length);
 
-                Bitmap bitmap = saveBitmapToFile(imageFile);
-                String myBase64Image = encodeToBase64(bitmap, Bitmap.CompressFormat.JPEG,
+                bm = saveBitmapToFile(imageFile);
+                String myBase64Image = encodeToBase64(bm, Bitmap.CompressFormat.JPEG,
                         100);
-                Photo.setImageBitmap(bitmap);
+                Photo.setImageBitmap(bm);
 
 
             } else if (resultCode == RESULT_CANCELED) {
@@ -897,9 +940,9 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 int columnIndex = currsor.getColumnIndex(filePath[0]);
                 String picturePath = currsor.getString(columnIndex);
                 currsor.close();
-                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                bm = (BitmapFactory.decodeFile(picturePath));
                 Log.w("path of image", picturePath + "");
-                Photo.setImageBitmap(thumbnail);
+                Photo.setImageBitmap(bm);
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(getApplicationContext(),
                         "User cancelled image capture", Toast.LENGTH_SHORT)
