@@ -105,6 +105,7 @@
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center"
+                    android:tint="#0f68e6"
                     android:src="@drawable/placeholder" />
 
                 <TextView

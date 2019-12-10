@@ -21,7 +21,7 @@ public class MapAdaptor implements GoogleMap.InfoWindowAdapter {
 
     @Override
     public View getInfoWindow(Marker marker) {
-        View view = ((Activity) context).getLayoutInflater().inflate(R.layout.marker_layout, null);
+        View view = ((Activity) context).getLayoutInflater().inflate(R.layout.map_marker_layout, null);
 
         TextView tv_crl = view.findViewById(R.id.tv_crl);
 

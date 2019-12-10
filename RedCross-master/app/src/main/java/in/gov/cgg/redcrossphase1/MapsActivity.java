@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -159,21 +160,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                             @Override
                             public void onInfoWindowClick(Marker marker) {
-                                markername.showInfoWindow();
 
-                                String title = marker.getTitle().trim();
-                                String chainIDVal = title.substring(title.lastIndexOf("\n") + 1);
-                                chainIDVal = chainIDVal.substring(chainIDVal.indexOf(":") + 1);
-
-
-//                                for (int i = 0; i < eRaktkoshResponseBeans.size(); i++) {
-//                                    if (chainIDVal.trim().equalsIgnoreCase(otResponse.getData().get(i).getStructureNo().trim())) {
-//                                        startActivity(new Intent(MapsActivity.this, OTDetailActivityLoc.class)
-//                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                                                .putExtra("ITEM_DATA", otResponse.getData().get(i)));
-//                                        break;
-//                                    }
-//                                }
+                                Uri.Builder builder = new Uri.Builder();
+                                builder.scheme("https").authority("www.google.com").appendPath("maps").appendPath("dir").appendPath("").appendQueryParameter("api", "1").appendQueryParameter("destination", marker.getPosition().latitude + "," + marker.getPosition().longitude);
+                                String url = builder.build().toString();
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(url));
+                                startActivity(i);
                             }
                         });
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -357,7 +350,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        if (fromClass.equalsIgnoreCase("ALL")) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+
 
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 

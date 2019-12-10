@@ -28,7 +28,7 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/left_arrow" />
 
-            <cgg.gov.ghmc.util.CustomTextAppTitle
+            <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,12 +124,13 @@
                 android:padding="20dp"
                 android:visibility="visible" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="@dimen/dimen_20dp"
                 android:id="@+id/menuList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
             <!--   <ListView
                   android:id="@+id/menuList"
                   android:layout_width="match_parent"

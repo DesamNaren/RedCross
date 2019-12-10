@@ -103,7 +103,10 @@
             android:name=".ui_citiguest.HomeNursingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
+        <activity
+            android:name=".LocateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -21,6 +21,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.locate.LocateResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
@@ -178,6 +179,8 @@ public interface ApiInterface {
     @POST("saveHomeNursingDetails")
     Call<ResponseBody> saveHomeNursingDetails(@Body HomeNursingRequest req);
 
+    @POST("additionsCentersService")
+    Call<LocateResponse> getAdditionsCentersService();
 }
 
 

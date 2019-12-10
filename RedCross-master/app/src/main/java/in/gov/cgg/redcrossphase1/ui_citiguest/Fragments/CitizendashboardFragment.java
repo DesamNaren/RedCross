@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.LocateActivity;
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -72,8 +74,8 @@ public class CitizendashboardFragment extends Fragment {
         ll_loate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Intent i = new Intent(getActivity(), MapsActivity.class);
-                startActivity(i)*/
+                Intent i = new Intent(getActivity(), LocateActivity.class);
+                startActivity(i);
                /* GlobalDeclaration.FARG_TAG = LocationsFragment.class.getSimpleName();
                 selectedFragment = new LocationsFragment();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);*/
@@ -183,8 +185,6 @@ public class CitizendashboardFragment extends Fragment {
         ll_hoeNursing = root.findViewById(R.id.ll_hoeNursing);
         ll_bloodbankInfo = root.findViewById(R.id.ll_bloodbankInfo);
         ll_contactUs = root.findViewById(R.id.ll_contactUs);
-
-
 
 
     }
