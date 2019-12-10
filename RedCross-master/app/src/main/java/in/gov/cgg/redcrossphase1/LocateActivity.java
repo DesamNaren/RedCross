@@ -743,65 +743,63 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
         for (int i = 0; i < additionscenters.size(); i++) {
             if (additionscenters.get(i).getType().trim().equalsIgnoreCase(type.trim())) {
 
-//                if (additionscenters.get(i).getLat() != null && additionscenters.get(i).getLon() != null) {
-                double lat = Double.parseDouble(additionscenters.get(i).getLat());
-                double lng = Double.parseDouble(additionscenters.get(i).getLon());
+                if (additionscenters.get(i).getLat() != null && additionscenters.get(i).getLon() != null) {
+                    double lat = Double.parseDouble(additionscenters.get(i).getLat());
+                    double lng = Double.parseDouble(additionscenters.get(i).getLon());
 
-                MarkerOptions markerOptions = new MarkerOptions();
-                Additionscenter googlePlace = additionscenters.get(i);
-
-                lat = 17.3850;
-                lng = 78.486;
-
-                LatLng latLng = new LatLng(lat, lng);
-
-                markerOptions.position(latLng);
-                String finals = " Name: " + googlePlace.getName() + "\n Type: " + googlePlace.getType() + "\nContact: " + googlePlace.getMobileno();
-
-                markerOptions.title(finals);
-                if (ContextCompat.checkSelfPermission(LocateActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
-                        == PackageManager.PERMISSION_GRANTED) {
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    Additionscenter googlePlace = additionscenters.get(i);
 
 
-                    mMap.setMyLocationEnabled(true);
-                }
+                    LatLng latLng = new LatLng(lat, lng);
 
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_parking));
+                    markerOptions.position(latLng);
+                    String finals = " Name: " + googlePlace.getName() + "\n Type: " + googlePlace.getType() + "\nContact: " + googlePlace.getMobileno();
 
-                markername = mMap.addMarker(markerOptions);
-                mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                    @Override
-                    public void onInfoWindowClick(Marker marker) {
+                    markerOptions.title(finals);
+                    if (ContextCompat.checkSelfPermission(LocateActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
 
 
-                        if (marker.getTitle().contains("\n")) {
-                            final String[] strings = marker.getTitle().split("\n");
-                            if (!strings[2].equals("0")) {
-                                String[] ctc = strings[2].split(":");
-                                if (ctc[1] != null && ctc[1].length() >= 10) {
-                                    ShowContactAlert(ctc[1].trim());
-                                } else {
-                                    Uri.Builder builder = new Uri.Builder();
-                                    builder.scheme("https").authority("www.google.com").appendPath("maps").appendPath("dir").appendPath("").appendQueryParameter("api", "1").appendQueryParameter("destination", marker.getPosition().latitude + "," + marker.getPosition().longitude);
-                                    String url = builder.build().toString();
-                                    Intent i = new Intent(Intent.ACTION_VIEW);
-                                    i.setData(Uri.parse(url));
-                                    startActivity(i);
-                                }
-
-                            }
-                        }
-
+                        mMap.setMyLocationEnabled(true);
                     }
-                });
-                //move map camera
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-            }
-        }
 
-//        }
+                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                    //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_parking));
+
+                    markername = mMap.addMarker(markerOptions);
+                    mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+                        @Override
+                        public void onInfoWindowClick(Marker marker) {
+
+
+                            if (marker.getTitle().contains("\n")) {
+                                final String[] strings = marker.getTitle().split("\n");
+                                if (!strings[2].equals("0")) {
+                                    String[] ctc = strings[2].split(":");
+                                    if (ctc[1] != null && ctc[1].length() >= 10) {
+                                        ShowContactAlert(ctc[1].trim());
+                                    } else {
+                                        Uri.Builder builder = new Uri.Builder();
+                                        builder.scheme("https").authority("www.google.com").appendPath("maps").appendPath("dir").appendPath("").appendQueryParameter("api", "1").appendQueryParameter("destination", marker.getPosition().latitude + "," + marker.getPosition().longitude);
+                                        String url = builder.build().toString();
+                                        Intent i = new Intent(Intent.ACTION_VIEW);
+                                        i.setData(Uri.parse(url));
+                                        startActivity(i);
+                                    }
+
+                                }
+                            }
+
+                        }
+                    });
+                    //move map camera
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+                }
+            }
+
+        }
 
 
         LocateMapAdaptor customInfoWindow = new LocateMapAdaptor(LocateActivity.this);
