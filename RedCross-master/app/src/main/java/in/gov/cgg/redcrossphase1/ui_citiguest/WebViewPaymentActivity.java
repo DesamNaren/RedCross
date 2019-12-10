@@ -14,9 +14,6 @@ import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 
@@ -76,16 +73,16 @@ public class WebViewPaymentActivity extends AppCompatActivity {
         Log.e("URLweb ", "==========    " + url);
 
 
-        //mWebView.loadUrl(url);
+        mWebView.loadUrl(url);
 
-        String postData = null;
-        try {
-            GlobalDeclaration.encrpyt = "IRCSTS!7475!NA!1!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9885588887!bcbcbcb!10-12-2019!10-12-2019!AAE20197475!NA!NA!http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse";
-            postData = "msg=" + URLEncoder.encode(GlobalDeclaration.encrpyt, "UTF-8");
-            mWebView.postUrl(GlobalDeclaration.Paymenturl, postData.getBytes());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+//        String postData = null;
+//        try {
+//            GlobalDeclaration.encrpyt = "IRCSTS!7475!NA!1!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9885588887!bcbcbcb!10-12-2019!10-12-2019!AAE20197475!NA!NA!http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse";
+//            postData = "msg=" + URLEncoder.encode(GlobalDeclaration.encrpyt, "UTF-8");
+//            mWebView.postUrl(GlobalDeclaration.Paymenturl, postData.getBytes());
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
 
 
         WebSettings webSettings1 = mWebView.getSettings();
