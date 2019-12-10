@@ -46,7 +46,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_type"
+                    android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_5dp"
@@ -66,23 +66,25 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/placeholder" />
+                    android:src="@drawable/placeholder"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_5dp">
+                android:padding="@dimen/dimen_5dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/blooddonate" />
+                    android:src="@drawable/blooddonorreg24" />
 
                 <TextView
-                    android:id="@+id/tv_name"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_10dp"
@@ -90,7 +92,8 @@
                     android:padding="@dimen/dp_5"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -102,11 +105,10 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
-                    android:layout_width="@dimen/dimen_25dp"
-                    android:layout_height="@dimen/dimen_25dp"
+                    android:layout_width="@dimen/dimen_20dp"
+                    android:layout_height="@dimen/dimen_20dp"
                     android:layout_gravity="center"
-                    android:tint="#0f68e6"
-                    android:src="@drawable/placeholder" />
+                    android:src="@drawable/address" />
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -149,7 +151,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_5dp">
+                android:padding="@dimen/dimen_5dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="25dp"
@@ -174,7 +177,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_5dp">
+                android:padding="@dimen/dimen_5dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="25dp"
@@ -198,7 +202,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_5dp">
+                android:padding="@dimen/dimen_5dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="25dp"

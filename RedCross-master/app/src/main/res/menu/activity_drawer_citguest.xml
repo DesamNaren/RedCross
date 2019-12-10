@@ -112,6 +112,10 @@
                     android:icon="@drawable/contact_us"
                     android:title="Contact us" />
                 <item
+                    android:id="@+id/nav_info"
+                    android:icon="@drawable/themes24"
+                    android:title="About CGG" />
+                <item
                     android:id="@+id/nav_continueasGuestthemes"
                     android:icon="@drawable/themes24"
                     android:title="Themes" />

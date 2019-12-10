@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 public class CitiNewTCFragment extends Fragment {
@@ -37,6 +36,7 @@ public class CitiNewTCFragment extends Fragment {
 
 
         String url = "https://www.cgg.gov.in/mgov-terms-conditions";
+        //   String url = "http://10.2.9.81:8081/redcross/trainingDetails";
         //String url = "http://mobileapps.cgg.gov.in/privacy.html";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";
 

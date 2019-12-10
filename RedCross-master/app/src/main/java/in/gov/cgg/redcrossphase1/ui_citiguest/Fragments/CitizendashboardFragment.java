@@ -11,14 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.LocateActivity;
 import in.gov.cgg.redcrossphase1.R;
@@ -32,7 +31,7 @@ public class CitizendashboardFragment extends Fragment {
     int selectedThemeColor = -1;
     RelativeLayout fragment_citizendashboard;
     private FragmentActivity c;
-    LinearLayout ll_wwa, ll_mebership, ll_capityBuildings, ll_loate, ll_Serices, ll_hoeNursing, ll_bloodbankInfo, ll_contactUs;
+    LinearLayout ll_wwa, ll_mebership, ll_capityBuildings, ll_loate, ll_Serices, ll_hoeNursing, ll_bloodbankInfo, ll_contactUs, ll_donor;
     private Fragment selectedFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -55,11 +54,20 @@ public class CitizendashboardFragment extends Fragment {
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
+
+        ll_donor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = BlooddonorRegistrationFragment.class.getSimpleName();
+                selectedFragment = new BlooddonorRegistrationFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            }
+        });
         ll_mebership.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
-                selectedFragment = new MembershipFragment();
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
@@ -168,6 +176,7 @@ public class CitizendashboardFragment extends Fragment {
         iv_contactUs = root.findViewById(R.id.iv_contactUs);
         iv_bloodbankDetails = root.findViewById(R.id.iv_bloodbankDetails);
         tv_username = root.findViewById(R.id.tv_username);
+        ll_donor = root.findViewById(R.id.ll_donor);
         //    ll_1 = root.findViewById(R.id.ll_wwa);
         //    ll_bloodbankDetails = root.findViewById(R.id.ll_bloodbankDetails);
         //     ll_contactus = root.findViewById(R.id.ll_contactus);

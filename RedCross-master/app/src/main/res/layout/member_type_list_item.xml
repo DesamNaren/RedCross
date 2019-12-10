@@ -39,6 +39,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:layout_marginRight="@dimen/dp_5"
                 android:id="@+id/tv_ROS"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
                 android:paddingLeft="@dimen/dp_5"
                 android:paddingTop="@dimen/dp_5"
                 android:paddingBottom="@dimen/dp_5"
+                android:gravity="end"
                 android:text="Rates of Subscription"
                 android:textColor="@color/black"
                 android:textSize="16sp" />

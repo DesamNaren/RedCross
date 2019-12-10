@@ -4,7 +4,7 @@
     android:id="@+id/fragment_citizendashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/redcross_splashscreen_bg"
+    android:background="@drawable/redcross6_bg"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
@@ -16,15 +16,26 @@
         android:layout_marginTop="5dp"
         android:orientation="vertical">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/redcross_logo_for_dashboard"
+            android:visibility="visible" />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo">
 
             <LinearLayout
                 android:id="@+id/ll1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
 
@@ -53,11 +64,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll1"
-                android:text="Hello rekha"
                 android:layout_marginTop="30dp"
                 android:gravity="center_horizontal"
+                android:text="Hello rekha"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
+
+
         </RelativeLayout>
 
         <LinearLayout
@@ -237,16 +250,36 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/virtuo_logo"
+
+                    <LinearLayout
+                        android:id="@+id/ll_donor"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="100dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        android:background="#21000000"
-                        android:padding="10dp"
-                        android:src="@drawable/redcross_logo_for_dashboard"
-                        android:visibility="visible" />
+                        android:elevation="10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_donor"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:src="@drawable/blooddonate"
+                            android:tint="#FFF" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text="Donate Blood"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
 
                     <LinearLayout

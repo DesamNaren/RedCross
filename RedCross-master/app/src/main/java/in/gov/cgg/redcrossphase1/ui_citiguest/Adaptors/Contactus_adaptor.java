@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 
@@ -34,13 +32,15 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
 
 
         View view = null;
-        if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rvcontactus_item, parent, false);
+
+       /* if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
 
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_statecordinators, parent, false);
 
         } else {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rvcontactus_item, parent, false);
-        }
+        }*/
         return new myViewHolder(view);
 
         //   return new DistrictViewHolder(view);
@@ -52,12 +52,15 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
 
-        if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
+        holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
+        holder.address.setText(contactarrayList.get(position).getAdress());
+
+       /* if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
             holder.address.setText(contactarrayList.get(position).getAdress());
         } else {
             holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
             holder.address.setText(contactarrayList.get(position).getAdress());
-        }
+        }*/
         //   holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
 
 

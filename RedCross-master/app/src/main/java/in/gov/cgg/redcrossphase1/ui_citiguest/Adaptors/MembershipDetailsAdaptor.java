@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 
@@ -42,7 +41,7 @@ public class MembershipDetailsAdaptor extends RecyclerView.Adapter<MembershipDet
         //holder.address.setText(contactarrayList.get(position).getAdress());
         // holder.districtNmae.setTextColor(context.getResources().getColor(selectedThemeColor));
 
-        holder.ROS.setText(String.valueOf(MembershipTypeList.get(position).getFees()));
+        holder.ROS.setText("Rs. " + MembershipTypeList.get(position).getFees());
         holder.TOM.setText(MembershipTypeList.get(position).getMembershipType());
 
 

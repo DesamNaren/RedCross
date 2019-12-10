@@ -15,21 +15,23 @@
         android:orientation="horizontal">
 
         <Button
+            android:text="State Coordinators"
             android:id="@+id/btn_sateCordinators"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/tab_background_selected"
-            android:text="State coordinators"
+            android:textAllCaps="false"
             android:textColor="@color/white" />
 
         <Button
+            android:text="District Contacts"
             android:id="@+id/btn_districtCordinators"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/tab_background_unselected"
-            android:text="District contact details" />
+            android:textAllCaps="false" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_contactUs"

@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -33,19 +35,18 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BlooddonorRegistrationFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CapacityBuildingsFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MembershipFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment;
@@ -116,7 +117,7 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 R.id.nav_History, R.id.nav_Principles, R.id.nav_whoweare, R.id.nav_Vision, R.id.nav_mission
                 , R.id.nav_Structure, R.id.nav_Contact, R.id.nav_lifetimemember, R.id.nav_blooddonorreg, R.id.nav_hnreg,
                 R.id.nav_onlinedonations, R.id.nav_training, R.id.nav_hn, R.id.nav_doateblood, R.id.nav_locatebloodbanks
-                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_dashboard)
+                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_info, R.id.nav_dashboard)
                 .setDrawerLayout(drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -141,24 +142,29 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.nav_Principles) {
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
+                    GlobalDeclaration.tabposition = 1;
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_whoweare) {
+
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_History) {
+                    GlobalDeclaration.tabposition = 2;
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Vision) {
+                    GlobalDeclaration.tabposition = 3;
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_mission) {
+                    GlobalDeclaration.tabposition = 4;
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
@@ -201,6 +207,21 @@ public class CitiGuestMainActivity extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.nav_tc) {
                     GlobalDeclaration.FARG_TAG = CitiNewTCFragment.class.getSimpleName();
                     selectedFragment = new CitiNewTCFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_info) {
+                    GlobalDeclaration.FARG_TAG = InfoFragment.class.getSimpleName();
+                    selectedFragment = new InfoFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_training) {
+                    GlobalDeclaration.FARG_TAG = CapacityBuildingsFragment.class.getSimpleName();
+                    selectedFragment = new CapacityBuildingsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_lifetimemember) {
+                    GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
+                    selectedFragment = new MembershipFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_continueasGuestthemes) {
@@ -508,6 +529,8 @@ public class CitiGuestMainActivity extends AppCompatActivity {
             selectedFragment = new VisionFragment();
         } else if (fargTag.equalsIgnoreCase("MissionFragment")) {
             selectedFragment = new MissionFragment();
+        } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
+            selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
             selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("LocateBloodbanksFragment")) {

@@ -8,45 +8,41 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 
-
-public class CapacityBuildingsFragment extends Fragment {
-    Button btn_upcoming_event;
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link Upcoming_fragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link Upcoming_fragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class Upcoming_fragment extends Fragment {
     private WebView wb;
+
     //private TextView tv_first;
     private ProgressDialog pd;
-    private Fragment selectedFragment;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_capacity_buildings, container, false);
+        View root = inflater.inflate(R.layout.fragment_upcoming_fragment, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle("Trainings");
-        btn_upcoming_event = root.findViewById(R.id.btn_upcoming_event);
-        btn_upcoming_event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectedFragment = new Upcoming_fragment();
-                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-            }
-        });
+        Objects.requireNonNull(getActivity()).setTitle("Upcoming Events");
+
         //tv_first = root.findViewById(R.id.text1);
         wb = root.findViewById(R.id.help_webview);
 
 
-        String url = "http://uat2.cgg.gov.in:8081/redcross/trainings";
+        String url = "http://uat2.cgg.gov.in:8081/redcross/events";
         //   String url = "http://10.2.9.81:8081/redcross/trainingDetails";
         //String url = "http://mobileapps.cgg.gov.in/privacy.html";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";
@@ -57,7 +53,7 @@ public class CapacityBuildingsFragment extends Fragment {
 
 
         pd.show();
-        wb.setWebViewClient(new CapacityBuildingsFragment.MyWebViewHelpClient());
+        wb.setWebViewClient(new Upcoming_fragment.MyWebViewHelpClient());
         wb.getSettings().setJavaScriptEnabled(true);
 //        wb.getSettings().setBuiltInZoomControls(true);
         wb.loadUrl(url);
@@ -87,14 +83,6 @@ public class CapacityBuildingsFragment extends Fragment {
 //        tv_first.setText(ssb);
         return root;
 
-    }
-
-    void callFragment(Fragment fragment, String name) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.nav_host_fragment, fragment, name);
-        transaction.addToBackStack(null);
-        transaction.commitAllowingStateLoss();
     }
 
     private float dp(int dp) {
@@ -160,4 +148,3 @@ public class CapacityBuildingsFragment extends Fragment {
 
 
 }
-

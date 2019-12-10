@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
@@ -20,6 +21,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ServeBeanMainBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.locate.LocateResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
@@ -181,6 +183,13 @@ public interface ApiInterface {
 
     @POST("additionsCentersService")
     Call<LocateResponse> getAdditionsCentersService();
+
+    @GET("additionsCentersService")
+    Call<ServeBeanMainBean> getadditionsCentersService(@Query("type") String type);
+
+    @GET("getMemberCountsForDashboard")
+    Call<AbstractMemberbean> getAAbstractdata();
+
 }
 
 

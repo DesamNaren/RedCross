@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:background="?android:windowBackground"
     android:orientation="vertical"
-    android:clickable="false"
+    android:clickable="true"
+    android:focusable="true"
+
     tools:context=".ui_citiguest.Fragments.HomenursingFragment">
 
     <RelativeLayout
@@ -18,8 +20,8 @@
 
         <ImageView
             android:id="@+id/iv_nurse"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_40"

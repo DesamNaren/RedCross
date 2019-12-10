@@ -30,7 +30,7 @@
                 android:drawableRight="@drawable/righrarrow"
                 android:padding="12dp"
                 android:textColor="@color/white"
-                android:text="Raise Request for Home Nurse"
+                android:text="Request for a Home Nurse"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -60,7 +60,7 @@
                 android:drawableEnd="@drawable/righrarrow"
                 android:drawableRight="@drawable/righrarrow"
                 android:padding="12dp"
-                android:text="How to become Home Nurse"
+                android:text="How to become a Home Nurse"
                 android:textColor="@color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -90,7 +90,7 @@
                 android:drawableEnd="@drawable/righrarrow"
                 android:drawableRight="@drawable/righrarrow"
                 android:padding="12dp"
-                android:text="Become Home Nurse"
+                android:text="Become a Home Nurse"
                 android:textColor="@color/white" />
 
         </LinearLayout>

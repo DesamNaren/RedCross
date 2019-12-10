@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/ll_bg"
@@ -11,26 +14,26 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_marginTop="@dimen/dp_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:gravity="center_horizontal"
-            android:text="How to become a home nurse"
-            android:textColor="@color/white"
+            android:text="How to become a Member"
+            android:textColor="@color/black"
             android:textSize="@dimen/dp_20">
 
         </TextView>
 
         <TextView
             android:layout_width="match_parent"
-            android:background="@color/cardview_light_background"
-            android:padding="@dimen/dp_10"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:text="Home Nursing provide residential care for elderly or disabled people. Here, nurses have the responsibilities of caring for the patients' medical needs. "
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="The Red Cross membership is an easy and a fluent way to support valuable work done by volunteers and to speak out for humane values and targets. "
             android:textColor="@color/black"
             android:textSize="@dimen/dp_15">
 
@@ -38,56 +41,59 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:background="@color/cardview_light_background"
-            android:padding="@dimen/dp_10"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Below are the prerequisites to undergo training as a home nurse "
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="The membership fee will be used to support local volunteer activity and to train volunteers."
             android:textColor="@color/black"
-            android:textSize="@dimen/dimen_15dp">
+            android:textSize="@dimen/dimen_15dp"
+            android:visibility="visible">
 
         </TextView>
 
         <TextView
             android:layout_width="match_parent"
-            android:background="@color/cardview_light_background"
-            android:padding="@dimen/dp_10"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="	Only Female candidates are eligible \n Minimum qualification: 10th class pass and above\n Age limit: 18 to 30 years."
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="By becoming a member one can volunteer themselves in red cross activities such as Fund-raising health camps, personal hygiene promotion and many more."
             android:textColor="@color/black"
-            android:textSize="@dimen/dimen_15dp">
+            android:textSize="@dimen/dimen_15dp"
+            android:visibility="visible">
 
         </TextView>
 
         <TextView
-            android:background="@color/cardview_light_background"
-            android:padding="@dimen/dp_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
             android:text="The training period is of 2 months at location GMR Varalakshmi Foundation, Rajanna Siricilla District,Telangana."
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_15">
+            android:textSize="@dimen/dp_15"
+            android:visibility="gone">
 
         </TextView>
 
         <LinearLayout
-            android:layout_marginTop="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:background="#21000000"
-                android:elevation="@dimen/dp_5"
                 android:id="@+id/btn_homeNursingRegProceed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Become a Home Nurse"
+                android:background="@drawable/tab_background_selected"
+                android:elevation="@dimen/dp_5"
                 android:padding="10dp"
+                android:text="Become a Member"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
         </LinearLayout>

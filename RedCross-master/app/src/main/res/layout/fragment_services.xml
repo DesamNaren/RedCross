@@ -2,13 +2,40 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:windowBackground"
     android:clickable="true"
     android:focusable="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <!-- TODO: Update blank fragment layout -->
+
+        <Spinner
+            android:id="@+id/spinner_bg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:padding="@dimen/dp_10" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bb_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_10"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/noDataTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No data found"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
 
 </FrameLayout>

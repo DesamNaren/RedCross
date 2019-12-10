@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
@@ -19,10 +22,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
@@ -150,12 +149,12 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
 
 
     private void prepareStateCordinatorsData() {
-        ContactusDetails_Bean detail26 = new ContactusDetails_Bean("", "P. Vijaya Kumar Babu,\n" +
-                "State Coordinator – Disaster ManagementManager – RCSMH,\n" +
-                "Focal Person – Family News Service & ICRC Cooperation Activities, \n" + "In-charge – Resource Mobilization\n" + "Indian Red Cross Society,\n" + "Telangana State Branch,\n" + "Mobile: 9849555393,\n" + "E-Mail: vijay_redcross@yahoo.co.in");
+        ContactusDetails_Bean detail26 = new ContactusDetails_Bean("P. Vijaya Kumar Babu",
+                "State Coordinator, Disaster ManagementManager, RCSMH,\n" +
+                        "Focal Person, Family News Service & ICRC Cooperation Activities, \n" + "In-charge, Resource Mobilization\n" + "Indian Red Cross Society,\n" + "Telangana State Branch,\n" + "Mobile: 9849555393,\n" + "E-Mail: vijay_redcross@yahoo.co.in");
         contactUsarrayList.add(detail26);
-        ContactusDetails_Bean detail27 = new ContactusDetails_Bean("", " Ramana,\n" +
-                " First Aid &JRC/YRC,\n" +
+        ContactusDetails_Bean detail27 = new ContactusDetails_Bean("Ramana",
+                " First Aid & JRC/YRC,\n" +
                 "Indian Red Cross Society, \n" + "Mobile: 9948633398\n" + "E-Mail:ramanagmsw@gmail.com");
         contactUsarrayList.add(detail27);
     }
