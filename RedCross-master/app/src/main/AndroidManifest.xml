@@ -101,12 +101,12 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="in.gov.cgg.redcrossphase1.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
+                android:resource="@xml/file_provider_path" />
         </provider>
     </application>
 

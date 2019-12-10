@@ -47,6 +47,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -853,8 +854,8 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
         imageFile = getOutputMediaFile(type);
         Uri imageUri = FileProvider.getUriForFile(
-                MembershipRegFormActivity.this,
-                "in.gov.cgg.redcrossphase1.ui_citiguest.provider", //(use your app signature + ".provider" )
+                MembershipRegFormActivity.this,//(use your app signature + ".provider" )
+                BuildConfig.APPLICATION_ID + ".fileprovider",
                 imageFile);
         return imageUri;
     }

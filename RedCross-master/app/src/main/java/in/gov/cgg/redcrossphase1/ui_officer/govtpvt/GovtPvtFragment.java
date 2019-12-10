@@ -32,7 +32,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.databinding.FragmentGovtpvtnewBinding;
+import in.gov.cgg.redcrossphase1.databinding.NewfragmentGovtpvtnewBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
 
@@ -40,14 +40,14 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
 
 
     private GovtPvtViewModel govtPvtViewModel;
-    FragmentGovtpvtnewBinding binding;
+    NewfragmentGovtpvtnewBinding binding;
     int i;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_govtpvtnew, container, false);
+                inflater, R.layout.newfragment_govtpvtnew, container, false);
 
         govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
 

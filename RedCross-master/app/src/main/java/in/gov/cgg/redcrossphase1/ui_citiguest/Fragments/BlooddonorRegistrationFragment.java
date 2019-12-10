@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.UnsupportedEncodingException;
@@ -588,6 +589,12 @@ public class BlooddonorRegistrationFragment extends Fragment {
             request.setWillingToDonateYearly(WillingBldDonateStatus);
             request.setNoOfPrevDonations(noofpreviousDonations);
 
+
+            Gson gson = new Gson();
+            String re = gson.toJson(request);
+
+
+            Log.e("request", re);
 
             Call<DonorregResponse> call = apiInterface.callCitizendonorRegistration(request);
 
