@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_5"
-                android:text="Full Name *"
+                android:text="Full Name"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
 
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
-                android:text="Father's/Husband's Name *"
+                android:text="Father's/Husband's Name"
                 android:textColor="@color/black" />
 
             <EditText
@@ -93,7 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gender *"
+                android:text="Gender"
                 android:padding="@dimen/dp_5"
 
                 android:textSize="16sp"
@@ -130,7 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Date Of Birth *"
+                android:text="Date Of Birth"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -159,15 +159,13 @@
                 android:text="Age"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
-
                 android:textColor="@color/black" />
 
-            <EditText
+            <TextView
                 android:id="@+id/Age_res"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="25"
                 android:textColor="@color/black" />
         </LinearLayout>
 
@@ -181,7 +179,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mobile Number *"
+                android:text="Mobile Number"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -210,7 +208,7 @@
                 android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Blood Group *"
+                android:text="Blood Group"
                 android:textSize="16sp"
 
                 android:textColor="@color/black" />
@@ -262,7 +260,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
-                android:text="Occupation *"
+                android:text="Occupation"
                 android:textColor="@color/black" />
 
             <EditText
@@ -289,7 +287,7 @@
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
-                android:text="House Number *"
+                android:text="House Number"
                 android:textColor="@color/black" />
 
             <EditText
@@ -311,7 +309,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Locality *"
+                android:text="Locality"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -337,7 +335,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/dp_5"
-                android:text="Email ID *"
+                android:text="Email ID"
                 android:textColor="@color/black"
 
                 android:textSize="16sp" />
@@ -362,7 +360,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Street/Area *"
+                android:text="Street/Area"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -388,7 +386,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="District *"
+                android:text="District"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -416,7 +414,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mandal *"
+                android:text="Mandal"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -443,7 +441,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Town/Village *"
+                android:text="Town/Village"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -468,7 +466,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pincode *"
+                android:text="Pincode"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
                 android:textColor="@color/black" />
@@ -497,7 +495,7 @@
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
-                android:text="Activities interested *"
+                android:text="Activities interested"
                 android:textColor="@color/black" />
 
             <Spinner
@@ -523,7 +521,7 @@
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
-                android:text="Number of hours can be spared to red cross activities(per week) *"
+                android:text="Number of hours can be spared to red cross activities(per week)"
                 android:textColor="@color/black" />
 
             <EditText
@@ -546,10 +544,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Photo *"
+                android:text="Photo"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
-
                 android:textColor="@color/black" />
 
             <ImageView

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/member_Reg_edit_submit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FullName_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Full Name"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/FullName_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/FathersHusbandName_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Father's/Husband's Name"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/FathersHusbandName_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Gender_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/dp_5"
+                    android:text="Gender"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/male_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/female_rb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/DOB_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/dp_5"
+                    android:text="DOB"
+                    android:textColor="@color/black"
+
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/DOB_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:drawableRight="@drawable/calendar"
+                    android:focusable="false"
+                    android:hint="Enter Date Of Birth"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Age_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:padding="@dimen/dp_5"
+                    android:text="Age"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/Age_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Mob_num_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Mobile Number"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Mob_num_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:inputType="number"
+                    android:maxLength="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Email_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Email ID"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Email_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/blood_group_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/blood_groups"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+
+                <Spinner
+                    android:id="@+id/Education_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/Education"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Occupation_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Occupation"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Occupation_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/House_no_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter House No"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/House_no_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Locality_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Locality"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Locality_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Street_area_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Street/Area"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Street_area_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/District_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/District"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/Mandal_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/Mandal"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/Town_village_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/Town_Village"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Pincode_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Pincode"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Pincode_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:inputType="number"
+                    android:maxLength="6" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/Activities_interested_spin_res"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/Activities"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spared hours to red cross activities(per week)"
+                android:textColor="@color/pdlg_color_blue" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/No_of_hours_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of hours"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/No_of_hours_res"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="1234567890"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/Photo_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo" />
+
+            <ImageView
+                android:id="@+id/image_res"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="@dimen/dimen_100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cam" />
+
+            <Button
+                android:id="@+id/Next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_20dp"
+                android:text="Submit" />
+
+            <Button
+                android:id="@+id/preview_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preview"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

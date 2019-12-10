@@ -29,13 +29,12 @@
     </string-array>
     <string name="FormHeading">Application For Annual Member </string>
     <string-array name="Membership_type">
-        <item>Select Type of Membership</item>
+        <item>Select Type</item>
+        <item>Patron</item>
         <item>Vice Patron</item>
         <item>Life Member</item>
-        <item>Patron</item>
         <item>Life Associate</item>
         <item>Annual Member</item>
-        <item>Institutional Member</item>
         <item>Annual Associate</item>
     </string-array>
 

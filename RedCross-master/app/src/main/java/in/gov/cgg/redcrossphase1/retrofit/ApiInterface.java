@@ -18,6 +18,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
@@ -143,8 +144,7 @@ public interface ApiInterface {
     Call<List<MembershipVillagesResponse>> getVillagesForMemReg(@Path("mandalId") String mandID);
 
     @POST("saveMembershipMemberData")
-    Call<JsonObject> SendDetails(@Body JsonObject jsonBody);
-
+    Call<PaymentBean> SendDetails(@Body JsonObject jsonBody);
     @Multipart
     @POST("uploadPhotoMembAdd")
     Call<PhotoBean> SendPhoto(@Part MultipartBody.Part photoUpload);
@@ -177,6 +177,7 @@ public interface ApiInterface {
 
     @POST("saveHomeNursingDetails")
     Call<ResponseBody> saveHomeNursingDetails(@Body HomeNursingRequest req);
+
 }
 
 

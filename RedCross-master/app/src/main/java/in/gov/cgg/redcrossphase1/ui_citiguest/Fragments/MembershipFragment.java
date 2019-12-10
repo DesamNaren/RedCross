@@ -94,7 +94,8 @@ public class MembershipFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 SELECTEDtype = TypeSpinner.getSelectedItem().toString();
 
-                GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i + 1);
+                GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i);
+                Log.e("ID", "===" + GlobalDeclaration.Selection_MEMbership_type);
 
                 // GlobalDeclaration.Selection_MEMbership_type=callgetMembershipTypesList1.get(i).getId().toString();
             }

@@ -60,6 +60,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
@@ -78,11 +79,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     public static final String IMAGE_DIRECTORY_NAME = "RED_CROSS_IMAGE";
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 100;
     public Uri fileUri;
-    Button Preview, UploadPhoto, Edit, Next;
+    Button Preview, Edit, Next;
     LinearLayout memberRegistration_edit, memberRegistration_view;
     EditText Full_name, fatherHusbName, DOB, mob_num, email, occupation, house_no, locatlity, street, pincode, hours;
     RadioGroup rg;
-    EditText ageResult;
+    TextView ageResult;
     ImageView Photo;
     String PHOTOPATH = "";
     Spinner Bloodgroup, education, district, mandal, village, activities;
@@ -109,6 +110,8 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     private List<MemberActivitiesResponse> MembersipActivityResponseList = new ArrayList<>();
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
+
+
     Bitmap bm;
     String Image_name;
     //CONVERT IMAGE TO BASE 64 CODE
@@ -154,7 +157,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         mandal = findViewById(R.id.Mandal_spin_res);
         village = findViewById(R.id.Town_village_spin_res);
         activities = findViewById(R.id.Activities_interested_spin_res);
-        UploadPhoto = findViewById(R.id.choose_bt);
+
         Preview = findViewById(R.id.preview_bt);
 
         //IDS of View Form
@@ -238,14 +241,22 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PhotoUpload(bm);
+                EMailResult = email.getText().toString().trim();
+                if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
+                    if (validateFields()) {
+                        PhotoUpload(bm);
+                    } else {
+
+                    }
+                }
+
                 //callSetMembershipDetails();
             }
         });
 
 
         //Photo selection code
-        UploadPhoto.setOnClickListener(new View.OnClickListener() {
+        Photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -345,7 +356,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, month);
                 c.set(Calendar.DAY_OF_MONTH, day);
-                String format = new SimpleDateFormat("dd MMM YYYY").format(c.getTime());
+                String format = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
                 DOB.setText(format);
                 ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
             }
@@ -608,38 +619,47 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         try {
 
             object.put("membershipType", GlobalDeclaration.Selection_MEMbership_type);
-            object.put("studentName", Full_name_View.getText().toString());
-            object.put("fatherName", fatherHusbName_View.getText().toString());
-            object.put("gender", Gender_View.getText().toString());
-            object.put("dateOfBirth", DOB_View.getText().toString());
-            object.put("studentContactNumber", mob_num_View.getText().toString());
-            object.put("email", email_View.getText().toString());
-            object.put("bloodGroup", BloodGroup_View.getText().toString());
-            object.put("className", Education_View.getText().toString());
-            object.put("occupation", occupation_View.getText().toString());
-            object.put("houseNo", house_no_View.getText().toString());
-            object.put("locality", locatlity_View.getText().toString());
-            object.put("streetArea", street_View.getText().toString());
-            object.put("districts", distId);
-            object.put("mandals", manId);
-            object.put("village", villageID);
-            object.put("pincode", pincode_View.getText().toString());
-            object.put("activities", activityID);
-            object.put("noOfHours", hours_View.getText().toString());
+            object.put("studentName", Full_name.getText().toString().trim());
+            object.put("fatherName", fatherHusbName.getText().toString().trim());
+            object.put("gender", Selected_gender);
+            object.put("dateOfBirth", DOB.getText().toString().trim());
+            object.put("studentContactNumber", mob_num.getText().toString());
+            object.put("email", email.getText().toString());
+            object.put("bloodGroup", Bloodgroup.getSelectedItem().toString().trim());
+            object.put("className", education.getSelectedItem().toString().trim());
+            object.put("occupation", occupation.getText().toString());
+            object.put("houseNo", house_no.getText().toString());
+            object.put("locality", locatlity.getText().toString());
+            object.put("streetArea", street.getText().toString());
+            object.put("districts", Integer.toString(distId));
+            object.put("mandals", Integer.toString(manId));
+            object.put("village", Integer.toString(villageID));
+            object.put("pincode", pincode.getText().toString());
+            object.put("activities", Integer.toString(activityID));
+            object.put("noOfHours", hours.getText().toString());
             object.put("photoPath", PHOTOPATH);
+            object.put("requestType", "mobile");
 
             JsonParser jsonParser = new JsonParser();
             gsonObject = (JsonObject) jsonParser.parse(object.toString());
             Log.e("sent_json", object.toString());
 
-            Call<JsonObject> call = apiInterface.SendDetails(gsonObject);
-            call.enqueue(new Callback<JsonObject>() {
+            Call<PaymentBean> call = apiInterface.SendDetails(gsonObject);
+            call.enqueue(new Callback<PaymentBean>() {
                 @Override
-                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                public void onResponse(Call<PaymentBean> call, Response<PaymentBean> response) {
 
                     progressDialog.dismiss();
                     if (response.body() != null) {
-                        Toast.makeText(MembershipRegFormActivity.this, "Sucessfully Submitted", Toast.LENGTH_LONG).show();
+
+                        GlobalDeclaration.Paymenturl = response.body().getPaymentGatewayUrl();
+                        Toast.makeText(MembershipRegFormActivity.this, response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
+                        //GlobalDeclaration.encrpyt=response.body().getPaymentRequest().replace("|","!");
+                        GlobalDeclaration.encrpyt = response.body().getPaymentRequest();
+
+                        Log.d("responseurl", "onResponse: url" + response.body().getPaymentRequest());
+
+
                         Intent i = new Intent(MembershipRegFormActivity.this, WebViewPaymentActivity.class);
                         startActivity(i);
                         /*Log.e("Response","====="+response.toString());
@@ -661,12 +681,14 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                         dialog.show();*/
 
 
+                    } else {
+                        Toast.makeText(MembershipRegFormActivity.this, "else", Toast.LENGTH_SHORT).show();
                     }
 
                 }
 
                 @Override
-                public void onFailure(Call<JsonObject> call, Throwable t) {
+                public void onFailure(Call<PaymentBean> call, Throwable t) {
                     progressDialog.dismiss();
                     Toast.makeText(MembershipRegFormActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
                 }
@@ -853,6 +875,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     public Uri getOutputMediaFileUri(int type) {
 
         imageFile = getOutputMediaFile(type);
+        /*Uri imageUri = FileProvider.getUriForFile(
+                MembershipRegFormActivity.this,
+                "in.gov.cgg.redcrossphase1.ui_citiguest.provider", //(use your app signature + ".provider" )
+                imageFile);
+        return imageUri;*/
         Uri imageUri = FileProvider.getUriForFile(
                 MembershipRegFormActivity.this,//(use your app signature + ".provider" )
                 BuildConfig.APPLICATION_ID + ".fileprovider",

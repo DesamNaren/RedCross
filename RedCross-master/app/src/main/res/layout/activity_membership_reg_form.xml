@@ -48,7 +48,11 @@
 
             <include
                 android:id="@+id/memberRegistration_edit"
-                layout="@layout/member_registration_edit"></include>
+                layout="@layout/member_reg_submit"></include>
+
+            <!--<include
+                android:id="@+id/member_Reg_edit_submit"
+                layout="@layout/member_reg_submit"></include>-->
 
             <include
                 android:id="@+id/memberRegistration_view"

@@ -3,6 +3,7 @@ package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 
 public class WebViewPaymentActivity extends AppCompatActivity {
@@ -56,14 +58,31 @@ public class WebViewPaymentActivity extends AppCompatActivity {
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                super.onReceivedError(view, request, error);
+                // super.onReceivedError(view, request, error);
                 //setProgressBarVisibility(View.GONE);
             }
         });
+        //String value = "IRCSTS!67766777!NA!1.00!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9999999999!Test Name!11-11-1990!11-11-2019!JRC2019112!txtadditional6!txtadditional7!https://10.2.9.85:2019/redcross/getPaymentResponse";
+        Log.e("encrpyt", "..................." + GlobalDeclaration.encrpyt);
+        GlobalDeclaration.encrpyt = GlobalDeclaration.encrpyt.replace("|", "!");
+        Log.e("encrpyt", "..................." + GlobalDeclaration.encrpyt);
+
+
+        String value = GlobalDeclaration.encrpyt;
+
+
+        //  String url = "http://uat2.cgg.gov.in:8081/redcrosspayment/proceedMob?msg=" + URLEncoder.encode(value, "UTF-8");
+        String url = GlobalDeclaration.Paymenturl + "?msg=" + value;
+        Log.e("URLweb ", "==========    " + url);
+
+
+        //mWebView.loadUrl(url);
+
+        String postData = null;
         try {
-            String value = "IRCSTS!67766777!NA!1.00!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9999999999!Test Name!11-11-1990!11-11-2019!JRC2019112!txtadditional6!txtadditional7!https://10.2.9.85:2019/redcross/getPaymentResponse";
-            String url = "http://uat2.cgg.gov.in:8081/redcrosspayment/proceedMob?msg=" + URLEncoder.encode(value, "UTF-8");
-            mWebView.loadUrl(url);
+            GlobalDeclaration.encrpyt = "IRCSTS!7475!NA!1!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9885588887!bcbcbcb!10-12-2019!10-12-2019!AAE20197475!NA!NA!http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse";
+            postData = "msg=" + URLEncoder.encode(GlobalDeclaration.encrpyt, "UTF-8");
+            mWebView.postUrl(GlobalDeclaration.Paymenturl, postData.getBytes());
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
