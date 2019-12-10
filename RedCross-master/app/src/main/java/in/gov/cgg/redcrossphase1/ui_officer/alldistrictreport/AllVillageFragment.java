@@ -34,6 +34,7 @@ import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
@@ -223,11 +224,17 @@ public class AllVillageFragment extends Fragment {
 
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
-                    Fragment frag = new AllMandalsFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
-                            frag).addToBackStack(null).commit();
-                    return true;
-
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        Fragment frag = new AllMandalsFragment();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                                frag).addToBackStack(null).commit();
+                        return true;
+                    } else {
+                        Fragment frag = new NewOfficerHomeFragment();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                                frag).addToBackStack(null).commit();
+                        return true;
+                    }
                 }
                 return false;
             }

@@ -79,7 +79,11 @@ public class NewOfficerHomeFragment extends Fragment {
 
 
         getActivity().setTitle("Dashboard");
-        setupViewPagerAll(binding.viewpagerHome);
+        if (GlobalDeclaration.role.contains("D")) {
+            setupViewPagerAll(binding.viewpagerHome, "Mandals");
+        } else {
+            setupViewPagerAll(binding.viewpagerHome, "Districts");
+        }
         binding.tabsHome.setupWithViewPager(binding.viewpagerHome);
 
         districtViewModel =
@@ -632,8 +636,11 @@ public class NewOfficerHomeFragment extends Fragment {
                 if (CheckInternet.isOnline(getActivity())) {
                     {
 
-                        setupViewPagerAll(binding.viewpagerHome);
-
+                        if (GlobalDeclaration.role.contains("D")) {
+                            setupViewPagerAll(binding.viewpagerHome, "Mandals");
+                        } else {
+                            setupViewPagerAll(binding.viewpagerHome, "Districts");
+                        }
                         binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
                         binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
                         binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
@@ -788,9 +795,10 @@ public class NewOfficerHomeFragment extends Fragment {
         //pager.setCurrentItem(0);
     }
 
-    private void setupViewPagerAll(ViewPager viewPager_homer) {
+
+    private void setupViewPagerAll(ViewPager viewPager_homer, String mandals) {
         adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
+        adapter.addFragment(new NewAllDistrictsFragment(), mandals, type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
         adapter.addFragment(new GovtPvtFragment(), "Govt vs Pvt", type);
