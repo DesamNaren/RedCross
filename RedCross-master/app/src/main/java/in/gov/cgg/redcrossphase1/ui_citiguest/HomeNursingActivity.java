@@ -25,7 +25,6 @@ import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -53,6 +52,7 @@ import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -379,27 +379,26 @@ public class HomeNursingActivity extends AppCompatActivity {
         request.setPrevWorkYears("" + binding.homenursingRegLayout.etNoofpreviousExperians.getText());
         //request.setPhotoPath("f1Hn2YbtKEAaGjjN_9Dec2019175839GMT_1575914319596.PNG");
         request.setPhotoPath("" + PHOTOPATH);
-        Call<JsonObject> call = apiInterface.saveHomeNursingDetails(request);
+        Call<ResponseBody> call = apiInterface.saveHomeNursingDetails(request);
 
         Gson gson = new Gson();
         String json = gson.toJson(request);
         Log.d("Donor", "================: " + json);
 
-        call.enqueue(new Callback<JsonObject>() {
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 progressDialog.dismiss();
                 if (response.body() != null) {
-                    if (response.body().get("SaveStatus").toString().equalsIgnoreCase("Success")) {
+                    if (response.isSuccessful()) {
                         Intent i = new Intent(HomeNursingActivity.this, CitiGuestMainActivity.class);
                         startActivity(i);
                     }
-
                 }
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 progressDialog.dismiss();
                 Toast.makeText(HomeNursingActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
             }

@@ -30,6 +30,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtVsPvtResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.DistrictResponse;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -175,7 +176,7 @@ public interface ApiInterface {
     Call<ArrayList<BloodDonorResponse>> getBloodDonorsResponse();
 
     @POST("saveHomeNursingDetails")
-    Call<JsonObject> saveHomeNursingDetails(@Body HomeNursingRequest req);
+    Call<ResponseBody> saveHomeNursingDetails(@Body HomeNursingRequest req);
 }
 
 
