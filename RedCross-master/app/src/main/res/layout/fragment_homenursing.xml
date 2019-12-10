@@ -16,6 +16,14 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <Button
+                    android:id="@+id/switchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/tab_background_selected"
+                    android:text="Home Nursing Registration"
+                    android:textColor="@color/white" />
                 <include
                     android:id="@+id/homenursing_reg_layout"
                     layout="@layout/homenursing_reg_layout"

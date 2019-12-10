@@ -24,8 +24,6 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -566,105 +564,53 @@ public class BlooddonorRegistrationFragment extends Fragment {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
 
-        try {
-            request = new CitizenDonarRequest();
-            request.setName(name);
-            request.setFatherName(fratherName);
-            request.setDateOfBirth(URLEncoder.encode(dob, "UTF-8"));
-            request.setGender(mGenderId);
-            request.setEducation(mEducationId);
-            request.setOccupation(occupation);
-            request.setMarried(mMarriedId);
-            request.setPhoneNo(mobileNumber);
-            request.setEmail(URLEncoder.encode(email, "UTF-8"));
-            request.setOffice(officeName);
-            request.setAddress(address);
-            request.setDistricts("" + distId);
-            request.setMandals("" + manId);
-            request.setVillage("" + villageID);
-            request.setPincode(pincode);
-            request.setBloodGroup(URLEncoder.encode(mBloodGroupId, "UTF-8"));
-            request.setDonateType(donationType);
-            request.setPrevDonationDate(URLEncoder.encode(previoslydonatedDate, "UTF-8"));
-            request.setWillingToDonateYearly(WillingBldDonateStatus);
-            request.setNoOfPrevDonations(noofpreviousDonations);
+        request = new CitizenDonarRequest();
+        request.setName(name);
+        request.setFatherName(fratherName);
+        request.setDateOfBirth(dob);
+        request.setGender(mGenderId);
+        request.setEducation(mEducationId);
+        request.setOccupation(occupation);
+        request.setMarried(mMarriedId);
+        request.setPhoneNo(mobileNumber);
+        request.setEmail(email);
+        request.setOffice(officeName);
+        request.setAddress(address);
+        request.setDistricts("" + distId);
+        request.setMandals("" + manId);
+        request.setVillage("" + villageID);
+        request.setPincode(pincode);
+        request.setBloodGroup(mBloodGroupId);
+        request.setDonateType(donationType);
+        request.setPrevDonationDate(previoslydonatedDate);
+        request.setWillingToDonateYearly(WillingBldDonateStatus);
+        request.setNoOfPrevDonations(noofpreviousDonations);
+        Gson gson = new Gson();
+        String json = gson.toJson(request);
+        Call<DonorregResponse> call = apiInterface.callCitizendonorRegistration(request);
 
 
-            Gson gson = new Gson();
-            String re = gson.toJson(request);
+        Log.d("Login", "callcitizenLoginRequest: " + call.request().url());
 
+        call.enqueue(new Callback<DonorregResponse>() {
+            @Override
+            public void onResponse(Call<DonorregResponse> call, Response<DonorregResponse> response) {
+                progressDialog.dismiss();
 
-            Log.e("request", re);
-
-            Call<DonorregResponse> call = apiInterface.callCitizendonorRegistration(request);
-
-            Log.d("request value", "callcitizenLoginRequest: " + request.toString());
-            Log.d("Login", "callcitizenLoginRequest: " + call.request().url());
-
-            call.enqueue(new Callback<DonorregResponse>() {
-                @Override
-                public void onResponse(Call<DonorregResponse> call, Response<DonorregResponse> response) {
-                    progressDialog.dismiss();
-
-                    if (response.body() != null) {
-                        Log.d("Donor", "onResponse:================= " + response.body().toString());
-                        Log.d("Donor", "===================: " + response.body().getSaveStatus());
-                        Log.d("Donor", "===================: " + response.body().getBloodDonorForm().getBloodGroup());
-                        if (response.body().getSaveStatus().equalsIgnoreCase("Success")) {
-                            Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
-                            startActivity(i);
-                        }
+                if (response.body() != null) {
+                    if (response.body().getSaveStatus().equalsIgnoreCase("Success")) {
+                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
+                        startActivity(i);
                     }
                 }
+            }
 
-                @Override
-                public void onFailure(Call<DonorregResponse> call, Throwable t) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getActivity(), "Error occured", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-
-//        JSONObject object = new JSONObject();
-//        try {
-//            object.put("name", name);
-//            object.put("fatherName", "s");
-//            object.put("dateOfBirth", name);
-//            object.put("gender", "s");
-//            object.put("userName", name);
-//            object.put("education", "s");
-//            object.put("userName", name);
-//            object.put("occupation", "s");
-//            object.put("userName", name);
-//            object.put("married", "s");
-//            object.put("userName", name);
-//            object.put("phoneNo", "pathi.p@cgg.gov.in");
-//            object.put("userName", name);
-//            object.put("email", "pathi.p@cgg.gov.in");
-//            object.put("userName", name);
-//            object.put("office", "hghtyj");
-//            object.put("userName", "hghtyj");
-//            object.put("address", "hghtyj");
-//            object.put("districts", "28");
-//            object.put("mandals", "509");
-//            object.put("village", "9217");
-//            object.put("pincode", "123456");
-//            object.put("bloodGroup", "O +ve");
-//            object.put("donateType", "Voluntary");
-//            object.put("prevDonationDate", "09/04/2019");
-//            object.put("willingToDonateYearly", "true");
-//            object.put("noOfPrevDonations", "1");
-//
-//            JsonParser jsonParser = new JsonParser();
-//            jsonObject = (JsonObject) jsonParser.parse(object.toString());
-//            Log.e("sent_json", object.toString());
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-
+            @Override
+            public void onFailure(Call<DonorregResponse> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "Error occured", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

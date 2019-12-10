@@ -589,7 +589,9 @@
                     android:id="@+id/btn_donorRegNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Next" />
+                    android:background="@drawable/tab_background_selected"
+                    android:text="Submit"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
 </LinearLayout>

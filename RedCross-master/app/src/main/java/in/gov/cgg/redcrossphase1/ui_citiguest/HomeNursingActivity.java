@@ -24,16 +24,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursingBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -51,7 +53,6 @@ import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -291,13 +292,13 @@ public class HomeNursingActivity extends AppCompatActivity {
     public Uri getOutputMediaFileUri(int type) {
 
         imageFile = getOutputMediaFile(type);
-        Uri imageUri = FileProvider.getUriForFile(HomeNursingActivity.this, "in.gov.cgg.redcrossphase1.ui_citiguest.provider", //(use your app signature + ".provider" )
+        Uri imageUri = FileProvider.getUriForFile(HomeNursingActivity.this, BuildConfig.APPLICATION_ID + ".fileprovider", //(use your app signature + ".provider" )
                 imageFile);
         return imageUri;
     }
 
     private void PhotoUpload(Bitmap bmp) {
-
+        //saveHomeNursingDetails();
 
         if (bmp == null) {
             Toast.makeText(HomeNursingActivity.this, "Image can't be empty", Toast.LENGTH_SHORT).show();
@@ -314,8 +315,9 @@ public class HomeNursingActivity extends AppCompatActivity {
 
 
             if (CheckInternet.isOnline(HomeNursingActivity.this)) {
-                //updateLocationPresenter.UploadImageServiceCall(body);
+
                 calluploadPhotoMembAdd(PhotoBody);
+
             } else {
                 Toast.makeText(HomeNursingActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
@@ -360,47 +362,48 @@ public class HomeNursingActivity extends AppCompatActivity {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
 
-        try {
-            request = new HomeNursingRequest();
-            request.setName("" + binding.homenursingRegLayout.etName);
-            request.setFatherName("" + binding.homenursingRegLayout.etFathersName);
-            request.setDateOfBirth(URLEncoder.encode("" + binding.homenursingRegLayout.datePickerDateofBirth, "UTF-8"));
-            request.setEducation(mEducationId);
-            request.setMarried(mMarriedId);
-            request.setPhoneNo("" + binding.homenursingRegLayout.etMobileNumber);
-            request.setEmail(URLEncoder.encode("" + binding.homenursingRegLayout.etEmail, "UTF-8"));
-            request.setInstituteName("" + binding.homenursingRegLayout.etInstitute);
-            request.setAddress("" + binding.homenursingRegLayout.etAdress);
-            request.setDistricts("" + distId);
-            request.setMandals("" + manId);
-            request.setVillage("" + villageID);
-            request.setPincode("" + binding.homenursingRegLayout.etPincode);
-            request.setPrevWorkYears(URLEncoder.encode("" + binding.homenursingRegLayout.etNoofpreviousExperians, "UTF-8"));
-            request.setPhotoPath("" + URLEncoder.encode(PHOTOPATH, "UTF-8"));
-            Call<ResponseBody> call = apiInterface.saveHomeNursingDetails(request);
+        request = new HomeNursingRequest();
+        request.setName("" + binding.homenursingRegLayout.etName.getText());
+        request.setFatherName("" + binding.homenursingRegLayout.etFathersName.getText());
+        request.setDateOfBirth("" + binding.homenursingRegLayout.datePickerDateofBirth.getText());
+        request.setEducation(mEducationId);
+        request.setMarried(mMarriedId);
+        request.setPhoneNo("" + binding.homenursingRegLayout.etMobileNumber.getText());
+        request.setEmail("" + binding.homenursingRegLayout.etEmail.getText());
+        request.setInstituteName("" + binding.homenursingRegLayout.etInstitute.getText());
+        request.setAddress("" + binding.homenursingRegLayout.etAdress.getText());
+        request.setDistricts("" + distId);
+        request.setMandals("" + manId);
+        request.setVillage("" + villageID);
+        request.setPincode("" + binding.homenursingRegLayout.etPincode.getText());
+        request.setPrevWorkYears("" + binding.homenursingRegLayout.etNoofpreviousExperians.getText());
+        //request.setPhotoPath("f1Hn2YbtKEAaGjjN_9Dec2019175839GMT_1575914319596.PNG");
+        request.setPhotoPath("" + PHOTOPATH);
+        Call<JsonObject> call = apiInterface.saveHomeNursingDetails(request);
 
-            Log.d("request value", "callcitizenLoginRequest: " + request.toString());
-            Log.d("Login", "callcitizenLoginRequest: " + call.request().url());
+        Gson gson = new Gson();
+        String json = gson.toJson(request);
+        Log.d("Donor", "================: " + json);
 
-            call.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    progressDialog.dismiss();
-                    if (response.body() != null) {
-                        Log.d("Donor", "onResponse:================= " + response.body().toString());
-
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                progressDialog.dismiss();
+                if (response.body() != null) {
+                    if (response.body().get("SaveStatus").toString().equalsIgnoreCase("Success")) {
+                        Intent i = new Intent(HomeNursingActivity.this, CitiGuestMainActivity.class);
+                        startActivity(i);
                     }
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    progressDialog.dismiss();
-                    Toast.makeText(HomeNursingActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
                 }
-            });
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(HomeNursingActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
