@@ -5,8 +5,11 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.DistrictBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.DonorregResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
@@ -141,6 +144,14 @@ public interface ApiInterface {
     @POST("uploadPhotoMembAdd")
     Call<PhotoBean> SendPhoto(@Part MultipartBody.Part photoUpload);
 
+    @GET("getdistrictsBasedOnStateId/1")
+    Call<List<DistrictBean>> getDistrict(@Path("stateId") String stateId);
+
+    //    @POST("saveBloodDonorData")
+//    Call<JsonObject> callCitizendonorRegistration(@Body JsonObject jsonBody);
+
+    @POST("saveBloodDonorData")
+    Call<DonorregResponse> callCitizendonorRegistration(@Body CitizenDonarRequest req);
 
     @GET("getFullDrillDownDataWs")
     Call<DrillDownResponse> getFullDrillDownDataWsFilter(@Query("enrollmentType") String enrollmentType,

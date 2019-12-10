@@ -28,6 +28,7 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.Contactus_adaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
@@ -39,6 +40,8 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
     private FragmentActivity c;
     LinearLayout ll_contactUs;
     Button btn_sateCordinators, btn_districtCordinators;
+    CustomProgressDialog progressDialog;
+
 
     int selectedThemeColor = -1;
 
@@ -144,6 +147,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
 
         return root;
     }
+
 
     private void prepareStateCordinatorsData() {
         ContactusDetails_Bean detail26 = new ContactusDetails_Bean("", "P. Vijaya Kumar Babu,\n" +

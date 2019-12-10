@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--    <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_10"
-            app:cardCornerRadius="@dimen/dp_5">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--    <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                app:cardCornerRadius="@dimen/dp_5">-->
 
         <LinearLayout
             android:id="@+id/ll_registrationForm"
@@ -66,6 +68,7 @@
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,10 +91,10 @@
                     <EditText
                         android:id="@+id/datePicker_dateofBirth"
                         android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="@dimen/dp_5"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext_bg"
+                        android:layout_height="40dp"
+                        android:layout_margin="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:background="@drawable/edittext_bg"
                         android:hint="Select Date"
                         android:paddingLeft="@dimen/dp_5"
                         android:textColor="@color/black" />
@@ -108,36 +111,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Gender"
-                    android:textColor="@color/black" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spn_gender"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_40"
-                        android:layout_margin="@dimen/dp_5"
-                        android:background="@drawable/edittext_bg"
-                        android:entries="@array/Gender"
-                        android:paddingLeft="@dimen/dp_5"
-                        android:textColor="@color/black" />
-                </LinearLayout>
-
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -165,30 +138,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Occupation"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/et_occupation"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_margin="@dimen/dp_5"
-                    android:background="@drawable/edittext_bg"
-                    android:hint="Occupation"
-                    android:paddingLeft="@dimen/dp_5"
-                    android:textColor="@color/black" />
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -244,6 +194,7 @@
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -282,16 +233,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="Office Name "
+                    android:text="Institute Name "
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/et_office"
+                    android:id="@+id/et_Institute"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
                     android:background="@drawable/edittext_bg"
-                    android:hint="Office Name"
+                    android:hint="Institute Name"
                     android:paddingLeft="@dimen/dp_5"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -395,6 +346,7 @@
 
                 </Spinner>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -431,143 +383,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Blood Group"
-                    android:textColor="@color/black" />
-                <Spinner
-                    android:id="@+id/spn_bloodgroups"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:entries="@array/blood_groups">
-
-                </Spinner>
-
-
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:text="Donation Type"
-                    android:textColor="@color/black" />
-
-                    <EditText
-                        android:id="@+id/et_donatetype"
-                    android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                    android:layout_margin="@dimen/dp_5"
-                        android:layout_weight="1"
-                    android:background="@drawable/edittext_bg"
-                        android:hint="Donation type"
-                    android:paddingLeft="@dimen/dp_5"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Previously donattion Date"
-                    android:textColor="@color/black" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-
-                    <EditText
-                        android:id="@+id/et_previouslyDonationDate"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_margin="@dimen/dp_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_bg"
-                        android:hint="Select Date"
-                        android:paddingLeft="@dimen/dp_5"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:id="@+id/iv_previouslyDonationDate"
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_20"
-                        android:layout_marginTop="@dimen/dp_20"
-                        android:paddingLeft="@dimen/dp_5"
-                        android:paddingRight="@dimen/dp_5"
-                        android:src="@drawable/downarrow" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Willing to donate blood"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup_willingtodonateblood"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-
-
-
-                        <RadioButton
-                            android:id="@+id/radioButton1True"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:text="Yes" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton2False"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:text="No" />
-                </RadioGroup>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Number of previous donations"
+                    android:text="Number of previous Experiance"
                     android:textColor="@color/black" />
 
                 <EditText
-                    android:id="@+id/et_noofpreviousDonations"
+                    android:id="@+id/et_noofpreviousExperians"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="@dimen/dp_5"
@@ -586,10 +408,11 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_donorRegNext"
+                    android:id="@+id/btn_homeNursingRegNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Next" />
+                    android:text="Submit" />
             </LinearLayout>
         </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</layout>
