@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +44,6 @@ public class LocateAdapter extends RecyclerView.Adapter<LocateAdapter.MyHolder> 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Click on Marker for more details", Toast.LENGTH_SHORT).show();
                 ((LocateActivity) context).onClickCalled(locateResponses.get(position));
             }
         });
