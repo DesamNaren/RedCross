@@ -137,11 +137,11 @@ public class DistrictViewModel extends ViewModel {
 
     public LiveData<DashboardCountResponse> getDashboardCounts(String type, String userid, String districtId) {
 
-        //if (dashboardCountResponseMutableLiveData == null) {
-        dashboardCountResponseMutableLiveData = new MutableLiveData<>();
+        if (dashboardCountResponseMutableLiveData == null) {
+            dashboardCountResponseMutableLiveData = new MutableLiveData<>();
 
-        loadDashboardCounts(type, userid, districtId);
-        //}
+            loadDashboardCounts(type, userid, districtId);
+        }
         return dashboardCountResponseMutableLiveData;
 
     }

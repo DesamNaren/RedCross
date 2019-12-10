@@ -78,6 +78,7 @@ public class NewOfficerHomeFragment extends Fragment {
                 inflater, R.layout.fragemt_home_officer_new, container, false);
 
 
+        getActivity().setTitle("Dashboard");
         setupViewPagerAll(binding.viewpagerHome);
         binding.tabsHome.setupWithViewPager(binding.viewpagerHome);
 
@@ -94,7 +95,7 @@ public class NewOfficerHomeFragment extends Fragment {
 
 
         GlobalDeclaration.home = true;
-//        GlobalDeclaration.Selection_type = "JRC";
+        GlobalDeclaration.Selection_type = "JRC";
         reload();
 
 
@@ -242,7 +243,7 @@ public class NewOfficerHomeFragment extends Fragment {
         });
 */
 
-        districtViewModel.getDashboardCounts("JRC", GlobalDeclaration.userID, GlobalDeclaration.districtId)
+        districtViewModel.getDashboardCounts("", GlobalDeclaration.userID, GlobalDeclaration.districtId)
                 .observe(Objects.requireNonNull(getActivity()), new Observer<DashboardCountResponse>() {
 
                     @Override
@@ -391,7 +392,7 @@ public class NewOfficerHomeFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
                     {
-                        setupViewPagerOther(binding.viewpagerHome);
+                        setupViewPagerYRC(binding.viewpagerHome);
 
                         binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
                         binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
@@ -511,7 +512,7 @@ public class NewOfficerHomeFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
                     {
-                        setupViewPagerOther(binding.viewpagerHome);
+                        setupViewPagermMembeship(binding.viewpagerHome);
 
                         binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
                         binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
@@ -792,18 +793,18 @@ public class NewOfficerHomeFragment extends Fragment {
         adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
-        adapter.addFragment(new GovtPvtFragment(), "GovtVsPvt", type);
+        adapter.addFragment(new GovtPvtFragment(), "Govt vs Pvt", type);
         viewPager_homer.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         binding.viewpagerHome.invalidate();
     }
 
-    private void setupViewPagerOther(ViewPager viewPager_homer) {
+    private void setupViewPagerYRC(ViewPager viewPager_homer) {
         adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
         // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
-        adapter.addFragment(new GovtPvtFragment(), "GovtVsPvt", type);
+        adapter.addFragment(new GovtPvtFragment(), "Govt vs Pvt", type);
         viewPager_homer.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         binding.viewpagerHome.invalidate();
@@ -815,6 +816,17 @@ public class NewOfficerHomeFragment extends Fragment {
         adapter.addFragment(new OnlyGenderwiseFragment(), "Gender", type);
         adapter.addFragment(new AgewiseFragment(), "Age", type);
         adapter.addFragment(new GovtPvtFragment(), "GovtVsPvt", type);
+        viewPager_homer.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        binding.viewpagerHome.invalidate();
+    }
+
+    private void setupViewPagermMembeship(ViewPager viewPager_homer) {
+        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
+        adapter.addFragment(new OnlyGenderwiseFragment(), "Gender", type);
+        adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
+        adapter.addFragment(new AgewiseFragment(), "Age", type);
         viewPager_homer.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         binding.viewpagerHome.invalidate();

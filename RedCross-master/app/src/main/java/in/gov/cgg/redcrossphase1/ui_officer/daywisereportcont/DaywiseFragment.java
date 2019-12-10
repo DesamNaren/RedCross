@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -54,6 +56,7 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
+import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
 
 public class DaywiseFragment extends Fragment {
@@ -61,8 +64,11 @@ public class DaywiseFragment extends Fragment {
     int selectedThemeColor = -1;
     private DaywiseViewModel daywiseViewModel;
     private FragmentDaywiseBinding binding;
-    String spn_year, spn_month;
+    String spn_year;
+    int spn_month;
+    String newspn_month;
     int i = 0;
+    int selectionPosition;
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -163,7 +169,7 @@ public class DaywiseFragment extends Fragment {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spnMonth.setAdapter(dataAdapter);
 
-        int selectionPosition = dataAdapter.getPosition(month);
+        selectionPosition = dataAdapter.getPosition(month);
         binding.spnMonth.setSelection(selectionPosition);
 
         binding.spnFinancialyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -176,7 +182,7 @@ public class DaywiseFragment extends Fragment {
                         binding.rvDaywiselist.setVisibility(View.GONE);
 
                     } else {
-                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, newspn_month).
                                 observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
                                     @Override
                                     public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
@@ -192,7 +198,7 @@ public class DaywiseFragment extends Fragment {
                     if (binding.spnMonth.getSelectedItem().toString().contains("Select")) {
                         Toast.makeText(getActivity(), "Please select Month", Toast.LENGTH_SHORT).show();
                     } else {
-                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                        daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, newspn_month).
                                 observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
                                     @Override
                                     public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
@@ -257,12 +263,15 @@ public class DaywiseFragment extends Fragment {
 //                    binding.rvDaywiselist.setVisibility(View.GONE);
 //
 //                }
-                spn_month = String.valueOf(binding.spnMonth.getSelectedItemPosition() + 1);
-                Log.e("position............", "Month Id:" + spn_month);
+                spn_month = (binding.spnMonth.getSelectedItemPosition() + 1);
+                newspn_month = String.format("%02d", spn_month);
+                Log.e("position............", "Month Id:" + newspn_month);
+
+
 
                 if (!spn_year.equalsIgnoreCase("")) {
 
-                    daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, spn_month).
+                    daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, newspn_month).
                             observe(getActivity(), new Observer<List<DayWiseReportCountResponse>>() {
                                 @Override
                                 public void onChanged(@Nullable List<DayWiseReportCountResponse> alldaywisecounts) {
@@ -468,7 +477,7 @@ public class DaywiseFragment extends Fragment {
     private void setDataforRV(List<DayWiseReportCountResponse> daywisecount) {
 
         //int r= sortDatesHere();
-        if (daywisecount.size() > 0) {
+        if (daywisecount.size() > 1) {
             binding.chartDaywise.setVisibility(View.VISIBLE);
             binding.btnFlip.setVisibility(View.VISIBLE);
             binding.tvNodata.setVisibility(View.GONE);
@@ -555,5 +564,30 @@ public class DaywiseFragment extends Fragment {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    //Pressed return button - returns to the results menu
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(getView()).setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentActivity activity = (FragmentActivity) v.getContext();
+                    if (!GlobalDeclaration.role.contains("D")) {
+                        Fragment frag = new NewOfficerHomeFragment();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                                frag).addToBackStack(null).commit();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 }

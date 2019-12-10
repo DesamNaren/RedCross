@@ -41,7 +41,7 @@ public class AllVillageFragment extends Fragment {
 
 
     CustomProgressDialog pd;
-    String value;
+    int value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
     private LevelAdapter adapter1;
@@ -62,8 +62,8 @@ public class AllVillageFragment extends Fragment {
 
         if (GlobalDeclaration.leveMName != null) {
             binding.cvName.setVisibility(View.VISIBLE);
-            binding.tvlevelname.setText(GlobalDeclaration.leveDName);
-            binding.tvmname.setText(GlobalDeclaration.leveMName);
+            binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
+            binding.tvmname.setText("Mndl: " + GlobalDeclaration.leveMName);
         } else {
             binding.cvName.setVisibility(View.GONE);
         }
@@ -138,9 +138,9 @@ public class AllVillageFragment extends Fragment {
         Objects.requireNonNull(getActivity()).setTitle("Village wise");
 
         if (getArguments() != null) {
-            value = getArguments().getString("mid");
+            value = getArguments().getInt("mid");
         } else {
-            value = String.valueOf(GlobalDeclaration.localMid);
+            value = GlobalDeclaration.localMid;
         }
 
         allDistrictsViewModel.getAllVillages("VillageWise", "3", value).

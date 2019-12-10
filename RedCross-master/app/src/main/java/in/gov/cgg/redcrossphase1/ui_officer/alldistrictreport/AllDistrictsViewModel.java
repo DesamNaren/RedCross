@@ -14,7 +14,7 @@ import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
+
 
 public class AllDistrictsViewModel extends ViewModel {
 
@@ -22,7 +22,6 @@ public class AllDistrictsViewModel extends ViewModel {
     Context context;
     //ProgressDialog pd;
     private MutableLiveData<List<StatelevelDistrictViewCountResponse>> alListMutableLiveData;
-
 
 
     public AllDistrictsViewModel(Context application) {
@@ -36,14 +35,14 @@ public class AllDistrictsViewModel extends ViewModel {
 
     public LiveData<List<StatelevelDistrictViewCountResponse>> getAllDistrcts(String level, String fyid) {
 
-        // if (genderResponseMutableLiveData == null) {
-        alListMutableLiveData = new MutableLiveData<>();
-        loadAllDistricts(level, fyid);
-        //}
+        if (alListMutableLiveData == null) {
+            alListMutableLiveData = new MutableLiveData<>();
+            loadAllDistricts(level, fyid);
+        }
         return alListMutableLiveData;
     }
 
-    public LiveData<List<StatelevelDistrictViewCountResponse>> getAllMandals(String level, String fyid, String districtId) {
+    public LiveData<List<StatelevelDistrictViewCountResponse>> getAllMandals(String level, String fyid, int districtId) {
 
         // if (genderResponseMutableLiveData == null) {
         alListMutableLiveData = new MutableLiveData<>();
@@ -52,7 +51,7 @@ public class AllDistrictsViewModel extends ViewModel {
         return alListMutableLiveData;
     }
 
-    public LiveData<List<StatelevelDistrictViewCountResponse>> getAllVillages(String level, String fyid, String mandalId) {
+    public LiveData<List<StatelevelDistrictViewCountResponse>> getAllVillages(String level, String fyid, int mandalId) {
 
         // if (genderResponseMutableLiveData == null) {
         alListMutableLiveData = new MutableLiveData<>();
@@ -69,17 +68,15 @@ public class AllDistrictsViewModel extends ViewModel {
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<List<StatelevelDistrictViewCountResponse>>() {
-            @Override
-            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call,
-                                   Response<List<StatelevelDistrictViewCountResponse>> response) {
 
+            @Override
+            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call, retrofit2.Response<List<StatelevelDistrictViewCountResponse>> response) {
                 pd.dismiss();
                 if (response.body() != null) {
                     alListMutableLiveData.setValue(response.body());
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -93,7 +90,7 @@ public class AllDistrictsViewModel extends ViewModel {
 
     }
 
-    private void loadAllMandals(String role, String fyid, String districtId) {
+    private void loadAllMandals(String role, String fyid, int districtId) {
 
         pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -101,9 +98,9 @@ public class AllDistrictsViewModel extends ViewModel {
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<List<StatelevelDistrictViewCountResponse>>() {
+
             @Override
-            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call,
-                                   Response<List<StatelevelDistrictViewCountResponse>> response) {
+            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call, retrofit2.Response<List<StatelevelDistrictViewCountResponse>> response) {
 
                 pd.dismiss();
                 if (response.body() != null) {
@@ -111,7 +108,6 @@ public class AllDistrictsViewModel extends ViewModel {
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -125,7 +121,7 @@ public class AllDistrictsViewModel extends ViewModel {
 
     }
 
-    private void loadAllVillages(String role, String fyid, String mandalId) {
+    private void loadAllVillages(String role, String fyid, int mandalId) {
 
         pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -133,17 +129,16 @@ public class AllDistrictsViewModel extends ViewModel {
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<List<StatelevelDistrictViewCountResponse>>() {
-            @Override
-            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call,
-                                   Response<List<StatelevelDistrictViewCountResponse>> response) {
 
+
+            @Override
+            public void onResponse(Call<List<StatelevelDistrictViewCountResponse>> call, retrofit2.Response<List<StatelevelDistrictViewCountResponse>> response) {
                 pd.dismiss();
                 if (response.body() != null) {
                     alListMutableLiveData.setValue(response.body());
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override

@@ -88,9 +88,9 @@ public interface ApiInterface {
     Call<DrillDownResponse> getFullDrillDownDataWs(@Query("enrollmentType") String enrollmentType,
                                                    @Query("fyId") String fyId,
 //                                                   @Query("entryDate") String entryDate,
-                                                   @Query("districtId") String districtId,
-                                                   @Query("mandalId") String mandalId,
-                                                   @Query("villageId") String villageId);
+                                                   @Query("districtId") int districtId,
+                                                   @Query("mandalId") int mandalId,
+                                                   @Query("villageId") int villageId);
     //
 //    @GET("DistrictWiseEnrollmentsService")
 //    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
@@ -104,13 +104,13 @@ public interface ApiInterface {
         //District level will get manal count
     Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs2(@Query("level") String level,
                                                                                   @Query("fyId") String fyId,
-                                                                                  @Query("districtId") String districtId);
+                                                                                  @Query("districtId") int districtId);
 
     @GET("getDrillDownCountLevelWiseWs")
         //Mandal Level will get village count
     Call<List<StatelevelDistrictViewCountResponse>> getDrillDownCountLevelWiseWs3(@Query("level") String level,
                                                                                   @Query("fyId") String fyId,
-                                                                                  @Query("mandalId") String mandalId);
+                                                                                  @Query("mandalId") int mandalId);
 
     //Citizen
     @GET("getActivitiesList")

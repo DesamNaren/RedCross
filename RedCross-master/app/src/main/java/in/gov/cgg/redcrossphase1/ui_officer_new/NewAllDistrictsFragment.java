@@ -79,8 +79,7 @@ public class NewAllDistrictsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_aldistrict, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_aldistrict, container, false);
 
 //        binding.llShare.setVisibility(View.VISIBLE);
 

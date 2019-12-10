@@ -16,6 +16,15 @@ public class StudentListBean {
     private String schooltype;
     private String memberId;
     private String endDate;
+    private String enrollmentType;
+
+    public String getEnrollmentType() {
+        return enrollmentType;
+    }
+
+    public void setEnrollmentType(String enrollmentType) {
+        this.enrollmentType = enrollmentType;
+    }
 
     public String getMemberId() {
         return memberId;

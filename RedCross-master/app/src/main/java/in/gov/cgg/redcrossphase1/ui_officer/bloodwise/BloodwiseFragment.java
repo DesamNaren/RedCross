@@ -28,8 +28,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
@@ -215,13 +213,13 @@ public class BloodwiseFragment extends Fragment {
             binding.rvBloodList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
-            Collections.sort(bloodGroupsList, new Comparator<BloodGroups>() {
-                @Override
-                public int compare(BloodGroups lhs, BloodGroups rhs) {
-                    return lhs.getCount().compareTo(rhs.getCount());
-                }
-            });
-            Collections.reverse(bloodGroupsList);
+//            Collections.sort(bloodGroupsList, new Comparator<BloodGroups>() {
+//                @Override
+//                public int compare(BloodGroups lhs, BloodGroups rhs) {
+//                    return lhs.getCount().compareTo(rhs.getCount());
+//                }
+//            });
+//            Collections.reverse(bloodGroupsList);
 
             BloodAdapter adapter1 = new BloodAdapter(getActivity(), bloodGroupsList);
             binding.rvBloodList.setAdapter(adapter1);
@@ -263,7 +261,7 @@ public class BloodwiseFragment extends Fragment {
 
         // binding.chartBlood.setRotationEnabled(true);
         // binding.chartBlood.setDrawCenterText(true);
-        binding.chartBlood.setRotationEnabled(true);
+        binding.chartBlood.setRotationEnabled(false);
 
         //.setUsePercentValues(true);
         binding.chartBlood.getDescription().setEnabled(false);

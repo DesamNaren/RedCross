@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer.drilldown;
 
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,14 +15,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.databinding.FragmentDrilldownBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.AllVillageFragment;
@@ -43,58 +45,80 @@ import static android.content.Context.MODE_PRIVATE;
 public class GetDrilldownFragment extends Fragment {
 
     int selectedThemeColor = -1;
-    RecyclerView rv_rilldown;
-    LinearLayout ll_drilldown;
     //ProgressDialog pd;
     private List<String> headersList = new ArrayList<>();
     private List<List<String>> studentList = new ArrayList<>();
-    DrillDownAdapter adapter1;
-    String mid = "", did = "", vid = "";
+    NewDrillDownAdapter adapter1;
+    int mid, did, vid;
     private List<StudentListBean> studentListBeanList = new ArrayList<>();
     private androidx.appcompat.widget.SearchView searchView;
     private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
     private CustomProgressDialog pd;
+    FragmentDrilldownBinding binding;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_drilldown, container, false);
-
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_drilldown, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Enrollments List");
         GlobalDeclaration.home = false;
-        rv_rilldown = root.findViewById(R.id.rv_drilldown);
-        searchView = root.findViewById(R.id.searchView);
 
         pd = new CustomProgressDialog(getActivity());
 
         if (getArguments() != null) {
-            if (getArguments().getString("mid") != null) {
-                mid = getArguments().getString("mid");
-            } else {
-                mid = String.valueOf(GlobalDeclaration.localMid);
+            mid = getArguments().getInt("mid");
+            did = getArguments().getInt("did");
+            vid = getArguments().getInt("vid");
 
-            }
-            if (getArguments().getString("did") != null) {
-                did = getArguments().getString("did");
-            } else if (!(GlobalDeclaration.localDid == null)) {
-                did = String.valueOf(GlobalDeclaration.localDid);
-            } else {
-                did = GlobalDeclaration.districtId;
-            }
-            if (getArguments().getString("vid") != null) {
-
-                vid = getArguments().getString("vid");
-            } else {
-                vid = String.valueOf(GlobalDeclaration.localVid);
-            }
+        } else {
+            mid = GlobalDeclaration.localMid;
+            did = GlobalDeclaration.localDid;
+            vid = GlobalDeclaration.localVid;
         }
 
-        ll_drilldown = root.findViewById(R.id.ll_drilldown);
-        loadDrilldown();
-        loaTheam();
 
-        return root;
+        if (GlobalDeclaration.leveMName != null) {
+            binding.cvName.setVisibility(View.VISIBLE);
+            binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
+            binding.tvmname.setText("Mndl: " + GlobalDeclaration.leveMName);
+            binding.tvvname.setText("Vil: " + GlobalDeclaration.leveVName);
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
+
+        loadDrilldown();
+        //loaTheam();
+
+        binding.fabFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFilterDilaog();
+            }
+        });
+
+
+        return binding.getRoot();
+    }
+
+    private void showFilterDilaog() {
+        LayoutInflater factory = LayoutInflater.from(getActivity());
+        final View view = factory.inflate(R.layout.dialog_filter, null);
+
+        Spinner spn_type, spn_gender, spn_bg;
+
+        spn_type = view.findViewById(R.id.spn_type);
+        spn_gender = view.findViewById(R.id.spn_gender);
+        spn_bg = view.findViewById(R.id.spn_bg);
+
+
+        final AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+        builder1.setView(view);
+        final AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+
     }
 
     private void loaTheam() {
@@ -102,45 +126,47 @@ public class GetDrilldownFragment extends Fragment {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
                 if (selectedThemeColor == R.color.redcroosbg_1) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_drilldown.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
                 }
             }
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
-            ll_drilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
         }
     }
 
     private void loadDrilldown() {
 
-
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs(GlobalDeclaration.type, "3", did, mid, vid);
+        Call<DrillDownResponse> call = apiInterface.getFullDrillDownDataWs("", "3", did, mid, vid);
         Log.e("  url", call.request().url().toString());
 
         call.enqueue(new Callback<DrillDownResponse>() {
             @Override
             public void onResponse(Call<DrillDownResponse> call, Response<DrillDownResponse> response) {
 
+                pd.dismiss();
+
                 if (response.body() != null) {
 
                     headersList = response.body().getHeaders();
                     studentList = response.body().getStudentsList();
-                    studentListBeanList.clear();
+                    // studentListBeanList.clear();
 
                     for (int position = 0; position < studentList.size(); position++) {
 
@@ -172,6 +198,8 @@ public class GetDrilldownFragment extends Fragment {
                         } else {
                             studentListBean.setMemberId(studentList.get(position).get(2));
                         }
+
+
                         if (studentList.get(position).get(3) == null) {
                             studentListBean.setName("");
                         } else {
@@ -184,61 +212,85 @@ public class GetDrilldownFragment extends Fragment {
                         } else {
                             studentListBean.setGender(studentList.get(position).get(4));
                         }
+
                         if (studentList.get(position).get(5) == null) {
                             studentListBean.setDob("");
                         } else {
                             studentListBean.setDob(studentList.get(position).get(5));
                         }
+
+
                         if (studentList.get(position).get(6) == null) {
                             studentListBean.setPhone("");
                         } else {
                             studentListBean.setPhone(studentList.get(position).get(6));
                         }
+
+
                         if (studentList.get(position).get(7) == null) {
-                            studentListBean.setBloodgp("");
+                            studentListBean.setBloodgp("-");
                         } else {
                             studentListBean.setBloodgp(studentList.get(position).get(7));
                         }
+
+
                         if (studentList.get(position).get(8) == null) {
                             studentListBean.setEmail("");
                         } else {
                             studentListBean.setEmail(studentList.get(position).get(8));
                         }
+
+
                         if (studentList.get(position).get(9) == null) {
                             studentListBean.setClassName("");
 
                         } else {
                             studentListBean.setClassName(studentList.get(position).get(9));
                         }
+
+
                         if (studentList.get(position).get(10) == null) {
                             studentListBean.setSchoolname("");
 
                         } else {
                             studentListBean.setSchoolname(studentList.get(position).get(10));
                         }
+
+
                         if (studentList.get(position).get(11) == null) {
                             studentListBean.setSchooltype("");
                         } else {
                             studentListBean.setSchooltype(studentList.get(position).get(11));
                         }
+
+
                         if (studentList.get(position).get(12) == null) {
                             studentListBean.setEndDate("");
                         } else {
                             studentListBean.setEndDate(studentList.get(position).get(12));
                         }
+
+
+                        if (studentList.get(position).get(13) == null) {
+                            studentListBean.setEnrollmentType("");
+                        } else {
+                            studentListBean.setEnrollmentType(studentList.get(position).get(13));
+                        }
+
+
                         studentListBeanList.add(studentListBean);
                     }
-
-                    rv_rilldown.setHasFixedSize(true);
-                    rv_rilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    adapter1 = new DrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
-                    rv_rilldown.setAdapter(adapter1);
+                    binding.rvDrilldown.setHasFixedSize(true);
+                    binding.rvDrilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    adapter1 = new NewDrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
+                    binding.rvDrilldown.setAdapter(adapter1);
                     adapter1.notifyDataSetChanged();
-                    pd.dismiss();
 
 
                 } else {
-                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    binding.tvNodata.setVisibility(View.VISIBLE);
+                    binding.rvDrilldown.setVisibility(View.GONE);
+
                 }
 
             }

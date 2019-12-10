@@ -34,14 +34,14 @@
                 <LinearLayout
                     android:id="@+id/ll_alldname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/tab_background_selected">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tv_alldname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:background="@drawable/tab_background_selected"
                         android:padding="@dimen/dp_5"
                         android:paddingLeft="5dp"
                         android:text="Hyderabad"
@@ -199,7 +199,7 @@
                     android:paddingBottom="@dimen/dp_5"
                     android:src="@android:drawable/ic_dialog_info"
                     android:tint="@color/colorPrimary"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
 
             </LinearLayout>

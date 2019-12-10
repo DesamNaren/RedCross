@@ -42,7 +42,7 @@ public class AllMandalsFragment extends Fragment {
 
 
     CustomProgressDialog pd;
-    String value;
+    int value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
     private LevelAdapter adapter1;
@@ -84,7 +84,7 @@ public class AllMandalsFragment extends Fragment {
             binding.cvName.setVisibility(View.GONE);
         }
         if (GlobalDeclaration.leveDName != null) {
-            binding.tvlevelname.setText(GlobalDeclaration.leveDName);
+            binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
         } else {
             binding.cvName.setVisibility(View.GONE);
         }
@@ -162,15 +162,13 @@ public class AllMandalsFragment extends Fragment {
 
                 setTitle("Mandal wise");
 
-        if (
-
-                getArguments() != null) {
-            value = getArguments().getString("did");
+        if (getArguments() != null) {
+            value = getArguments().getInt("did");
         } else {
             if (!GlobalDeclaration.role.contains("D")) {
-                value = String.valueOf(GlobalDeclaration.localDid);
+                value = GlobalDeclaration.localDid;
             } else {
-                value = GlobalDeclaration.districtId;
+                value = Integer.parseInt(GlobalDeclaration.districtId);
             }
 
         }

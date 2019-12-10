@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -24,32 +25,32 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.databinding.FragmentGovtpvtnewBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
 
 public class GovtPvtFragment extends Fragment implements OnChartValueSelectedListener {
 
-    private LineChart chart;
 
     private GovtPvtViewModel govtPvtViewModel;
-    // FragmentGenderwiseBinding binding;
+    FragmentGovtpvtnewBinding binding;
+    int i;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_govtpvtnew, container, false);
-
-        // binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_genderwise);
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_govtpvtnew, container, false);
 
         govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
 
-        chart = root.findViewById(R.id.chart_govtpvt);
 
         GlobalDeclaration.home = false;
 
@@ -58,16 +59,64 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
                     @Override
                     public void onChanged(@Nullable List<Last10day> last10dayList) {
                         if (last10dayList != null) {
-                            generateDataLine(last10dayList);
+                            setDataforRV(last10dayList);
 //                            generateDataBar(last10dayList);
                             //test(last10dayList);
                         }
                     }
                 });
+        binding.btnFlip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i++;
+                binding.easyFlipView.flipTheView();
 
+            }
+        });
+        binding.easyFlipView.setOnFlipListener(new EasyFlipView.OnFlipAnimationListener() {
+            @Override
+            public void onViewFlipCompleted(EasyFlipView easyFlipView, EasyFlipView.FlipState newCurrentSide) {
+                if (i % 2 == 0) {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Data");
+                } else {
+                    binding.easyFlipView.flipTheView();
+                    binding.btnFlip.setText("View Chart");
+                }
+            }
+        });
 
-        return root;
+        return binding.getRoot();
     }
+
+    private void setDataforRV(List<Last10day> last10days) {
+
+        //int r= sortDatesHere();
+        if (last10days.size() > 0) {
+            binding.chartGovtpvt.setVisibility(View.VISIBLE);
+            binding.btnFlip.setVisibility(View.VISIBLE);
+            binding.tvNodata.setVisibility(View.GONE);
+            binding.rvGovtpvtlist.setHasFixedSize(true);
+            binding.rvGovtpvtlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+            GovtPvtAdapter adapter1 = new GovtPvtAdapter(getActivity(), last10days);
+            binding.rvGovtpvtlist.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+            generateDataLine(last10days);
+
+
+        } else {
+            binding.btnFlip.setVisibility(View.GONE);
+            binding.chartGovtpvt.setVisibility(View.GONE);
+            binding.rvGovtpvtlist.setVisibility(View.GONE);
+            binding.tvNodata.setVisibility(View.VISIBLE);
+
+        }
+
+
+    }
+
 
 /*
     private void generateDataBar(List<Last10day> ageList) {
@@ -355,7 +404,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        XAxis xAxis = chart.getXAxis();
+        XAxis xAxis = binding.chartGovtpvt.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final List<String> stringList = new ArrayList<>();
 
@@ -371,20 +420,20 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         };
 
         LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
-        mv.setChartView(chart);
-        chart.setMarker(mv);
+        mv.setChartView(binding.chartGovtpvt);
+        binding.chartGovtpvt.setMarker(mv);
 
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
 
-        YAxis yAxisRight = chart.getAxisRight();
+        YAxis yAxisRight = binding.chartGovtpvt.getAxisRight();
         yAxisRight.setEnabled(false);
 
-        YAxis yAxisLeft = chart.getAxisLeft();
+        YAxis yAxisLeft = binding.chartGovtpvt.getAxisLeft();
         yAxisLeft.setGranularity(1f);
 
         // get the legend (only possible after setting data)
-        Legend l = chart.getLegend();
+        Legend l = binding.chartGovtpvt.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
@@ -398,10 +447,10 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
 
 
         LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
-        chart.setData(data);
-        chart.getDescription().setEnabled(false);
-        chart.animateX(1500);
-        chart.invalidate();
+        binding.chartGovtpvt.setData(data);
+        binding.chartGovtpvt.getDescription().setEnabled(false);
+        binding.chartGovtpvt.animateX(1500);
+        binding.chartGovtpvt.invalidate();
     }
 
 

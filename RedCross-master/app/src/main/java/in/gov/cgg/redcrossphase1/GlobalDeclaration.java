@@ -5,6 +5,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.drilldown.StudentListBean;
 
 public class GlobalDeclaration {
     public static String BASE_URL = "http://uat2.cgg.gov.in:8081/redcross/";
@@ -33,6 +34,8 @@ public class GlobalDeclaration {
     public static String Selection_type = "";
     public static String cordinatorType = "";
     public static String Selection_MEMbership_type = "";
+    public static StudentListBean drilldownResponse;
+    public static List<String> headStringList;
 
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
