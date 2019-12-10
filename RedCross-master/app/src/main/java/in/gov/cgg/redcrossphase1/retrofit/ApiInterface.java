@@ -12,6 +12,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_officer.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.agewise.AgeResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport.StatelevelDistrictViewCountResponse;
@@ -21,11 +22,14 @@ import in.gov.cgg.redcrossphase1.ui_officer.drilldown.DrillDownResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtVsPvtResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.DistrictResponse;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -132,6 +136,10 @@ public interface ApiInterface {
 
     @POST("saveMembershipMemberData")
     Call<JsonObject> SendDetails(@Body JsonObject jsonBody);
+
+    @Multipart
+    @POST("uploadPhotoMembAdd")
+    Call<PhotoBean> SendPhoto(@Part MultipartBody.Part photoUpload);
 }
 
 

@@ -61,8 +61,8 @@ public class WebViewPaymentActivity extends AppCompatActivity {
             }
         });
         try {
-            String value = "IRCSTS|67766777|NA|1.00|NA|NA|NA|INR|NA|R|ircsts|NA|NA|F|9999999999|Test Name|11-11-1990|11-11-2019|JRC2019112|txtadditional6|txtadditional7|https://10.2.9.85:2019/redcross/getPaymentResponse";
-            String url = "http://10.2.9.95:4455/redcrosspayment/proceed?msg=" + URLEncoder.encode(value, "UTF-8");
+            String value = "IRCSTS!67766777!NA!1.00!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9999999999!Test Name!11-11-1990!11-11-2019!JRC2019112!txtadditional6!txtadditional7!https://10.2.9.85:2019/redcross/getPaymentResponse";
+            String url = "http://uat2.cgg.gov.in:8081/redcrosspayment/proceedMob?msg=" + URLEncoder.encode(value, "UTF-8");
             mWebView.loadUrl(url);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

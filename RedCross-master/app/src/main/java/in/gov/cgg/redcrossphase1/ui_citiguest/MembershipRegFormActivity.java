@@ -14,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,7 +38,6 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -61,6 +59,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import okhttp3.MediaType;
@@ -84,6 +83,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     RadioGroup rg;
     EditText ageResult;
     ImageView Photo;
+    String PHOTOPATH = "";
     Spinner Bloodgroup, education, district, mandal, village, activities;
     String Selected_gender = "";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
@@ -111,12 +111,12 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     Bitmap bm;
     String Image_name;
     //CONVERT IMAGE TO BASE 64 CODE
-    public static String encodeToBase64(Bitmap image,
+    /*public static String encodeToBase64(Bitmap image,
                                         Bitmap.CompressFormat compressFormat, int quality) {
         ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
         image.compress(compressFormat, quality, byteArrayOS);
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +154,6 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         village = findViewById(R.id.Town_village_spin_res);
         activities = findViewById(R.id.Activities_interested_spin_res);
         UploadPhoto = findViewById(R.id.choose_bt);
-
         Preview = findViewById(R.id.preview_bt);
 
         //IDS of View Form
@@ -188,13 +187,15 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             e.printStackTrace();
 
         }
+        enablePermissions();
         callgetActivitiesListRequest();
         callgetDistrictListRequest();
         //Preview button click listener
         Preview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                enablePermissions();
+
+                EMailResult = email.getText().toString().trim();
                 if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
                     if (validateFields()) {
 
@@ -246,6 +247,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         UploadPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 selectImage();
             }
         });
@@ -361,7 +363,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         });
 
     }
-    //SERVICE CALL FOR PHOT UPLOAD
+    //SERVICE CALL FOR PHOTO UPLOAD
 
     private void PhotoUpload(Bitmap bmp) {
 
@@ -369,18 +371,20 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         if (bmp == null) {
             Toast.makeText(this, "Image can't be empty", Toast.LENGTH_SHORT).show();
         } else {
-            FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
+
+            //FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
 
 
             File file = new File(FilePath);
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            MultipartBody.Part body = MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+            MultipartBody.Part PhotoBody = MultipartBody.Part.createFormData("photoUpload", file.getName(), requestFile);
+            //TypedFile file = new TypedFile("multipart/form-data", new File(path));
             progressDialog.show();
 
 
             if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
                 //updateLocationPresenter.UploadImageServiceCall(body);
-                //calluploadPhotoMembAdd(body);
+                calluploadPhotoMembAdd(PhotoBody);
             } else {
                 Toast.makeText(MembershipRegFormActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
@@ -389,43 +393,34 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     }
 
 
-    private void calluploadPhotoMembAdd(final MultipartBody body) {
+    private void calluploadPhotoMembAdd(final MultipartBody.Part PhotoBody) {
 
-//        progressDialog.show();
-//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-//        Call<List<MembershipVillagesResponse>> call = apiInterface.getVillagesForMemReg(body);
-//        Log.e("  url", call.request().url().toString());
-//
-//        MembersipVillagesResponseList.clear();
-//        MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
-//        membershipVillagesResponse.setVillageID(0);
-//        membershipVillagesResponse.setVillageName("Select Village");
-//        MembersipVillagesResponseList.add(membershipVillagesResponse);
-//
-//        call.enqueue(new Callback<List<MembershipVillagesResponse>>() {
-//            @Override
-//            public void onResponse(Call<List<MembershipVillagesResponse>> call, Response<List<MembershipVillagesResponse>> response) {
-//
-//                progressDialog.dismiss();
-//                if (response.body() != null) {
-//                    Log.d("Activity ", "Response = " + response.body().toString());
-//                    //goListMutableLiveData.setValue(response.body().getLast10days());
-//                    MembersipVillagesResponseList.addAll(response.body());
-//                    villageadapter = new MembershipvillageAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembersipVillagesResponseList);
-//                    village.setAdapter(villageadapter);
-//                } else {
-//                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<MembershipVillagesResponse>> call, Throwable t) {
-//
-//                progressDialog.dismiss();
-//                t.printStackTrace();
-//            }
-//        });
+        progressDialog.show();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<PhotoBean> call = apiInterface.SendPhoto(PhotoBody);
+        Log.i("LOGIN_URL", call.request().url().toString());
+        call.enqueue(new Callback<PhotoBean>() {
+            @Override
+            public void onResponse(Call<PhotoBean> call, Response<PhotoBean> response) {
+                if (response.body() != null) {
+                    Log.e("TESTsuc", "onResponse: " + response.body().getSavedFileName());
+                    if (response.body().getSavedFileName().length() > 0) {
+                        PHOTOPATH = response.body().getSavedFileName();
+                        callSetMembershipDetails();
+                    }
+
+                }
+                //if()
+                //updateLocationInterface.SubmitData(response);
+            }
+
+            @Override
+            public void onFailure(Call<PhotoBean> call, Throwable t) {
+                Log.e("TESTfail", "onResponse: " + t.getMessage());
+                //updateLocationInterface.SubmitData(null);
+                t.printStackTrace();
+            }
+        });
 
 
     }
@@ -630,7 +625,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             object.put("pincode", pincode_View.getText().toString());
             object.put("activities", activityID);
             object.put("noOfHours", hours_View.getText().toString());
-            object.put("photoPath", "k6ZUAdjVKf9fbRuB_9Dec2019112258GMT_1575890578757.jpg");
+            object.put("photoPath", PHOTOPATH);
 
             JsonParser jsonParser = new JsonParser();
             gsonObject = (JsonObject) jsonParser.parse(object.toString());
@@ -823,7 +818,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         } else if (hours.getText().toString().trim().length() == 0) {
             Toast.makeText(MembershipRegFormActivity.this, "Enter number of hours", Toast.LENGTH_LONG).show();
             return false;
-        } else if (bm != null) {
+        } else if (Photo.getDrawable() == null) {
             Toast.makeText(MembershipRegFormActivity.this, "Choose photo", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -890,6 +885,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     "1.jpg");
 
 
+
         } else {
             return null;
         }
@@ -911,15 +907,10 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 Image_name = 1 + ".jpg";
                 FilePath = FilePath + "/" + Image_name;
 
-                File file = new File(FilePath);
-                long length = file.length() / 1024;
-                Log.d("BEFORE", " = " + length);
-
                 bm = saveBitmapToFile(imageFile);
-                String myBase64Image = encodeToBase64(bm, Bitmap.CompressFormat.JPEG,
-                        100);
-                Photo.setImageBitmap(bm);
 
+                Photo.setImageBitmap(bm);
+                FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
 
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(getApplicationContext(),
@@ -943,6 +934,8 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 bm = (BitmapFactory.decodeFile(picturePath));
                 Log.w("path of image", picturePath + "");
                 Photo.setImageBitmap(bm);
+                FilePath = picturePath;
+
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(getApplicationContext(),
                         "User cancelled image capture", Toast.LENGTH_SHORT)

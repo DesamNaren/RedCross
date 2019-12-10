@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -47,6 +49,7 @@ public class MembershipFragment extends Fragment {
     LinearLayout Parent_layout, ll_LTM_types;
     Button Proceed;
     Spinner TypeSpinner;
+    String SELECTEDtype;
     private FragmentActivity c;
     String selectedType;
     CustomProgressDialog progressDialog;
@@ -86,7 +89,21 @@ public class MembershipFragment extends Fragment {
             }
         });
 
+        TypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                SELECTEDtype = TypeSpinner.getSelectedItem().toString();
 
+                GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i + 1);
+
+                // GlobalDeclaration.Selection_MEMbership_type=callgetMembershipTypesList1.get(i).getId().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
@@ -151,16 +168,14 @@ public class MembershipFragment extends Fragment {
                         recyclerView.setLayoutManager(linearLayoutManager);
 
 
-                        MembershipDetails_Bean membershipDetails_Bean = new MembershipDetails_Bean();
+                        /*MembershipDetails_Bean membershipDetails_Bean = new MembershipDetails_Bean();
                         membershipDetails_Bean.setId(0);
                         membershipDetails_Bean.setMembTypeShortName("Select Membership Type");
                         callgetMembershipTypesList1.add(0, membershipDetails_Bean);
                         callgetMembershipTypesList1.addAll(callgetMembershipTypesList);
-                        adapterspinner = new MembershipTypeAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, callgetMembershipTypesList1);
-                        TypeSpinner.setAdapter(adapterspinner);
-                        //GlobalDeclaration.Selection_MEMbership_type=callgetMembershipTypesList1.get(i).getId();
+                       // adapterspinner = new MembershipTypeAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, callgetMembershipTypesList1);
+                        //TypeSpinner.setAdapter(adapterspinner);*/
                     }
-
                 }
 
                 @Override

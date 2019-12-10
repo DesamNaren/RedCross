@@ -18,6 +18,25 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_2"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:lineHeight="20dp"
+                    android:padding="@dimen/dp_5"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:text="@string/INFO_ABOUT"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </com.google.android.material.card.MaterialCardView>
+
             <LinearLayout
                 android:id="@+id/Headings"
                 android:layout_width="match_parent"
@@ -81,16 +100,16 @@
                     android:layout_weight="1"
                     android:text="Membership Type"
                     android:textColor="@color/black" />
-
-
                 <Spinner
                     android:id="@+id/type_spinner"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:spinnerMode="dialog">
+                    android:layout_weight="1"
+                    android:entries="@array/Membership_type">
 
                 </Spinner>
+
+
             </LinearLayout>
 
 
@@ -106,5 +125,6 @@
         </LinearLayout>
 
     </ScrollView>
+
 
 </LinearLayout>

@@ -63,68 +63,39 @@
 
     </string-array>
 
+    <string name="INFO_ABOUT">Inspired by the narration of experiences of war of Solferino by Henry Dunant, the Red Cross Organisation was formed in the year 1864. The first "Geneva Convention" has adopted Red Cross and its emblem for the ameloration of conditions of wounded in the battle field. The nucleus of Indian Red Cross Society which is a part of international movement was formed in the year 1920, through an act of Parliament(Act XV of 1920). The Honorable Governer of Telangana is its President.Red Cross provides assistance to victims of war, Natural Calamities, Disaster, Epidemics without discrimination of race, religion, creed, nationality, political opinions. In addition to it relief activities in emergencies, it promotes and undertakes activities of development and prevention of ill health. disease and preparedness for disasters.Any person can help this international humanitarian effort by donation in cash or kind, and by enrolling as a member and serving voluntarily in any of its activities.</string>
+
     <string-array name="Education">
         <item>Select Educational Qualification</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
+        <item>SSC</item>
+        <item>Inter</item>
+        <item>PG</item>
+        <item>Degree</item>
+        <item>PHD</item>
+
 
     </string-array>
 
     <string-array name="District">
         <item>Select District</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
+
 
     </string-array>
 
     <string-array name="Mandal">
         <item>Select Mandal</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
 
     </string-array>
 
     <string-array name="Town_Village">
         <item>Select Town/Village</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
+
 
     </string-array>
 
     <string-array name="Activities">
         <item>Select Activities interested</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
+
     </string-array>
 
     <string-array name="Married">
