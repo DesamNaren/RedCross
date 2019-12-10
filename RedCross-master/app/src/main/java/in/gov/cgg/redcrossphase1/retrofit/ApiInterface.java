@@ -12,6 +12,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.DistrictBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.DonorregResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.HomeNursingRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
@@ -29,6 +30,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.govtpvt.GovtVsPvtResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.DistrictResponse;
 import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -172,6 +174,9 @@ public interface ApiInterface {
 
     @GET("searchDonor")
     Call<ArrayList<BloodDonorResponse>> getBloodDonorsResponse();
+
+    @POST("saveHomeNursingDetails")
+    Call<ResponseBody> saveHomeNursingDetails(@Body HomeNursingRequest req);
 }
 
 

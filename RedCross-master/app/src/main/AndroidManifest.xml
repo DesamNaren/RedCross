@@ -94,6 +94,10 @@
             android:name=".ui_citiguest.GuestMainActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui_officer_new.NewOfficerMainActivity" />
+        <activity
+            android:name=".ui_citiguest.HomeNursingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

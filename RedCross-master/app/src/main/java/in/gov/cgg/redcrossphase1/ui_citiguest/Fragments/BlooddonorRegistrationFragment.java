@@ -76,7 +76,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     String mEducationId;
     String mMarriedId;
     EditText et_noofpreviousDonations;
-    String WillingBldDonateStatus;
+    String WillingBldDonateStatus = "Fasle";
     JsonObject jsonObject;
     private int mYear, mMonth, mDay;
     private List<MembersipDistResponse> MembersipDistResponseList = new ArrayList<>();
@@ -578,9 +578,9 @@ public class BlooddonorRegistrationFragment extends Fragment {
             request.setEmail(URLEncoder.encode(email, "UTF-8"));
             request.setOffice(officeName);
             request.setAddress(address);
-            request.setDistricts(distId);
-            request.setMandals(manId);
-            request.setVillage(villageID);
+            request.setDistricts("" + distId);
+            request.setMandals("" + manId);
+            request.setVillage("" + villageID);
             request.setPincode(pincode);
             request.setBloodGroup(URLEncoder.encode(mBloodGroupId, "UTF-8"));
             request.setDonateType(donationType);
