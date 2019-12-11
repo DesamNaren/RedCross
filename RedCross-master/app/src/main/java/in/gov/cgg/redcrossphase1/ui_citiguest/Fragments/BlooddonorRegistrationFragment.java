@@ -2,6 +2,7 @@ package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -24,9 +26,12 @@ import androidx.fragment.app.Fragment;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -76,6 +81,8 @@ public class BlooddonorRegistrationFragment extends Fragment {
     String mMarriedId;
     EditText et_noofpreviousDonations;
     String WillingBldDonateStatus = "false";
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
+    private boolean distValidation, mandalValid, villageValid;
     JsonObject jsonObject;
     private int mYear, mMonth, mDay;
     private List<MembersipDistResponse> MembersipDistResponseList = new ArrayList<>();
@@ -138,7 +145,12 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 noofpreviousDonations = et_noofpreviousDonations.getText().toString();
                 //static spinner values
 
-                calldonorRegistarion();
+                //Save blood donor data(registration)
+
+                if (validateFields()) {
+                    calldonorRegistarion();
+                }
+
 
 
             }
@@ -181,57 +193,61 @@ public class BlooddonorRegistrationFragment extends Fragment {
         });
 
 
+        //Datepicker and age calculation
+        final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+
+
+                Calendar c = Calendar.getInstance();
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, day);
+                String format = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
+
+
+                Calendar userAge = new GregorianCalendar(year, month, day);
+                Calendar minAdultAge = new GregorianCalendar();
+                minAdultAge.add(Calendar.YEAR, -18);
+                if (minAdultAge.before(userAge)) {
+                    Toast.makeText(getActivity(), "age not valid ", Toast.LENGTH_SHORT).show();
+                    datePicker_dateofBirth.setText("");
+                    et_previouslyDonationDate.setText("");
+                } else {
+                    datePicker_dateofBirth.setText(format);
+                    et_previouslyDonationDate.setText(format);
+                    //  SHOW_ERROR_MESSAGE;
+                }
+
+                //  ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
+            }
+        };
         iv_datepickerdateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get Current Date
                 final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-
-                                datePicker_dateofBirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay);
+                dateDialog.getDatePicker().setMaxDate(new Date().getTime());
+                dateDialog.show();
             }
-
         });
 
         iv_previouslyDonationDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get Current Date
                 final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-
-                                et_previouslyDonationDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay);
+                dateDialog.getDatePicker().setMaxDate(new Date().getTime());
+                dateDialog.show();
             }
-
         });
+
 
 
         //disrtrict spinner
@@ -245,6 +261,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                     //   District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
                     if (distId != 0) {
                         callgetMandalsListRequest("" + distId);
+                        distValidation = true;
                     } else {
                         MembershipMandalsResponseList.clear();
                         MembershipMandalsResponse membershipmandResponse = new MembershipMandalsResponse();
@@ -270,6 +287,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                     //   Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
                     if (distId != 0 && manId != 0) {
                         callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
+                        mandalValid = true;
                         Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
                     } else {
                         MembersipVillagesResponseList.clear();
@@ -292,6 +310,10 @@ public class BlooddonorRegistrationFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (MembersipVillagesResponseList.size() > 0) {
                     villageID = MembersipVillagesResponseList.get(i).getVillageID();
+                    if (villageID != 0) {
+                        villageValid = true;
+
+                    }
                     //  Village_View.setText(MembersipVillagesResponseList.get(i).getVillageName());
                 }
             }
@@ -517,47 +539,97 @@ public class BlooddonorRegistrationFragment extends Fragment {
     protected boolean validateFields() {
 
         if (et_name.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your full name", Toast.LENGTH_LONG).show();
+            setFocus(et_name, "enter your  name");
             return false;
         } else if (et_fathersName.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your Father or husband name", Toast.LENGTH_LONG).show();
+            setFocus(et_fathersName, "enter  father or husband name");
             return false;
 
         } else if (datePicker_dateofBirth.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your Date of Birth", Toast.LENGTH_LONG).show();
+            setFocus(datePicker_dateofBirth, "enter your date of birth");
+            return false;
+        } else if (spn_gender.getSelectedItemPosition() == 0) {
+            errorSpinner(spn_gender, "select gender");
+            return false;
+        } else if (spn_education.getSelectedItemPosition() == 0) {
+            errorSpinner(spn_education, "select education");
             return false;
         } else if (et_occupation.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter occupation", Toast.LENGTH_LONG).show();
+            setFocus(et_occupation, "enter occupation");
+            return false;
+        } else if (spn_married.getSelectedItemPosition() == 0) {
+            errorSpinner(spn_married, "select marriage status");
             return false;
         } else if (et_mobileNumber.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
+            //  Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
+            setFocus(et_mobileNumber, "enter mobile number");
             return false;
+        } else if (!(et_mobileNumber.getText().toString().trim().startsWith("9") || et_mobileNumber.getText().toString().trim().startsWith("8") || et_mobileNumber.getText().toString().trim().startsWith("7") || et_mobileNumber.getText().toString().trim().startsWith("6") || et_mobileNumber.getText().toString().trim().startsWith("5"))) {
+            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            return false;
+
         } else if (et_email.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Email", Toast.LENGTH_LONG).show();
+            setFocus(et_email, "enter email");
+            return false;
+
+        } else if (!email.matches(emailPattern)) {
+            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_office.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter office name", Toast.LENGTH_LONG).show();
+            setFocus(et_office, "enter office name");
             return false;
         } else if (et_adress.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter address", Toast.LENGTH_LONG).show();
+            setFocus(et_adress, "enter address");
+            return false;
+        }
+//        else if (spn_district.getSelectedItem().toString().contains("select")) {
+//            errorSpinner(spn_district, "select district");
+//            return false;
+//        }
+
+        else if (!distValidation) {
+            Toast.makeText(getActivity(), "select district ", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!mandalValid) {
+            Toast.makeText(getActivity(), "select mandal ", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!villageValid) {
+            Toast.makeText(getActivity(), "select village", Toast.LENGTH_SHORT).show();
             return false;
         } else if (et_pincode.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter pincode", Toast.LENGTH_LONG).show();
+            setFocus(et_pincode, "enter pincode");
+            return false;
+        } else if (et_pincode.getText().toString().length() < 6) {
+            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (spn_bloodgroups.getSelectedItemPosition() == 0) {
+            errorSpinner(spn_bloodgroups, "select bloodgroup");
             return false;
         } else if (et_donatetype.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter donation type", Toast.LENGTH_LONG).show();
+            setFocus(et_donatetype, "enter donation type");
             return false;
         } else if (et_previouslyDonationDate.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter previous donation date", Toast.LENGTH_LONG).show();
+            setFocus(et_previouslyDonationDate, "Enter previous donation date");
             return false;
         } else if (et_noofpreviousDonations.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter previous donations", Toast.LENGTH_LONG).show();
+            setFocus(et_noofpreviousDonations, "enter previous donation ");
             return false;
         }
         return true;
     }
 
+    protected void errorSpinner(Spinner mySpinner, String errorMsg) {
+        TextView errorText = (TextView) mySpinner.getSelectedView();
+        errorText.setError("");
+        errorText.setTextColor(Color.RED);//just to highlight that this is an error
+        errorText.setText(errorMsg);
 
+    }
+
+    protected void setFocus(final View view, String errorMsg) {
+        view.requestFocus();
+        ((TextView) view).setError(errorMsg);
+    }
     private void calldonorRegistarion() {
 
         progressDialog.show();
