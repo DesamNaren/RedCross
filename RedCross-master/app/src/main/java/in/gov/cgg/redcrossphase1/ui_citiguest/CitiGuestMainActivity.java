@@ -2,10 +2,14 @@ package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,12 +22,9 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -35,7 +36,11 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
+
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.LocBaseActivity;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BlooddonorRegistrationFragment;
@@ -55,7 +60,7 @@ import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
-public class CitiGuestMainActivity extends AppCompatActivity {
+public class CitiGuestMainActivity extends LocBaseActivity {
     private static final float END_SCALE = 0.7f;
     Spinner spinYear;
     private AppBarConfiguration mAppBarConfiguration;
@@ -80,7 +85,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_citizendashboard);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
@@ -108,7 +112,6 @@ public class CitiGuestMainActivity extends AppCompatActivity {
         } catch (Exception e) {
 
         }
-
 
 
         // Passing each menu ID as a set of Ids because each
@@ -312,6 +315,33 @@ public class CitiGuestMainActivity extends AppCompatActivity {
 
 
     }
+
+    private BroadcastReceiver mGpsSwitchStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (intent.getAction().matches("android.location.PROVIDERS_CHANGED")) {
+                    callPermissions();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerReceiver(mGpsSwitchStateReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION));
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(mGpsSwitchStateReceiver);
+    }
+
 
     void callFragment(Fragment fragment, String name) {
         FragmentManager fragmentManager = getSupportFragmentManager();

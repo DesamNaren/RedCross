@@ -215,7 +215,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
         }
         CameraUpdate point = CameraUpdateFactory.newLatLng(new LatLng(17.3850, 78.4867));
         mMap.moveCamera(point);
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
 
 
         ll_near_meal = bottomSheetView.findViewById(R.id.ll_near_meal);
@@ -318,7 +318,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
         // Toast.makeText(LocateActivity.this, "Your Current Location", Toast.LENGTH_LONG).show();
 
 
@@ -794,8 +794,8 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                         }
                     });
                     //move map camera
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+//                    mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
                 }
             }
 

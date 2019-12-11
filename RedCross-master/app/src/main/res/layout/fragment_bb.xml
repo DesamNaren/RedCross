@@ -51,26 +51,49 @@
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_sort_by_size" />
 
+
         <Spinner
+            android:layout_marginStart="@dimen/dimen_10dp"
             android:id="@+id/spinner_bg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_40"
             android:layout_marginLeft="@dimen/dimen_10dp"
             android:background="@drawable/tab_background_unselected"
             android:entries="@array/blood_groups_suffix"
-            android:text="Blood Donors"
-            android:textColor="@color/black" />
-
-        <Spinner
-            android:id="@+id/spinner_bg_donor"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:background="@drawable/tab_background_unselected"
-            android:entries="@array/blood_groups_suffix"
-            android:text="Blood Donors"
             android:textColor="@color/black"
-            android:visibility="gone" />
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/ll_donor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Spinner
+                android:id="@+id/spinner_bg_dist"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_weight="1"
+                android:background="@drawable/tab_background_unselected"
+                android:entries="@array/ts_districts"
+                android:textColor="@color/black" />
+
+            <Spinner
+                android:id="@+id/spinner_bg_donor"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_weight="1"
+                android:background="@drawable/tab_background_unselected"
+                android:entries="@array/blood_groups_suffix"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
     <TextView

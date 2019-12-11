@@ -133,14 +133,38 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
                     mFilteredList = bloodDonorResponses;
                 } else {
                     try {
+                        String[] str = charString.split("_");
                         ArrayList<BloodDonorResponse> filteredList = new ArrayList<>();
                         for (BloodDonorResponse bloodDonorResponses : bloodDonorResponses) {
-                            if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                            if (!str[0].contains("Select") && !str[1].contains("Select")) {
 
-                                    && bloodDonorResponses.getBloodGroup().
-                                    toLowerCase().replace(" ", "")
-                                    .equalsIgnoreCase(charString.toLowerCase())) {
-                                filteredList.add(bloodDonorResponses);
+                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                                        && bloodDonorResponses.getBloodGroup().
+                                        toLowerCase().replace(" ", "")
+                                        .equalsIgnoreCase(str[0].trim().toLowerCase())
+
+                                        &&
+
+                                        !TextUtils.isEmpty(bloodDonorResponses.getDistrict())
+                                        && bloodDonorResponses.getDistrict().
+                                        toLowerCase().trim().equalsIgnoreCase(str[1].trim().toLowerCase())) {
+                                    filteredList.add(bloodDonorResponses);
+                                }
+                            } else if (!str[0].contains("Select") && str[1].contains("Select")) {
+                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                                        && bloodDonorResponses.getBloodGroup().
+                                        toLowerCase().replace(" ", "")
+                                        .equalsIgnoreCase(str[0].trim().toLowerCase())) {
+                                    filteredList.add(bloodDonorResponses);
+                                }
+                            } else if (!str[1].contains("Select") && str[0].contains("Select")) {
+                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                                        && bloodDonorResponses.getDistrict().
+                                        toLowerCase()
+                                        .equalsIgnoreCase(str[1].trim().toLowerCase())) {
+                                    filteredList.add(bloodDonorResponses);
+                                }
+
                             }
                         }
                         mFilteredList = filteredList;
