@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,10 +52,6 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
     @Override
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
 
-//        holder.htv_id.setText(headStringList.get(2));
-//        holder.htv_name.setText(headStringList.get(3));
-//        holder.htv_gender.setText(headStringList.get(4));
-//        holder.htv_type.setText(headStringList.get(13));
         if (position < data_dashbord.size()) {
             holder.tv_name.setText(data_dashbord.get(position).getName());//Here paramters are changed run and see result
             holder.tv_id.setText(data_dashbord.get(position).getMemberId());
@@ -65,6 +62,14 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
                 holder.tv_type.setText("-");
             }
         }
+
+        if (selectedThemeColor != -1) {
+            holder.htv_id.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            holder.htv_name.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            holder.htv_gender.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            holder.htv_type.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+        }
+
 
         holder.cv_user.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +120,8 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
         TextView tv_name, tv_id, tv_gender, tv_type;
         TextView htv_name, htv_id, htv_gender, htv_type;
 
+        ImageView im_user;
+
 
         CardView cv_user;
 
@@ -132,6 +139,7 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
             tv_gender = itemView.findViewById(R.id.tv_gender);
             tv_type = itemView.findViewById(R.id.tv_type);
             cv_user = itemView.findViewById(R.id.cv_user);
+            im_user = itemView.findViewById(R.id.image_user);
 
 
         }

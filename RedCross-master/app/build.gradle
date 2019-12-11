@@ -69,53 +69,8 @@ android {
             buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
             buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
             signingConfig signingConfigs.release
-            debuggable false
-
-//            release {
-//                buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
-//
-//                signingConfig signingConfigs.release
-//                minifyEnabled false
-//                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//
-//            }
-//
-//            debug {
-//                buildConfigField("String", "SERVER_URL", "\"http://dev2.cgg.gov.in/redcross/\"")
-//
-//                signingConfig signingConfigs.release
-//
-//            }
-//            qa {
-//                buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
-//
-//                signingConfig signingConfigs.release
-//                debuggable true
-//
-//            }
-//            uat {
-//                buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
-//                signingConfig signingConfigs.release
-//                debuggable true
-//
-//
-//            }
-
-/**/
+            debuggable true
         }
-        /*       release {
-                minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            }
-    */
-
-
-/**/
-        /*       release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-*/
 
     }
 }

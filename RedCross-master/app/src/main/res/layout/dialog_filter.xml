@@ -108,7 +108,7 @@
         android:orientation="horizontal">
 
 
-        <Button
+        <TextView
             android:id="@+id/btn_submit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -116,12 +116,14 @@
             android:layout_marginTop="@dimen/dp_20"
             android:layout_marginRight="@dimen/dp_10"
             android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:textAlignment="center"
             android:background="@drawable/tab_background_selected"
             android:text="OK"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -129,6 +131,8 @@
             android:layout_marginTop="@dimen/dp_20"
             android:layout_marginRight="@dimen/dp_10"
             android:layout_weight="1"
+            android:padding="@dimen/dp_10"
+            android:textAlignment="center"
             android:background="@drawable/tab_background_selected"
             android:text="Clear"
             android:textAllCaps="false"

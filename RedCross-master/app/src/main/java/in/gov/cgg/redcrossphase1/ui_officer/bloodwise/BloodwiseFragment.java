@@ -36,11 +36,14 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentBloodwiseBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class BloodwiseFragment extends Fragment {
 
     FragmentBloodwiseBinding binding;
     private BloodwiseViewModel bloodwiseVm;
     int i = 0;
+    private int selectedThemeColor = -1;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -54,6 +57,14 @@ public class BloodwiseFragment extends Fragment {
 
         GlobalDeclaration.home = false;
 
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
 
 //        Objects.requireNonNull(getActivity()).setTitle("Blood group wise");
 
@@ -95,109 +106,7 @@ public class BloodwiseFragment extends Fragment {
                 }
             }
         });
-//        ll_jrc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (CheckInternet.isOnline(getActivity())) {
-//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-//                    tv_jrcocunt.setTextColor(getResources().getColor(white));
-//                    tv_jrcname.setTextColor(getResources().getColor(white));
-////
-//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
-//
-//
-//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-//
-//
-//                    bloodwiseVm.getBlood("JRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-//                            observe(getActivity(), new Observer<List<BloodGroups>>() {
-//                                @Override
-//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-//                                    if (bloodGroupsList != null) {
-//                                        generateDataPie(bloodGroupsList);
-//                                    }
-//                                }
-//                            });
-//                } else {
-//                    Snackbar snackbar = Snackbar
-//                            .make(ll_jrc, "No Internet Connection", Snackbar.LENGTH_LONG);
-//                    snackbar.show();
-//                }
-//
-//            }
-//        });
-//
-//        ll_yrc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (CheckInternet.isOnline(getActivity())) {
-//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-////
-//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-//                    tv_yrcname.setTextColor(getResources().getColor(white));
-//                    tv_yrccount.setTextColor(getResources().getColor(white));
-//
-//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_lmcount.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_lmname.setTextColor(getResources().getColor(colorPrimary));
-//
-//                    bloodwiseVm.getBlood("YRC", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-//                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
-//                                @Override
-//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-//                                    if (bloodGroupsList != null) {
-//                                        generateDataPie(bloodGroupsList);
-//                                    }
-//                                }
-//                            });
-//                } else {
-//                    Snackbar snackbar = Snackbar
-//                            .make(ll_yrc, "No Internet Connection", Snackbar.LENGTH_LONG);
-//                    snackbar.show();
-//                }
-//            }
-//        });
-//        ll_lm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if (CheckInternet.isOnline(getActivity())) {
-//                    ll_lm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-//                    tv_lmcount.setTextColor(getResources().getColor(white));
-//                    tv_lmname.setTextColor(getResources().getColor(white));
-////
-//                    ll_yrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_yrcname.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_yrccount.setTextColor(getResources().getColor(colorPrimary));
-//
-//                    ll_jrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-//                    tv_jrcname.setTextColor(getResources().getColor(colorPrimary));
-//                    tv_jrcocunt.setTextColor(getResources().getColor(colorPrimary));
-//
-//                    bloodwiseVm.getBlood("Membership", GlobalDeclaration.districtId, GlobalDeclaration.userID).
-//                            observe(Objects.requireNonNull(getActivity()), new Observer<List<BloodGroups>>() {
-//                                @Override
-//                                public void onChanged(@Nullable List<BloodGroups> bloodGroupsList) {
-//                                    if (bloodGroupsList != null) {
-//                                        generateDataPie(bloodGroupsList);
-//                                    }
-//                                }
-//                            });
-//                } else {
-//                    Snackbar snackbar = Snackbar
-//                            .make(ll_lm, "No Internet Connection", Snackbar.LENGTH_LONG);
-//                    snackbar.show();
-//                }
-//            }
-//        });
+
 
         return binding.getRoot();
     }
@@ -213,15 +122,7 @@ public class BloodwiseFragment extends Fragment {
             binding.rvBloodList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
-//            Collections.sort(bloodGroupsList, new Comparator<BloodGroups>() {
-//                @Override
-//                public int compare(BloodGroups lhs, BloodGroups rhs) {
-//                    return lhs.getCount().compareTo(rhs.getCount());
-//                }
-//            });
-//            Collections.reverse(bloodGroupsList);
-
-            BloodAdapter adapter1 = new BloodAdapter(getActivity(), bloodGroupsList);
+            BloodAdapter adapter1 = new BloodAdapter(getActivity(), bloodGroupsList, selectedThemeColor);
             binding.rvBloodList.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
             generateDataPie(bloodGroupsList);
@@ -237,6 +138,7 @@ public class BloodwiseFragment extends Fragment {
 
 
     }
+
     private void generateDataPie(List<BloodGroups> bloodGroupsList) {
 
 
@@ -295,7 +197,6 @@ public class BloodwiseFragment extends Fragment {
         d.setValueTextColor(Color.WHITE);
         d.setValueTextSize(9f);
         // d.setSliceSpace(5f);
-
 
 
         PieData pieData = new PieData(d);

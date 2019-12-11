@@ -16,8 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -76,6 +76,9 @@ public class GetDrilldownFragment extends Fragment {
 
         pd = new CustomProgressDialog(getActivity());
 
+
+        loaTheam();
+
         if (getArguments() != null) {
             mid = getArguments().getInt("mid");
             did = getArguments().getInt("did");
@@ -121,13 +124,29 @@ public class GetDrilldownFragment extends Fragment {
         final View view = factory.inflate(R.layout.dialog_filter, null);
 
         final Spinner spn_type, spn_gender, spn_bg;
-        Button btn_ok, btn_cancel;
+        TextView btn_ok, btn_cancel;
 
         spn_type = view.findViewById(R.id.spn_type);
         spn_gender = view.findViewById(R.id.spn_gender);
         spn_bg = view.findViewById(R.id.spn_bg);
         btn_cancel = view.findViewById(R.id.btn_cancel);
         btn_ok = view.findViewById(R.id.btn_submit);
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+            if (selectedThemeColor != -1) {
+                btn_cancel.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_ok.setBackgroundColor(getResources().getColor(selectedThemeColor));
+            } else {
+                btn_cancel.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                btn_ok.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            }
+        } catch (Exception e) {
+            btn_cancel.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            btn_ok.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        }
         final AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setView(view);
         final AlertDialog alert11 = builder1.create();
@@ -397,8 +416,14 @@ public class GetDrilldownFragment extends Fragment {
 
     private void loaTheam() {
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
             if (selectedThemeColor != -1) {
+
+                binding.tvvname.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvmname.setTextColor(getResources().getColor(selectedThemeColor));
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
@@ -440,7 +465,6 @@ public class GetDrilldownFragment extends Fragment {
 
                     headersList = response.body().getHeaders();
                     studentList = response.body().getStudentsList();
-                    // studentListBeanList.clear();
 
                     for (int position = 0; position < studentList.size(); position++) {
 
@@ -554,17 +578,19 @@ public class GetDrilldownFragment extends Fragment {
 
                         studentListBeanList.add(studentListBean);
                     }
-                    binding.rvDrilldown.setHasFixedSize(true);
-                    binding.rvDrilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    adapter1 = new NewDrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
-                    binding.rvDrilldown.setAdapter(adapter1);
-                    adapter1.notifyDataSetChanged();
 
+                    if (studentListBeanList.size() > 0) {
+                        binding.rvDrilldown.setHasFixedSize(true);
+                        binding.rvDrilldown.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-                } else {
-                    binding.tvNodata.setVisibility(View.VISIBLE);
-                    binding.rvDrilldown.setVisibility(View.GONE);
+                        adapter1 = new NewDrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
+                        binding.rvDrilldown.setAdapter(adapter1);
+                        adapter1.notifyDataSetChanged();
+                    } else {
+                        binding.tvNodata.setVisibility(View.VISIBLE);
+                        binding.rvDrilldown.setVisibility(View.GONE);
 
+                    }
                 }
 
             }
@@ -603,18 +629,6 @@ public class GetDrilldownFragment extends Fragment {
         });
     }
 
-    /*    @Override
-        public boolean onQueryTextSubmit(String query) {
-            return false;
-        }
-
-        @Override
-        public boolean onQueryTextChange(String newText) {
-            if (adapter1 != null) {
-                adapter1.filter(newText);
-            }
-            return true;
-        }*/
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

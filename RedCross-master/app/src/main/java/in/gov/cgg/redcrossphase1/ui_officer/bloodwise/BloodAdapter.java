@@ -19,9 +19,10 @@ public class BloodAdapter extends RecyclerView.Adapter<BloodAdapter.DistrictView
     List<BloodGroups> dayWiseReportCountResponses;
     int selectedThemeColor = -1;
 
-    public BloodAdapter(Context mCtx, List<BloodGroups> dayWiseReportCountResponses) {
+    public BloodAdapter(Context mCtx, List<BloodGroups> dayWiseReportCountResponses, int selectedThemeColor) {
         this.mCtx = mCtx;
         this.dayWiseReportCountResponses = dayWiseReportCountResponses;
+        this.selectedThemeColor = selectedThemeColor;
     }
 
     @NonNull
@@ -37,12 +38,10 @@ public class BloodAdapter extends RecyclerView.Adapter<BloodAdapter.DistrictView
 
         holder.tvbname.setText(dayWiseReportCountResponses.get(position).getBloodGroup());
         holder.tvbcount.setText(String.valueOf(dayWiseReportCountResponses.get(position).getCount()));
+        if (selectedThemeColor != -1) {
 
-//        holder.tv_alldname.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
-//        holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
-//        holder.ll_alldname.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
-//        holder.tv_totaltext.setTextColor(mCtx.getResources().getColor(R.color.colorPrimary));
-
+            holder.tvbname.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+        }
 
     }
 

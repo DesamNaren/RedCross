@@ -27,18 +27,79 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentMembereditBinding;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class EnrolledMemberEditFragment extends Fragment {
 
 
     FragmentMembereditBinding binding;
     private StudentListBean data_dashbord;
     private List<String> headStringList;
+    private int selectedThemeColor = -1;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_memberedit, container, false);
+
+        try {
+            selectedThemeColor = Objects.requireNonNull(getActivity()).getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+            if (selectedThemeColor != -1) {
+                binding.scroll.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadermandal.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderMemberType.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderenddate.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderinstutetype.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderclass.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderinstutename.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderemail.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderbloodgroup.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadervillage.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadername.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadermeberId.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderdob.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadergender.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeaderenddate.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.adapter.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                binding.btnSubmit.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.btnCancel.setTextColor(getResources().getColor(selectedThemeColor));
+
+            } else {
+                binding.scroll.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadermandal.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderMemberType.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderenddate.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderinstutetype.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderclass.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderinstutename.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderemail.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderbloodgroup.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadervillage.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadername.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadermeberId.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderdob.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadergender.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeaderenddate.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHeadermobile.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.adapter.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+
+                binding.btnSubmit.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.btnCancel.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+
         data_dashbord = GlobalDeclaration.drilldownResponse;
         headStringList = GlobalDeclaration.headStringList;
 //header

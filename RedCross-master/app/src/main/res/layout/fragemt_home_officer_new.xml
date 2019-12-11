@@ -40,11 +40,11 @@
                             android:layout_height="wrap_content"
                             android:minHeight="?actionBarSize"
                             app:tabGravity="fill"
-                            app:tabIndicator="@color/colorPrimary"
                             app:tabInlineLabel="true"
                             app:tabMode="fixed"
-                            app:tabSelectedTextColor="@color/white"
-                            app:tabTextAppearance="@style/CustomTextAppearanceTab" />
+                            style="@style/HomeTab"
+                            app:tabIndicatorColor="@color/colorPrimary"
+                            app:tabSelectedTextColor="@color/black" />
 
 
                         <androidx.viewpager.widget.ViewPager
@@ -67,8 +67,6 @@
                     android:src="@drawable/dayreport"
                     android:tint="@color/white"
                     app:fab_colorNormal="@color/white"
-                    app:fab_colorPressed="@color/colorPrimary"
-                    app:fab_colorRipple="@color/colorPrimary"
                     app:fab_label="District wise "
                     app:fab_size="mini" />
 

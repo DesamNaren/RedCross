@@ -36,12 +36,15 @@ import in.gov.cgg.redcrossphase1.databinding.NewfragmentGovtpvtnewBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.LineXYMarkerView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class GovtPvtFragment extends Fragment implements OnChartValueSelectedListener {
 
 
     private GovtPvtViewModel govtPvtViewModel;
     NewfragmentGovtpvtnewBinding binding;
     int i;
+    private int selectedThemeColor = -1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,12 +57,23 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
 
         GlobalDeclaration.home = false;
 
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
         govtPvtViewModel.getGovtPvt(GlobalDeclaration.districtId).
                 observe(getActivity(), new Observer<List<Last10day>>() {
                     @Override
                     public void onChanged(@Nullable List<Last10day> last10dayList) {
                         if (last10dayList != null) {
-                            setDataforRV(last10dayList);
+                            if (last10dayList.size() > 1) {
+                                setDataforRV(last10dayList);
+                            }
 //                            generateDataBar(last10dayList);
                             //test(last10dayList);
                         }
@@ -100,7 +114,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
             binding.rvGovtpvtlist.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
-            GovtPvtAdapter adapter1 = new GovtPvtAdapter(getActivity(), last10days);
+            GovtPvtAdapter adapter1 = new GovtPvtAdapter(getActivity(), last10days, selectedThemeColor);
             binding.rvGovtpvtlist.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
             generateDataLine(last10days);
@@ -449,7 +463,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         LineData data = new LineData(lineDataSetGov, lineDataSetPvt);
         binding.chartGovtpvt.setData(data);
         binding.chartGovtpvt.getDescription().setEnabled(false);
-        binding.chartGovtpvt.animateX(1500);
+        binding.chartGovtpvt.animateY(3000);
         binding.chartGovtpvt.invalidate();
     }
 

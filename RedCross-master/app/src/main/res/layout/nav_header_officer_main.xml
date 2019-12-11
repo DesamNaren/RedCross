@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_dashboard_header"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -10,51 +10,6 @@
     android:background="@drawable/tab_background_selected"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/nav_header_desc"
-                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:src="@drawable/user" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/textView_welcome"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:text="Welcome"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/textView_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingTop="@dimen/nav_header_vertical_spacing"
-                    android:textAlignment="center"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-        </LinearLayout>
-    -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

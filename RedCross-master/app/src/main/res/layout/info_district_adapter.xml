@@ -198,7 +198,7 @@
                     android:paddingTop="@dimen/dp_5"
                     android:paddingBottom="@dimen/dp_5"
                     android:src="@android:drawable/ic_dialog_info"
-                    android:tint="@color/colorPrimary"
+                    android:tint="#ED1F1D1D"
                     android:visibility="visible" />
 
 

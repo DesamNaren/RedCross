@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Name"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
                 android:layout_weight="0.8"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="Contact No"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dimen_14sp" />
 
             <TextView
@@ -121,7 +121,7 @@
                 android:layout_weight="0.5"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="Email"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="@dimen/dimen_14sp" />
 
             <TextView

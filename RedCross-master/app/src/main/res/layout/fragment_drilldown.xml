@@ -96,10 +96,7 @@
             android:layout_margin="@dimen/dp_10"
             android:backgroundTint="@color/white"
             android:src="@drawable/filter"
-            android:tint="@color/colorPrimary"
             app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/colorPrimary"
-            app:fab_colorRipple="@color/colorPrimary"
             app:fab_label="District wise "
             app:fab_size="mini" />
 

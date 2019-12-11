@@ -52,7 +52,7 @@ public class DaywiseViewModel extends ViewModel {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<DayWiseReportCountResponse>> call = apiInterface.DayWiseReportDataWS(distid, finanyear, monthid);
 
-        Log.e("  url", call.request().url().toString());
+        Log.e(" day url", call.request().url().toString());
 
 
         call.enqueue(new Callback<List<DayWiseReportCountResponse>>() {

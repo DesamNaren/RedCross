@@ -14,7 +14,7 @@
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
-    G
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -38,13 +38,21 @@
     </style>
 
 
-    <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
+    <!--    <style name="Base.Widget.Design.TabLayout" parent="android:Widget">-->
+    <!--        <item name="tabBackground">@drawable/tab_background</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="Custom.Widget.Design.TabLayout" parent="android:Widget">-->
+    <!--        <item name="android:textStyle">bold</item>-->
+    <!--    </style>-->
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabBackground">@drawable/tab_background</item>
     </style>
 
-    <style name="Custom.Widget.Design.TabLayout" parent="android:Widget">
-        <item name="android:textStyle">bold</item>
+    <style name="HomeTab" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">@style/CustomTextAppearanceTab</item>
     </style>
+
 
     <style name="MaterialSearchViewStyle">
         <!-- Background for the search bar -->
