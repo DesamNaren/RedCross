@@ -1,8 +1,10 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -16,12 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class WebViewPaymentActivity extends AppCompatActivity {
     String postData = null;
     WebView mWebView;
 
-
+    String FinalURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,56 +42,37 @@ public class WebViewPaymentActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                if (url.contains("paymentResponsePage")) {
+                FinalURL = url;
+                Log.e("TAG", "==== " + url);
+                if (url.contains("  ")) {
 
                     //flag=true;
-                  /*  new Handler().postDelayed(new Runnable() {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            startActivity(new Intent(Paymentgateway.this, SuccessPayment.class));
+                            //reDirect to membership id card class
                         }
-                    }, 1000);*/
+                    }, 1000);
 
                 }
 
-                //setProgressBarVisibility(View.GONE);
             }
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                // super.onReceivedError(view, request, error);
-                //setProgressBarVisibility(View.GONE);
+
             }
         });
-        //String value = "IRCSTS!67766777!NA!1.00!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9999999999!Test Name!11-11-1990!11-11-2019!JRC2019112!txtadditional6!txtadditional7!https://10.2.9.85:2019/redcross/getPaymentResponse";
-        Log.e("encrpyt", "..................." + GlobalDeclaration.encrpyt);
-        GlobalDeclaration.encrpyt = GlobalDeclaration.encrpyt.replace("|", "!");
-        Log.e("encrpyt", "..................." + GlobalDeclaration.encrpyt);
 
+        GlobalDeclaration.encrpyt = GlobalDeclaration.encrpyt.replace("|", "!");
 
         String value = GlobalDeclaration.encrpyt;
-
-
-        //  String url = "http://uat2.cgg.gov.in:8081/redcrosspayment/proceedMob?msg=" + URLEncoder.encode(value, "UTF-8");
         String url = GlobalDeclaration.Paymenturl + "?msg=" + value;
-        Log.e("URLweb ", "==========    " + url);
-
-
+        Log.e("TAG", "==== " + url);// http://uat2.cgg.gov.in:8081/redcrosspayment/proceedMob?msg=IRCSTS!7507!NA!1!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9554949495!fmmhfhtddhy!11-12-2019!11-12-2019!AMR20197507!NA!NA!http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse
         mWebView.loadUrl(url);
-
-//        String postData = null;
-//        try {
-//            GlobalDeclaration.encrpyt = "IRCSTS!7475!NA!1!NA!NA!NA!INR!NA!R!ircsts!NA!NA!F!9885588887!bcbcbcb!10-12-2019!10-12-2019!AAE20197475!NA!NA!http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse";
-//            postData = "msg=" + URLEncoder.encode(GlobalDeclaration.encrpyt, "UTF-8");
-//            mWebView.postUrl(GlobalDeclaration.Paymenturl, postData.getBytes());
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-
 
         WebSettings webSettings1 = mWebView.getSettings();
         webSettings1.setJavaScriptEnabled(true);
-        // mywebview.setWebViewClient(new WebViewClient());
         mWebView.setWebChromeClient(new WebChromeClient() {
 
             public void onProgressChanged(WebView view, int progress) {
@@ -97,4 +82,37 @@ public class WebViewPaymentActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+
+        if (FinalURL != " ") {
+            final PrettyDialog dialog = new PrettyDialog(this);
+            dialog
+                    .setTitle("Red cross")
+                    .setMessage("Do you want to cancel payment process?")
+                    .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                    .addButton("Yes", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                        @Override
+                        public void onClick() {
+                            dialog.dismiss();
+                            startActivity(new Intent(WebViewPaymentActivity.this, MembershipRegFormActivity.class));
+                            finish();
+                        }
+                    })
+                    .addButton("No", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                        @Override
+                        public void onClick() {
+                            dialog.dismiss();
+                            // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+            dialog.show();
+        } else {
+            //reDirect to membership id card class
+        }
+    }
+
 }
