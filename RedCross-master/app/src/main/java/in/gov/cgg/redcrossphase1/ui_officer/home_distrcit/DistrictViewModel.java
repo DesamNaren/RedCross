@@ -151,7 +151,7 @@ public class DistrictViewModel extends ViewModel {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DashboardCountResponse> call = apiInterface.getMemberCountsForDashboard(districtId);
 
-        Log.e("  url", call.request().url().toString());
+        Log.e(" counts url", call.request().url().toString());
 
         call.enqueue(new Callback<DashboardCountResponse>() {
             @Override

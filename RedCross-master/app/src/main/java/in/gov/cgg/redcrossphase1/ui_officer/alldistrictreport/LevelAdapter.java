@@ -77,13 +77,13 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
     public void onBindViewHolder(@NonNull final DistrictViewHolder holder, final int position) {
 
 
-        total = allDistricts.get(position).getJRC() + allDistricts.get(position).getYRC() + allDistricts.get(position).getMembership();
+        total = data_dashbord.get(position).getJRC() + data_dashbord.get(position).getYRC() + data_dashbord.get(position).getMembership();
         //total = allDistricts.get(position).getTotalCounts();
 
-        holder.tv_alldname.setText(allDistricts.get(position).getName());
-        holder.tv_jrcount.setText(String.valueOf(allDistricts.get(position).getJRC()));
-        holder.tv_yrccount.setText(String.valueOf(allDistricts.get(position).getYRC()));
-        holder.tv_lmcunt.setText(String.valueOf(allDistricts.get(position).getMembership()));
+        holder.tv_alldname.setText(data_dashbord.get(position).getName());
+        holder.tv_jrcount.setText(String.valueOf(data_dashbord.get(position).getJRC()));
+        holder.tv_yrccount.setText(String.valueOf(data_dashbord.get(position).getYRC()));
+        holder.tv_lmcunt.setText(String.valueOf(data_dashbord.get(position).getMembership()));
         holder.tv_totalcount.setText(String.valueOf(total));
 
 
@@ -139,12 +139,15 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Fragment frag = new AllMandalsFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
-                    args.putInt("did", data_dashbord.get(position).getId());
                     frag.setArguments(args);
                     if (GlobalDeclaration.role.contains("D")) {
                         GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
+                        args.putInt("did", GlobalDeclaration.localDid);
+
                     } else {
                         GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+                        args.putInt("did", GlobalDeclaration.localDid);
+
                     }
                     GlobalDeclaration.type = "";
                     GlobalDeclaration.leveDName = data_dashbord.get(position).getName();
@@ -168,10 +171,10 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     if (GlobalDeclaration.role.contains("D")) {
                         GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
                         args.putInt("did", GlobalDeclaration.localDid);
-
                     } else {
-                        GlobalDeclaration.localDid = data_dashbord.get(position).getId();
+
                         args.putInt("did", GlobalDeclaration.localDid);
+
 
                     }
                     frag.setArguments(args);
@@ -189,14 +192,12 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     Fragment frag = new GetDrilldownFragment();
 //                String backStateName = frag.getClass().getName();
                     Bundle args = new Bundle();
-                    args.putInt("vid", allDistricts.get(position).getId());
+                    args.putInt("vid", data_dashbord.get(position).getId());
                     args.putInt("mid", GlobalDeclaration.localMid);
                     if (GlobalDeclaration.role.contains("D")) {
                         GlobalDeclaration.localDid = Integer.valueOf(GlobalDeclaration.districtId);
                         args.putInt("did", GlobalDeclaration.localDid);
-
                     } else {
-                        GlobalDeclaration.localDid = data_dashbord.get(position).getId();
                         args.putInt("did", GlobalDeclaration.localDid);
 
                     }
@@ -250,7 +251,7 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                     if (allDistricts.get(position).getDistrictChairManName().length() > 0) {
                         dialog.show();
                     } else {
-
+                        Toast.makeText(mCtx, "No contact details available", Toast.LENGTH_SHORT).show();
                     }
                 }
                 if (allDistricts.get(position).getPhoneNo() != null) {
@@ -258,7 +259,6 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
                         llphone.setVisibility(View.VISIBLE);
                     } else {
                         llphone.setVisibility(View.GONE);
-
                     }
                 } else {
                     llphone.setVisibility(View.GONE);
@@ -270,7 +270,6 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.DistrictView
 
                     } else {
                         llemail.setVisibility(View.GONE);
-
                     }
                 } else {
                     llemail.setVisibility(View.GONE);

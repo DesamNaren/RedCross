@@ -843,7 +843,8 @@ public class NewOfficerHomeFragment extends Fragment {
     private void setCountsForDashboard(DashboardCountResponse dashboardCountResponse) {
         if (dashboardCountResponse != null) {
 
-            int total = dashboardCountResponse.getJrc() + dashboardCountResponse.getYrc() + dashboardCountResponse.getMs();
+            int total = dashboardCountResponse.getJrc() + dashboardCountResponse.getYrc() +
+                    dashboardCountResponse.getMs();
             binding.customCount.tvAllcount.setText(String.valueOf(total));
             binding.customCount.tvJrccount.setText(String.valueOf(dashboardCountResponse.getJrc()));
             binding.customCount.tvYrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));

@@ -36,12 +36,10 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
-import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class AllVillageFragment extends Fragment {
 
 
-    CustomProgressDialog pd;
     int value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
@@ -135,8 +133,7 @@ public class AllVillageFragment extends Fragment {
 //        } catch (Resources.NotFoundException e) {
 //            e.printStackTrace();
 //        }
-        pd = new CustomProgressDialog(getActivity());
-        pd.show();
+
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "alldistrict")).
                         get(AllDistrictsViewModel.class);
@@ -155,7 +152,6 @@ public class AllVillageFragment extends Fragment {
                         if (allDistrictList != null) {
                             setDataforRV(allDistrictList);
                             //setCountsForDashboard(allDistrictList);
-                            pd.dismiss();
                         }
                     }
                 });

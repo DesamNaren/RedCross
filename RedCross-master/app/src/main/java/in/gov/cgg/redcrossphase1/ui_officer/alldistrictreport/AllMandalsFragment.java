@@ -36,12 +36,10 @@ import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
-import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class AllMandalsFragment extends Fragment {
 
 
-    CustomProgressDialog pd;
     int value;
     private AllDistrictsViewModel allDistrictsViewModel;
     private FragmentAldistrictBinding binding;
@@ -148,8 +146,7 @@ public class AllMandalsFragment extends Fragment {
 //            e.printStackTrace();
 //        }
 
-        pd = new CustomProgressDialog(getActivity());
-        pd.show();
+
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new
 
@@ -165,12 +162,7 @@ public class AllMandalsFragment extends Fragment {
         if (getArguments() != null) {
             value = getArguments().getInt("did");
         } else {
-            if (!GlobalDeclaration.role.contains("D")) {
-                value = GlobalDeclaration.localDid;
-            } else {
-                value = Integer.parseInt(GlobalDeclaration.districtId);
-            }
-
+            value = GlobalDeclaration.localDid;
         }
 
         allDistrictsViewModel.getAllMandals("MandalWise", "3", value).
@@ -182,7 +174,6 @@ public class AllMandalsFragment extends Fragment {
                         if (allDistrictList != null) {
                             setDataforRV(allDistrictList);
                             //  setCountsForDashboard(allDistrictList);
-                            pd.dismiss();
                         }
                     }
                 });
@@ -258,12 +249,10 @@ public class AllMandalsFragment extends Fragment {
 
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
-                    if (!GlobalDeclaration.role.contains("D")) {
-                        Fragment frag = new NewOfficerHomeFragment();
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
-                                frag).addToBackStack(null).commit();
-                        return true;
-                    }
+                    Fragment frag = new NewOfficerHomeFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                    return true;
                 }
                 return false;
             }
