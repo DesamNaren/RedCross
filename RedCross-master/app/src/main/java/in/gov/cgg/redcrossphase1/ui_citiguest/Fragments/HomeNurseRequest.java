@@ -1,6 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -458,6 +459,12 @@ public class HomeNurseRequest extends Fragment {
                     if (response.body() != null) {
 
                         Log.d("response", "onResponse: url" + response.body().getSaveStatus());
+                        if (response.body().getSaveStatus().contains("Success")) {
+
+                            Toast.makeText(getActivity(), "Nurse Id generated successfully.", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getActivity(), HomenursingFragment.class);
+                            startActivity(i);
+                        }
 
                     } else {
                         Toast.makeText(getActivity(), "Response null" + response.body(), Toast.LENGTH_SHORT).show();

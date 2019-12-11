@@ -65,6 +65,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Full Name"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -80,6 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Father's/Husband's Name"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -148,7 +150,7 @@
                             android:layout_weight="1"
                             android:drawableRight="@android:drawable/ic_menu_my_calendar"
                             android:focusable="false"
-                            android:hint="Enter Date Of Birth"
+                            android:hint="Enter Date of Birth"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -180,6 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Mobile Number"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -196,6 +199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Email ID"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -223,10 +227,11 @@
                     <TextView
                         android:id="@+id/Photo_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         android:padding="@dimen/dp_5"
                         android:text="Photo"
                         android:textColor="@color/black"
+                        android:layout_margin="8dp"
                         android:textSize="16sp" />
 
                     <ImageView
@@ -234,6 +239,7 @@
                         android:layout_width="@dimen/dimen_100dp"
                         android:layout_height="@dimen/dimen_100dp"
                         android:layout_gravity="center"
+                        android:layout_margin="8dp"
                         android:src="@drawable/cam" />
 
                 </LinearLayout>
@@ -302,6 +308,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Occupation"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -460,6 +467,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter House No"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -474,6 +482,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Locality"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -489,6 +498,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Street/Area"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -551,6 +561,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Enter Pincode"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -626,6 +637,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Spared hours to red cross activities(per week)"
+                        android:layout_margin="8dp"
                         android:textColor="@color/pdlg_color_blue" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -633,6 +645,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Number of hours"
+                        android:layout_margin="8dp"
                         app:errorEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
