@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.HomeNurseReqRequest;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.HomeNurseReqResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
@@ -148,6 +150,7 @@ public interface ApiInterface {
 
     @POST("saveMembershipMemberData")
     Call<PaymentBean> SendDetails(@Body JsonObject jsonBody);
+
     @Multipart
     @POST("uploadPhotoMembAdd")
     Call<PhotoBean> SendPhoto(@Part MultipartBody.Part photoUpload);
@@ -193,7 +196,9 @@ public interface ApiInterface {
 
     @GET("getidcardDownload/{memberId}/{DOB}")
     Call<ResponseBody> getIdcardDownload(@Path("memberId") String memberId, @Path("DOB") String DOB);
-    //http://uat2.cgg.gov.in:8081/redcross/getidcardDownload/{memberId}/{DOB}    (dob :dd-mm-yyyy)
+
+    @POST("submitHomeNurseRequest")
+    Call<HomeNurseReqResponse> submitHomeNurseRequest(@Body HomeNurseReqRequest req);
 
 }
 
