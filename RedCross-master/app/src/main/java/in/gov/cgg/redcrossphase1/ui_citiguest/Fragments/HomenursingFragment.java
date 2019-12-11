@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Objects;
 
@@ -54,6 +56,17 @@ public class HomenursingFragment extends Fragment {
                 become_home_nurse_layout.setVisibility(View.VISIBLE);
                 homeNurse.setVisibility(View.GONE);
 
+            }
+        });
+        btn_RaisehomeNursingRegProceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new HomeNurseRequest();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment, HomeNurseRequest.class.getSimpleName());
+                transaction.addToBackStack(null);
+                transaction.commitAllowingStateLoss();
             }
         });
 

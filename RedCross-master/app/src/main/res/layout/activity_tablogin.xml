@@ -10,6 +10,7 @@
         <LinearLayout
             android:id="@+id/ll1"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -21,7 +22,7 @@
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
                 android:src="@drawable/redcross_logo_for_dashboard"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -40,9 +41,7 @@
             android:id="@+id/ll_Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/ll_pic"
-            android:layout_below="@+id/ll1"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="@dimen/dp_5"
             android:layout_marginRight="15dp"
@@ -90,9 +89,9 @@
                             android:layout_below="@id/tv_signIn"
                             android:layout_marginLeft="@dimen/dp_5"
                             android:layout_marginRight="5dp"
-                            style="@style/AppTabLayout"
+                            android:background="@drawable/rect_shape"
+                            android:theme="@style/Base.Widget.Design.TabLayout"
                             app:tabGravity="fill"
-                            android:background="@drawable/tab_background_unselected"
                             app:tabInlineLabel="true"
                             app:tabMode="fixed"
                             app:tabRippleColor="@color/colorPrimary"
