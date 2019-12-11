@@ -135,31 +135,35 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         drawer = findViewById(R.id.drawer_layout);
-        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
 
-            }
+        getNearMeList();
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                if (!isNavListLoaded) {
-                    getNearMeList();
-                }
-
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-
-            }
-        });
+//        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+//            @Override
+//            public void onDrawerSlide(View drawerView, float slideOffset) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//                if (!isNavListLoaded) {
+//                    drawer.openDrawer(Gravity.RIGHT);
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerStateChanged(int newState) {
+//
+//
+//            }
+//        });
 
 
         progressDialog = CustomProgressDialog.getInstance();
@@ -704,6 +708,9 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                         LocateAdapter adapter = new LocateAdapter(LocateActivity.this, listWithoutDuplicates);
                         recyclerView.setAdapter(adapter);
                         isNavListLoaded = true;
+                        drawer.openDrawer(Gravity.RIGHT);
+
+
                     }
 
                 }

@@ -46,7 +46,7 @@ public class SplashActivity extends Activity {
                     mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross4_splash));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross5));
+                    mainsplash.setBackground(getResources().getDrawable(R.drawable.splash9));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross6_splash));

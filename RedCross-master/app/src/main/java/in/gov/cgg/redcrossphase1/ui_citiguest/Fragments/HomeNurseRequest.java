@@ -39,6 +39,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipvillageAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
@@ -460,9 +461,7 @@ public class HomeNurseRequest extends Fragment {
 
                         Log.d("response", "onResponse: url" + response.body().getSaveStatus());
                         if (response.body().getSaveStatus().contains("Success")) {
-
-                            Toast.makeText(getActivity(), "Nurse Id generated successfully.", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(getActivity(), HomenursingFragment.class);
+                            Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
                             startActivity(i);
                         }
 

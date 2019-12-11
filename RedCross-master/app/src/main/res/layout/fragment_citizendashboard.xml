@@ -10,20 +10,30 @@
     android:orientation="vertical"
     tools:context=".ui_citiguest.Fragments.CitizendashboardFragment">
 
+    <LinearLayout
+        android:id="@+id/ll_pic_heaer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_header"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/header_img">
+
+        </ImageView>
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:src="@drawable/redcross_logo_for_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="gone" />
 
         <RelativeLayout
