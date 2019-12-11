@@ -54,7 +54,6 @@ public class MembershipFragment extends Fragment {
     String selectedType;
     CustomProgressDialog progressDialog;
     private List<MembershipDetails_Bean> callgetMembershipTypesList = new ArrayList<>();
-    private List<MembershipDetails_Bean> callgetMembershipTypesList1 = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -78,8 +77,8 @@ public class MembershipFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (TypeSpinner.getSelectedItem().toString().trim().equals("Select Type of Membership")) {
-                    Toast.makeText(c, "Select Type of Membership", Toast.LENGTH_SHORT).show();
+                if (TypeSpinner.getSelectedItem().toString().trim().equals("Select Membership Type")) {
+                    Toast.makeText(c, "Select Membership Type", Toast.LENGTH_SHORT).show();
                 } else {
                     selectedType = TypeSpinner.getSelectedItem().toString();
 
@@ -96,8 +95,6 @@ public class MembershipFragment extends Fragment {
 
                 GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i);
                 Log.e("ID", "===" + GlobalDeclaration.Selection_MEMbership_type);
-
-                // GlobalDeclaration.Selection_MEMbership_type=callgetMembershipTypesList1.get(i).getId().toString();
             }
 
             @Override
@@ -149,7 +146,6 @@ public class MembershipFragment extends Fragment {
             progressDialog.show();
             ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
             callgetMembershipTypesList.clear();
-            callgetMembershipTypesList1.clear();
 
             Call<List<MembershipDetails_Bean>> call = apiInterface.getMembershipTypes();
             Log.e("  url", call.request().url().toString());
@@ -167,15 +163,6 @@ public class MembershipFragment extends Fragment {
                         recyclerView.setAdapter(adapter);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                         recyclerView.setLayoutManager(linearLayoutManager);
-
-
-                        /*MembershipDetails_Bean membershipDetails_Bean = new MembershipDetails_Bean();
-                        membershipDetails_Bean.setId(0);
-                        membershipDetails_Bean.setMembTypeShortName("Select Membership Type");
-                        callgetMembershipTypesList1.add(0, membershipDetails_Bean);
-                        callgetMembershipTypesList1.addAll(callgetMembershipTypesList);
-                       // adapterspinner = new MembershipTypeAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, callgetMembershipTypesList1);
-                        //TypeSpinner.setAdapter(adapterspinner);*/
                     }
                 }
 

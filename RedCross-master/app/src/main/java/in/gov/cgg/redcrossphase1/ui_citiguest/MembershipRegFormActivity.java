@@ -50,6 +50,7 @@ import java.util.List;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipActivityAdaptor;
@@ -64,6 +65,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -682,7 +685,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
 
                     } else {
-                        Toast.makeText(MembershipRegFormActivity.this, "else", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MembershipRegFormActivity.this, "Response null" + response.body(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -1018,6 +1021,33 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        final PrettyDialog dialog = new PrettyDialog(this);
+        dialog
+                .setTitle("Red cross")
+                .setMessage("Your entered details will not be saved. Are you sure you want to go back?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
+                        finish();
+                    }
+                })
+                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        dialog.show();
     }
 
 }
