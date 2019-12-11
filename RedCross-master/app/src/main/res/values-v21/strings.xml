@@ -37,7 +37,16 @@
         <item>Annual Member</item>
         <item>Annual Associate</item>
     </string-array>
-
+    <string-array name="Select_Relation">
+        <item>Select Relation</item>
+        <item>Wife</item>
+        <item>Husband</item>
+        <item>Son</item>
+        <item>Daughter</item>
+        <item>Close Relative</item>
+        <item>Friend</item>
+        <item>Others</item>
+    </string-array>
 
     <string-array name="genders">
         <item>All</item>
