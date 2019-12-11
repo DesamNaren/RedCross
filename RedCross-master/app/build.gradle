@@ -39,12 +39,13 @@ android {
     buildTypes {
 
         release {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+
             buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
 
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            debuggable true
 
 
         }
@@ -68,7 +69,7 @@ android {
             buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
             buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
             signingConfig signingConfigs.release
-            debuggable true
+            debuggable false
 
 //            release {
 //                buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
