@@ -48,6 +48,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
+import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -89,6 +90,8 @@ public class BlooddonorRegistrationFragment extends Fragment {
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
     private List<DistrictBean> districtBeanArrayList;
+    RadioButton radioButton;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,7 +103,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View root = inflater.inflate(R.layout.fragment_blooddonor_registration, container, false);
+        final View root = inflater.inflate(R.layout.donor_reg_layout, container, false);
 
         Objects.requireNonNull(getActivity()).setTitle("Donor Regisration");
         progressDialog = new CustomProgressDialog(getActivity());
@@ -146,11 +149,11 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 //static spinner values
 
                 //Save blood donor data(registration)
-
-                if (validateFields()) {
-                    calldonorRegistarion();
+                if (CheckInternet.isOnline(getActivity())) {
+                    if (validateFields()) {
+                        calldonorRegistarion();
+                    }
                 }
-
 
 
             }
@@ -164,16 +167,12 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         RG_willingtodonateblood.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // This will get the radiobutton that has changed in its check state
-               /* RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
-                // This puts the value (true/false) into the variable
-                boolean isChecked = checkedRadioButton.isChecked();
-                // If the radiobutton that has changed in check state is now checked...
-*/
+
+
                 int selectedId = RG_willingtodonateblood.getCheckedRadioButtonId();
 
                 // find the radiobutton by returned id
-                RadioButton radioButton = root.findViewById(selectedId);
+                radioButton = root.findViewById(selectedId);
 
                /* Toast.makeText(getActivity(),
                         radioButton.getText(), Toast.LENGTH_SHORT).show();
@@ -197,8 +196,21 @@ public class BlooddonorRegistrationFragment extends Fragment {
         final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                Calendar c = Calendar.getInstance();
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, day);
+                String format = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
 
+                et_previouslyDonationDate.setText(format);
 
+            }
+        };
+
+        //Datepicker and age calculation
+        final DatePickerDialog.OnDateSetListener datePickerListenerDOB = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Calendar c = Calendar.getInstance();
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, month);
@@ -212,17 +224,27 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 if (minAdultAge.before(userAge)) {
                     Toast.makeText(getActivity(), "age not valid ", Toast.LENGTH_SHORT).show();
                     datePicker_dateofBirth.setText("");
-                    et_previouslyDonationDate.setText("");
                 } else {
                     datePicker_dateofBirth.setText(format);
-                    et_previouslyDonationDate.setText(format);
-                    //  SHOW_ERROR_MESSAGE;
+
                 }
 
-                //  ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
             }
         };
-        iv_datepickerdateofBirth.setOnClickListener(new View.OnClickListener() {
+        datePicker_dateofBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListenerDOB, mYear, mMonth, mDay);
+                dateDialog.getDatePicker().setMaxDate(new Date().getTime());
+                dateDialog.show();
+            }
+        });
+
+        et_previouslyDonationDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -234,20 +256,6 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 dateDialog.show();
             }
         });
-
-        iv_previouslyDonationDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay);
-                dateDialog.getDatePicker().setMaxDate(new Date().getTime());
-                dateDialog.show();
-            }
-        });
-
 
 
         //disrtrict spinner
@@ -572,7 +580,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             setFocus(et_email, "enter email");
             return false;
 
-        } else if (!email.matches(emailPattern)) {
+        } else if (!et_email.getText().toString().trim().matches(emailPattern)) {
             Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_office.getText().toString().trim().length() == 0) {
@@ -581,13 +589,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         } else if (et_adress.getText().toString().trim().length() == 0) {
             setFocus(et_adress, "enter address");
             return false;
-        }
-//        else if (spn_district.getSelectedItem().toString().contains("select")) {
-//            errorSpinner(spn_district, "select district");
-//            return false;
-//        }
-
-        else if (!distValidation) {
+        } else if (!distValidation) {
             Toast.makeText(getActivity(), "select district ", Toast.LENGTH_SHORT).show();
             return false;
         } else if (!mandalValid) {
@@ -600,7 +602,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             setFocus(et_pincode, "enter pincode");
             return false;
         } else if (et_pincode.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "enter valid pincode", Toast.LENGTH_LONG).show();
             return false;
         } else if (spn_bloodgroups.getSelectedItemPosition() == 0) {
             errorSpinner(spn_bloodgroups, "select bloodgroup");
@@ -609,7 +611,10 @@ public class BlooddonorRegistrationFragment extends Fragment {
             setFocus(et_donatetype, "enter donation type");
             return false;
         } else if (et_previouslyDonationDate.getText().toString().trim().length() == 0) {
-            setFocus(et_previouslyDonationDate, "Enter previous donation date");
+            setFocus(et_previouslyDonationDate, "enter previous donation date");
+            return false;
+        } else if (!radioButton1True.isChecked() && !radioButton2False.isChecked()) {
+            Toast.makeText(getActivity(), "please select willing to donate blood ", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_noofpreviousDonations.getText().toString().trim().length() == 0) {
             setFocus(et_noofpreviousDonations, "enter previous donation ");
@@ -630,6 +635,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         view.requestFocus();
         ((TextView) view).setError(errorMsg);
     }
+
     private void calldonorRegistarion() {
 
         progressDialog.show();
@@ -690,8 +696,8 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
     private void findViews(View root) {
         btn_donorRegNext = root.findViewById(R.id.btn_donorRegNext);
-        iv_datepickerdateofBirth = root.findViewById(R.id.iv_datepickerdateofBirth);
-        iv_previouslyDonationDate = root.findViewById(R.id.iv_previouslyDonationDate);
+        //  iv_datepickerdateofBirth = root.findViewById(R.id.iv_datepickerdateofBirth);
+        //  iv_previouslyDonationDate = root.findViewById(R.id.iv_previouslyDonationDate);
         et_previouslyDonationDate = root.findViewById(R.id.et_previouslyDonationDate);
         et_noofpreviousDonations = root.findViewById(R.id.et_noofpreviousDonations);
 

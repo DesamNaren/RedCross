@@ -221,14 +221,16 @@ public class HomeNursingActivity extends AppCompatActivity {
         binding.btnHomeNursingRegNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validateFields()) {
-                    PhotoUpload(bm);
+                if (CheckInternet.isOnline(HomeNursingActivity.this)) {
+                    if (validateFields()) {
+                        enablePermissions();
+                        PhotoUpload(bm);
 
+                    }
                 }
 
             }
         });
-        enablePermissions();
     }
 
     private boolean addPermission(List<String> permissionsList, String permission) {
@@ -384,6 +386,7 @@ public class HomeNursingActivity extends AppCompatActivity {
 
 
     }
+
 
     private void saveHomeNursingDetails() {
         progressDialog.show();
