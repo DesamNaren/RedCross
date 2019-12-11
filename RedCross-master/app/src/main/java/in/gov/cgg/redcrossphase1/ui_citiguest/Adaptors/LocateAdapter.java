@@ -14,8 +14,8 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
-import in.gov.cgg.redcrossphase1.LocateActivity;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.ui_citiguest.LocateActivity;
 
 
 public class LocateAdapter extends RecyclerView.Adapter<LocateAdapter.MyHolder> {

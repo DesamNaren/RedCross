@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/nav_tc"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.NewTCFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.NewTCFragment"
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_dashboard"
@@ -50,7 +50,7 @@
     <!--test-->
     <fragment
         android:id="@+id/nav_privacy"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.PrivacyPolicyFragment"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.PrivacyPolicyFragment"
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_Structure"

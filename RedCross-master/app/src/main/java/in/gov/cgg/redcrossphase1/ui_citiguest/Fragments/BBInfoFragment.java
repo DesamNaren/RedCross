@@ -37,7 +37,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import in.gov.cgg.redcrossphase1.MapsActivity;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -45,6 +44,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BBAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BDonorAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.MapsActivity;
 import in.gov.cgg.redcrossphase1.utils.AppConstants;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;

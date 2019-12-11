@@ -9,14 +9,14 @@
     <color name="white">#fff</color>
     <color name="colorBackground">@android:color/transparent</color>
     <color name="green">#4CAF50</color>
-    <item name="redcroosbg_1" type="color">#125a22</item>
-    <item name="redcroosbg_2" type="color">#d05802</item>
-    <item name="redcroosbg_3" type="color">#5e2055</item>
-    <item name="redcroosbg_4" type="color">#279871</item>
-    <item name="redcroosbg_5" type="color">#16a3b2</item>
-    <item name="redcroosbg_6" type="color">#013f76</item>
-    <item name="redcroosbg_7" type="color">#5927c4</item>
-    <item name="redcroosbg_8" type="color">#ED1C24</item>
+    <item name="redcroosbg_1" type="color">#08492E</item>
+    <item name="redcroosbg_2" type="color">#E51E00</item>
+    <item name="redcroosbg_3" type="color">#25142B</item>
+    <item name="redcroosbg_4" type="color">#00384A</item>
+    <item name="redcroosbg_5" type="color">#1C0F55</item>
+    <item name="redcroosbg_6" type="color">#083363</item>
+    <item name="redcroosbg_7" type="color">#980224</item>
+    <item name="redcroosbg_8" type="color">#3F100F</item>
     <item name="my_great_color" type="color">#FFFFFF</item>
     <item name="colorControlNormal" type="color">@color/my_great_color</item>
     <color name="li_gray">#BDBDBD</color>

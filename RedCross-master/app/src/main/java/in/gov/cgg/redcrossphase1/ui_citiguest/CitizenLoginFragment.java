@@ -16,11 +16,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentCitizenBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;

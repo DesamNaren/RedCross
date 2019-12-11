@@ -10,15 +10,16 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
+
+import java.util.Objects;
+
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
 
 public class CapacityBuildingsFragment extends Fragment {

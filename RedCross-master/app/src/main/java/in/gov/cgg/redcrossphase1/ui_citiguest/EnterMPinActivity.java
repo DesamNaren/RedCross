@@ -18,7 +18,7 @@ import com.chaos.view.PinView;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
-import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerMainActivity;
+import in.gov.cgg.redcrossphase1.ui_officer.activities.NewOfficerMainActivity;
 
 public class EnterMPinActivity extends Activity {
 

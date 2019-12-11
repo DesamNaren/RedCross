@@ -36,9 +36,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment;
@@ -49,7 +49,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment;
-import in.gov.cgg.redcrossphase1.ui_officer_new.NewOfficerHomeFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.fragments.NewOfficerHomeFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 

@@ -138,8 +138,8 @@
 
                 <ImageView
                     android:id="@+id/color5_selected"
-                    android:layout_width="20dp"
-                    android:layout_height="25dp"
+                    android:layout_width="11dp"
+                    android:layout_height="13dp"
                     android:layout_gravity="center"
                     android:src="@drawable/theme_selected"
                     android:visibility="invisible" />
@@ -215,12 +215,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@drawable/redcross_splashscreen_bg" />
+                    android:src="@drawable/redcross8_bg" />
 
                 <ImageView
                     android:id="@+id/color8_selected"
                     android:layout_width="20dp"
-                    android:layout_height="25dp"
+                    android:layout_height="19dp"
                     android:layout_gravity="center"
                     android:src="@drawable/theme_selected"
                     android:visibility="invisible" />

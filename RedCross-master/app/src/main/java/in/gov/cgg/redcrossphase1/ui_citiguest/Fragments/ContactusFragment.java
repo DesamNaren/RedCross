@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
@@ -22,9 +19,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import in.gov.cgg.redcrossphase1.GlobalDeclaration;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.Contactus_adaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;

@@ -103,7 +103,7 @@
                             android:orientation="horizontal"
                             android:padding="@dimen/dp_10">
 
-                            <in.gov.cgg.redcrossphase1.WrapContentViewPager
+                            <in.gov.cgg.redcrossphase1.ui_officer.custom_officer.WrapContentViewPager
                                 android:id="@+id/viewpager"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />

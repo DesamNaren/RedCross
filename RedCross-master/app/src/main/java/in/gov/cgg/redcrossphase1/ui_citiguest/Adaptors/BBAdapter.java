@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import in.gov.cgg.redcrossphase1.MapsActivity;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.MapsActivity;
 
 public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> implements Filterable {
     private Context mCtx;
