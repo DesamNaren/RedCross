@@ -75,7 +75,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     String mEducationId;
     String mMarriedId;
     EditText et_noofpreviousDonations;
-    String WillingBldDonateStatus = "Fasle";
+    String WillingBldDonateStatus = "false";
     JsonObject jsonObject;
     private int mYear, mMonth, mDay;
     private List<MembersipDistResponse> MembersipDistResponseList = new ArrayList<>();
@@ -173,7 +173,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                     WillingBldDonateStatus = "true";
 
                 } else {
-                    WillingBldDonateStatus = "Fasle";
+                    WillingBldDonateStatus = "false";
 
                 }
 
@@ -587,6 +587,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         request.setNoOfPrevDonations(noofpreviousDonations);
         Gson gson = new Gson();
         String json = gson.toJson(request);
+        Log.d("Donor", "================: " + json);
         Call<DonorregResponse> call = apiInterface.callCitizendonorRegistration(request);
 
 

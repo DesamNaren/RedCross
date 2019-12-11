@@ -190,6 +190,11 @@ public interface ApiInterface {
     @GET("getMemberCountsForDashboard")
     Call<AbstractMemberbean> getAAbstractdata();
 
+
+    @GET("getidcardDownload/{memberId}/{DOB}")
+    Call<ResponseBody> getIdcardDownload(@Path("memberId") String memberId, @Path("DOB") String DOB);
+    //http://uat2.cgg.gov.in:8081/redcross/getidcardDownload/{memberId}/{DOB}    (dob :dd-mm-yyyy)
+
 }
 
 

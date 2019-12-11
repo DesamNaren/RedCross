@@ -343,11 +343,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="@dimen/dp_5"
-                            android:text="Loacte"
+                            android:text="Locate"
                             android:textAlignment="center"
                             android:textColor="@color/white"
-
-
                             android:textSize="14sp" />
                     </LinearLayout>
 

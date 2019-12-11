@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -58,7 +59,7 @@ public class AbstractMembership extends Fragment {
     TextView tv_total;
     TextView tv_c11;
     TextView tv_c12;
-    TextView tv_register;
+    TextView tv_register, tv_download;
     TextView btn_htbm;
 
     int total;
@@ -118,6 +119,7 @@ public class AbstractMembership extends Fragment {
         tv_c10 = v.findViewById(R.id.tv_count10);
         tv_total = v.findViewById(R.id.tv_totalcount);
         tv_register = v.findViewById(R.id.tv_register);
+        tv_download = v.findViewById(R.id.tv_download);
         btn_htbm = v.findViewById(R.id.btn_htbm);
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +128,17 @@ public class AbstractMembership extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.nav_host_fragment, fragment, MembershipFragment.class.getSimpleName());
+                transaction.addToBackStack(null);
+                transaction.commitAllowingStateLoss();
+            }
+        });
+        tv_download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new DownloadCertificate();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment, DownloadCertificate.class.getSimpleName());
                 transaction.addToBackStack(null);
                 transaction.commitAllowingStateLoss();
             }
