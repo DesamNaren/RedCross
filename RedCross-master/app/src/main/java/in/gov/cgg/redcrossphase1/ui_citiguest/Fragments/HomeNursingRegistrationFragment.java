@@ -184,7 +184,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 //  ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
             }
         };
-        binding.ivDatepickerdateofBirth.setOnClickListener(new View.OnClickListener() {
+        binding.datePickerDateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
