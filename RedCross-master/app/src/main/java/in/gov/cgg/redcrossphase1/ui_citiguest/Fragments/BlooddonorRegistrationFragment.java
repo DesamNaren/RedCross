@@ -103,7 +103,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View root = inflater.inflate(R.layout.donor_reg_layout, container, false);
+        final View root = inflater.inflate(R.layout.fragment_blooddonor_registration, container, false);
 
         Objects.requireNonNull(getActivity()).setTitle("Donor Regisration");
         progressDialog = new CustomProgressDialog(getActivity());
@@ -222,7 +222,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
                 if (minAdultAge.before(userAge)) {
-                    Toast.makeText(getActivity(), "age not valid ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "minimum age should be 18 years ", Toast.LENGTH_SHORT).show();
                     datePicker_dateofBirth.setText("");
                 } else {
                     datePicker_dateofBirth.setText(format);
@@ -728,6 +728,31 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
 
     }
+   /* public void apicallSucceuss() {
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("")
+                .setMessage("Regitered successfully")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        Intent i = new Intent(getActivity(),CitizendashboardFragment.)
+                        startActivity(new Intent(getActivity(), CitizendashboardFragment.get));
 
+                    }
+                })
+    }
+                *//*.addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
+*//*
+        dialog.show();
+    }*/
 
 }

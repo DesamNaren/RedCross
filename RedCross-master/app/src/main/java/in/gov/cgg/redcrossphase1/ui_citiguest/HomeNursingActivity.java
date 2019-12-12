@@ -119,7 +119,7 @@ public class HomeNursingActivity extends AppCompatActivity {
                 Calendar minAdultAge = new GregorianCalendar();
                 minAdultAge.add(Calendar.YEAR, -18);
                 if (minAdultAge.before(userAge)) {
-                    Toast.makeText(HomeNursingActivity.this, "age not valid ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeNursingActivity.this, "minimum age should be 18 years", Toast.LENGTH_SHORT).show();
                     binding.datePickerDateofBirth.setText("");
                 } else {
                     binding.datePickerDateofBirth.setText(format);
@@ -216,6 +216,15 @@ public class HomeNursingActivity extends AppCompatActivity {
 
             }
         });
+        enablePermissions();
+
+
+        binding.chooseBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectImage();
+            }
+        });
 
         callgetDistrictListRequest();
         binding.btnHomeNursingRegNext.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +232,6 @@ public class HomeNursingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (CheckInternet.isOnline(HomeNursingActivity.this)) {
                     if (validateFields()) {
-                        enablePermissions();
                         PhotoUpload(bm);
 
                     }
@@ -754,9 +762,10 @@ public class HomeNursingActivity extends AppCompatActivity {
         else if (binding.spnEducation.getSelectedItemPosition() == 0) {
             errorSpinner(binding.spnEducation, "select education");
             return false;
-        } else if (binding.spnEducation.getSelectedItemPosition() == 0) {
-            errorSpinner(binding.spnEducation, "select marriage status");
+        } else if (binding.spnMarried.getSelectedItemPosition() == 0) {
+            errorSpinner(binding.spnMarried, "select marriage status");
             return false;
+
         } else if (binding.etMobileNumber.getText().toString().trim().length() == 0) {
             //  Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
             setFocus(binding.etMobileNumber, "enter mobile number");
