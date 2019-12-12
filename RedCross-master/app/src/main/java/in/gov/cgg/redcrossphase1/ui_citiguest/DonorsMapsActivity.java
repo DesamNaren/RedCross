@@ -48,12 +48,12 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MapAdaptor;
-import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
+public class DonorsMapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
@@ -76,17 +76,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double distance = 0.0;
     private GoogleMap mMap;
     private Marker markername;
-    private ArrayList<eRaktkoshResponseBean> eRaktkoshResponseBeans;
+    private ArrayList<BloodDonorResponse> bloodDonorResponses;
     private String fromClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_map);
-        progressBar = new CustomProgressDialog(MapsActivity.this);
+        progressBar = new CustomProgressDialog(DonorsMapsActivity.this);
         switchView = findViewById(R.id.switchView);
-        switchView.setText("Show blood banks list");
-
+        switchView.setText("Show donors list");
         requestPermissions();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -112,10 +111,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         try {
             Bundle bundle = getIntent().getExtras();
-            eRaktkoshResponseBeans = bundle.getParcelableArrayList("E_RAKTAKOSH_DATA");
+            bloodDonorResponses = bundle.getParcelableArrayList("DONORS_DATA");
             fromClass = bundle.getString("FROM_CLASS");
-//            progressBar.show();
-
 
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
@@ -130,28 +127,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private void setMarkers(final List<eRaktkoshResponseBean> eRaktkoshResponseBeans) {
+    private void setMarkers(final List<BloodDonorResponse> bloodDonorResponses) {
         try {
-            if (eRaktkoshResponseBeans.size() > 0) {
+            if (bloodDonorResponses.size() > 0) {
 
-                for (int i = 0; i < eRaktkoshResponseBeans.size(); i++) {
+                for (int i = 0; i < bloodDonorResponses.size(); i++) {
                     double lat = 0, lng = 0;
                     final MarkerOptions markerOptions = new MarkerOptions();
-                    final eRaktkoshResponseBean otData = eRaktkoshResponseBeans.get(i);
-                    if (otData.getLat() != null && otData.getLong() != null) {
-                        lat = Double.valueOf(otData.getLat());
-                        lng = Double.valueOf(otData.getLong());
+                    final BloodDonorResponse otData = bloodDonorResponses.get(i);
+                    if (otData.getLatitude() != null && otData.getLongitude() != null) {
+                        lat = Double.valueOf(otData.getLatitude());
+                        lng = Double.valueOf(otData.getLongitude());
 
                         LatLng latLng = new LatLng(lat, lng);
 
                         markerOptions.position(latLng);
 
                         String finals = "Name: " + otData.getName() + "\n\n" +
-                                "Address: " + otData.getAdd();
+                                "Address: " + otData.getAddress();
 
                         markerOptions.title(finals);
 
-                        if (ContextCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        if (ContextCompat.checkSelfPermission(DonorsMapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                                 == PackageManager.PERMISSION_GRANTED) {
                             mMap.setMyLocationEnabled(true);
                         }
@@ -182,7 +179,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //            progressBar.dismiss();
 
 
-            MapAdaptor customInfoWindow = new MapAdaptor(MapsActivity.this);
+            MapAdaptor customInfoWindow = new MapAdaptor(DonorsMapsActivity.this);
             mMap.setInfoWindowAdapter(customInfoWindow);
             markername.showInfoWindow();
 
@@ -211,14 +208,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 final Status status = result.getStatus();
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
-                        if (CheckInternet.isOnline(MapsActivity.this)) {
+                        if (CheckInternet.isOnline(DonorsMapsActivity.this)) {
                             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                                     .findFragmentById(R.id.map);
-                            mapFragment.getMapAsync(MapsActivity.this);
+                            mapFragment.getMapAsync(DonorsMapsActivity.this);
 
 
                         } else {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(MapsActivity.this);
+                            AlertDialog.Builder alert = new AlertDialog.Builder(DonorsMapsActivity.this);
                             alert.setCancelable(false);
                             alert.setMessage(getResources().getString(R.string.no_internet));
                             alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -234,13 +231,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         break;
                     case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
                         try {
-                            status.startResolutionForResult(MapsActivity.this, REQUEST_LOCATION_TURN_ON);
+                            status.startResolutionForResult(DonorsMapsActivity.this, REQUEST_LOCATION_TURN_ON);
                         } catch (IntentSender.SendIntentException e) {
-                            Toast.makeText(MapsActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DonorsMapsActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        Toast.makeText(MapsActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DonorsMapsActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                         break;
                     default: {
                         Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -267,9 +264,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private boolean requestPermissions() {
         boolean requestFlag = false;
-        if (ContextCompat.checkSelfPermission(MapsActivity.this,
+        if (ContextCompat.checkSelfPermission(DonorsMapsActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MapsActivity.this,
+            ActivityCompat.requestPermissions(DonorsMapsActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSION_REQUEST_CODE);
             requestFlag = false;
@@ -292,7 +289,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 buildGoogleApiClient();
 //                mMap.setMyLocationEnabled(true);
 
-                setMarkers(eRaktkoshResponseBeans);
+                setMarkers(bloodDonorResponses);
             }
         } else {
             buildGoogleApiClient();
@@ -430,7 +427,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
                 startActivity(intent);
             } else {
-                new AlertDialog.Builder(MapsActivity.this).setCancelable(false).setTitle("Please turn on the location to continue").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(DonorsMapsActivity.this).setCancelable(false).setTitle("Please turn on the location to continue").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

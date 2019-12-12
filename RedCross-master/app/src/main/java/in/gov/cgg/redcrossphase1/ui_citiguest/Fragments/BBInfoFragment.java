@@ -44,6 +44,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BBAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BDonorAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.DonorsMapsActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.MapsActivity;
 import in.gov.cgg.redcrossphase1.utils.AppConstants;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
@@ -118,12 +119,21 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onClick(View v) {
                 if (getActivity() != null) {
-                    Intent intent = new Intent(getActivity(), MapsActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelableArrayList("E_RAKTAKOSH_DATA", bbAdapter.getFilteredData());
-                    bundle.putString("FROM_CLASS", "ALL");
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    if (bbAdapter != null) {
+                        Intent intent = new Intent(getActivity(), MapsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelableArrayList("E_RAKTAKOSH_DATA", bbAdapter.getFilteredData());
+                        bundle.putString("FROM_CLASS", "ALL");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(getActivity(), DonorsMapsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelableArrayList("DONORS_DATA", bDonorAdapter.getFilteredData());
+                        bundle.putString("FROM_CLASS", "ALL");
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
                 }
             }
         });
@@ -159,41 +169,24 @@ public class BBInfoFragment extends LocBaseFragment {
         spinner_bg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
+                try {
+                    if (position != 0) {
+                        String selVal = spinner_bg.getSelectedItem().toString();
+                        loadBBanksFilter(selVal);
+                    } else {
+                        if (bbAdapter != null) {
+                            bbAdapter = new BBAdapter(getActivity(), mainList);
+                            bb_rv.setAdapter(bbAdapter);
+                            bbAdapter.notifyDataSetChanged();
+                            tv_total.setVisibility(View.VISIBLE);
+                            tv_total.setText("Total Records: " + mainList.size());
+                            sortData(mainList);
 
-
-                    String selVal = spinner_bg.getSelectedItem().toString();
-                    if (bbAdapter != null) {
-                        if (progressDialog != null && !progressDialog.isShowing()) {
-                            progressDialog.show();
                         }
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (progressDialog != null && progressDialog.isShowing()) {
-                                    progressDialog.dismiss();
-                                }
-                            }
-
-                        }, 2000);
-
-
-                        tv_total.setVisibility(View.GONE);
-                        bbAdapter.getFilter().filter(selVal);
-                        bbAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-
 
                     }
-                } else {
-                    if (bbAdapter != null) {
-                        bbAdapter = new BBAdapter(getActivity(), mainList);
-                        bb_rv.setAdapter(bbAdapter);
-                        bbAdapter.notifyDataSetChanged();
-                        sortData(mainList);
-                        tv_total.setText("Total Records: " + mainList.size());
-                    }
-
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -206,33 +199,35 @@ public class BBInfoFragment extends LocBaseFragment {
         spinner_bg_donor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String distVal = spinner_bg_dist.getSelectedItem().toString();
-                String bgVal = spinner_bg_donor.getSelectedItem().toString();
 
-                if (bgVal.contains("Select") && distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
-                        bb_rv.setAdapter(bDonorAdapter);
-                        tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+                try {
+                    if (position != 0) {
+                        String distVal = spinner_bg_dist.getSelectedItem().toString();
+                        String bgVal = spinner_bg_donor.getSelectedItem().toString();
+
+                        if (bgVal.contains("Select") && distVal.contains("Select")) {
+                            loadAllDonorsFilterData();
+
+
+                        } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
+                            loadBDonorsFilterData(bgVal, distVal);
+
+                        } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
+                            loadBDonorsFilterData(bgVal, distVal);
+                        }
+                    } else {
+                        if (bDonorAdapter != null) {
+                            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
+                            bb_rv.setAdapter(bDonorAdapter);
+                            bDonorAdapter.notifyDataSetChanged();
+                            tv_total.setVisibility(View.VISIBLE);
+                            tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+                            sortBDonorData(bloodDonorResponseMainList);
+                        }
+
                     }
-                } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
-                } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
-                } else {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -245,33 +240,21 @@ public class BBInfoFragment extends LocBaseFragment {
         spinner_bg_dist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String distVal = spinner_bg_dist.getSelectedItem().toString();
-                String bgVal = spinner_bg_donor.getSelectedItem().toString();
+                try {
+                    String distVal = spinner_bg_dist.getSelectedItem().toString();
+                    String bgVal = spinner_bg_donor.getSelectedItem().toString();
 
-                if (bgVal.contains("Select") && distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
-                        bb_rv.setAdapter(bDonorAdapter);
-                        tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+                    if (bgVal.contains("Select") && distVal.contains("Select")) {
+                        loadAllDonorsFilterData();
+                    } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
+                        loadBDonorsFilterData(bgVal, distVal);
+                    } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
+                        loadBDonorsFilterData(bgVal, distVal);
+                    } else {
+                        loadBDonorsFilterData(bgVal, distVal);
                     }
-                } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
-                } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
-                } else {
-                    if (bDonorAdapter != null) {
-                        bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bDonorAdapter.notifyDataSetChanged();
-                        bb_rv.smoothScrollToPosition(0);
-                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -284,6 +267,7 @@ public class BBInfoFragment extends LocBaseFragment {
         btn_blood_banks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bDonorAdapter = null;
                 spinner_bg.setSelection(0);
 
                 ll_donor.setVisibility(View.GONE);
@@ -311,6 +295,8 @@ public class BBInfoFragment extends LocBaseFragment {
         btn_blood_donors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bbAdapter = null;
+
                 spinner_bg_donor.setSelection(0);
                 spinner_bg_dist.setSelection(0);
 
@@ -339,6 +325,73 @@ public class BBInfoFragment extends LocBaseFragment {
         });
 
         return root;
+    }
+
+    private void loadBBanksFilter(String selVal) {
+        if (bbAdapter != null) {
+            if (progressDialog != null && !progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                }
+
+            }, 2000);
+
+
+            tv_total.setVisibility(View.GONE);
+            bbAdapter.getFilter().filter(selVal);
+            bbAdapter.notifyDataSetChanged();
+            bb_rv.smoothScrollToPosition(0);
+        }
+
+    }
+
+    private void loadBDonorsFilterData(String bgVal, String distVal) {
+        if (bDonorAdapter != null) {
+            if (progressDialog != null && !progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                }
+
+            }, 2000);
+            bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
+            tv_total.setVisibility(View.GONE);
+            bDonorAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void loadAllDonorsFilterData() {
+        if (bDonorAdapter != null) {
+            if (progressDialog != null && !progressDialog.isShowing()) {
+                progressDialog.show();
+            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (progressDialog != null && progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                }
+
+            }, 2000);
+
+            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
+            bDonorAdapter.notifyDataSetChanged();
+            bb_rv.setAdapter(bDonorAdapter);
+            tv_total.setVisibility(View.VISIBLE);
+            tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+        }
     }
 
     private void callERaktakoshRequest(final Double lat, final Double lng) {
@@ -460,6 +513,29 @@ public class BBInfoFragment extends LocBaseFragment {
         });
     }
 
+    private void sortBDonorData(List<BloodDonorResponse> bloodDonorResponses) {
+
+        Collections.sort(bloodDonorResponses, new Comparator<BloodDonorResponse>() {
+            @Override
+            public int compare(BloodDonorResponse o1, BloodDonorResponse o2) {
+
+                String[] ar_lhs = String.valueOf(o1.getDistance()).split("\\.");
+                String[] ar_rhs = String.valueOf(o2.getDistance()).split("\\.");
+
+                int string_lhs = Integer.parseInt(ar_lhs[0]);
+                int string_rhs = Integer.parseInt(ar_rhs[0]);
+
+                /*String ar_lhs = String.valueOf(o1.getDistance()).replace(".","");
+                String ar_rhs = String.valueOf(o2.getDistance()).replace(".","");
+
+                int string_lhs = Integer.parseInt(ar_lhs);
+                int string_rhs = Integer.parseInt(ar_rhs);*/
+
+                return string_lhs - string_rhs;
+            }
+        });
+    }
+
     private void callBloodDonorsRequest(final Double lat, final Double lng) {
         try {
             bloodDonorResponseMainList.clear();
@@ -475,20 +551,57 @@ public class BBInfoFragment extends LocBaseFragment {
                     }
                     if (response.isSuccessful() && response.body() != null) {
                         bb_rv.setVisibility(View.VISIBLE);
-                        iv_switch.setVisibility(View.GONE);
+                        iv_switch.setVisibility(View.VISIBLE);
                         no_data_tv.setVisibility(View.GONE);
 
                         ArrayList<BloodDonorResponse> bloodDonorResponses = response.body();
 
                         if (bloodDonorResponses.size() > 0) {
-                            bloodDonorResponseMainList.addAll(bloodDonorResponses);
+
+                            try {
+                                for (int x = 0; x < bloodDonorResponses.size(); x++) {
+
+                                    Location location = new Location("Cur_Location");
+                                    location.setLatitude(lat);
+                                    location.setLongitude(lng);
+
+                                    if (!TextUtils.isEmpty(bloodDonorResponses.get(x).getLatitude()) &&
+                                            !TextUtils.isEmpty(bloodDonorResponses.get(x).getLongitude())
+                                            && !bloodDonorResponses.get(x).getLatitude().trim().equals("null")
+                                            && !bloodDonorResponses.get(x).getLongitude().trim().equals("null")) {
+                                        Location dLocation = new Location("d_Location");
+                                        dLocation.setLatitude(Double.parseDouble(bloodDonorResponses.get(x).getLatitude()));
+                                        dLocation.setLongitude(Double.parseDouble(bloodDonorResponses.get(x).getLongitude()));
+
+                                        float distance = calcDistance(location, dLocation);
+                                        distance = Float.valueOf(String.format("%.2f", distance));
+                                        bloodDonorResponses.get(x).setDistance(distance);
+                                    }
+                                }
+
+                                ArrayList<BloodDonorResponse> bloodDonorResponseArrayList = new ArrayList<>();
+                                for (int x = 0; x < bloodDonorResponses.size(); x++) {
+                                    if (bloodDonorResponses.get(x).getDistance() == 0) {
+                                        bloodDonorResponseArrayList.add(bloodDonorResponses.get(x));
+                                    }
+                                }
+
+                                bloodDonorResponses.removeAll(bloodDonorResponseArrayList);
+                                bloodDonorResponseMainList.addAll(bloodDonorResponses);
+                                tv_total.setVisibility(View.VISIBLE);
+                                tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+                                sortBDonorData(bloodDonorResponseMainList);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                             bb_rv.setHasFixedSize(true);
                             bb_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-                            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponses);
+                            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
                             bb_rv.setAdapter(bDonorAdapter);
-                            tv_total.setText("Total Records: " + bloodDonorResponses.size());
-//                            sortData(bloodDonorResponses);
+                            bDonorAdapter.notifyDataSetChanged();
                         }
 
                     } else {

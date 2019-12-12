@@ -3,12 +3,14 @@ package in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
+import in.gov.cgg.redcrossphase1.ui_citiguest.DonorsMapsActivity;
 
 public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHolder> implements Filterable {
     private Context mCtx;
@@ -47,6 +50,11 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
     @Override
     public void onBindViewHolder(@NonNull final BBViewHolder holder, final int position) {
         final BloodDonorResponse bloodDonorResponses = mFilteredList.get(position);
+
+        float distance = Float.valueOf(String.format("%.2f", bloodDonorResponses.getDistance()));
+
+        holder.tv_distance.setText(distance + " KMs");
+
         holder.tv_blood_type.setText(bloodDonorResponses.getBloodGroup());
         holder.tv_address.setText(bloodDonorResponses.getAddress() + " ," +
                 bloodDonorResponses.getDistrict() + " ," +
@@ -87,6 +95,21 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
             }
         });
 
+        holder.iv_map_loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(mCtx, DonorsMapsActivity.class);
+                Bundle bundle = new Bundle();
+                ArrayList<BloodDonorResponse> list = new ArrayList<>();
+                list.add(bloodDonorResponses);
+                bundle.putParcelableArrayList("DONORS_DATA", list);
+                bundle.putString("FROM_CLASS", "SINGLE");
+                intent.putExtras(bundle);
+                mCtx.startActivity(intent);
+
+            }
+        });
     }
 
     private void callEmail(String email) {
@@ -188,15 +211,17 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
 
     class BBViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_name, tv_blood_type, tv_address, tv_contact, tv_email;
+        TextView tv_name, tv_blood_type, tv_address, tv_contact, tv_email, tv_distance;
         LinearLayout ll_contact, ll_email, ll_alldlist;
         RelativeLayout rl_header;
+        ImageView iv_map_loc;
 
         BBViewHolder(View itemView) {
             super(itemView);
 
+            tv_distance = itemView.findViewById(R.id.tv_distance);
             tv_name = itemView.findViewById(R.id.tv_name);
-            tv_blood_type = itemView.findViewById(R.id.tv_blood_type);
+            tv_blood_type = itemView.findViewById(R.id.tv_type);
             tv_address = itemView.findViewById(R.id.tv_address);
             tv_contact = itemView.findViewById(R.id.tv_contact);
             tv_email = itemView.findViewById(R.id.tv_email);
@@ -204,6 +229,7 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
             ll_email = itemView.findViewById(R.id.ll_email);
             ll_alldlist = itemView.findViewById(R.id.ll_alldlist);
             rl_header = itemView.findViewById(R.id.rl_header);
+            iv_map_loc = itemView.findViewById(R.id.iv_map_loc);
         }
     }
 
