@@ -68,6 +68,7 @@ public class BBInfoFragment extends LocBaseFragment {
     private androidx.appcompat.widget.SearchView searchView;
     private Button btn_blood_banks, btn_blood_donors;
     private int spinner_position = 0;
+    private String fromType;
 
     private BroadcastReceiver mGpsSwitchStateReceiver = new BroadcastReceiver() {
         @Override
@@ -138,31 +139,6 @@ public class BBInfoFragment extends LocBaseFragment {
         });
 
         getActivity().registerReceiver(mGpsSwitchStateReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION));
-
-
-        if (CheckInternet.isOnline(getActivity())) {
-            if (progressDialog != null && !progressDialog.isShowing()) {
-                progressDialog.show();
-            }
-            mLocationCallback = new LocationCallback() {
-                @Override
-                public void onLocationResult(LocationResult locationResult) {
-                    super.onLocationResult(locationResult);
-
-                    mCurrentLocation = locationResult.getLastLocation();
-                    if (mCurrentLocation != null) {
-                        cnt++;
-                        if (cnt == 1) {
-                            Location location = mCurrentLocation;
-                            callERaktakoshRequest(location.getLatitude(), location.getLongitude(), spinner_position);
-                        }
-                    }
-                }
-            };
-
-        } else {
-            Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
-        }
 
 
         spinner_bg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -317,8 +293,6 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onClick(View v) {
                 bbAdapter = null;
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
                 spinner_bg_donor.setSelection(spinner_position);
 
                 spinner_bg.setVisibility(View.GONE);
@@ -355,7 +329,86 @@ public class BBInfoFragment extends LocBaseFragment {
             }
         });
 
+
+        if (getArguments() != null) {
+            fromType = getArguments().getString("FROM_TYPE");
+            if (fromType != null && fromType.equalsIgnoreCase("BLOOD_DONOR")) {
+                callInitBloodDonor();
+            } else {
+                callBloodBanks();
+            }
+        } else {
+            callBloodBanks();
+        }
+
         return root;
+    }
+
+    private void callInitBloodDonor() {
+        spinner_bg.setVisibility(View.GONE);
+        ll_donor.setVisibility(View.VISIBLE);
+
+        btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+        btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+        btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+        btn_blood_banks.setTextColor(getResources().getColor(R.color.black));
+
+        if (!fromType.equalsIgnoreCase("BLOOD_DONOR")) {
+            searchView.setQuery("", false);
+            searchView.setIconified(true);
+        }
+
+        if (progressDialog != null && !progressDialog.isShowing()) {
+            progressDialog.show();
+        }
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+
+                mCurrentLocation = locationResult.getLastLocation();
+                if (mCurrentLocation != null) {
+                    cnt++;
+                    if (cnt == 1) {
+                        Location location = mCurrentLocation;
+                        callBloodDonorsRequest(location.getLatitude(), location.getLongitude(), spinner_position);
+                    }
+                }
+            }
+        };
+
+
+    }
+
+    private void callBloodBanks() {
+        if (getActivity() != null) {
+            if (CheckInternet.isOnline(getActivity())) {
+                if (progressDialog != null && !progressDialog.isShowing()) {
+                    progressDialog.show();
+                }
+                mLocationCallback = new LocationCallback() {
+                    @Override
+                    public void onLocationResult(LocationResult locationResult) {
+                        super.onLocationResult(locationResult);
+
+                        mCurrentLocation = locationResult.getLastLocation();
+                        if (mCurrentLocation != null) {
+                            cnt++;
+                            if (cnt == 1) {
+                                Location location = mCurrentLocation;
+                                callERaktakoshRequest(location.getLatitude(), location.getLongitude(), spinner_position);
+                            }
+                        }
+                    }
+                };
+
+            } else {
+                Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getActivity(), "Context is null, Please try again", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void loadBBanksFilter(String selVal) {

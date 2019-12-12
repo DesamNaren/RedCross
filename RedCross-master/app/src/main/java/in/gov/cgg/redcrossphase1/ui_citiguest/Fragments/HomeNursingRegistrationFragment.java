@@ -25,6 +25,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -38,9 +42,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursingBinding;
@@ -183,7 +184,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 //  ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
             }
         };
-        binding.ivDatepickerdateofBirth.setOnClickListener(new View.OnClickListener() {
+        binding.datePickerDateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();

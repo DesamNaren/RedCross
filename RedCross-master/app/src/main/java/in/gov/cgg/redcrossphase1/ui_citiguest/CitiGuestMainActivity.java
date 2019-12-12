@@ -22,8 +22,6 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -38,6 +36,9 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.navigation.NavigationView;
+
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -207,12 +208,13 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 } else if (menuItem.getItemId() == R.id.nav_blood_banks) {
                     GlobalDeclaration.FARG_TAG = BBInfoFragment.class.getSimpleName();
                     selectedFragment = new BBInfoFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "BLOOD_BANK");
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_blood_donors) {
                     GlobalDeclaration.FARG_TAG = BBInfoFragment.class.getSimpleName();
                     selectedFragment = new BBInfoFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "BLOOD_DONOR");
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_donor_registration) {
                     GlobalDeclaration.FARG_TAG = BlooddonorRegistrationFragment.class.getSimpleName();
@@ -420,6 +422,21 @@ public class CitiGuestMainActivity extends LocBaseActivity {
         transaction.replace(R.id.nav_host_fragment, fragment, name);
         transaction.addToBackStack(null);
         transaction.commitAllowingStateLoss();
+    }
+
+
+    void callFragment(Fragment fragment, String name, String fromType) {
+
+        Bundle bundle = new Bundle();
+        bundle.putString("FROM_TYPE", fromType);
+        fragment.setArguments(bundle);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.nav_host_fragment, fragment, name);
+        transaction.addToBackStack(null);
+        transaction.commitAllowingStateLoss();
+
+
     }
 
     private void showThemePicker() {
