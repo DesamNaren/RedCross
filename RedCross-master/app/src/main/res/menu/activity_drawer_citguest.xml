@@ -40,77 +40,138 @@
                     android:visible="false" />
 
 
-
             </menu>
         </item>
 
     </group>
 
     <group>
-        <item android:title="How">
+        <item android:title="Membership">
             <menu>
                 <item
-                    android:id="@+id/nav_lifetimemember"
+                    android:id="@+id/nav_abstract_member"
                     android:icon="@drawable/membership24"
-                    android:title="Life time Membership" />
+                    android:title="Abstract of Membership" />
                 <item
-                    android:id="@+id/nav_blooddonorreg"
+                    android:id="@+id/nav_how_to_become_a_member"
+                    android:icon="@drawable/membership24"
+                    android:title="How to become a Member?" />
+                <item
+                    android:id="@+id/nav_become_a_member"
                     android:icon="@drawable/blooddonorreg24"
-                    android:title="Blood donor Registrion" />
+                    android:title="Become a Member" />
                 <item
-                    android:id="@+id/nav_hnreg"
+                    android:id="@+id/nav_download_certificate"
                     android:icon="@drawable/homenurse24"
-                    android:title="Home nursing Registrion" />
-                <item
-                    android:id="@+id/nav_onlinedonations"
-                    android:icon="@drawable/blooddonor24"
-                    android:title="Online donations" />
-                <item
-                    android:id="@+id/nav_training"
-                    android:icon="@drawable/training24"
-                    android:title="Training" />
+                    android:title="Download Certificate" />
             </menu>
         </item>
     </group>
 
     <group>
-        <item android:title="Services">
+        <item android:title="Trainings">
             <menu>
                 <item
-                    android:title="Home Nursing"
-                    android:id="@+id/nav_hn"
-                    android:icon="@drawable/homenurse24" />
+                    android:id="@+id/nav_current_trainings"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Current Trainings" />
 
                 <item
-                    android:id="@+id/nav_doateblood"
+                    android:id="@+id/nav_upcoming_trainings"
                     android:icon="@drawable/blooddonor24"
-                    android:title="Blood donate" />
-                <item
-                    android:id="@+id/nav_locatebloodbanks"
-                    android:icon="@drawable/bloodbankdetails"
-                    android:title="Bloodbanks Details" />
-                <item
-                    android:id="@+id/nav_capacityBuildings"
-                    android:icon="@drawable/capacitybuildings"
-                    android:title="Capacity Buildings" />
-                <item
-                    android:id="@+id/nav_nearMe"
-                    android:icon="@drawable/bloodbankdetails"
-                    android:title="Near me"
-                    android:visible="false" />
-
+                    android:title="Upcoming Trainings" />
 
             </menu>
         </item>
     </group>
 
+    <group>
+        <item android:title="Get Blood">
+            <menu>
+                <item
+                    android:id="@+id/nav_blood_banks"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Blood banks" />
+
+                <item
+                    android:id="@+id/nav_blood_donors"
+                    android:icon="@drawable/blooddonor24"
+                    android:title="Blood Donors" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Donate Blood">
+            <menu>
+                <item
+                    android:id="@+id/nav_donor_registration"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Donor Registration" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Home Nursing">
+            <menu>
+                <item
+                    android:id="@+id/nav_home_nursing_request"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Home Nursing Request" />
+                <item
+                    android:id="@+id/nav_home_nursing_become"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Become Home Nurse" />
+                <item
+                    android:id="@+id/nav_home_nursing_register"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Home Nurse Registration" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Locate">
+            <menu>
+                <item
+                    android:id="@+id/nav_locate_service"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Locate Service" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="SERV">
+            <menu>
+                <item
+                    android:id="@+id/nav_serv"
+                    android:icon="@drawable/homenurse24"
+                    android:title="First Aid Volunteers" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item android:title="Contact us">
+            <menu>
+                <item
+                    android:id="@+id/nav_statecoordinates"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Home Nursing Request" />
+                <item
+                    android:id="@+id/nav_districtcontactus"
+                    android:icon="@drawable/homenurse24"
+                    android:title="Become Home Nurse" />
+
+            </menu>
+        </item>
+    </group>
     <group>
         <item android:title="Info">
             <menu>
-                <item
-                    android:id="@+id/nav_Contact"
-                    android:icon="@drawable/contact_us"
-                    android:title="Contact us" />
+
                 <item
                     android:id="@+id/nav_info"
                     android:icon="@drawable/themes24"
@@ -140,7 +201,7 @@
         </item>
     </group>
 
-    <group android:visible="false">
+    <group android:visible="true">
         <item android:title="Settings">
             <menu>
 
@@ -162,6 +223,17 @@
                 <item
                     android:title="Change MPIN"
                     android:visible="false" />
+                <item
+                    android:id="@+id/nav_exit"
+                    android:icon="@drawable/exit_menu"
+                    android:title="Exit"
+                    android:visible="true" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/log2"
+                    android:title="Logout"
+                    android:visible="true" />
 
 
             </menu>

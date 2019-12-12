@@ -9,13 +9,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.HomeNursingActivity;
 
@@ -45,8 +44,14 @@ public class HomenursingFragment extends Fragment {
         btn_BecomehomeNursing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), HomeNursingActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getActivity(), HomeNursingActivity.class);
+//                startActivity(i);
+                Fragment fragment = new HomeNursingRegistrationFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment, HomeNursingRegistrationFragment.class.getSimpleName());
+                transaction.addToBackStack(null);
+                transaction.commitAllowingStateLoss();
             }
         });
         btn_HowtobecomehomeNursing1.setOnClickListener(new View.OnClickListener() {

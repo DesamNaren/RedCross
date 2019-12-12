@@ -22,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -36,26 +38,33 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.AbstractMembership;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BBInfoFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BlooddonorRegistrationFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CapacityBuildingsFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiNewTCFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitiPrivacyPolicyFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.CitizendashboardFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ContactusFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.DownloadCertificate;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNurseInfoFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNurseRequest;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNursingRegistrationFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MemberFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MembershipFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ServicesFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.Upcoming_fragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.VisionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.WhoWeAreFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.NewOfficerHomeFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.fragments.PrivacyPolicyFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
@@ -147,12 +156,6 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     GlobalDeclaration.tabposition = 1;
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_whoweare) {
-
-                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
-                    selectedFragment = new WhoWeAreFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_History) {
                     GlobalDeclaration.tabposition = 2;
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
@@ -171,44 +174,83 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     selectedFragment = new WhoWeAreFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_Contact) {
-                    GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
-                    selectedFragment = new ContactusFragment();
+                } else if (menuItem.getItemId() == R.id.nav_abstract_member) {
+                    GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                    selectedFragment = new AbstractMembership();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_lifetimemember) {
-
-                    showChangeLangDialog();
-
-                } else if (menuItem.getItemId() == R.id.nav_locatebloodbanks) {
-                    GlobalDeclaration.FARG_TAG = LocateBloodbanksFragment.class.getSimpleName();
-                    selectedFragment = new LocateBloodbanksFragment();
+                } else if (menuItem.getItemId() == R.id.nav_how_to_become_a_member) {
+                    GlobalDeclaration.FARG_TAG = MemberFragment.class.getSimpleName();
+                    selectedFragment = new MemberFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_blooddonorreg) {
+                } else if (menuItem.getItemId() == R.id.nav_become_a_member) {
+                    GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
+                    selectedFragment = new MembershipFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_download_certificate) {
+                    GlobalDeclaration.FARG_TAG = DownloadCertificate.class.getSimpleName();
+                    selectedFragment = new DownloadCertificate();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_current_trainings) {
+                    GlobalDeclaration.FARG_TAG = CapacityBuildingsFragment.class.getSimpleName();
+                    selectedFragment = new CapacityBuildingsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_upcoming_trainings) {
+                    GlobalDeclaration.FARG_TAG = Upcoming_fragment.class.getSimpleName();
+                    selectedFragment = new Upcoming_fragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_blood_banks) {
+                    GlobalDeclaration.FARG_TAG = BBInfoFragment.class.getSimpleName();
+                    selectedFragment = new BBInfoFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_blood_donors) {
+                    GlobalDeclaration.FARG_TAG = BBInfoFragment.class.getSimpleName();
+                    selectedFragment = new BBInfoFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_donor_registration) {
                     GlobalDeclaration.FARG_TAG = BlooddonorRegistrationFragment.class.getSimpleName();
                     selectedFragment = new BlooddonorRegistrationFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    //  showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_hn) {
-                    showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_onlinedonations) {
-                    showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_training) {
-                    showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_hnreg) {
-                    showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_doateblood) {
-                    showChangeLangDialog();
-                } else if (menuItem.getItemId() == R.id.nav_privacy) {
-                    GlobalDeclaration.FARG_TAG = CitiPrivacyPolicyFragment.class.getSimpleName();
-                    selectedFragment = new CitiPrivacyPolicyFragment();
+                } else if (menuItem.getItemId() == R.id.nav_home_nursing_request) {
+                    GlobalDeclaration.FARG_TAG = HomeNurseRequest.class.getSimpleName();
+                    selectedFragment = new HomeNurseRequest();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_tc) {
-                    GlobalDeclaration.FARG_TAG = CitiNewTCFragment.class.getSimpleName();
-                    selectedFragment = new CitiNewTCFragment();
+                } else if (menuItem.getItemId() == R.id.nav_home_nursing_become) {
+                    GlobalDeclaration.FARG_TAG = HomeNurseInfoFragment.class.getSimpleName();
+                    selectedFragment = new HomeNurseInfoFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_home_nursing_register) {
+                    GlobalDeclaration.FARG_TAG = HomeNursingRegistrationFragment.class.getSimpleName();
+                    selectedFragment = new HomeNursingRegistrationFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_locate_service) {
+                    GlobalDeclaration.FARG_TAG = HomeNursingRegistrationFragment.class.getSimpleName();
+                    Intent i = new Intent(CitiGuestMainActivity.this, LocateActivity.class);
+                    startActivity(i);
+                } else if (menuItem.getItemId() == R.id.nav_serv) {
+                    GlobalDeclaration.FARG_TAG = ServicesFragment.class.getSimpleName();
+                    selectedFragment = new ServicesFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_statecoordinates) {
+                    GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
+                    selectedFragment = new ContactusFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_districtcontactus) {
+                    GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
+                    selectedFragment = new ContactusFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_info) {
@@ -216,18 +258,22 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     selectedFragment = new InfoFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_training) {
-                    GlobalDeclaration.FARG_TAG = CapacityBuildingsFragment.class.getSimpleName();
-                    selectedFragment = new CapacityBuildingsFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else if (menuItem.getItemId() == R.id.nav_lifetimemember) {
-                    GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
-                    selectedFragment = new MembershipFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-                    drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_continueasGuestthemes) {
                     showThemePicker();
+                } else if (menuItem.getItemId() == R.id.nav_privacy) {
+                    GlobalDeclaration.FARG_TAG = PrivacyPolicyFragment.class.getSimpleName();
+                    selectedFragment = new PrivacyPolicyFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_tc) {
+                    GlobalDeclaration.FARG_TAG = CitiNewTCFragment.class.getSimpleName();
+                    selectedFragment = new CitiNewTCFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_logout) {
+                    onClickExit();
+                } else if (menuItem.getItemId() == R.id.nav_exit) {
+                    exitHandler();
                 }
 
 
@@ -314,6 +360,32 @@ public class CitiGuestMainActivity extends LocBaseActivity {
 
 
     }
+
+    private void exitHandler() {
+        final PrettyDialog dialog = new PrettyDialog(this);
+        dialog
+                .setTitle("")
+                .setMessage("Do you want to Exit from the Application?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+
+                        System.exit(0);
+
+                    }
+                })
+                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        dialog.show();
+    }
+
 
     private BroadcastReceiver mGpsSwitchStateReceiver = new BroadcastReceiver() {
         @Override

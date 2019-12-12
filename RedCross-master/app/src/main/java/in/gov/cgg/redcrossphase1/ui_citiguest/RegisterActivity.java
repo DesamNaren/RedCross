@@ -6,9 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,8 +13,9 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.databinding.RegisBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -103,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                             String role = response.body().get("role").toString();
                             GlobalDeclaration.citizenrole = role;
                             Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this, TabLoginActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, CitiGuestMainActivity.class));
                             finish();
                         } else if (status.equals("100")) {
                             Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
