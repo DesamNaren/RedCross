@@ -11,19 +11,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/switchView"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" />
+
+                <!--   <Button
+                       android:id="@+id/switchView"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentBottom="true"
+                       android:background="@drawable/tab_background_selected"
+                       android:text="Home Nursing Registration"
+                       android:textColor="@color/white" />-->
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/tab_background_selected"
-                    android:text="Home Nursing Registration"
-                    android:textColor="@color/white" />
+                    android:elevation="15dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/tv_heading"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Home Nursing Details"
+                        android:textColor="@color/pdlg_color_blue"
+                        android:textSize="20sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#3f578f" />
 
                 <LinearLayout
                     android:id="@+id/homenursing_reg_layout"
@@ -50,22 +88,21 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Full Name"
-                                android:textColor="@color/black" />
+                                android:hint="Full Name *"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_name"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Enter Full Name"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -74,24 +111,23 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Father's/Husband's Name "
-                                android:textColor="@color/black" />
+                                android:hint="Father's/Husband's Name *"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_fathersName"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Father's/Husband's Name"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -104,7 +140,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Date of Birth"
+                                android:hint="Date of Birth *"
                                 android:textColor="@color/black" />
 
                             <LinearLayout
@@ -121,18 +157,11 @@
                                     android:layout_weight="1"
                                     android:focusable="false"
                                     android:background="@drawable/edittext_bg"
-                                    android:hint="Select Date"
+                                    android:drawableRight="@android:drawable/ic_menu_my_calendar"
                                     android:paddingLeft="@dimen/dp_5"
                                     android:textColor="@color/black" />
 
-                                <ImageView
-                                    android:id="@+id/iv_datepickerdateofBirth"
-                                    android:layout_width="@dimen/dp_20"
-                                    android:layout_height="@dimen/dp_20"
-                                    android:layout_marginTop="@dimen/dp_20"
-                                    android:paddingLeft="@dimen/dp_5"
-                                    android:paddingRight="@dimen/dp_5"
-                                    android:src="@drawable/downarrow" />
+
                             </LinearLayout>
 
                         </LinearLayout>
@@ -146,21 +175,25 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Education"
+                                android:text="Education *"
                                 android:textColor="@color/black" />
 
-
-                            <Spinner
-                                android:id="@+id/spn_education"
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40"
-                                android:layout_margin="@dimen/dp_5"
-                                android:background="@drawable/edittext_bg"
-                                android:entries="@array/Education"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <Spinner
+                                    android:id="@+id/spn_education"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/dp_40"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:entries="@array/Education"
+                                    android:paddingLeft="@dimen/dp_5"
+                                    android:textColor="@color/black" />
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -176,7 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Married"
+                                android:text="Marital Status *"
                                 android:textColor="@color/black" />
 
 
@@ -185,7 +218,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/dp_40"
                                 android:layout_margin="@dimen/dp_5"
-                                android:background="@drawable/edittext_bg"
                                 android:entries="@array/Married"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
@@ -199,26 +231,25 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Mobile Number"
-                                android:textColor="@color/black" />
+                                android:hint="Mobile Number *"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_mobileNumber"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Mobile Number"
                                 android:inputType="number"
                                 android:maxLength="10"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -227,25 +258,25 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Email"
-                                android:textColor="@color/black" />
+                                android:hint="Email"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_margin="@dimen/dp_5"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Email"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
+
 
 
                         <LinearLayout
@@ -254,23 +285,22 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Institute Name "
-                                android:textColor="@color/black" />
+                                android:hint="Institute Name *"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_Institute"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Institute Name"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
 
@@ -280,24 +310,48 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:elevation="15dp"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="Address Details "
+                                    android:textColor="@color/pdlg_color_blue"
+                                    android:textSize="20sp" />
+                            </androidx.cardview.widget.CardView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#3f578f" />
+
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Address"
-                                android:textColor="@color/black" />
+                                android:hint="Address *"
+                                android:textColor="@color/black">
 
                             <EditText
                                 android:id="@+id/et_adress"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Address"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -345,7 +399,7 @@
                             <Spinner
                                 android:id="@+id/spn_mandal"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40">
+                                android:layout_height="wrap_content">
 
                             </Spinner>
                         </LinearLayout>
@@ -368,7 +422,7 @@
                             <Spinner
                                 android:id="@+id/spn_village"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40">
+                                android:layout_height="wrap_content">
 
                             </Spinner>
                         </LinearLayout>
@@ -379,26 +433,25 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Pincode"
-                                android:textColor="@color/black" />
+                                android:hint="Pincode *"
+                                android:textColor="@color/black">
 
-                            <EditText
+                                <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_pincode"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40"
+                                    android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/dp_5"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="pincode"
                                 android:inputType="number"
                                 android:maxLength="6"
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
                         <LinearLayout
@@ -407,25 +460,54 @@
                             android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:text="Number of previous Experiance"
-                                android:textColor="@color/black" />
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
 
-                            <EditText
-                                android:id="@+id/et_noofpreviousExperians"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_margin="@dimen/dp_5"
-                                android:background="@drawable/edittext_bg"
-                                android:hint="Number of previous donations"
-                                android:inputType="number"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:elevation="15dp"
+                                    android:orientation="vertical"
+                                    android:padding="8dp">
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="40dp"
+                                        android:layout_below="@+id/tv_heading"
+                                        android:layout_gravity="center_vertical"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="10dp"
+                                        android:text="Home Nursing Info"
+                                        android:textColor="@color/pdlg_color_blue"
+                                        android:textSize="20sp" />
+                                </androidx.cardview.widget.CardView>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="#3f578f" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="5dp"
+                                    android:hint="Number of previous Experiance *"
+                                    android:textColor="@color/black">
+
+                                    <EditText
+                                        android:id="@+id/et_noofpreviousExperians"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:inputType="number"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -487,9 +569,9 @@
                                     android:layout_height="match_parent" />
                 -->
             </LinearLayout>
-
-
+            </LinearLayout>
         </ScrollView>
+
 
     </LinearLayout>
 </layout>

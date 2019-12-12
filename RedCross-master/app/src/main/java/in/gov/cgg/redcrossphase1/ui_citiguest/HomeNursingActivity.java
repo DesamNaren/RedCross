@@ -100,6 +100,8 @@ public class HomeNursingActivity extends AppCompatActivity {
         //Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
         progressDialog = new CustomProgressDialog(HomeNursingActivity.this);
 
+        enablePermissions();
+
         loadEducationSpinner();
         loadMarriedstatusSpinner();
 
@@ -129,7 +131,7 @@ public class HomeNursingActivity extends AppCompatActivity {
                 //  ageResult.setText(Integer.toString(calculateAge(c.getTimeInMillis())));
             }
         };
-        binding.ivDatepickerdateofBirth.setOnClickListener(new View.OnClickListener() {
+        binding.datePickerDateofBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -216,7 +218,6 @@ public class HomeNursingActivity extends AppCompatActivity {
 
             }
         });
-        enablePermissions();
 
 
         binding.chooseBt.setOnClickListener(new View.OnClickListener() {
