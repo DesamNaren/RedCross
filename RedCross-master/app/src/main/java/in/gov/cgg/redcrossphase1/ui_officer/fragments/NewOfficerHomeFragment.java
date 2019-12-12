@@ -78,7 +78,9 @@ public class NewOfficerHomeFragment extends Fragment {
 
 
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+            //Log.e("themecolor", String.valueOf(selectedThemeColor));
             callThemesChanges();
 
         } catch (Exception e) {
@@ -217,8 +219,9 @@ public class NewOfficerHomeFragment extends Fragment {
     }
 
     private void callThemesChangesMembership() {
+        selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                MODE_PRIVATE).getInt("theme_color", -1);
         if (selectedThemeColor != -1) {
-
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvJrccount.setTextColor(getResources().getColor(selectedThemeColor));
@@ -227,7 +230,6 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(white));
-
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -268,26 +270,41 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            } else {
+                binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(white));
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
             }
         } else {
-            binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
-            binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.customCount.tvLmname.setTextColor(getResources().getColor(white));
+            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
             binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
             binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
 
 
         }
     }
 
     private void callThemesChangesYRC() {
+        selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                MODE_PRIVATE).getInt("theme_color", -1);
         if (selectedThemeColor != -1) {
 
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
@@ -298,7 +315,6 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -339,28 +355,42 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            } else {
+                binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
             }
         } else {
-            binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
-            binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
-            binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+            binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
-            binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
-            binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+            binding.customCount.tvYrcnme.setTextColor(getResources().getColor(white));
+            binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
             binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
 
 
         }
     }
 
     private void callThemesChangesJRC() {
+        selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                MODE_PRIVATE).getInt("theme_color", -1);
         if (selectedThemeColor != -1) {
-
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvAllname.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
@@ -369,7 +399,6 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -410,26 +439,40 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            } else {
+                binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
             }
         } else {
-            binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
+            binding.customCount.tvAllcount.setTextColor(getResources().getColor(colorPrimary));
+            binding.customCount.tvAllname.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
-            binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvJrcnme.setTextColor(getResources().getColor(white));
+            binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
             binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
-            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
-
+            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
 
         }
     }
 
     private void callThemesChanges() {
+        selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+                MODE_PRIVATE).getInt("theme_color", -1);
         if (selectedThemeColor != -1) {
 
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
@@ -440,7 +483,6 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
-            binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(selectedThemeColor));
 
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -482,15 +524,28 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            } else {
+                binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
+                binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
+                binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
             }
         } else {
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
             binding.customCount.tvAllname.setTextColor(getResources().getColor(white));
-            binding.customCount.tvJrccount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvJrccount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvJrcnme.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.tvYrccount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvYrccount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.tvLmcount.setTextColor(getResources().getColor(white));
+            binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
             binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
