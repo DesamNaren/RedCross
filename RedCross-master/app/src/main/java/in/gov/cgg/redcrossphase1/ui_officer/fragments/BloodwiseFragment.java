@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentBloodwiseBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.adapters.BloodAdapter;
@@ -41,7 +41,7 @@ import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class BloodwiseFragment extends Fragment {
+public class BloodwiseFragment extends TestFrag {
 
     FragmentBloodwiseBinding binding;
     private BloodwiseViewModel bloodwiseVm;
@@ -61,7 +61,7 @@ public class BloodwiseFragment extends Fragment {
         GlobalDeclaration.home = false;
 
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF",
                     MODE_PRIVATE).getInt("theme_color", -1);
 
         } catch (Exception e) {

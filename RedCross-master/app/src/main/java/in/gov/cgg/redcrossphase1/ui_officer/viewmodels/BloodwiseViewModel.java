@@ -37,10 +37,8 @@ public class BloodwiseViewModel extends ViewModel {
 
     public LiveData<List<BloodGroups>> getBlood(String role, String districtsid, String userid) {
 
-//        if (bloodResponseMutableLiveData == null) {
         bloodResponseMutableLiveData = new MutableLiveData<>();
         loadBlood(districtsid, role, userid);
-        // }
         return bloodResponseMutableLiveData;
     }
 

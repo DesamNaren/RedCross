@@ -24,7 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.databinding.FragmentOfficerBinding;
+import in.gov.cgg.redcrossphase1.databinding.FragmentOfficer1Binding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -40,7 +40,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class OfficerLoginFragment extends Fragment {
 
     public static final String MyPREFERENCES = "MyPrefs";
-    FragmentOfficerBinding binding;
+    FragmentOfficer1Binding binding;
     TextInputEditText et_name, et_pswd;
     Button btn_login;
     LinearLayout ll_rememberme;
@@ -72,7 +72,7 @@ public class OfficerLoginFragment extends Fragment {
 
         progressDialog = new CustomProgressDialog(getActivity());
 //        progressDialog.setMessage("Please wait");
-        View v = inflater.inflate(R.layout.fragment_officer, container, false);
+        View v = inflater.inflate(R.layout.fragment_officer1, container, false);
         et_name = v.findViewById(R.id.name_edit_text);
         et_pswd = v.findViewById(R.id.password_edit_text);
         ll_rememberme = v.findViewById(R.id.ll_rememberme);
@@ -101,11 +101,14 @@ public class OfficerLoginFragment extends Fragment {
         }
 
 
-        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+        try {
+            SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+            shareuname = prefs.getString("un", "");
+            sharepswd = prefs.getString("pw", "");
+            isSharedCheked = prefs.getBoolean("is", false);
+        } catch (Exception e) {
 
-        shareuname = prefs.getString("un", "");
-        sharepswd = prefs.getString("pw", "");
-        isSharedCheked = prefs.getBoolean("is", false);
+        }
 
 
 
@@ -120,35 +123,37 @@ public class OfficerLoginFragment extends Fragment {
             public void onClick(View v) {
                 if (CheckInternet.isOnline(getActivity())) {
                     if (validate()) {
-                        callLoginRequest();
+                        try {
+                            callLoginRequest();
+
+                        } catch (Exception e) {
+
+                        }
                     }
                 }
             }
         });
 
-//        check_rememberme.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Toast.makeText(getActivity(), "cHECKED", Toast.LENGTH_SHORT).show();
-//                // Toast.makeText(getActivity(), "UN", Toast.LENGTH_SHORT).show();
-//                isChecked = check_rememberme.isChecked();
-//            }
-//        });
 
         return v;
     }
 
     private void storeinSharedPrefs() {
 
-        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.clear();
-        editor.apply();
+        try {
+            sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear();
+            editor.apply();
 
-        editor.putString("un", name);
-        editor.putString("pw", pwd);
-        editor.putBoolean("is", locaisChecked);
-        editor.apply();
+            editor.putString("un", name);
+            editor.putString("pw", pwd);
+            editor.putBoolean("is", locaisChecked);
+            editor.apply();
+        } catch (Exception e) {
+
+        }
+
     }
 
     private void callLoginRequest() {
@@ -210,10 +215,8 @@ public class OfficerLoginFragment extends Fragment {
                             getActivity().finish();
                         } else if (status.equals("100")) {
                             Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-                            // etName.setText("");
-                            //etPwd.setText("");
                         } else {
-
+                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -229,6 +232,8 @@ public class OfficerLoginFragment extends Fragment {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(getActivity(), "Please try again", Toast.LENGTH_SHORT).show();
+
         }
 
     }

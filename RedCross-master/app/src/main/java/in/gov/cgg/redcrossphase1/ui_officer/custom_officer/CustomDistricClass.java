@@ -46,7 +46,6 @@ public class CustomDistricClass implements ViewModelProvider.Factory {
             return (T) new DaywiseViewModel(context);
         }
 
-
         return null;
     }
 }

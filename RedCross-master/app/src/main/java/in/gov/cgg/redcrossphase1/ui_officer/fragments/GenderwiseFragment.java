@@ -1,6 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_officer.fragments;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentGenderwiseBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.CustomDistricClass;
@@ -43,7 +44,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.AgewiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.GenderwiseViewModel;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
-public class GenderwiseFragment extends Fragment {
+public class GenderwiseFragment extends TestFrag {
 
     FragmentGenderwiseBinding binding;
     private GenderwiseViewModel genderwiseViewModel;
@@ -219,10 +220,17 @@ public class GenderwiseFragment extends Fragment {
 
 
             xAxis.setValueFormatter(xAxisFormatter);
+            if (getActivity() != null) {
+                XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter);
+                mv.setChartView(binding.chartAge); // For bounds control
 
-            XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter);
-            mv.setChartView(binding.chartAge); // For bounds control
-            binding.chartAge.setMarker(mv);
+                binding.chartAge.setMarker(mv);
+            } else {
+                XYMarkerView mv = new XYMarkerView(context, xAxisFormatter);
+                mv.setChartView(binding.chartAge); // For bounds control
+
+                binding.chartAge.setMarker(mv);
+            }
 
             binding.chartAge.setData(cd);
 
@@ -230,5 +238,11 @@ public class GenderwiseFragment extends Fragment {
             binding.chartAge.setVisibility(View.GONE);
         }
 
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 }

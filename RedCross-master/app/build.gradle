@@ -43,12 +43,11 @@ android {
 
             buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
 
+            debuggable true
+
             signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            debuggable true
-
 
 
         }
@@ -63,6 +62,7 @@ android {
         }
         qa {
             buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
 
             signingConfig signingConfigs.release
             debuggable true

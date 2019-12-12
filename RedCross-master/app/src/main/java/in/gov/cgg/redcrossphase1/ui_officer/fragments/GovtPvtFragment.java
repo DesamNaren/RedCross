@@ -1,6 +1,7 @@
 package in.gov.cgg.redcrossphase1.ui_officer.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.NewfragmentGovtpvtnewBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.adapters.GovtPvtAdapter;
@@ -41,13 +42,13 @@ import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.GovtPvtViewModel;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class GovtPvtFragment extends Fragment implements OnChartValueSelectedListener {
-
+public class GovtPvtFragment extends TestFrag implements OnChartValueSelectedListener {
 
     private GovtPvtViewModel govtPvtViewModel;
     NewfragmentGovtpvtnewBinding binding;
     int i;
     private int selectedThemeColor = -1;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         GlobalDeclaration.home = false;
 
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF",
                     MODE_PRIVATE).getInt("theme_color", -1);
 
         } catch (Exception e) {
@@ -114,10 +115,10 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
             binding.btnFlip.setVisibility(View.VISIBLE);
             binding.tvNodata.setVisibility(View.GONE);
             binding.rvGovtpvtlist.setHasFixedSize(true);
-            binding.rvGovtpvtlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+            binding.rvGovtpvtlist.setLayoutManager(new LinearLayoutManager(context));
 
 
-            GovtPvtAdapter adapter1 = new GovtPvtAdapter(getActivity(), last10days, selectedThemeColor);
+            GovtPvtAdapter adapter1 = new GovtPvtAdapter(context, last10days, selectedThemeColor);
             binding.rvGovtpvtlist.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
             generateDataLine(last10days);
@@ -414,12 +415,19 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         lineDataSetPvt.setCircleRadius(4.5f);
         lineDataSetPvt.setDrawValues(false);
 
+        if (getActivity() != null) {
+            lineDataSetGov.setColor(ContextCompat.getColor(getActivity(), R.color.green));
+            lineDataSetGov.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        lineDataSetGov.setColor(ContextCompat.getColor(getActivity(), R.color.green));
-        lineDataSetGov.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+            lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
+            lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+        } else {
+            lineDataSetGov.setColor(ContextCompat.getColor(context, R.color.green));
+            lineDataSetGov.setValueTextColor(ContextCompat.getColor(context, R.color.black));
 
-        lineDataSetPvt.setColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
-        lineDataSetPvt.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+            lineDataSetPvt.setColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            lineDataSetPvt.setValueTextColor(ContextCompat.getColor(context, R.color.black));
+        }
 
         XAxis xAxis = binding.chartGovtpvt.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -435,8 +443,7 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
                 return stringList.get((int) value);
             }
         };
-
-        LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+        LineXYMarkerView mv = new LineXYMarkerView(context, formatter);
         mv.setChartView(binding.chartGovtpvt);
         binding.chartGovtpvt.setMarker(mv);
 
@@ -470,5 +477,10 @@ public class GovtPvtFragment extends Fragment implements OnChartValueSelectedLis
         binding.chartGovtpvt.invalidate();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
 
+    }
 }

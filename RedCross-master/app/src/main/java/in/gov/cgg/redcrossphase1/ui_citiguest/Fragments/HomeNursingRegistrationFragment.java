@@ -25,6 +25,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -38,12 +42,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursingBinding;
+import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursing1Binding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDistAdaptor;
@@ -89,7 +90,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
     MembershipDistAdaptor adapter;
     MembershipMandalAdaptor mandaladapter;
     MembershipvillageAdaptor villageadapter;
-    FragmentHomenursingBinding binding;
+    FragmentHomenursing1Binding binding;
     CustomProgressDialog progressDialog;
     String mEducationId;
     String mMarriedId;
@@ -149,8 +150,8 @@ public class HomeNursingRegistrationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_home_nursing_registration, container, false);
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing, container, false);
-        //binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_homenursing);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing1, container, false);
+        //binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_homenursing1);
         //Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
         progressDialog = new CustomProgressDialog(getActivity());
 

@@ -15,6 +15,8 @@ import java.util.List;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.BloodGroups;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class BloodAdapter extends RecyclerView.Adapter<BloodAdapter.DistrictViewHolder> {
     Context mCtx;
     List<BloodGroups> dayWiseReportCountResponses;
@@ -39,9 +41,16 @@ public class BloodAdapter extends RecyclerView.Adapter<BloodAdapter.DistrictView
 
         holder.tvbname.setText(dayWiseReportCountResponses.get(position).getBloodGroup());
         holder.tvbcount.setText(String.valueOf(dayWiseReportCountResponses.get(position).getCount()));
-        if (selectedThemeColor != -1) {
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
 
-            holder.tvbname.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            if (selectedThemeColor != -1) {
+
+                holder.tvbname.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            }
+        } catch (Exception e) {
+
         }
 
     }

@@ -38,7 +38,6 @@ import com.google.android.material.tabs.TabLayout;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
-import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.IHomeListener;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.AllMandalsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.AllVillageFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.DaywiseFragment;
@@ -51,7 +50,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.fragments.PrivacyPolicyFragment;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
-public class NewOfficerMainActivity extends AppCompatActivity implements IHomeListener {
+public class NewOfficerMainActivity extends AppCompatActivity {
 
 
     int selectedThemeColor = -1;
@@ -594,17 +593,6 @@ public class NewOfficerMainActivity extends AppCompatActivity implements IHomeLi
                 || super.onSupportNavigateUp();
     }
 
-
-    @Override
-    public void callDistrcitFragment(String type) {
-        GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
-        selectedFragment = new NewOfficerHomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("D_TYPE", type);
-        selectedFragment.setArguments(bundle);
-        setFragment(GlobalDeclaration.FARG_TAG);
-        callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
-    }
 }
 
 

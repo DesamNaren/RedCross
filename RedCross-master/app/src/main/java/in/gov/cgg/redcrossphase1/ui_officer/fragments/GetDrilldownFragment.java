@@ -442,6 +442,8 @@ public class GetDrilldownFragment extends Fragment {
                     binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                } else {
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 }
             }
         } catch (Resources.NotFoundException e) {

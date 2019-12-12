@@ -22,6 +22,7 @@ import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentMembereditBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StudentListBean;
@@ -30,7 +31,7 @@ import libs.mjn.prettydialog.PrettyDialogCallback;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class EnrolledMemberEditFragment extends Fragment {
+public class EnrolledMemberEditFragment extends TestFrag {
 
 
     FragmentMembereditBinding binding;
@@ -64,6 +65,7 @@ public class EnrolledMemberEditFragment extends Fragment {
                 binding.tvHeadermeberId.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.tvHeaderdob.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.tvHeadergender.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHeadermobile.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.tvHeaderenddate.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.adapter.setBackgroundColor(getResources().getColor(selectedThemeColor));
 

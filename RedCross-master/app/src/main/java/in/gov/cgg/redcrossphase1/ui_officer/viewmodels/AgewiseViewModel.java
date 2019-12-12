@@ -45,7 +45,7 @@ public class AgewiseViewModel extends ViewModel {
 
     private void loadAges(String role, String distid, String uid) {
 
-        pd.dismiss();
+        pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<AgeResponse> call = apiInterface.ageWiseService(distid, role, "1920", uid);
 

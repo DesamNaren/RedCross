@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -29,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAgewiseBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.CustomDistricClass;
@@ -37,7 +37,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.Age;
 import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.AgewiseViewModel;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 
-public class AgewiseFragment extends Fragment {
+public class AgewiseFragment extends TestFrag {
 
     FragmentAgewiseBinding binding;
     private AgewiseViewModel agewiseViewModel;
@@ -54,7 +54,7 @@ public class AgewiseFragment extends Fragment {
 
 
 //        Objects.requireNonNull(getActivity()).setTitle("Age wise");
-        
+
 
         if (CheckInternet.isOnline(getActivity())) {
             Log.e("Selection_type", "........age............" + GlobalDeclaration.Selection_type);
@@ -78,7 +78,6 @@ public class AgewiseFragment extends Fragment {
         return binding.getRoot();
     }
 
-    
 
     private void generateDataBar(List<Age> ageList) {
         ArrayList<BarEntry> entries = new ArrayList<>();
@@ -132,10 +131,15 @@ public class AgewiseFragment extends Fragment {
 
 
         xAxis.setValueFormatter(xAxisFormatter);
-
-        XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter);
-        mv.setChartView(binding.chartAge); // For bounds control
-        binding.chartAge.setMarker(mv);
+        if (getActivity() != null) {
+            XYMarkerView mv = new XYMarkerView(getActivity(), xAxisFormatter);
+            mv.setChartView(binding.chartAge); // For bounds control
+            binding.chartAge.setMarker(mv);
+        } else {
+            XYMarkerView mv = new XYMarkerView(context, xAxisFormatter);
+            mv.setChartView(binding.chartAge); // For bounds control
+            binding.chartAge.setMarker(mv);
+        }
 
         binding.chartAge.setData(cd);
 

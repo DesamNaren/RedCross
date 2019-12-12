@@ -51,6 +51,7 @@ import java.util.List;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentDaywiseBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.activities.NewOfficerMainActivity;
@@ -64,7 +65,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.DaywiseViewModel;
 import static android.content.Context.MODE_PRIVATE;
 import static in.gov.cgg.redcrossphase1.R.color.colorPrimary;
 
-public class DaywiseFragment extends Fragment {
+public class DaywiseFragment extends TestFrag {
 
     int selectedThemeColor = -1;
     private DaywiseViewModel daywiseViewModel;
@@ -89,7 +90,7 @@ public class DaywiseFragment extends Fragment {
 
         GlobalDeclaration.home = false;
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             callThemesChanges();
 
         } catch (Exception e) {
@@ -215,7 +216,6 @@ public class DaywiseFragment extends Fragment {
                 Log.e("position............", "Month Id:" + newspn_month);
 
 
-
                 if (!spn_year.equalsIgnoreCase("")) {
 
                     daywiseViewModel.getDaysCount(spn_year, GlobalDeclaration.districtId, newspn_month).
@@ -317,15 +317,25 @@ public class DaywiseFragment extends Fragment {
         lineDataSetMembership.setCircleRadius(4.5f);
         lineDataSetMembership.setDrawValues(false);
 
+        if (getActivity() != null) {
+            lineDataSetJRC.setColor(ContextCompat.getColor(getActivity(), R.color.pdlg_color_blue));
+            lineDataSetJRC.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        lineDataSetJRC.setColor(ContextCompat.getColor(getActivity(), R.color.pdlg_color_blue));
-        lineDataSetJRC.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+            lineDataSetYRC.setColor(ContextCompat.getColor(getActivity(), R.color.green));
+            lineDataSetYRC.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        lineDataSetYRC.setColor(ContextCompat.getColor(getActivity(), R.color.green));
-        lineDataSetYRC.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+            lineDataSetMembership.setColor(ContextCompat.getColor(getActivity(), R.color.redcroosbg_2));
+            lineDataSetMembership.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+        } else {
+            lineDataSetJRC.setColor(ContextCompat.getColor(context, R.color.pdlg_color_blue));
+            lineDataSetJRC.setValueTextColor(ContextCompat.getColor(context, R.color.black));
 
-        lineDataSetMembership.setColor(ContextCompat.getColor(getActivity(), R.color.redcroosbg_2));
-        lineDataSetMembership.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+            lineDataSetYRC.setColor(ContextCompat.getColor(context, R.color.green));
+            lineDataSetYRC.setValueTextColor(ContextCompat.getColor(context, R.color.black));
+
+            lineDataSetMembership.setColor(ContextCompat.getColor(context, R.color.redcroosbg_2));
+            lineDataSetMembership.setValueTextColor(ContextCompat.getColor(context, R.color.black));
+        }
 
 
         XAxis xAxis = binding.chartDaywise.getXAxis();
@@ -347,9 +357,15 @@ public class DaywiseFragment extends Fragment {
         };
 
         try {
-            LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
-            mv.setChartView(binding.chartDaywise);
-            binding.chartDaywise.setMarker(mv);
+            if (getActivity() != null) {
+                LineXYMarkerView mv = new LineXYMarkerView(getActivity(), formatter);
+                mv.setChartView(binding.chartDaywise);
+                binding.chartDaywise.setMarker(mv);
+            } else {
+                LineXYMarkerView mv = new LineXYMarkerView(context, formatter);
+                mv.setChartView(binding.chartDaywise);
+                binding.chartDaywise.setMarker(mv);
+            }
 
             xAxis.setGranularity(1f);
             xAxis.setValueFormatter(formatter);
@@ -385,6 +401,7 @@ public class DaywiseFragment extends Fragment {
 
             // set color of filled area
             // drawables only supported on api level 18 and above
+
             Drawable drawable = ContextCompat.getDrawable(getActivity(), R.color.colorPrimary);
             lineDataSetJRC.setFillDrawable(drawable);
 

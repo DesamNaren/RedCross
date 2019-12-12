@@ -42,7 +42,6 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursingBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDistAdaptor;
@@ -96,7 +95,7 @@ public class HomeNursingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.fragment_homenursing);
+        binding = DataBindingUtil.setContentView(this, R.layout.fragment_homenursing1);
         //Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
         progressDialog = new CustomProgressDialog(HomeNursingActivity.this);
 

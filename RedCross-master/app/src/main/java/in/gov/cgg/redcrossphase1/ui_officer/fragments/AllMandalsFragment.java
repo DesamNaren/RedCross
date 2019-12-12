@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.activities.NewOfficerMainActivity;
@@ -42,7 +43,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.AllDistrictsViewModel;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class AllMandalsFragment extends Fragment {
+public class AllMandalsFragment extends TestFrag {
 
 
     int value;
@@ -81,7 +82,7 @@ public class AllMandalsFragment extends Fragment {
             binding.cvName.setVisibility(View.GONE);
         }
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF",
                     MODE_PRIVATE).getInt("theme_color", -1);
 
             if (selectedThemeColor != -1) {

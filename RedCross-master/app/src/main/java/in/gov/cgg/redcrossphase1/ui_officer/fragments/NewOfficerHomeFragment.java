@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_officer.fragments;
 
-import android.app.Activity;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +33,6 @@ import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragemtHomeOfficerNewBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.CustomDistricClass;
-import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.IHomeListener;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.AgewiseViewModel;
 import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.BloodwiseViewModel;
@@ -61,9 +59,9 @@ public class NewOfficerHomeFragment extends Fragment {
     private LineChart lineChart;
     private FragemtHomeOfficerNewBinding binding;
     private String D_TYPE;
-    private IHomeListener ihomeListener;
     private String type;
     private HomeViewPagerAdapter adapter;
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -75,7 +73,8 @@ public class NewOfficerHomeFragment extends Fragment {
 
 
         getActivity().setTitle("Dashboard");
-
+        districtViewModel =
+                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "district")).get(DistrictViewModel.class);
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
@@ -93,27 +92,8 @@ public class NewOfficerHomeFragment extends Fragment {
             setupViewPagerAll(binding.viewpagerHome, "Districts");
         }
 
-
-        binding.tabsHome.setupWithViewPager(binding.viewpagerHome);
-
-        districtViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "district")).get(DistrictViewModel.class);
-        agewiseViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "age")).get(AgewiseViewModel.class);
-        bloodwiseVm =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "blood")).get(BloodwiseViewModel.class);
-        genderwiseViewModel =
-                ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gender")).get(GenderwiseViewModel.class);
-
-        govtPvtViewModel = ViewModelProviders.of(this, new CustomDistricClass(getActivity(), "gvtpvt")).get(GovtPvtViewModel.class);
-
-
-        GlobalDeclaration.home = true;
-        GlobalDeclaration.Selection_type = "JRC";
-        reload();
-
-
-        districtViewModel.getDashboardCounts("", GlobalDeclaration.userID, GlobalDeclaration.districtId)
+        binding.viewpagerHome.setOffscreenPageLimit(3);
+        districtViewModel.getDashboardCounts(GlobalDeclaration.districtId)
                 .observe(Objects.requireNonNull(getActivity()), new Observer<DashboardCountResponse>() {
 
                     @Override
@@ -124,6 +104,14 @@ public class NewOfficerHomeFragment extends Fragment {
                         }
                     }
                 });
+
+        binding.tabsHome.setupWithViewPager(binding.viewpagerHome);
+
+
+        GlobalDeclaration.home = true;
+        GlobalDeclaration.Selection_type = "JRC";
+        reload();
+
 
         binding.fabDaywise.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -554,27 +542,6 @@ public class NewOfficerHomeFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onDetach() {
-        ihomeListener = null; // => avoid leaking, thanks @Deepscorn
-        super.onDetach();
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            ihomeListener = (IHomeListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement TextClicked");
-        }
-    }
-
-
     private void reload() {
 
         adapter.notifyDataSetChanged();
@@ -585,7 +552,7 @@ public class NewOfficerHomeFragment extends Fragment {
 
 
     private void setupViewPagerAll(ViewPager viewPager_homer, String mandals) {
-        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new NewAllDistrictsFragment(), mandals, type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
@@ -596,7 +563,7 @@ public class NewOfficerHomeFragment extends Fragment {
     }
 
     private void setupViewPagerYRC(ViewPager viewPager_homer) {
-        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new GenderwiseFragment(), "Gender & Age", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);
@@ -607,7 +574,7 @@ public class NewOfficerHomeFragment extends Fragment {
     }
 
     private void setupViewPagerJRC(ViewPager viewPager_homer) {
-        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new OnlyGenderwiseFragment(), "Gender", type);
         adapter.addFragment(new AgewiseFragment(), "Age", type);
@@ -618,7 +585,7 @@ public class NewOfficerHomeFragment extends Fragment {
     }
 
     private void setupViewPagermMembeship(ViewPager viewPager_homer) {
-        adapter = new HomeViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         // adapter.addFragment(new NewAllDistrictsFragment(), "Districts", type);
         adapter.addFragment(new OnlyGenderwiseFragment(), "Gender", type);
         adapter.addFragment(new BloodwiseFragment(), "Blood Groups", type);

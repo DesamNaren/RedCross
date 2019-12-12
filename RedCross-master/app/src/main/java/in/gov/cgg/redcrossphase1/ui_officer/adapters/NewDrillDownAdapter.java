@@ -22,6 +22,8 @@ import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.EnrolledMemberEditFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StudentListBean;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapter.DistrictViewHolder> {
     private final List<StudentListBean> studentList;
     Context mCtx;
@@ -64,12 +66,17 @@ public class NewDrillDownAdapter extends RecyclerView.Adapter<NewDrillDownAdapte
                 holder.tv_type.setText("-");
             }
         }
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                holder.htv_id.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+                holder.htv_name.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+                holder.htv_gender.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+                holder.htv_type.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
+            }
+        } catch (Exception e) {
 
-        if (selectedThemeColor != -1) {
-            holder.htv_id.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
-            holder.htv_name.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
-            holder.htv_gender.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
-            holder.htv_type.setTextColor(mCtx.getResources().getColor(selectedThemeColor));
         }
 
 
