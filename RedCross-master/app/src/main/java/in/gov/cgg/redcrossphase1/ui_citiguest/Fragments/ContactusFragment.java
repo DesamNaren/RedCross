@@ -98,20 +98,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_districtCordinators.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.cordinatorType = "";
-
-                // 2. set layoutManger
-                contactUsarrayList.clear();
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                prepareDistrictCordinatorsData();
-                adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
-                recyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-
-                btn_districtCordinators.setBackgroundResource(R.color.redcroosbg_6);
-                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
-                btn_sateCordinators.setBackgroundResource(R.color.white);
-                btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
+                CallDistLogic();
 
 
             }
@@ -119,33 +106,59 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_sateCordinators.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GlobalDeclaration.cordinatorType = "s";
-
-
-                // 2. set layoutManger
-                contactUsarrayList.clear();
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                prepareStateCordinatorsData();
-                adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
-                recyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-
-                btn_districtCordinators.setBackgroundResource(R.color.white);
-                btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
-                btn_sateCordinators.setBackgroundResource(R.color.redcroosbg_6);
-                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
-
-
+                CallStateLogic();
             }
-
-
         });
-        
 
 
-
+        String fromType;
+        if (getArguments() != null) {
+            fromType = getArguments().getString("FROM_TYPE");
+            if (fromType != null && fromType.equalsIgnoreCase("FROM_STATE")) {
+                CallStateLogic();
+            } else {
+                CallDistLogic();
+            }
+        } else {
+            CallStateLogic();
+        }
 
         return root;
+    }
+
+    private void CallDistLogic() {
+        GlobalDeclaration.cordinatorType = "";
+
+        // 2. set layoutManger
+        contactUsarrayList.clear();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        prepareDistrictCordinatorsData();
+        adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        btn_districtCordinators.setBackgroundResource(R.color.redcroosbg_6);
+        btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+        btn_sateCordinators.setBackgroundResource(R.color.white);
+        btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    private void CallStateLogic() {
+        GlobalDeclaration.cordinatorType = "s";
+
+
+        // 2. set layoutManger
+        contactUsarrayList.clear();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        prepareStateCordinatorsData();
+        adapter = new Contactus_adaptor(contactUsarrayList, c, selectedThemeColor);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+        btn_districtCordinators.setBackgroundResource(R.color.white);
+        btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
+        btn_sateCordinators.setBackgroundResource(R.color.redcroosbg_6);
+        btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
     }
 
 
@@ -156,7 +169,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         contactUsarrayList.add(detail26);
         ContactusDetails_Bean detail27 = new ContactusDetails_Bean("Ramana",
                 " First Aid & JRC/YRC,\n" +
-                "Indian Red Cross Society, \n" + "Mobile: 9948633398\n" + "E-Mail:ramanagmsw@gmail.com");
+                        "Indian Red Cross Society, \n" + "Mobile: 9948633398\n" + "E-Mail:ramanagmsw@gmail.com");
         contactUsarrayList.add(detail27);
     }
 

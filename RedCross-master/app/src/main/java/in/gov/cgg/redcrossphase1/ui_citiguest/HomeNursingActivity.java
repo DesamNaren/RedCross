@@ -42,6 +42,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursing1Binding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDistAdaptor;
@@ -72,7 +73,7 @@ public class HomeNursingActivity extends AppCompatActivity {
     MembershipDistAdaptor adapter;
     MembershipMandalAdaptor mandaladapter;
     MembershipvillageAdaptor villageadapter;
-    FragmentHomenursingBinding binding;
+    FragmentHomenursing1Binding binding;
     CustomProgressDialog progressDialog;
     String mEducationId;
     String mMarriedId;

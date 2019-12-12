@@ -210,12 +210,15 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     selectedFragment = new BBInfoFragment();
 
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "BLOOD_BANK");
+
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (menuItem.getItemId() == R.id.nav_blood_donors) {
                     GlobalDeclaration.FARG_TAG = BBInfoFragment.class.getSimpleName();
                     selectedFragment = new BBInfoFragment();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "BLOOD_DONOR");
                     drawerLayout.closeDrawer(GravityCompat.START);
+
                 } else if (menuItem.getItemId() == R.id.nav_donor_registration) {
                     GlobalDeclaration.FARG_TAG = BlooddonorRegistrationFragment.class.getSimpleName();
                     selectedFragment = new BlooddonorRegistrationFragment();
@@ -248,12 +251,12 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 } else if (menuItem.getItemId() == R.id.nav_statecoordinates) {
                     GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
                     selectedFragment = new ContactusFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "FROM_STATE");
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_districtcontactus) {
                     GlobalDeclaration.FARG_TAG = ContactusFragment.class.getSimpleName();
                     selectedFragment = new ContactusFragment();
-                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG, "FROM_DIST");
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_info) {
                     GlobalDeclaration.FARG_TAG = InfoFragment.class.getSimpleName();

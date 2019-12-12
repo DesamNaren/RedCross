@@ -345,6 +345,7 @@ public class BBInfoFragment extends LocBaseFragment {
     }
 
     private void callInitBloodDonor() {
+        bbAdapter = null;
         spinner_bg.setVisibility(View.GONE);
         ll_donor.setVisibility(View.VISIBLE);
 
