@@ -136,6 +136,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
         recyclerView.setLayoutManager(layoutManager);
         drawer = findViewById(R.id.drawer_layout);
 
+
         getNearMeList();
 
 //        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -210,15 +211,15 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
-                //mMap.setMyLocationEnabled(true);
+                mMap.setMyLocationEnabled(true);
             }
         } else {
             buildGoogleApiClient();
-            //mMap.setMyLocationEnabled(true);
+            mMap.setMyLocationEnabled(true);
         }
         CameraUpdate point = CameraUpdateFactory.newLatLng(new LatLng(17.3850, 78.4867));
         mMap.moveCamera(point);
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
 
         ll_near_meal = bottomSheetView.findViewById(R.id.ll_near_meal);
@@ -317,11 +318,11 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
         markerOptions.position(latLng);
         markerOptions.title("Current Position");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
+//        mCurrLocationMarker = mMap.addMarker(markerOptions);
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(9));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
         // Toast.makeText(LocateActivity.this, "Your Current Location", Toast.LENGTH_LONG).show();
 
 
@@ -382,6 +383,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                         if (mGoogleApiClient == null) {
                             buildGoogleApiClient();
                         }
+                        mMap.setMyLocationEnabled(true);
                     }
 
                 } else {
@@ -695,7 +697,6 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
 
                     if (additionscenters.size() > 0) {
                         List<String> addNmaes = new ArrayList<>();
-
                         for (int z = 0; z < additionscenters.size(); z++) {
                             if (!additionscenters.get(z).getType().contains("SERV")) {
                                 addNmaes.add(additionscenters.get(z).getType());
@@ -704,7 +705,6 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
 
                         LinkedHashSet<String> hashSet = new LinkedHashSet<String>(addNmaes);
                         ArrayList<String> listWithoutDuplicates = new ArrayList<>(hashSet);
-
                         LocateAdapter adapter = new LocateAdapter(LocateActivity.this, listWithoutDuplicates);
                         recyclerView.setAdapter(adapter);
                         isNavListLoaded = true;
@@ -736,6 +736,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
 
 
     public void onClickCalled(String id) {
+        tv_title.setText(id);
         mMap.clear();
         if (drawer.isDrawerOpen(Gravity.RIGHT)) {
             drawer.closeDrawer(Gravity.RIGHT);
@@ -760,7 +761,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                     LatLng latLng = new LatLng(lat, lng);
 
                     markerOptions.position(latLng);
-                    String finals = " Name: " + googlePlace.getName() + "\n Type: " + googlePlace.getType() + "\nContact: " + googlePlace.getMobileno();
+                    String finals = " Name: " + googlePlace.getName() + "\n Address: " + googlePlace.getAddress() + "\nContact: " + googlePlace.getMobileno();
 
                     markerOptions.title(finals);
                     if (ContextCompat.checkSelfPermission(LocateActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)

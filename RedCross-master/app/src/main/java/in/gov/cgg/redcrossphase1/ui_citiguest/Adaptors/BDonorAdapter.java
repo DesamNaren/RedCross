@@ -146,57 +146,79 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
         return mFilteredList;
     }
 
+
+    public ArrayList<BloodDonorResponse> getBDonorFilter(String charString) {
+        ArrayList<BloodDonorResponse> filteredList = new ArrayList<>();
+        try {
+            String[] str = charString.split("_");
+            for (BloodDonorResponse bloodDonorResponses : bloodDonorResponses) {
+                if (!str[0].contains("Select") && !str[1].contains("Select")) {
+
+                    if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                            && bloodDonorResponses.getBloodGroup().
+                            toLowerCase().replace(" ", "")
+                            .equalsIgnoreCase(str[0].trim().toLowerCase())
+
+                            &&
+
+                            !TextUtils.isEmpty(bloodDonorResponses.getDistrict())
+                            && bloodDonorResponses.getDistrict().
+                            toLowerCase().trim().equalsIgnoreCase(str[1].trim().toLowerCase())) {
+                        filteredList.add(bloodDonorResponses);
+                    }
+                } else if (!str[0].contains("Select") && str[1].contains("Select")) {
+                    if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                            && bloodDonorResponses.getBloodGroup().
+                            toLowerCase().replace(" ", "")
+                            .equalsIgnoreCase(str[0].trim().toLowerCase())) {
+                        filteredList.add(bloodDonorResponses);
+                    }
+                } else if (!str[1].contains("Select") && str[0].contains("Select")) {
+                    if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
+                            && bloodDonorResponses.getDistrict().
+                            toLowerCase()
+                            .equalsIgnoreCase(str[1].trim().toLowerCase())) {
+                        filteredList.add(bloodDonorResponses);
+                    }
+
+                }
+            }
+            mFilteredList = filteredList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mFilteredList;
+    }
+
     @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if (charString.isEmpty()) {
-                    mFilteredList = bloodDonorResponses;
-                } else {
-                    try {
-                        String[] str = charString.split("_");
-                        ArrayList<BloodDonorResponse> filteredList = new ArrayList<>();
-                        for (BloodDonorResponse bloodDonorResponses : bloodDonorResponses) {
-                            if (!str[0].contains("Select") && !str[1].contains("Select")) {
-
-                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
-                                        && bloodDonorResponses.getBloodGroup().
-                                        toLowerCase().replace(" ", "")
-                                        .equalsIgnoreCase(str[0].trim().toLowerCase())
-
-                                        &&
-
-                                        !TextUtils.isEmpty(bloodDonorResponses.getDistrict())
-                                        && bloodDonorResponses.getDistrict().
-                                        toLowerCase().trim().equalsIgnoreCase(str[1].trim().toLowerCase())) {
-                                    filteredList.add(bloodDonorResponses);
+                FilterResults filterResults = null;
+                try {
+                    String charString = charSequence.toString();
+                    if (charString.isEmpty()) {
+                        mFilteredList = bloodDonorResponses;
+                    } else {
+                        try {
+                            ArrayList<BloodDonorResponse> filteredList = new ArrayList<>();
+                            for (BloodDonorResponse bloodDonorResponse : bloodDonorResponses) {
+                                if (!TextUtils.isEmpty(bloodDonorResponse.getName())
+                                        && bloodDonorResponse.getName().toLowerCase().trim().contains(charString.toLowerCase().trim())) {
+                                    filteredList.add(bloodDonorResponse);
                                 }
-                            } else if (!str[0].contains("Select") && str[1].contains("Select")) {
-                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
-                                        && bloodDonorResponses.getBloodGroup().
-                                        toLowerCase().replace(" ", "")
-                                        .equalsIgnoreCase(str[0].trim().toLowerCase())) {
-                                    filteredList.add(bloodDonorResponses);
-                                }
-                            } else if (!str[1].contains("Select") && str[0].contains("Select")) {
-                                if (!TextUtils.isEmpty(bloodDonorResponses.getBloodGroup())
-                                        && bloodDonorResponses.getDistrict().
-                                        toLowerCase()
-                                        .equalsIgnoreCase(str[1].trim().toLowerCase())) {
-                                    filteredList.add(bloodDonorResponses);
-                                }
-
                             }
+                            mFilteredList = filteredList;
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        mFilteredList = filteredList;
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                    filterResults = new FilterResults();
+                    filterResults.values = mFilteredList;
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = mFilteredList;
                 return filterResults;
             }
 

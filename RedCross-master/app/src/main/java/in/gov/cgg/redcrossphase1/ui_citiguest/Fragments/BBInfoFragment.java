@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
+import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -18,19 +19,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.maps.GoogleMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,9 +65,10 @@ public class BBInfoFragment extends LocBaseFragment {
     private LinearLayout ll_donor;
     private ArrayList<eRaktkoshResponseBean> mainList;
     private ArrayList<BloodDonorResponse> bloodDonorResponseMainList;
-    private SearchView searchView;
+    private androidx.appcompat.widget.SearchView searchView;
     private Button btn_blood_banks, btn_blood_donors;
-    private GoogleMap googleMap;
+    private int spinner_position = 0;
+
     private BroadcastReceiver mGpsSwitchStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -98,7 +97,7 @@ public class BBInfoFragment extends LocBaseFragment {
         if (getActivity() != null)
             getActivity().setTitle("Blood Banks Info");
 
-        setHasOptionsMenu(false);
+        setHasOptionsMenu(true);
 
         bbAdapter = new BBAdapter();
         bDonorAdapter = new BDonorAdapter();
@@ -155,7 +154,7 @@ public class BBInfoFragment extends LocBaseFragment {
                         cnt++;
                         if (cnt == 1) {
                             Location location = mCurrentLocation;
-                            callERaktakoshRequest(location.getLatitude(), location.getLongitude());
+                            callERaktakoshRequest(location.getLatitude(), location.getLongitude(), spinner_position);
                         }
                     }
                 }
@@ -170,11 +169,15 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 try {
+                    spinner_position = position;
                     if (position != 0) {
                         String selVal = spinner_bg.getSelectedItem().toString();
                         loadBBanksFilter(selVal);
                     } else {
                         if (bbAdapter != null) {
+                            bb_rv.setVisibility(View.VISIBLE);
+                            no_data_tv.setVisibility(View.GONE);
+
                             bbAdapter = new BBAdapter(getActivity(), mainList);
                             bb_rv.setAdapter(bbAdapter);
                             bbAdapter.notifyDataSetChanged();
@@ -201,6 +204,7 @@ public class BBInfoFragment extends LocBaseFragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 try {
+                    spinner_position = position;
                     if (position != 0) {
                         String distVal = spinner_bg_dist.getSelectedItem().toString();
                         String bgVal = spinner_bg_donor.getSelectedItem().toString();
@@ -217,6 +221,8 @@ public class BBInfoFragment extends LocBaseFragment {
                         }
                     } else {
                         if (bDonorAdapter != null) {
+                            bb_rv.setVisibility(View.VISIBLE);
+                            no_data_tv.setVisibility(View.GONE);
                             bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
                             bb_rv.setAdapter(bDonorAdapter);
                             bDonorAdapter.notifyDataSetChanged();
@@ -268,7 +274,9 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onClick(View v) {
                 bDonorAdapter = null;
-                spinner_bg.setSelection(0);
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                spinner_bg.setSelection(spinner_position);
 
                 ll_donor.setVisibility(View.GONE);
                 spinner_bg.setVisibility(View.VISIBLE);
@@ -282,8 +290,20 @@ public class BBInfoFragment extends LocBaseFragment {
 
                 if (mCurrentLocation != null) {
                     if (CheckInternet.isOnline(getActivity())) {
-                        callERaktakoshRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                        bbAdapter = new BBAdapter(getActivity(), mainList);
+                        callERaktakoshRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), spinner_position);
                     } else {
+                        if (mainList != null && mainList.size() > 0) {
+                            tv_total.setText("Total Records: " + mainList.size());
+                            bb_rv.setVisibility(View.VISIBLE);
+                            no_data_tv.setVisibility(View.GONE);
+
+                            bbAdapter = new BBAdapter(getActivity(), mainList);
+                            bb_rv.setAdapter(bbAdapter);
+                            bbAdapter.notifyDataSetChanged();
+                            tv_total.setVisibility(View.VISIBLE);
+                            iv_switch.setVisibility(View.VISIBLE);
+                        }
                         Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
 
                     }
@@ -296,10 +316,9 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onClick(View v) {
                 bbAdapter = null;
-
-                spinner_bg_donor.setSelection(0);
-                spinner_bg_dist.setSelection(0);
-
+                searchView.setQuery("", false);
+                searchView.setIconified(true);
+                spinner_bg_donor.setSelection(spinner_position);
 
                 spinner_bg.setVisibility(View.GONE);
                 ll_donor.setVisibility(View.VISIBLE);
@@ -315,10 +334,20 @@ public class BBInfoFragment extends LocBaseFragment {
 
                 if (mCurrentLocation != null) {
                     if (CheckInternet.isOnline(getActivity())) {
-                        callBloodDonorsRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+                        callBloodDonorsRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), spinner_position);
                     } else {
-                        Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
+                        if (bloodDonorResponseMainList != null && bloodDonorResponseMainList.size() > 0) {
+                            tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
+                            bb_rv.setVisibility(View.VISIBLE);
+                            no_data_tv.setVisibility(View.GONE);
 
+                            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
+                            bb_rv.setAdapter(bDonorAdapter);
+                            bDonorAdapter.notifyDataSetChanged();
+                            tv_total.setVisibility(View.VISIBLE);
+                            iv_switch.setVisibility(View.VISIBLE);
+                        }
+                        Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -342,11 +371,23 @@ public class BBInfoFragment extends LocBaseFragment {
 
             }, 2000);
 
+            bbAdapter = new BBAdapter(getActivity(), mainList);
+            ArrayList<eRaktkoshResponseBean> arrayList = bbAdapter.getBBFilter(selVal);
 
-            tv_total.setVisibility(View.GONE);
-            bbAdapter.getFilter().filter(selVal);
-            bbAdapter.notifyDataSetChanged();
-            bb_rv.smoothScrollToPosition(0);
+            if (arrayList != null && arrayList.size() > 0) {
+                bb_rv.setVisibility(View.VISIBLE);
+                no_data_tv.setVisibility(View.GONE);
+                tv_total.setVisibility(View.VISIBLE);
+                tv_total.setText("Filtered Records: " + arrayList.size());
+                bbAdapter = new BBAdapter(getActivity(), arrayList);
+                bbAdapter.notifyDataSetChanged();
+                bb_rv.setAdapter(bbAdapter);
+                bb_rv.smoothScrollToPosition(0);
+            } else {
+                tv_total.setText("Filtered Records: " + 0);
+                bb_rv.setVisibility(View.GONE);
+                no_data_tv.setVisibility(View.VISIBLE);
+            }
         }
 
     }
@@ -365,9 +406,25 @@ public class BBInfoFragment extends LocBaseFragment {
                 }
 
             }, 2000);
-            bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-            tv_total.setVisibility(View.GONE);
-            bDonorAdapter.notifyDataSetChanged();
+
+
+            bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
+            ArrayList<BloodDonorResponse> arrayList = bDonorAdapter.getBDonorFilter(bgVal + "_" + distVal);
+
+            if (arrayList != null && arrayList.size() > 0) {
+                bb_rv.setVisibility(View.VISIBLE);
+                no_data_tv.setVisibility(View.GONE);
+                tv_total.setVisibility(View.VISIBLE);
+                tv_total.setText("Filtered Records: " + arrayList.size());
+                bDonorAdapter = new BDonorAdapter(getActivity(), arrayList);
+                bDonorAdapter.notifyDataSetChanged();
+                bb_rv.setAdapter(bDonorAdapter);
+                bb_rv.smoothScrollToPosition(0);
+            } else {
+                tv_total.setText("Filtered Records: " + 0);
+                bb_rv.setVisibility(View.GONE);
+                no_data_tv.setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -394,7 +451,7 @@ public class BBInfoFragment extends LocBaseFragment {
         }
     }
 
-    private void callERaktakoshRequest(final Double lat, final Double lng) {
+    private void callERaktakoshRequest(final Double lat, final Double lng, final int bank_spinner_position) {
         try {
 
             mainList.clear();
@@ -428,7 +485,8 @@ public class BBInfoFragment extends LocBaseFragment {
                                     location.setLatitude(lat);
                                     location.setLongitude(lng);
 
-                                    if (!TextUtils.isEmpty(list.get(x).getLat()) && !TextUtils.isEmpty(list.get(x).getLong())) {
+                                    if (!TextUtils.isEmpty(list.get(x).getLat()) &&
+                                            !TextUtils.isEmpty(list.get(x).getLong())) {
                                         Location eLocation = new Location("e_Location");
                                         eLocation.setLatitude(Double.parseDouble(list.get(x).getLat()));
                                         eLocation.setLongitude(Double.parseDouble(list.get(x).getLong()));
@@ -438,6 +496,7 @@ public class BBInfoFragment extends LocBaseFragment {
                                         list.get(x).setDistance(distance);
                                     }
                                 }
+
 
                                 ArrayList<eRaktkoshResponseBean> eRaktkoshResponseBeans = new ArrayList<>();
                                 for (int x = 0; x < list.size(); x++) {
@@ -451,7 +510,6 @@ public class BBInfoFragment extends LocBaseFragment {
                                 tv_total.setVisibility(View.VISIBLE);
                                 tv_total.setText("Total Records: " + mainList.size());
                                 sortData(list);
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -462,6 +520,13 @@ public class BBInfoFragment extends LocBaseFragment {
                             bbAdapter = new BBAdapter(getActivity(), list);
                             bb_rv.setAdapter(bbAdapter);
                             bbAdapter.notifyDataSetChanged();
+
+                            if (bank_spinner_position != 0) {
+                                spinner_bg.setSelection(bank_spinner_position);
+                                String selVal = spinner_bg.getSelectedItem().toString();
+                                loadBBanksFilter(selVal);
+                            }
+
                         }
                     } else {
                         bb_rv.setVisibility(View.GONE);
@@ -536,7 +601,7 @@ public class BBInfoFragment extends LocBaseFragment {
         });
     }
 
-    private void callBloodDonorsRequest(final Double lat, final Double lng) {
+    private void callBloodDonorsRequest(final Double lat, final Double lng, final int donor_spinner_position) {
         try {
             bloodDonorResponseMainList.clear();
             progressDialog.show();
@@ -592,6 +657,7 @@ public class BBInfoFragment extends LocBaseFragment {
                                 tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
                                 sortBDonorData(bloodDonorResponseMainList);
 
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -602,6 +668,12 @@ public class BBInfoFragment extends LocBaseFragment {
                             bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
                             bb_rv.setAdapter(bDonorAdapter);
                             bDonorAdapter.notifyDataSetChanged();
+
+                            if (donor_spinner_position != 0) {
+                                spinner_bg_donor.setSelection(donor_spinner_position);
+                                String selVal = spinner_bg_donor.getSelectedItem().toString();
+                                loadBDonorsFilterData(selVal, "Select");
+                            }
                         }
 
                     } else {
@@ -650,28 +722,36 @@ public class BBInfoFragment extends LocBaseFragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        super.onPrepareOptionsMenu(menu);
-        inflater.inflate(R.menu.bb_search_menu, menu);
 
-        MenuItem menuItem = menu.getItem(1);
-        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        searchView.setQueryHint("Search by blood bank name");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+        menu.clear();
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                search(searchView);
-                return false;
-            }
-        });
+        if (searchItem != null) {
+            searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        }
+
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    search(searchView);
+                    return false;
+                }
+            });
+        }
     }
 
-    private void search(SearchView searchView) {
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+    private void search(androidx.appcompat.widget.SearchView searchView) {
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -682,14 +762,14 @@ public class BBInfoFragment extends LocBaseFragment {
                 try {
                     if (bbAdapter != null) {
                         bbAdapter.getFilter().filter(newText);
-                        bbAdapter.getFilter().filter(newText);
+                    } else {
+                        bDonorAdapter.getFilter().filter(newText);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return true;
+                return false;
             }
         });
     }
-
 }

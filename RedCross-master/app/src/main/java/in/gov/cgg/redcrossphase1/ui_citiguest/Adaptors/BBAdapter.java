@@ -168,31 +168,30 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if (charString.isEmpty()) {
-                    mFilteredList = eRaktkoshResponseBeans;
-                } else {
-                    try {
-                        ArrayList<eRaktkoshResponseBean> filteredList = new ArrayList<>();
-                        for (eRaktkoshResponseBean eRaktkoshResponseBean : eRaktkoshResponseBeans) {
-                            if (!TextUtils.isEmpty(eRaktkoshResponseBean.getAvailable())) {
-                                String[] available = eRaktkoshResponseBean.getAvailable().split(",");
-                                List<String> availableList = Arrays.asList(available);
-
-                                for (int z = 0; z < availableList.size(); z++) {
-                                    if (availableList.get(z).trim().equalsIgnoreCase(charString.trim())) {
-                                        filteredList.add(eRaktkoshResponseBean);
-                                    }
+                FilterResults filterResults = null;
+                try {
+                    String charString = charSequence.toString();
+                    if (charString.isEmpty()) {
+                        mFilteredList = eRaktkoshResponseBeans;
+                    } else {
+                        try {
+                            ArrayList<eRaktkoshResponseBean> filteredList = new ArrayList<>();
+                            for (eRaktkoshResponseBean eRaktkoshResponseBean : eRaktkoshResponseBeans) {
+                                if (!TextUtils.isEmpty(eRaktkoshResponseBean.getName())
+                                        && eRaktkoshResponseBean.getName().toLowerCase().trim().contains(charString.toLowerCase().trim())) {
+                                    filteredList.add(eRaktkoshResponseBean);
                                 }
                             }
+                            mFilteredList = filteredList;
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        mFilteredList = filteredList;
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
+                    filterResults = new FilterResults();
+                    filterResults.values = mFilteredList;
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = mFilteredList;
                 return filterResults;
             }
 
@@ -200,11 +199,31 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 mFilteredList = (ArrayList<eRaktkoshResponseBean>) filterResults.values;
                 notifyDataSetChanged();
-//                Snackbar.make(mCtx, "Filterd list"+mFilteredList.size(),Snackbar.LENGTH_SHORT).show();
                 getFilteredData();
             }
         };
     }
+
+
+    public ArrayList<eRaktkoshResponseBean> getBBFilter(String charString) {
+
+        ArrayList<eRaktkoshResponseBean> filteredList = new ArrayList<>();
+        for (eRaktkoshResponseBean eRaktkoshResponseBean : eRaktkoshResponseBeans) {
+            if (!TextUtils.isEmpty(eRaktkoshResponseBean.getAvailable())) {
+                String[] available = eRaktkoshResponseBean.getAvailable().split(",");
+                List<String> availableList = Arrays.asList(available);
+
+                for (int z = 0; z < availableList.size(); z++) {
+                    if (availableList.get(z).trim().equalsIgnoreCase(charString.trim())) {
+                        filteredList.add(eRaktkoshResponseBean);
+                    }
+                }
+            }
+        }
+        mFilteredList = filteredList;
+        return mFilteredList;
+    }
+
 
     class BBViewHolder extends RecyclerView.ViewHolder {
 
