@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.HomeNurseReqResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
@@ -197,6 +198,10 @@ public interface ApiInterface {
 
     @GET("getcertificateDownload/{memberId}/{DOB}")
     Call<ResponseBody> getcertificateDownload(@Path("memberId") String memberId, @Path("DOB") String DOB);
+
+    @POST("submitHomeNurseRequest")
+    Call<HomeNurseReqResponse> submitHomeNurseRequest(@Body JsonObject req);
+
 
 }
 

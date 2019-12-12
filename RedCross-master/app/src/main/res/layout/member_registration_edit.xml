@@ -130,7 +130,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Date Of Birth"
+                android:text="Date of Birth"
                 android:padding="@dimen/dp_5"
                 android:textSize="16sp"
 
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:focusable="false"
-                android:hint="Enter Date Of Birth"
+                android:hint="Enter Date of Birth"
                 android:textColor="@color/black" />
         </LinearLayout>
 

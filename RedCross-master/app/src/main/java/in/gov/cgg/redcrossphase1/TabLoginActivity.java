@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -51,7 +50,6 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
     public static final String MyPREFERENCES = "MyPrefs";
     String checkfrag = "c";
     private ActivityTabloginBinding binding;
-    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private JsonObject gsonObject;
@@ -63,6 +61,7 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
             R.drawable.officer1,
     };
     private ProgressDialog progressDialog;
+    int selectedThemeColor = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +70,56 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
 
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
+
+
+        try {
+            selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).
+                    getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                binding.tvSignIn.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvRegister.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvCntinueguest.setTextColor(getResources().getColor(selectedThemeColor));
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+
+                } else {
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                }
+            } else {
+                binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+        }
 
 
         progressDialog = new ProgressDialog(TabLoginActivity.this);

@@ -46,7 +46,7 @@
                         android:layout_weight="0.5"
                         android:drawablePadding="10dp"
                         android:padding="@dimen/dp_5"
-                        android:text="DOB"
+                        android:text="Date of Birth"
                         android:textSize="16sp" />
 
                     <EditText
@@ -54,7 +54,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
-                        android:drawableRight="@drawable/calendar"
+                        android:drawableRight="@android:drawable/ic_menu_my_calendar"
                         android:focusable="false"
                         android:hint="Enter Date Of Birth" />
                 </LinearLayout>
@@ -79,24 +79,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_pic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="#80000000">
 
-                <ImageView
-                    android:id="@+id/img_footer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/colorBackground"
-                    android:padding="@dimen/dp_5"
-                    android:src="@drawable/footernew">
-
-                </ImageView>
-            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </layout>

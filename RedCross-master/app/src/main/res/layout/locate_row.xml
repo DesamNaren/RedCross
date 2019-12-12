@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/placeholder"
-        android:tint="#0f68e6" />
+        android:tint="@color/white" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -22,6 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         android:text="Toilet"
+        android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="16sp" />
 </LinearLayout>

@@ -29,6 +29,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class CitizenLoginFragment extends Fragment {
 
     FragmentCitizenBinding binding;
@@ -36,6 +38,7 @@ public class CitizenLoginFragment extends Fragment {
     Button btn_login;
     CustomProgressDialog progressDialog;
     private JsonObject gsonObject;
+    private int selectedThemeColor = -1;
 
 
     @Override
@@ -51,6 +54,23 @@ public class CitizenLoginFragment extends Fragment {
                 inflater, R.layout.fragment_citizen, container, false);
         progressDialog = new CustomProgressDialog(getActivity());
         //  progressDialog.show();
+
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).
+                    getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+
+                binding.btnLogincitizen.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else {
+                binding.btnLogincitizen.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+        }
 
         //  progressDialog.setMessage("Please wait");
         et_mobile = binding.mobileEditText;

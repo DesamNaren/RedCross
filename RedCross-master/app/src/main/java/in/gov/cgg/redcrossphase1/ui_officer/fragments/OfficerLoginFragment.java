@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_officer.fragments;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -35,6 +35,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class OfficerLoginFragment extends Fragment {
 
     public static final String MyPREFERENCES = "MyPrefs";
@@ -43,6 +45,7 @@ public class OfficerLoginFragment extends Fragment {
     Button btn_login;
     LinearLayout ll_rememberme;
     CheckBox check_rememberme;
+    TextView TV_CHECKREMMEBR;
     //ProgressDialog progressDialog;
     private JsonObject gsonObject;
     private String name, pwd;
@@ -51,6 +54,7 @@ public class OfficerLoginFragment extends Fragment {
     private String shareuname, sharepswd;
     private boolean isSharedCheked;
     private CustomProgressDialog progressDialog;
+    private int selectedThemeColor;
 
     public OfficerLoginFragment() {
         // Required empty public constructor
@@ -69,20 +73,41 @@ public class OfficerLoginFragment extends Fragment {
         progressDialog = new CustomProgressDialog(getActivity());
 //        progressDialog.setMessage("Please wait");
         View v = inflater.inflate(R.layout.fragment_officer, container, false);
-
         et_name = v.findViewById(R.id.name_edit_text);
         et_pswd = v.findViewById(R.id.password_edit_text);
         ll_rememberme = v.findViewById(R.id.ll_rememberme);
         check_rememberme = v.findViewById(R.id.checkremember);
+        TV_CHECKREMMEBR = v.findViewById(R.id.tv_checkremember);
+        btn_login = v.findViewById(R.id.btn_loginofficer);
 
-        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).
+                    getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+
+                TV_CHECKREMMEBR.setTextColor(getResources().getColor(selectedThemeColor));
+                btn_login.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else {
+                TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+        }
+
+
+        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
 
         shareuname = prefs.getString("un", "");
         sharepswd = prefs.getString("pw", "");
         isSharedCheked = prefs.getBoolean("is", false);
 
 
-        btn_login = v.findViewById(R.id.btn_loginofficer);
 
         if (shareuname != null && sharepswd != null && isSharedCheked) {
             et_name.setText(shareuname);
@@ -115,7 +140,7 @@ public class OfficerLoginFragment extends Fragment {
 
     private void storeinSharedPrefs() {
 
-        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.clear();
         editor.apply();
@@ -172,7 +197,7 @@ public class OfficerLoginFragment extends Fragment {
                             if (locaisChecked) {
                                 storeinSharedPrefs();
                             } else {
-                                sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                                sharedpreferences = getActivity().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putString("un", "");
                                 editor.putString("pw", "");

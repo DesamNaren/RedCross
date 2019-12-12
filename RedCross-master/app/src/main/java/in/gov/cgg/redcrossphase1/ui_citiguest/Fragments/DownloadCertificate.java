@@ -142,13 +142,26 @@ public class DownloadCertificate extends Fragment {
                     binding.downloadCertificate.setEnabled(false);
                 } else {
                     binding.downloadCertificate.setEnabled(true);
-                    downloadCertificate();
+                    if (validateFields()) {
+                        downloadCertificate();
+                    }
                 }
             }
         });
         return binding.getRoot();
     }
 
+    protected boolean validateFields() {
+
+        if (binding.memberIDRes.getText().toString().trim().length() == 0) {
+            Toast.makeText(getActivity(), "Enter Member ID", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (binding.DOBRes.getText().toString().trim().length() == 0) {
+            Toast.makeText(getActivity(), "Enter Date of Birth", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
     private void downloadIDCard() {
         progressDialog.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);

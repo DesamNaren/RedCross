@@ -49,7 +49,6 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -1035,7 +1034,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     @Override
                     public void onClick() {
                         dialog.dismiss();
-                        startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
+                        //startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
                         finish();
                     }
                 })
@@ -1049,5 +1048,6 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
         dialog.show();
     }
+
 
 }
