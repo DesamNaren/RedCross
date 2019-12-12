@@ -160,6 +160,8 @@ public class BBInfoFragment extends LocBaseFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
+
+
                     String selVal = spinner_bg.getSelectedItem().toString();
                     if (bbAdapter != null) {
                         if (progressDialog != null && !progressDialog.isShowing()) {
@@ -216,19 +218,19 @@ public class BBInfoFragment extends LocBaseFragment {
                 } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 } else {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 }
@@ -255,19 +257,19 @@ public class BBInfoFragment extends LocBaseFragment {
                 } else if (!bgVal.contains("Select") && distVal.contains("Select")) {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 } else if (bgVal.contains("Select") && !distVal.contains("Select")) {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 } else {
                     if (bDonorAdapter != null) {
                         bDonorAdapter.getFilter().filter(bgVal + "_" + distVal);
-                        bbAdapter.notifyDataSetChanged();
+                        bDonorAdapter.notifyDataSetChanged();
                         bb_rv.smoothScrollToPosition(0);
                     }
                 }
