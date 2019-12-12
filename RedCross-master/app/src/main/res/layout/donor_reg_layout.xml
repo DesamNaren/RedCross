@@ -70,7 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Full Name"
+                            android:hint="Full Name *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -85,7 +85,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Father's/Husband's Name"
+                            android:hint="Father's/Husband's Name *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +105,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Date of Birth"
+                                android:text="Date of Birth *"
                                 android:textColor="@color/black" />
 
 
@@ -118,7 +118,7 @@
                                 android:background="@drawable/edittext_bg"
                                 android:cursorVisible="false"
                                 android:drawableRight="@android:drawable/ic_menu_my_calendar"
-                                android:hint="Select Date"
+                                android:hint="Select Date "
                                 android:paddingLeft="@dimen/dp_5"
                                 android:textColor="@color/black" />
 
@@ -135,7 +135,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Gender"
+                                android:text="Gender *"
                                 android:textColor="@color/black" />
 
                             <LinearLayout
@@ -166,7 +166,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Education"
+                                android:text="Education *"
                                 android:textColor="@color/black" />
 
 
@@ -186,7 +186,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Occupation"
+                            android:hint="Occupation *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -207,7 +207,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Married"
+                                android:text="Marital status *"
                                 android:textColor="@color/black" />
 
 
@@ -227,7 +227,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Mobile Number"
+                            android:hint="Mobile Number *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -243,7 +243,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Email"
+                            android:hint="Email "
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -258,7 +258,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Office Name"
+                            android:hint="Office Name *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -298,7 +298,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
-                                android:text="Address Details"
+                                android:text="Address Details "
                                 android:textColor="@color/pdlg_color_blue"
                                 android:textSize="20sp" />
                         </androidx.cardview.widget.CardView>
@@ -312,7 +312,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Address"
+                            android:hint="Address *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -334,7 +334,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="0.5"
                                 android:gravity="center_vertical"
-                                android:text="District"
+                                android:text="District *"
                                 android:textColor="@color/black"
                                 android:visibility="gone" />
 
@@ -361,7 +361,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="0.5"
                                 android:gravity="center_vertical"
-                                android:text="Mandal"
+                                android:text="Mandal *"
                                 android:textColor="@color/black"
                                 android:visibility="gone" />
 
@@ -388,7 +388,7 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="0.5"
                                 android:gravity="center_vertical"
-                                android:text="Village"
+                                android:text="Village *"
                                 android:textColor="@color/black"
                                 android:visibility="gone" />
 
@@ -404,7 +404,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Pincode"
+                            android:hint="Pincode *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -465,7 +465,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Blood Group"
+                                android:text="Blood Group *"
                                 android:textColor="@color/black" />
 
                             <Spinner
@@ -481,7 +481,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
-                                android:hint="Donation type"
+                                android:hint="Donation type *"
                                 app:errorEnabled="true">
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -501,7 +501,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="5dp"
-                                    android:text="Previously donattion Date"
+                                    android:text="Previously donattion Date *"
                                     android:textColor="@color/black" />
 
                                 <LinearLayout
@@ -541,7 +541,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
-                                android:text="Willing to donate blood"
+                                android:text="Willing to donate blood *"
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -575,7 +575,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Number of previous donations"
+                            android:hint="Number of previous donations *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
