@@ -27,7 +27,7 @@
         <item>December</item>
         <item>November</item>
     </string-array>
-    <string name="FormHeading">Application For Annual Member </string>
+
     <string-array name="Membership_type">
         <item>Select Membership Type</item>
         <item>Patron</item>

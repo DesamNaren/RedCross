@@ -1,3 +1,6 @@
+
+
+
 package in.gov.cgg.redcrossphase1.ui_citiguest;
 
 import android.Manifest;
@@ -49,6 +52,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -104,6 +108,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     MembershipActivityAdaptor activityAdaptor;
     MembershipMandalAdaptor mandaladapter;
     MembershipvillageAdaptor villageadapter;
+    TextView HeadingOfForm;
     Toolbar toolbar;
     int selectedThemeColor = -1;
     Integer distId = 0, manId = 0, villageID = 0, activityID = 0;
@@ -159,7 +164,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         mandal = findViewById(R.id.Mandal_spin_res);
         village = findViewById(R.id.Town_village_spin_res);
         activities = findViewById(R.id.Activities_interested_spin_res);
-
+        HeadingOfForm = findViewById(R.id.HeadingOfForm);
         Preview = findViewById(R.id.preview_bt);
 
         //IDS of View Form
@@ -193,6 +198,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             e.printStackTrace();
 
         }
+        HeadingOfForm.setText("Application for " + GlobalDeclaration.SELECTEDtype);
         enablePermissions();
         callgetActivitiesListRequest();
         callgetDistrictListRequest();
@@ -837,13 +843,13 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         } else if (pincode.getText().toString().length() < 6) {
             Toast.makeText(MembershipRegFormActivity.this, "Enter valid Pincode", Toast.LENGTH_LONG).show();
             return false;
-        } else if (activities.getSelectedItem().toString().trim().equals("Select Activities interested")) {
+        } /*else if (activities.getSelectedItem().toString().trim().equals("Select Activities interested")) {
             Toast.makeText(MembershipRegFormActivity.this, "Select Activities interested", Toast.LENGTH_LONG).show();
             return false;
         } else if (hours.getText().toString().trim().length() == 0) {
             Toast.makeText(MembershipRegFormActivity.this, "Enter number of hours", Toast.LENGTH_LONG).show();
             return false;
-        } else if (Photo.getDrawable() == null) {
+        }*/ else if (Photo.getDrawable() == null) {
             Toast.makeText(MembershipRegFormActivity.this, "Choose photo", Toast.LENGTH_LONG).show();
             return false;
         }
@@ -913,7 +919,6 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
                     "1.jpg");
-
 
 
         } else {
@@ -1034,7 +1039,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     @Override
                     public void onClick() {
                         dialog.dismiss();
-                        //startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
+                        startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
                         finish();
                     }
                 })
@@ -1048,6 +1053,5 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
         dialog.show();
     }
-
 
 }

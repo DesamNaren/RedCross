@@ -29,7 +29,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/common_google_signin_btn_text_light_disabled"
                 android:orientation="vertical">
 
 
@@ -84,7 +84,7 @@
                                 android:id="@+id/Applicant_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Applicant Name"
+                                android:hint="Applicant Name *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -110,7 +110,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:paddingLeft="10dp"
-                                    android:text="Registering on behalf of"
+                                    android:text="Registering on behalf of *"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
@@ -134,7 +134,7 @@
                                     android:id="@+id/Other_relation_tv"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="Enter Relation"
+                                    android:hint="Enter Relation *"
                                     android:layout_margin="8dp"
                                     app:errorEnabled="true">
 
@@ -203,7 +203,7 @@
                                 android:id="@+id/Patient_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Patient Name"
+                                android:hint="Patient Name *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -219,7 +219,7 @@
                                 android:id="@+id/Patient_age_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Patient age"
+                                android:hint="Patient age *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -235,7 +235,7 @@
                                 android:id="@+id/natureOfDisability_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Nature Of Disability"
+                                android:hint="Nature Of Disability *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -350,7 +350,7 @@
                                 android:id="@+id/Mob_num_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Enter Mobile Number"
+                                android:hint="Enter Mobile Number *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -367,7 +367,7 @@
                                 android:id="@+id/Email_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Enter Email ID"
+                                android:hint="Enter Email ID *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -381,7 +381,7 @@
                                 android:id="@+id/Address_tv"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Address"
+                                android:hint="House No and Locality *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 
@@ -443,7 +443,7 @@
                                 android:id="@+id/Pincode_TV"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Enter Pincode"
+                                android:hint="Enter Pincode *"
                                 android:layout_margin="8dp"
                                 app:errorEnabled="true">
 

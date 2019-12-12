@@ -4,6 +4,7 @@
     android:id="@+id/member_Reg_edit_submit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:windowBackground"
     android:orientation="vertical">
 
 
@@ -15,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/common_google_signin_btn_text_light_disabled"
             android:orientation="vertical">
 
 
@@ -64,7 +66,7 @@
                         android:id="@+id/FullName_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Full Name"
+                        android:hint="Enter Full Name *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -80,7 +82,7 @@
                         android:id="@+id/FathersHusbandName_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Father's/Husband's Name"
+                        android:hint="Enter Father's/Husband's Name *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -103,7 +105,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/dp_5"
-                            android:text="Gender"
+                            android:text="Gender *"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -139,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/dp_5"
-                            android:text="Date of Birth"
+                            android:text="Date of Birth *"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
 
@@ -181,7 +183,7 @@
                         android:id="@+id/Mob_num_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Mobile Number"
+                        android:hint="Enter Mobile Number *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -198,7 +200,7 @@
                         android:id="@+id/Email_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Email ID"
+                        android:hint="Enter Email ID *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -229,7 +231,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/dp_5"
-                        android:text="Photo"
+                        android:text="Photo *"
                         android:textColor="@color/black"
                         android:layout_margin="8dp"
                         android:textSize="16sp" />
@@ -307,7 +309,7 @@
                         android:id="@+id/Occupation_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Occupation"
+                        android:hint="Enter Occupation *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -466,7 +468,7 @@
                         android:id="@+id/House_no_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter House No"
+                        android:hint="Enter House No *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -481,7 +483,7 @@
                         android:id="@+id/Locality_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Locality"
+                        android:hint="Enter Locality *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -497,7 +499,7 @@
                         android:id="@+id/Street_area_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Street/Area"
+                        android:hint="Enter Street/Area *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 
@@ -560,7 +562,7 @@
                         android:id="@+id/Pincode_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Pincode"
+                        android:hint="Enter Pincode *"
                         android:layout_margin="8dp"
                         app:errorEnabled="true">
 

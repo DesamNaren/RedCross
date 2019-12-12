@@ -30,7 +30,6 @@
             android:id="@+id/HeadingOfForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/FormHeading"
             android:textColor="@color/pdlg_color_blue"
             android:textSize="20sp"
             android:textStyle="bold" />

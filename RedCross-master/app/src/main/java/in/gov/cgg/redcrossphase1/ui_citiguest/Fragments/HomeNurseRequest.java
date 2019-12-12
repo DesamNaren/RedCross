@@ -461,6 +461,8 @@ public class HomeNurseRequest extends Fragment {
 
                         Log.d("response", "onResponse: url" + response.body().getSaveStatus());
                         if (response.body().getSaveStatus().contains("Success")) {
+
+                            Toast.makeText(getActivity(), "Successfully generated Nurse ID", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
                             startActivity(i);
                         }

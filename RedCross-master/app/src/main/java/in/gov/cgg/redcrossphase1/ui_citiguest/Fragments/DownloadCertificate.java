@@ -87,6 +87,34 @@ public class DownloadCertificate extends Fragment {
             }
         });
 
+
+        binding.btnDownloadCertificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.downloadCertificate.setVisibility(View.VISIBLE);
+                binding.downloadIdCard.setVisibility(View.GONE);
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.black));
+            }
+        });
+
+        binding.btnDownloadIDCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                binding.downloadCertificate.setVisibility(View.GONE);
+                binding.downloadIdCard.setVisibility(View.VISIBLE);
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
+
+            }
+        });
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {

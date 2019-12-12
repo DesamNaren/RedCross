@@ -49,7 +49,7 @@ public class MembershipFragment extends Fragment {
     LinearLayout Parent_layout, ll_LTM_types;
     Button Proceed;
     Spinner TypeSpinner;
-    String SELECTEDtype;
+
     private FragmentActivity c;
     String selectedType;
     CustomProgressDialog progressDialog;
@@ -91,7 +91,7 @@ public class MembershipFragment extends Fragment {
         TypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                SELECTEDtype = TypeSpinner.getSelectedItem().toString();
+                GlobalDeclaration.SELECTEDtype = TypeSpinner.getSelectedItem().toString();
 
                 GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i);
                 Log.e("ID", "===" + GlobalDeclaration.Selection_MEMbership_type);

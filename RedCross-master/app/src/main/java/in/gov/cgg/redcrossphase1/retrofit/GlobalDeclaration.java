@@ -42,7 +42,7 @@ public class GlobalDeclaration {
 
     public static String Paymenturl;
     public static String encrpyt;
-    public static String Status;
+    public static String SELECTEDtype;
     public static int tabposition;
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
