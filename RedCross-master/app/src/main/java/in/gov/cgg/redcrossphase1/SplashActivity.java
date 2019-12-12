@@ -17,14 +17,14 @@ public class SplashActivity extends Activity {
     private boolean isCheked;
     RelativeLayout mainsplash;
     private int selectedThemeColor = -1;
-
+    PrefManager prefManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         SharedPreferences prefs = this.getSharedPreferences(
                 MyPREFERENCES, Context.MODE_PRIVATE);
-
+        prefManager = new PrefManager(SplashActivity.this);
         mainsplash = findViewById(R.id.mainsplash);
 
         uname = prefs.getString("un", "");
@@ -75,8 +75,13 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
 
-                startActivity(new Intent(SplashActivity.this, TabLoginActivity.class));
-                finish();
+                if (prefManager.isFirstTimeLaunch()) {
+                    startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(SplashActivity.this, TabLoginActivity.class));
+                    finish();
+                }
 
 
             }

@@ -52,6 +52,10 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui_citiguest.CitiGuestMainActivity"
             android:screenOrientation="portrait"

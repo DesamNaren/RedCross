@@ -462,7 +462,8 @@
 
                 <Button
                     android:id="@+id/btn_donorRegNext"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/tab_background_selected"
                     android:text="Submit"

@@ -253,7 +253,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:padding="@dimen/dp_5"
-                            android:text="Blood Banks"
+                            android:text="Get Blood"
                             android:textAlignment="center"
                             android:textColor="@color/white"
 
