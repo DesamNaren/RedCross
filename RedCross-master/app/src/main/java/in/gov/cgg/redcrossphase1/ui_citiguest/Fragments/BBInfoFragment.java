@@ -294,6 +294,7 @@ public class BBInfoFragment extends LocBaseFragment {
                         callERaktakoshRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), spinner_position);
                     } else {
                         if (mainList != null && mainList.size() > 0) {
+                            spinner_bg.setSelection(0);
                             tv_total.setText("Total Records: " + mainList.size());
                             bb_rv.setVisibility(View.VISIBLE);
                             no_data_tv.setVisibility(View.GONE);
@@ -337,6 +338,7 @@ public class BBInfoFragment extends LocBaseFragment {
                         callBloodDonorsRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), spinner_position);
                     } else {
                         if (bloodDonorResponseMainList != null && bloodDonorResponseMainList.size() > 0) {
+                            spinner_bg_donor.setSelection(0);
                             tv_total.setText("Total Records: " + bloodDonorResponseMainList.size());
                             bb_rv.setVisibility(View.VISIBLE);
                             no_data_tv.setVisibility(View.GONE);
