@@ -46,6 +46,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class HomeNurseRequest extends Fragment {
     HomeNurseRequestLayoutBinding binding;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
@@ -54,6 +56,8 @@ public class HomeNurseRequest extends Fragment {
     MembershipvillageAdaptor villageadapter;
     CustomProgressDialog progressDialog;
     Integer distId = 0, manId = 0, villageID = 0;
+    String EMailResult = "", Pincode = "";
+    int selectedThemeColor = -1;
     String RELATION = "";
     private List<MembersipDistResponse> MembersipDistResponseList = new ArrayList<>();
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
@@ -66,6 +70,109 @@ public class HomeNurseRequest extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_nurse_request_layout, container, false);
         progressDialog = new CustomProgressDialog(getActivity());
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross1_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross2_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross3_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross4_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross5_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross6_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross7_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    binding.CantactDetails.setTextColor(getResources().getColor(selectedThemeColor));
+
+                    binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
 
         callgetDistrictListRequest();
 
@@ -224,6 +331,8 @@ public class HomeNurseRequest extends Fragment {
             public void onClick(View view) {
 
                 if (CheckInternet.isOnline(getActivity())) {
+                    EMailResult = binding.EmailRes.getText().toString().trim();
+                    Pincode = binding.PincodeRes.getText().toString().trim();
                     if (validateFields()) {
 
                         callsubmitHomeNurseRequest();
@@ -396,12 +505,11 @@ public class HomeNurseRequest extends Fragment {
         } else if (!(binding.MobNumRes.getText().toString().trim().startsWith("9") || binding.MobNumRes.getText().toString().trim().startsWith("8") || binding.MobNumRes.getText().toString().trim().startsWith("7") || binding.MobNumRes.getText().toString().trim().startsWith("6") || binding.MobNumRes.getText().toString().trim().startsWith("5"))) {
             Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
-        } else if (!binding.EmailRes.getText().toString().matches(emailPattern)) {
-            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.EmailRes.getText().toString().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Email ID", Toast.LENGTH_LONG).show();
-            return false;
+        } else if (EMailResult.length() != 0) {
+            if (!EMailResult.matches(emailPattern)) {
+                Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
+                return false;
+            }
         } else if (binding.AddressRes.getText().toString().length() == 0) {
             Toast.makeText(getActivity(), "Enter Address", Toast.LENGTH_LONG).show();
             return false;
@@ -414,12 +522,11 @@ public class HomeNurseRequest extends Fragment {
         } else if (binding.TownVillageSpinRes.getSelectedItem().toString().trim().equals("Select Town/Village")) {
             Toast.makeText(getActivity(), "Select Town/Village", Toast.LENGTH_LONG).show();
             return false;
-        } else if (binding.PincodeRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Pincode", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.PincodeRes.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
-            return false;
+        } else if (Pincode.length() != 0) {
+            if (Pincode.length() < 6) {
+                Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+                return false;
+            }
         }
         return true;
     }
@@ -441,12 +548,12 @@ public class HomeNurseRequest extends Fragment {
             object.put("serviceStartDate", binding.serviceStartDateRes.getText().toString());
             object.put("serviceEndDate", binding.serviceEndDateRes.getText().toString());
             object.put("phoneNo", binding.MobNumRes.getText().toString());
-            object.put("email", binding.EmailRes.getText().toString().trim());
+            object.put("email", EMailResult);
             object.put("address", binding.AddressRes.getText().toString());
             object.put("districts", Integer.toString(distId));
             object.put("mandals", Integer.toString(manId));
             object.put("village", Integer.toString(villageID));
-            object.put("pincode", binding.PincodeRes.getText().toString());
+            object.put("pincode", Pincode);
 
 
             JsonParser jsonParser = new JsonParser();

@@ -13,6 +13,7 @@
         android:id="@+id/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/redcross2_bg"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -99,7 +100,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
                                 android:text="Personal Details"
-                                android:textColor="@color/pdlg_color_blue"
+                                android:textColor="@color/colorPrimary"
                                 android:textSize="20sp" />
 
                         </androidx.cardview.widget.CardView>
@@ -108,14 +109,14 @@
                             android:id="@+id/view1"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:background="#3f578f" />
+                            android:background="@color/colorPrimary" />
 
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/FullName_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Full Name *"
                             app:errorEnabled="true">
 
@@ -131,7 +132,7 @@
                             android:id="@+id/FathersHusbandName_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Father's/Husband's Name *"
                             app:errorEnabled="true">
 
@@ -201,7 +202,7 @@
                                 android:layout_weight="1"
                                 android:drawableRight="@android:drawable/ic_menu_my_calendar"
                                 android:focusable="false"
-                                android:hint="Enter Date of Birth"
+                                android:hint="Date of Birth"
                                 android:textColor="@color/black" />
                         </LinearLayout>
 
@@ -232,7 +233,7 @@
                             android:id="@+id/Mob_num_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Mobile Number *"
                             app:errorEnabled="true">
 
@@ -249,7 +250,7 @@
                             android:id="@+id/Email_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Email ID *"
                             app:errorEnabled="true">
 
@@ -257,8 +258,28 @@
                                 android:id="@+id/Email_res"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
+
+
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <TextView
+                            android:id="@+id/Email_note"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_5"
+                            android:text="(Certificate will be sent to Email)"
+                            android:textColor="@color/colorPrimary" />
+
+                        <!--<TextView
+                            android:id="@+id/Email_note"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/colorPrimary"
+                            android:text="(Certificate will be sent to Email)"
+                            android:textSize="10sp" />-->
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -279,7 +300,7 @@
                             android:id="@+id/Photo_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:padding="@dimen/dp_5"
                             android:text="Photo *"
                             android:textColor="@color/black"
@@ -290,7 +311,7 @@
                             android:layout_width="@dimen/dimen_100dp"
                             android:layout_height="@dimen/dimen_100dp"
                             android:layout_gravity="center"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:src="@drawable/cam" />
 
                     </LinearLayout>
@@ -317,7 +338,7 @@
                             android:layout_height="wrap_content"
                             android:elevation="15dp"
                             android:orientation="vertical"
-                            android:padding="8dp">
+                            android:padding="5dp">
 
 
                             <TextView
@@ -329,7 +350,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
                                 android:text="Professional Details"
-                                android:textColor="@color/pdlg_color_blue"
+                                android:textColor="@color/colorPrimary"
                                 android:textSize="20sp" />
 
                         </androidx.cardview.widget.CardView>
@@ -338,7 +359,7 @@
                             android:id="@+id/view2"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:background="#3f578f" />
+                            android:background="@color/colorPrimary" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -360,7 +381,7 @@
                             android:id="@+id/Occupation_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Occupation *"
                             app:errorEnabled="true">
 
@@ -407,7 +428,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
                                 android:text="Communication Details"
-                                android:textColor="@color/pdlg_color_blue"
+                                android:textColor="@color/colorPrimary"
                                 android:textSize="20sp" />
 
                         </androidx.cardview.widget.CardView>
@@ -416,13 +437,13 @@
                             android:id="@+id/view3"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:background="#3f578f" />
+                            android:background="@color/colorPrimary" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/House_no_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter House No *"
                             app:errorEnabled="true">
 
@@ -437,7 +458,7 @@
                             android:id="@+id/Locality_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Locality *"
                             app:errorEnabled="true">
 
@@ -453,7 +474,7 @@
                             android:id="@+id/Street_area_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Street/Area *"
                             app:errorEnabled="true">
 
@@ -521,7 +542,7 @@
                             android:id="@+id/Pincode_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Enter Pincode *"
                             app:errorEnabled="true">
 
@@ -570,7 +591,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
                                 android:text="Other Details"
-                                android:textColor="@color/pdlg_color_blue"
+                                android:textColor="@color/colorPrimary"
                                 android:textSize="20sp" />
 
                         </androidx.cardview.widget.CardView>
@@ -579,7 +600,7 @@
                             android:id="@+id/view4"
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:background="#3f578f" />
+                            android:background="@color/colorPrimary" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -597,17 +618,18 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/spared_hours"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:text="Spared hours to red cross activities(per week)"
-                            android:textColor="@color/pdlg_color_blue" />
+                            android:textColor="@color/colorPrimary" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/No_of_hours_tv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_margin="5dp"
                             android:hint="Number of hours"
                             app:errorEnabled="true">
 

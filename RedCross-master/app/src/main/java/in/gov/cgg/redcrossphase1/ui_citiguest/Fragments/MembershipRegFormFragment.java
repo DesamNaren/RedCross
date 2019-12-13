@@ -93,13 +93,13 @@ public class MembershipRegFormFragment extends Fragment {
     Button Next;
     EditText Full_name, fatherHusbName, DOB, mob_num, email, occupation, house_no, locatlity, street, pincode, hours;
     RadioGroup rg;
-    TextView ageResult;
+    TextView ageResult, spared_hours;
     ImageView Photo;
     String PHOTOPATH = "";
     Spinner Bloodgroup, education, district, mandal, village, activities;
     String Selected_gender = "";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
-    String EMailResult;
+    String EMailResult = "", Education = "", Occupation = "", Pincode = "", Hours = "";
     String FilePath;
     TextView personaldetails, switchView, professionalheeading, CommuDetails, OtherDetails;
     RelativeLayout headingWithHome;
@@ -165,7 +165,7 @@ public class MembershipRegFormFragment extends Fragment {
         dist_spin_lay = root.findViewById(R.id.dist_spin_lay);
         Mandal_spin_lay = root.findViewById(R.id.mandal_spin_lay);
         Village_apin_lay = root.findViewById(R.id.village_spin_lay);
-
+        spared_hours = root.findViewById(R.id.spared_hours);
         MainLayout = root.findViewById(R.id.MainLayout);
         switchView = root.findViewById(R.id.switchView);
         personaldetails = root.findViewById(R.id.personaldetails);
@@ -191,6 +191,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -203,6 +204,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -215,6 +217,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -227,6 +230,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -240,6 +244,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -252,6 +257,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -265,6 +271,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -279,6 +286,7 @@ public class MembershipRegFormFragment extends Fragment {
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -308,6 +316,10 @@ public class MembershipRegFormFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EMailResult = email.getText().toString().trim();
+                Education = education.getSelectedItem().toString().trim();
+                Occupation = occupation.getText().toString().trim();
+                Pincode = pincode.getText().toString().trim();
+                Hours = hours.getText().toString();
                 if (CheckInternet.isOnline(getActivity())) {
                     if (validateFields()) {
                         PhotoUpload(bm);
@@ -695,19 +707,19 @@ public class MembershipRegFormFragment extends Fragment {
             object.put("gender", Selected_gender);
             object.put("dateOfBirth", DOB.getText().toString().trim());
             object.put("studentContactNumber", mob_num.getText().toString());
-            object.put("email", email.getText().toString());
+            object.put("email", EMailResult);
             object.put("bloodGroup", Bloodgroup.getSelectedItem().toString().trim());
-            object.put("className", education.getSelectedItem().toString().trim());
-            object.put("occupation", occupation.getText().toString());
+            object.put("className", Education);
+            object.put("occupation", Occupation);
             object.put("houseNo", house_no.getText().toString());
             object.put("locality", locatlity.getText().toString());
             object.put("streetArea", street.getText().toString());
             object.put("districts", Integer.toString(distId));
             object.put("mandals", Integer.toString(manId));
             object.put("village", Integer.toString(villageID));
-            object.put("pincode", pincode.getText().toString());
+            object.put("pincode", Pincode);
             object.put("activities", Integer.toString(activityID));
-            object.put("noOfHours", hours.getText().toString());
+            object.put("noOfHours", Hours);
             object.put("photoPath", PHOTOPATH);
             object.put("requestType", "mobile");
 
@@ -853,20 +865,13 @@ public class MembershipRegFormFragment extends Fragment {
         } else if (!(mob_num.getText().toString().trim().startsWith("9") || mob_num.getText().toString().trim().startsWith("8") || mob_num.getText().toString().trim().startsWith("7") || mob_num.getText().toString().trim().startsWith("6") || mob_num.getText().toString().trim().startsWith("5"))) {
             Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
-        } else if (!EMailResult.matches(emailPattern)) {
-            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (EMailResult.length() == 0) {
-            Toast.makeText(getActivity(), "Enter Email ID", Toast.LENGTH_LONG).show();
-            return false;
+        } else if (EMailResult.length() != 0) {
+            if (!EMailResult.matches(emailPattern)) {
+                Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
+                return false;
+            }
         } else if (Bloodgroup.getSelectedItem().toString().trim().equals("Select Blood Group")) {
             Toast.makeText(getActivity(), "Select Blood group", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (education.getSelectedItem().toString().trim().equals("Select Educational Qualification")) {
-            Toast.makeText(getActivity(), "Select Educational Qualification", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (occupation.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Occupation", Toast.LENGTH_LONG).show();
             return false;
         } else if (house_no.getText().toString().trim().length() == 0) {
             Toast.makeText(getActivity(), "Enter House No.", Toast.LENGTH_LONG).show();
@@ -886,19 +891,12 @@ public class MembershipRegFormFragment extends Fragment {
         } else if (village.getSelectedItem().toString().trim().equals("Select Town/Village")) {
             Toast.makeText(getActivity(), "Select Town/Village", Toast.LENGTH_LONG).show();
             return false;
-        } else if (pincode.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Pincode", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (pincode.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
-            return false;
-        } /*else if (activities.getSelectedItem().toString().trim().equals("Select Activities interested")) {
-            Toast.makeText(getActivity(), "Select Activities interested", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (hours.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter number of hours", Toast.LENGTH_LONG).show();
-            return false;
-        }*/ else if (Photo.getDrawable() == null) {
+        } else if (pincode.getText().toString().trim().length() != 0) {
+            if (pincode.getText().toString().length() < 6) {
+                Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        } else if (Photo.getDrawable() == null) {
             Toast.makeText(getActivity(), "Choose photo", Toast.LENGTH_LONG).show();
             return false;
         }
