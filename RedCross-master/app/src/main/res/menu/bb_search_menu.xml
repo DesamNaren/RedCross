@@ -1,14 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.activities.MyActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/searh32"
         android:title="Search"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 
 

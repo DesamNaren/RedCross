@@ -17,7 +17,16 @@ public class UserTypesList {
     private Integer yRC;
     @SerializedName("Name")
     @Expose
-    private String name;
+    private String iname;
+
+
+    public String getIname() {
+        return iname;
+    }
+
+    public void setIname(String iname) {
+        this.iname = iname;
+    }
 
     public int getTotal() {
         return total;
@@ -51,12 +60,5 @@ public class UserTypesList {
         this.yRC = yRC;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }

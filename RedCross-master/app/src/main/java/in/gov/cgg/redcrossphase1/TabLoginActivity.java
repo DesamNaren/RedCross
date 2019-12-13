@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -189,7 +188,6 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()) {
             case R.id.tv_register:
                 startActivity(new Intent(TabLoginActivity.this, RegisterActivity.class));
-                Toast.makeText(this, "Registrations will be availed soon", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_cntinueguest:
                 startActivity(new Intent(TabLoginActivity.this, CitiGuestMainActivity.class));

@@ -90,11 +90,13 @@ public class NewAllDistrictsFragment extends Fragment {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
                     MODE_PRIVATE).getInt("theme_color", -1);
 
+
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
         }
-
+//        if (!GlobalDeclaration.role.contains("D")) {
         binding.tvNodata.setVisibility(View.VISIBLE);
+        // }
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(),
                         "alldistrict")).get(AllDistrictsViewModel.class);
@@ -186,13 +188,16 @@ public class NewAllDistrictsFragment extends Fragment {
             });
 
             Collections.reverse(newlist);
-
+            binding.tvNodata.setVisibility(View.GONE);
 
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
             adapter1 = new LevelAdapter(getActivity(), allDistrictList, "m", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
+        } else {
+            binding.tvNodata.setText("No data available");
+
         }
 
 

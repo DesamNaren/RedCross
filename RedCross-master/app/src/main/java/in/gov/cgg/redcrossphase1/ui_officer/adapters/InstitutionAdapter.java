@@ -67,7 +67,7 @@ public class InstitutionAdapter extends RecyclerView.Adapter<InstitutionAdapter.
         int total = (data_dashbord.get(position).getJRC()) + (data_dashbord.get(position).
                 getYRC());
 
-        holder.tv_alldname.setText(data_dashbord.get(position).getName());
+        holder.tv_alldname.setText(data_dashbord.get(position).getIname());
         holder.tv_jrcount.setText(String.valueOf(data_dashbord.get(position).getJRC()));
         holder.tv_yrccount.setText(String.valueOf(data_dashbord.get(position).getYRC()));
         holder.tv_totalcount.setText(String.valueOf(total));
@@ -139,7 +139,7 @@ public class InstitutionAdapter extends RecyclerView.Adapter<InstitutionAdapter.
         } else {
             for (UserTypesList wp : dayWiseReportCountResponses) {
 
-                if (wp.getName().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase())) {
+                if (wp.getIname().toLowerCase(Locale.getDefault()).contains(newText.toLowerCase())) {
                     data_dashbord.add(wp);
                 }
             }

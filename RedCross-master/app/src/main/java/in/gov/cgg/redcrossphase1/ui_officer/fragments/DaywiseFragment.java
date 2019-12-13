@@ -344,7 +344,7 @@ public class DaywiseFragment extends TestFrag {
         final List<String> stringList = new ArrayList<>();
 
         for (int i = 0; i < alldaywisecounts.size(); i++) {
-            stringList.add(alldaywisecounts.get(i).getDate());
+            stringList.add(alldaywisecounts.get(i).getDate().substring(0, 5));
         }
         //final String[] months = new String[]{"Jan", "Feb", "Mar", "Apr","March","test"};
 
@@ -434,6 +434,11 @@ public class DaywiseFragment extends TestFrag {
             binding.customCount.tvYrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
             binding.customCount.tvLmcount.setText(String.valueOf(dashboardCountResponse.getMs()));
             binding.customCount.tvAllcount.setText(String.valueOf(total));
+        } else {
+            binding.customCount.tvJrccount.setText("");
+            binding.customCount.tvYrccount.setText("");
+            binding.customCount.tvLmcount.setText("");
+            binding.customCount.tvAllcount.setText("");
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }
@@ -542,12 +547,10 @@ public class DaywiseFragment extends TestFrag {
 
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
                     FragmentActivity activity = (FragmentActivity) v.getContext();
-                    if (!GlobalDeclaration.role.contains("D")) {
                         Fragment frag = new NewOfficerHomeFragment();
                         activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
                                 frag).addToBackStack(null).commit();
                         return true;
-                    }
                 }
                 return false;
             }

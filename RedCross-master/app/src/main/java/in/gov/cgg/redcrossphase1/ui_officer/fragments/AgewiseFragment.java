@@ -63,7 +63,9 @@ public class AgewiseFragment extends TestFrag {
                         @Override
                         public void onChanged(@Nullable List<Age> ageList) {
                             if (ageList != null) {
-                                generateDataBar(ageList);
+                                if (ageList.size() > 1) {
+                                    generateDataBar(ageList);
+                                }
                                 //  generateDataLine1(ageList);
                             }
                         }
