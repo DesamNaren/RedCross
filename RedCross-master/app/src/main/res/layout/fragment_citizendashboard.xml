@@ -4,7 +4,7 @@
     android:id="@+id/fragment_citizendashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/redcross6_bg"
+    android:background="@drawable/redcross2_bg"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"

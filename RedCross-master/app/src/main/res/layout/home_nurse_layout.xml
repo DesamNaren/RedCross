@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_howtobecomehomeNurse"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="false"
@@ -14,6 +15,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_requestBg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/tab_background_selected"
@@ -45,6 +47,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_howtobecomehomeNurseBg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/tab_background_selected"
@@ -75,6 +78,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_becomeahomeNurse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/tab_background_selected"

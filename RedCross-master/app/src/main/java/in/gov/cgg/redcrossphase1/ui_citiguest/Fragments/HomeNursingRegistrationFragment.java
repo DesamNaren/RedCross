@@ -68,16 +68,10 @@ import retrofit2.Response;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link HomeNursingRegistrationFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link HomeNursingRegistrationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeNursingRegistrationFragment extends Fragment {
     public static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 200;
     public static final String IMAGE_DIRECTORY_NAME = "RED_CROSS_IMAGE";
@@ -106,35 +100,15 @@ public class HomeNursingRegistrationFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private OnFragmentInteractionListener mListener;
     private List<MembersipDistResponse> MembersipDistResponseList = new ArrayList<>();
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
     private int mYear, mMonth, mDay;
     private HomeNursingRequest request;
     private boolean distValidation, mandalValid, villageValid;
+    int selectedThemeColor = -1;
 
-    public HomeNursingRegistrationFragment() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeNursingRegistrationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeNursingRegistrationFragment newInstance(String param1, String param2) {
-        HomeNursingRegistrationFragment fragment = new HomeNursingRegistrationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -148,15 +122,20 @@ public class HomeNursingRegistrationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // return inflater.inflate(R.layout.fragment_home_nursing_registration, container, false);
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing1, container, false);
-        //binding = DataBindingUtil.setContentView(getActivity(), R.layout.fragment_homenursing1);
-        //Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
-        progressDialog = new CustomProgressDialog(getActivity());
 
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing1, container, false);
+        progressDialog = new CustomProgressDialog(getActivity());
         loadEducationSpinner();
         loadMarriedstatusSpinner();
+
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            setThemes();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         //Datepicker and age calculation
@@ -886,32 +865,122 @@ public class HomeNursingRegistrationFragment extends Fragment {
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    private void setThemes() {
+        if (selectedThemeColor != -1) {
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+            } else {
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.tvHomenurseDeatils.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvHomenurseAdress.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+
+            }
+
+        } else {
+            binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            binding.tvHomenurseDeatils.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.tvHomenurseAdress.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+
         }
-    }
-
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

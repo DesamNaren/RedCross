@@ -1,576 +1,571 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:clickable="true"
+        android:background="?android:windowBackground"
         android:focusable="true">
 
-        <ScrollView
+        <LinearLayout
+            android:id="@+id/ll_homenurseRegistartion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/redcross2_bg"
+            android:orientation="vertical">
 
-
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" />
-
-                <!--   <Button
-                       android:id="@+id/switchView"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_alignParentBottom="true"
-                       android:background="@drawable/tab_background_selected"
-                       android:text="Home Nursing Registration"
-                       android:textColor="@color/white" />-->
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="15dp"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_below="@+id/tv_heading"
-                        android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:text="Home Nursing Details"
-                        android:textColor="@color/pdlg_color_blue"
-                        android:textSize="20sp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#3f578f" />
-
-                <LinearLayout
-                    android:id="@+id/homenursing_reg_layout"
+                    android:id="@+id/ll_scroll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!--    <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/dp_10"
-                            app:cardCornerRadius="@dimen/dp_5">-->
 
-                    <LinearLayout
-                        android:id="@+id/ll_registrationForm"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:hint="Full Name *"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_name"
-                                android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Father's/Husband's Name *"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_fathersName"
-                                android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:hint="Date of Birth *"
-                                android:textColor="@color/black" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <EditText
-                                    android:id="@+id/datePicker_dateofBirth"
-                                    android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_margin="@dimen/dp_5"
-                                    android:layout_weight="1"
-                                    android:focusable="false"
-                                    android:background="@drawable/edittext_bg"
-                                    android:drawableRight="@android:drawable/ic_menu_my_calendar"
-                                    android:paddingLeft="@dimen/dp_5"
-                                    android:textColor="@color/black" />
-
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:text="Education *"
-                                android:textColor="@color/black" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <Spinner
-                                    android:id="@+id/spn_education"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/dp_40"
-                                    android:layout_margin="@dimen/dp_5"
-                                    android:entries="@array/Education"
-                                    android:paddingLeft="@dimen/dp_5"
-                                    android:textColor="@color/black" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:text="Marital Status *"
-                                android:textColor="@color/black" />
-
-
-                            <Spinner
-                                android:id="@+id/spn_married"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/dp_40"
-                                android:layout_margin="@dimen/dp_5"
-                                android:entries="@array/Married"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Mobile Number *"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_mobileNumber"
-                                android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:inputType="number"
-                                android:maxLength="10"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Email"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Institute Name *"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_Institute"
-                                android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:elevation="15dp"
-                                android:orientation="vertical"
-                                android:padding="8dp">
-
+                                android:orientation="vertical">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/tv_homenurseDeatils"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="Home Nursing Details"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp" />
+
+                                <View
+                                    android:id="@+id/view1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/homenursing_reg_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:hint="Full Name *"
+                                    android:textColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/et_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Father's/Husband's Name *"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_fathersName"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Date of Birth *"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:id="@+id/datePicker_dateofBirth"
+                                            android:layout_width="0dp"
+                                            android:layout_height="40dp"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/edittext_bg"
+                                            android:drawableRight="@android:drawable/ic_menu_my_calendar"
+                                            android:focusable="false"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:text="Education *"
+                                        android:textColor="@color/black" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <Spinner
+                                            android:id="@+id/spn_education"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/dp_40"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:entries="@array/Education"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="Marital Status *"
+                                        android:textColor="@color/black" />
+
+
+                                    <Spinner
+                                        android:id="@+id/spn_married"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/dp_40"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:entries="@array/Married"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Mobile Number *"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_mobileNumber"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:inputType="number"
+                                            android:maxLength="10"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Email"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_email"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="40dp"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Institute Name *"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_Institute"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_homenurseAdress"
+                                    android:layout_width="match_parent"
                                     android:layout_height="40dp"
                                     android:layout_below="@+id/tv_heading"
                                     android:layout_gravity="center_vertical"
                                     android:gravity="center_vertical"
                                     android:paddingLeft="10dp"
                                     android:text="Address Details "
-                                    android:textColor="@color/pdlg_color_blue"
+                                    android:textColor="@color/colorPrimary"
                                     android:textSize="20sp" />
-                            </androidx.cardview.widget.CardView>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:background="#3f578f" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Address *"
-                                android:textColor="@color/black">
-
-                            <EditText
-                                android:id="@+id/et_adress"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:text="District"
-                                android:textColor="@color/black" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <Spinner
-                                    android:id="@+id/spn_district"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/dp_40"
-                                    android:layout_margin="@dimen/dp_5"
-                                    android:paddingLeft="@dimen/dp_5"
-                                    android:textColor="@color/black" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:text="Mandal"
-                                android:textColor="@color/black" />
-
-                            <Spinner
-                                android:id="@+id/spn_mandal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                            </Spinner>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:text="Village"
-                                android:textColor="@color/black" />
-
-                            <Spinner
-                                android:id="@+id/spn_village"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                            </Spinner>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="5dp"
-                                android:hint="Pincode *"
-                                android:textColor="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_pincode"
-                                android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:inputType="number"
-                                android:maxLength="6"
-                                android:paddingLeft="@dimen/dp_5"
-                                android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:elevation="15dp"
-                                    android:orientation="vertical"
-                                    android:padding="8dp">
-
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="40dp"
-                                        android:layout_below="@+id/tv_heading"
-                                        android:layout_gravity="center_vertical"
-                                        android:gravity="center_vertical"
-                                        android:paddingLeft="10dp"
-                                        android:text="Home Nursing Info"
-                                        android:textColor="@color/pdlg_color_blue"
-                                        android:textSize="20sp" />
-                                </androidx.cardview.widget.CardView>
 
                                 <View
+                                    android:id="@+id/view2"
                                     android:layout_width="match_parent"
                                     android:layout_height="2dp"
-                                    android:background="#3f578f" />
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
                                 <com.google.android.material.textfield.TextInputLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:padding="5dp"
-                                    android:hint="Number of previous Experiance *"
+                                    android:hint="Address *"
                                     android:textColor="@color/black">
 
                                     <EditText
-                                        android:id="@+id/et_noofpreviousExperians"
+                                        android:id="@+id/et_adress"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/dp_5"
-                                        android:inputType="number"
+                                        android:layout_weight="1"
                                         android:paddingLeft="@dimen/dp_5"
                                         android:textColor="@color/black" />
                                 </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:text="District"
+                                        android:textColor="@color/black" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <Spinner
+                                            android:id="@+id/spn_district"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/dp_40"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="Mandal"
+                                        android:textColor="@color/black" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_mandal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                    </Spinner>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="Village"
+                                        android:textColor="@color/black" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_village"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                    </Spinner>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Pincode *"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_pincode"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:inputType="number"
+                                            android:maxLength="6"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
                             </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/Photo_tv"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:padding="@dimen/dp_5"
-                                android:text="Photo *"
-                                android:textColor="@color/black"
-
-                                android:textSize="16sp" />
-
-                            <ImageView
-                                android:id="@+id/image_res"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <Button
-                                android:id="@+id/choose_bt"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:background="@drawable/tab_background_selected"
-                                android:text="Choose Photo"
-                                android:textColor="@color/white" />
 
                         </LinearLayout>
 
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_tv_gomenurseInfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="Home Nurse Info "
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp" />
+
+                                <View
+                                    android:id="@+id/view3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="Number of previous Experiance *"
+                                android:padding="5dp"
+                                android:textColor="@color/black">
+
+                                <EditText
+                                    android:id="@+id/et_noofpreviousExperians"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:inputType="number"
+                                    android:paddingLeft="@dimen/dp_5"
+                                    android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/Photo_tv"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/dp_5"
+                                    android:layout_margin="@dimen/dp_10"
+                                    android:text="Photo *"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/image_res"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <Button
+                                    android:id="@+id/choose_bt"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_margin="@dimen/dp_10"
+                                    android:background="@drawable/tab_background_selected"
+                                    android:text="Choose Photo"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
 
                             <Button
                                 android:id="@+id/btn_homeNursingRegNext"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_10"
                                 android:background="@drawable/tab_background_selected"
                                 android:padding="4dp"
                                 android:text="Submit"
                                 android:textColor="@color/white" />
                         </LinearLayout>
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
-                <!--
-                                <include
-                                    android:id="@+id/homenursing_reg_layout"
-                                    layout="@layout/homenursing_reg_layout"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent" />
-                -->
-            </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+
+            </ScrollView>
+        </LinearLayout>
 
 
     </LinearLayout>

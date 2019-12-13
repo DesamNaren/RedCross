@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -54,6 +55,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class BlooddonorRegistrationFragment extends Fragment {
     CustomProgressDialog progressDialog;
@@ -91,6 +94,11 @@ public class BlooddonorRegistrationFragment extends Fragment {
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
     private List<DistrictBean> districtBeanArrayList;
     RadioButton radioButton;
+    LinearLayout ll_donorregForm;
+    TextView tv_titledonorDetails, tv_titleAdressInfo, tv_titledonorInfo;
+    View view1, view2, view3;
+    int selectedThemeColor = -1;
+
 
 
     @Override
@@ -110,6 +118,14 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         findViews(root);
 
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            setThemes();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
 
         //radiobutton values
         // get selected radio button from radioGroup
@@ -725,6 +741,121 @@ public class BlooddonorRegistrationFragment extends Fragment {
         RG_willingtodonateblood = root.findViewById(R.id.radioGroup_willingtodonateblood);
         radioButton1True = root.findViewById(R.id.radioButton1True);
         radioButton2False = root.findViewById(R.id.radioButton2False);
+
+        ll_donorregForm = root.findViewById(R.id.ll_donorregForm);
+        tv_titledonorDetails = root.findViewById(R.id.tv_titledonorDetails);
+        tv_titleAdressInfo = root.findViewById(R.id.tv_titleAdressInfo);
+        tv_titledonorInfo = root.findViewById(R.id.tv_titledonorInfo);
+
+
+        view1 = root.findViewById(R.id.view1);
+        view2 = root.findViewById(R.id.view2);
+        view3 = root.findViewById(R.id.view3);
+
+
+    }
+
+    public void setThemes() {
+
+        if (selectedThemeColor != -1) {
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(selectedThemeColor);
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
+                view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+
+            } else {
+                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                tv_titledonorDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                tv_titleAdressInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+                tv_titledonorInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+                view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+            }
+
+        } else {
+            ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            tv_titledonorDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+            tv_titleAdressInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+            tv_titledonorInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
+            view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        }
 
 
     }
