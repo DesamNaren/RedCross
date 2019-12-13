@@ -32,6 +32,8 @@ import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class ContactusFragment extends Fragment implements SearchView.OnQueryTextListener {
     RecyclerView recyclerView;
@@ -58,33 +60,54 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         GlobalDeclaration.cordinatorType = "s";
 
 
-
-       /* try {
+        try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross1_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross2_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross3_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross4_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross5_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross6_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross7_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_contactUs.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else {
+                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
                 }
+
+            } else {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             }
         } catch (Exception e) {
             e.printStackTrace();
 
-        }*/
+        }
 
         contactUsarrayList = new ArrayList<>();
         recyclerView = root.findViewById(R.id.rv_contactUs);
@@ -98,6 +121,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_districtCordinators.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 CallDistLogic();
 
 
@@ -106,6 +130,9 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_sateCordinators.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+
                 CallStateLogic();
             }
         });
