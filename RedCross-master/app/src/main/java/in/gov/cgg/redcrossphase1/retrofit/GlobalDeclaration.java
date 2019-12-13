@@ -50,6 +50,8 @@ public class GlobalDeclaration {
     public static List<StatelevelDistrictViewCountResponse> mandalData;
     public static List<StatelevelDistrictViewCountResponse> villageData;
     public static List<UserTypesList> instiCounts;
+    public static String unamefromReg;
+    public static boolean failedcounts;
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 

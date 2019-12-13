@@ -161,7 +161,7 @@ public class NewOfficerMainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_age, R.id.nav_gender, R.id.nav_district,
                 R.id.nav_blood, R.id.nav_top5, R.id.nav_govtpvt, R.id.nav_alldistricts, R.id.nav_tc, R.id.nav_privacy,
-                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme)
+                R.id.nav_drill, R.id.nav_daywise, R.id.nav_ofctheme, R.id.nav_institutecount)
                 .setDrawerLayout(drawerLayout)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_officer);
@@ -170,9 +170,9 @@ public class NewOfficerMainActivity extends AppCompatActivity {
 
 
         if (GlobalDeclaration.username != null && GlobalDeclaration.designation != null) {
-            tv_name.setText("Welcome to " + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
+            tv_name.setText("Welcome " + GlobalDeclaration.designation + "\n" + GlobalDeclaration.username);
         } else {
-            tv_name.setText("Welcome to " + GlobalDeclaration.username);
+            tv_name.setText("Welcome " + GlobalDeclaration.username);
 
         }
 
@@ -282,6 +282,16 @@ public class NewOfficerMainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 if (destination.getId() == R.id.nav_daywise) {
+                    menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
+                    menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            startActivity(new Intent(NewOfficerMainActivity.this, NewOfficerMainActivity.class));
+                            return true;
+                        }
+                    });
+
+                } else if (destination.getId() == R.id.nav_institutecount) {
                     menu.findItem(R.id.logout).setIcon(R.drawable.ic_home_white_48dp);
                     menu.findItem(R.id.logout).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override

@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -13,8 +16,6 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.RegisBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -34,13 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText et_email;
     TextInputEditText et_mobile;
     private JsonObject gsonObject;
-
-
-
-
-
-
-
+    private int selectedThemeColor = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +45,54 @@ public class RegisterActivity extends AppCompatActivity {
         et_name = binding.nameEditText;
         et_email = binding.emailEditText;
         et_mobile = binding.mobileEditText;
+
+
+        try {
+            selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).
+                    getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                binding.tvSignUp.setTextColor(getResources().getColor(selectedThemeColor));
+                binding.btnRegister.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+
+                } else {
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                }
+            } else {
+                binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+        }
+
+
 
         progressDialog = new CustomProgressDialog(RegisterActivity.this);
         //   progressDialog = new ProgressDialog(RegisterActivity.this);
@@ -80,6 +123,8 @@ public class RegisterActivity extends AppCompatActivity {
             object.put("name", et_name.getText().toString());
             object.put("mobileNumber", et_mobile.getText().toString());
             object.put("emailId", et_email.getText().toString());
+
+            GlobalDeclaration.unamefromReg = et_name.getText().toString();
 
             JsonParser jsonParser = new JsonParser();
             gsonObject = (JsonObject) jsonParser.parse(object.toString());
@@ -129,17 +174,17 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean validate() {
 
         if (et_name.getText().toString().trim().equalsIgnoreCase("")) {
-            Toast.makeText(RegisterActivity.this, "Please enter name", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "Please valid enter name", Toast.LENGTH_LONG).show();
             return false;
         }
         if (et_mobile.getText().toString().trim().equalsIgnoreCase("") ||
                 et_mobile.getText().toString().startsWith("1") || et_mobile.getText().toString().startsWith("2") || et_mobile.getText().toString().startsWith("3") || et_mobile.getText().toString().startsWith("0") ||
                 et_mobile.getText().toString().startsWith("4")) {
-            Toast.makeText(RegisterActivity.this, "Please enter mobile number", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "Please valid enter mobile number", Toast.LENGTH_LONG).show();
             return false;
         }
         if (et_email.getText().toString().trim().equalsIgnoreCase("")) {
-            Toast.makeText(RegisterActivity.this, "Please enter email", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterActivity.this, "Please valid enter email", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;

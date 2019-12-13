@@ -178,6 +178,7 @@ public class DistrictViewModel extends ViewModel {
 
                 // Toast.makeText(getActivity(), "error failure", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
+                GlobalDeclaration.failedcounts = true;
                 Log.e("vm counts", "onFailure");
                 //    customProgressDialog.dismiss();
 

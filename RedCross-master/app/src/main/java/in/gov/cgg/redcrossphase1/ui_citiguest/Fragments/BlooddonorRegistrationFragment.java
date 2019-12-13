@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -51,6 +53,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -78,9 +82,9 @@ public class BlooddonorRegistrationFragment extends Fragment {
     Spinner spn_education;
     Spinner spn_married;
 
-    String mBloodGroupId = "";
-    String mGenderId = "";
-    String mEducationId = "";
+    String mBloodGroupId;
+    String mGenderId;
+    String mEducationId;
 
 
     Integer distId = 0, manId = 0, villageID = 0;
@@ -359,6 +363,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
                 mBloodGroupId = mBloodGroupIdsList.get(position);
 
             }
@@ -575,31 +580,48 @@ public class BlooddonorRegistrationFragment extends Fragment {
     protected boolean validateFields() {
 
         if (et_name.getText().toString().trim().length() == 0) {
-            setFocus(et_name, "enter your  name");
+
+            et_name.setError("enter your  name");
+            et_name.requestFocus();
+
             return false;
         } else if (et_fathersName.getText().toString().trim().length() == 0) {
-            setFocus(et_fathersName, "enter  father or husband name");
+
+            et_fathersName.setError("enter  father or husband name");
+            et_fathersName.requestFocus();
+
             return false;
 
         } else if (datePicker_dateofBirth.getText().toString().trim().length() == 0) {
-            setFocus(datePicker_dateofBirth, "enter your date of birth");
+            datePicker_dateofBirth.setError("enter your date of birth");
+            datePicker_dateofBirth.requestFocus();
+
+
             return false;
         } else if (spn_gender.getSelectedItemPosition() == 0) {
-            errorSpinner(spn_gender, "select gender");
+            Toast.makeText(getActivity(), "select gender", Toast.LENGTH_LONG).show();
+
+
+
             return false;
         } else if (et_mobileNumber.getText().toString().trim().length() == 0) {
-            //  Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
-            setFocus(et_mobileNumber, "enter mobile number");
+            et_mobileNumber.setError("enter mobile number");
+            et_mobileNumber.requestFocus();
+
             return false;
         } else if (!(et_mobileNumber.getText().toString().trim().startsWith("9") || et_mobileNumber.getText().toString().trim().startsWith("8") || et_mobileNumber.getText().toString().trim().startsWith("7") || et_mobileNumber.getText().toString().trim().startsWith("6") || et_mobileNumber.getText().toString().trim().startsWith("5"))) {
             Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
 
         } else if (et_office.getText().toString().trim().length() == 0) {
-            setFocus(et_office, "enter office name");
+            et_office.setError("enter office name");
+            et_office.requestFocus();
+
             return false;
         } else if (et_adress.getText().toString().trim().length() == 0) {
-            setFocus(et_adress, "enter address");
+            et_adress.setError("enter address");
+            et_adress.requestFocus();
+
             return false;
         } else if (!distValidation) {
             Toast.makeText(getActivity(), "select district ", Toast.LENGTH_SHORT).show();
@@ -611,16 +633,23 @@ public class BlooddonorRegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "select village", Toast.LENGTH_SHORT).show();
             return false;
         } else if (spn_bloodgroups.getSelectedItemPosition() == 0) {
-            errorSpinner(spn_bloodgroups, "select bloodgroup");
+
+            Toast.makeText(getActivity(), "select bloodgroup", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_previouslyDonationDate.getText().toString().trim().length() == 0) {
-            setFocus(et_previouslyDonationDate, "enter previous donation date");
+            et_previouslyDonationDate.setError("enter previous donation date");
+            et_previouslyDonationDate.requestFocus();
+
+
             return false;
         } else if (!radioButton1True.isChecked() && !radioButton2False.isChecked()) {
             Toast.makeText(getActivity(), "please select willing to donate blood ", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_noofpreviousDonations.getText().toString().trim().length() == 0) {
-            setFocus(et_noofpreviousDonations, "enter previous donation ");
+
+            et_noofpreviousDonations.setError("enter no of  previous donation ");
+            et_noofpreviousDonations.requestFocus();
+
             return false;
         }
         return true;
@@ -650,9 +679,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         request.setFatherName(fratherName);
         request.setDateOfBirth(dob);
         request.setGender(mGenderId);
-        request.setEducation(mEducationId);
         request.setOccupation(occupation);
-        request.setMarried(mMarriedId);
         request.setPhoneNo(mobileNumber);
         request.setEmail(email);
         request.setOffice(officeName);
@@ -661,7 +688,34 @@ public class BlooddonorRegistrationFragment extends Fragment {
         request.setMandals("" + manId);
         request.setVillage("" + villageID);
         request.setPincode(pincode);
-        request.setBloodGroup(mBloodGroupId);
+
+        if (mBloodGroupId.contains("--Select--")) {
+            mBloodGroupId = "";
+            request.setBloodGroup(mBloodGroupId);
+
+        } else {
+            request.setBloodGroup(mBloodGroupId);
+
+        }
+
+
+        if (mEducationId.contains("--Select--")) {
+            mEducationId = "";
+            request.setEducation(mEducationId);
+
+        } else {
+            request.setEducation(mEducationId);
+
+        }
+        if (mMarriedId.contains("--Select--")) {
+            mMarriedId = "";
+            request.setMarried(mMarriedId);
+        } else {
+            request.setMarried(mMarriedId);
+        }
+
+
+
         request.setDonateType("");
         request.setPrevDonationDate(previoslydonatedDate);
         request.setWillingToDonateYearly(WillingBldDonateStatus);
@@ -681,8 +735,14 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
                 if (response.body() != null) {
                     if (response.body().getSaveStatus().equalsIgnoreCase("Success")) {
-                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
-                        startActivity(i);
+
+                        callsuccess();
+
+
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Unable to registered", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
@@ -696,6 +756,55 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
     }
 
+    private void callsuccess() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
+                        startActivity(i);
+
+
+                    }
+                });
+
+        dialog.show();
+    }
+
+    private void callSuccessDailouge() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setMessage("Do you want to Logout?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        BlooddonorRegistrationFragment llf = new BlooddonorRegistrationFragment();
+                        ft.replace(R.id.fragment_citizendashboard, llf);
+                        ft.commit();
+                    }
+                });
+
+               /* .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
+
+        dialog.show();
+    }
 
     private void findViews(View root) {
         btn_donorRegNext = root.findViewById(R.id.btn_donorRegNext);

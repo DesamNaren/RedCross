@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +59,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -107,6 +110,8 @@ public class HomeNursingRegistrationFragment extends Fragment {
     private HomeNursingRequest request;
     private boolean distValidation, mandalValid, villageValid;
     int selectedThemeColor = -1;
+    String email = "";
+    String pincode = "";
 
 
 
@@ -125,6 +130,10 @@ public class HomeNursingRegistrationFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing1, container, false);
         progressDialog = new CustomProgressDialog(getActivity());
+
+        binding.datePickerDateofBirth.setInputType(InputType.TYPE_NULL);
+
+
         loadEducationSpinner();
         loadMarriedstatusSpinner();
 
@@ -265,7 +274,11 @@ public class HomeNursingRegistrationFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (CheckInternet.isOnline(getActivity())) {
+
                     if (validateFields()) {
+
+                        email = binding.etEmail.getText().toString();
+                        pincode = binding.etPincode.getText().toString();
                         PhotoUpload(bm);
 
                     }
@@ -443,21 +456,20 @@ public class HomeNursingRegistrationFragment extends Fragment {
         request.setEducation(mEducationId);
         request.setMarried(mMarriedId);
         request.setPhoneNo("" + binding.etMobileNumber.getText());
-        request.setEmail("" + binding.etEmail.getText());
+        request.setEmail("" + email);
         request.setInstituteName("" + binding.etInstitute.getText());
         request.setAddress("" + binding.etAdress.getText());
         request.setDistricts("" + distId);
         request.setMandals("" + manId);
         request.setVillage("" + villageID);
-        request.setPincode("" + binding.etPincode.getText());
+        request.setPincode("" + pincode);
         request.setPrevWorkYears("" + binding.etNoofpreviousExperians.getText());
-        //request.setPhotoPath("f1Hn2YbtKEAaGjjN_9Dec2019175839GMT_1575914319596.PNG");
         request.setPhotoPath("" + PHOTOPATH);
         Call<ResponseBody> call = apiInterface.saveHomeNursingDetails(request);
 
         Gson gson = new Gson();
         String json = gson.toJson(request);
-        Log.d("Donor", "================: " + json);
+        Log.d("homenurse", "================: " + json);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -465,8 +477,12 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful()) {
-                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
-                        startActivity(i);
+
+                        callsuccess();
+
+                    } else {
+                        Toast.makeText(getActivity(), "Unable to register", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
@@ -480,6 +496,25 @@ public class HomeNursingRegistrationFragment extends Fragment {
 
     }
 
+    private void callsuccess() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
+                        startActivity(i);
+
+
+                    }
+                });
+
+        dialog.show();
+    }
     public Bitmap saveBitmapToFile(File file) {
         try {
 
@@ -780,53 +815,53 @@ public class HomeNursingRegistrationFragment extends Fragment {
     protected boolean validateFields() {
 
         if (binding.etName.getText().toString().trim().length() == 0) {
-            setFocus(binding.etName, "enter your  name");
+            binding.etName.setError("enter your  name");
+            binding.etName.requestFocus();
             return false;
         } else if (binding.etFathersName.getText().toString().trim().length() == 0) {
-            setFocus(binding.etFathersName, "enter  father or husband name");
+            binding.etFathersName.setError("enter  father or husband name");
+            binding.etFathersName.requestFocus();
             return false;
 
         } else if (binding.datePickerDateofBirth.getText().toString().trim().length() == 0) {
-            setFocus(binding.datePickerDateofBirth, "enter your date of birth");
+            binding.datePickerDateofBirth.setError("enter your date of birth");
+            binding.datePickerDateofBirth.requestFocus();
+
             return false;
         }
-       /* else if (spn_gender.getSelectedItemPosition() == 0) {
-            errorSpinner(spn_gender, "select gender");
-            return false;
-        }*/
+
         else if (binding.spnEducation.getSelectedItemPosition() == 0) {
-            errorSpinner(binding.spnEducation, "select education");
+            Toast.makeText(getActivity(), "select education", Toast.LENGTH_LONG).show();
+
+
             return false;
         } else if (binding.spnMarried.getSelectedItemPosition() == 0) {
-            errorSpinner(binding.spnMarried, "select marriage status");
+            Toast.makeText(getActivity(), "select marital status", Toast.LENGTH_LONG).show();
+
             return false;
 
         } else if (binding.etMobileNumber.getText().toString().trim().length() == 0) {
-            //  Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
-            setFocus(binding.etMobileNumber, "enter mobile number");
+            binding.etMobileNumber.setError("enter mobile number");
+            binding.etMobileNumber.requestFocus();
             return false;
         } else if (!(binding.etMobileNumber.getText().toString().trim().startsWith("9") || binding.etEmail.getText().toString().trim().startsWith("8") || binding.etEmail.getText().toString().trim().startsWith("7") || binding.etEmail.getText().toString().trim().startsWith("6") || binding.etEmail.getText().toString().trim().startsWith("5"))) {
             Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
 
-        } else if (binding.etEmail.getText().toString().trim().length() == 0) {
-            setFocus(binding.etEmail, "enter email");
-            return false;
-
-        } else if (!binding.etEmail.getText().toString().matches(emailPattern)) {
-            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
-            return false;
         } else if (binding.etInstitute.getText().toString().trim().length() == 0) {
-            setFocus(binding.etInstitute, "enter institute name");
+
+            binding.etInstitute.setError("enter institute name");
+            binding.etInstitute.requestFocus();
+
             return false;
         } else if (binding.etAdress.getText().toString().trim().length() == 0) {
-            setFocus(binding.etAdress, "enter address");
+
+            binding.etAdress.setError("enter address");
+            binding.etAdress.requestFocus();
+
             return false;
         }
-//        else if (spn_district.getSelectedItem().toString().contains("select")) {
-//            errorSpinner(spn_district, "select district");
-//            return false;
-//        }
+
 
         else if (!distValidation) {
             Toast.makeText(getActivity(), "select district ", Toast.LENGTH_SHORT).show();
@@ -837,14 +872,11 @@ public class HomeNursingRegistrationFragment extends Fragment {
         } else if (!villageValid) {
             Toast.makeText(getActivity(), "select village", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (binding.etPincode.getText().toString().trim().length() == 0) {
-            setFocus(binding.etPincode, "enter pincode");
-            return false;
-        } else if (binding.etPincode.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
-            return false;
         } else if (binding.etNoofpreviousExperians.getText().toString().trim().length() == 0) {
-            setFocus(binding.etNoofpreviousExperians, "enter donation type");
+
+            binding.etNoofpreviousExperians.setError("enter no of previous experience");
+            binding.etNoofpreviousExperians.requestFocus();
+
             return false;
         }
 
@@ -876,7 +908,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_2) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
@@ -887,7 +919,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_3) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
@@ -898,7 +930,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_4) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
@@ -909,7 +941,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_5) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
@@ -920,7 +952,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
@@ -931,7 +963,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_7) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
@@ -942,7 +974,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
@@ -953,7 +985,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else {
                 binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
@@ -964,7 +996,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                //    binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 
             }
@@ -978,7 +1010,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
             binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            //   binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 
         }

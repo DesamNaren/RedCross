@@ -10,11 +10,10 @@
         android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.NewOfficerHomeFragment"
         tools:layout="@layout/fragemt_home_officer_new" />
 
-
-    <!--    app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right"-->
+    <fragment
+        android:id="@+id/nav_institutecount"
+        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.InstitutionCountsFrgament"
+        tools:layout="@layout/fragment_instituioncounts" />
 
 
     <fragment

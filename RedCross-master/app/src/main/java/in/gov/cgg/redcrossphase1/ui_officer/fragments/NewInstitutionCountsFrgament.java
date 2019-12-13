@@ -21,85 +21,73 @@ import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.databinding.FragmentInstituioncountsBinding;
+import in.gov.cgg.redcrossphase1.databinding.FragmentInstnewBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.activities.NewOfficerMainActivity;
 import in.gov.cgg.redcrossphase1.ui_officer.adapters.InstitutionAdapter;
-import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.CustomDistricClass;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.DashboardCountResponse;
-import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.UserTypesList;
-import in.gov.cgg.redcrossphase1.ui_officer.viewmodels.AllDistrictsViewModel;
 
 import static android.content.Context.MODE_PRIVATE;
 import static in.gov.cgg.redcrossphase1.R.color.colorPrimary;
 
-public class InstitutionCountsFrgament extends Fragment {
+public class NewInstitutionCountsFrgament extends Fragment {
     int selectedThemeColor = -1;
 
-    FragmentInstituioncountsBinding binding;
+    FragmentInstnewBinding binding;
     private InstitutionAdapter adapter1;
     private SearchView searchView;
     private SearchView.OnQueryTextListener queryTextListener;
+    private HomeViewPagerAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
         binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_instituioncounts, container, false);
+                inflater, R.layout.fragment_instnew, container, false);
 
 
-        binding.tvNodata.setVisibility(View.VISIBLE);
+        binding.viewpagerHome.setVisibility(View.VISIBLE);
         GlobalDeclaration.home = false;
+
+        setupViewPagerAll(binding.viewpagerHome);
+
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            callThemesChanges();
+            // callThemesChanges();
 
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        AllDistrictsViewModel model = ViewModelProviders.of(this, new CustomDistricClass(getActivity(),
-                "alldistrict")).get(AllDistrictsViewModel.class);
-
 
         (getActivity()).setTitle("Institution wise");
 
         if (GlobalDeclaration.counts != null) {
             setCountsForDashboard(GlobalDeclaration.counts);
-        } else {
-            binding.customCount.tvJrccount.setText("");
-            binding.customCount.tvYrccount.setText("");
-            binding.customCount.tvLmcount.setText("");
-            binding.customCount.tvAllcount.setText("");
         }
-
-
-        model.getInstitutionCounts().observe(getActivity(), new Observer<List<UserTypesList>>() {
-            @Override
-            public void onChanged(@Nullable List<UserTypesList> alldaywisecounts) {
-                if (alldaywisecounts != null) {
-                    setDataforRV(alldaywisecounts);
-                }
-            }
-        });
-
 
         return binding.getRoot();
 
     }
 
+    private void setupViewPagerAll(ViewPager viewPager_homer) {
+        adapter = new HomeViewPagerAdapter(getChildFragmentManager());
+        adapter.addFragment(new JRCInstiFragment(), "JRC");
+        adapter.addFragment(new JRCInstiFragment(), "YRC");
+        viewPager_homer.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        binding.viewpagerHome.invalidate();
+    }
 
     private void setCountsForDashboard(DashboardCountResponse dashboardCountResponse) {
         if (dashboardCountResponse != null) {
@@ -108,55 +96,9 @@ public class InstitutionCountsFrgament extends Fragment {
             binding.customCount.tvYrccount.setText(String.valueOf(dashboardCountResponse.getYrc()));
             binding.customCount.tvLmcount.setText(String.valueOf(dashboardCountResponse.getMs()));
             binding.customCount.tvAllcount.setText(String.valueOf(total));
-        } else {
-            binding.customCount.tvJrccount.setText("");
-            binding.customCount.tvYrccount.setText("");
-            binding.customCount.tvLmcount.setText("");
-            binding.customCount.tvAllcount.setText("");
         }
         //tv_lmcount.setText(String.valueOf(dashboardCountResponse.getTotal()));
     }
-
-    private void setDataforRV(List<UserTypesList> daywisecount) {
-
-        //int r= sortDatesHere();
-        int total;
-        if (daywisecount.size() > 1) {
-
-            binding.tvNodata.setVisibility(View.GONE);
-
-            binding.rvDaywiselist.setVisibility(View.VISIBLE);
-            binding.tvNodata.setVisibility(View.GONE);
-
-
-            List<UserTypesList> newlist = new ArrayList<>();
-            newlist.addAll(daywisecount);
-
-            Collections.sort(newlist, new Comparator<UserTypesList>() {
-                @Override
-                public int compare(UserTypesList lhs, UserTypesList rhs) {
-                    return lhs.getIname().compareTo(rhs.getIname());
-                }
-            });
-
-            binding.rvDaywiselist.setHasFixedSize(true);
-            binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-            adapter1 = new InstitutionAdapter(getActivity(), newlist, selectedThemeColor);
-            binding.rvDaywiselist.setAdapter(adapter1);
-            adapter1.notifyDataSetChanged();
-
-
-        } else {
-            binding.tvNodata.setText("No data available");
-
-            binding.rvDaywiselist.setVisibility(View.GONE);
-            binding.tvNodata.setVisibility(View.VISIBLE);
-        }
-
-
-    }
-
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -310,6 +252,43 @@ public class InstitutionCountsFrgament extends Fragment {
         }
         searchView.setOnQueryTextListener(queryTextListener);
         return super.onOptionsItemSelected(item);
+    }
+
+    public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+        private FragmentManager mFragmentManager;
+
+        HomeViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+// POSITION_NONE makes it possible to reload the PagerAdapter
+            return POSITION_NONE;
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
     }
 
 

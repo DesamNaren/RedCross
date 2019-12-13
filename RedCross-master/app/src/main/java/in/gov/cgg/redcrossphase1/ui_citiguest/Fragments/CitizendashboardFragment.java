@@ -127,10 +127,19 @@ public class CitizendashboardFragment extends Fragment {
                 if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
                     tv_username.setText("Welcome");
 
-                } else {
+                } else if (GlobalDeclaration.loginresponse != null) {
                     tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
-
+                } else if (GlobalDeclaration.unamefromReg != null) {
+                    tv_username.setText("Welcome  " + GlobalDeclaration.unamefromReg);
+                } else {
+                    tv_username.setText("Welcome to IRSC");
                 }
+            } else if (GlobalDeclaration.loginresponse != null) {
+                tv_username.setText("Hello  " + GlobalDeclaration.loginresponse.getName());
+            } else if (GlobalDeclaration.unamefromReg != null) {
+                tv_username.setText("Welcome  " + GlobalDeclaration.unamefromReg);
+            } else {
+                tv_username.setText("Welcome to IRSC");
             }
         } catch (Exception e) {
 

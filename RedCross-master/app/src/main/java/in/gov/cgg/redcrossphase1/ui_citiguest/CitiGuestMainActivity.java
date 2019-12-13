@@ -110,13 +110,26 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 if (GlobalDeclaration.guest.equalsIgnoreCase("y")) {
                     tv_name1.setText("Welcome to IRSC");
                     tv_name2.setText("");
+                } else if (GlobalDeclaration.loginresponse != null) {
+                    tv_name1.setText(GlobalDeclaration.loginresponse.getName());
+                    tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
+                } else if (GlobalDeclaration.unamefromReg != null) {
+                    tv_name1.setText("Welcome  " + GlobalDeclaration.unamefromReg);
+                    tv_name2.setText("");
                 } else {
-                    if (GlobalDeclaration.loginresponse != null) {
-                        tv_name1.setText(GlobalDeclaration.loginresponse.getName());
-                        tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
-                    }
-
+                    tv_name1.setText("Welcome to IRSC");
+                    tv_name2.setText("");
                 }
+            } else if (GlobalDeclaration.loginresponse != null) {
+                tv_name1.setText(GlobalDeclaration.loginresponse.getName());
+                tv_name2.setText(GlobalDeclaration.loginresponse.getEmailId());
+            } else if (GlobalDeclaration.unamefromReg != null) {
+                tv_name1.setText("Welcome  " + GlobalDeclaration.unamefromReg);
+                tv_name2.setText("");
+            } else {
+                tv_name1.setText("Welcome to IRSC");
+                tv_name2.setText("");
+
             }
         } catch (Exception e) {
 
@@ -650,8 +663,6 @@ public class CitiGuestMainActivity extends LocBaseActivity {
             selectedFragment = new VisionFragment();
         } else if (fargTag.equalsIgnoreCase("MissionFragment")) {
             selectedFragment = new MissionFragment();
-        } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
-            selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
             selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("LocateBloodbanksFragment")) {

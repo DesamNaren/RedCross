@@ -102,6 +102,11 @@ public class NewOfficerHomeFragment extends Fragment {
                         if (dashboardCountResponse != null) {
                             GlobalDeclaration.counts = dashboardCountResponse;
                             setCountsForDashboard(dashboardCountResponse);
+                        } else {
+                            binding.customCount.tvJrccount.setText("");
+                            binding.customCount.tvYrccount.setText("");
+                            binding.customCount.tvLmcount.setText("");
+                            binding.customCount.tvAllcount.setText("");
                         }
                     }
                 });
@@ -615,7 +620,7 @@ public class NewOfficerHomeFragment extends Fragment {
     }
 
 
-    class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
+    public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
         private FragmentManager mFragmentManager;
