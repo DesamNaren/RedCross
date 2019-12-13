@@ -169,7 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Education *"
+                                android:text="Education "
                                 android:textColor="@color/black" />
 
 
@@ -189,7 +189,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Occupation *"
+                            android:hint="Occupation "
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -210,7 +210,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:padding="5dp"
-                                android:text="Marital status *"
+                                android:text="Marital status "
                                 android:textColor="@color/black" />
 
 
@@ -408,7 +408,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Pincode *"
+                            android:hint="Pincode "
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -486,13 +486,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
-                                android:hint="Donation type *"
+                                android:hint="Donation type "
                                 app:errorEnabled="true">
 
-                                <com.google.android.material.textfield.TextInputEditText
+                                <TextView
                                     android:id="@+id/et_donatetype"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:hint="Donation type "
                                     android:inputType="text" />
                             </com.google.android.material.textfield.TextInputLayout>
 

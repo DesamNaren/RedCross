@@ -1,6 +1,5 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.ui_citiguest.HomeNursingActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -97,8 +95,14 @@ public class HomenursingFragment extends Fragment {
         btn_homeNursingRegProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), HomeNursingActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), HomeNursingActivity.class);
+//                startActivity(intent);
+                Fragment fragment = new HomeNursingRegistrationFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, fragment, HomeNursingRegistrationFragment.class.getSimpleName());
+                transaction.addToBackStack(null);
+                transaction.commitAllowingStateLoss();
             }
         });
 

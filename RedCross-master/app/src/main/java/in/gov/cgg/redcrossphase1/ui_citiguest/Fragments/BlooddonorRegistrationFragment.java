@@ -63,13 +63,26 @@ public class BlooddonorRegistrationFragment extends Fragment {
     Button btn_donorRegNext;
     ImageView iv_datepickerdateofBirth, iv_previouslyDonationDate;
     EditText datePicker_dateofBirth, et_previouslyDonationDate;
-    EditText et_name, et_fathersName, et_occupation, et_mobileNumber, et_email, et_office, et_adress, et_pincode, et_donatetype;
-    Spinner spn_gender, spn_education, spn_married, spn_bloodgroups;
+    EditText et_name, et_fathersName, et_occupation, et_email, et_mobileNumber, et_office, et_adress, et_pincode;
+    Spinner spn_gender, spn_bloodgroups;
     Spinner spn_district, spn_mandal, spn_village;
     RadioGroup RG_willingtodonateblood;
     RadioButton radioButton1True, radioButton2False;
-    String name, fratherName, occupation, mobileNumber, email, officeName, address, pincode, donationType, dob, previoslydonatedDate, noofpreviousDonations;
-    String gender, education, married, bloodgroups;
+    String name, fratherName, mobileNumber, officeName, address, dob, previoslydonatedDate, noofpreviousDonations;
+    TextView et_donatetype;
+
+    String email = "";
+    String pincode = "";
+    String occupation = "";
+
+    Spinner spn_education;
+    Spinner spn_married;
+
+    String mBloodGroupId = "";
+    String mGenderId = "";
+    String mEducationId = "";
+
+
     Integer distId = 0, manId = 0, villageID = 0;
     CitizenDonarRequest request;
     MembershipDistAdaptor adapter;
@@ -79,9 +92,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     List<String> mGenderIdsList;
     List<String> mEducationIdsList;
     List<String> mMarriedIdsList;
-    String mBloodGroupId;
-    String mGenderId;
-    String mEducationId;
+
     String mMarriedId;
     EditText et_noofpreviousDonations;
     String WillingBldDonateStatus = "false";
@@ -118,6 +129,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         findViews(root);
 
+
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             setThemes();
@@ -127,22 +139,6 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         }
 
-        //radiobutton values
-        // get selected radio button from radioGroup
-        //   int selectedId = radioGroup_willingtodonateblood.getCheckedRadioButtonId();
-        // Log.d("tag","selectId" + selectedId);
-
-
-        // find the radiobutton by returned id
-        //  radioButton1True = (RadioButton) root.findViewById(selectedId);
-        //  radioButton2False = (RadioButton) root.findViewById(selectedId);
-        /*Log.d("tag","radioButton1" + radioButton1True);
-        Log.d("tag","radioButton1.getText()" + radioButton1True.getText());
-        Log.d("tag","radioButton2" + radioButton2False);
-        Log.d("tag","radioButton2.getText()" + radioButton2False.getText());*/
-
-     /*   Toast.makeText(getActivity(),
-                radioButton1True.getText(), Toast.LENGTH_SHORT).show();*/
 
 
         btn_donorRegNext.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +154,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 officeName = et_office.getText().toString();
                 address = et_adress.getText().toString();
                 pincode = et_pincode.getText().toString();
-                donationType = et_donatetype.getText().toString();
+
                 dob = datePicker_dateofBirth.getText().toString();
                 previoslydonatedDate = et_previouslyDonationDate.getText().toString();
                 noofpreviousDonations = et_noofpreviousDonations.getText().toString();
@@ -362,6 +358,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 mBloodGroupId = mBloodGroupIdsList.get(position);
 
             }
@@ -398,7 +395,11 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
                 mEducationId = mEducationIdsList.get(position);
+
+
 
             }
 
@@ -416,7 +417,18 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 mMarriedId = mMarriedIdsList.get(position);
+
+/*
+                if(mMarriedIdsList.get(position) = ""){
+                    mMarriedId = "";
+                } else {
+                    mMarriedId = mMarriedIdsList.get(position);
+
+                }*/
+
+
 
             }
 
@@ -575,15 +587,6 @@ public class BlooddonorRegistrationFragment extends Fragment {
         } else if (spn_gender.getSelectedItemPosition() == 0) {
             errorSpinner(spn_gender, "select gender");
             return false;
-        } else if (spn_education.getSelectedItemPosition() == 0) {
-            errorSpinner(spn_education, "select education");
-            return false;
-        } else if (et_occupation.getText().toString().trim().length() == 0) {
-            setFocus(et_occupation, "enter occupation");
-            return false;
-        } else if (spn_married.getSelectedItemPosition() == 0) {
-            errorSpinner(spn_married, "select marriage status");
-            return false;
         } else if (et_mobileNumber.getText().toString().trim().length() == 0) {
             //  Toast.makeText(getActivity(), "Enter Mobile Number", Toast.LENGTH_LONG).show();
             setFocus(et_mobileNumber, "enter mobile number");
@@ -592,13 +595,6 @@ public class BlooddonorRegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
 
-        } else if (et_email.getText().toString().trim().length() == 0) {
-            setFocus(et_email, "enter email");
-            return false;
-
-        } else if (!et_email.getText().toString().trim().matches(emailPattern)) {
-            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
-            return false;
         } else if (et_office.getText().toString().trim().length() == 0) {
             setFocus(et_office, "enter office name");
             return false;
@@ -614,17 +610,8 @@ public class BlooddonorRegistrationFragment extends Fragment {
         } else if (!villageValid) {
             Toast.makeText(getActivity(), "select village", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (et_pincode.getText().toString().trim().length() == 0) {
-            setFocus(et_pincode, "enter pincode");
-            return false;
-        } else if (et_pincode.getText().toString().length() < 6) {
-            Toast.makeText(getActivity(), "enter valid pincode", Toast.LENGTH_LONG).show();
-            return false;
         } else if (spn_bloodgroups.getSelectedItemPosition() == 0) {
             errorSpinner(spn_bloodgroups, "select bloodgroup");
-            return false;
-        } else if (et_donatetype.getText().toString().trim().length() == 0) {
-            setFocus(et_donatetype, "enter donation type");
             return false;
         } else if (et_previouslyDonationDate.getText().toString().trim().length() == 0) {
             setFocus(et_previouslyDonationDate, "enter previous donation date");
@@ -675,7 +662,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
         request.setVillage("" + villageID);
         request.setPincode(pincode);
         request.setBloodGroup(mBloodGroupId);
-        request.setDonateType(donationType);
+        request.setDonateType("");
         request.setPrevDonationDate(previoslydonatedDate);
         request.setWillingToDonateYearly(WillingBldDonateStatus);
         request.setNoOfPrevDonations(noofpreviousDonations);
