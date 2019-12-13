@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -51,6 +53,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -732,8 +736,13 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 if (response.body() != null) {
                     if (response.body().getSaveStatus().equalsIgnoreCase("Success")) {
 
-                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
-                        startActivity(i);
+                        callsuccess();
+
+
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Unable to registered", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
@@ -747,6 +756,55 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
     }
 
+    private void callsuccess() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
+                        startActivity(i);
+
+
+                    }
+                });
+
+        dialog.show();
+    }
+
+    private void callSuccessDailouge() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setMessage("Do you want to Logout?")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        FragmentManager fm = getFragmentManager();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        BlooddonorRegistrationFragment llf = new BlooddonorRegistrationFragment();
+                        ft.replace(R.id.fragment_citizendashboard, llf);
+                        ft.commit();
+                    }
+                });
+
+               /* .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
+
+        dialog.show();
+    }
 
     private void findViews(View root) {
         btn_donorRegNext = root.findViewById(R.id.btn_donorRegNext);

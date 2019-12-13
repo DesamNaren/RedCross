@@ -59,6 +59,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -462,13 +464,12 @@ public class HomeNursingRegistrationFragment extends Fragment {
         request.setVillage("" + villageID);
         request.setPincode("" + pincode);
         request.setPrevWorkYears("" + binding.etNoofpreviousExperians.getText());
-        //request.setPhotoPath("f1Hn2YbtKEAaGjjN_9Dec2019175839GMT_1575914319596.PNG");
         request.setPhotoPath("" + PHOTOPATH);
         Call<ResponseBody> call = apiInterface.saveHomeNursingDetails(request);
 
         Gson gson = new Gson();
         String json = gson.toJson(request);
-        Log.d("Donor", "================: " + json);
+        Log.d("homenurse", "================: " + json);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -476,8 +477,12 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 progressDialog.dismiss();
                 if (response.body() != null) {
                     if (response.isSuccessful()) {
-                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
-                        startActivity(i);
+
+                        callsuccess();
+
+                    } else {
+                        Toast.makeText(getActivity(), "Unable to register", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             }
@@ -491,6 +496,25 @@ public class HomeNursingRegistrationFragment extends Fragment {
 
     }
 
+    private void callsuccess() {
+
+        final PrettyDialog dialog = new PrettyDialog(getActivity());
+        dialog
+                .setTitle("Registered Succesfully")
+                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                    @Override
+                    public void onClick() {
+                        dialog.dismiss();
+                        Intent i = new Intent(getActivity(), CitiGuestMainActivity.class);
+                        startActivity(i);
+
+
+                    }
+                });
+
+        dialog.show();
+    }
     public Bitmap saveBitmapToFile(File file) {
         try {
 
