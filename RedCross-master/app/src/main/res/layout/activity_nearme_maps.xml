@@ -35,7 +35,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="NEAR ME"
+                android:text="Locate"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -48,7 +48,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/near_setting"
-                android:tint="#ff0000"
                 android:visibility="visible" />
 
 

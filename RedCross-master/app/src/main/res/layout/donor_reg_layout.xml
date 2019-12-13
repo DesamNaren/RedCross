@@ -17,6 +17,7 @@
             android:id="@+id/ll_registrationForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/redcross4_bg"
             android:orientation="vertical">
 
 
@@ -600,7 +601,7 @@
                         android:id="@+id/btn_donorRegNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/tab_background_selected"
+                        android:background="@color/redcroosbg_3"
                         android:text="Submit"
                         android:textColor="@color/white" />
                 </LinearLayout>

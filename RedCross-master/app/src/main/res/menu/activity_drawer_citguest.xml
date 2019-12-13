@@ -159,11 +159,11 @@
                 <item
                     android:id="@+id/nav_statecoordinates"
                     android:icon="@drawable/homenurse24"
-                    android:title="Home Nursing Request" />
+                    android:title="State Coordinators" />
                 <item
                     android:id="@+id/nav_districtcontactus"
                     android:icon="@drawable/homenurse24"
-                    android:title="Become Home Nurse" />
+                    android:title="District Contacts" />
 
             </menu>
         </item>
