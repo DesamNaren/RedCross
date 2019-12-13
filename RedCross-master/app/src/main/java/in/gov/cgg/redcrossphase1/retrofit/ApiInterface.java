@@ -17,6 +17,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.DonorregResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.HomeNursingRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MemberActivitiesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_spinner_Bean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipMandalsResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
@@ -208,6 +209,8 @@ public interface ApiInterface {
     @POST("submitHomeNurseRequest")
     Call<HomeNurseReqResponse> submitHomeNurseRequest(@Body JsonObject req);
 
+    @GET("getMembershipTypes")
+    Call<List<MembershipDetails_spinner_Bean>> getMembershipTypesforSpin();
 
 }
 

@@ -112,7 +112,6 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/dp_40"
                     android:layout_weight="1"
-                    android:entries="@array/Membership_type"
                     android:spinnerMode="dialog">
 
                 </Spinner>

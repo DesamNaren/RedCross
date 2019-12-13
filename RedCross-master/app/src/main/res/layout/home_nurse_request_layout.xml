@@ -2,7 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/Mainlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:windowBackground"
@@ -11,6 +10,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/Mainlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/redcross2_bg"
@@ -436,7 +436,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
 
                                     <Spinner
                                         android:id="@+id/Mandal_spin_res"
@@ -454,7 +455,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="10dp"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
 
                                     <Spinner
                                         android:id="@+id/Town_village_spin_res"

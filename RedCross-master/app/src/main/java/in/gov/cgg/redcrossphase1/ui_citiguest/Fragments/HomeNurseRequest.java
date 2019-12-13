@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.HomeNurseRequestLayoutBinding;
@@ -69,11 +70,14 @@ public class HomeNurseRequest extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_nurse_request_layout, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
         progressDialog = new CustomProgressDialog(getActivity());
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
+
+
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     binding.Mainlayout.setBackgroundResource(R.drawable.redcross1_bg);
 
@@ -166,9 +170,26 @@ public class HomeNurseRequest extends Fragment {
                     binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
-                }
+                } else {
+                    binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.ApplicantDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.PatientDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.CantactDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
+                }
+            } else {
+                binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.ApplicantDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.PatientDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.CantactDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
+
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -476,42 +497,53 @@ public class HomeNurseRequest extends Fragment {
     protected boolean validateFields() {
 
         if (binding.ApplicantRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Applicant name", Toast.LENGTH_LONG).show();
+            binding.ApplicantRes.setError("Enter Applicant name");
+            binding.ApplicantRes.requestFocus();
             return false;
         } else if (RELATION.length() == 0) {
             Toast.makeText(getActivity(), "Enter Relation", Toast.LENGTH_LONG).show();
             return false;
         } else if (binding.PatientRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Patient name", Toast.LENGTH_LONG).show();
+            binding.PatientRes.setError("Enter Patient name");
+            binding.PatientRes.requestFocus();
             return false;
         } else if (binding.PatientAgeRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Patient Age", Toast.LENGTH_LONG).show();
+            binding.PatientAgeRes.setError("Enter Patient Age");
+            binding.PatientAgeRes.requestFocus();
             return false;
         } else if (binding.natureOfDisabilityRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter nature of disability", Toast.LENGTH_LONG).show();
+            binding.natureOfDisabilityRes.setError("Enter nature of disability");
+            binding.natureOfDisabilityRes.requestFocus();
             return false;
         } else if (binding.serviceStartDateRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Start date", Toast.LENGTH_LONG).show();
+            binding.serviceStartDateRes.setError("Enter Start date");
+            binding.serviceStartDateRes.requestFocus();
             return false;
         } else if (binding.serviceEndDateRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter end date", Toast.LENGTH_LONG).show();
+            binding.serviceEndDateRes.setError("Enter end date");
+            binding.serviceEndDateRes.requestFocus();
             return false;
         } else if (binding.MobNumRes.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Mobile number", Toast.LENGTH_LONG).show();
+            binding.MobNumRes.setError("Enter Mobile number");
+            binding.MobNumRes.requestFocus();
             return false;
         } else if (binding.MobNumRes.getText().toString().trim().length() < 10) {
-            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            binding.MobNumRes.setError("Enter valid Mobile number");
+            binding.MobNumRes.requestFocus();
             return false;
         } else if (!(binding.MobNumRes.getText().toString().trim().startsWith("9") || binding.MobNumRes.getText().toString().trim().startsWith("8") || binding.MobNumRes.getText().toString().trim().startsWith("7") || binding.MobNumRes.getText().toString().trim().startsWith("6") || binding.MobNumRes.getText().toString().trim().startsWith("5"))) {
-            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            binding.MobNumRes.setError("Enter valid Mobile number");
+            binding.MobNumRes.requestFocus();
             return false;
         } else if (EMailResult.length() != 0) {
             if (!EMailResult.matches(emailPattern)) {
-                Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
+                binding.EmailRes.setError("Enter valid Email ID");
+                binding.EmailRes.requestFocus();
                 return false;
             }
         } else if (binding.AddressRes.getText().toString().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Address", Toast.LENGTH_LONG).show();
+            binding.AddressRes.setError("Enter Address");
+            binding.AddressRes.requestFocus();
             return false;
         } else if (binding.DistrictSpinRes.getSelectedItem().toString().trim().equals("Select District")) {
             Toast.makeText(getActivity(), "Select District", Toast.LENGTH_LONG).show();
@@ -520,11 +552,12 @@ public class HomeNurseRequest extends Fragment {
             Toast.makeText(getActivity(), "Select Mandal", Toast.LENGTH_LONG).show();
             return false;
         } else if (binding.TownVillageSpinRes.getSelectedItem().toString().trim().equals("Select Town/Village")) {
-            Toast.makeText(getActivity(), "Select Town/Village", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Village", Toast.LENGTH_LONG).show();
             return false;
         } else if (Pincode.length() != 0) {
             if (Pincode.length() < 6) {
-                Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+                binding.PincodeRes.setError("Enter valid Pincode");
+                binding.PincodeRes.requestFocus();
                 return false;
             }
         }

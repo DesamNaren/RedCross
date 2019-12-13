@@ -30,8 +30,9 @@ import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDetailsAdaptor;
-import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipTypeAdaptor;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDetailsSpinnerAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_spinner_Bean;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,8 +43,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class MembershipFragment extends Fragment {
     RecyclerView recyclerView;
     MembershipDetailsAdaptor adapter;
-    MembershipTypeAdaptor adapterspinner;
-    //ArrayList<MembershipDetails_Bean> MembershipTypearrayList;
+    MembershipDetailsSpinnerAdaptor spinneradapter;
+
     LinearLayout ll_lifetime_membership;
     int selectedThemeColor = -1;
     LinearLayout Parent_layout, ll_LTM_types;
@@ -54,6 +55,9 @@ public class MembershipFragment extends Fragment {
     String selectedType;
     CustomProgressDialog progressDialog;
     private List<MembershipDetails_Bean> callgetMembershipTypesList = new ArrayList<>();
+    private List<MembershipDetails_spinner_Bean> callgetMembershipTypesSpinner = new ArrayList<>();
+    //private List<MembershipDetails_spinner_Bean> callgetMembershipTypesSpinner = new ArrayList<>();
+
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -96,9 +100,10 @@ public class MembershipFragment extends Fragment {
         TypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                GlobalDeclaration.SELECTEDtype = TypeSpinner.getSelectedItem().toString();
-
-                GlobalDeclaration.Selection_MEMbership_type = String.valueOf(i);
+                if (callgetMembershipTypesSpinner.size() > 0) {
+                    GlobalDeclaration.SELECTEDtype = callgetMembershipTypesSpinner.get(i).getMembershipType();
+                    GlobalDeclaration.Selection_MEMbership_type = callgetMembershipTypesSpinner.get(i).getId();
+                }
                 Log.e("ID", "===" + GlobalDeclaration.Selection_MEMbership_type);
             }
 
@@ -133,9 +138,8 @@ public class MembershipFragment extends Fragment {
             e.printStackTrace();
 
         }
-        callgetMembershipTypes();
-
-
+        callgetMembershipTypesForList();
+        callgetMembershipTypesForSpinner();
 
         return root;
     }
@@ -144,7 +148,7 @@ public class MembershipFragment extends Fragment {
         ll_lifetime_membership = root.findViewById(R.id.ll_lifetime_membership);
     }
 
-    private void callgetMembershipTypes() {
+    private void callgetMembershipTypesForList() {
 
         try {
             progressDialog.show();
@@ -172,6 +176,50 @@ public class MembershipFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<MembershipDetails_Bean>> call, Throwable t) {
+
+                    progressDialog.dismiss();
+                    t.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void callgetMembershipTypesForSpinner() {
+
+        try {
+            progressDialog.show();
+            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+            callgetMembershipTypesSpinner.clear();
+            MembershipDetails_spinner_Bean membership_spin_res = new MembershipDetails_spinner_Bean();
+            membership_spin_res.setId(0);
+            membership_spin_res.setMembershipType("Select Membership Type");
+            callgetMembershipTypesSpinner.add(membership_spin_res);
+
+            Call<List<MembershipDetails_spinner_Bean>> call = apiInterface.getMembershipTypesforSpin();
+            Log.e("  url", call.request().url().toString());
+
+            call.enqueue(new Callback<List<MembershipDetails_spinner_Bean>>() {
+                @Override
+                public void onResponse(Call<List<MembershipDetails_spinner_Bean>> call, Response<List<MembershipDetails_spinner_Bean>> response) {
+
+                    progressDialog.dismiss();
+                    if (response.body() != null) {
+                        Log.d("Activity ", "Response = " + response.body());
+                        callgetMembershipTypesSpinner.addAll(response.body());
+                        spinneradapter = new MembershipDetailsSpinnerAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, callgetMembershipTypesSpinner);
+                        //spinneradapter = new MembershipDetailsSpinnerAdaptor(callgetMembershipTypesSpinner, c, selectedThemeColor);
+                        TypeSpinner.setAdapter(spinneradapter);
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<MembershipDetails_spinner_Bean>> call, Throwable t) {
 
                     progressDialog.dismiss();
                     t.printStackTrace();

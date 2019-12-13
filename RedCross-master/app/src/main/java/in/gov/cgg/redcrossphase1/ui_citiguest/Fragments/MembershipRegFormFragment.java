@@ -845,42 +845,52 @@ public class MembershipRegFormFragment extends Fragment {
     protected boolean validateFields() {
 
         if (Full_name.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your full name", Toast.LENGTH_LONG).show();
+            Full_name.setError("Enter your full name");
+            Full_name.requestFocus();
             return false;
         } else if (fatherHusbName.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your Father or husband name", Toast.LENGTH_LONG).show();
+            fatherHusbName.setError("Enter your Father or husband name");
+            fatherHusbName.requestFocus();
             return false;
         } else if (rg.getCheckedRadioButtonId() == -1) {
             Toast.makeText(getActivity(), "Select your gender", Toast.LENGTH_LONG).show();
             return false;
         } else if (DOB.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter your Date of Birth", Toast.LENGTH_LONG).show();
+            DOB.setError("Enter your Date of Birth");
+            DOB.requestFocus();
             return false;
         } else if (mob_num.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Mobile number", Toast.LENGTH_LONG).show();
+            mob_num.setError("Enter Mobile number");
+            mob_num.requestFocus();
             return false;
         } else if (mob_num.getText().toString().trim().length() < 10) {
-            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            mob_num.setError("Enter valid Mobile number");
+            mob_num.requestFocus();
             return false;
         } else if (!(mob_num.getText().toString().trim().startsWith("9") || mob_num.getText().toString().trim().startsWith("8") || mob_num.getText().toString().trim().startsWith("7") || mob_num.getText().toString().trim().startsWith("6") || mob_num.getText().toString().trim().startsWith("5"))) {
-            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            mob_num.setError("Enter valid Mobile number");
+            mob_num.requestFocus();
             return false;
         } else if (EMailResult.length() != 0) {
             if (!EMailResult.matches(emailPattern)) {
-                Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
+                email.setError("Enter valid Email ID");
+                email.requestFocus();
                 return false;
             }
         } else if (Bloodgroup.getSelectedItem().toString().trim().equals("Select Blood Group")) {
             Toast.makeText(getActivity(), "Select Blood group", Toast.LENGTH_LONG).show();
             return false;
         } else if (house_no.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter House No.", Toast.LENGTH_LONG).show();
+            house_no.setError("Enter House No.");
+            house_no.requestFocus();
             return false;
         } else if (locatlity.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter locatlity", Toast.LENGTH_LONG).show();
+            locatlity.setError("Enter locatlity");
+            locatlity.requestFocus();
             return false;
         } else if (street.getText().toString().trim().length() == 0) {
-            Toast.makeText(getActivity(), "Enter Street/Area", Toast.LENGTH_LONG).show();
+            street.setError("Enter Street/Area");
+            street.requestFocus();
             return false;
         } else if (district.getSelectedItem().toString().trim().equals("Select District")) {
             Toast.makeText(getActivity(), "Select District", Toast.LENGTH_LONG).show();
@@ -893,7 +903,8 @@ public class MembershipRegFormFragment extends Fragment {
             return false;
         } else if (pincode.getText().toString().trim().length() != 0) {
             if (pincode.getText().toString().length() < 6) {
-                Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
+                pincode.setError("Enter valid Pincode");
+                pincode.requestFocus();
                 return false;
             }
         } else if (Photo.getDrawable() == null) {

@@ -35,7 +35,7 @@ public class GlobalDeclaration {
     public static String guest;
     public static String Selection_type = "";
     public static String cordinatorType = "";
-    public static String Selection_MEMbership_type = "";
+    public static int Selection_MEMbership_type = 0;
     public static StudentListBean drilldownResponse;
     public static List<String> headStringList;
     public static int typePos;
