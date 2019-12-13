@@ -24,16 +24,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ServeBean;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder> implements Filterable {
     private Context mCtx;
     private ArrayList<ServeBean> serveBeans;
     private ArrayList<ServeBean> mFilteredList;
 
+    int selectedThemeColor = -1;
 
-    public ServeAdapter(Context mCtx, ArrayList<ServeBean> serveBeans) {
+    public ServeAdapter(Context mCtx, ArrayList<ServeBean> serveBeans, int selectedThemeColor) {
         this.mCtx = mCtx;
         this.serveBeans = serveBeans;
         mFilteredList = serveBeans;
+        this.selectedThemeColor = selectedThemeColor;
+
     }
 
     public ServeAdapter() {
@@ -122,6 +127,86 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
             }
         });*/
 
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+
+            if (selectedThemeColor != -1) {
+
+                holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+                // holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabselected));
+
+                }
+            } else {
+                holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+        }
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+            if (selectedThemeColor != -1) {
+
+
+                holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+                }
+            } else {
+                holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+        }
+
+
 
     }
 
@@ -172,8 +257,8 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
                     try {
                         ArrayList<ServeBean> filteredList = new ArrayList<>();
                         for (ServeBean serveBean : serveBeans) {
-                            if (!TextUtils.isEmpty(serveBean.getDistirctid())
-                                    && serveBean.getDistirctid().trim().toLowerCase().contains(charString.trim().toLowerCase())) {
+                            if (!TextUtils.isEmpty(serveBean.getName())
+                                    && serveBean.getName().trim().toLowerCase().contains(charString.trim().toLowerCase())) {
                                 filteredList.add(serveBean);
                             }
                         }
@@ -196,6 +281,26 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
             }
         };
     }
+
+    public ArrayList<ServeBean> getBBFilter(String charString) {
+
+        ArrayList<ServeBean> filteredList = new ArrayList<>();
+        for (ServeBean eRaktkoshResponseBean : serveBeans) {
+            if (!TextUtils.isEmpty(eRaktkoshResponseBean.getDistirctid())) {
+                String[] available = eRaktkoshResponseBean.getDistirctid().split(",");
+                List<String> availableList = Arrays.asList(available);
+
+                for (int z = 0; z < availableList.size(); z++) {
+                    if (availableList.get(z).trim().equalsIgnoreCase(charString.trim())) {
+                        filteredList.add(eRaktkoshResponseBean);
+                    }
+                }
+            }
+        }
+        mFilteredList = filteredList;
+        return mFilteredList;
+    }
+
 
     class BBViewHolder extends RecyclerView.ViewHolder {
 
@@ -223,5 +328,6 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
             rl_header = itemView.findViewById(R.id.rl_header);
         }
     }
+
 
 }
