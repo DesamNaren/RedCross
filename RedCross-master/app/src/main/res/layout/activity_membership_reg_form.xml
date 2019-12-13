@@ -147,6 +147,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -183,6 +184,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -209,6 +211,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -251,7 +254,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Enter Email ID *"
+                            android:hint="Enter Email ID"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -259,14 +262,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
 
-
                         </com.google.android.material.textfield.TextInputLayout>
-
                         <TextView
                             android:id="@+id/Email_note"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:text="(Certificate will be sent to Email)"
                             android:textColor="@color/colorPrimary" />
 
@@ -284,14 +286,14 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal">
 
                             <Spinner
                                 android:id="@+id/blood_group_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:entries="@array/blood_groups"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -300,8 +302,7 @@
                             android:id="@+id/Photo_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:padding="@dimen/dp_5"
+                            android:layout_margin="8dp"
                             android:text="Photo *"
                             android:textColor="@color/black"
                             android:textSize="16sp" />
@@ -364,15 +365,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal">
 
 
                             <Spinner
                                 android:id="@+id/Education_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:entries="@array/Education"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -382,7 +383,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Enter Occupation *"
+                            android:hint="Enter Occupation"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -444,7 +445,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Enter House No *"
+                            android:hint="Enter House No"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -489,14 +490,14 @@
                             android:id="@+id/dist_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal">
 
                             <Spinner
                                 android:id="@+id/District_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:entries="@array/District"
                                 android:textColor="@color/black" />
 
@@ -506,15 +507,15 @@
                             android:id="@+id/mandal_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal"
                             android:visibility="gone">
 
                             <Spinner
                                 android:id="@+id/Mandal_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:entries="@array/Mandal"
                                 android:textColor="@color/black" />
 
@@ -525,15 +526,16 @@
                             android:id="@+id/village_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal"
                             android:visibility="gone">
 
                             <Spinner
                                 android:id="@+id/Town_village_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+
                                 android:entries="@array/Town_Village"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -543,7 +545,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Enter Pincode *"
+                            android:hint="Enter Pincode"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -563,7 +565,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_10"
-                    android:layout_marginTop="10dp"
                     android:elevation="@dimen/dimen_5dp"
                     app:cardCornerRadius="3dp"
                     app:cardElevation="3dp">
@@ -605,14 +606,14 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/dp_10"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal">
 
                             <Spinner
                                 android:id="@+id/Activities_interested_spin_res"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 android:entries="@array/Activities"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -621,7 +622,7 @@
                             android:id="@+id/spared_hours"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
+                            android:layout_margin="8dp"
                             android:text="Spared hours to red cross activities(per week)"
                             android:textColor="@color/colorPrimary" />
 

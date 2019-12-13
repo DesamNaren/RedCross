@@ -856,8 +856,7 @@ public class MembershipRegFormFragment extends Fragment {
             Toast.makeText(getActivity(), "Select your gender", Toast.LENGTH_LONG).show();
             return false;
         } else if (DOB.getText().toString().trim().length() == 0) {
-            DOB.setError("Enter your Date of Birth");
-            DOB.requestFocus();
+            Toast.makeText(getActivity(), "Enter your Date of birth", Toast.LENGTH_LONG).show();
             return false;
         } else if (mob_num.getText().toString().trim().length() == 0) {
             mob_num.setError("Enter Mobile number");

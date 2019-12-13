@@ -516,12 +516,10 @@ public class HomeNurseRequest extends Fragment {
             binding.natureOfDisabilityRes.requestFocus();
             return false;
         } else if (binding.serviceStartDateRes.getText().toString().trim().length() == 0) {
-            binding.serviceStartDateRes.setError("Enter Start date");
-            binding.serviceStartDateRes.requestFocus();
+            Toast.makeText(getActivity(), "Enter Start date", Toast.LENGTH_LONG).show();
             return false;
         } else if (binding.serviceEndDateRes.getText().toString().trim().length() == 0) {
-            binding.serviceEndDateRes.setError("Enter end date");
-            binding.serviceEndDateRes.requestFocus();
+            Toast.makeText(getActivity(), "Enter End date", Toast.LENGTH_LONG).show();
             return false;
         } else if (binding.MobNumRes.getText().toString().trim().length() == 0) {
             binding.MobNumRes.setError("Enter Mobile number");

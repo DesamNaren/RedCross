@@ -663,8 +663,6 @@ public class CitiGuestMainActivity extends LocBaseActivity {
             selectedFragment = new VisionFragment();
         } else if (fargTag.equalsIgnoreCase("MissionFragment")) {
             selectedFragment = new MissionFragment();
-        } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
-            selectedFragment = new ContactusFragment();
         } else if (fargTag.equalsIgnoreCase("LocateBloodbanksFragment")) {
             selectedFragment = new LocateBloodbanksFragment();
         } else if (fargTag.equalsIgnoreCase("CitiNewTCFragment")) {

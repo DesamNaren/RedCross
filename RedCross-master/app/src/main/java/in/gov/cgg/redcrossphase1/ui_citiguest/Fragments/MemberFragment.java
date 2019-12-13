@@ -8,12 +8,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import java.util.Objects;
+
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -54,7 +55,10 @@ public class MemberFragment extends Fragment {
                     ll_bg.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_bg.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                } else {
+                    ll_bg.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 }
+
 
             }
         } catch (Exception e) {

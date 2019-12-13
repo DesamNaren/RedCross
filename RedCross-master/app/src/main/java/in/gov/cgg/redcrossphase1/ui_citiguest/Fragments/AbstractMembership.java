@@ -257,6 +257,18 @@ public class AbstractMembership extends Fragment {
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
+                } else {
+                    MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view5.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view6.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 }
 
             }

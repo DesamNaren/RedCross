@@ -44,19 +44,15 @@ public class MembershipFragment extends Fragment {
     RecyclerView recyclerView;
     MembershipDetailsAdaptor adapter;
     MembershipDetailsSpinnerAdaptor spinneradapter;
-
     LinearLayout ll_lifetime_membership;
     int selectedThemeColor = -1;
     LinearLayout Parent_layout, ll_LTM_types;
     Button Proceed;
     Spinner TypeSpinner;
-
     private FragmentActivity c;
-    String selectedType;
     CustomProgressDialog progressDialog;
     private List<MembershipDetails_Bean> callgetMembershipTypesList = new ArrayList<>();
     private List<MembershipDetails_spinner_Bean> callgetMembershipTypesSpinner = new ArrayList<>();
-    //private List<MembershipDetails_spinner_Bean> callgetMembershipTypesSpinner = new ArrayList<>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -82,10 +78,9 @@ public class MembershipFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (TypeSpinner.getSelectedItem().toString().trim().equals("Select Membership Type")) {
+                if (TypeSpinner.getSelectedItemPosition() == 0) {
                     Toast.makeText(c, "Select Membership Type", Toast.LENGTH_SHORT).show();
                 } else {
-                    selectedType = TypeSpinner.getSelectedItem().toString();
 
                     Fragment fragment = new MembershipRegFormFragment();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

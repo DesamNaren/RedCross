@@ -561,6 +561,12 @@ public class BBInfoFragment extends LocBaseFragment {
                                     }
                                 }
 
+                                for (int x = 0; x < list.size(); x++) {
+                                    if (!TextUtils.isEmpty(list.get(x).getName()) && !list.get(x).getName().trim().equals("-")) {
+                                        eRaktkoshResponseBeans.add(list.get(x));
+                                    }
+                                }
+
                                 list.removeAll(eRaktkoshResponseBeans);
                                 mainList.addAll(list);
                                 tv_total.setVisibility(View.VISIBLE);
