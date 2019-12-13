@@ -20,13 +20,13 @@
                     android:id="@+id/chart_gender"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:background="@drawable/tab_background_unselected" />
+                    android:background="@drawable/black_background_unselected" />
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/chart_age"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
-                    android:background="@drawable/tab_background_unselected" />
+                    android:background="@drawable/black_background_unselected" />
 
 
             </LinearLayout>

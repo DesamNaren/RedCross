@@ -10,6 +10,18 @@
             android:title="Dashboard"
             android:visible="true" />
     </group>
+    <group>
+
+        <item android:title="Reports">
+            <menu>
+                <item
+                    android:id="@+id/nav_institutecount"
+                    android:icon="@drawable/newspaper"
+                    android:title="Institution counts" />
+
+            </menu>
+        </item>
+    </group>
 
     <group>
         <item

@@ -5,7 +5,9 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.DashboardCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StatelevelDistrictViewCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StudentListBean;
+import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.UserTypesList;
 
 public class GlobalDeclaration {
     public static String BASE_URL = "http://uat2.cgg.gov.in:8081/redcross/";
@@ -44,6 +46,10 @@ public class GlobalDeclaration {
     public static String encrpyt;
     public static String SELECTEDtype;
     public static int tabposition;
+    public static List<StatelevelDistrictViewCountResponse> districtData;
+    public static List<StatelevelDistrictViewCountResponse> mandalData;
+    public static List<StatelevelDistrictViewCountResponse> villageData;
+    public static List<UserTypesList> instiCounts;
 
     // public static String BASE_URL="http://qa2.cgg.gov.in:8081/redcross/";
 

@@ -28,6 +28,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.wajahatkarim3.easyflipview.EasyFlipView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.R;
@@ -114,6 +115,7 @@ public class GovtPvtFragment extends TestFrag implements OnChartValueSelectedLis
             binding.chartGovtpvt.setVisibility(View.VISIBLE);
             binding.btnFlip.setVisibility(View.VISIBLE);
             binding.tvNodata.setVisibility(View.GONE);
+            Collections.reverse(last10days);
             binding.rvGovtpvtlist.setHasFixedSize(true);
             binding.rvGovtpvtlist.setLayoutManager(new LinearLayoutManager(context));
 

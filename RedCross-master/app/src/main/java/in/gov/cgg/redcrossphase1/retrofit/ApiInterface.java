@@ -34,6 +34,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.DrillDownResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.GenderResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.GovtVsPvtResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StatelevelDistrictViewCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.UserTypesList;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -111,6 +112,11 @@ public interface ApiInterface {
     //
 //    @GET("DistrictWiseEnrollmentsService")
 //    Call<AllDistrictResponse> DistrictWiseEnrollmentsService(@Query("role") String role);
+
+    @GET("getInstitutesWiseCount")
+    Call<List<UserTypesList>> getInstitutesWiseCount();
+
+
 
     @GET("getDrillDownCountLevelWiseWs")
         //State level will get district count

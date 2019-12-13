@@ -539,6 +539,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cv1"
                 android:layout_marginBottom="@dimen/dp_30"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
 

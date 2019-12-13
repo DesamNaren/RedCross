@@ -43,6 +43,7 @@ import in.gov.cgg.redcrossphase1.ui_officer.fragments.AllVillageFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.DaywiseFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.GetDrilldownFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.GovtPvtFragment;
+import in.gov.cgg.redcrossphase1.ui_officer.fragments.InstitutionCountsFrgament;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.NewAllDistrictsFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.NewOfficerHomeFragment;
 import in.gov.cgg.redcrossphase1.ui_officer.fragments.NewTCFragment;
@@ -219,10 +220,6 @@ public class NewOfficerMainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.nav_ofctheme) {
-                    showThemePicker();
-
-                } else
                 if (menuItem.getItemId() == R.id.nav_daywise) {
                     GlobalDeclaration.FARG_TAG = DaywiseFragment.class.getSimpleName();
                     selectedFragment = new DaywiseFragment();
@@ -261,6 +258,11 @@ public class NewOfficerMainActivity extends AppCompatActivity {
                 } else if (menuItem.getItemId() == R.id.nav_allmandals) {
                     GlobalDeclaration.FARG_TAG = AllMandalsFragment.class.getSimpleName();
                     selectedFragment = new AllMandalsFragment();
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_institutecount) {
+                    GlobalDeclaration.FARG_TAG = InstitutionCountsFrgament.class.getSimpleName();
+                    selectedFragment = new InstitutionCountsFrgament();
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_logoutmenu) {
@@ -359,9 +361,10 @@ public class NewOfficerMainActivity extends AppCompatActivity {
             selectedFragment = new AllVillageFragment();
         } else if (fargTag.equalsIgnoreCase("GetDrilldownFragment")) {
             selectedFragment = new GetDrilldownFragment();
-
         } else if (fargTag.equalsIgnoreCase("NewTCFragment")) {
             selectedFragment = new NewTCFragment();
+        } else if (fargTag.equalsIgnoreCase("InstitutionCountsFrgament")) {
+            selectedFragment = new InstitutionCountsFrgament();
         } else {
             GlobalDeclaration.FARG_TAG = NewOfficerHomeFragment.class.getSimpleName();
             selectedFragment = new NewOfficerHomeFragment();

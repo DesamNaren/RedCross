@@ -139,7 +139,7 @@ public class AllVillageFragment extends Fragment {
             Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
             binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter1 = new LevelAdapter(getActivity(), allDistrictList, "v", selectedThemeColor);
+            adapter1 = new LevelAdapter(getActivity(), newlist, "v", selectedThemeColor);
             binding.rvAlldistrictwise.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();
         }

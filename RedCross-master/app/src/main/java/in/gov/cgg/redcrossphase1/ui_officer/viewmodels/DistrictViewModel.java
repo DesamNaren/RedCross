@@ -11,6 +11,7 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.DashboardCountResponse;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.Top5;
 import retrofit2.Call;
@@ -138,7 +139,11 @@ public class DistrictViewModel extends ViewModel {
 
         if (dashboardCountResponseMutableLiveData == null) {
             dashboardCountResponseMutableLiveData = new MutableLiveData<>();
-            loadDashboardCounts(districtId);
+            if (GlobalDeclaration.counts == null) {
+                loadDashboardCounts(districtId);
+            } else {
+                dashboardCountResponseMutableLiveData.setValue(GlobalDeclaration.counts);
+            }
         }
         return dashboardCountResponseMutableLiveData;
 
@@ -159,6 +164,7 @@ public class DistrictViewModel extends ViewModel {
                     if (response.body().getStatus().equalsIgnoreCase("200")) {
                         // customProgressDialog.dismiss();
                         dashboardCountResponseMutableLiveData.setValue(response.body());
+                        GlobalDeclaration.counts = response.body();
                     } else {
                         //Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                         Log.e("district view model", "onResponse: Response null");

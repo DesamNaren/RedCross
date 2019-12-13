@@ -11,7 +11,9 @@ import java.util.List;
 
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StatelevelDistrictViewCountResponse;
+import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.UserTypesList;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +27,7 @@ public class AllDistrictsViewModel extends ViewModel {
     private MutableLiveData<List<StatelevelDistrictViewCountResponse>> alListMutableLiveData1;
     private MutableLiveData<List<StatelevelDistrictViewCountResponse>> alListMutableLiveData2;
     private MutableLiveData<List<StatelevelDistrictViewCountResponse>> alListMutableLiveData3;
+    private MutableLiveData<List<UserTypesList>> alListInsti;
 
 
     public AllDistrictsViewModel(Context application) {
@@ -40,7 +43,11 @@ public class AllDistrictsViewModel extends ViewModel {
 
         if (alListMutableLiveData1 == null) {
             alListMutableLiveData1 = new MutableLiveData<>();
-            loadAllDistricts(level, fyid);
+            if (GlobalDeclaration.districtData == null) {
+                loadAllDistricts(level, fyid);
+            } else {
+                alListMutableLiveData1.setValue(GlobalDeclaration.districtData);
+            }
         }
         return alListMutableLiveData1;
     }
@@ -49,7 +56,11 @@ public class AllDistrictsViewModel extends ViewModel {
 
         if (alListMutableLiveData2 == null) {
             alListMutableLiveData2 = new MutableLiveData<>();
-            loadAllMandals(level, fyid, districtId);
+            if (GlobalDeclaration.mandalData == null) {
+                loadAllMandals(level, fyid, districtId);
+            } else {
+                alListMutableLiveData2.setValue(GlobalDeclaration.mandalData);
+            }
         }
         return alListMutableLiveData2;
     }
@@ -58,14 +69,62 @@ public class AllDistrictsViewModel extends ViewModel {
 
         if (alListMutableLiveData3 == null) {
             alListMutableLiveData3 = new MutableLiveData<>();
-            loadAllVillages(level, fyid, mandalId);
+            if (GlobalDeclaration.villageData == null) {
+                loadAllVillages(level, fyid, mandalId);
+            } else {
+                alListMutableLiveData3.setValue(GlobalDeclaration.villageData);
+            }
         }
         return alListMutableLiveData3;
     }
 
+    public LiveData<List<UserTypesList>> getInstitutionCounts() {
+
+        if (alListInsti == null) {
+            alListInsti = new MutableLiveData<>();
+            if (GlobalDeclaration.instiCounts == null) {
+                loadInstitutionCounts();
+            } else {
+                alListInsti.setValue(GlobalDeclaration.instiCounts);
+            }
+        }
+        return alListInsti;
+    }
+
+    private void loadInstitutionCounts() {
+        //pd.show();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<UserTypesList>> call = apiInterface.
+                getInstitutesWiseCount();
+        Log.e("  url", call.request().url().toString());
+
+        call.enqueue(new Callback<List<UserTypesList>>() {
+
+
+            @Override
+            public void onResponse(Call<List<UserTypesList>> call,
+                                   retrofit2.Response<List<UserTypesList>> response) {
+                // pd.dismiss();
+                if (response.body() != null) {
+                    alListInsti.setValue(response.body());
+                    GlobalDeclaration.instiCounts = response.body();
+                } else {
+                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserTypesList>> call, Throwable t) {
+
+                t.printStackTrace();
+                //pd.dismiss();
+            }
+        });
+    }
+
     private void loadAllDistricts(String role, String fyid) {
 
-        pd.show();
+        //  pd.show();
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<StatelevelDistrictViewCountResponse>> call = apiInterface.getDrillDownCountLevelWiseWs1(role, fyid);
         Log.e("  url", call.request().url().toString());
@@ -77,6 +136,7 @@ public class AllDistrictsViewModel extends ViewModel {
                 pd.dismiss();
                 if (response.body() != null) {
                     alListMutableLiveData1.setValue(response.body());
+                    GlobalDeclaration.districtData = response.body();
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
@@ -86,7 +146,7 @@ public class AllDistrictsViewModel extends ViewModel {
             public void onFailure(Call<List<StatelevelDistrictViewCountResponse>> call, Throwable t) {
 
                 t.printStackTrace();
-                pd.dismiss();
+                // pd.dismiss();
             }
         });
 
@@ -108,6 +168,7 @@ public class AllDistrictsViewModel extends ViewModel {
                 pd.dismiss();
                 if (response.body() != null) {
                     alListMutableLiveData2.setValue(response.body());
+                    GlobalDeclaration.mandalData = response.body();
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }
@@ -139,6 +200,7 @@ public class AllDistrictsViewModel extends ViewModel {
                 pd.dismiss();
                 if (response.body() != null) {
                     alListMutableLiveData3.setValue(response.body());
+                    GlobalDeclaration.villageData = response.body();
                 } else {
                     //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
                 }

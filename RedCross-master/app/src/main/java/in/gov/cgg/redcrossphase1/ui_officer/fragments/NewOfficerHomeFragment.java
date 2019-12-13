@@ -93,6 +93,7 @@ public class NewOfficerHomeFragment extends Fragment {
         }
 
         binding.viewpagerHome.setOffscreenPageLimit(3);
+
         districtViewModel.getDashboardCounts(GlobalDeclaration.districtId)
                 .observe(Objects.requireNonNull(getActivity()), new Observer<DashboardCountResponse>() {
 
@@ -471,6 +472,7 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(selectedThemeColor));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(selectedThemeColor));
+            binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(selectedThemeColor));
 
             if (selectedThemeColor == R.color.redcroosbg_1) {
                 binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
@@ -525,6 +527,8 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+                binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(colorPrimary));
+
             }
         } else {
             binding.customCount.tvAllcount.setTextColor(getResources().getColor(white));
@@ -539,6 +543,8 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
             binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
             binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(colorPrimary));
+
         }
     }
 

@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
 import in.gov.cgg.redcrossphase1.databinding.FragmentDrilldownBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -47,7 +48,7 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class GetDrilldownFragment extends Fragment {
+public class GetDrilldownFragment extends TestFrag {
 
     int selectedThemeColor = -1;
     //ProgressDialog pd;
@@ -135,7 +136,7 @@ public class GetDrilldownFragment extends Fragment {
         btn_ok = view.findViewById(R.id.btn_submit);
 
         try {
-            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF",
                     MODE_PRIVATE).getInt("theme_color", -1);
 
             if (selectedThemeColor != -1) {
@@ -396,12 +397,11 @@ public class GetDrilldownFragment extends Fragment {
                         adapter1 = new NewDrillDownAdapter(getActivity(), headersList, studentListBeanList, selectedThemeColor);
                         binding.rvDrilldown.setAdapter(adapter1);
                         adapter1.notifyDataSetChanged();
+                    } else {
+                        binding.tvNodata.setVisibility(View.VISIBLE);
+                        binding.rvDrilldown.setVisibility(View.GONE);
+
                     }
-
-
-                } else {
-                    binding.tvNodata.setVisibility(View.VISIBLE);
-                    binding.rvDrilldown.setVisibility(View.GONE);
 
                 }
 

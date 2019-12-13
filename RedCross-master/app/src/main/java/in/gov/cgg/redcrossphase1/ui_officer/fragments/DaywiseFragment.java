@@ -449,7 +449,6 @@ public class DaywiseFragment extends TestFrag {
             binding.rvDaywiselist.setHasFixedSize(true);
             binding.rvDaywiselist.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            Collections.reverse(daywisecount);
             DaywiseAdapter adapter1 = new DaywiseAdapter(getActivity(), daywisecount, selectedThemeColor);
             binding.rvDaywiselist.setAdapter(adapter1);
             adapter1.notifyDataSetChanged();

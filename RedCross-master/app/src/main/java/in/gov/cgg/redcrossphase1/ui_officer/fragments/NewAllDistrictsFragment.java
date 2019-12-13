@@ -84,6 +84,7 @@ public class NewAllDistrictsFragment extends Fragment {
         GlobalDeclaration.home = false;
         Objects.requireNonNull(getActivity()).setTitle("Dashboard");
 
+
         Log.d("Test", "..................");
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF",
@@ -93,6 +94,7 @@ public class NewAllDistrictsFragment extends Fragment {
             e.printStackTrace();
         }
 
+        binding.tvNodata.setVisibility(View.VISIBLE);
         allDistrictsViewModel =
                 ViewModelProviders.of(this, new CustomDistricClass(getActivity(),
                         "alldistrict")).get(AllDistrictsViewModel.class);
@@ -132,7 +134,6 @@ public class NewAllDistrictsFragment extends Fragment {
 
         if (allDistrictList.size() > 0) {
 
-
             for (int i = 0; i < allDistrictList.size(); i++) {
                 allDistrictList.get(i).setTotalCounts(allDistrictList.get(i).getJRC() +
                         allDistrictList.get(i).getYRC() +
@@ -148,6 +149,7 @@ public class NewAllDistrictsFragment extends Fragment {
                     return lhs.getTotalCounts().compareTo(rhs.getTotalCounts());
                 }
             });
+            binding.tvNodata.setVisibility(View.GONE);
 
             Collections.reverse(newlist);
             binding.rvAlldistrictwise.setHasFixedSize(true);
@@ -157,7 +159,9 @@ public class NewAllDistrictsFragment extends Fragment {
             adapter1.notifyDataSetChanged();
 
         } else {
-            Toast.makeText(getActivity(), "no data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "No data available", Toast.LENGTH_SHORT).show();
+            binding.tvNodata.setText("No data available");
+
         }
     }
 
@@ -193,7 +197,6 @@ public class NewAllDistrictsFragment extends Fragment {
 
 
     }
-
 
 
     @Override
