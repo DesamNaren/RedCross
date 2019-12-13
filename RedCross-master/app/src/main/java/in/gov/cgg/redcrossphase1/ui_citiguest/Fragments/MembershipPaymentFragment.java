@@ -1,36 +1,55 @@
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
-
-import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
-import libs.mjn.prettydialog.PrettyDialog;
-import libs.mjn.prettydialog.PrettyDialogCallback;
+import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
-public class WebViewPaymentActivity extends AppCompatActivity {
-    String postData = null;
+public class MembershipPaymentFragment extends Fragment {
+
+    int selectedThemeColor = -1;
+    CustomProgressDialog progressDialog;
+    LinearLayout mainLayoutPayment;
+    private FragmentActivity c;
     WebView mWebView;
-
     String FinalURL;
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_webview);
-        mWebView = findViewById(R.id.webviewid);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        View root = inflater.inflate(R.layout.activity_main_webview, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("Membership Payment");
+
+
+        c = getActivity();
+        findViews(root);
+
+        mWebView = root.findViewById(R.id.webviewid);
+
 
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -81,38 +100,10 @@ public class WebViewPaymentActivity extends AppCompatActivity {
             }
         });
 
+        return root;
     }
 
-    @Override
-    public void onBackPressed() {
-
-
-        if (FinalURL != " ") {
-            final PrettyDialog dialog = new PrettyDialog(this);
-            dialog
-                    .setTitle("Red cross")
-                    .setMessage("Do you want to cancel payment process?")
-                    .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
-                    .addButton("Yes", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
-                        @Override
-                        public void onClick() {
-                            dialog.dismiss();
-                            startActivity(new Intent(WebViewPaymentActivity.this, MembershipRegFormActivity.class));
-                            finish();
-                        }
-                    })
-                    .addButton("No", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
-                        @Override
-                        public void onClick() {
-                            dialog.dismiss();
-                            // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-            dialog.show();
-        } else {
-            //reDirect to membership id card class
-        }
+    private void findViews(View root) {
+        mainLayoutPayment = root.findViewById(R.id.mainLayoutPayment);
     }
-
 }

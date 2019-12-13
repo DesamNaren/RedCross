@@ -80,6 +80,7 @@ public class HomeNurseRequest extends Fragment {
                     //District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
                     if (distId != 0) {
                         callgetMandalsListRequest("" + distId);
+                        binding.mandalSpinLayout.setVisibility(View.VISIBLE);
                     } else {
                         MembershipMandalsResponseList.clear();
                         MembershipMandalsResponse membershipmandResponse = new MembershipMandalsResponse();
@@ -107,6 +108,7 @@ public class HomeNurseRequest extends Fragment {
                     if (distId != 0 && manId != 0) {
                         callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
                         Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
+                        binding.villageSpinLayout.setVisibility(View.VISIBLE);
                     } else {
                         MembersipVillagesResponseList.clear();
                         MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();

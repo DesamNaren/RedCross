@@ -1,7 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,6 @@ import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipDetailsAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MembershipTypeAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipDetails_Bean;
-import in.gov.cgg.redcrossphase1.ui_citiguest.MembershipRegFormActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,6 +64,7 @@ public class MembershipFragment extends Fragment {
         View root = inflater.inflate(R.layout.membership_selection_fragment, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Membership");
 
+
         c = getActivity();
         findViews(root);
 
@@ -82,8 +83,12 @@ public class MembershipFragment extends Fragment {
                 } else {
                     selectedType = TypeSpinner.getSelectedItem().toString();
 
-                    Intent i = new Intent(c, MembershipRegFormActivity.class);
-                    startActivity(i);
+                    Fragment fragment = new MembershipRegFormFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.nav_host_fragment, fragment, MembershipRegFormFragment.class.getSimpleName());
+                    transaction.addToBackStack(null);
+                    transaction.commitAllowingStateLoss();
                 }
             }
         });
@@ -109,7 +114,6 @@ public class MembershipFragment extends Fragment {
                     ll_lifetime_membership.setBackgroundResource(R.drawable.redcross1_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_lifetime_membership.setBackgroundResource(R.drawable.redcross2_bg);
-
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_lifetime_membership.setBackgroundResource(R.drawable.redcross3_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {

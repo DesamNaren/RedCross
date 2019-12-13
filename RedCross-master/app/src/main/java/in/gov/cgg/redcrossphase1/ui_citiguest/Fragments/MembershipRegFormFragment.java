@@ -1,7 +1,4 @@
-
-
-
-package in.gov.cgg.redcrossphase1.ui_citiguest;
+package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -18,7 +15,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,13 +26,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -49,10 +53,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
-import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -66,10 +70,9 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembershipVillagesResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.MembersipDistResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PaymentBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
-import libs.mjn.prettydialog.PrettyDialog;
-import libs.mjn.prettydialog.PrettyDialogCallback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -77,16 +80,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
-public class MembershipRegFormActivity extends AppCompatActivity {
-
+public class MembershipRegFormFragment extends Fragment {
     public static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
     public static final String IMAGE_DIRECTORY_NAME = "RED_CROSS_IMAGE";
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 100;
     public Uri fileUri;
-    Button Preview, Edit, Next;
-    LinearLayout memberRegistration_edit, memberRegistration_view;
+    Button Next;
     EditText Full_name, fatherHusbName, DOB, mob_num, email, occupation, house_no, locatlity, street, pincode, hours;
     RadioGroup rg;
     TextView ageResult;
@@ -97,12 +101,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
     String EMailResult;
     String FilePath;
-    TextView Full_name_View, fatherHusbName_View, Gender_View, DOB_View, Age_View;
-    TextView mob_num_View, email_View, BloodGroup_View, Education_View, occupation_View;
-    TextView house_no_View, locatlity_View, street_View, District_View, Mandal_View;
-    TextView Village_View, pincode_View, Activities_View, hours_View;
-    ImageView image_view_Res;
+    TextView personaldetails, switchView, professionalheeading, CommuDetails, OtherDetails;
+    RelativeLayout headingWithHome;
     File imageFile;
+    ImageView home;
+    LinearLayout ll_Mainlayout, MainLayout, dist_spin_lay, Mandal_spin_lay, Village_apin_lay;
     CustomProgressDialog progressDialog;
     MembershipDistAdaptor adapter;
     MembershipActivityAdaptor activityAdaptor;
@@ -117,83 +120,173 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     private List<MemberActivitiesResponse> MembersipActivityResponseList = new ArrayList<>();
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
-
-
+    View view1, view2, view3, view4;
     Bitmap bm;
     String Image_name;
-    //CONVERT IMAGE TO BASE 64 CODE
-    /*public static String encodeToBase64(Bitmap image,
-                                        Bitmap.CompressFormat compressFormat, int quality) {
-        ByteArrayOutputStream byteArrayOS = new ByteArrayOutputStream();
-        image.compress(compressFormat, quality, byteArrayOS);
-        return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.DEFAULT);
-    }*/
+    private FragmentActivity c;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_membership_reg_form);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
-        progressDialog = new CustomProgressDialog(this);
-        Intent mIntent = getIntent();
-        //String membershipType = mIntent.getStringExtra("membershipType", );
+        View root = inflater.inflate(R.layout.activity_membership_reg_form, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("Membership Registration Form");
 
-        memberRegistration_view = findViewById(R.id.memberRegistration_view);
-        memberRegistration_edit = findViewById(R.id.memberRegistration_edit);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //IDS of Editing Form
 
-        Full_name = findViewById(R.id.FullName_res);
-        fatherHusbName = findViewById(R.id.FathersHusbandName_res);
-        DOB = findViewById(R.id.DOB_res);
-        mob_num = findViewById(R.id.Mob_num_res);
-        email = findViewById(R.id.Email_res);
-        occupation = findViewById(R.id.Occupation_res);
-        house_no = findViewById(R.id.House_no_res);
-        locatlity = findViewById(R.id.Locality_res);
-        street = findViewById(R.id.Street_area_res);
-        pincode = findViewById(R.id.Pincode_res);
-        hours = findViewById(R.id.No_of_hours_res);
-        rg = findViewById(R.id.radio_group);
-        ageResult = findViewById(R.id.Age_res);
-        Photo = findViewById(R.id.image_res);
-        Bloodgroup = findViewById(R.id.blood_group_spin_res);
-        education = findViewById(R.id.Education_spin_res);
-        district = findViewById(R.id.District_spin_res);
-        mandal = findViewById(R.id.Mandal_spin_res);
-        village = findViewById(R.id.Town_village_spin_res);
-        activities = findViewById(R.id.Activities_interested_spin_res);
-        HeadingOfForm = findViewById(R.id.HeadingOfForm);
-        Preview = findViewById(R.id.preview_bt);
+        c = getActivity();
+        findViews(root);
 
-        //IDS of View Form
-        Full_name_View = findViewById(R.id.FullName_res_view);
-        fatherHusbName_View = findViewById(R.id.FathersHusbandName_res_view);
-        Gender_View = findViewById(R.id.Gender_res_view);
-        DOB_View = findViewById(R.id.DOB_res_view);
-        Age_View = findViewById(R.id.Age_res_view);
-        mob_num_View = findViewById(R.id.Mob_num_res_view);
-        email_View = findViewById(R.id.Email_res_view);
-        BloodGroup_View = findViewById(R.id.Blood_group_res_view);
-        Education_View = findViewById(R.id.Education_res_view);
-        occupation_View = findViewById(R.id.Occupation_res_view);
-        house_no_View = findViewById(R.id.House_no_res_view);
-        locatlity_View = findViewById(R.id.Locality_res_view);
-        street_View = findViewById(R.id.Street_area_res_view);
-        District_View = findViewById(R.id.District_res_view);
-        Mandal_View = findViewById(R.id.mandal_res_view);
-        Village_View = findViewById(R.id.Town_village_res_view);
-        pincode_View = findViewById(R.id.Pincode_res_view);
-        Activities_View = findViewById(R.id.Activities_res_view);
-        hours_View = findViewById(R.id.No_of_hours_res_view);
-        image_view_Res = findViewById(R.id.image_view_Res);
-        Edit = findViewById(R.id.Edit);
-        Next = findViewById(R.id.Next);
+        progressDialog = new CustomProgressDialog(getActivity());
+        Full_name = root.findViewById(R.id.FullName_res);
+        fatherHusbName = root.findViewById(R.id.FathersHusbandName_res);
+        DOB = root.findViewById(R.id.DOB_res);
+        mob_num = root.findViewById(R.id.Mob_num_res);
+        email = root.findViewById(R.id.Email_res);
+        occupation = root.findViewById(R.id.Occupation_res);
+        house_no = root.findViewById(R.id.House_no_res);
+        locatlity = root.findViewById(R.id.Locality_res);
+        street = root.findViewById(R.id.Street_area_res);
+        pincode = root.findViewById(R.id.Pincode_res);
+        hours = root.findViewById(R.id.No_of_hours_res);
+        rg = root.findViewById(R.id.radio_group);
+        ageResult = root.findViewById(R.id.Age_res);
+        Photo = root.findViewById(R.id.image_res);
+        Bloodgroup = root.findViewById(R.id.blood_group_spin_res);
+        education = root.findViewById(R.id.Education_spin_res);
+        district = root.findViewById(R.id.District_spin_res);
+        mandal = root.findViewById(R.id.Mandal_spin_res);
+        village = root.findViewById(R.id.Town_village_spin_res);
+        activities = root.findViewById(R.id.Activities_interested_spin_res);
+        HeadingOfForm = root.findViewById(R.id.HeadingOfForm);
+        home = root.findViewById(R.id.home);
+        dist_spin_lay = root.findViewById(R.id.dist_spin_lay);
+        Mandal_spin_lay = root.findViewById(R.id.mandal_spin_lay);
+        Village_apin_lay = root.findViewById(R.id.village_spin_lay);
+
+        MainLayout = root.findViewById(R.id.MainLayout);
+        switchView = root.findViewById(R.id.switchView);
+        personaldetails = root.findViewById(R.id.personaldetails);
+        professionalheeading = root.findViewById(R.id.professionalheeading);
+        CommuDetails = root.findViewById(R.id.commuDetails);
+        OtherDetails = root.findViewById(R.id.OtherDetails);
+        headingWithHome = root.findViewById(R.id.headingWithHome);
+        view1 = root.findViewById(R.id.view1);
+        view2 = root.findViewById(R.id.view2);
+        view3 = root.findViewById(R.id.view3);
+        view4 = root.findViewById(R.id.view4);
+
+        Next = root.findViewById(R.id.Next);
+
 
         try {
-            selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross2_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross4_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross5_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross6_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    switchView.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                }
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -202,47 +295,12 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         enablePermissions();
         callgetActivitiesListRequest();
         callgetDistrictListRequest();
-        //Preview button click listener
-        Preview.setOnClickListener(new View.OnClickListener() {
+
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                EMailResult = email.getText().toString().trim();
-                if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
-                    if (validateFields()) {
-
-                        Full_name_View.setText(Full_name.getText().toString().trim());
-                        fatherHusbName_View.setText(fatherHusbName.getText().toString().trim());
-                        Gender_View.setText(Selected_gender);
-                        DOB_View.setText(DOB.getText().toString().trim());
-                        Age_View.setText(ageResult.getText().toString().trim());
-                        mob_num_View.setText(mob_num.getText().toString().trim());
-                        email_View.setText(email.getText().toString().trim());
-                        BloodGroup_View.setText(Bloodgroup.getSelectedItem().toString().trim());
-                        Education_View.setText(education.getSelectedItem().toString().trim());
-                        occupation_View.setText(occupation.getText().toString().trim());
-                        house_no_View.setText(house_no.getText().toString().trim());
-                        locatlity_View.setText(locatlity.getText().toString().trim());
-                        street_View.setText(street.getText().toString().trim());
-                        pincode_View.setText(pincode.getText().toString().trim());
-                        hours_View.setText(hours.getText().toString().trim());
-                        memberRegistration_edit.setVisibility(View.GONE);
-                        memberRegistration_view.setVisibility(View.VISIBLE);
-                        image_view_Res.setImageBitmap(bm);
-
-                    }
-                } else {
-                    Toast.makeText(MembershipRegFormActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        //Edit Button Click listener
-        Edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                memberRegistration_edit.setVisibility(View.VISIBLE);
-                memberRegistration_view.setVisibility(View.GONE);
+                Intent ii = new Intent(getActivity(), CitiGuestMainActivity.class);
+                startActivity(ii);
             }
         });
 
@@ -250,7 +308,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EMailResult = email.getText().toString().trim();
-                if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
+                if (CheckInternet.isOnline(getActivity())) {
                     if (validateFields()) {
                         PhotoUpload(bm);
                     } else {
@@ -275,7 +333,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radiobutton1 = findViewById(checkedId);
+                RadioButton radiobutton1 = getActivity().findViewById(checkedId);
                 Selected_gender = radiobutton1.getText().toString();
             }
         });
@@ -286,9 +344,9 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
                 if (MembersipDistResponseList.size() > 0) {
                     distId = MembersipDistResponseList.get(i).getDistrictID();
-                    District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
                     if (distId != 0) {
                         callgetMandalsListRequest("" + distId);
+                        Mandal_spin_lay.setVisibility(View.VISIBLE);
                     } else {
                         MembershipMandalsResponseList.clear();
                         MembershipMandalsResponse membershipmandResponse = new MembershipMandalsResponse();
@@ -309,10 +367,10 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (MembershipMandalsResponseList.size() > 0) {
                     manId = MembershipMandalsResponseList.get(i).getMandalID();
-                    Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
                     if (distId != 0 && manId != 0) {
                         callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
                         Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
+                        Village_apin_lay.setVisibility(View.VISIBLE);
                     } else {
                         MembersipVillagesResponseList.clear();
                         MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
@@ -333,7 +391,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (MembersipVillagesResponseList.size() > 0) {
                     villageID = MembersipVillagesResponseList.get(i).getVillageID();
-                    Village_View.setText(MembersipVillagesResponseList.get(i).getVillageName());
+
                 }
             }
 
@@ -347,7 +405,6 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 activityID = MembersipActivityResponseList.get(i).getId();
-                Activities_View.setText(MembersipActivityResponseList.get(i).getActivityName());
             }
 
             @Override
@@ -382,14 +439,20 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             }
         });
 
+        return root;
     }
+
+    private void findViews(View root) {
+        ll_Mainlayout = root.findViewById(R.id.ll_Mainlayout);
+    }
+
     //SERVICE CALL FOR PHOTO UPLOAD
 
     private void PhotoUpload(Bitmap bmp) {
 
 
         if (bmp == null) {
-            Toast.makeText(this, "Image can't be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Image can't be empty", Toast.LENGTH_SHORT).show();
         } else {
 
             //FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
@@ -402,11 +465,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             progressDialog.show();
 
 
-            if (CheckInternet.isOnline(MembershipRegFormActivity.this)) {
+            if (CheckInternet.isOnline(getActivity())) {
                 //updateLocationPresenter.UploadImageServiceCall(body);
                 calluploadPhotoMembAdd(PhotoBody);
             } else {
-                Toast.makeText(MembershipRegFormActivity.this, "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -468,10 +531,10 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     Log.d("Activity ", "Response = " + response.body().toString());
                     //goListMutableLiveData.setValue(response.body().getLast10days());
                     MembersipVillagesResponseList.addAll(response.body());
-                    villageadapter = new MembershipvillageAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembersipVillagesResponseList);
+                    villageadapter = new MembershipvillageAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, MembersipVillagesResponseList);
                     village.setAdapter(villageadapter);
                 } else {
-                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "NULL", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -510,11 +573,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     MembershipMandalsResponseList.addAll(response.body());
                     Log.d("Activity ", "Response = " + MembershipMandalsResponseList.size());
-                    mandaladapter = new MembershipMandalAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembershipMandalsResponseList);
+                    mandaladapter = new MembershipMandalAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, MembershipMandalsResponseList);
                     mandal.setAdapter(mandaladapter);
                     //goListMutableLiveData.setValue(response.body().getLast10days());
                 } else {
-                    //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "NULL", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -550,12 +613,12 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     if (response.body() != null) {
                         MembersipDistResponseList.addAll(response.body());
                         Log.d("Activity ", "Response = " + MembersipDistResponseList.size());
-                        adapter = new MembershipDistAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembersipDistResponseList);
+                        adapter = new MembershipDistAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, MembersipDistResponseList);
                         district.setAdapter(adapter);
 
 
                     } else {
-                        //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "NULL", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -594,11 +657,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     if (response.body() != null) {
                         Log.d("Activity ", "Response = " + response.body());
                         MembersipActivityResponseList.addAll(response.body());
-                        activityAdaptor = new MembershipActivityAdaptor(MembershipRegFormActivity.this, R.layout.listitems_layout, R.id.title, MembersipActivityResponseList);
+                        activityAdaptor = new MembershipActivityAdaptor(getActivity(), R.layout.listitems_layout, R.id.title, MembersipActivityResponseList);
                         activities.setAdapter(activityAdaptor);
-                        //goListMutableLiveData.setValue(response.body().getLast10days());
+
                     } else {
-                        //Toast.makeText(getApplication(), "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "NULL", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -661,36 +724,22 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                     if (response.body() != null) {
 
                         GlobalDeclaration.Paymenturl = response.body().getPaymentGatewayUrl();
-                        Toast.makeText(MembershipRegFormActivity.this, response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
                         //GlobalDeclaration.encrpyt=response.body().getPaymentRequest().replace("|","!");
                         GlobalDeclaration.encrpyt = response.body().getPaymentRequest();
 
                         Log.d("responseurl", "onResponse: url" + response.body().getPaymentRequest());
 
 
-                        Intent i = new Intent(MembershipRegFormActivity.this, WebViewPaymentActivity.class);
-                        startActivity(i);
-                        /*Log.e("Response","====="+response.toString());
-                        final PrettyDialog dialog = new PrettyDialog(MembershipRegFormActivity.this);
-                        dialog
-                                .setTitle("Red cross")
-                                .setMessage("Registration Completed Succe")
-                                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
-                                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
-                                    @Override
-                                    public void onClick() {
-                                        dialog.dismiss();
-                                        startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
-                                        finish();
-                                    }
-                                });
-
-
-                        dialog.show();*/
-
+                        Fragment fragment = new MembershipPaymentFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        transaction.replace(R.id.nav_host_fragment, fragment, MembershipPaymentFragment.class.getSimpleName());
+                        transaction.addToBackStack(null);
+                        transaction.commitAllowingStateLoss();
 
                     } else {
-                        Toast.makeText(MembershipRegFormActivity.this, "Response null" + response.body(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Response null" + response.body(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -698,7 +747,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<PaymentBean> call, Throwable t) {
                     progressDialog.dismiss();
-                    Toast.makeText(MembershipRegFormActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error occured", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -750,7 +799,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     }
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(MembershipRegFormActivity.this)
+        new AlertDialog.Builder(getActivity())
                 .setMessage(message)
                 .setPositiveButton("Ok", okListener)
                 .setNegativeButton("Cancel", null)
@@ -760,7 +809,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
     private boolean addPermission(List<String> permissionsList, String permission) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            if (getActivity().checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionsList.add(permission);
                 // Check for Rationale Option
                 return shouldShowRequestPermissionRationale(permission);
@@ -784,73 +833,73 @@ public class MembershipRegFormActivity extends AppCompatActivity {
     protected boolean validateFields() {
 
         if (Full_name.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter your full name", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter your full name", Toast.LENGTH_LONG).show();
             return false;
         } else if (fatherHusbName.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter your Father or husband name", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter your Father or husband name", Toast.LENGTH_LONG).show();
             return false;
         } else if (rg.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select your gender", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select your gender", Toast.LENGTH_LONG).show();
             return false;
         } else if (DOB.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter your Date of Birth", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter your Date of Birth", Toast.LENGTH_LONG).show();
             return false;
         } else if (mob_num.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter Mobile number", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter Mobile number", Toast.LENGTH_LONG).show();
             return false;
         } else if (mob_num.getText().toString().trim().length() < 10) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
         } else if (!(mob_num.getText().toString().trim().startsWith("9") || mob_num.getText().toString().trim().startsWith("8") || mob_num.getText().toString().trim().startsWith("7") || mob_num.getText().toString().trim().startsWith("6") || mob_num.getText().toString().trim().startsWith("5"))) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
             return false;
         } else if (!EMailResult.matches(emailPattern)) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter valid Email ID", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter valid Email ID", Toast.LENGTH_LONG).show();
             return false;
         } else if (EMailResult.length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter Email ID", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter Email ID", Toast.LENGTH_LONG).show();
             return false;
         } else if (Bloodgroup.getSelectedItem().toString().trim().equals("Select Blood Group")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select Blood group", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Blood group", Toast.LENGTH_LONG).show();
             return false;
         } else if (education.getSelectedItem().toString().trim().equals("Select Educational Qualification")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select Educational Qualification", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Educational Qualification", Toast.LENGTH_LONG).show();
             return false;
         } else if (occupation.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter Occupation", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter Occupation", Toast.LENGTH_LONG).show();
             return false;
         } else if (house_no.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter House No.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter House No.", Toast.LENGTH_LONG).show();
             return false;
         } else if (locatlity.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter locatlity", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter locatlity", Toast.LENGTH_LONG).show();
             return false;
         } else if (street.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter Street/Area", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter Street/Area", Toast.LENGTH_LONG).show();
             return false;
         } else if (district.getSelectedItem().toString().trim().equals("Select District")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select District", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select District", Toast.LENGTH_LONG).show();
             return false;
         } else if (mandal.getSelectedItem().toString().trim().equals("Select Mandal")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select Mandal", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Mandal", Toast.LENGTH_LONG).show();
             return false;
         } else if (village.getSelectedItem().toString().trim().equals("Select Town/Village")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select Town/Village", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Town/Village", Toast.LENGTH_LONG).show();
             return false;
         } else if (pincode.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter Pincode", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter Pincode", Toast.LENGTH_LONG).show();
             return false;
         } else if (pincode.getText().toString().length() < 6) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter valid Pincode", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter valid Pincode", Toast.LENGTH_LONG).show();
             return false;
         } /*else if (activities.getSelectedItem().toString().trim().equals("Select Activities interested")) {
-            Toast.makeText(MembershipRegFormActivity.this, "Select Activities interested", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Select Activities interested", Toast.LENGTH_LONG).show();
             return false;
         } else if (hours.getText().toString().trim().length() == 0) {
-            Toast.makeText(MembershipRegFormActivity.this, "Enter number of hours", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Enter number of hours", Toast.LENGTH_LONG).show();
             return false;
         }*/ else if (Photo.getDrawable() == null) {
-            Toast.makeText(MembershipRegFormActivity.this, "Choose photo", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Choose photo", Toast.LENGTH_LONG).show();
             return false;
         }
         return true;
@@ -858,7 +907,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
     private void selectImage() {
         final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(MembershipRegFormActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Add Photo!");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
@@ -884,12 +933,12 @@ public class MembershipRegFormActivity extends AppCompatActivity {
 
         imageFile = getOutputMediaFile(type);
         /*Uri imageUri = FileProvider.getUriForFile(
-                MembershipRegFormActivity.this,
+                getActivity(),
                 "in.gov.cgg.redcrossphase1.ui_citiguest.provider", //(use your app signature + ".provider" )
                 imageFile);
         return imageUri;*/
         Uri imageUri = FileProvider.getUriForFile(
-                MembershipRegFormActivity.this,//(use your app signature + ".provider" )
+                getActivity(),//(use your app signature + ".provider" )
                 BuildConfig.APPLICATION_ID + ".fileprovider",
                 imageFile);
         return imageUri;
@@ -948,11 +997,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
 
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         "User cancelled image capture", Toast.LENGTH_SHORT)
                         .show();
             } else {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
                         .show();
             }
@@ -961,7 +1010,7 @@ public class MembershipRegFormActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Uri selectedImage = data.getData();
                 String[] filePath = {MediaStore.Images.Media.DATA};
-                Cursor currsor = getContentResolver().query(selectedImage, filePath, null, null, null);
+                Cursor currsor = getActivity().getContentResolver().query(selectedImage, filePath, null, null, null);
                 currsor.moveToFirst();
                 int columnIndex = currsor.getColumnIndex(filePath[0]);
                 String picturePath = currsor.getString(columnIndex);
@@ -972,11 +1021,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
                 FilePath = picturePath;
 
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         "User cancelled image capture", Toast.LENGTH_SHORT)
                         .show();
             } else {
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(getActivity(),
                         "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
                         .show();
             }
@@ -1027,31 +1076,11 @@ public class MembershipRegFormActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-
-        final PrettyDialog dialog = new PrettyDialog(this);
-        dialog
-                .setTitle("Red cross")
-                .setMessage("Your entered details will not be saved. Are you sure you want to go back?")
-                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
-                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
-                    @Override
-                    public void onClick() {
-                        dialog.dismiss();
-                        startActivity(new Intent(MembershipRegFormActivity.this, TabLoginActivity.class));
-                        finish();
-                    }
-                })
-                .addButton("Cancel", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
-                    @Override
-                    public void onClick() {
-                        dialog.dismiss();
-                        // Toast.makeText(OfficerMainActivity.this, "Cancel selected", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        dialog.show();
-    }
-
 }
+
+
+
+
+
+
+

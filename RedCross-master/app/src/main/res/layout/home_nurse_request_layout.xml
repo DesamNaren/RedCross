@@ -392,6 +392,7 @@
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <LinearLayout
+                                android:id="@+id/dist_spin_layout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -408,6 +409,7 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/mandal_spin_layout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -419,12 +421,14 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:entries="@array/Mandal"
-                                    android:textColor="@color/black" />
+                                    android:textColor="@color/black"
+                                    android:visibility="gone" />
 
 
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/village_spin_layout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
@@ -436,7 +440,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:entries="@array/Town_Village"
-                                    android:textColor="@color/black" />
+                                    android:textColor="@color/black"
+                                    android:visibility="gone" />
                             </LinearLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -466,7 +471,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen_20dp"
-                    android:text="Submit" />
+                    android:background="#30000000"
+                    android:text="Submit"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

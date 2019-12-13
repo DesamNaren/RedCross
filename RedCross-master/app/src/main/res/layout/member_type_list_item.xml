@@ -34,7 +34,7 @@
                 android:paddingTop="@dimen/dp_5"
                 android:paddingBottom="@dimen/dp_5"
                 android:text="Type of Membership"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <TextView
