@@ -10,20 +10,22 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class CapacityBuildingsFragment extends Fragment {
     Button btn_upcoming_event;
+    int selectedThemeColor = -1;
     private WebView wb;
     //private TextView tv_first;
     private ProgressDialog pd;
@@ -35,6 +37,8 @@ public class CapacityBuildingsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_capacity_buildings, container, false);
 
         Objects.requireNonNull(getActivity()).setTitle("Trainings");
+        selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+
         btn_upcoming_event = root.findViewById(R.id.btn_upcoming_event);
         btn_upcoming_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +47,8 @@ public class CapacityBuildingsFragment extends Fragment {
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
+
+
         //tv_first = root.findViewById(R.id.text1);
         wb = root.findViewById(R.id.help_webview);
 
@@ -122,6 +128,41 @@ public class CapacityBuildingsFragment extends Fragment {
         }
     }
 
+    private void callThemesChanges() {
+        if (selectedThemeColor != -1) {
+
+
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+
+            }
+        } else {
+
+            btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+
+        }
+    }
 //
 //    @Override
 //    public void onCreate(Bundle savedInstanceState) {

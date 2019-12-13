@@ -1,14 +1,20 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +23,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
@@ -32,15 +40,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class ServicesFragment extends Fragment {
 
     ServeAdapter serveAdapter;
     RecyclerView rv;
+    RelativeLayout rl_header;
+    int selectedThemeColor = -1;
     private CustomProgressDialog progressDialog;
     private ArrayList<ServeBean> mainList;
     private TextView noDataTV;
     private Spinner spinner_bg;
+    ArrayList<ServeBean> servList;
+    private FragmentActivity c;
+    private androidx.appcompat.widget.SearchView searchView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +72,20 @@ public class ServicesFragment extends Fragment {
         Objects.requireNonNull(getActivity()).setTitle("SERV");
         progressDialog = new CustomProgressDialog(getActivity());
         rv = root.findViewById(R.id.bb_rv);
+        rl_header = root.findViewById(R.id.rl_header);
         noDataTV = root.findViewById(R.id.noDataTV);
         spinner_bg = root.findViewById(R.id.spinner_bg);
         // sortData(mainList);
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        c = getActivity();
+        setHasOptionsMenu(true);
         calladditionsCentersService("SERV Volunteer");
 
         spinner_bg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -82,14 +108,14 @@ public class ServicesFragment extends Fragment {
                         }, 2000);
 
 
-                        serveAdapter.getFilter().filter(selVal);
+                        serveAdapter.getBBFilter(selVal);
                         serveAdapter.notifyDataSetChanged();
                         rv.smoothScrollToPosition(0);
 
                     }
                 } else {
                     if (serveAdapter != null) {
-                        serveAdapter = new ServeAdapter(getActivity(), mainList);
+                        serveAdapter = new ServeAdapter(getActivity(), mainList, selectedThemeColor);
                         rv.setAdapter(serveAdapter);
                         serveAdapter.notifyDataSetChanged();
                     }
@@ -122,7 +148,7 @@ public class ServicesFragment extends Fragment {
 
                     if (body != null) {
                         mainList = (ArrayList<ServeBean>) body.getAdditionscenters();
-                        ArrayList<ServeBean> servList = new ArrayList<>();
+                        servList = new ArrayList<>();
                         for (int x = 0; x < mainList.size(); x++) {
                             if (mainList.get(x).getType().contains("SERV")) {
                                 servList.add(mainList.get(x));
@@ -155,7 +181,7 @@ public class ServicesFragment extends Fragment {
                             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                             rv.setLayoutManager(layoutManager);
 
-                            serveAdapter = new ServeAdapter(getActivity(), servList);
+                            serveAdapter = new ServeAdapter(getActivity(), servList, selectedThemeColor);
                             rv.setAdapter(serveAdapter);
                             serveAdapter.notifyDataSetChanged();
 
@@ -185,6 +211,61 @@ public class ServicesFragment extends Fragment {
         });
 
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
+
+        menu.clear();
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        }
+
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    search(searchView);
+                    return false;
+                }
+            });
+        }
+    }
+
+
+    private void search(androidx.appcompat.widget.SearchView searchView) {
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                try {
+                    if (serveAdapter != null) {
+                        serveAdapter.getFilter().filter(newText);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        });
+    }
+
+
+
+
 }
 
 
