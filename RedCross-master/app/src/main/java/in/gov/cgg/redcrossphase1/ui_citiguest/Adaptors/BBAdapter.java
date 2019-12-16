@@ -16,21 +16,24 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.MapsActivity;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> implements Filterable {
     private Context mCtx;
     private ArrayList<eRaktkoshResponseBean> eRaktkoshResponseBeans;
     private ArrayList<eRaktkoshResponseBean> mFilteredList;
+    int selectedThemeColor = -1;
 
 
     public BBAdapter(Context mCtx, ArrayList<eRaktkoshResponseBean> eRaktkoshResponseBeans) {
@@ -55,6 +58,63 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
         final eRaktkoshResponseBean eRaktkoshResponseBean = mFilteredList.get(position);
 
         float distance = Float.valueOf(String.format("%.2f", eRaktkoshResponseBean.getDistance()));
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) { //
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+
+                } else {
+
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+
+                }
+
+            } else {
+
+                holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         holder.tv_distance.setText(distance + " KMs");
         holder.tv_type.setText(eRaktkoshResponseBean.getType());
@@ -231,6 +291,7 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
         ImageView iv_map_loc;
         LinearLayout ll_contact, ll_email, ll_avail, ll_alldlist;
         RelativeLayout rl_header;
+        CardView cv_district;
 
         BBViewHolder(View itemView) {
             super(itemView);
@@ -249,6 +310,7 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
             tv_updated_time = itemView.findViewById(R.id.tv_updated_time);
             ll_alldlist = itemView.findViewById(R.id.ll_alldlist);
             rl_header = itemView.findViewById(R.id.rl_header);
+            cv_district = itemView.findViewById(R.id.cv_district);
         }
     }
 

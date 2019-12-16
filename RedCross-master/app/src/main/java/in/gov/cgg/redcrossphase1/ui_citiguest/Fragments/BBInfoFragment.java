@@ -51,6 +51,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class BBInfoFragment extends LocBaseFragment {
     private CustomProgressDialog progressDialog;
@@ -82,6 +84,7 @@ public class BBInfoFragment extends LocBaseFragment {
             }
         }
     };
+    private int selectedThemeColor = -1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -140,6 +143,13 @@ public class BBInfoFragment extends LocBaseFragment {
 
         getActivity().registerReceiver(mGpsSwitchStateReceiver, new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION));
 
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            setThemes();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         spinner_bg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -285,6 +295,7 @@ public class BBInfoFragment extends LocBaseFragment {
 
                     }
                 }
+                setThemes();
 
             }
         });
@@ -326,6 +337,8 @@ public class BBInfoFragment extends LocBaseFragment {
                         Toast.makeText(getActivity(), "Please check your internet connection", Toast.LENGTH_LONG).show();
                     }
                 }
+                setThemes_1();
+
             }
         });
 
@@ -334,8 +347,11 @@ public class BBInfoFragment extends LocBaseFragment {
             fromType = getArguments().getString("FROM_TYPE");
             if (fromType != null && fromType.equalsIgnoreCase("BLOOD_DONOR")) {
                 callInitBloodDonor();
+                setThemes_1();
             } else {
                 callBloodBanks();
+                setThemes();
+
             }
         } else {
             callBloodBanks();
@@ -343,6 +359,172 @@ public class BBInfoFragment extends LocBaseFragment {
 
         return root;
     }
+
+    private void setThemes() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+                btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.black));
+                spinner_bg.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+            }
+
+        } else {
+            btn_blood_banks.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_blood_banks.setTextColor(getResources().getColor(R.color.white));
+            btn_blood_donors.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_blood_donors.setTextColor(getResources().getColor(R.color.black));
+            spinner_bg.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+        }
+    }
+
+    private void setThemes_1() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+                btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+                btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_blood_banks.setTextColor(getResources().getColor(R.color.black));
+                spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+            }
+
+        } else {
+            btn_blood_donors.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_blood_donors.setTextColor(getResources().getColor(R.color.white));
+            btn_blood_banks.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_blood_banks.setTextColor(getResources().getColor(R.color.black));
+            spinner_bg_donor.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            iv_switch.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+
+        }
+    }
+
 
     private void callInitBloodDonor() {
         bbAdapter = null;
@@ -356,6 +538,7 @@ public class BBInfoFragment extends LocBaseFragment {
         btn_blood_banks.setTextColor(getResources().getColor(R.color.black));
 
         if (!fromType.equalsIgnoreCase("BLOOD_DONOR")) {
+            setThemes_1();
             searchView.setQuery("", false);
             searchView.setIconified(true);
         }
@@ -556,16 +739,10 @@ public class BBInfoFragment extends LocBaseFragment {
 
                                 ArrayList<eRaktkoshResponseBean> eRaktkoshResponseBeans = new ArrayList<>();
                                 for (int x = 0; x < list.size(); x++) {
-                                    if (list.get(x).getDistance() == 0) {
+                                    if ((list.get(x).getDistance() == 0) || (TextUtils.isEmpty(list.get(x).getName()) || list.get(x).getName().trim().equals("-"))) {
                                         eRaktkoshResponseBeans.add(list.get(x));
                                     }
                                 }
-
-                                /*for (int x = 0; x < list.size(); x++) {
-                                    if (! TextUtils.isEmpty(list.get(x).getName()) && !list.get(x).getName().trim().equals("-")) {
-                                        eRaktkoshResponseBeans.add(list.get(x));
-                                    }
-                                }*/
 
                                 list.removeAll(eRaktkoshResponseBeans);
                                 mainList.addAll(list);
@@ -790,6 +967,7 @@ public class BBInfoFragment extends LocBaseFragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

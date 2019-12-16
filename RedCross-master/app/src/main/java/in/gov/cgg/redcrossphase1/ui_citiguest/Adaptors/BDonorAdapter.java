@@ -16,19 +16,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.DonorsMapsActivity;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHolder> implements Filterable {
     private Context mCtx;
     private ArrayList<BloodDonorResponse> bloodDonorResponses;
     private ArrayList<BloodDonorResponse> mFilteredList;
+    int selectedThemeColor = -1;
 
     public BDonorAdapter(Context mCtx, ArrayList<BloodDonorResponse> bloodDonorResponses) {
         this.mCtx = mCtx;
@@ -52,7 +54,84 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
         final BloodDonorResponse bloodDonorResponses = mFilteredList.get(position);
 
         float distance = Float.valueOf(String.format("%.2f", bloodDonorResponses.getDistance()));
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
 
+            if (selectedThemeColor != -1) {
+
+                holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+                // holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabselected));
+
+                }
+            } else {
+                holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            holder.rl_header.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+        }
+        try {
+            selectedThemeColor = mCtx.getSharedPreferences("THEMECOLOR_PREF",
+                    MODE_PRIVATE).getInt("theme_color", -1);
+
+            if (selectedThemeColor != -1) {
+
+
+                holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme1_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme3_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme4_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme5_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme6_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+                }
+            } else {
+                holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+
+        }
         holder.tv_distance.setText(distance + " KMs");
 
         holder.tv_blood_type.setText(bloodDonorResponses.getBloodGroup());

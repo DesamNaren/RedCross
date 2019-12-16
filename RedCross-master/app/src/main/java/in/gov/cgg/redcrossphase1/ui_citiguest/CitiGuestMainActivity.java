@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -141,7 +142,7 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 R.id.nav_History, R.id.nav_Principles, R.id.nav_whoweare, R.id.nav_Vision, R.id.nav_mission
                 , R.id.nav_Structure, R.id.nav_Contact, R.id.nav_lifetimemember, R.id.nav_blooddonorreg, R.id.nav_hnreg,
                 R.id.nav_onlinedonations, R.id.nav_training, R.id.nav_hn, R.id.nav_doateblood, R.id.nav_locatebloodbanks
-                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_info, R.id.nav_dashboard)
+                , R.id.nav_privacy, R.id.nav_tc, R.id.nav_info, R.id.nav_dashboard, R.id.nav_about)
                 .setDrawerLayout(drawerLayout)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -164,6 +165,12 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else if (menuItem.getItemId() == R.id.nav_Principles) {
+                    GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
+                    selectedFragment = new WhoWeAreFragment();
+                    GlobalDeclaration.tabposition = 5;
+                    callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (menuItem.getItemId() == R.id.nav_about) {
                     GlobalDeclaration.FARG_TAG = WhoWeAreFragment.class.getSimpleName();
                     selectedFragment = new WhoWeAreFragment();
                     GlobalDeclaration.tabposition = 1;
@@ -387,8 +394,12 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
                     @Override
                     public void onClick() {
-
-                        System.exit(0);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            finishAndRemoveTask();
+                        } else {
+                            System.exit(0);
+                            finishAffinity();
+                        }
 
                     }
                 })

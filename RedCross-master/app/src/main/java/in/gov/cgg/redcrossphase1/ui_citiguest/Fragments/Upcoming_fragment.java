@@ -14,6 +14,7 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 
 /**
@@ -42,7 +43,7 @@ public class Upcoming_fragment extends Fragment {
         wb = root.findViewById(R.id.help_webview);
 
 
-        String url = "http://uat2.cgg.gov.in:8081/redcross/events";
+        String url = BuildConfig.SERVER_URL + "events";
         //   String url = "http://10.2.9.81:8081/redcross/trainingDetails";
         //String url = "http://mobileapps.cgg.gov.in/privacy.html";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";

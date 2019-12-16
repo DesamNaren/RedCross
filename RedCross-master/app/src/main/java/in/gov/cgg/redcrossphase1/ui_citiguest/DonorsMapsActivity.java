@@ -16,10 +16,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -46,6 +42,9 @@ import com.google.gson.JsonSyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.MapAdaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
@@ -78,7 +77,7 @@ public class DonorsMapsActivity extends FragmentActivity implements OnMapReadyCa
     private Marker markername;
     private ArrayList<BloodDonorResponse> bloodDonorResponses;
     private String fromClass;
-
+    private int selectedThemeColor = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +86,13 @@ public class DonorsMapsActivity extends FragmentActivity implements OnMapReadyCa
         switchView = findViewById(R.id.switchView);
         switchView.setText("Show donors list");
         requestPermissions();
+        try {
+            selectedThemeColor = DonorsMapsActivity.this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            setThemes();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -250,6 +255,47 @@ public class DonorsMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     }
 
+    private void setThemes() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+            }
+
+        } else {
+
+            switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+
+        }
+    }
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
