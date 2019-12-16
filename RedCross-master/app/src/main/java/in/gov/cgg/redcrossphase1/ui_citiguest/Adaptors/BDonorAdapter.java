@@ -85,6 +85,9 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
                     holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_seleetedbg));
+
+                } else {
                     holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabselected));
 
                 }
@@ -122,6 +125,8 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_bg));
+                } else {
                     holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
                 }
             } else {

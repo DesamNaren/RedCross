@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -33,9 +35,6 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -250,7 +249,7 @@ public class GuestMainActivity extends AppCompatActivity {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
                     //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackgroundResource(R.drawable.redcross8_bg);
                     //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
@@ -439,7 +438,7 @@ public class GuestMainActivity extends AppCompatActivity {
                 selectedThemeColor = R.color.redcroosbg_8;
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackgroundResource(R.drawable.redcross8_bg);
                     //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();

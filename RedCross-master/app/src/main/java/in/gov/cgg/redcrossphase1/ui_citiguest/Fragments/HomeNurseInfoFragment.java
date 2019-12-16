@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Objects;
@@ -15,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +39,8 @@ public class HomeNurseInfoFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private TextView btn_BecomehomeNursing;
-
+    LinearLayout ll_bg;
+    int selectedThemeColor = -1;
     public HomeNurseInfoFragment() {
         // Required empty public constructor
     }
@@ -75,7 +79,7 @@ public class HomeNurseInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.become_home_nurse_layout, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
-
+        ll_bg = v.findViewById(R.id.ll_bg);
         btn_BecomehomeNursing = v.findViewById(R.id.btn_homeNursingRegProceed);
 
         btn_BecomehomeNursing.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +95,35 @@ public class HomeNurseInfoFragment extends Fragment {
                 transaction.commitAllowingStateLoss();
             }
         });
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross1_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross2_bg);
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross3_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross4_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross5_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross6_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross7_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    ll_bg.setBackgroundResource(R.drawable.redcross8_bg);
+                } else {
+                    ll_bg.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
         return v;
     }
 

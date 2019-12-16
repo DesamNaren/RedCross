@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
@@ -19,10 +22,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -201,20 +200,20 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
                 btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
                 btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
-                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme8_bg));
                 btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_8));
             } else {
-                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
                 btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
-                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                 btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
 
             }
 
         } else {
-            btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
             btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
-            btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
             btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
 
         }
@@ -266,17 +265,17 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
                 btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
                 btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_8));
             } else {
-                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
                 btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
-                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
                 btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
 
             }
 
         } else {
-            btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
             btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
-            btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
             btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
 
 

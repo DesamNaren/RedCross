@@ -12,10 +12,6 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -29,6 +25,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.RequiresApi;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.HomeNurseRequestLayoutBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -160,7 +159,7 @@ public class HomeNurseRequest extends Fragment {
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    binding.Mainlayout.setBackgroundResource(R.drawable.redcross8_bg);
 
                     binding.ApplicantDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     binding.PatientDetails.setTextColor(getResources().getColor(selectedThemeColor));

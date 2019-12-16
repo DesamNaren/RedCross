@@ -245,7 +245,7 @@ public class AbstractMembership extends Fragment {
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -258,7 +258,7 @@ public class AbstractMembership extends Fragment {
                     view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
                 } else {
-                    MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));

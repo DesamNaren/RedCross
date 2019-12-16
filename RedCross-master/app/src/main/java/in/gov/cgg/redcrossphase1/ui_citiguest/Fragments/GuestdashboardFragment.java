@@ -10,12 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -74,6 +73,8 @@ public class GuestdashboardFragment extends Fragment implements View.OnClickList
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     fragment_citizendashboard.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    fragment_citizendashboard.setBackgroundResource(R.drawable.redcross8_bg);
+                } else {
                     fragment_citizendashboard.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 }
 

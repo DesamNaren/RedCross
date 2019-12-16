@@ -16,19 +16,17 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 
 public class MembershipPaymentFragment extends Fragment {
 
-    int selectedThemeColor = -1;
     CustomProgressDialog progressDialog;
     LinearLayout mainLayoutPayment;
     private FragmentActivity c;

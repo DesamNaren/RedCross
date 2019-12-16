@@ -31,14 +31,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -55,6 +47,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -279,6 +278,20 @@ public class MembershipRegFormFragment extends Fragment {
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
+                    personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    switchView.setTextColor(getResources().getColor(selectedThemeColor));
+                    professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
+                    CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                    spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
+                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
+
+                } else {
                     MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
                     switchView.setTextColor(getResources().getColor(selectedThemeColor));

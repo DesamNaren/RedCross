@@ -158,6 +158,9 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
                     holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_seleetedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabselected));
 
                 }
@@ -195,7 +198,9 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_bg));
+                } else {
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
                 }
             } else {
                 holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));

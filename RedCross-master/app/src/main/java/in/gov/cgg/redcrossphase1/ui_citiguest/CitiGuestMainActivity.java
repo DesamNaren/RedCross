@@ -362,7 +362,7 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
                     //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackgroundResource(R.drawable.redcross8_bg);
                     //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
                     ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);

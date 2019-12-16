@@ -21,11 +21,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -38,6 +33,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -74,6 +73,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     RadioButton radioButton1True, radioButton2False;
     String name, fratherName, mobileNumber, officeName, address, dob, previoslydonatedDate, noofpreviousDonations;
     TextView et_donatetype;
+    LinearLayout ll_registrationForm;
 
     String email = "";
     String pincode = "";
@@ -815,6 +815,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
 
         et_name = root.findViewById(R.id.et_name);
+        ll_registrationForm = root.findViewById(R.id.ll_registrationForm);
         et_fathersName = root.findViewById(R.id.et_fathersName);
         datePicker_dateofBirth = root.findViewById(R.id.datePicker_dateofBirth);
         et_occupation = root.findViewById(R.id.et_occupation);
@@ -855,7 +856,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         if (selectedThemeColor != -1) {
             if (selectedThemeColor == R.color.redcroosbg_1) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -864,7 +865,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
             } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -873,7 +874,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
             } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -882,7 +883,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
             } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -891,7 +892,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
             } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -902,7 +903,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
 
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -911,7 +912,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
             } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -920,7 +921,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(selectedThemeColor));
                 tv_titledonorInfo.setTextColor(getResources().getColor(selectedThemeColor));
@@ -930,7 +931,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 btn_donorRegNext.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
 
             } else {
-                ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 tv_titledonorDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
                 tv_titleAdressInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
                 tv_titledonorInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -942,7 +943,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             }
 
         } else {
-            ll_donorregForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
             tv_titledonorDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
             tv_titleAdressInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
             tv_titledonorInfo.setTextColor(getResources().getColor(R.color.colorPrimary));

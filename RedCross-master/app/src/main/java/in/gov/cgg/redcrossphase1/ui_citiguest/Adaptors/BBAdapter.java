@@ -97,7 +97,7 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
 
-                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_bg));
 
                 } else {
 

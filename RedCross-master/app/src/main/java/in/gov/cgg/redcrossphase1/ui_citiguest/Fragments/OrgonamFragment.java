@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
-import java.util.Objects;
-
+import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 
 public class OrgonamFragment extends Fragment {
@@ -36,7 +36,7 @@ public class OrgonamFragment extends Fragment {
         wb = root.findViewById(R.id.help_webview);
 
 
-        String url = "http://uat2.cgg.gov.in:8081/redcross/aboutus";
+        String url = BuildConfig.SERVER_URL + "aboutus";
         //String url = "http://qa2.cgg.gov.in:8081/redcross/policy";
 
 

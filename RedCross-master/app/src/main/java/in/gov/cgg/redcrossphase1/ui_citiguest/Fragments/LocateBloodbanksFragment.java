@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
@@ -19,10 +22,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BloodbankAdaptor;
@@ -69,6 +68,8 @@ public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQ
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross8_bg);
+                } else {
                     ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 }
 

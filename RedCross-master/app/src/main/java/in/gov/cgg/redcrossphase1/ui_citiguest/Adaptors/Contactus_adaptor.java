@@ -87,6 +87,9 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
                     holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme8_seleetedbg));
+
+                } else {
                     holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.red_tabselected));
 
                 }
