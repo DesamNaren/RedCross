@@ -95,47 +95,12 @@ public class DownloadCertificate extends Fragment {
         binding.btnDownloadCertificate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                binding.downloadCertificate.setVisibility(View.VISIBLE);
-                binding.downloadIdCard.setVisibility(View.GONE);
-                binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackgroundResource(R.color.white);
                 binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.black));
-                /*if (selectedThemeColor != -1) {
-                    if (selectedThemeColor == R.color.redcroosbg_1) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
+                binding.btnDownloadCertificate.setBackgroundResource(R.color.redcroosbg_6);
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                setThemes_1();
 
-                    } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                        binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadCertificate.setBackgroundColor(selectedThemeColor);
-
-                    }
-                }*/
 
             }
         });
@@ -144,103 +109,26 @@ public class DownloadCertificate extends Fragment {
             @Override
             public void onClick(View v) {
 
-                binding.downloadCertificate.setVisibility(View.GONE);
-                binding.downloadIdCard.setVisibility(View.VISIBLE);
-                binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackgroundResource(R.color.redcroosbg_6);
                 binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackgroundResource(R.color.white);
                 binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
-
-                /*if (selectedThemeColor != -1) {
-                    if (selectedThemeColor == R.color.redcroosbg_1) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white))
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                        binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                        binding.btnDownloadIDCard.setBackgroundColor(selectedThemeColor);
-
-                    }
-                }*/
-
-
+                setThemes();
 
             }
         });
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross2_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross4_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross5_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross6_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    binding.MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
-                    binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
-
-                }
-                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-
-                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
-                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
-            } else {
-                binding.MainLayout.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.white));
-                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
-                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
-            }
+            setThemes();
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        //binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
-        // binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+
         binding.downloadIdCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (!isExternalStorageAvailable() || isExternalStorageReadOnly()) {
                     binding.downloadIdCard.setEnabled(false);
                 } else {
@@ -252,6 +140,8 @@ public class DownloadCertificate extends Fragment {
         binding.downloadCertificate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if (!isExternalStorageAvailable() || isExternalStorageReadOnly()) {
                     binding.downloadCertificate.setEnabled(false);
                 } else {
@@ -264,7 +154,161 @@ public class DownloadCertificate extends Fragment {
         });
         return binding.getRoot();
     }
+    //THEMES
 
+    private void setThemes() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross2_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross4_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross5_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross6_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
+                binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
+
+            }
+
+        } else {
+            binding.MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
+            binding.btnDownloadIDCard.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.white));
+            binding.btnDownloadCertificate.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.black));
+
+        }
+    }
+
+    private void setThemes_1() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross2_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross4_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross5_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross6_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+
+                binding.MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
+                binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+                binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.black));
+            }
+
+        } else {
+            binding.MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
+            binding.btnDownloadCertificate.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            binding.btnDownloadCertificate.setTextColor(getResources().getColor(R.color.white));
+            binding.btnDownloadIDCard.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.btnDownloadIDCard.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+        }
+    }
     protected boolean validateFields() {
 
         if (binding.memberIDRes.getText().toString().trim().length() == 0) {
