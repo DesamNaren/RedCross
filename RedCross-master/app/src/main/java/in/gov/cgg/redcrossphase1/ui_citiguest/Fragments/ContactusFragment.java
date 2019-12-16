@@ -59,55 +59,61 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         findViews(root);
         GlobalDeclaration.cordinatorType = "s";
 
-
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
-            if (selectedThemeColor != -1) {
-                if (selectedThemeColor == R.color.redcroosbg_1) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross1_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+            setThemes();
 
-                } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross2_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross3_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross4_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross5_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross6_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross7_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_contactUs.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                } else {
-                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-                }
-
-            } else {
-                btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
-            }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
+//        try {
+//            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+//            if (selectedThemeColor != -1) {
+//                if (selectedThemeColor == R.color.redcroosbg_1) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross1_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross2_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross3_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross4_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross5_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross6_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross7_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+//                    ll_contactUs.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                } else {
+//                    btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//                }
+//
+//            } else {
+//                btn_sateCordinators.setBackgroundColor(getResources().getColor(selectedThemeColor));
+//
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//
+//        }
 
         contactUsarrayList = new ArrayList<>();
         recyclerView = root.findViewById(R.id.rv_contactUs);
@@ -153,6 +159,131 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         return root;
     }
 
+    private void setThemes() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+                btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
+
+            }
+
+        } else {
+            btn_sateCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+            btn_districtCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
+
+        }
+    }
+
+    private void setThemes_1() {
+        if (selectedThemeColor != -1) { //
+            if (selectedThemeColor == R.color.redcroosbg_1) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_1));
+            } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_3));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_3));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_4));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_4));
+            } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_5));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_5));
+            } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_6));
+            } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+
+            } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.redcroosbg_8));
+            } else {
+                btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+                btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
+
+            }
+
+        } else {
+            btn_districtCordinators.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
+            btn_sateCordinators.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
+
+
+        }
+    }
+
     private void CallDistLogic() {
         GlobalDeclaration.cordinatorType = "";
 
@@ -168,6 +299,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_districtCordinators.setTextColor(getResources().getColor(R.color.white));
         btn_sateCordinators.setBackgroundResource(R.color.white);
         btn_sateCordinators.setTextColor(getResources().getColor(R.color.black));
+        setThemes_1();
     }
 
     private void CallStateLogic() {
@@ -186,6 +318,7 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         btn_districtCordinators.setTextColor(getResources().getColor(R.color.black));
         btn_sateCordinators.setBackgroundResource(R.color.redcroosbg_6);
         btn_sateCordinators.setTextColor(getResources().getColor(R.color.white));
+        setThemes();
     }
 
 

@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -67,6 +67,7 @@ public class MemberFragment extends Fragment {
         btn_homeNursingRegProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
                 Fragment fragment = new MembershipFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();

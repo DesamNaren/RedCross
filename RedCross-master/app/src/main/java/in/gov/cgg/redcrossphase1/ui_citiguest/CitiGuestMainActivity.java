@@ -42,6 +42,7 @@ import androidx.navigation.ui.NavigationUI;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.About_usFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.AbstractMembership;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BBInfoFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.BlooddonorRegistrationFragment;
@@ -622,7 +623,8 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 selectedThemeColor = R.color.redcroosbg_8;
                 if (selectedThemeColor != -1) {
                     //  layout_main.setBackgroundResource(selectedThemeColor);
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    //ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackgroundResource(R.drawable.redcross8_bg);
                     //    navigationView.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
                     toolbar.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     dialog.dismiss();
@@ -659,7 +661,8 @@ public class CitiGuestMainActivity extends LocBaseActivity {
 
     }
 
-    private void setFragment(String fargTag) {
+    private void
+    setFragment(String fargTag) {
 
         if (fargTag.equalsIgnoreCase("CitizendashboardFragment")) {
             selectedFragment = new CitizendashboardFragment();
@@ -679,6 +682,34 @@ public class CitiGuestMainActivity extends LocBaseActivity {
             selectedFragment = new CitiNewTCFragment();
         } else if (fargTag.equalsIgnoreCase("CitiPrivacyPolicyFragment")) {
             selectedFragment = new CitiPrivacyPolicyFragment();
+        } else if (fargTag.equalsIgnoreCase("About_usFragment")) {
+            selectedFragment = new About_usFragment();
+        } else if (fargTag.equalsIgnoreCase("AbstractMembership")) {
+            selectedFragment = new AbstractMembership();
+        } else if (fargTag.equalsIgnoreCase("MembershipFragment")) {
+            selectedFragment = new MembershipFragment();
+        } else if (fargTag.equalsIgnoreCase("DownloadCertificate")) {
+            selectedFragment = new DownloadCertificate();
+        } else if (fargTag.equalsIgnoreCase("MemberFragment")) {
+            selectedFragment = new MemberFragment();
+        } else if (fargTag.equalsIgnoreCase("CapacityBuildingsFragment")) {
+            selectedFragment = new CapacityBuildingsFragment();
+        } else if (fargTag.equalsIgnoreCase("Upcoming_fragment")) {
+            selectedFragment = new Upcoming_fragment();
+        } else if (fargTag.equalsIgnoreCase("BBInfoFragment")) {
+            selectedFragment = new BBInfoFragment();
+        } else if (fargTag.equalsIgnoreCase("BlooddonorRegistrationFragment")) {
+            selectedFragment = new BlooddonorRegistrationFragment();
+        } else if (fargTag.equalsIgnoreCase("HomeNursingRegistrationFragment")) {
+            selectedFragment = new HomeNursingRegistrationFragment();
+        } else if (fargTag.equalsIgnoreCase("HomeNurseInfoFragment")) {
+            selectedFragment = new HomeNurseInfoFragment();
+        } else if (fargTag.equalsIgnoreCase("HomeNurseRequest")) {
+            selectedFragment = new HomeNurseRequest();
+        } else if (fargTag.equalsIgnoreCase("ServicesFragment")) {
+            selectedFragment = new ServicesFragment();
+        } else if (fargTag.equalsIgnoreCase("ContactusFragment")) {
+            selectedFragment = new ContactusFragment();
         } else {
             GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
             selectedFragment = new CitizendashboardFragment();

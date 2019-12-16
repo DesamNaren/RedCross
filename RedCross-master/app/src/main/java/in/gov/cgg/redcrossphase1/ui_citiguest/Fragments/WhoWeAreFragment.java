@@ -9,6 +9,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -16,13 +22,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
@@ -63,6 +62,8 @@ public class WhoWeAreFragment extends Fragment {
             viewpager.setCurrentItem(2);
         } else if (GlobalDeclaration.tabposition == 4) {
             viewpager.setCurrentItem(3);
+        } else if (GlobalDeclaration.tabposition == 5) {
+            viewpager.setCurrentItem(4);
         }
 
 //        Objects.requireNonNull(
@@ -85,28 +86,28 @@ public class WhoWeAreFragment extends Fragment {
             if (selectedThemeColor != -1) {
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross1_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_1);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_1));
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross2_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_2);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_2));
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross3_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_3);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_3));
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross4_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_4);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_4));
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross5_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_5);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_5));
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross6_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_6);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_6));
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross7_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_7);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_7));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.color.redcroosbg_8);
+                    tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_8));
 
                 } else {
                     ll_whoweAre.setBackgroundResource(R.drawable.redcross_splashscreen_bg);

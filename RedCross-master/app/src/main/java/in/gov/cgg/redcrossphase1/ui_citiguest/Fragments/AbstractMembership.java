@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -280,6 +280,7 @@ public class AbstractMembership extends Fragment {
         tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = MembershipFragment.class.getSimpleName();
                 Fragment fragment = new MembershipFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -291,6 +292,7 @@ public class AbstractMembership extends Fragment {
         tv_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = DownloadCertificate.class.getSimpleName();
                 Fragment fragment = new DownloadCertificate();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -304,7 +306,7 @@ public class AbstractMembership extends Fragment {
             @Override
             public void onClick(View view) {
 
-
+                GlobalDeclaration.FARG_TAG = MemberFragment.class.getSimpleName();
                 Fragment fragment = new MemberFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.myViewHolder> {
 
     ArrayList<ContactusDetails_Bean> contactarrayList;
@@ -54,7 +56,49 @@ public class Contactus_adaptor extends RecyclerView.Adapter<Contactus_adaptor.my
 
         holder.districtNmae.setText(contactarrayList.get(position).getDistarictName());
         holder.address.setText(contactarrayList.get(position).getAdress());
+        try {
+            selectedThemeColor = context.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
 
+            if (selectedThemeColor != -1) {
+
+                holder.districtNmae.setBackgroundColor(context.getResources().getColor(selectedThemeColor));
+                // holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(selectedThemeColor));
+
+
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme1_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme2_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme3_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme4_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme5_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme6_selectedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
+
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    holder.districtNmae.setBackground(context.getResources().getDrawable(R.drawable.red_tabselected));
+
+                }
+            } else {
+                holder.districtNmae.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            holder.districtNmae.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+
+        }
        /* if (GlobalDeclaration.cordinatorType.equalsIgnoreCase("s")) {
             holder.address.setText(contactarrayList.get(position).getAdress());
         } else {
