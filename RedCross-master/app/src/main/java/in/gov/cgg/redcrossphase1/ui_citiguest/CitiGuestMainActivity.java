@@ -22,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -36,9 +38,6 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import com.google.android.material.navigation.NavigationView;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
@@ -680,9 +679,16 @@ public class CitiGuestMainActivity extends LocBaseActivity {
         menu.clear();
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_backpress, menu);
-
+        if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase("CitizendashboardFragment")) {
+            menu.getItem(0).setVisible(true);
+            menu.getItem(1).setVisible(false);
+        } else {
+            menu.getItem(0).setVisible(false);
+            menu.getItem(1).setVisible(true);
+        }
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -692,11 +698,15 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 // search action
                 onClickExit();
                 return true;
+            case R.id.home:
+                startActivity(new Intent(this, CitiGuestMainActivity.class));
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     private void showChangeLangDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CitiGuestMainActivity.this);

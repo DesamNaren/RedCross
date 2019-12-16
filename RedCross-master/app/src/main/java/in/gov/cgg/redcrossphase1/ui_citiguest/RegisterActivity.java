@@ -6,9 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -16,6 +13,8 @@ import com.google.gson.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.RegisBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -53,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (selectedThemeColor != -1) {
                 binding.tvSignUp.setTextColor(getResources().getColor(selectedThemeColor));
                 binding.btnRegister.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                binding.btnRegister.setTextColor(getResources().getColor(R.color.white));
 
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
@@ -78,18 +78,22 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                     binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                    binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.btnRegister.setTextColor(getResources().getColor(R.color.white));
+                    binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
                 }
             } else {
                 binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
             binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
             binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-            binding.btnRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+
         }
 
 

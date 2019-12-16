@@ -23,10 +23,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 
@@ -35,6 +31,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -42,6 +41,7 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BBAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.BDonorAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.eRaktkoshResponseBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.DonorsMapsActivity;
 import in.gov.cgg.redcrossphase1.ui_citiguest.MapsActivity;
 import in.gov.cgg.redcrossphase1.utils.AppConstants;
@@ -561,11 +561,11 @@ public class BBInfoFragment extends LocBaseFragment {
                                     }
                                 }
 
-                                for (int x = 0; x < list.size(); x++) {
-                                    if (!TextUtils.isEmpty(list.get(x).getName()) && !list.get(x).getName().trim().equals("-")) {
+                                /*for (int x = 0; x < list.size(); x++) {
+                                    if (! TextUtils.isEmpty(list.get(x).getName()) && !list.get(x).getName().trim().equals("-")) {
                                         eRaktkoshResponseBeans.add(list.get(x));
                                     }
-                                }
+                                }*/
 
                                 list.removeAll(eRaktkoshResponseBeans);
                                 mainList.addAll(list);
@@ -776,6 +776,20 @@ public class BBInfoFragment extends LocBaseFragment {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.logout_search:
+                // search action
+                startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -2,6 +2,7 @@ package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,6 +36,7 @@ import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.ServeAdapter;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ServeBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ServeBeanMainBean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -241,6 +243,20 @@ public class ServicesFragment extends Fragment {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.logout_search:
+                // search action
+                startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void search(androidx.appcompat.widget.SearchView searchView) {
         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {

@@ -47,7 +47,7 @@ public class CapacityBuildingsFragment extends Fragment {
                 callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
             }
         });
-
+        callThemesChanges();
 
         //tv_first = root.findViewById(R.id.text1);
         wb = root.findViewById(R.id.help_webview);
@@ -133,33 +133,33 @@ public class CapacityBuildingsFragment extends Fragment {
 
 
             if (selectedThemeColor == R.color.redcroosbg_1) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme1_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme1_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme2_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme2_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme3_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme3_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme4_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme4_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme5_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme5_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme6_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme6_selectedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme7_bg));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
 
             }
         } else {
 
-            btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
+            btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
 
         }
     }

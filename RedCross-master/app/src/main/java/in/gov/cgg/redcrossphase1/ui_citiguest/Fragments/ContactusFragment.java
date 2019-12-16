@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
@@ -19,15 +22,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.TabLoginActivity;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.Contactus_adaptor;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.ContactusDetails_Bean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
@@ -368,8 +368,9 @@ public class ContactusFragment extends Fragment implements SearchView.OnQueryTex
         switch (item.getItemId()) {
             case R.id.action_exit:
                 // search action
-                onClickExit();
+                startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));
                 return true;
+
 
             default:
                 return super.onOptionsItemSelected(item);

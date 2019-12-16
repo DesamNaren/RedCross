@@ -7,6 +7,13 @@
         android:id="@+id/logout"
         android:icon="@drawable/ic_power_settings_new_black_24dp"
         android:title="Logout"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_white_48dp"
+        android:title="home"
+        android:visible="true"
         app:showAsAction="always" />
 
 </menu>

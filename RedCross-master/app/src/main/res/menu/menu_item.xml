@@ -11,8 +11,8 @@
     </item>
     <item
         android:id="@+id/action_exit"
-        android:icon="@drawable/ic_power_settings_new_black_24dp"
-        android:title="Search"
+        android:icon="@drawable/ic_home_white_48dp"
+        android:title="Home"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView">
 
