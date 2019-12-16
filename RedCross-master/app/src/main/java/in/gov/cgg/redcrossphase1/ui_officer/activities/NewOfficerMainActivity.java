@@ -81,7 +81,7 @@ public class NewOfficerMainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         header = navigationView.getHeaderView(0);
         layout_main = findViewById(R.id.layout_main);
-        ll_nav_header = header.findViewById(R.id.ll_dashboard_header);
+        ll_nav_header = header.findViewById(R.id.ll_dashboard_headerof);
         View headerView = navigationView.getHeaderView(0);
         contentView = findViewById(R.id.content);
         Menu nav_Menu = navigationView.getMenu();
@@ -101,39 +101,40 @@ public class NewOfficerMainActivity extends AppCompatActivity {
             selectedThemeColor = this.getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
                 toolbar.setBackgroundResource(selectedThemeColor);
+                ll_nav_header.setBackgroundColor(selectedThemeColor);
                 if (selectedThemeColor == R.color.redcroosbg_1) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross1_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross1_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross2_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross3_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross3_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross4_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross4_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross5_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross5_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross6_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                     // navigationView.setBackgroundResource(R.drawable.redcross6_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross7_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross7_bg);
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
                     //navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 } else {
-                    ll_nav_header.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_nav_header.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                     //    navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                     selectedThemeColor = R.color.colorPrimary;
                     toolbar.setBackgroundResource(selectedThemeColor);
                     sharedPreferenceMethod(selectedThemeColor);
                 }
             } else {
-                ll_nav_header.setBackgroundResource(R.drawable.lltheme6_selectedbg);
+                ll_nav_header.setBackgroundResource(R.drawable.redcross2_bg);
                 //   navigationView.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
                 selectedThemeColor = R.color.colorPrimary;
                 toolbar.setBackgroundResource(selectedThemeColor);

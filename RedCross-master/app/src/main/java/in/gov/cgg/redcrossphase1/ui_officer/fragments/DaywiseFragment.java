@@ -508,14 +508,14 @@ public class DaywiseFragment extends TestFrag {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
         inflater.inflate(R.menu.activity_backpress, menu);
-        MenuItem logout = menu.findItem(R.id.logout);
+        MenuItem logout = menu.findItem(R.id.home);
         logout.setIcon(R.drawable.ic_home_white_48dp);
 
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
-                return false;
+                return true;
             }
         });
 

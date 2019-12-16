@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_dashboard_header"
+    android:id="@+id/ll_dashboard_headerof"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/tab_background_selected"
+    android:background="@drawable/redcross2_bg"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout

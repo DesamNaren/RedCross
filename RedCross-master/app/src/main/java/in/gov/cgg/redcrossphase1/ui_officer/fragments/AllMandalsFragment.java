@@ -213,7 +213,9 @@ public class AllMandalsFragment extends TestFrag {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
-        menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        if (!GlobalDeclaration.role.contains("D")) {
+            menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        }
         menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

@@ -1,5 +1,6 @@
 package in.gov.cgg.redcrossphase1.ui_citiguest.Fragments;
 
+
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,12 +9,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -21,11 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
 import static android.content.Context.MODE_PRIVATE;
-
 
 public class WhoWeAreFragment extends Fragment {
 
@@ -38,8 +39,8 @@ public class WhoWeAreFragment extends Fragment {
     private String pages;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public android.view.View onCreateView(@NonNull LayoutInflater inflater,
+                                          ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         View root = inflater.inflate(R.layout.fragment_tc, container, false);
@@ -133,7 +134,7 @@ public class WhoWeAreFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewpager) {
         adaptor = new HomeViewPagerAdapter(getFragmentManager());
-        adaptor.addFragment(new About_usFragment(), "About us");
+        adaptor.addFragment(new HistoryFragment(), "About us");
         adaptor.addFragment(new HistoryFragment(), "History");
         adaptor.addFragment(new VisionFragment(), "Vision");
         adaptor.addFragment(new MissionFragment(), "Mission");
