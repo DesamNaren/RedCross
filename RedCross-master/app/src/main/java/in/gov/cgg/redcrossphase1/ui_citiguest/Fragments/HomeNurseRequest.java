@@ -339,8 +339,9 @@ public class HomeNurseRequest extends Fragment {
                 int mYear = c.get(Calendar.YEAR);
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
+                c.add(Calendar.DAY_OF_MONTH, 1);
                 DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener2, mYear, mMonth, mDay);
-                dateDialog.getDatePicker().setMinDate(new Date().getTime());
+                dateDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                 dateDialog.show();
             }
         });
@@ -355,7 +356,6 @@ public class HomeNurseRequest extends Fragment {
                     EMailResult = binding.EmailRes.getText().toString().trim();
                     Pincode = binding.PincodeRes.getText().toString().trim();
                     if (validateFields()) {
-
                         callsubmitHomeNurseRequest();
 
                     } else {
@@ -500,8 +500,12 @@ public class HomeNurseRequest extends Fragment {
             binding.ApplicantRes.setError("Enter Applicant name");
             binding.ApplicantRes.requestFocus();
             return false;
-        } else if (RELATION.length() == 0) {
-            Toast.makeText(getActivity(), "Enter Relation", Toast.LENGTH_LONG).show();
+        } else if (binding.onBehalfOffRes.getSelectedItemPosition() == 0) {
+            Toast.makeText(getActivity(), "Select registering on behalf of", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (binding.onBehalfOffRes.getSelectedItem().toString().contains("Others") && binding.OtherRelationRes.getText().toString().length() == 0) {
+            binding.OtherRelationRes.setError("Enter relation");
+            binding.OtherRelationRes.requestFocus();
             return false;
         } else if (binding.PatientRes.getText().toString().trim().length() == 0) {
             binding.PatientRes.setError("Enter Patient name");
@@ -533,12 +537,11 @@ public class HomeNurseRequest extends Fragment {
             binding.MobNumRes.setError("Enter valid Mobile number");
             binding.MobNumRes.requestFocus();
             return false;
-        } else if (EMailResult.length() != 0) {
-            if (!EMailResult.matches(emailPattern)) {
-                binding.EmailRes.setError("Enter valid Email ID");
-                binding.EmailRes.requestFocus();
-                return false;
-            }
+        } else if (EMailResult.length() != 0 && !EMailResult.matches(emailPattern)) {
+            binding.EmailRes.setError("Enter valid Email ID");
+            binding.EmailRes.requestFocus();
+            return false;
+
         } else if (binding.AddressRes.getText().toString().length() == 0) {
             binding.AddressRes.setError("Enter Address");
             binding.AddressRes.requestFocus();
@@ -552,12 +555,10 @@ public class HomeNurseRequest extends Fragment {
         } else if (binding.TownVillageSpinRes.getSelectedItem().toString().trim().equals("Select Town/Village")) {
             Toast.makeText(getActivity(), "Select Village", Toast.LENGTH_LONG).show();
             return false;
-        } else if (Pincode.length() != 0) {
-            if (Pincode.length() < 6) {
-                binding.PincodeRes.setError("Enter valid Pincode");
-                binding.PincodeRes.requestFocus();
-                return false;
-            }
+        } else if (Pincode.length() != 0 && Pincode.length() < 6) {
+            binding.PincodeRes.setError("Enter valid Pincode");
+            binding.PincodeRes.requestFocus();
+            return false;
         }
         return true;
     }

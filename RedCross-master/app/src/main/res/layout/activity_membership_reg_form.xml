@@ -124,7 +124,7 @@
                                 android:id="@+id/FullName_res"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+                                android:digits=".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -140,7 +140,8 @@
                                 android:id="@+id/FathersHusbandName_res"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+                                android:digits=".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " />
+                            />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -390,7 +391,7 @@
                                 android:id="@+id/Occupation_res"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+                                android:inputType="text" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -445,14 +446,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:hint="Enter House No"
+                            android:hint="Enter House No *"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/House_no_res"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="text" />/>
+                                android:inputType="text" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout

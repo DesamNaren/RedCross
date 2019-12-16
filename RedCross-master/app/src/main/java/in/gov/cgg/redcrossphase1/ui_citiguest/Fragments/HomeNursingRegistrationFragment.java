@@ -197,6 +197,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                     //   District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
                     if (distId != 0) {
                         callgetMandalsListRequest("" + distId);
+                        binding.mandalSpinLayout.setVisibility(View.VISIBLE);
                         distValidation = true;
                     } else {
                         MembershipMandalsResponseList.clear();
@@ -223,6 +224,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                     //   Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
                     if (distId != 0 && manId != 0) {
                         callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
+                        binding.villageSpinLayout.setVisibility(View.VISIBLE);
                         mandalValid = true;
                         Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
                     } else {
@@ -824,9 +826,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
             return false;
 
         } else if (binding.datePickerDateofBirth.getText().toString().trim().length() == 0) {
-            binding.datePickerDateofBirth.setError("enter your date of birth");
-            binding.datePickerDateofBirth.requestFocus();
-
+            Toast.makeText(getActivity(), "Enter your Date of birth", Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -841,13 +841,17 @@ public class HomeNursingRegistrationFragment extends Fragment {
             return false;
 
         } else if (binding.etMobileNumber.getText().toString().trim().length() == 0) {
-            binding.etMobileNumber.setError("enter mobile number");
+            binding.etMobileNumber.setError("Enter Mobile number");
             binding.etMobileNumber.requestFocus();
             return false;
-        } else if (!(binding.etMobileNumber.getText().toString().trim().startsWith("9") || binding.etEmail.getText().toString().trim().startsWith("8") || binding.etEmail.getText().toString().trim().startsWith("7") || binding.etEmail.getText().toString().trim().startsWith("6") || binding.etEmail.getText().toString().trim().startsWith("5"))) {
-            Toast.makeText(getActivity(), "Enter valid Mobile number", Toast.LENGTH_LONG).show();
+        } else if (binding.etMobileNumber.getText().toString().trim().length() < 10) {
+            binding.etMobileNumber.setError("Enter valid Mobile number");
+            binding.etMobileNumber.requestFocus();
             return false;
-
+        } else if (!(binding.etMobileNumber.getText().toString().trim().startsWith("9") || binding.etMobileNumber.getText().toString().trim().startsWith("8") || binding.etMobileNumber.getText().toString().trim().startsWith("7") || binding.etMobileNumber.getText().toString().trim().startsWith("6") || binding.etMobileNumber.getText().toString().trim().startsWith("5"))) {
+            binding.etMobileNumber.setError("Enter valid Mobile number");
+            binding.etMobileNumber.requestFocus();
+            return false;
         } else if (binding.etInstitute.getText().toString().trim().length() == 0) {
 
             binding.etInstitute.setError("enter institute name");

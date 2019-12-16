@@ -315,7 +315,28 @@ public class MembershipRegFormFragment extends Fragment {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EMailResult = email.getText().toString().trim();
+                if (email.getText().toString().length() == 0) {
+                    EMailResult = "";
+                } else {
+                    EMailResult = email.getText().toString().trim();
+                }
+                if (email.getText().toString().length() == 0) {
+                    EMailResult = "";
+                } else {
+                    EMailResult = email.getText().toString().trim();
+                }
+                if (email.getText().toString().length() == 0) {
+                    EMailResult = "";
+                } else {
+                    EMailResult = email.getText().toString().trim();
+                }
+                if (email.getText().toString().length() == 0) {
+                    EMailResult = "";
+                } else {
+                    EMailResult = email.getText().toString().trim();
+                }
+
+
                 Education = education.getSelectedItem().toString().trim();
                 Occupation = occupation.getText().toString().trim();
                 Pincode = pincode.getText().toString().trim();
@@ -387,7 +408,7 @@ public class MembershipRegFormFragment extends Fragment {
                         MembersipVillagesResponseList.clear();
                         MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
                         membershipVillagesResponse.setVillageID(0);
-                        membershipVillagesResponse.setVillageName("Select Village");
+                        membershipVillagesResponse.setVillageName("Select Town/Village");
                         MembersipVillagesResponseList.add(membershipVillagesResponse);
                     }
                 }
@@ -531,7 +552,7 @@ public class MembershipRegFormFragment extends Fragment {
         MembersipVillagesResponseList.clear();
         MembershipVillagesResponse membershipVillagesResponse = new MembershipVillagesResponse();
         membershipVillagesResponse.setVillageID(0);
-        membershipVillagesResponse.setVillageName("Select Village");
+        membershipVillagesResponse.setVillageName("Select Town/Village");
         MembersipVillagesResponseList.add(membershipVillagesResponse);
 
         call.enqueue(new Callback<List<MembershipVillagesResponse>>() {
@@ -733,13 +754,11 @@ public class MembershipRegFormFragment extends Fragment {
                 public void onResponse(Call<PaymentBean> call, Response<PaymentBean> response) {
 
                     progressDialog.dismiss();
-                    if (response.body() != null) {
+                    if (response.body() != null && response.body().getStatus().contains("Success")) {
 
                         GlobalDeclaration.Paymenturl = response.body().getPaymentGatewayUrl();
                         Toast.makeText(getActivity(), response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
-                        //GlobalDeclaration.encrpyt=response.body().getPaymentRequest().replace("|","!");
                         GlobalDeclaration.encrpyt = response.body().getPaymentRequest();
-
                         Log.d("responseurl", "onResponse: url" + response.body().getPaymentRequest());
 
 
@@ -751,7 +770,7 @@ public class MembershipRegFormFragment extends Fragment {
                         transaction.commitAllowingStateLoss();
 
                     } else {
-                        Toast.makeText(getActivity(), "Response null" + response.body(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Response" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -870,14 +889,15 @@ public class MembershipRegFormFragment extends Fragment {
             mob_num.setError("Enter valid Mobile number");
             mob_num.requestFocus();
             return false;
-        } else if (EMailResult.length() != 0) {
-            if (!EMailResult.matches(emailPattern)) {
-                email.setError("Enter valid Email ID");
-                email.requestFocus();
-                return false;
-            }
-        } else if (Bloodgroup.getSelectedItem().toString().trim().equals("Select Blood Group")) {
+        } else if (EMailResult.length() != 0 && !EMailResult.matches(emailPattern)) {
+            email.setError("Enter valid Email ID");
+            email.requestFocus();
+            return false;
+        } else if (Bloodgroup.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select Blood group", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (Photo.getDrawable() == null) {
+            Toast.makeText(getActivity(), "Choose photo", Toast.LENGTH_LONG).show();
             return false;
         } else if (house_no.getText().toString().trim().length() == 0) {
             house_no.setError("Enter House No.");
@@ -891,23 +911,18 @@ public class MembershipRegFormFragment extends Fragment {
             street.setError("Enter Street/Area");
             street.requestFocus();
             return false;
-        } else if (district.getSelectedItem().toString().trim().equals("Select District")) {
+        } else if (district.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select District", Toast.LENGTH_LONG).show();
             return false;
-        } else if (mandal.getSelectedItem().toString().trim().equals("Select Mandal")) {
+        } else if (mandal.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select Mandal", Toast.LENGTH_LONG).show();
             return false;
-        } else if (village.getSelectedItem().toString().trim().equals("Select Town/Village")) {
+        } else if (village.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select Town/Village", Toast.LENGTH_LONG).show();
             return false;
-        } else if (pincode.getText().toString().trim().length() != 0) {
-            if (pincode.getText().toString().length() < 6) {
-                pincode.setError("Enter valid Pincode");
-                pincode.requestFocus();
-                return false;
-            }
-        } else if (Photo.getDrawable() == null) {
-            Toast.makeText(getActivity(), "Choose photo", Toast.LENGTH_LONG).show();
+        } else if (pincode.getText().toString().length() != 0 && pincode.getText().toString().length() < 6) {
+            pincode.setError("Enter valid Pincode");
+            pincode.requestFocus();
             return false;
         }
         return true;

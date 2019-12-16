@@ -99,7 +99,7 @@
                                         android:id="@+id/Applicant_res"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        android:digits=".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " />
                                         android:inputType="text" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,7 +147,7 @@
                                             android:id="@+id/Other_relation_res"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                                             android:inputType="text" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -218,7 +218,7 @@
                                         android:id="@+id/Patient_res"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        android:digits=".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " />
                                         android:inputType="text" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -235,7 +235,8 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:digits="1234567890"
-                                        android:inputType="number" />
+                                        android:inputType="number"
+                                        android:maxLength="3" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <com.google.android.material.textfield.TextInputLayout
@@ -250,7 +251,7 @@
                                         android:id="@+id/natureOfDisability_res"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        android:digits=".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ " />
                                         android:inputType="text" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -410,7 +411,8 @@
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:id="@+id/Address_res"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
+                                        android:layout_height="wrap_content"
+                                        android:inputType="text" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
                                 <LinearLayout
