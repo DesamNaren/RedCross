@@ -88,7 +88,7 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
                     holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_seleetedbg));
 
                 } else {
-                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabselected));
+                    holder.rl_header.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
                 }
             } else {
@@ -127,14 +127,14 @@ public class BDonorAdapter extends RecyclerView.Adapter<BDonorAdapter.BBViewHold
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_bg));
                 } else {
-                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.red_tabunselected));
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
                 }
             } else {
-                holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+                holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));
+            holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
 
         }
         holder.tv_distance.setText(distance + " KMs");

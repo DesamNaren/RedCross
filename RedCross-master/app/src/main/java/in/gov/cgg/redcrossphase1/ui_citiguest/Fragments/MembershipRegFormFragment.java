@@ -292,13 +292,13 @@ public class MembershipRegFormFragment extends Fragment {
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
                 } else {
-                    MainLayout.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
                     personaldetails.setTextColor(getResources().getColor(selectedThemeColor));
                     switchView.setTextColor(getResources().getColor(selectedThemeColor));
                     professionalheeading.setTextColor(getResources().getColor(selectedThemeColor));
                     CommuDetails.setTextColor(getResources().getColor(selectedThemeColor));
                     OtherDetails.setTextColor(getResources().getColor(selectedThemeColor));
-                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
+                    headingWithHome.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                     spared_hours.setTextColor(getResources().getColor(selectedThemeColor));
                     view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));

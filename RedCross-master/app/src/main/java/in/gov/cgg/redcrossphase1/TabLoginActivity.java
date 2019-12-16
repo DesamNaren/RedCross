@@ -12,6 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -19,13 +25,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.tabs.TabLayout;
-import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import in.gov.cgg.redcrossphase1.databinding.ActivityTabloginBinding;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
@@ -89,23 +88,23 @@ public class TabLoginActivity extends AppCompatActivity implements View.OnClickL
                     binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
 
                 } else {
-                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                    binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                    binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                    binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    binding.tvSignIn.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.tvRegister.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
             } else {
-                binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                binding.tvSignIn.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvRegister.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.colorPrimary));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-            binding.tvSignIn.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-            binding.tvRegister.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-            binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.rlmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+            binding.tvSignIn.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.tvRegister.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.tvCntinueguest.setTextColor(getResources().getColor(R.color.colorPrimary));
         }
 
 

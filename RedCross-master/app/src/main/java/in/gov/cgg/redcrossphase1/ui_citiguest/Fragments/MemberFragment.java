@@ -56,7 +56,7 @@ public class MemberFragment extends Fragment {
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_bg.setBackgroundResource(R.drawable.redcross8_bg);
                 } else {
-                    ll_bg.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_bg.setBackgroundResource(R.drawable.redcross7_bg);
                 }
 
 

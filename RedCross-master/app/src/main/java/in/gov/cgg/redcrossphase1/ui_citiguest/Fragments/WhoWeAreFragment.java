@@ -110,8 +110,8 @@ public class WhoWeAreFragment extends Fragment {
                     tabsLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.redcroosbg_8));
 
                 } else {
-                    ll_whoweAre.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
-                    tabsLayout.setSelectedTabIndicatorColor(R.drawable.redcross_splashscreen_bg);
+                    ll_whoweAre.setBackgroundResource(R.drawable.redcross7_bg);
+                    tabsLayout.setSelectedTabIndicatorColor(R.drawable.redcross7_bg);
 
                 }
             }

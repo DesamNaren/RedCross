@@ -10,12 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.JsonObject;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentCitizenBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -64,7 +63,7 @@ public class CitizenLoginFragment extends Fragment {
                 binding.btnLogincitizen.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else {
-                binding.btnLogincitizen.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.btnLogincitizen.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
         } catch (Exception e) {
             e.printStackTrace();

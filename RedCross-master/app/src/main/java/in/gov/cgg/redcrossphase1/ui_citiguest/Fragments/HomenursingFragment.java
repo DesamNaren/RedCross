@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import java.util.Objects;
-
 import in.gov.cgg.redcrossphase1.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -175,7 +174,7 @@ public class HomenursingFragment extends Fragment {
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
             } else {
-                rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -183,7 +182,7 @@ public class HomenursingFragment extends Fragment {
             }
 
         } else {
-            rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
             ll_requestBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(R.color.colorPrimary));

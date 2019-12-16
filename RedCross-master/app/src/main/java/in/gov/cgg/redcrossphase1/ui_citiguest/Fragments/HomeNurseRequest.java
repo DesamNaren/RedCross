@@ -170,7 +170,7 @@ public class HomeNurseRequest extends Fragment {
                     binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
                 } else {
-                    binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                     binding.ApplicantDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
                     binding.PatientDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
                     binding.CantactDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -180,7 +180,7 @@ public class HomeNurseRequest extends Fragment {
 
                 }
             } else {
-                binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.Mainlayout.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 binding.ApplicantDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
                 binding.PatientDetails.setTextColor(getResources().getColor(R.color.colorPrimary));
                 binding.CantactDetails.setTextColor(getResources().getColor(R.color.colorPrimary));

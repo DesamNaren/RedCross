@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#E51E00</color>
+    <!--
+        <color name="colorPrimary">#E51E00</color>
+    -->
+    <color name="colorPrimary">#980224</color>
     <!--    <color name="colorPrimaryDark">#F45900</color>-->
     <color name="colorPrimaryDark">#E51E00</color>
     <color name="colorShadeRed">#F45900</color>

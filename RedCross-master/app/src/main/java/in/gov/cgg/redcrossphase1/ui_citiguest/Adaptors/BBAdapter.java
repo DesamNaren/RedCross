@@ -101,13 +101,13 @@ public class BBAdapter extends RecyclerView.Adapter<BBAdapter.BBViewHolder> impl
 
                 } else {
 
-                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
 
                 }
 
             } else {
 
-                holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.tab_background_unselected));
+                holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
 
 
             }

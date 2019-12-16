@@ -26,10 +26,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -43,6 +39,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursing1Binding;
@@ -992,7 +991,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else {
-                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 binding.tvHomenurseDeatils.setTextColor(getResources().getColor(R.color.colorPrimary));
                 binding.tvHomenurseAdress.setTextColor(getResources().getColor(R.color.colorPrimary));
                 binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -1006,7 +1005,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
             }
 
         } else {
-            binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+            binding.llHomenurseRegistartion.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
             binding.tvHomenurseDeatils.setTextColor(getResources().getColor(R.color.colorPrimary));
             binding.tvHomenurseAdress.setTextColor(getResources().getColor(R.color.colorPrimary));
             binding.tvTvGomenurseInfo.setTextColor(getResources().getColor(R.color.colorPrimary));

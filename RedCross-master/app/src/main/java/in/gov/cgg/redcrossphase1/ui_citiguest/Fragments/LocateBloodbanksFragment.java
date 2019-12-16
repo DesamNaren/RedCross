@@ -70,7 +70,7 @@ public class LocateBloodbanksFragment extends Fragment implements SearchView.OnQ
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross8_bg);
                 } else {
-                    ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    ll_bloodbankDetails.setBackgroundResource(R.drawable.redcross7_bg);
                 }
 
             }

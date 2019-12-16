@@ -76,23 +76,23 @@ public class RegisterActivity extends AppCompatActivity {
                     binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
 
                 } else {
-                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                    binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                    binding.tvSignUp.setTextColor(getResources().getColor(R.color.colorPrimary));
                     binding.btnRegister.setTextColor(getResources().getColor(R.color.white));
-                    binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                    binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
                 }
             } else {
-                binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-                binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+                binding.tvSignUp.setTextColor(getResources().getColor(R.color.colorPrimary));
+                binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
             }
         } catch (Exception e) {
             e.printStackTrace();
-            binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
-            binding.tvSignUp.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-            binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+            binding.llmain.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
+            binding.tvSignUp.setTextColor(getResources().getColor(R.color.colorPrimary));
+            binding.btnRegister.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
         }
 

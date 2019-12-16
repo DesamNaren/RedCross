@@ -158,12 +158,12 @@ public class CapacityBuildingsFragment extends Fragment {
                 btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme8_seleetedbg));
 
             } else {
-                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+                btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
             }
         } else {
 
-            btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            btn_upcoming_event.setBackground(getResources().getDrawable(R.drawable.lltheme7_seleetedbg));
 
         }
     }

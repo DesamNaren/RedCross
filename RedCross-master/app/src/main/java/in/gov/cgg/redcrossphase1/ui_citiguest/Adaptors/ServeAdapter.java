@@ -200,7 +200,7 @@ public class ServeAdapter extends RecyclerView.Adapter<ServeAdapter.BBViewHolder
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme8_bg));
                 } else {
-                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme2_bg));
+                    holder.ll_alldlist.setBackground(mCtx.getResources().getDrawable(R.drawable.lltheme7_bg));
                 }
             } else {
                 holder.ll_alldlist.setBackgroundColor(mCtx.getResources().getColor(R.color.colorPrimary));

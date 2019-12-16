@@ -15,6 +15,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.R;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class SevenFundamentalFragment extends Fragment {
     SharedPreferences settings;
@@ -31,7 +33,36 @@ public class SevenFundamentalFragment extends Fragment {
         //   Objects.requireNonNull(getActivity()).setTitle("Fundamental Principles");
 
         View root = inflater.inflate(R.layout.fragment_sevenprinciples, container, false);
+        ll_sevenPrinciples = root.findViewById(R.id.ll_sevenPrinciples);
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+            if (selectedThemeColor != -1) {
+                if (selectedThemeColor == R.color.redcroosbg_1) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross1_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross2_bg);
 
+                } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross3_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross4_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross5_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross6_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross7_bg);
+                } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross8_bg);
+                } else {
+                    ll_sevenPrinciples.setBackgroundResource(R.drawable.redcross7_bg);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
         findViews(root);
 
         // GlobalDeclaration.home = false;

@@ -75,11 +75,11 @@ public class GuestdashboardFragment extends Fragment implements View.OnClickList
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     fragment_citizendashboard.setBackgroundResource(R.drawable.redcross8_bg);
                 } else {
-                    fragment_citizendashboard.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                    fragment_citizendashboard.setBackgroundResource(R.drawable.redcross7_bg);
                 }
 
             } else {
-                fragment_citizendashboard.setBackgroundResource(R.drawable.redcross_splashscreen_bg);
+                fragment_citizendashboard.setBackgroundResource(R.drawable.redcross7_bg);
 
             }
         } catch (Exception e) {

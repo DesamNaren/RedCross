@@ -286,13 +286,13 @@ public class DonorsMapsActivity extends FragmentActivity implements OnMapReadyCa
                 switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_8));
             } else {
 
-                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+                switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
 
             }
 
         } else {
 
-            switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_1));
+            switchView.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
 
         }
     }
