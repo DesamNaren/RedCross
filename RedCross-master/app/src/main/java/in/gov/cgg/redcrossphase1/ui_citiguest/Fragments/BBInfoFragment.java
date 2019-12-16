@@ -23,6 +23,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 
@@ -31,9 +35,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -169,7 +170,6 @@ public class BBInfoFragment extends LocBaseFragment {
                             bbAdapter.notifyDataSetChanged();
                             tv_total.setVisibility(View.VISIBLE);
                             tv_total.setText("Total Records: " + mainList.size());
-                            sortData(mainList);
 
                         }
 
@@ -278,6 +278,8 @@ public class BBInfoFragment extends LocBaseFragment {
                     if (CheckInternet.isOnline(getActivity())) {
                         bbAdapter = new BBAdapter(getActivity(), mainList);
                         callERaktakoshRequest(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude(), spinner_position);
+//                        callERaktakoshRequest(17.419703, 78.460390, spinner_position); //Rajbhavan
+//                        callERaktakoshRequest(17.504685, 78.521757, spinner_position); //Rastrapathi Nilayam
                     } else {
                         if (mainList != null && mainList.size() > 0) {
                             spinner_bg.setSelection(0);
@@ -582,6 +584,8 @@ public class BBInfoFragment extends LocBaseFragment {
                             if (cnt == 1) {
                                 Location location = mCurrentLocation;
                                 callERaktakoshRequest(location.getLatitude(), location.getLongitude(), spinner_position);
+//                                callERaktakoshRequest(17.419703, 78.460390, spinner_position); //Rajbhavan
+//                                callERaktakoshRequest(17.504685, 78.521757, spinner_position); //Rastrapathi Nilayam
                             }
                         }
                     }
@@ -600,15 +604,6 @@ public class BBInfoFragment extends LocBaseFragment {
             if (progressDialog != null && !progressDialog.isShowing()) {
                 progressDialog.show();
             }
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (progressDialog != null && progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                    }
-                }
-
-            }, 2000);
 
             bbAdapter = new BBAdapter(getActivity(), mainList);
             ArrayList<eRaktkoshResponseBean> arrayList = bbAdapter.getBBFilter(selVal);
@@ -622,10 +617,18 @@ public class BBInfoFragment extends LocBaseFragment {
                 bbAdapter.notifyDataSetChanged();
                 bb_rv.setAdapter(bbAdapter);
                 bb_rv.smoothScrollToPosition(0);
+
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
             } else {
                 tv_total.setText("Filtered Records: " + 0);
                 bb_rv.setVisibility(View.GONE);
                 no_data_tv.setVisibility(View.VISIBLE);
+
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
             }
         }
 
@@ -636,17 +639,6 @@ public class BBInfoFragment extends LocBaseFragment {
             if (progressDialog != null && !progressDialog.isShowing()) {
                 progressDialog.show();
             }
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (progressDialog != null && progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                    }
-                }
-
-            }, 2000);
-
-
             bDonorAdapter = new BDonorAdapter(getActivity(), bloodDonorResponseMainList);
             ArrayList<BloodDonorResponse> arrayList = bDonorAdapter.getBDonorFilter(bgVal + "_" + distVal);
 
@@ -659,10 +651,19 @@ public class BBInfoFragment extends LocBaseFragment {
                 bDonorAdapter.notifyDataSetChanged();
                 bb_rv.setAdapter(bDonorAdapter);
                 bb_rv.smoothScrollToPosition(0);
+
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+
             } else {
                 tv_total.setText("Filtered Records: " + 0);
                 bb_rv.setVisibility(View.GONE);
                 no_data_tv.setVisibility(View.VISIBLE);
+
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
             }
         }
     }
@@ -748,7 +749,19 @@ public class BBInfoFragment extends LocBaseFragment {
                                 mainList.addAll(list);
                                 tv_total.setVisibility(View.VISIBLE);
                                 tv_total.setText("Total Records: " + mainList.size());
-                                sortData(list);
+                                sortData(mainList);
+
+//                                ArrayList<eRaktkoshResponseBean> newArrayList = new ArrayList<>();
+//                                for(int z=0;z<mainList.size();z++){
+//                                    if(z<=14) {
+//                                        newArrayList.add(mainList.get(z));
+//                                    }
+//                                }
+//
+//                                Gson gson = new Gson();
+//                                String s = gson.toJson(newArrayList);
+//                                Log.d("JSON_LIST", "onResponse: "+s);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -756,7 +769,7 @@ public class BBInfoFragment extends LocBaseFragment {
                             bb_rv.setHasFixedSize(true);
                             bb_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-                            bbAdapter = new BBAdapter(getActivity(), list);
+                            bbAdapter = new BBAdapter(getActivity(), mainList);
                             bb_rv.setAdapter(bbAdapter);
                             bbAdapter.notifyDataSetChanged();
 
