@@ -31,6 +31,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -47,13 +55,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -72,6 +73,8 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.PhotoBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.CitiGuestMainActivity;
 import in.gov.cgg.redcrossphase1.utils.CheckInternet;
 import in.gov.cgg.redcrossphase1.utils.CustomProgressDialog;
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -764,26 +767,53 @@ public class MembershipRegFormFragment extends Fragment {
             Call<PaymentBean> call = apiInterface.SendDetails(gsonObject);
             call.enqueue(new Callback<PaymentBean>() {
                 @Override
-                public void onResponse(Call<PaymentBean> call, Response<PaymentBean> response) {
+                public void onResponse(Call<PaymentBean> call, final Response<PaymentBean> response) {
 
                     progressDialog.dismiss();
                     if (response.body() != null && response.body().getStatus().contains("Success")) {
 
                         GlobalDeclaration.Paymenturl = response.body().getPaymentGatewayUrl();
-                        Toast.makeText(getActivity(), response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
-                        GlobalDeclaration.encrpyt = response.body().getPaymentRequest();
-                        Log.d("responseurl", "onResponse: url" + response.body().getPaymentRequest());
+                        // Toast.makeText(getActivity(), response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
+                        final PrettyDialog dialog = new PrettyDialog(getActivity());
+                        dialog
+                                .setTitle("Response")
+                                .setMessage("Successfully submitted")
+                                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
+                                    @Override
+                                    public void onClick() {
+                                        dialog.dismiss();
+                                        GlobalDeclaration.encrpyt = response.body().getPaymentRequest();
+                                        Log.d("responseurl", "onResponse: url" + response.body().getPaymentRequest());
 
 
-                        Fragment fragment = new MembershipPaymentFragment();
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction transaction = fragmentManager.beginTransaction();
-                        transaction.replace(R.id.nav_host_fragment, fragment, MembershipPaymentFragment.class.getSimpleName());
-                        transaction.addToBackStack(null);
-                        transaction.commitAllowingStateLoss();
+                                        Fragment fragment = new MembershipPaymentFragment();
+                                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                        transaction.replace(R.id.nav_host_fragment, fragment, MembershipPaymentFragment.class.getSimpleName());
+                                        transaction.addToBackStack(null);
+                                        transaction.commitAllowingStateLoss();
+                                    }
+                                });
+
+                        dialog.show();
+
 
                     } else {
-                        Toast.makeText(getActivity(), "Response" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), "Response" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
+                        final PrettyDialog dialog = new PrettyDialog(getActivity());
+                        dialog
+                                .setTitle("Response")
+                                .setMessage("" + response.body().getStatus())
+                                .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
+                                .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
+                                    @Override
+                                    public void onClick() {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                        dialog.show();
                     }
 
                 }

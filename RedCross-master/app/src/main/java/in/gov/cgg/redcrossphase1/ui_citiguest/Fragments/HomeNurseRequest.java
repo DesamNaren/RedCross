@@ -12,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -25,9 +29,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import androidx.annotation.RequiresApi;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.HomeNurseRequestLayoutBinding;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
@@ -63,6 +64,8 @@ public class HomeNurseRequest extends Fragment {
     private List<MembershipMandalsResponse> MembershipMandalsResponseList = new ArrayList<>();
     private List<MembershipVillagesResponse> MembersipVillagesResponseList = new ArrayList<>();
     private JsonObject gsonObject;
+    DatePickerDialog dateDialogStart;
+    Calendar cal;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -307,13 +310,13 @@ public class HomeNurseRequest extends Fragment {
         binding.serviceStartDateRes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR);
-                int mMonth = c.get(Calendar.MONTH);
-                int mDay = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay);
-                dateDialog.getDatePicker().setMinDate(new Date().getTime());
-                dateDialog.show();
+                cal = Calendar.getInstance();
+                int mYear = cal.get(Calendar.YEAR);
+                int mMonth = cal.get(Calendar.MONTH);
+                int mDay = cal.get(Calendar.DAY_OF_MONTH);
+                dateDialogStart = new DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay);
+                dateDialogStart.getDatePicker().setMinDate(new Date().getTime());
+                dateDialogStart.show();
             }
         });
         //Datepicker for end Date
@@ -325,6 +328,7 @@ public class HomeNurseRequest extends Fragment {
                 c.set(Calendar.YEAR, year);
                 c.set(Calendar.MONTH, month);
                 c.set(Calendar.DAY_OF_MONTH, day);
+
                 String format = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
                 //binding.serviceEndDateRes
                 binding.serviceEndDateRes.setText(format);
@@ -338,9 +342,11 @@ public class HomeNurseRequest extends Fragment {
                 int mYear = c.get(Calendar.YEAR);
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
                 c.add(Calendar.DAY_OF_MONTH, 1);
                 DatePickerDialog dateDialog = new DatePickerDialog(view.getContext(), datePickerListener2, mYear, mMonth, mDay);
-                dateDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+                dateDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
                 dateDialog.show();
             }
         });
@@ -545,13 +551,13 @@ public class HomeNurseRequest extends Fragment {
             binding.AddressRes.setError("Enter Address");
             binding.AddressRes.requestFocus();
             return false;
-        } else if (binding.DistrictSpinRes.getSelectedItem().toString().trim().equals("Select District")) {
+        } else if (binding.DistrictSpinRes.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select District", Toast.LENGTH_LONG).show();
             return false;
-        } else if (binding.MandalSpinRes.getSelectedItem().toString().trim().equals("Select Mandal")) {
+        } else if (binding.MandalSpinRes.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select Mandal", Toast.LENGTH_LONG).show();
             return false;
-        } else if (binding.TownVillageSpinRes.getSelectedItem().toString().trim().equals("Select Town/Village")) {
+        } else if (binding.TownVillageSpinRes.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "Select Village", Toast.LENGTH_LONG).show();
             return false;
         } else if (Pincode.length() != 0 && Pincode.length() < 6) {

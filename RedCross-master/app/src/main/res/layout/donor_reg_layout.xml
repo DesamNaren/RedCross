@@ -325,82 +325,56 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
+                            android:id="@+id/dist_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="0.5"
-                                android:gravity="center_vertical"
-                                android:text="District *"
-                                android:textColor="@color/black"
-                                android:visibility="gone" />
-
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
+                            android:orientation="horizontal">
 
                             <Spinner
                                 android:id="@+id/spn_district"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:entries="@array/District"
                                 android:textColor="@color/black" />
 
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/mandal_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="0.5"
-                                android:gravity="center_vertical"
-                                android:text="Mandal *"
-                                android:textColor="@color/black"
-                                android:visibility="gone" />
+                            android:visibility="gone">
 
                             <Spinner
                                 android:id="@+id/spn_mandal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/Mandal"
+                                android:textColor="@color/black" />
 
-                            </Spinner>
+
                         </LinearLayout>
 
-
                         <LinearLayout
+                            android:id="@+id/village_spin_lay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_margin="5dp"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:layout_marginBottom="@dimen/dp_5"
                             android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="0.5"
-                                android:gravity="center_vertical"
-                                android:text="Village *"
-                                android:textColor="@color/black"
-                                android:visibility="gone" />
+                            android:visibility="gone">
 
                             <Spinner
                                 android:id="@+id/spn_village"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                            </Spinner>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/Town_Village"
+                                android:textColor="@color/black" />
                         </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -506,7 +480,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:padding="5dp"
-                                    android:text="Previously donattion Date *"
+                                    android:text="Previously donation Date *"
                                     android:textColor="@color/black" />
 
                                 <LinearLayout
@@ -604,7 +578,8 @@
                         android:id="@+id/btn_donorRegNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/redcroosbg_3"
+                        android:layout_margin="8dp"
+                        android:background="#30000000"
                         android:text="Submit"
                         android:textColor="@color/white" />
                 </LinearLayout>

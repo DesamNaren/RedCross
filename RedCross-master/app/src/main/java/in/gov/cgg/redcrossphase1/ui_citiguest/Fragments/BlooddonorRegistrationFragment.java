@@ -21,6 +21,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -33,10 +38,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Objects;
 
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
@@ -74,7 +75,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
     String name, fratherName, mobileNumber, officeName, address, dob, previoslydonatedDate, noofpreviousDonations;
     TextView et_donatetype;
     LinearLayout ll_registrationForm;
-
+    LinearLayout dist_spin_lay, Mandal_spin_lay, Village_apin_lay;
     String email = "";
     String pincode = "";
     String occupation = "";
@@ -130,6 +131,9 @@ public class BlooddonorRegistrationFragment extends Fragment {
 
         Objects.requireNonNull(getActivity()).setTitle("Donor Regisration");
         progressDialog = new CustomProgressDialog(getActivity());
+        dist_spin_lay = root.findViewById(R.id.dist_spin_lay);
+        Mandal_spin_lay = root.findViewById(R.id.mandal_spin_lay);
+        Village_apin_lay = root.findViewById(R.id.village_spin_lay);
 
         findViews(root);
 
@@ -284,6 +288,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                     distId = MembersipDistResponseList.get(i).getDistrictID();
                     //   District_View.setText(MembersipDistResponseList.get(i).getDistrictName());
                     if (distId != 0) {
+                        Mandal_spin_lay.setVisibility(View.VISIBLE);
                         callgetMandalsListRequest("" + distId);
                         distValidation = true;
                     } else {
@@ -310,6 +315,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                     manId = MembershipMandalsResponseList.get(i).getMandalID();
                     //   Mandal_View.setText(MembershipMandalsResponseList.get(i).getMandalName());
                     if (distId != 0 && manId != 0) {
+                        Village_apin_lay.setVisibility(View.VISIBLE);
                         callgetVillagesListRequest("" + MembershipMandalsResponseList.get(i).getMandalID());
                         mandalValid = true;
                         Log.e("MANDALID", "====" + MembershipMandalsResponseList.get(i).getMandalID());
@@ -593,16 +599,10 @@ public class BlooddonorRegistrationFragment extends Fragment {
             return false;
 
         } else if (datePicker_dateofBirth.getText().toString().trim().length() == 0) {
-            datePicker_dateofBirth.setError("enter your date of birth");
-            datePicker_dateofBirth.requestFocus();
-
-
+            Toast.makeText(getActivity(), "Enter Date of Birth", Toast.LENGTH_LONG).show();
             return false;
         } else if (spn_gender.getSelectedItemPosition() == 0) {
             Toast.makeText(getActivity(), "select gender", Toast.LENGTH_LONG).show();
-
-
-
             return false;
         } else if (et_mobileNumber.getText().toString().trim().length() == 0) {
             et_mobileNumber.setError("enter mobile number");
@@ -637,9 +637,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
             Toast.makeText(getActivity(), "select bloodgroup", Toast.LENGTH_LONG).show();
             return false;
         } else if (et_previouslyDonationDate.getText().toString().trim().length() == 0) {
-            et_previouslyDonationDate.setError("enter previous donation date");
-            et_previouslyDonationDate.requestFocus();
-
+            Toast.makeText(getActivity(), "Please enter donation date ", Toast.LENGTH_LONG).show();
 
             return false;
         } else if (!radioButton1True.isChecked() && !radioButton2False.isChecked()) {
@@ -895,7 +893,7 @@ public class BlooddonorRegistrationFragment extends Fragment {
                 view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                btn_donorRegNext.setBackgroundColor(selectedThemeColor);
+                //btn_donorRegNext.setBackgroundColor(selectedThemeColor);
 
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
                 ll_registrationForm.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
