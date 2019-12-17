@@ -528,10 +528,10 @@ public class NewOfficerHomeFragment extends Fragment {
                 binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
                 binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
                 binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
-                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+                binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+                binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
                 binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(colorPrimary));
 
             }
@@ -544,10 +544,10 @@ public class NewOfficerHomeFragment extends Fragment {
             binding.customCount.tvYrcnme.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvLmcount.setTextColor(getResources().getColor(colorPrimary));
             binding.customCount.tvLmname.setTextColor(getResources().getColor(colorPrimary));
-            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.red_tabunselected));
-            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.red_tabselected));
+            binding.customCount.llLm.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.customCount.llYrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.customCount.llJrc.setBackground(getResources().getDrawable(R.drawable.tab_background_unselected));
+            binding.customCount.llAll.setBackground(getResources().getDrawable(R.drawable.tab_background_selected));
             binding.tabsHome.setSelectedTabIndicatorColor(getResources().getColor(colorPrimary));
 
         }

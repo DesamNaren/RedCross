@@ -6,7 +6,7 @@
         android:id="@+id/ll_drilldown"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/redcross6_bg"
+        android:background="@drawable/redcross7_bg"
         android:orientation="vertical">
 
 

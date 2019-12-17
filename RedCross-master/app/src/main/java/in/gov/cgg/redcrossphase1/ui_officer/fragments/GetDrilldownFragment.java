@@ -441,9 +441,9 @@ public class GetDrilldownFragment extends TestFrag {
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
-                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross_splashscreen_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
                 } else {
-                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
+                    binding.llDrilldown.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 }
             }
         } catch (Resources.NotFoundException e) {

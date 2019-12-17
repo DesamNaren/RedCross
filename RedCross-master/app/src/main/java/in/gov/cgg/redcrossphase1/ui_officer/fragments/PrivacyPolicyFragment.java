@@ -57,28 +57,6 @@ public class PrivacyPolicyFragment extends Fragment {
         wb.loadUrl(url);
 
 
-//        String longDescription = "Fee once paid will not be given refund. Candidate should go through the Detailed Notification and ensure the eligibility before making payment.\n" +"\n"+
-//                "When a candidate makes double payment by mistake, refund can be considered only on bringing it to the notice of RED CROSS by mail within 7 days of making such payment. Any kind of requests beyond this 7 days period will not be entertained. The refund process via same source of payments made in such cases will be initiated in Three to Five working days after receiving the refund request in all eligible cases of refund. This clause is applicable only in case of multiple payments by a candidate for the notification.\n" +"\n"+
-//                "During the process of making payment , by any chance the amount is deducted and the same has not reached RED CROSS account is automatically refunded by the Payment gateway provider on bringing the issue to the notice of Payment Gateway service provider.\n" ;
-//
-//        String arr[] = longDescription.split("\n");
-//
-//        int bulletGap = (int) dp(10);
-//
-//        SpannableStringBuilder ssb = new SpannableStringBuilder();
-//        for (int i = 0; i < arr.length; i++) {
-//            String line = arr[i];
-//            SpannableString ss = new SpannableString(line);
-//            ss.setSpan(new BulletSpan(bulletGap), 0, line.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//            ssb.append(ss);
-//
-//            //avoid last "\n"
-//            if(i+1<arr.length)
-//                ssb.append("\n");
-//
-//        }
-//
-//        tv_first.setText(ssb);
         return root;
 
     }
@@ -118,7 +96,7 @@ public class PrivacyPolicyFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
         inflater.inflate(R.menu.activity_backpress, menu);
-        MenuItem logout = menu.findItem(R.id.logout);
+        MenuItem logout = menu.findItem(R.id.home);
         logout.setIcon(R.drawable.ic_home_white_48dp);
 
         logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
