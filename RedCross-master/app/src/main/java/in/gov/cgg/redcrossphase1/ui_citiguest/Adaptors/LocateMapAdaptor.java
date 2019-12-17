@@ -24,26 +24,23 @@ public class LocateMapAdaptor implements GoogleMap.InfoWindowAdapter {
     public View getInfoWindow(Marker marker) {
         View view = ((Activity) context).getLayoutInflater().inflate(R.layout.locate_marker_layout, null);
 
+
+        TextView tv_type = view.findViewById(R.id.tv_type);
         TextView tv_crl = view.findViewById(R.id.tv_crl);
         final TextView tv_ctc = view.findViewById(R.id.tv_ctc);
         final LinearLayout ll_ctc = view.findViewById(R.id.ll_ctc);
 
-        tv_crl.setText(marker.getTitle());
-
         if (marker.getTitle().contains("\n")) {
             final String[] strings = marker.getTitle().split("\n");
 
-            tv_crl.setText(strings[0].concat("\n").concat(strings[1]));
-            tv_ctc.setText(strings[2]);
-            if (!strings[2].equals("0")) {
-                String[] ctc = strings[2].split(":");
+            tv_type.setText(strings[0]);
+            tv_crl.setText(strings[1].concat("\n").concat(strings[2]));
+            tv_ctc.setText(strings[3]);
 
-                if (ctc[1] != null && ctc[1].length() >= 10) {
-                    ll_ctc.setVisibility(View.VISIBLE);
-                } else {
-                    ll_ctc.setVisibility(View.GONE);
-                }
-
+            if (strings[3] != null && !strings[3].equals("0") && strings[3].length() >= 10) {
+                ll_ctc.setVisibility(View.VISIBLE);
+            } else {
+                ll_ctc.setVisibility(View.GONE);
             }
         }
         return view;

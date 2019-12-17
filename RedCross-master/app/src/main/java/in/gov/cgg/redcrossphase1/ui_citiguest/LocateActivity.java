@@ -761,7 +761,7 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
                     LatLng latLng = new LatLng(lat, lng);
 
                     markerOptions.position(latLng);
-                    String finals = " Name: " + googlePlace.getName() + "\n Address: " + googlePlace.getAddress() + "\nContact: " + googlePlace.getMobileno();
+                    String finals = googlePlace.getType() + "\n" + googlePlace.getAddress() + "\n" + googlePlace.getName() + "\n" + googlePlace.getMobileno();
 
                     markerOptions.title(finals);
                     if (ContextCompat.checkSelfPermission(LocateActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -782,20 +782,17 @@ public class LocateActivity extends FragmentActivity implements OnMapReadyCallba
 
                             if (marker.getTitle().contains("\n")) {
                                 final String[] strings = marker.getTitle().split("\n");
-                                if (!strings[2].equals("0")) {
-                                    String[] ctc = strings[2].split(":");
-                                    if (ctc[1] != null && ctc[1].length() >= 10) {
-                                        ShowContactAlert(ctc[1].trim());
-                                    } else {
-                                        Uri.Builder builder = new Uri.Builder();
-                                        builder.scheme("https").authority("www.google.com").appendPath("maps").appendPath("dir").appendPath("").appendQueryParameter("api", "1").appendQueryParameter("destination", marker.getPosition().latitude + "," + marker.getPosition().longitude);
-                                        String url = builder.build().toString();
-                                        Intent i = new Intent(Intent.ACTION_VIEW);
-                                        i.setData(Uri.parse(url));
-                                        startActivity(i);
-                                    }
-
+                                if (strings[3] != null && !strings[3].equals("0") && strings[3].length() >= 10) {
+                                    ShowContactAlert(strings[3].trim());
+                                } else {
+                                    Uri.Builder builder = new Uri.Builder();
+                                    builder.scheme("https").authority("www.google.com").appendPath("maps").appendPath("dir").appendPath("").appendQueryParameter("api", "1").appendQueryParameter("destination", marker.getPosition().latitude + "," + marker.getPosition().longitude);
+                                    String url = builder.build().toString();
+                                    Intent i = new Intent(Intent.ACTION_VIEW);
+                                    i.setData(Uri.parse(url));
+                                    startActivity(i);
                                 }
+
                             }
 
                         }
