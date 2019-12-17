@@ -5,29 +5,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.Objects;
-
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import java.util.Objects;
+
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class HomenursingFragment extends Fragment {
-    TextView btn_homeNursingRegProceed, btn_RaisehomeNursingRegProceed, btn_BecomehomeNursing, btn_HowtobecomehomeNursing1;
+    TextView btn_RaisehomeNursingRegProceed, btn_BecomehomeNursing, tv_HowtobecomehomeNursing1;
     LinearLayout ll_bg, homeNurse, become_home_nurse_layout;
     private int selectedThemeColor = -1;
     RelativeLayout rl_homeNurse;
     LinearLayout ll_requestBg, ll_howtobecomehomeNurseBg, ll_becomeahomeNurse, ll_howtobecomehomeNurse;
     ImageView iv_nurse;
+    Button btn_homeNursingRegProceed;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -37,13 +40,13 @@ public class HomenursingFragment extends Fragment {
         View root = inflater.inflate(R.layout.homenursing_fragment_layout, container, false);
         //binding = DataBindingUtil.inflate(inflater, R.layout.homenursing_fragment_layout, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Home Nursing");
-      /*  btn_homeNursingRegProceed = root.findViewById(R.id.btn_homeNursingRegProceed);
+        btn_homeNursingRegProceed = root.findViewById(R.id.btn_homeNursingRegProceed);
         btn_RaisehomeNursingRegProceed = root.findViewById(R.id.btn_RaisehomeNursingRegProceed);
-        btn_HowtobecomehomeNursing1 = root.findViewById(R.id.btn_HowtobecomehomeNursing1);
+        tv_HowtobecomehomeNursing1 = root.findViewById(R.id.tv_HowtobecomehomeNursing1);
         btn_BecomehomeNursing = root.findViewById(R.id.btn_BecomehomeNursing);
         become_home_nurse_layout = root.findViewById(R.id.become_home_nurse_layout);
         ll_bg = root.findViewById(R.id.ll_bg);
-        homeNurse = root.findViewById(R.id.homeNurse);*/
+        homeNurse = root.findViewById(R.id.homeNurse);
 
         findView(root);
         homeNurse.setVisibility(View.VISIBLE);
@@ -61,7 +64,7 @@ public class HomenursingFragment extends Fragment {
                 transaction.commitAllowingStateLoss();
             }
         });
-        btn_HowtobecomehomeNursing1.setOnClickListener(new View.OnClickListener() {
+        tv_HowtobecomehomeNursing1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Intent i = Intent
@@ -116,7 +119,7 @@ public class HomenursingFragment extends Fragment {
     private void findView(View root) {
         btn_homeNursingRegProceed = root.findViewById(R.id.btn_homeNursingRegProceed);
         btn_RaisehomeNursingRegProceed = root.findViewById(R.id.btn_RaisehomeNursingRegProceed);
-        btn_HowtobecomehomeNursing1 = root.findViewById(R.id.btn_HowtobecomehomeNursing1);
+        //    btn_HowtobecomehomeNursing1 = root.findViewById(R.id.btn_HowtobecomehomeNursing1);
         become_home_nurse_layout = root.findViewById(R.id.become_home_nurse_layout);
         rl_homeNurse = root.findViewById(R.id.rl_homeNurse);
         ll_bg = root.findViewById(R.id.ll_bg);
@@ -136,12 +139,14 @@ public class HomenursingFragment extends Fragment {
     private void setThemes() {
         if (selectedThemeColor != -1) {
             if (selectedThemeColor == R.color.redcroosbg_1) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_2) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross2_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -149,36 +154,43 @@ public class HomenursingFragment extends Fragment {
 
 
             } else if (selectedThemeColor == R.color.redcroosbg_3) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross3_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
             } else if (selectedThemeColor == R.color.redcroosbg_4) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross4_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
             } else if (selectedThemeColor == R.color.redcroosbg_5) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross5_bg));
                 ll_requestBg.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 ll_howtobecomehomeNurseBg.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
                 ll_becomeahomeNurse.setBackground(getResources().getDrawable(R.drawable.redcross1_bg));
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross6_bg));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurse.setBackgroundColor(getResources().getColor(R.color.redcroosbg_6));
             } else if (selectedThemeColor == R.color.redcroosbg_7) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross8_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 ll_becomeahomeNurse.setBackgroundColor(getResources().getColor(selectedThemeColor));
             } else {
+                ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
                 ll_requestBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -187,6 +199,7 @@ public class HomenursingFragment extends Fragment {
             }
 
         } else {
+            ll_bg.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
             rl_homeNurse.setBackground(getResources().getDrawable(R.drawable.redcross7_bg));
             ll_requestBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             ll_howtobecomehomeNurseBg.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
