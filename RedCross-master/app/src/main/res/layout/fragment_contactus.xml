@@ -24,7 +24,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/tab_background_selected"
+            android:background="@color/colorPrimary"
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/tab_background_unselected"
+            android:background="@color/white"
             android:textAllCaps="false" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
