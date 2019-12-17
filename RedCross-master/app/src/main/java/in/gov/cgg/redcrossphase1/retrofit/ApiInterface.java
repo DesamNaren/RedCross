@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.HomeNurseReqResponse;
-import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMainBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.BloodDonorResponse;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenDonarRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.CitizenLoginRequest;
@@ -196,8 +196,8 @@ public interface ApiInterface {
     @GET("additionsCentersService")
     Call<ServeBeanMainBean> getadditionsCentersService(@Query("type") String type);
 
-    @GET("getMemberCountsForDashboard")
-    Call<AbstractMemberbean> getAAbstractdata();
+    @GET("getMemberCountsForDashboardMobile")
+    Call<AbstractMainBean> getAAbstractdata();
 
 
     @GET("getidcardDownload/{memberId}/{DOB}")

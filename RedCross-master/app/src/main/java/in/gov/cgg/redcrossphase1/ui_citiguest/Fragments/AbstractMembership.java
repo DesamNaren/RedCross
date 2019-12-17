@@ -7,20 +7,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.retrofit.ApiClient;
 import in.gov.cgg.redcrossphase1.retrofit.ApiInterface;
 import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors.AbstractMemberAdapter;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMainBean;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Beans.AbstractMemberbean;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,14 +75,15 @@ public class AbstractMembership extends Fragment {
     TextView tv_register, tv_download;
     TextView btn_htbm;
     int selectedThemeColor = -1;
-    LinearLayout MainLayout;
-
+    RelativeLayout MainLayout;
+    AbstractMemberAdapter abstractMemberAdapter;
     int total;
     int c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    RecyclerView rv;
+    ArrayList<AbstractMemberbean> servList;
     private OnFragmentInteractionListener mListener;
 
     public AbstractMembership() {
@@ -116,40 +122,23 @@ public class AbstractMembership extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.bstractmemadapter, container, false);
+        View v = inflater.inflate(R.layout.fragment_abstract_membership, container, false);
         Objects.requireNonNull(getActivity()).setTitle("Membership");
-        tv_c1 = v.findViewById(R.id.tv_count1);
-        tv_c2 = v.findViewById(R.id.tv_count2);
-        tv_c3 = v.findViewById(R.id.tv_count3);
-        tv_c4 = v.findViewById(R.id.tv_count4);
-        tv_c5 = v.findViewById(R.id.tv_count5);
-        tv_c6 = v.findViewById(R.id.tv_count6);
-        tv_c7 = v.findViewById(R.id.tv_count7);
-        tv_c8 = v.findViewById(R.id.tv_count8);
-        tv_c9 = v.findViewById(R.id.tv_count9);
-        tv_c10 = v.findViewById(R.id.tv_count10);
-        tv_total = v.findViewById(R.id.tv_totalcount);
+        rv = v.findViewById(R.id.bb_rv);
+        rv.setVisibility(View.VISIBLE);
         tv_register = v.findViewById(R.id.tv_register);
         tv_download = v.findViewById(R.id.tv_download);
         btn_htbm = v.findViewById(R.id.btn_htbm);
         MainLayout = v.findViewById(R.id.MainLayout);
-        view1 = v.findViewById(R.id.view1);
-        view2 = v.findViewById(R.id.view2);
-        view3 = v.findViewById(R.id.view3);
-        view4 = v.findViewById(R.id.view4);
-        view5 = v.findViewById(R.id.view5);
-        view6 = v.findViewById(R.id.view6);
-        view7 = v.findViewById(R.id.view7);
-        view8 = v.findViewById(R.id.view8);
-        view9 = v.findViewById(R.id.view9);
-        view10 = v.findViewById(R.id.view10);
+        //  noDataTV.setVisibility(View.GONE);
+        callabstractlist();
 
         try {
             selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
             if (selectedThemeColor != -1) {
                 if (selectedThemeColor == R.color.redcroosbg_1) {
                     MainLayout.setBackgroundResource(R.drawable.redcross1_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                   /* view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -158,12 +147,12 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_2) {
                     MainLayout.setBackgroundResource(R.drawable.redcross2_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                   /* view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -172,12 +161,12 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_3) {
                     MainLayout.setBackgroundResource(R.drawable.redcross3_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                   /* view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -186,12 +175,12 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_4) {
                     MainLayout.setBackgroundResource(R.drawable.redcross4_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                 /*   view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -200,12 +189,12 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_5) {
                     MainLayout.setBackgroundResource(R.drawable.redcross5_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                   /* view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -214,11 +203,11 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
                 } else if (selectedThemeColor == R.color.redcroosbg_6) {
                     MainLayout.setBackgroundResource(R.drawable.redcross6_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                  /*  view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -228,11 +217,11 @@ public class AbstractMembership extends Fragment {
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
-
+*/
 
                 } else if (selectedThemeColor == R.color.redcroosbg_7) {
                     MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                  /*  view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -241,12 +230,12 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
 
                 } else if (selectedThemeColor == R.color.redcroosbg_8) {
                     MainLayout.setBackgroundResource(R.drawable.redcross8_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                 /*   view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -255,11 +244,11 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
 
                 } else {
                     MainLayout.setBackgroundResource(R.drawable.redcross7_bg);
-                    view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                  /*  view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view4.setBackgroundColor(getResources().getColor(selectedThemeColor));
@@ -268,7 +257,7 @@ public class AbstractMembership extends Fragment {
                     view7.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view8.setBackgroundColor(getResources().getColor(selectedThemeColor));
                     view9.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));
+                    view10.setBackgroundColor(getResources().getColor(selectedThemeColor));*/
                 }
 
             }
@@ -316,22 +305,13 @@ public class AbstractMembership extends Fragment {
             }
         });
 
-        tv_d1 = v.findViewById(R.id.tv_data1);
-        tv_d2 = v.findViewById(R.id.tv_data2);
-        tv_d3 = v.findViewById(R.id.tv_data3);
-        tv_d4 = v.findViewById(R.id.tv_data4);
-        tv_d5 = v.findViewById(R.id.tv_data5);
-        tv_d6 = v.findViewById(R.id.tv_data6);
-        tv_d7 = v.findViewById(R.id.tv_data7);
-        tv_d8 = v.findViewById(R.id.tv_data8);
-        tv_d9 = v.findViewById(R.id.tv_data9);
-        tv_d10 = v.findViewById(R.id.tv_data10);
 
-        calladditionsCentersService();
+        //  calladditionsCentersService();
 
         return v;
     }
 
+/*
     private void calladditionsCentersService() {
 
 
@@ -395,6 +375,7 @@ public class AbstractMembership extends Fragment {
         });
 
     }
+*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -423,5 +404,55 @@ public class AbstractMembership extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void callabstractlist() {
+
+
+        ApiInterface apiServiceSession = ApiClient.getClient().create(ApiInterface.class);
+
+
+        Call<AbstractMainBean> call = apiServiceSession.getAAbstractdata();
+        Log.e("apiServiceSession_url: ", "" + call.request().url());
+        call.enqueue(new Callback<AbstractMainBean>() {
+            @Override
+            public void onResponse(Call<AbstractMainBean> call, Response<AbstractMainBean> response) {
+                // hideProgressDialog(progressDiaLogss);
+                try {
+                    AbstractMainBean body = response.body();
+
+                    if (body != null) {
+
+                        servList = (ArrayList<AbstractMemberbean>) response.body().getVals();
+
+                        final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                        rv.setLayoutManager(layoutManager);
+
+                        abstractMemberAdapter = new AbstractMemberAdapter(getActivity(), servList, selectedThemeColor);
+                        rv.setAdapter(abstractMemberAdapter);
+                        abstractMemberAdapter.notifyDataSetChanged();
+
+
+                    } else {
+                        //  showResponseAlert();
+                    }
+
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Something went wrong" + e.toString(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error", e.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AbstractMainBean> call, Throwable t) {
+                //hideProgressDialog(progressDiaLogss);
+
+                Log.e("Exp", t.toString());
+
+            }
+        });
+
     }
 }
