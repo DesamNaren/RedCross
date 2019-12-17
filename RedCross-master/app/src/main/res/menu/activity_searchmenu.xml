@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/logout_search"
-        android:icon="@drawable/logout"
+        android:icon="@drawable/ic_home_white_48dp"
         android:title="Logout"
         app:showAsAction="always" />
 

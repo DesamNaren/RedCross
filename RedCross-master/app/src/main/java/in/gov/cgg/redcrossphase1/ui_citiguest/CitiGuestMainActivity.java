@@ -56,9 +56,11 @@ import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HistoryFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNurseInfoFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNurseRequest;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomeNursingRegistrationFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.HomenursingFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.LocateBloodbanksFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MemberFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MembershipFragment;
+import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MembershipRegFormFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.MissionFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.ServicesFragment;
 import in.gov.cgg.redcrossphase1.ui_citiguest.Fragments.SevenFundamentalFragment;
@@ -781,6 +783,7 @@ public class CitiGuestMainActivity extends LocBaseActivity {
 //        // show alert
 //        alertDialog.show();
 //    }
+
     public void onClickExit() {
         final PrettyDialog dialog = new PrettyDialog(this);
         dialog
@@ -815,5 +818,126 @@ public class CitiGuestMainActivity extends LocBaseActivity {
                 || super.onSupportNavigateUp();
     }
 
+    @Override
+    public void onBackPressed() {
+        //  super.onBackPressed();
 
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(CitizendashboardFragment.class.getSimpleName())) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(CitiGuestMainActivity.this);
+                builder1.setMessage("Do you want to exit ?");
+                builder1.setCancelable(true);
+
+                builder1.setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                    finishAffinity();
+                                }
+                            }
+                        });
+
+                builder1.setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+//                                Intent i = new Intent(MainActivity.this, MainActivity.class);
+//                                startActivity(i);
+                            }
+                        });
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(WhoWeAreFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(WhoWeAreFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(AbstractMembership.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(MemberFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(MembershipFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(DownloadCertificate.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(DownloadCertificate.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(MembershipRegFormFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = AbstractMembership.class.getSimpleName();
+                selectedFragment = new AbstractMembership();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(CapacityBuildingsFragment.class.getSimpleName())) {
+
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(Upcoming_fragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(BBInfoFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(BlooddonorRegistrationFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(HomeNurseInfoFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = HomenursingFragment.class.getSimpleName();
+                selectedFragment = new HomenursingFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(HomenursingFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(HomeNursingRegistrationFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = HomenursingFragment.class.getSimpleName();
+                selectedFragment = new HomenursingFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(ServicesFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(HomeNurseRequest.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = HomenursingFragment.class.getSimpleName();
+                selectedFragment = new HomenursingFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(ContactusFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(InfoFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(PrivacyPolicyFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            } else if (GlobalDeclaration.FARG_TAG.equalsIgnoreCase(CitiNewTCFragment.class.getSimpleName())) {
+                GlobalDeclaration.FARG_TAG = CitizendashboardFragment.class.getSimpleName();
+                selectedFragment = new CitizendashboardFragment();
+                callFragment(selectedFragment, GlobalDeclaration.FARG_TAG);
+            }
+        }
+    }
 }

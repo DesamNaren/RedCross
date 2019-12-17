@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -51,6 +52,7 @@ public class HomenursingFragment extends Fragment {
             public void onClick(View view) {
 //                Intent i = new Intent(getActivity(), HomeNursingActivity.class);
 //                startActivity(i);
+                GlobalDeclaration.FARG_TAG = HomeNursingRegistrationFragment.class.getSimpleName();
                 Fragment fragment = new HomeNursingRegistrationFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -63,6 +65,7 @@ public class HomenursingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Intent i = Intent
+                GlobalDeclaration.FARG_TAG = HomeNurseRequest.class.getSimpleName();
                 become_home_nurse_layout.setVisibility(View.VISIBLE);
                 iv_nurse.setVisibility(View.GONE);
                 homeNurse.setVisibility(View.GONE);
@@ -72,6 +75,7 @@ public class HomenursingFragment extends Fragment {
         btn_RaisehomeNursingRegProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GlobalDeclaration.FARG_TAG = HomeNurseRequest.class.getSimpleName();
                 Fragment fragment = new HomeNurseRequest();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -96,6 +100,7 @@ public class HomenursingFragment extends Fragment {
             public void onClick(View view) {
 //                Intent intent = new Intent(getActivity(), HomeNursingActivity.class);
 //                startActivity(intent);
+                GlobalDeclaration.FARG_TAG = HomeNursingRegistrationFragment.class.getSimpleName();
                 Fragment fragment = new HomeNursingRegistrationFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
