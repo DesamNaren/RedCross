@@ -776,7 +776,7 @@ public class MembershipRegFormFragment extends Fragment {
                         // Toast.makeText(getActivity(), response.body().getStatusMsg(), Toast.LENGTH_LONG).show();
                         final PrettyDialog dialog = new PrettyDialog(getActivity());
                         dialog
-                                .setTitle("Response")
+                                .setTitle("Success")
                                 .setMessage("Successfully submitted")
                                 .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
                                 .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
@@ -803,8 +803,8 @@ public class MembershipRegFormFragment extends Fragment {
                         //Toast.makeText(getActivity(), "Response" + response.body().getStatus(), Toast.LENGTH_SHORT).show();
                         final PrettyDialog dialog = new PrettyDialog(getActivity());
                         dialog
-                                .setTitle("Response")
-                                .setMessage("" + response.body().getStatus())
+                                .setTitle("Failed")
+                                .setMessage("Registration Failed")
                                 .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
                                 .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_red, new PrettyDialogCallback() {
                                     @Override

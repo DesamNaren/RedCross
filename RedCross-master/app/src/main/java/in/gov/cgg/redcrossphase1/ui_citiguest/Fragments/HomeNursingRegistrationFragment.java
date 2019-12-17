@@ -26,6 +26,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -38,10 +43,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Objects;
 
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursing1Binding;
@@ -123,11 +126,13 @@ public class HomeNursingRegistrationFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_homenursing1, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("Home Nursing Registration");
         progressDialog = new CustomProgressDialog(getActivity());
 
         binding.datePickerDateofBirth.setInputType(InputType.TYPE_NULL);
@@ -501,7 +506,8 @@ public class HomeNursingRegistrationFragment extends Fragment {
 
         final PrettyDialog dialog = new PrettyDialog(getActivity());
         dialog
-                .setTitle("Registered Succesfully")
+                .setTitle("Success")
+                .setMessage("Registered successfully")
                 .setIcon(R.drawable.pdlg_icon_info, R.color.pdlg_color_blue, null)
                 .addButton("OK", R.color.pdlg_color_white, R.color.pdlg_color_green, new PrettyDialogCallback() {
                     @Override
