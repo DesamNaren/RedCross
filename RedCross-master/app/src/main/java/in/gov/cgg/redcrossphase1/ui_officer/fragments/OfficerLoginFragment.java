@@ -90,13 +90,13 @@ public class OfficerLoginFragment extends Fragment {
                 btn_login.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else {
-                TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-                btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+                TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+                btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
             }
         } catch (Exception e) {
             e.printStackTrace();
-            TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_2));
-            btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_2));
+            TV_CHECKREMMEBR.setTextColor(getResources().getColor(R.color.redcroosbg_7));
+            btn_login.setBackgroundColor(getResources().getColor(R.color.redcroosbg_7));
 
         }
 

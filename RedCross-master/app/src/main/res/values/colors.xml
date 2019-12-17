@@ -5,7 +5,7 @@
     -->
     <color name="colorPrimary">#980224</color>
     <!--    <color name="colorPrimaryDark">#F45900</color>-->
-    <color name="colorPrimaryDark">#E51E00</color>
+    <color name="colorPrimaryDark">#980224</color>
     <color name="colorShadeRed">#F45900</color>
     <color name="colorAccent">#000</color>
     <color name="black">#000</color>
