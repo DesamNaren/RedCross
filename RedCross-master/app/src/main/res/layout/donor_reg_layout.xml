@@ -96,35 +96,58 @@
                                 android:inputType="text" />
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <!-- <LinearLayout
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="@dimen/dp_5"
+                             android:orientation="vertical">
+
+                             <TextView
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:padding="5dp"
+                                 android:text=""
+                                 android:textColor="@color/black" />
+
+
+                             <EditText
+                                 android:id="@+id/"
+                                 android:layout_width="match_parent"
+                                 android:layout_height="40dp"
+                                 android:layout_margin="@dimen/dp_5"
+                                 android:layout_weight="1"
+                                 android:focusable="false"
+                                 android:background="@drawable/edittext_bg"
+                                 android:cursorVisible="false"
+                                 android:drawableRight="@android:drawable/ic_menu_my_calendar"
+                                 android:hint="Select Date "
+                                 android:paddingLeft="@dimen/dp_5"
+                                 android:textColor="@color/black" />
+
+
+                         </LinearLayout>-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_5"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:id="@+id/tv_DOB"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:padding="5dp"
+                                android:padding="@dimen/dp_5"
                                 android:text="Date of Birth *"
-                                android:textColor="@color/black" />
-
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
 
                             <EditText
                                 android:id="@+id/datePicker_dateofBirth"
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_margin="@dimen/dp_5"
-                                android:layout_weight="1"
-                                android:focusable="false"
-                                android:background="@drawable/edittext_bg"
-                                android:cursorVisible="false"
+                                android:layout_height="wrap_content"
                                 android:drawableRight="@android:drawable/ic_menu_my_calendar"
-                                android:hint="Select Date "
-                                android:paddingLeft="@dimen/dp_5"
+                                android:focusable="false"
+                                android:hint="Enter Date of Birth"
                                 android:textColor="@color/black" />
-
-
                         </LinearLayout>
 
                         <LinearLayout

@@ -122,6 +122,24 @@
                                     android:orientation="vertical">
 
                                     <TextView
+                                        android:id="@+id/tv_DOB"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp_5"
+                                        android:text="Date of Birth *"
+                                        android:textColor="@color/black"
+                                        android:textSize="16sp" />
+
+                                    <EditText
+                                        android:id="@+id/datePicker_dateofBirth"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:drawableRight="@android:drawable/ic_menu_my_calendar"
+                                        android:focusable="false"
+                                        android:hint="Enter Date of Birth"
+                                        android:textColor="@color/black" />
+
+                                    <!--<TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:hint="Date of Birth *"
@@ -135,7 +153,7 @@
 
 
                                         <EditText
-                                            android:id="@+id/datePicker_dateofBirth"
+                                            android:id="@+id/"
                                             android:layout_width="0dp"
                                             android:layout_height="40dp"
                                             android:layout_margin="@dimen/dp_5"
@@ -149,7 +167,7 @@
                                             android:textColor="@color/black" />
 
 
-                                    </LinearLayout>
+                                    </LinearLayout>-->
 
                                 </LinearLayout>
 
