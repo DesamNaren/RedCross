@@ -575,7 +575,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
 
                 bm = saveBitmapToFile(imageFile);
 
-                binding.imageRes.setImageBitmap(bm);
+                binding.chooseBt.setImageBitmap(bm);
                 FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
 
             } else if (resultCode == RESULT_CANCELED) {
@@ -599,7 +599,7 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 currsor.close();
                 bm = (BitmapFactory.decodeFile(picturePath));
                 Log.w("path of image", picturePath + "");
-                binding.imageRes.setImageBitmap(bm);
+                binding.chooseBt.setImageBitmap(bm);
                 FilePath = picturePath;
 
             } else if (resultCode == RESULT_CANCELED) {
@@ -910,7 +910,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_2) {
@@ -921,7 +920,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_3) {
@@ -932,7 +930,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_4) {
@@ -943,7 +940,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_5) {
@@ -954,7 +950,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_6) {
@@ -965,7 +960,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_7) {
@@ -976,7 +970,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //  binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else if (selectedThemeColor == R.color.redcroosbg_8) {
@@ -987,7 +980,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view2.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 binding.view3.setBackgroundColor(getResources().getColor(selectedThemeColor));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(selectedThemeColor));
                 //   binding.chooseBt.setBackgroundColor(getResources().getColor(selectedThemeColor));
 
             } else {
@@ -998,7 +990,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
                 binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 //    binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 
@@ -1012,7 +1003,6 @@ public class HomeNursingRegistrationFragment extends Fragment {
             binding.view1.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             binding.view2.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             binding.view3.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            binding.btnHomeNursingRegNext.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             //   binding.chooseBt.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 

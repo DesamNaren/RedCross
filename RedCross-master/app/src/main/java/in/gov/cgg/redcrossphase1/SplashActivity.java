@@ -58,15 +58,15 @@ public class SplashActivity extends Activity {
                     mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross8_splash));
 
                 } else {
-                    mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross2_splash));
+                    mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross7_splash));
                 }
             } else {
-                mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross2_splash));
+                mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross7_splash));
 
             }
         } catch (Exception e) {
             e.printStackTrace();
-            mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross2_splash));
+            mainsplash.setBackground(getResources().getDrawable(R.drawable.redcross7_splash));
 
         }
 

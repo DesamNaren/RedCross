@@ -23,10 +23,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
-
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -40,6 +36,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
 import in.gov.cgg.redcrossphase1.BuildConfig;
 import in.gov.cgg.redcrossphase1.R;
 import in.gov.cgg.redcrossphase1.databinding.FragmentHomenursing1Binding;
@@ -505,7 +504,7 @@ public class HomeNursingActivity extends AppCompatActivity {
 
                 bm = saveBitmapToFile(imageFile);
 
-                binding.imageRes.setImageBitmap(bm);
+                binding.chooseBt.setImageBitmap(bm);
                 FilePath = Environment.getExternalStorageDirectory() + "/Android/data/" + "Files/" + IMAGE_DIRECTORY_NAME + "/" + Image_name;
 
             } else if (resultCode == RESULT_CANCELED) {
@@ -529,7 +528,7 @@ public class HomeNursingActivity extends AppCompatActivity {
                 currsor.close();
                 bm = (BitmapFactory.decodeFile(picturePath));
                 Log.w("path of image", picturePath + "");
-                binding.imageRes.setImageBitmap(bm);
+                binding.chooseBt.setImageBitmap(bm);
                 FilePath = picturePath;
 
             } else if (resultCode == RESULT_CANCELED) {

@@ -501,33 +501,22 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
+                                android:orientation="vertical">
                                 <TextView
                                     android:id="@+id/Photo_tv"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:padding="@dimen/dp_5"
-                                    android:layout_margin="@dimen/dp_10"
+                                    android:layout_margin="8dp"
                                     android:text="Photo *"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
-
-                                <ImageView
-                                    android:id="@+id/image_res"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1" />
-
                                 <ImageView
                                     android:id="@+id/choose_bt"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:layout_margin="@dimen/dp_10"
-                                    android:src="@drawable/cam"
-                                    android:textColor="@color/white" />
+                                    android:layout_width="@dimen/dimen_100dp"
+                                    android:layout_height="@dimen/dimen_100dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:src="@drawable/cam" />
 
                             </LinearLayout>
 
@@ -541,6 +530,7 @@
                         android:layout_height="wrap_content"
                         android:background="#30000000"
                         android:padding="4dp"
+                        android:layout_margin="10dp"
                         android:text="Submit"
                         android:textColor="@color/white" />
                 </LinearLayout>
