@@ -107,7 +107,6 @@
                     android:textColor="@color/black" />
 
                 <Spinner
-
                     android:id="@+id/type_spinner"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/dp_40"

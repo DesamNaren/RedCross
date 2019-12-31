@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="in.gov.cgg.redcrossphase1">
+    package="in.gov.cgg.redcrossphase_offline">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -54,18 +54,18 @@
         -->
 
         <activity
-            android:name=".WelcomeActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.WelcomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui_citiguest.CitiGuestMainActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.CitiGuestMainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui_citiguest.MapsActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.MapsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -77,31 +77,31 @@
         </activity>
 
         <activity
-            android:name=".ui_citiguest.RegisterActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.RegisterActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".TabLoginActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.TabLoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui_citiguest.EnterMPinActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.EnterMPinActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui_citiguest.GuestMainActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.GuestMainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui_officer.activities.NewOfficerMainActivity" />
+        <activity android:name="in.gov.cgg.redcrossphase_offline.ui_officer.activities.NewOfficerMainActivity" />
         <activity
-            android:name=".ui_citiguest.HomeNursingActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.HomeNursingActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui_citiguest.LocateActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.LocateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui_citiguest.DonorsMapsActivity"
+            android:name="in.gov.cgg.redcrossphase_offline.ui_citiguest.DonorsMapsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <provider

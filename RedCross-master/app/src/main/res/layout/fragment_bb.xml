@@ -60,7 +60,7 @@
             android:layout_marginLeft="@dimen/dimen_10dp"
             android:background="@drawable/tab_background_unselected"
             android:entries="@array/blood_groups_suffix"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimary"
             android:visibility="visible" />
 
         <LinearLayout
@@ -80,7 +80,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/tab_background_unselected"
                 android:entries="@array/ts_districts"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorPrimary" />
 
             <Spinner
                 android:id="@+id/spinner_bg_donor"
@@ -91,7 +91,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/tab_background_unselected"
                 android:entries="@array/blood_groups_suffix"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorPrimary" />
 
 
         </LinearLayout>

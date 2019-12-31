@@ -79,4 +79,11 @@
 
 
     <string name="search_hint">Search</string>
+
+    <style name="Cursive">
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">Cursive</item>
+    </style>
 </resources>

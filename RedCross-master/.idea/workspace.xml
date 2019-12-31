@@ -15,109 +15,270 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value=".java" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17bfec0c-ed84-4ca6-8231-3fe37f355453" name="Default Changelist" comment="30-11-2019 Changes done-3 pretty dialog">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/HomeNurseRegBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_adapters_3_5_2_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_common_3_5_2_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_databinding_databinding_runtime_3_5_2_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_runtime_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_ui_2_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_chaos_view_pinview_1_4_3_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_PhilJay_MPAndroidChart_v3_1_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_clans_fab_1_6_4_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_10_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_4_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_4_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_3_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_2_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_2_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_common_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_fragment_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_runtime_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_runtime_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_ui_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_navigation_navigation_ui_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_chaos_view_pinview_1_4_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_chaos_view_pinview_1_4_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_PhilJay_MPAndroidChart_v3_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_PhilJay_MPAndroidChart_v3_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_clans_fab_1_6_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_clans_fab_1_6_4_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_mjn1369_prettydialog_1_0_4_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_mjn1369_prettydialog_1_0_4_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_3_0_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_3_0_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/navEditor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/NewTCFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/NewTCFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/PrivacyPolicyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/PrivacyPolicyFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/VillageLevelAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/VillageLevelAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_drilldown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_drilldown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_backpress.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_backpress.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/in/gov/cgg/redcrossphase1/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/PrefManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/PrefManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/SplashActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TabLoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/TabLoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/TestFrag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/WelcomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/WelcomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/retrofit/ApiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/retrofit/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/GlobalDeclaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/retrofit/GlobalDeclaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/RequestAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/retrofit/RequestAll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/AbstractMemberAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/AbstractMemberAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/BBAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/BBAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/BDonorAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/BDonorAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/BloodbankAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/BloodbankAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/Contactus_adaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/Contactus_adaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/DistrictAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/DistrictAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/DistrictMainBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/DistrictMainBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/HomeNurseReqRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/HomeNurseReqRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/HomeNurseReqResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/HomeNurseReqResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/LocateAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/LocateAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/LocateMapAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/LocateMapAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MapAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MapAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipActivityAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipActivityAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipDetailsAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipDetailsAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipDetailsSpinnerAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipDetailsSpinnerAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipDistAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipDistAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipMandalAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipMandalAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipTypeAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipTypeAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/MembershipvillageAdaptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipvillageAdaptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/ServeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/ServeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/AbstractMainBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/AbstractMainBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/AbstractMemberbean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/AbstractMemberbean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/BloodBankdetails_Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/BloodBankdetails_Bean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/BloodDonorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/BloodDonorForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/BloodDonorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/BloodDonorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/CitizenDonarRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/CitizenDonarRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/CitizenLoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/CitizenLoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/CitizenLoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/CitizenLoginResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/ContactusDetails_Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/ContactusDetails_Bean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/DistrictBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/DistrictBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/DonorregResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/DonorregResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/HomeNurseRegBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/HomeNursingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/HomeNursingRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MemberActivitiesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MemberActivitiesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembershipDetails_Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipDetails_Bean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembershipDetails_spinner_Bean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipDetails_spinner_Bean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembershipMandalsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipMandalsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembershipTypeBeansClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipTypeBeansClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembershipVillagesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipVillagesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/MembersipDistResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembersipDistResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/PaymentBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/PaymentBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/PhotoBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/PhotoBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/ServeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/ServeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/ServeBeanMainBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/ServeBeanMainBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/StateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/StateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/States.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/States.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/eRaktkoshResponseBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/eRaktkoshResponseBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/locate/Additionscenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/locate/Additionscenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/locate/LocateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/locate/LocateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/CitiGuestMainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitizenLoginFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/CitizenLoginFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CustomProgressDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/CustomProgressDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/DonorsMapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/DonorsMapsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/EnterMPinActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/EnterMPinActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/ExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/ExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/About_usFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/About_usFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/AbstractMembership.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/AbstractMembership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/BBInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/BBInfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/BloodbankInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/BloodbankInfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/BlooddonorRegistrationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/BlooddonorRegistrationFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/CapacityBuildingsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/CapacityBuildingsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/CitiNewTCFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/CitiNewTCFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/CitiPrivacyPolicyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/CitiPrivacyPolicyFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/CitizendashboardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/CitizendashboardFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/ContactusFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/ContactusFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/DownloadCertificate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/DownloadCertificate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/GuestdashboardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/GuestdashboardFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HistoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HistoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HomeNurseInfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HomeNurseInfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HomeNurseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HomeNurseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HomeNursingRegistrationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HomeNursingRegistrationFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HomenursingFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HomenursingFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/HowToBecomeDoner.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/HowToBecomeDoner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/LocBaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/LocBaseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/LocateBloodbanksFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/LocateBloodbanksFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MemberFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MemberFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MembershipFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MembershipPaymentFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipPaymentFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MembershipRegFormFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipRegFormFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MissionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MissionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/OrgonamFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/OrgonamFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/SearchBloodDonors.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/SearchBloodDonors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/ServicesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/ServicesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/SevenFundamentalFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/SevenFundamentalFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/Upcoming_fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/Upcoming_fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/UpdateBloodDonationDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/UpdateBloodDonationDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/VisionFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/VisionFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/WhoWeAreFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/WhoWeAreFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/GuestMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/GuestMainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/HomeNursingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/HomeNursingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/InfoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/InfoFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/LocBaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/LocBaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/LocateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/LocateActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/MapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/MapsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/activities/NewOfficerMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/activities/NewOfficerMainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/activities/PhotoUploadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/activities/PhotoUploadActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/BloodAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/BloodAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/DaywiseAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/DaywiseAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/GovtPvtAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/GovtPvtAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/InstitutionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/InstitutionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/LevelAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/LevelAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/NewDrillDownAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/NewDrillDownAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/adapters/TBDistrictAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/adapters/TBDistrictAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/custom_officer/CustomDistricClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/custom_officer/CustomDistricClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/custom_officer/LineXYMarkerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/custom_officer/LineXYMarkerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/custom_officer/MyMarkerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/custom_officer/MyMarkerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/custom_officer/WrapContentViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/custom_officer/WrapContentViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/custom_officer/XYMarkerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/custom_officer/XYMarkerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/AgewiseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/AgewiseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/AllMandalsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/AllMandalsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/AllVillageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/AllVillageFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/BloodwiseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/BloodwiseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/DaywiseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/DaywiseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/EnrolledMemberEditFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/EnrolledMemberEditFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/GenderwiseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/GenderwiseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/GetDrilldownFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/GetDrilldownFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/GovtPvtFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/GovtPvtFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/InstitutionCountsFrgament.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/InstitutionCountsFrgament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/JRCInstiFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/JRCInstiFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/NewAllDistrictsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/NewAllDistrictsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/NewInstitutionCountsFrgament.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/NewInstitutionCountsFrgament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/NewOfficerHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/NewOfficerHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/NewTCFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/NewTCFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/OfficerLoginFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/OfficerLoginFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/OnlyGenderwiseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/OnlyGenderwiseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/fragments/PrivacyPolicyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/fragments/PrivacyPolicyFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/Age.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/Age.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/AgeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/AgeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/AllDistrict.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/AllDistrict.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/AllDistrictResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/AllDistrictResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/BloodGroups.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/BloodGroups.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/BloodResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/BloodResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/DashboardCountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/DashboardCountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/DayWiseReportCountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/DayWiseReportCountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/DistrictName.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/DistrictName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/DistrictResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/DistrictResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/DrillDownResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/DrillDownResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/GenderResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/GenderResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/Genders.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/Genders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/GovtVsPvtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/GovtVsPvtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/Last10day.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/Last10day.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/StatelevelDistrictViewCountResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/StatelevelDistrictViewCountResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/StudentListBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/StudentListBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/Top5.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/Top5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/modelbeans/UserTypesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/modelbeans/UserTypesList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/themes/ThemesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/themes/ThemesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/AgewiseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/AgewiseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/AllDistrictsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/AllDistrictsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/BloodwiseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/BloodwiseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/DaywiseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/DaywiseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/DistrictViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/DistrictViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/GenderwiseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/GenderwiseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/viewmodels/GovtPvtViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/viewmodels/GovtPvtViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AnimationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/AnimationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AppConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/AppConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/CheckInternet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/CheckInternet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/CustomProgressDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/CustomProgressDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/NetworkChangeReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/NetworkChangeReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/NetworkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/NetworkUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/SearchAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/SearchAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross1_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross1_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross2_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross2_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross3_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross3_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross4_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross4_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross6_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross6_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross7_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross7_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/redcross8_splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/redcross8_splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/splash9.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/splash9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_membership_reg_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_membership_reg_form.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/b_donor_adapter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/b_donor_adapter.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bb_adapter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bb_adapter.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_bb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_citizendashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_citizendashboard.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/homenursing_fragment_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/homenursing_fragment_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/membership_selection_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/membership_selection_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/regis.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/regis.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_citiguest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_citiguest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/in/gov/cgg/redcrossphase1/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/in/gov/cgg/redcrossphase_offline/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/uat/res/values/google_maps_api.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/uat/res/values/google_maps_api.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +289,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="ee8ea81d7d29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="2a8e5eca" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -152,53 +313,12 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="484" column="75" selection-start-line="484" selection-start-column="75" selection-end-line="484" selection-end-column="75" />
-              <folding>
-                <element signature="method#showChangeLangDialog#0;class#CitiGuestMainActivity#0" />
-                <element signature="method#onSupportNavigateUp#0;class#CitiGuestMainActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="39" column="84" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="84" />
-              <folding>
-                <element signature="e#1772#1795#0" />
-                <element signature="e#2763#2937#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java">
+        <entry file="file://$PROJECT_DIR$/app/google-services.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
-              <folding>
-                <element signature="method#AllDistrictsViewModel#0;class#AllDistrictsViewModel#0" />
-                <element signature="method#getAllVillages#0;class#AllDistrictsViewModel#0" />
-                <element signature="method#loadAllDistricts#0;class#AllDistrictsViewModel#0" />
-                <element signature="method#loadAllMandals#0;class#AllDistrictsViewModel#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+            <state relative-caret-position="442">
+              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -208,53 +328,62 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
+        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>searchView</find>
-      <find>&quot;</find>
-      <find>,</find>
-      <find>studentList</find>
-      <find>studentListBeanList</find>
-      <find>allDistricts</find>
-      <find>newText</find>
-      <find>margin</find>
-      <find>layout_margin</find>
-      <find>tab_background_unselected</find>
-      <find>stat</find>
-      <find>call</find>
-      <find>compareResult</find>
-      <find>Pr</find>
-      <find>selectedThemeColor</find>
-      <find>tv_alldname</find>
-      <find>GlobalDeclaration.FARG_TAG</find>
-      <find>ll_drilldown</find>
-      <find>loaTheam</find>
-      <find>redcross7_bg</find>
-      <find>rv_rilldown</find>
-      <find>generateDataLine</find>
-      <find>tv_headerinstutetype</find>
-      <find>htv_enddate</find>
-      <find>Alert</find>
-      <find>THEMECOLOR_PREF</find>
-      <find>logout</find>
-      <find>exit</find>
-      <find>menu.clea</find>
-      <find>setFr</find>
+      <find>loadBBanksFilter</find>
+      <find>spinn</find>
+      <find>spinner_position</find>
+      <find>bank_spinner_position</find>
+      <find>loadBDonorsFilterData</find>
+      <find>btn_bl</find>
+      <find>loadBl</find>
+      <find>Ini</find>
+      <find>btn_blood_d</find>
+      <find>Init</find>
+      <find>G</find>
+      <find>Gs</find>
+      <find>Gson</find>
+      <find>SharedPreferences</find>
+      <find>Interne</find>
+      <find>MEM</find>
+      <find>H</find>
+      <find>MEM_ABSTRACT</find>
+      <find>poi</find>
+      <find>remo</find>
+      <find>bol</find>
+      <find>time</find>
+      <find>progre</find>
+      <find>btn_bloo</find>
+      <find>sortBDonorData</find>
+      <find>SortBloodBanks</find>
+      <find>Collections</find>
+      <find>Colle</find>
+      <find>sortData</find>
+      <find>searchDonor</find>
     </findStrings>
     <replaceStrings>
       <replace>AgeResponse</replace>
       <replace>&lt;List&lt;AgeResponse&gt;&gt;</replace>
       <replace>barChart_distrcit</replace>
+      <replace>in.gov.cgg.redcrossphase1</replace>
+      <replace>dismiss</replace>
+      <replace>bloodDonorResponses</replace>
+      <replace>LocateActivity</replace>
+      <replace>LocateResponse</replace>
+      <replace>11</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>E:\Naren\GitRepos\redcross\RedCross-master\app</dir>
+    </dirStrings>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="E:\GitWorkspace\RedCross_Workspace\Redcross_Code\RedCrossPhase1\app\redcross.jks" />
+    <option name="KEY_STORE_PATH" value="E:\Naren\GitRepos\redcross\RedCross-master\app\redcross.jks" />
     <option name="KEY_ALIAS" value="cggmapps" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -270,120 +399,145 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_officer_main_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AnimationUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/SearchAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/MaterialSearchView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/TBDistrictAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragemt_home_officer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/district_background.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/tab_background_unselected.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_daywise.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values-v21/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/app_bar_officer_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_searchmenu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/StatelevelDistrictViewCountResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_aldistrict.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrilldownViewmodel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/all_district_adapter.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_citiguest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AlertUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/Utils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_count_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/StudentListBean.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/drilldown_adapter.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_drilldown.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/PrivacyPolicyFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/NewTCFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_backpress.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/VillageLevelAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiNewTCFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiPrivacyPolicyFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/GlobalDeclaration.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/ContactusFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/HomeNursingActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/WhoWeAreFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/locate_marker_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/LocateActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Adaptors/LocateMapAdaptor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Beans/BloodBanksBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AppConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/membership_selection_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MembershipFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/BBInfoFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/MapsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/CitiGuestMainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml" />
+        <option value="$PROJECT_DIR$/app/src/debug/res/values/google_maps_api.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_membership_reg_form.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase2/ui_citiguest/Fragments/MembershipRegFormFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/regis.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_citizendashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/homenursing_fragment_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tablogin.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/POICertificateFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/Fragments/MembershipRegFormFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/poi_certificate_frag.xml" />
+        <option value="$PROJECT_DIR$/app/google-services.json" />
+        <option value="$PROJECT_DIR$/app/src/uat/res/values/google_maps_api.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipDetailsSpinnerAdaptor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/BloodBanksBean.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/AbstractMembership.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_bb.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/sp_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/AppConstants.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/MapsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/DonorsMapsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/b_donor_adapter.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/bb_adapter.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/Sortbyroll.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/SortBloodBanks.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/SortBloodDonors.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/SortBloodDonors.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/BBInfoFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/LocBaseFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipRegFormFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipFragment.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-5" />
-    <option name="y" value="1" />
-    <option name="width" value="1377" />
-    <option name="height" value="733" />
+    <option name="y" value="20" />
+    <option name="width" value="1218" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <hideEmptyPackages AndroidView="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="RedCross-master" type="1abcf292:AndroidViewProjectNode" />
+              <item name="RedCrossPhase1" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="RedCrossPhase1" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="RedCrossPhase1" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="RedCrossPhase1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedCross-master" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="RedCrossPhase1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RedCross-master" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DEBUGGABLE_DEVICE" value="samsung-sm_t355y-dc30384c" />
-    <property name="DEBUGGABLE_PROCESS" value="in.gov.cgg.redcrossphase1" />
+    <property name="DEBUGGABLE_DEVICE" value="oneplus-oneplus_a6000-2a8e5eca" />
+    <property name="DEBUGGABLE_PROCESS" value="in.gov.cgg.redcrossphase_offline" />
     <property name="DEBUGGER_ID" value="Auto" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ee8ea81d7d29" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-02T04:55:08.074Z" />
-    <property name="ExportApk.ApkPath" value="E:\GitWorkspace\RedCross_Workspace\Redcross_Code\RedCrossPhase1" />
-    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="2a8e5eca" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-12-11T07:07:42.755Z" />
+    <property name="ExportApk.ApkPath" value="E:\Naren\GitRepos\redcross\RedCross-master\app" />
+    <property name="ExportApk.BuildVariants" value="uat" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="ToolWindowLogcat.ShowToolbar" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/PrettyDialog-master/PrettyDialog-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="application.passwordSafe" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\GitWorkspace\Gitredcross\RedCross-master\app\src\main\java\in\gov\cgg\redcrossphase1\utils" />
-      <recent name="E:\GitWorkspace\Gitredcross\RedCross-master\app\src\main\res\menu" />
-      <recent name="E:\GitWorkspace\Gitredcross\RedCross-master\app\src\main\res\values" />
-      <recent name="E:\GitWorkspace\Gitredcross\RedCross-master\app\src\main\res\layout" />
-      <recent name="E:\GitWorkspace\Gitredcross\RedCross-master\app\src\main\res\drawable" />
+      <recent name="E:\Naren\GitRepos\redcross\RedCross-master\app" />
+      <recent name="E:\Naren\GitRepos\redcross\RedCross-master\app\src\main\java\in\gov\cgg\redcrossphase_offline\utils" />
+      <recent name="E:\Naren\GitRepos\redcross\RedCross-master\app\src\main\res\drawable" />
+      <recent name="E:\Naren\GitRepos\redcross\RedCross-master\app\src\main\res\layout" />
+      <recent name="E:\Naren\GitRepos\redcross\RedCross-master\app\src" />
     </key>
     <key name="android.template.packageName">
       <recent name="in.gov.cgg.redcrossphase1" />
@@ -392,11 +546,11 @@
       <recent name="in.gov.cgg.redcrossphase1" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="in.gov.cgg.redcrossphase1.ui_citiguest" />
-      <recent name="in.gov.cgg.redcrossphase1.ui_officer" />
-      <recent name="in.gov.cgg.redcrossphase1.ui_officer.alldistrictreport" />
-      <recent name="in.gov.cgg.redcrossphase1.ui_officer.daywisereportcont" />
-      <recent name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit" />
+      <recent name="in.gov.cgg.redcrossphase_offline" />
+      <recent name="in.gov.cgg.redcrossphase1.ui_citiguest.Fragments" />
+      <recent name="in.gov.cgg.redcrossphase1" />
+      <recent name="in.gov.cgg.redcrossphase1.ui_citiguest.Adaptors" />
+      <recent name="" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit" />
@@ -698,68 +852,168 @@
       <option name="project" value="LOCAL" />
       <updated>1575116218829</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Committed by integrated Blood Bank Info Module.">
+      <created>1575973123536</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1575973123536</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Committed by integrated Locate Module.">
+      <created>1575985451578</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1575985451578</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Committed by integrated Locate Module.">
+      <created>1575985501224</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1575985501224</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Committed by integrated Locate Module.">
+      <created>1575985720748</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1575985720748</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Filter in Blood Donors and location fixes.">
+      <created>1576050716885</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576050716885</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Blood Donor Crash fix">
+      <created>1576128353966</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1576128353966</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Filter in Blood Donors and added Map functionality for Donors">
+      <created>1576136286665</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1576136286665</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Handled Blood Banks and Donors in offline mode.">
+      <created>1576147365467</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1576147365467</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Handled Blood Banks and Donors in offline mode.">
+      <created>1576148005324</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1576148005324</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Handled redirection of blood info from menu">
+      <created>1576154295471</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1576154295472</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Redirection to contacts">
+      <created>1576156433824</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1576156433824</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Sorted order implementation of Blood banks..&#10;&#10;Commented static Rajbhavan, Rastrapathi nilayam lat lngs">
+      <created>1576491144216</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1576491144216</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Locate Changes">
+      <created>1576575306461</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1576575306461</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1320" height="784" extended-state="6" />
     <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4811784" visible="true" weight="0.21558245" />
+      <window_info id="Captures" order="0" sideWeight="0.51380366" side_tool="true" weight="0.22063492" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.48006135" visible="true" weight="0.20238096" />
       <window_info id="Structure" order="2" sideWeight="0.505" side_tool="true" weight="0.2072893" />
-      <window_info id="Build Variants" order="3" sideWeight="0.5188216" side_tool="true" weight="0.21558245" />
+      <window_info id="Build Variants" order="3" sideWeight="0.51993865" side_tool="true" weight="0.20238096" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Resources Explorer" order="6" weight="0.32936507" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49924356" weight="0.32569557" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49848714" weight="0.60392797" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4304419" />
-      <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5015129" side_tool="true" weight="0.61865795" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32569557" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.43862522" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.32569557" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49761903" weight="0.32515338" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49603173" weight="0.5506135" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.3297546" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.47239265" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.3297546" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5031746" side_tool="true" weight="0.54141104" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49761903" weight="0.32515338" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.4968254" weight="0.648773" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.54447854" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.45499182" />
       <window_info anchor="right" id="Device File Explorer" order="0" sideWeight="0.502455" side_tool="true" weight="0.3290469" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" sideWeight="0.49918166" weight="0.3290469" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" sideWeight="0.497545" weight="0.3290469" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.29954615" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.29920635" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Assistant" order="7" weight="0.32936507" />
     </layout>
     <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4811784" visible="true" weight="0.21558245" />
+      <window_info id="Captures" order="0" sideWeight="0.51380366" side_tool="true" weight="0.22063492" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.48466256" visible="true" weight="0.22063492" />
       <window_info id="Structure" order="2" sideWeight="0.505" side_tool="true" weight="0.2072893" />
-      <window_info id="Build Variants" order="3" sideWeight="0.5188216" side_tool="true" weight="0.21558245" />
+      <window_info id="Build Variants" order="3" sideWeight="0.5153374" side_tool="true" weight="0.22063492" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Resources Explorer" order="6" weight="0.32936507" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49924356" weight="0.32569557" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49848714" weight="0.60392797" />
-      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49924356" weight="0.32515338" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49603173" weight="0.5506135" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.3297546" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4304419" />
-      <window_info anchor="bottom" id="Terminal" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5015129" side_tool="true" weight="0.61865795" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32569557" />
-      <window_info anchor="bottom" id="Build" order="8" weight="0.43862522" />
-      <window_info anchor="bottom" id="Find" order="9" weight="0.32569557" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4754601" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.3297546" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50396824" side_tool="true" weight="0.5506135" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49761903" weight="0.32515338" />
+      <window_info anchor="bottom" id="Build" order="8" sideWeight="0.4968254" weight="0.43711656" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.54447854" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.45499182" />
       <window_info anchor="right" id="Device File Explorer" order="0" sideWeight="0.502455" side_tool="true" weight="0.3290469" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" sideWeight="0.49918166" weight="0.3290469" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Fabric" order="4" sideWeight="0.497545" weight="0.3290469" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.29954615" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.29920635" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout-to-restore>
   </component>
@@ -768,12 +1022,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="First commit :Login Service integrated" />
-    <MESSAGE value="First commit :Login Service" />
-    <MESSAGE value="Second commit" />
-    <MESSAGE value="gradle files" />
-    <MESSAGE value="3 rd commit" />
-    <MESSAGE value="First stable" />
     <MESSAGE value="minor" />
     <MESSAGE value="test user" />
     <MESSAGE value="test" />
@@ -788,1067 +1036,412 @@
     <MESSAGE value="30-11-2019 Changes done-3" />
     <MESSAGE value="30-11-2019 Changes done-4" />
     <MESSAGE value="30-11-2019 Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="30-11-2019 Changes" />
+    <MESSAGE value="Committed by integrated Blood Bank Info Module." />
+    <MESSAGE value="30-11-2019 Changes done-3 pretty dialog" />
+    <MESSAGE value="Committed by integrated Locate Module." />
+    <MESSAGE value="Filter in Blood Donors and location fixes." />
+    <MESSAGE value="Blood Donor Crash fix" />
+    <MESSAGE value="Filter in Blood Donors and added Map functionality for Donors" />
+    <MESSAGE value="Handled Blood Banks and Donors in offline mode." />
+    <MESSAGE value="Handled redirection of blood info from menu" />
+    <MESSAGE value="Redirection to contacts" />
+    <MESSAGE value="Sorted order implementation of Blood banks..&#10;&#10;Commented static Rajbhavan, Rastrapathi nilayam lat lngs" />
+    <MESSAGE value="Locate Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Locate Changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java</url>
-          <line>70</line>
-          <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>258</line>
-          <properties />
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/ShowDistrictMandal.java</url>
-          <line>50</line>
-          <properties />
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>272</line>
-          <properties />
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictViewModel.java</url>
-          <line>126</line>
-          <properties />
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictViewModel.java</url>
-          <line>172</line>
-          <properties />
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseViewModel.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/bloodwise/BloodwiseViewModel.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/bloodwise/BloodwiseViewModel.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>276</line>
-          <properties />
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>114</line>
-          <properties />
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>109</line>
-          <properties />
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseViewModel.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>149</line>
-          <properties />
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>144</line>
-          <properties />
-          <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="119" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java</url>
-          <line>88</line>
-          <properties />
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java</url>
-          <line>80</line>
-          <properties />
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/agewise/AgewiseFragment.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>1196</line>
-          <properties />
-          <option name="timeStamp" value="127" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>164</line>
-          <properties />
-          <option name="timeStamp" value="140" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>165</line>
-          <properties />
-          <option name="timeStamp" value="141" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>166</line>
-          <properties />
-          <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>167</line>
-          <properties />
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>136</line>
-          <properties />
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>128</line>
-          <properties />
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>147</line>
-          <properties />
-          <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/DistrictViewModel.java</url>
-          <line>173</line>
-          <properties />
-          <option name="timeStamp" value="161" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>167</line>
-          <properties />
-          <option name="timeStamp" value="316" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>149</line>
-          <properties />
-          <option name="timeStamp" value="317" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>197</line>
-          <properties />
-          <option name="timeStamp" value="318" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/TBDistrictAdapter.java</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="322" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseViewModel.java</url>
-          <line>44</line>
-          <properties />
-          <option name="timeStamp" value="327" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseViewModel.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="328" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseViewModel.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="329" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseViewModel.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="330" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java</url>
-          <line>115</line>
-          <properties />
-          <option name="timeStamp" value="337" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>124</line>
-          <properties />
-          <option name="timeStamp" value="340" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>109</line>
-          <properties />
-          <option name="timeStamp" value="341" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="342" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>120</line>
-          <properties />
-          <option name="timeStamp" value="343" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>163</line>
-          <properties />
-          <option name="timeStamp" value="344" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>158</line>
-          <properties />
-          <option name="timeStamp" value="345" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="346" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>130</line>
-          <properties />
-          <option name="timeStamp" value="347" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>136</line>
-          <properties />
-          <option name="timeStamp" value="348" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java</url>
-          <line>128</line>
-          <properties />
-          <option name="timeStamp" value="351" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java</url>
-          <line>137</line>
-          <properties />
-          <option name="timeStamp" value="352" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java</url>
-          <line>147</line>
-          <properties />
-          <option name="timeStamp" value="353" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="356" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java</url>
-          <line>264</line>
-          <properties />
-          <option name="timeStamp" value="361" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java</url>
-          <line>268</line>
-          <properties />
-          <option name="timeStamp" value="362" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/MaterialSearchView.java</url>
-          <line>492</line>
-          <properties />
-          <option name="timeStamp" value="364" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>176</line>
-          <properties />
-          <option name="timeStamp" value="367" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="368" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownAdapter.java</url>
-          <line>121</line>
-          <properties />
-          <option name="timeStamp" value="371" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>132</line>
-          <properties />
-          <option name="timeStamp" value="375" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>141</line>
-          <properties />
-          <option name="timeStamp" value="376" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>248</line>
-          <properties />
-          <option name="timeStamp" value="377" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>221</line>
-          <properties />
-          <option name="timeStamp" value="389" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="390" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java</url>
-          <line>138</line>
-          <properties />
-          <option name="timeStamp" value="396" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="408" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>203</line>
-          <properties />
-          <option name="timeStamp" value="410" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>189</line>
-          <properties />
-          <option name="timeStamp" value="411" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>173</line>
-          <properties />
-          <option name="timeStamp" value="412" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>194</line>
-          <properties />
-          <option name="timeStamp" value="413" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>198</line>
-          <properties />
-          <option name="timeStamp" value="414" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>201</line>
-          <properties />
-          <option name="timeStamp" value="415" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>205</line>
-          <properties />
-          <option name="timeStamp" value="416" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>176</line>
-          <properties />
-          <option name="timeStamp" value="417" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>192</line>
-          <properties />
-          <option name="timeStamp" value="418" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java</url>
-          <line>195</line>
-          <properties />
-          <option name="timeStamp" value="419" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>56</line>
-          <properties />
-          <option name="timeStamp" value="420" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>65</line>
-          <properties />
-          <option name="timeStamp" value="421" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="422" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="423" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>76</line>
-          <properties />
-          <option name="timeStamp" value="424" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java</url>
-          <line>103</line>
-          <properties />
-          <option name="timeStamp" value="425" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java</url>
-          <line>412</line>
-          <properties />
-          <option name="timeStamp" value="426" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>91</line>
-          <properties />
-          <option name="timeStamp" value="432" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>233</line>
-          <properties />
-          <option name="timeStamp" value="433" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>748</line>
-          <properties />
-          <option name="timeStamp" value="438" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java</url>
-          <line>131</line>
-          <properties />
-          <option name="timeStamp" value="439" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="440" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/genderwise/GenderwiseFragment.java</url>
-          <line>267</line>
-          <properties class="in.gov.cgg.redcrossphase1.ui_officer.genderwise.GenderwiseFragment" />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/CitizenLoginFragment.java</url>
-          <line>64</line>
-          <properties method="onClick" />
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java</url>
-          <line>1192</line>
-          <properties class="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.OfficerHomeFragment.DayAxisValueFormatter" />
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java</url>
-          <line>92</line>
-          <properties method="onClick" />
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/MaterialSearchView.java</url>
-          <line>486</line>
-          <properties class="in.gov.cgg.redcrossphase1.utils.MaterialSearchView" method="setMenuItem">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="363" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java</url>
-          <line>125</line>
-          <properties class="in.gov.cgg.redcrossphase1.ui_officer.drilldown.GetDrilldownFragment" method="loadDrilldown" />
-          <option name="timeStamp" value="431" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="list" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>getArguments()</expression-string>
+        <expression-string>if (progressDialog != null)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>r</expression-string>
+        <expression-string>if (progressDialog != null &amp;&amp; progressDialog.isShowing())</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>compareResult</expression-string>
+        <expression-string>selVal</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>GlobalDeclaration.localDid</expression-string>
+        <expression-string>bloodDonorResponses.getDistrict().
+                                    toLowerCase().trim().equalsIgnoreCase(str[1].toLowerCase()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>GlobalDeclaration.districtId</expression-string>
+        <expression-string>marker.getTitle()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>wp.get(1)</expression-string>
+        <expression-string>additionscenters.get(i).getType().trim()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>wp.get(1).</expression-string>
+        <expression-string>additionscenters.get(i).getType()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>wp.get(0)</expression-string>
+        <expression-string>Integer.parseInt(ar_lhs)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>response.body().getStudentsList()</expression-string>
+        <expression-string>bbAdapter.getFilteredData()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/ContactusFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="280" lean-forward="true" selection-start-line="280" selection-end-line="280" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_item.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/membership_selection_fragment.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+        <state relative-caret-position="209">
+          <caret line="109" column="49" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrilldownViewmodel.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseViewModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/listitems_layout.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipDetails_Bean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/TestChart.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-29/android/widget/ArrayAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+        <state relative-caret-position="208">
+          <caret line="207" column="11" selection-start-line="207" selection-start-column="11" selection-end-line="207" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/MembershipDetails_spinner_Bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.0.0/2151d26c3b241f0a887f2dadb9ab091649fcf020/recyclerview-1.0.0-sources.jar!/androidx/recyclerview/widget/LinearLayoutManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Beans/BloodBanksBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
           <folding>
-            <element signature="e#2085#2141#0" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_membership_reg_form.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="318" column="24" selection-start-line="318" selection-start-column="24" selection-end-line="318" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/president.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_bb.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/poi_certificate_frag.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/MembershipDetailsSpinnerAdaptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="20" column="119" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/regis.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="204" column="25" selection-start-line="204" selection-start-column="25" selection-end-line="204" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/AbstractMembership.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5054">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/locate_row.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="34" selection-start-line="17" selection-start-column="2" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/sp_item.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+          <folding>
+            <element signature="e#233#247#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/BBAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="51" column="67" lean-forward="true" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Adaptors/BDonorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="47" column="70" lean-forward="true" selection-start-line="47" selection-start-column="70" selection-end-line="47" selection-end-column="70" />
+          <folding>
+            <element signature="e#10091#10092#0" expanded="true" />
+            <element signature="e#10127#10128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/AppConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/DonorsMapsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5567">
+          <caret line="120" column="65" selection-start-line="120" selection-start-column="65" selection-end-line="120" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/MapsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5604">
+          <caret line="121" column="96" selection-start-line="121" selection-start-column="96" selection-end-line="121" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/passage-of-time (2).png" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/blooddonate.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/b_donor_adapter.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="135" column="68" selection-start-line="135" selection-start-column="51" selection-end-line="135" selection-end-column="68" />
+          <folding>
+            <element signature="e#4454#4473#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/bb_adapter.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="140" column="56" lean-forward="true" selection-start-line="140" selection-start-column="56" selection-end-line="140" selection-end-column="56" />
+          <folding>
+            <element signature="e#8527#8546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bb_email.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bb_tel.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bb_time.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bb_loc_wh.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bb_loc.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/icon-05.png" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/SortBloodDonors.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/SortBloodBanks.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/SortBloodDonors.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/utils/SortBloodBanks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/BBInfoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="1012" selection-start-line="1012" selection-end-line="1012" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#46953#47750#0" expanded="true" />
+            <element signature="e#47749#47750#0" expanded="true" />
+            <element signature="e#47887#48675#0" expanded="true" />
+            <element signature="e#48674#48675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/retrofit/ApiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="187" column="47" selection-start-line="187" selection-start-column="47" selection-end-line="187" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/CitiGuestMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_citizendashboard.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_officer/activities/NewOfficerMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="76" column="45" selection-start-line="76" selection-start-column="45" selection-end-line="76" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_officer_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_officer_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipRegFormFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="92" column="55" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_officer_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/LocBaseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="77" column="36" selection-start-line="77" selection-start-column="36" selection-end-line="77" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase_offline/ui_citiguest/Fragments/MembershipFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="242" column="1" selection-start-line="242" selection-start-column="1" selection-end-line="242" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_officerr.xml">
-      <provider editor-type-id="nav-designer" />
+    <entry file="file://$PROJECT_DIR$/app/google-services.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/TCFragment.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_citiguest.xml">
-      <provider editor-type-id="nav-designer" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="38" column="45" lean-forward="true" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/RegisterActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#1006#1520#0" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-            <element signature="method#validate#0;class#RegisterActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AlertUtils.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/Utils.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/utils/AnimationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="53" lean-forward="true" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-29/android/graphics/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="309" lean-forward="true" selection-start-line="309" selection-end-line="309" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_aldistrict.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/baseline_date_range_black_48dp.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/lltheme1_bg.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/all_district_adapter.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="e#420#6798#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/GlobalDeclaration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="226" column="59" selection-start-line="226" selection-start-column="59" selection-end-line="226" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onCreateView#0;class#AllDistrictsFragment#0" />
-            <element signature="method#setDataforRV#0;class#AllDistrictsFragment#0" />
-            <element signature="method#onCreate#0;class#AllDistrictsFragment#0" />
-            <element signature="method#onOptionsItemSelected#0;class#AllDistrictsFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllMandalsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="87" column="81" lean-forward="true" selection-start-line="87" selection-start-column="81" selection-end-line="87" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/StudentListBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#694#695#0" expanded="true" />
-            <element signature="e#740#741#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#630#631#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_count_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="76" column="44" lean-forward="true" selection-start-line="43" selection-end-line="77" />
-          <folding>
-            <element signature="e#1529#2767#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/drilldown_adapter.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#4529#4687#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/HistoryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#4828#4829#0" expanded="true" />
-            <element signature="e#4891#4892#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/redcross_splashscreen_bg.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/SevenFundamentalFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2028">
-          <caret line="147" column="1" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_drilldown.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/daywisereportcont/DaywiseFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="210" selection-start-line="210" selection-end-line="245" selection-end-column="5" />
-          <folding>
-            <element signature="method#sortDatesHere#0;class#DaywiseFragment#0" />
-            <element signature="method#onCreate#0;class#DaywiseFragment#0" />
-            <element signature="method#onCreateOptionsMenu#0;class#DaywiseFragment#0" />
-            <element signature="method#onOptionsItemSelected#0;class#DaywiseFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_backpress.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_officer_main_drawer.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
-          <folding>
-            <element signature="e#541#740#0" />
-            <element signature="e#758#946#0" />
-            <element signature="e#964#1158#0" />
-            <element signature="e#1176#1374#0" />
-            <element signature="e#1393#1541#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllVillageFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="243" column="7" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
-          <folding>
-            <element signature="method#onResume#0;class#AllVillageFragment#0" />
-            <element signature="method#onCreateOptionsMenu#0;class#AllVillageFragment#0" />
-            <element signature="method#onOptionsItemSelected#0;class#AllVillageFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/VillageLevelAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="134" column="26" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
-          <folding>
-            <element signature="e#7182#7553#0" expanded="true" />
-            <element signature="e#7552#7553#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/LevelAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="159" selection-start-line="159" selection-end-line="159" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2731#5783#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerLoginFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="145" column="50" selection-start-line="145" selection-start-column="50" selection-end-line="145" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/DrillDownAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding>
-            <element signature="e#5290#5291#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/drilldown/GetDrilldownFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="233" column="43" selection-start-line="233" selection-start-column="35" selection-end-line="233" selection-end-column="51" />
-          <folding>
-            <element signature="method#loaTheam#0;class#GetDrilldownFragment#0" />
-            <element signature="method#onCreateOptionsMenu#0;class#GetDrilldownFragment#0" />
-            <element signature="method#onOptionsItemSelected#0;class#GetDrilldownFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiNewTCFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="110" column="15" selection-start-line="110" selection-start-column="15" selection-end-line="110" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiPrivacyPolicyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="102" column="33" selection-start-line="102" selection-start-column="33" selection-end-line="102" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/home_distrcit/OfficerHomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2284">
-          <caret line="250" column="32" selection-start-line="250" selection-start-column="32" selection-end-line="250" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/NewTCFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
-          <folding>
-            <element signature="class#MyWebViewHelpClient#0;class#NewTCFragment#0" />
-            <element signature="method#onPageFinished#0;class#MyWebViewHelpClient#0;class#NewTCFragment#0" />
-            <element signature="method#onCreate#0;class#NewTCFragment#0" />
-            <element signature="method#onCreateOptionsMenu#0;class#NewTCFragment#0" />
-            <element signature="method#onOptionsItemSelected#0;class#NewTCFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/PrivacyPolicyFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="126" column="29" selection-start-line="126" selection-start-column="29" selection-end-line="126" selection-end-column="29" />
-          <folding>
-            <element signature="method#onCreateView#0;class#PrivacyPolicyFragment#0" />
-            <element signature="class#MyWebViewHelpClient#0;class#PrivacyPolicyFragment#0" />
-            <element signature="method#onCreate#0;class#PrivacyPolicyFragment#0" />
-            <element signature="e#4508#4769#0" expanded="true" />
-            <element signature="e#4768#4769#0" expanded="true" />
-            <element signature="method#onOptionsItemSelected#0;class#PrivacyPolicyFragment#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/OfficerMainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="426" column="5" lean-forward="true" selection-start-line="426" selection-start-column="5" selection-end-line="426" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_citiguest/CitiGuestMainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="484" column="75" selection-start-line="484" selection-start-column="75" selection-end-line="484" selection-end-column="75" />
-          <folding>
-            <element signature="method#showChangeLangDialog#0;class#CitiGuestMainActivity#0" />
-            <element signature="method#onSupportNavigateUp#0;class#CitiGuestMainActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/retrofit/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="39" column="84" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="84" />
-          <folding>
-            <element signature="e#1772#1795#0" />
-            <element signature="e#2763#2937#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/in/gov/cgg/redcrossphase1/ui_officer/alldistrictreport/AllDistrictsViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="145" column="98" selection-start-line="145" selection-start-column="98" selection-end-line="145" selection-end-column="98" />
-          <folding>
-            <element signature="method#AllDistrictsViewModel#0;class#AllDistrictsViewModel#0" />
-            <element signature="method#getAllVillages#0;class#AllDistrictsViewModel#0" />
-            <element signature="method#loadAllDistricts#0;class#AllDistrictsViewModel#0" />
-            <element signature="method#loadAllMandals#0;class#AllDistrictsViewModel#0" />
-          </folding>
+        <state relative-caret-position="442">
+          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>

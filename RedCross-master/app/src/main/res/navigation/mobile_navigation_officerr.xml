@@ -7,65 +7,58 @@
 
     <fragment
         android:id="@+id/nav_district"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.NewOfficerHomeFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.NewOfficerHomeFragment"
         tools:layout="@layout/fragemt_home_officer_new" />
 
     <fragment
         android:id="@+id/nav_institutecount"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.InstitutionCountsFrgament"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.InstitutionCountsFrgament"
         tools:layout="@layout/fragment_instituioncounts" />
 
 
     <fragment
         android:id="@+id/nav_gender"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.GenderwiseFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.GenderwiseFragment"
         tools:layout="@layout/fragment_genderwise" />
     <fragment
         android:id="@+id/nav_drill"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.GetDrilldownFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.GetDrilldownFragment"
         tools:layout="@layout/fragment_drilldown" />
 
     <fragment
         android:id="@+id/nav_blood"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.BloodwiseFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.BloodwiseFragment"
         tools:layout="@layout/fragment_bloodwise" />
 
     <fragment
         android:id="@+id/nav_age"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.activities.PhotoUploadActivity"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.activities.PhotoUploadActivity"
         tools:layout="@layout/fragment_photoupload" />
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/nav_top5"-->
-    <!--        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.OfficerHomeFragment"-->
-    <!--        tools:layout="@layout/fragemt_home_officer" />-->
+
 
     <fragment
         android:id="@+id/nav_daywise"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.DaywiseFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.DaywiseFragment"
         tools:layout="@layout/fragment_daywise" />
 
     <fragment
         android:id="@+id/nav_govtpvt"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.GovtPvtFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.GovtPvtFragment"
         tools:layout="@layout/fragment_agewise" />
 
     <fragment
         android:id="@+id/nav_allmandals"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.AllMandalsFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.AllMandalsFragment"
         tools:layout="@layout/fragment_aldistrict" />
     <fragment
         android:id="@+id/nav_tc"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.NewTCFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.NewTCFragment"
         tools:layout="@layout/fragment_pp" />
     <fragment
         android:id="@+id/nav_privacy"
-        android:name="in.gov.cgg.redcrossphase1.ui_officer.fragments.PrivacyPolicyFragment"
+        android:name="in.gov.cgg.redcrossphase_offline.ui_officer.fragments.PrivacyPolicyFragment"
         tools:layout="@layout/fragment_pp" />
-    <!--    <fragment-->
-    <!--        android:id="@+id/nav_ofctheme"-->
-    <!--        android:name="in.gov.cgg.redcrossphase1.ui_officer.home_distrcit.NewOfficerHomeFragment"-->
-    <!--        tools:layout="@layout/fragemt_home_officer" />-->
 
 
 </navigation>

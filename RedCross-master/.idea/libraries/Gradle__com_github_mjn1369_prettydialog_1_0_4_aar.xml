@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.mjn1369:prettydialog:1.0.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9e0e0d7114d4104f0953d7c56cf67de/jetified-prettydialog-1.0.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9e0e0d7114d4104f0953d7c56cf67de/jetified-prettydialog-1.0.4/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/612a8a7c26db9d507eb0c3803d921f48/jetified-prettydialog-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/612a8a7c26db9d507eb0c3803d921f48/jetified-prettydialog-1.0.4/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

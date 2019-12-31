@@ -32,6 +32,7 @@
                 android:padding="@dimen/dimen_10dp">
 
                 <TextView
+                    android:textSize="@dimen/dimen_16sp"
                     android:id="@+id/tv_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +67,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/placeholder" />
+                    android:src="@drawable/bb_loc_wh" />
             </RelativeLayout>
 
             <LinearLayout
@@ -83,7 +84,7 @@
 
                 <TextView
                     android:id="@+id/tv_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_10dp"
                     android:layout_marginLeft="@dimen/dimen_10dp"
@@ -102,15 +103,15 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
+                    android:tint="#000"
                     android:layout_width="@dimen/dimen_25dp"
                     android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center"
-                    android:tint="#0f68e6"
                     android:src="@drawable/placeholder" />
 
                 <TextView
                     android:id="@+id/tv_address"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_10dp"
                     android:layout_marginLeft="@dimen/dimen_10dp"
@@ -127,14 +128,16 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:src="@android:drawable/sym_call_outgoing"
                     android:layout_gravity="center"
-                    android:src="@android:drawable/stat_sys_phone_call_forward" />
+                    android:tint="#696969" />
 
                 <TextView
+                    android:layout_width="match_parent"
                     android:id="@+id/tv_contact"
-                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_10dp"
                     android:layout_marginLeft="@dimen/dimen_10dp"
@@ -152,10 +155,11 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:src="@android:drawable/ic_dialog_email"
                     android:layout_gravity="center"
-                    android:src="@android:drawable/sym_action_email" />
+                    android:tint="#696969" />
 
                 <TextView
                     android:id="@+id/tv_email"
@@ -177,10 +181,10 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center"
-                    android:src="@android:drawable/sym_action_email" />
+                    android:src="@drawable/bb_avail" />
 
                 <TextView
                     android:id="@+id/tv_avail"
@@ -201,8 +205,8 @@
                 android:padding="@dimen/dimen_5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
                     android:layout_gravity="center"
                     android:src="@android:drawable/ic_lock_idle_alarm" />
 
