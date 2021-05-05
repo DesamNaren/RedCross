@@ -1,0 +1,121 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/chart_gender"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/black_background_unselected" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chart_gender"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/black_background_unselected"
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/age"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/black_background_unselected"
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/count"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/easyFlipView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll"
+                    app:flipDuration="500"
+                    app:flipEnabled="true"
+                    app:flipFrom="back"
+                    app:flipOnTouch="false"
+                    app:flipType="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_bloodList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbarSize="5dp"
+                        android:scrollbars="vertical"
+                        android:visibility="gone" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/black_background_unselected" />
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <TextView
+                    android:id="@+id/btn_flip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/easyFlipView"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/tab_background_unselected"
+                    android:padding="@dimen/dp_10"
+                    android:text="@string/view_data"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:text="@string/no_data_available"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_20"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</layout>
+

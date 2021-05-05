@@ -1,0 +1,272 @@
+package in.gov.cgg.redcrossphase1.ui_officer.fragments;
+
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
+
+import in.gov.cgg.redcrossphase1.R;
+import in.gov.cgg.redcrossphase1.TestFrag;
+import in.gov.cgg.redcrossphase1.databinding.FragmentAldistrictBinding;
+import in.gov.cgg.redcrossphase1.retrofit.GlobalDeclaration;
+import in.gov.cgg.redcrossphase1.ui_citiguest.ExceptionHandler;
+import in.gov.cgg.redcrossphase1.ui_officer.activities.NewOfficerMainActivity;
+import in.gov.cgg.redcrossphase1.ui_officer.adapters.LevelAdapter;
+import in.gov.cgg.redcrossphase1.ui_officer.custom_officer.CustomDistricClass;
+import in.gov.cgg.redcrossphase1.ui_officer.modelbeans.StatelevelDistrictViewCountResponse;
+import in.gov.cgg.redcrossphase1.utils.CheckInternet;
+import in.gov.cgg.redcrossphase1.viewmodels.AllDistrictsViewModel;
+
+import static android.content.Context.MODE_PRIVATE;
+
+public class AllMandalsFragment extends TestFrag {
+
+
+    int value;
+    int selectedThemeColor = -1;
+    private AllDistrictsViewModel allDistrictsViewModel;
+    private FragmentAldistrictBinding binding;
+    private LevelAdapter adapter1;
+    private androidx.appcompat.widget.SearchView searchView;
+    private androidx.appcompat.widget.SearchView.OnQueryTextListener queryTextListener;
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(getActivity()));
+
+        binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_aldistrict, container, false);
+
+
+        GlobalDeclaration.home = false;
+
+
+        if (GlobalDeclaration.role != null) {
+            if (GlobalDeclaration.role.contains("D")) {
+                binding.cvName.setVisibility(View.GONE);
+            } else {
+                binding.cvName.setVisibility(View.VISIBLE);
+            }
+
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
+        if (GlobalDeclaration.leveDName != null) {
+            binding.tvlevelname.setText("Dist: " + GlobalDeclaration.leveDName);
+        } else {
+            binding.cvName.setVisibility(View.GONE);
+        }
+        try {
+            selectedThemeColor = context.getSharedPreferences(getResources().getString(R.string.THEMECOLOR_PREF),
+                    MODE_PRIVATE).getInt(getResources().getString(R.string.theme_color1), -1);
+
+            if (selectedThemeColor != -1) {
+                binding.tvlevelname.setTextColor(getResources().getColor(selectedThemeColor));
+            } else {
+                binding.tvlevelname.setTextColor(getResources().getColor(R.color.colorPrimary));
+            }
+        } catch (
+                Resources.NotFoundException e) {
+            e.printStackTrace();
+            binding.tvlevelname.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+        }
+
+        allDistrictsViewModel =
+                ViewModelProviders.of(Objects.requireNonNull(getActivity()), new
+
+                        CustomDistricClass(getActivity(), "d")).
+
+                        get(AllDistrictsViewModel.class);
+
+        Objects.requireNonNull(getActivity()).setTitle("Mandal wise");
+
+        if (getArguments() != null) {
+            value = getArguments().getInt("did");
+        } else {
+            value = GlobalDeclaration.localDid;
+        }
+        if (CheckInternet.isOnline(getActivity())) {
+
+            allDistrictsViewModel.getAllMandals("MandalWise", GlobalDeclaration.spn_year, value).
+
+                    observe(getViewLifecycleOwner(), new Observer<List<StatelevelDistrictViewCountResponse>>() {
+                        @Override
+                        public void onChanged
+                                (@Nullable List<StatelevelDistrictViewCountResponse> allDistrictList) {
+                            if (allDistrictList != null) {
+
+                                setDataforRV(allDistrictList);
+                                //  setCountsForDashboard(allDistrictList);
+                            } else {
+                                binding.tvNodata.setText("No data available");
+
+                            }
+                        }
+                    });
+
+        } else {
+            Toast.makeText(getActivity(), "Please check internet internet", Toast.LENGTH_SHORT).show();
+
+        }
+        return binding.getRoot();
+
+    }
+
+
+    private void setDataforRV(List<StatelevelDistrictViewCountResponse> allDistrictList) {
+
+        if (allDistrictList.size() > 0) {
+
+
+            for (int i = 0; i < allDistrictList.size(); i++) {
+                allDistrictList.get(i).setTotalCounts((allDistrictList.get(i).getJRC() +
+                        allDistrictList.get(i).getYRC() +
+                        allDistrictList.get(i).getMembership()));
+            }
+
+            List<StatelevelDistrictViewCountResponse> newlist = new ArrayList<>();
+            newlist.addAll(allDistrictList);
+
+            Collections.sort(newlist, new Comparator<StatelevelDistrictViewCountResponse>() {
+                @Override
+                public int compare(StatelevelDistrictViewCountResponse lhs, StatelevelDistrictViewCountResponse rhs) {
+                    return lhs.getTotalCounts().compareTo(rhs.getTotalCounts());
+                }
+            });
+
+            Collections.reverse(newlist);
+
+            binding.rvAlldistrictwise.setHasFixedSize(true);
+            binding.rvAlldistrictwise.setLayoutManager(new LinearLayoutManager(getActivity()));
+            adapter1 = new LevelAdapter(getActivity(), newlist, "m", selectedThemeColor);
+            binding.rvAlldistrictwise.setAdapter(adapter1);
+            adapter1.notifyDataSetChanged();
+        } else {
+            binding.tvNodata.setText("No data available");
+        }
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    //Pressed return button - returns to the results menu
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(getView()).setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentActivity activity = (FragmentActivity) v.getContext();
+                    Fragment frag = new NewOfficerHomeFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_officer,
+                            frag).addToBackStack(null).commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear(); // Remove all existing items from the menu, leaving it empty as if it had just been created.
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (!GlobalDeclaration.role.contains("D")) {
+            menu.findItem(R.id.logout_search).setIcon(R.drawable.ic_home_white_48dp);
+        } else {
+            menu.findItem(R.id.logout_search).setIcon(R.drawable.logout);
+        }
+        menu.findItem(R.id.logout_search).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                startActivity(new Intent(getActivity(), NewOfficerMainActivity.class));
+                return true;
+            }
+        });
+
+        if (searchItem != null) {
+            searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+                    if (adapter1 != null) {
+                        adapter1.filter(newText);
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // Not implemented here
+                return false;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
+    }
+
+}

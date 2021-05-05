@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1046470203921",
+    "firebase_url": "https://redcross-master.firebaseio.com",
+    "project_id": "redcross-master",
+    "storage_bucket": "redcross-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046470203921:android:0561ee6d92d3519bd72fb0",
+        "android_client_info": {
+          "package_name": "in.gov.cgg.redcrossphase1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046470203921-i6h2orsg81i24htj3ad5libg7rkspck3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.gov.cgg.redcrossphase1",
+            "certificate_hash": "e34b5c68a7f23ebda082ad1d8cf398808e364d51"
+          }
+        },
+        {
+          "client_id": "1046470203921-fg6tsatk3v6m5gtff86e8smhuk02if86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCroYmrQU_bdjBLQt7KrnJWCajv81Q6tS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046470203921-fg6tsatk3v6m5gtff86e8smhuk02if86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

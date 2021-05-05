@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_sevenPrinciples"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen_5dp">
+
+                    <TextView
+                        android:id="@+id/tv_mainHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_5"
+                        android:text="Seven Fundamental Principles"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_humanityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="@string/humanity"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_humanitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/international"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_ImpartialityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="@string/Impartiality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_Impartialitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="@string/ImpartialityVal"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_NeutralityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="@string/Neutrality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_Neutralitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="@string/Neutralityval"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_IndependenceyHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:paddingLeft="@dimen/dp_5"
+                                android:paddingTop="@dimen/dp_5"
+                                android:paddingBottom="@dimen/dp_5"
+                                android:text="@string/Independence"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_Independencecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="@string/Independenceval"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_VoluntaryService"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/VoluntaryService"
+
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_VoluntaryServicecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+
+                                android:text="@string/VoluntaryServiceval"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_UnityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/unity"
+
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_Unitycecontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/unityval"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cd7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardCornerRadius="@dimen/dp_2"
+                        app:cardElevation="@dimen/dimen_4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_UniversalityHeading"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/Universality"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_Universalitycontent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="20dp"
+                                android:padding="@dimen/dp_5"
+                                android:text="@string/Universalityval"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

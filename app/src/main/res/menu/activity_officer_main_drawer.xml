@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <!--    <group android:checkableBehavior="single">-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_district"
+            android:title="Dashboard"
+            android:visible="true" />
+    </group>
+    <!--    </group>-->
+
+    <group>
+
+        <item android:title="Reports">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_top5"
+                    android:checkable="true"
+                    android:title="Top5 &amp; Bottom5"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_age"
+                    android:checkable="true"
+                    android:title="Age Wise"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_gender"
+                    android:checkable="true"
+                    android:title="Gender Wise"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_blood"
+                    android:checkable="true"
+                    android:title="Blood group Wise"
+                    android:visible="false" />
+
+
+                <item
+                    android:id="@+id/nav_daywise"
+                    android:checkable="true"
+                    android:title="Day wise" />
+                <item
+                    android:id="@+id/nav_alldistricts"
+                    android:checkable="true"
+                    android:title="District wise"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_allmandals"
+                    android:checkable="true"
+                    android:title="Mandal wise"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_drill"
+                    android:checkable="true"
+                    android:title="Enrollments List"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_govtpvt"
+                    android:checkable="true"
+                    android:title="Govt Vs Pvt"
+                    android:visible="true" />
+
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Info">
+            <menu>
+
+
+                <item
+                    android:id="@+id/nav_privacy"
+                    android:title="Privacy Policy" />
+
+                <item
+                    android:id="@+id/nav_tc"
+                    android:title="Terms &amp; Conditions" />
+                <item
+                    android:id="@+id/nav_ofctheme"
+                    android:title="Themes" />
+
+            </menu>
+
+        </item>
+    </group>
+
+    <!--
+        <group>
+            <item android:title="Settings">
+                <menu>
+                    &lt;!&ndash;<item
+                        android:id="@+id/nav_theme"
+                        android:title="Themes" />&ndash;&gt;
+                    &lt;!&ndash;<item
+                        android:id="@+id/nav_help"
+                        android:title="Help" />&ndash;&gt;
+
+                    <item
+                        android:id="@+id/nav_share"
+                        android:title="Share" />
+
+                    <item
+                        android:id="@+id/nav_rate_us"
+                        android:title="Rate Us" />
+
+
+                </menu>
+            </item>
+        </group>
+    -->
+</menu>
+
+    <!-- <item android:title="Services"
+         >
+         <menu>
+             <item
+                 android:id="@+id/nav_ideabox"
+                 android:icon="@drawable/ideabox_black"
+                 android:title="Idea Box" />
+             <item
+                 android:id="@+id/nav_nmos"
+                 android:icon="@drawable/building_black"
+                 android:title="DPMS" />
+             <item
+                 android:id="@+id/nav_propery_tax"
+                 android:icon="@drawable/dash_new_property_tax"
+                 android:title="Property Tax" />
+             <item
+                 android:id="@+id/nav_trade_lic"
+                 android:icon="@drawable/dash_new_trade_license"
+                 android:title="Trade License" />
+             <item
+                 android:id="@+id/nav_lrs"
+                 android:icon="@drawable/dash_new_lrs"
+
+                 android:title="LRS" />
+             <item
+                 android:id="@+id/nav_birth_crt"
+                 android:icon="@drawable/dash_new_birth_certificate"
+
+                 android:title="Birth Certificate" />
+             <item
+                 android:id="@+id/nav_death_cert"
+                 android:icon="@drawable/dash_new_deathcertificate"
+                 android:title="Death Certificate" />
+
+             <item
+                 android:id="@+id/nav_grivence"
+                 android:icon="@drawable/menuicon_grievance"
+                 android:title="Grievances" />
+
+         </menu>
+     </item>-->

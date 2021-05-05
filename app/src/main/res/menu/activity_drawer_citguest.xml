@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/nav_Dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="@string/dashboard" />
+        <item android:title="@string/about_ircs">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_about"
+                    android:icon="@drawable/principles24"
+                    android:title="@string/about_us" />
+                <item
+                    android:id="@+id/nav_History"
+                    android:icon="@drawable/history32"
+                    android:title="@string/history" />
+                <item
+                    android:id="@+id/nav_Vision"
+                    android:icon="@drawable/vision64"
+                    android:title="@string/vision" />
+                <item
+                    android:id="@+id/nav_mission"
+                    android:icon="@drawable/mission64"
+                    android:title="@string/mission" />
+                <item
+                    android:id="@+id/nav_Principles"
+                    android:icon="@drawable/principles24"
+                    android:title="@string/fundamental_principles" />
+
+                <item
+                    android:id="@+id/nav_Structure"
+                    android:title="@string/Organogram"
+                    android:visible="false" />
+
+
+            </menu>
+        </item>
+
+    </group>
+
+    <group>
+        <item android:title="@string/MySubscriptions">
+            <menu>
+                <item
+                    android:id="@+id/nav_mymembreship"
+                    android:icon="@drawable/capacitybuildings"
+                    android:title="@string/my_membership" />
+
+                <item
+                    android:id="@+id/nav_mydonations"
+                    android:icon="@drawable/capacitybuildings"
+                    android:title="@string/mydonations" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/membership">
+            <menu>
+                <item
+                    android:id="@+id/nav_abstract_member"
+                    android:icon="@drawable/capacitybuildings"
+                    android:title="@string/abstract_of_membership" />
+                <item
+                    android:id="@+id/nav_how_to_become_a_member"
+                    android:icon="@drawable/membership24"
+                    android:title="@string/how_to_become_a_member" />
+                <item
+                    android:id="@+id/nav_become_a_member"
+                    android:icon="@drawable/membership24"
+                    android:title="@string/become_a_member" />
+                <item
+                    android:id="@+id/nav_download_certificate"
+                    android:icon="@drawable/membership24"
+                    android:title="@string/download_certificate" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/trainings">
+            <menu>
+                <item
+                    android:id="@+id/nav_current_trainings"
+                    android:icon="@drawable/training"
+                    android:title="@string/current_trainings" />
+
+                <item
+                    android:id="@+id/nav_upcoming_trainings"
+                    android:icon="@drawable/training24"
+                    android:title="@string/upcoming_trainings" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/get_blood">
+            <menu>
+                <item
+                    android:id="@+id/nav_blood_banks"
+                    android:icon="@drawable/blooddonorreg24"
+                    android:title="@string/blood_banks" />
+
+                <item
+                    android:id="@+id/nav_blood_donors"
+                    android:icon="@drawable/blooddonor24"
+                    android:title="@string/blood_donors" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/donate">
+            <menu>
+                <item
+                    android:id="@+id/nav_donor_registration"
+                    android:icon="@drawable/blooddonate"
+                    android:title="@string/donate_blood" />
+
+                <item
+                    android:id="@+id/nav_onlinedonations"
+                    android:icon="@drawable/rupees"
+                    android:title="@string/online_donation" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/home_nursing">
+            <menu>
+                <item
+                    android:id="@+id/nav_home_nursing_request"
+                    android:icon="@drawable/homenurse24"
+                    android:title="@string/home_nursing_request" />
+                <item
+                    android:id="@+id/nav_home_nursing_become"
+                    android:icon="@drawable/homenurse24"
+                    android:title="@string/become_home_nurse" />
+                <item
+                    android:id="@+id/nav_home_nursing_register"
+                    android:icon="@drawable/homenurse24"
+                    android:title="@string/home_nurse_registration" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/locate">
+            <menu>
+                <item
+                    android:id="@+id/nav_locate_service"
+                    android:icon="@drawable/address"
+                    android:title="@string/locate_service" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="@string/serv">
+            <menu>
+                <item
+                    android:id="@+id/nav_serv"
+                    android:icon="@drawable/group"
+                    android:title="@string/first_aid_volunteers" />
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item android:title="@string/contact_us">
+            <menu>
+                <item
+                    android:id="@+id/nav_statecoordinates"
+                    android:icon="@drawable/mail"
+                    android:title="@string/state_coordinators" />
+                <item
+                    android:id="@+id/nav_districtcontactus"
+                    android:icon="@drawable/history32"
+                    android:title="@string/district_contacts" />
+
+            </menu>
+        </item>
+    </group>
+    <group>
+        <item android:title="@string/info">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_info"
+                    android:icon="@drawable/principles24"
+                    android:title="@string/about_cgg" />
+                <item
+                    android:id="@+id/nav_continueasGuestthemes"
+                    android:icon="@drawable/themes24"
+                    android:title="@string/themes" />
+                <item
+                    android:id="@+id/nav_privacy"
+                    android:icon="@drawable/privacypolicy24"
+                    android:title="@string/privacy_policy" />
+
+                <item
+                    android:id="@+id/nav_tc"
+                    android:icon="@drawable/terms_and_conditions24"
+                    android:title="@string/terms_amp_conditions" />
+
+                <item
+                    android:id="@+id/nav_inbox"
+                    android:title="@string/inbox"
+                    android:visible="false" />
+
+            </menu>
+
+        </item>
+    </group>
+
+    <group android:visible="true">
+        <item android:title="@string/settings">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_help"
+                    android:title="@string/help"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/storeshare"
+                    android:title="@string/share"
+                    android:visible="true" />
+
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:icon="@drawable/positivevote"
+                    android:title="@string/rate_us"
+                    android:visible="true" />
+
+                <item
+                    android:title="@string/change_mpin"
+                    android:visible="false" />
+                <item
+                    android:id="@+id/nav_exit"
+                    android:icon="@drawable/exit_menu"
+                    android:title="@string/exit"
+                    android:visible="true" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/log2"
+                    android:title="@string/logout"
+                    android:visible="true" />
+
+
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
+

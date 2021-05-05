@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <com.google.android.material.tabs.TabLayout-->
+    <!--            android:id="@+id/tabs_aboutusCitizen"-->
+    <!--            style="@style/Custom.Widget.Design.TabLayout"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:minHeight="?actionBarSize"-->
+    <!--            app:tabGravity="fill"-->
+    <!--            app:tabIndicator="@color/colorPrimary"-->
+    <!--            app:tabInlineLabel="true"-->
+    <!--            app:tabMode="fixed"-->
+    <!--            app:tabSelectedTextColor="@color/white"-->
+    <!--            app:tabTextAppearance="@style/CustomTextAppearanceTab" />-->
+
+
+    <!--        <androidx.viewpager.widget.ViewPager-->
+    <!--            android:id="@+id/viewpager_aboutus"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_marginTop="2dp"-->
+    <!--            android:layout_height="wrap_content" />-->
+
+    <!--    </LinearLayout>-->
+
+</LinearLayout>

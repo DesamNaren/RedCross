@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_alldlist"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_10"
+    android:background="@drawable/district_background"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/shareCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0.5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/cv_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_alldname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_alldname"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:background="@drawable/tab_background_selected"
+                        android:padding="@dimen/dp_5"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_totalcount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/tab_background_selected"
+                        android:padding="@dimen/dp_5"
+                        android:paddingLeft="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_Patron"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_Patron_nme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/patron"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_2"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_Patroncount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_2" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.01"
+                        android:background="#ccc" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_Vice_Patron"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_Vice_Patronname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/vice_patron"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_3"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_Vice_Patroncount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_3" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.01"
+                        android:background="#ccc" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_institutionalmember"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_institutionalmembername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/institutional_member"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_7"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_institutionalmembercount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_7" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_LifeAssociate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_LifeAssociatenme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/life_associate"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_4"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_LifeAssociatecount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_4" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.01"
+                        android:background="#ccc" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_AnnualAssociate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_AnnualAssociatenme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/annual_associate"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_5"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_AnnualAssociatecount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_5" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.01"
+                        android:background="#ccc" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_AnnualMember"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_AnnualMembername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/annual_member"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_6"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_AnnualMembercount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_6" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.01"
+                        android:background="#ccc" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_lifemember"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_lifemembername"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/life_member"
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_1"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_lifemembecount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_5"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="@color/redcroosbg_1" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/ll_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center_horizontal"
+            android:text="@string/how_to_become_a_member"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_20">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="@string/the_red_cross_membership_is_an_easy_and_a_fluent_way_to_support_valuable_work_done_by_volunteers_and_to_speak_out_for_humane_values_and_targets"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_15">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="@string/the_membership_fee_will_be_used_to_support_local_volunteer_activity_and_to_train_volunteers"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_15dp"
+            android:visibility="visible">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="@string/by_becoming_a_member_one_can_volunteer_themselves_in_red_cross_activities_such_as_fund_raising_health_camps_personal_hygiene_promotion_and_many_more"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_15dp"
+            android:visibility="visible">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/dp_10"
+            android:text="@string/the_training_period_is_of_2_months_at_location_gmr_varalakshmi_foundation_rajanna_siricilla_district_telangana"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_15"
+            android:visibility="gone">
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_homeNursingRegProceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#30000000"
+                android:padding="10dp"
+                android:text="@string/become_a_member"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

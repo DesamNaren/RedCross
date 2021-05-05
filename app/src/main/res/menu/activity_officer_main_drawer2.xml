@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_district"
+            android:title="@string/dashboard"
+            android:visible="true" />
+    </group>
+    <group>
+
+        <item android:title="@string/reports">
+            <menu>
+                <item
+                    android:id="@+id/nav_institutecount"
+                    android:icon="@drawable/newspaper"
+                    android:title="@string/institution_counts" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item
+            android:title="@string/reports"
+            android:visible="false">
+
+            <menu>
+
+                <item
+                    android:id="@+id/nav_daywise"
+                    android:icon="@drawable/dayreport"
+                    android:title="@string/day_wise" />
+                <item
+                    android:id="@+id/nav_allmandals"
+                    android:icon="@drawable/newspaper"
+                    android:title="@string/mandal_wise" />
+
+                <item
+                    android:id="@+id/nav_alldistricts"
+                    android:icon="@drawable/newspaper"
+                    android:title="@string/district_wise" />
+
+                <item
+                    android:id="@+id/nav_govtpvt"
+                    android:checkable="true"
+                    android:title="@string/govt_vs_pvt"
+                    android:visible="false" />
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+
+        <item android:title="@string/settings">
+            <menu>
+                <item
+                    android:id="@+id/nav_logoutmenu"
+                    android:icon="@drawable/log2"
+                    android:title="@string/logout" />
+                <item
+                    android:id="@+id/nav_ofctheme"
+                    android:icon="@drawable/themes24"
+                    android:title="@string/themes" />
+
+                <item
+                    android:id="@+id/nav_changepassword"
+                    android:icon="@drawable/key"
+                    android:title="@string/change_password" />
+
+
+            </menu>
+        </item>
+    </group>
+
+    <group>
+
+        <item android:title="@string/info">
+            <menu>
+                <item
+                    android:id="@+id/nav_privacy"
+                    android:icon="@drawable/principles24"
+                    android:title="@string/privacy_policy" />
+                <item
+                    android:id="@+id/nav_tc"
+                    android:icon="@drawable/tc"
+                    android:title="@string/terms_amp_conditions" />
+
+            </menu>
+        </item>
+    </group>
+
+</menu>
+

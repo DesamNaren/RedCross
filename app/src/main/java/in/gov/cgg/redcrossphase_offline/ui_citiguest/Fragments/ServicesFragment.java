@@ -1,0 +1,286 @@
+package in.gov.cgg.redcrossphase_offline.ui_citiguest.Fragments;
+
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+
+import in.gov.cgg.redcrossphase_offline.R;
+import in.gov.cgg.redcrossphase_offline.retrofit.ApiClient;
+import in.gov.cgg.redcrossphase_offline.retrofit.ApiInterface;
+import in.gov.cgg.redcrossphase_offline.ui_citiguest.Adaptors.ServeAdapter;
+import in.gov.cgg.redcrossphase_offline.ui_citiguest.Beans.ServeBean;
+import in.gov.cgg.redcrossphase_offline.ui_citiguest.Beans.ServeBeanMainBean;
+import in.gov.cgg.redcrossphase_offline.ui_citiguest.CitiGuestMainActivity;
+import in.gov.cgg.redcrossphase_offline.utils.CustomProgressDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
+
+
+public class ServicesFragment extends Fragment {
+
+    ServeAdapter serveAdapter;
+    RecyclerView rv;
+    RelativeLayout rl_header;
+    int selectedThemeColor = -1;
+    ArrayList<ServeBean> servList;
+    private CustomProgressDialog progressDialog;
+    private ArrayList<ServeBean> mainList;
+    private TextView noDataTV;
+    private Spinner spinner_bg;
+    private FragmentActivity c;
+    private androidx.appcompat.widget.SearchView searchView;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_services, container, false);
+        Objects.requireNonNull(getActivity()).setTitle("SERV");
+        progressDialog = new CustomProgressDialog(getActivity());
+        rv = root.findViewById(R.id.bb_rv);
+        rl_header = root.findViewById(R.id.rl_header);
+        noDataTV = root.findViewById(R.id.noDataTV);
+        spinner_bg = root.findViewById(R.id.spinner_bg);
+        // sortData(mainList);
+
+        try {
+            selectedThemeColor = getActivity().getSharedPreferences("THEMECOLOR_PREF", MODE_PRIVATE).getInt("theme_color", -1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        c = getActivity();
+        setHasOptionsMenu(true);
+        calladditionsCentersService("SERV Volunteer");
+
+        spinner_bg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if (position != 0) {
+                    String selVal = spinner_bg.getSelectedItem().toString();
+                    if (serveAdapter != null) {
+                        if (progressDialog != null && !progressDialog.isShowing()) {
+                            progressDialog.show();
+                        }
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (progressDialog != null && progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+                            }
+
+                        }, 2000);
+
+
+                        serveAdapter.getBBFilter(selVal);
+                        serveAdapter.notifyDataSetChanged();
+                        rv.smoothScrollToPosition(0);
+
+                    }
+                } else {
+                    if (serveAdapter != null) {
+                        serveAdapter = new ServeAdapter(getActivity(), mainList, selectedThemeColor);
+                        rv.setAdapter(serveAdapter);
+                        serveAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        return root;
+    }
+
+
+    private void calladditionsCentersService(String type) {
+
+
+        ApiInterface apiServiceSession = ApiClient.getClient().create(ApiInterface.class);
+
+
+        Call<ServeBeanMainBean> call = apiServiceSession.getadditionsCentersService(type);
+        Log.e("apiServiceSession_url: ", "" + call.request().url());
+        call.enqueue(new Callback<ServeBeanMainBean>() {
+            @Override
+            public void onResponse(Call<ServeBeanMainBean> call, Response<ServeBeanMainBean> response) {
+                // hideProgressDialog(progressDiaLogss);
+                try {
+                    ServeBeanMainBean body = response.body();
+
+                    if (body != null) {
+                        mainList = (ArrayList<ServeBean>) body.getAdditionscenters();
+                        servList = new ArrayList<>();
+                        for (int x = 0; x < mainList.size(); x++) {
+                            if (mainList.get(x).getType().contains("SERV")) {
+                                servList.add(mainList.get(x));
+                            }
+                        }
+
+                        ArrayList<String> arrayList = new ArrayList<>();
+                        for (int x = 0; x < mainList.size(); x++) {
+                            arrayList.add(mainList.get(x).getDistirctid());
+                        }
+
+
+                        LinkedHashSet<String> hashSet = new LinkedHashSet<String>(arrayList);
+                        ArrayList<String> listWithoutDuplicates = new ArrayList<>(hashSet);
+
+                        if (arrayList.size() > 0) {
+
+                            listWithoutDuplicates.add(0, "Select District");
+                            ArrayAdapter dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listWithoutDuplicates);
+                            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinner_bg.setAdapter(dataAdapter);
+                        }
+
+                        if (servList.size() > 0) {
+
+                            //filterIV.setVisibility(View.VISIBLE);
+                            rv.setVisibility(View.VISIBLE);
+                            noDataTV.setVisibility(View.GONE);
+                            final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                            rv.setLayoutManager(layoutManager);
+
+                            serveAdapter = new ServeAdapter(getActivity(), servList, selectedThemeColor);
+                            rv.setAdapter(serveAdapter);
+                            serveAdapter.notifyDataSetChanged();
+
+
+                        } else {
+                            rv.setVisibility(View.GONE);
+                            noDataTV.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        //  showResponseAlert();
+                    }
+
+
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Something went wrong" + e.toString(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error", e.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ServeBeanMainBean> call, Throwable t) {
+                //hideProgressDialog(progressDiaLogss);
+
+                Log.e("Exp", t.toString());
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
+
+        menu.clear();
+        inflater.inflate(R.menu.activity_searchmenu, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (androidx.appcompat.widget.SearchView) searchItem.getActionView();
+        }
+
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+            searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    search(searchView);
+                    return false;
+                }
+            });
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.logout_search:
+                // search action
+                startActivity(new Intent(getActivity(), CitiGuestMainActivity.class));
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void search(androidx.appcompat.widget.SearchView searchView) {
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                try {
+                    if (serveAdapter != null) {
+                        serveAdapter.getFilter().filter(newText);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+        });
+    }
+
+
+}
+
+

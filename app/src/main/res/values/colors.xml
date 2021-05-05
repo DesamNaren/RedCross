@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        <color name="colorPrimary">#E51E00</color> //Red
+    -->
+    <!--<color name="colorPrimary">#980224</color> //Meroon-->
+    <color name="colorPrimary">#083363</color>
+    <color name="pdlg_color_blue">#083363</color>
+    <!--    <color name="colorPrimaryDark">#F45900</color>-->
+    <color name="colorPrimaryDark">#980224</color>
+    <color name="colorShadeRed">#F45900</color>
+    <color name="colorAccent">#000</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="colorBackground">@android:color/transparent</color>
+    <color name="green">#4CAF50</color>
+    <item name="redcroosbg_1" type="color">#08492E</item>
+    <item name="redcroosbg_2" type="color">#E51E00</item>
+    <item name="redcroosbg_3" type="color">#25142B</item>
+    <item name="redcroosbg_4" type="color">#00384A</item>
+    <item name="redcroosbg_5" type="color">#1C0F55</item>
+    <item name="redcroosbg_6" type="color">#083363</item>
+    <item name="redcroosbg_7" type="color">#980224</item>
+    <item name="redcroosbg_8" type="color">#3F100F</item>
+    <item name="my_great_color" type="color">#FFFFFF</item>
+    <item name="colorControlNormal" type="color">@color/my_great_color</item>
+    <color name="li_gray">#BDBDBD</color>
+    <color name="pdlg_color_gray">#BDBDBD</color>
+
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+    <color name="dot_dark_screen5">#08492E</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="dot_light_screen5">#08492E</color>
+
+
+    <!--    <array name="array_dot_active">-->
+    <!--        <item>@color/dot_light_screen1</item>-->
+    <!--        <item>@color/dot_light_screen2</item>-->
+    <!--        <item>@color/dot_light_screen3</item>-->
+    <!--        <item>@color/dot_light_screen4</item>-->
+    <!--    </array>-->
+
+    <!--    <array name="array_dot_inactive">-->
+    <!--        <item>@color/dot_dark_screen1</item>-->
+    <!--        <item>@color/dot_dark_screen2</item>-->
+    <!--        <item>@color/dot_dark_screen3</item>-->
+    <!--        <item>@color/dot_dark_screen4</item>-->
+    <!--    </array>-->
+
+</resources>

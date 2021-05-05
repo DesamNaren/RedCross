@@ -1,0 +1,549 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:windowBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/ll_homenurseRegistartion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/redcross2_bg"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/ll_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_homenurseDeatils"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/home_nursing_details"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp" />
+
+                                <View
+                                    android:id="@+id/view1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/homenursing_reg_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/full_name"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/et_name"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="@string/father_s_husband_s_name"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_fathersName"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_10"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="@string/date_of_birth"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <EditText
+                                            android:id="@+id/datePicker_dateofBirth"
+                                            android:layout_width="0dp"
+                                            android:layout_height="40dp"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/edittext_bg"
+                                            android:drawableRight="@android:drawable/ic_menu_my_calendar"
+                                            android:focusable="true"
+                                            android:focusableInTouchMode="true"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black"
+                                            android:windowSoftInputMode="stateHidden" />
+
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:text="@string/education_with"
+                                        android:textColor="@color/black" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+
+                                        <Spinner
+                                            android:id="@+id/spn_education"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/dp_40"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:entries="@array/Education"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@string/maritailaster"
+                                        android:textColor="@color/black" />
+
+
+                                    <Spinner
+                                        android:id="@+id/spn_married"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/dp_40"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:entries="@array/Married"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="@string/mobile_numberwithaster"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_mobileNumber"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:inputType="number"
+                                            android:maxLength="10"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="@string/email"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_email"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="@string/institute_name"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_Institute"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_homenurseAdress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/address_details"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp" />
+
+                                <View
+                                    android:id="@+id/view2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="@string/address"
+                                    android:padding="5dp"
+                                    android:textColor="@color/black">
+
+                                    <EditText
+                                        android:id="@+id/et_adress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/dp_5"
+                                        android:layout_weight="1"
+                                        android:paddingLeft="@dimen/dp_5"
+                                        android:textColor="@color/black" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal">
+
+                                    <Spinner
+                                        android:id="@+id/spn_district"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:entries="@array/District"
+                                        android:textColor="@color/black" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/mandalSpinLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <Spinner
+                                        android:id="@+id/spn_mandal"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:entries="@array/Mandal"
+                                        android:textColor="@color/black" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/villageSpinLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <Spinner
+                                        android:id="@+id/spn_village"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:entries="@array/Town_Village"
+                                        android:textColor="@color/black" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_5"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="@string/pincode"
+                                        android:padding="5dp"
+                                        android:textColor="@color/black">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:id="@+id/et_pincode"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/dp_5"
+                                            android:layout_weight="1"
+                                            android:inputType="number"
+                                            android:maxLength="6"
+                                            android:paddingLeft="@dimen/dp_5"
+                                            android:textColor="@color/black" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:elevation="@dimen/dimen_5dp"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_tv_gomenurseInfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:layout_below="@+id/tv_heading"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="10dp"
+                                    android:text="@string/home_nurse_info"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="20sp" />
+
+                                <View
+                                    android:id="@+id/view3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/number_of_previous_experience"
+                                android:padding="5dp"
+                                android:textColor="@color/black">
+
+                                <EditText
+                                    android:id="@+id/et_noofpreviousExperians"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_5"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:paddingLeft="@dimen/dp_5"
+                                    android:textColor="@color/black" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/Photo_tv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:text="Photo *"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp" />
+
+                                <ImageView
+                                    android:id="@+id/choose_bt"
+                                    android:layout_width="@dimen/dimen_100dp"
+                                    android:layout_height="@dimen/dimen_100dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:src="@drawable/cam" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+                        android:id="@+id/btn_homeNursingRegNext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="#30000000"
+                        android:padding="4dp"
+                        android:text="@string/submit"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+
+            </ScrollView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

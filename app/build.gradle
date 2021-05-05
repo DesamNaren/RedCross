@@ -1,0 +1,164 @@
+apply plugin: 'com.android.application'
+apply plugin: "androidx.navigation.safeargs"
+//apply plugin: 'io.fabric'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "in.gov.cgg.redcrossphase1"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 2
+        versionName "1.0.1"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("redcross.jks")
+            storePassword "cggmapps"
+            keyAlias "cggmapps"
+            keyPassword "cggmapps"
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+
+        release {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+
+            buildConfigField("String", "SERVER_URL", "\"https://redcross.cgg.gov.in/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL", "\"https://redcross.cgg.gov.in/getPaymentResponse/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://uat2.cgg.gov.in:8081/redcross/getPaymentResponseForDonation/\"")
+
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
+        }
+
+        debug {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://dev2.cgg.gov.in/redcross/getPaymentResponse\"")
+            buildConfigField("String", "SERVER_URL", "\"http://dev2.cgg.gov.in/redcross/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://uat2.cgg.gov.in:8081/redcross/getPaymentResponseForDonation/\"")
+            signingConfig signingConfigs.release
+
+        }
+        qa {
+            buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcross/\"")
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://qa2.cgg.gov.in:8081/redcross/getPaymentResponse/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://uat2.cgg.gov.in:8081/redcross/getPaymentResponseForDonation/\"")
+            signingConfig signingConfigs.release
+            debuggable true
+
+        }
+        uat {
+            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+            buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcross/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://uat2.cgg.gov.in:8081/redcross/getPaymentResponse/\"")
+            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://uat2.cgg.gov.in:8081/redcross/getPaymentResponseForDonation/\"")
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+//        apdebug {
+//            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+//            buildConfigField("String", "SERVER_URL", "\"http://dev2.cgg.gov.in/redcrossap/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://dev2.cgg.gov.in/redcrossap/getPaymentResponse/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://dev2.cgg.gov.in/redcrossap/getPaymentResponseForDonation/\"")
+//            signingConfig signingConfigs.release
+//            debuggable true
+//        }
+//        apqa {
+//            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+//            buildConfigField("String", "SERVER_URL", "\"http://qa2.cgg.gov.in:8081/redcrossap/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://qa2.cgg.gov.in:8081/redcrossap/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://qa2.cgg.gov.in:8081/redcrossap/getPaymentResponseForDonation/\"")
+//            signingConfig signingConfigs.release
+//            debuggable true
+//        }
+//        apuat {
+//            buildConfigField("String", "E_RAKTAKOSH_SERVER_URL", "\"https://eraktkosh.in/Blood_Bank/service/eRaktkoshAPI/new/stock/\"")
+//            buildConfigField("String", "SERVER_URL", "\"http://uat2.cgg.gov.in:8081/redcrossap/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL", "\"http://uat2.cgg.gov.in:8081/redcrossap/getPaymentResponse/\"")
+//            buildConfigField("String", "SERVER_PAYMENT_URL_DONATION", "\"http://uat2.cgg.gov.in:8081/redcrossap/getPaymentResponseForDonation/\"")
+//            signingConfig signingConfigs.release
+//            debuggable true
+//        }
+
+    }
+}
+
+dependencies {
+    def nav_version = "2.1.0"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.0'
+    implementation 'androidx.navigation:navigation-ui:2.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Navigation architecture,View model
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //Chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //Third party
+    implementation 'com.chaos.view:pinview:1.4.3'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.1.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
+    implementation "com.squareup.okhttp3:logging-interceptor:3.8.1"
+
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.karumi:dexter:5.0.0'
+
+
+    // (Recommended) Add the Google Analytics dependency.
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    // Add the Firebase Crashlytics dependency.
+    //implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
+}
+apply plugin: 'com.google.gms.google-services'
+

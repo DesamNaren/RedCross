@@ -1,0 +1,636 @@
+<resources>
+    <string name="app_name">Red Cross</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_officer_main">OfficerMainActivity</string>
+    <string name="indian_red_cross_society_telangana">Indian Red Cross Society,\n Telangana State Branch</string>
+    <string name="indian_red_cross_society_telangana1">Indian Red Cross Society</string>
+    <string name="indian_red_cross_society_telangana2">Telangana State Branch</string>
+    <string name="tcText1">\u2022 Fee once paid will not be given refund. Candidate should go through the Detailed Notification and ensure the eligibility before making payment.</string>
+    <string name="tcText2">When a candidate makes double payment by mistake, refund can be considered only on bringing it to the notice of RED CROSS by mail within 7 days of making such payment. Any kind of requests beyond this 7 days period will not be entertained. The refund process via same source of payments made in such cases will be initiated in Three to Five working days after receiving the refund request in all eligible cases of refund. This clause is applicable only in case of multiple payments by a candidate for the notification.</string>
+    <string name="tcText3">During the process of making payment , by any chance the amount is deducted and the same has not reached RED CROSS account is automatically refunded by the Payment gateway provider on bringing the issue to the notice of Payment Gateway service provider.</string>
+    <string-array name="financial_years">
+        <item>2019–2020</item>
+    </string-array>
+    <string-array name="financial_month">
+        <item>December</item>
+        <item>November</item>
+    </string-array>
+
+    <string-array name="Membership_type">
+        <item>Select Membership Type</item>
+        <item>Patron</item>
+        <item>Vice Patron</item>
+        <item>Life Member</item>
+        <item>Life Associate</item>
+        <item>Annual Member</item>
+        <item>Annual Associate</item>
+    </string-array>
+
+    <string-array name="Select_Relation">
+        <item>Select Relation</item>
+        <item>Wife</item>
+        <item>Husband</item>
+        <item>Son</item>
+        <item>Daughter</item>
+        <item>Close Relative</item>
+        <item>Friend</item>
+        <item>Others</item>
+    </string-array>
+
+
+    <string-array name="genders">
+        <item>All</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+    </string-array>
+
+    <string-array name="types">
+        <item>All</item>
+        <item>JRC</item>
+        <item>YRC</item>
+        <item>Membership</item>
+    </string-array>
+    <string-array name="blood_groups">
+        <item>Select Blood Group</item>
+        <item>A +ve</item>
+        <item>A -ve</item>
+        <item>B +ve</item>
+        <item>B -ve</item>
+        <item>AB +ve</item>
+        <item>AB -ve</item>
+        <item>O +ve</item>
+        <item>O -ve</item>
+
+    </string-array>
+
+
+    <string-array name="offcicer_blood_groups">
+        <item>All</item>
+        <item>A +ve</item>
+        <item>A -ve</item>
+        <item>B +ve</item>
+        <item>B -ve</item>
+        <item>AB +ve</item>
+        <item>AB -ve</item>
+        <item>O +ve</item>
+        <item>O -ve</item>
+
+    </string-array>
+
+
+    <string name="INFO_ABOUT">Inspired by the narration of experiences of war of Solferino by Henry Dunant, the Red Cross Organisation was formed in the year 1864. The first "Geneva Convention" has adopted Red Cross and its emblem for the ameloration of conditions of wounded in the battle field. The nucleus of Indian Red Cross Society which is a part of international movement was formed in the year 1920, through an act of Parliament(Act XV of 1920). The Honorable Governer of Telangana is its President.Red Cross provides assistance to victims of war, Natural Calamities, Disaster, Epidemics without discrimination of race, religion, creed, nationality, political opinions. In addition to it relief activities in emergencies, it promotes and undertakes activities of development and prevention of ill health. disease and preparedness for disasters.Any person can help this international humanitarian effort by donation in cash or kind, and by enrolling as a member and serving voluntarily in any of its activities.</string>
+
+    <string-array name="Education">
+        <item>Select Education</item>
+        <item>SSC</item>
+        <item>Inter</item>
+        <item>PG</item>
+        <item>Degree</item>
+        <item>PHD</item>
+
+
+    </string-array>
+
+    <string-array name="District">
+        <item>Select District</item>
+
+
+    </string-array>
+
+    <string-array name="Mandal">
+        <item>Select Mandal</item>
+
+    </string-array>
+
+    <string-array name="Town_Village">
+        <item>Select Town/Village</item>
+
+
+    </string-array>
+
+    <string-array name="Activities">
+        <item>Select Activities interested</item>
+
+    </string-array>
+
+    <string-array name="Married">
+        <item>--Select--</item>
+        <item>Single</item>
+        <item>Married</item>
+    </string-array>
+    <string-array name="Gender">
+        <item>--Select--</item>
+        <item>Male</item>
+        <item>Female</item>
+
+
+    </string-array>
+
+    <string-array name="blood_groups_suffix">
+        <item>Select Blood Group</item>
+        <item>A+Ve</item>
+        <item>A-Ve</item>
+        <item>B+Ve</item>
+        <item>B-Ve</item>
+        <item>AB+Ve</item>
+        <item>AB-Ve</item>
+        <item>O+Ve</item>
+        <item>O-Ve</item>
+    </string-array>
+
+    <string-array name="select_language">
+        <item>Select Language</item>
+        <item>English</item>
+
+    </string-array>
+
+    <string-array name="ts_districts">
+        <item>Select District</item>
+        <item>Adilabad</item>
+        <item>Bhadradri Kothagudem</item>
+        <item>Hyderabad</item>
+        <item>Jagitial</item>
+        <item>Jangaon</item>
+        <item>Jayashankar</item>
+        <item>Jogulamba Gadwal</item>
+        <item>Kamareddy</item>
+        <item>Karimnagar</item>
+        <item>Khammam</item>
+        <item>Kumuram Bheem</item>
+        <item>Mahabubabad</item>
+        <item>Mahabubnagar</item>
+        <item>Mancherial</item>
+        <item>Medak</item>
+        <item>Medchal Malkajgiri</item>
+        <item>Nagarkurnool</item>
+        <item>Nalgonda</item>
+        <item>Nirmal</item>
+        <item>Nizamabad</item>
+        <item>Peddapalli</item>
+        <item>Rajanna Sircilla</item>
+        <item>Rangareddy</item>
+        <item>Sangareddy</item>
+        <item>Siddipet</item>
+        <item>Suryapeta</item>
+        <item>Vikarabad</item>
+        <item>Wanaparthy</item>
+        <item>Warangal Rural</item>
+        <item>Warangal Urban</item>
+        <item>Yadadri Bhuvanagiri</item>
+        <item>Narayanpet</item>
+        <item>Mulugu</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="loc">Please grant location  permission</string>
+    <string name="allow_loc">Please allow location permission</string>
+    <string name="loc_sett">Location settings are inadequate, and cannot be fixed here. Fix in Settings.</string>
+    <string name="loc_stopped">Location updates stopped!</string>
+
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+    </array>
+    <string name="powered_cgg">Powered by CGG</string>
+    <string name="powered_ghmc">Rights Reserved @ RedCross</string>
+    <string name="grant_all">Please grant required permissions</string>
+    <string name="grant_all_new">As some of the permissions are permanently denied, Please grant the permissions</string>
+    <string name="idMemDateformat">dd-MM-yyyy</string>
+    <string name="member_id">Member Id</string>
+    <string name="member_idaster">Member Id*</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="submit">Submit</string>
+    <string name="red_cross_society">Red Cross Society</string>
+    <string name="online_membership_registration">Online Membership Registration</string>
+    <string name="enter_full_name">Enter Full Name *</string>
+    <string name="enter_father_s_husband_s_name">Enter Father\'s/Husband\'s Name *</string>
+    <string name="gender">Gender *</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="date_of_birth">Date of Birth *</string>
+    <string name="date_of_birth_without">Date of Birth</string>
+    <string name="age">Age</string>
+    <string name="enter_mobile_number">Enter Mobile Number *</string>
+    <string name="certificate_will_be_sent_to_email">(Certificate will be sent to Email)</string>
+    <string name="enter_email_id">Enter Email ID</string>
+    <string name="photo">Photo *</string>
+    <string name="professional_details">Professional Details</string>
+    <string name="enter_occupation">Enter Occupation</string>
+    <string name="communication_details">Communication Details</string>
+    <string name="enter_house_no">Enter House No *</string>
+    <string name="enter_locality">Enter Locality *</string>
+    <string name="enter_street_area">Enter Street/Area *</string>
+    <string name="enter_pincode">Enter Pincode</string>
+    <string name="other_details">Other Details</string>
+    <string name="spared_hours_to_red_cross_activities_per_week">Spared hours to red cross activities(per week)</string>
+    <string name="number_of_hours">Number of hours</string>
+    <string name="preview">Preview</string>
+    <string name="tap_to_see_nearby_location">Tap to see Nearby Location</string>
+    <string name="select_category">Select Category</string>
+    <string name="locate">Locate</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="jrc">JRC</string>
+    <string name="yrc">YRC</string>
+    <string name="total">Total:</string>
+    <string name="how_to_become_a_home_nurse">How to become a home nurse</string>
+    <string name="home_nursing_provide_residential_care_for_elderly_or_disabled_people_here_nurses_have_the_responsibilities_of_caring_for_the_patients_medical_needs">Home Nursing provide residential care for elderly or disabled people. Here, nurses have the responsibilities of caring for the patients\' medical needs.</string>
+    <string name="below_are_the_prerequisites_to_undergo_training_as_a_home_nurse">Below are the prerequisites to undergo training as a home nurse</string>
+    <string name="only_female_candidates_are_eligible_n_minimum_qualification_10th_class_pass_and_above_n_age_limit_18_to_30_years">Only Female candidates are eligible   Minimum qualification: 10th class pass and above  Age limit: 18 to 30 years.</string>
+    <string name="the_training_period_is_of_2_months_at_location_gmr_varalakshmi_foundation_rajanna_siricilla_district_telangana">The training period is of 2 months at location GMR Varalakshmi Foundation, Rajanna Siricilla District,Telangana.</string>
+    <string name="become_a_home_nurse">Become a Home Nurse</string>
+    <string name="how_to_become_a_member">How to become a Member</string>
+    <string name="the_red_cross_membership_is_an_easy_and_a_fluent_way_to_support_valuable_work_done_by_volunteers_and_to_speak_out_for_humane_values_and_targets">The Red Cross membership is an easy and a fluent way to support valuable work done by volunteers and to speak out for humane values and targets.</string>
+    <string name="the_membership_fee_will_be_used_to_support_local_volunteer_activity_and_to_train_volunteers">The membership fee will be used to support local volunteer activity and to train volunteers.</string>
+    <string name="by_becoming_a_member_one_can_volunteer_themselves_in_red_cross_activities_such_as_fund_raising_health_camps_personal_hygiene_promotion_and_many_more">By becoming a member one can volunteer themselves in red cross activities such as Fund-raising health camps, personal hygiene promotion and many more.</string>
+    <string name="become_a_member">Become a Member</string>
+    <string name="all">All</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_from_gallery">Choose from Gallery</string>
+    <string name="type">Type</string>
+    <string name="gender_without">Gender</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="ok">OK</string>
+    <string name="clear">Clear</string>
+    <string name="how_to_become_a_donor">How to become a Donor</string>
+    <string name="become_a_blood_donor">Become a Blood Donor</string>
+    <string name="father_s_husband_s_name">Father\'s/Husband\'s Name *</string>
+    <string name="education">Education</string>
+    <string name="occupation">Occupation</string>
+    <string name="marital_status">Marital status</string>
+    <string name="office_name">Office Name *</string>
+    <string name="address_detailsaster">Address Details*</string>
+    <string name="pincode">Pincode</string>
+    <string name="blood_donation_info">Blood Donation Info</string>
+    <string name="bloodgroupaster">Blood Group *</string>
+    <string name="donation_type">Donation type</string>
+    <string name="previously_donation_date">Previously donation Date *</string>
+    <string name="select_date">Select Date</string>
+    <string name="willing_to_donate_blood">Willing to donate blood *</string>
+    <string name="number_of_previous_donations">Number of previous donations *</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="download_id_card">Download ID Card</string>
+    <string name="download_certificate">Download Certificate</string>
+    <string name="id">Id</string>
+    <string name="name">Name</string>
+    <string name="no_data_available">No data available</string>
+    <string name="view_data">View Data</string>
+    <string name="blood_banks">Blood Banks</string>
+    <string name="blood_donor_details">Blood Donor Details</string>
+    <string name="mobile_numberwithaster">Mobile Number *</string>
+    <string name="office_nameaster">Office Name *</string>
+    <string name="address_details">Address Details</string>
+    <string name="addressaster">Address *</string>
+    <string name="upcoming_events">Upcoming Events</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="submitcaps">SUBMIT</string>
+    <string name="mobilenumber">Mobilenumber</string>
+    <string name="login">Login</string>
+    <string name="membership">Membership</string>
+    <string name="trainings">Trainings</string>
+    <string name="serv">SERV</string>
+    <string name="donate_blood">Donate Blood</string>
+    <string name="last_blood_donated_date">Last blood donated date</string>
+    <string name="voluntry">Voluntry</string>
+    <string name="name_of_the_medical_officer">Name of the Medical Officer</string>
+    <string name="place_of_the_ircs_blood_bank">Place of the IRCS Blood Bank</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="district">District</string>
+    <string name="nameaster">Name*</string>
+    <string name="emailidaster">EmailId*</string>
+    <string name="sign_up">Sign up</string>
+    <string name="near_me_places">Near Me Places</string>
+    <string name="membership_subscription">Membership Subscription</string>
+    <string name="rates_of_subscription">Rates of Subscription</string>
+    <string name="proceed">Proceed</string>
+    <string name="membership_type">Membership Type</string>
+    <string name="patron">Patron</string>
+    <string name="vice_patron">Vice Patron</string>
+    <string name="institutional_member">Institutional Member</string>
+    <string name="life_associate">Life Associate</string>
+    <string name="annual_associate">Annual Associate</string>
+    <string name="annual_member">Annual Member</string>
+    <string name="life_member">Life Member</string>
+    <string name="request_for_a_home_nurse">Request for a Home Nurse</string>
+    <string name="government">Government</string>
+    <string name="privatestring">Private</string>
+    <string name="enhance_the_capacity_of_indian_red_cross_to_deliver_its_humanitarain_message_both_within_and_outside_the_society_and_to_advocate_tolerance_and_coexistence_in_the_communities">Enhance the capacity of Indian Red Cross to deliver its humanitarain message both within and outside the society, and to advocate tolerance and coexistence in the communities.</string>
+    <string name="increase_the_capacity_in_disaster_preparedness_and_disaster_response_in_disaster_prone_branches_and_state_headquarters_and_reduce_the_vulnerability_of_communities_in_key_disaster_prone_areas">Increase the capacity in disaster preparedness and disaster response in disaster prone branches and State HeadQuarters and reduce the vulnerability of communities in key disaster prone areas</string>
+    <string name="increase_the_capacity_in_health_and_care_in_branches_and_state_headquarters_and_improve_the_health_of_vulnerable_people_and_communities">Increase the capacity in health and care in branches and State HeadQuarters and improve the health of vulnerable people and communities.</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="send_otp">SEND OTP</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="show_map">Show Map</string>
+    <string name="no_data_found">No data found</string>
+    <string name="show_list">Show list</string>
+    <string name="home_nursing_details">Home Nursing Details</string>
+    <string name="full_name">Full Name *</string>
+    <string name="maritailaster">Marital Status *</string>
+    <string name="institute_name">Institute Name *</string>
+    <string name="address">Address *</string>
+    <string name="home_nurse_info">Home Nurse Info</string>
+    <string name="number_of_previous_experience">Number of previous experience *</string>
+    <string name="count">Count</string>
+    <string name="enter_date_of_birth">Enter Date Of Birth</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="donation_details">Donation Details</string>
+    <string name="donation_amount">Donation Amount*</string>
+    <string name="district_which_you_would_like_to_donate">District which you would like to Donate *</string>
+    <string name="enter_remarks">Enter Remarks *</string>
+    <string name="state_coordinators">State Coordinators</string>
+    <string name="get_blood">Get Blood</string>
+    <string name="home_nursing">Home Nursing</string>
+    <string name="about_us">About us</string>
+    <string name="history">History</string>
+    <string name="vision">Vision</string>
+    <string name="mission">Mission</string>
+    <string name="fundamental_principles">Fundamental Principles</string>
+    <string name="about_ircs">About IRCS</string>
+    <string name="abstract_of_membership">Abstract of Membership</string>
+    <string name="current_trainings">Current Trainings</string>
+    <string name="upcoming_trainings">Upcoming Trainings</string>
+    <string name="blood_donors">Blood Donors</string>
+    <string name="donate">Donate</string>
+    <string name="online_donation">Online Donation</string>
+    <string name="home_nursing_request">Home Nursing Request</string>
+    <string name="become_home_nurse">Become Home Nurse</string>
+    <string name="home_nurse_registration">Home Nurse Registration</string>
+    <string name="locate_service">Locate Service</string>
+    <string name="first_aid_volunteers">First Aid Volunteers</string>
+    <string name="contact_us">Contact us</string>
+    <string name="district_contacts">District Contacts</string>
+    <string name="about_cgg">About CGG</string>
+    <string name="help">Help</string>
+    <string name="share">Share</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="change_mpin">Change MPIN</string>
+    <string name="exit">Exit</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="institution_counts">Institution counts</string>
+    <string name="reports">Reports</string>
+    <string name="day_wise">Day wise</string>
+    <string name="mandal_wise">Mandal wise</string>
+    <string name="district_wise">District wise</string>
+    <string name="govt_vs_pvt">Govt Vs Pvt</string>
+    <string name="settings">Settings</string>
+    <string name="themes">Themes</string>
+    <string name="change_password">Change Password</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="info">Info</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="logout">Logout</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="enrolled_date">Enrolled date</string>
+    <string name="education_with">Education*</string>
+    <string name="download_receipt">Download Receipt</string>
+
+    <!--
+        new string labels
+    -->
+    <string name="update">Update</string>
+    <string name="cancel">CANCEL</string>
+    <string name="yourlogedinas">You logged in as 9666xxxx07</string>
+    <string name="enter_mpin">Enter MPIN</string>
+    <string name="validate_mpin">Validate</string>
+    <string name="forgot_mpin">Forgot MPIN?</string>
+    <string name="notyou">Not you?</string>
+    <string name="incorect_mpin">Incorrect mPIN, Please try again</string>
+    <string name="next">next</string>
+    <string name="skip">skip</string>
+    <string name="Loading">Loading.....</string>
+    <string name="search_nearby">SEARCH NEARBY</string>
+    <string name="parking">Parking</string>
+    <string name="Restaurant">Restaurant</string>
+    <string name="PoliceStations">Police Stations</string>
+    <string name="Hospitals">Hospitals</string>
+    <string name="contactno">Contact No</string>
+    <string name="districtwise">"District wise "</string>
+    <string name="mydonations">My Donations</string>
+    <string name="my_membership">My Memberships</string>
+    <string name="humanity">Humanity</string>
+    <string name="international">The International Red Cross and Red Crescent Movement, born of a desire to bring assistance without discrimination to the wounded on the battlefield, endeavors, in its international and national capacity, to prevent and alleviate human suffering wherever it may be found. Its purpose is to protect life and health and to ensure respect for the human being. It promotes mutual understanding, friendship, cooperation and lasting peace amongst all peoples.</string>
+    <string name="Impartiality">Impartiality</string>
+    <string name="ImpartialityVal">It makes no discrimination as to nationally, race, religious beliefs, class or political opinions. It endeavors to relieve the suffering of individuals, being solely by their needs, and to give priority to the most urgent cases of distress.</string>
+    <string name="Neutrality">Neutrality</string>
+    <string name="Neutralityval">In order to enjoy the confidence of all, the Movement may not take sides in hostilities or engage in controversies of a political, racial, religious or ideological nature.</string>
+    <string name="Independence">Independence</string>
+    <string name="Independenceval">The Movement is independent. The National Societies, while auxiliaries in the humanitarian services of their governments and subject to the laws of their respective countries, must always maintain their autonomy so that they may be able at all times to act in accordance with the principles of the Movement.</string>
+    <string name="VoluntaryService">Voluntary Service</string>
+    <string name="VoluntaryServiceval">It is voluntary relief movement not prompted in any manner by desire for gain.</string>
+    <string name="unity">Unity</string>
+    <string name="unityval">There can be only one Red Cross Or Red Crescent in any one country. It must be open to all. It must carry on its humanitarian work throughout its territory.</string>
+    <string name="Universality">Universality</string>
+    <string name="Universalityval">The International Red Cross and Red Crescent Movement, in which all societies have equal status and share equal responsibilities and duties in helping each other, is worldwide.</string>
+    <!--
+       //17-04-2020
+    -->
+    <string name="fixed">fixed</string>
+    <string name="theme_color">Select Theme Color</string>
+    <string name="Default">default</string>
+    <string name="Strategic_objectives">Strategic objectives</string>
+    <string name="applicant_details">Applicant Details</string>
+    <string name="Applicant_name">Applicant Name *</string>
+    <string name="regonbehalfof">Registering on behalf of *</string>
+    <string name="PatientDetails">Patient Details</string>
+    <string name="patient_name">Patient Name *</string>
+    <string name="patientage">Patient age *</string>
+    <string name="natureofdisability">Nature Of Disability *</string>
+    <string name="probabledate">Probable Date From Which the services of Home Nurse Required *</string>
+    <string name="enter_probabledate">Enter probable Date</string>
+    <string name="durationofservicereq">Duration Of The Service Required *</string>
+    <string name="enterserviceenddate">Enter Service End Date</string>
+    <string name="contactdetails">Contact Details</string>
+    <string name="enter_relation">Enter Relation *</string>
+    <string name="digits">.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="Whoweare">Who we are</string>
+    <string name="blood_bank_details">Blood bank details</string>
+    <string name="donateddist">Donated District</string>
+    <string name="remarks">Remarks</string>
+    <string name="Organogram">Organogram</string>
+    <string name="MySubscriptions">My Subscriptions</string>
+    <string name="inbox">Inbox</string>
+    <string name="welcomeguest">Welcome Guest</string>
+    <string name="welcome">Welcome  </string>
+    <string name="blood_bank">BLOOD_BANK</string>
+    <string name="blood_donor">BLOOD_DONOR</string>
+    <string name="from_state">FROM_STATE</string>
+    <string name="from_dist">FROM_DIST</string>
+    <string name="marketval">market://details?id=</string>
+    <string name="versionId">versionId</string>
+    <string name="newVersion">New Version available, please update</string>
+    <string name="server_not_responding">Server not responding, Please try again</string>
+    <string name="somethingwentwrong">Something went wrong</string>
+    <string name="context_null">Context is null, Please try again</string>
+    <string name="error_occur">Error Occured</string>
+    <string name="letmerecomended">\nLet me recommend you this application\n\n</string>
+    <string name="choose_one">choose one</string>
+    <string name="text_plain">text/plain</string>
+    <string name="exitmsg">Do you want to exit ?</string>
+    <string name="from_type">FROM_TYPE</string>
+    <string name="selected_theme_color">Select Theme Color</string>
+    <string name="CitizendashboardFragment">CitizendashboardFragment</string>
+    <string name="y">y</string>
+    <string name="Availed_soon">Availed soon</string>
+    <string name="logoutmsg">Do you want to Logout?</string>
+    <string name="THEMECOLOR_PREF">THEMECOLOR_PREF</string>
+    <string name="theme_color1">theme_color</string>
+    <string name="showdonorslist">Show donors list</string>
+    <string name="play_ser_not_avaliable">Sorry, Google play services not available in your device</string>
+    <string name="from_class">FROM_CLASS</string>
+    <string name="DONORS_DATA">DONORS_DATA</string>
+    <string name="Name">"Name: "</string>
+    <string name="Address">"Address: "</string>
+    <string name="ALL">ALL</string>
+    <string name="turn_on_loc">Please turn on the location to continue</string>
+    <string name="Proceed_to_submit_ticket">Proceed to submit ticket</string>
+    <string name="enter_validmpin">Please Enter Valid MPIN</string>
+    <string name="mobile">mobile</string>
+    <string name="mpin">mpin</string>
+    <string name="guest_user">Guest user</string>
+    <string name="GuestdashboardFragment">GuestdashboardFragment</string>
+    <string name="SevenFundamentalFragment">SevenFundamentalFragment</string>
+    <string name="WhoWeAreFragment">WhoWeAreFragment</string>
+    <string name="HistoryFragment">HistoryFragment</string>
+    <string name="VisionFragment">VisionFragment</string>
+    <string name="MissionFragment">MissionFragment</string>
+    <string name="NewContactusFragment">NewContactusFragment</string>
+    <string name="LocateBloodbanksFragment">LocateBloodbanksFragment</string>
+    <string name="CitiNewTCFragment">CitiNewTCFragment</string>
+    <string name="CitiPrivacyPolicyFragment">CitiPrivacyPolicyFragment</string>
+    <string name="camera_permission">Camera Permisions required</string>
+    <string name="Select_Mandal">Select Mandal</string>
+    <string name="Select_Village">Select Village</string>
+    <string name="success">Success</string>
+    <string name="permissions_not_granted">Cancelling, required permissions are not granted</string>
+    <string name="add_photo">Add Photo!</string>
+    <string name="file_provider">.fileprovider</string>
+    <string name="image_not_empty">Image can\'t be empty</string>
+    <string name="photo_upload">photoUpload</string>
+    <string name="reg_failed">Registration Failed</string>
+    <string name="reg_successfully">Registered successfully</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_edcation">Select education</string>
+    <string name="enter_marital_status">Select marital status</string>
+    <string name="enter_validmno">Enter valid Mobile number</string>
+    <string name="enter_institte_name">Enter institute name</string>
+    <string name="enter_address">Enter address</string>
+    <string name="Select_District">"Select district "</string>
+    <string name="no_prev_experience">Enter no of previous experience</string>
+    <string name="exp_not_greater_than_age">Experience should not be greater than age</string>
+    <string name="min_age_validation">minimum age should be 18 years</string>
+    <string name="access_read_phonestate">Access Read Phone State</string>
+    <string name="write_external_storage">Access Write External Storage</string>
+    <string name="access_camera">Access Camera</string>
+    <string name="grant_access">You need to grant access to </string>
+    <string name="canceled_img">User cancelled image capture</string>
+    <string name="failed_to_capture">Sorry! Failed to capture image</string>
+    <string name="user_cancelled_imgcapture">User cancelled image capture</string>
+    <string name="enter_valid_email">enter valid email</string>
+    <string name="enter_valid_pincode">enter valid pincode</string>
+    <string name="enter_donation_type">enter donation type</string>
+    <string name="loading_wait_msg">"Loading...Please wait "</string>
+    <string name="permission_denied">permission denied</string>
+    <string name="tel">tel</string>
+    <string name="grant_loc_permission">Please grant location permission</string>
+    <string name="show_bloodbank_list">Show blood banks list</string>
+    <string name="choose_from">Choose from</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_validmno">Please enter valid mobile number</string>
+    <string name="enter_mobile_number_digits">Enter 10 digit mobile number</string>
+    <string name="please_enter_valid_email">Please enter valid email</string>
+    <string name="user_cancelled_choose_file">User cancelled choosing file</string>
+    <string name="failed_tochoose_file">Sorry! Failed to choose file</string>
+    <string name="become_a_donor">Become a Donor</string>
+    <string name="donor_reg">Donor Regisration</string>
+    <string name="trueval">true</string>
+    <string name="falseval">false</string>
+    <string name="select_gender">Select gender</string>
+    <string name="enter_office_name">enter office name</string>
+    <string name="select_blood_group">select bloodgroup</string>
+    <string name="failed">Failed</string>
+    <string name="Trainings">Trainings</string>
+    <string name="welcome_ircs">Welcome to IRCS</string>
+    <string name="hello">Hello</string>
+    <string name="s">s</string>
+    <string name="langShortCode">LangShortCode</string>
+    <string name="langShortId">LangShortId</string>
+    <string name="success_submited">Successfully submitted</string>
+    <string name="enter_donation_amount">Enter Donation amount</string>
+    <string name="enter_donation_remarks">Enter Donation remarks</string>
+    <string name="selet_district_whichstate">select district for which you want to donate</string>
+    <string name="online_donation_payment">Online Donation Payment</string>
+    <string name="success_donated">Successfully donated</string>
+    <string name="failed_trtagain">Failed, Please try again.</string>
+    <string name="memId">memId</string>
+    <string name="mdob">mdob</string>
+    <string name="enter_member_id">Enter Member ID</string>
+    <string name="Mobile">Mobile</string>
+    <string name="failed_todownload_certi">Failed to Download Certificate, please contact support team</string>
+    <string name="idcard_download_at">ID Card downloaded at</string>
+    <string name="certificate_download_at">Certificate downloaded at</string>
+    <string name="guest">Guest</string>
+    <string name="findThisFragment">findThisFragment</string>
+    <string name="historyurl">http://uat2.cgg.gov.in:8081/redcross/history</string>
+    <string name="enter_applicant_name">Enter Applicant name</string>
+    <string name="select_reg_onbehaloff">Select registering on behalf of</string>
+    <string name="enter_patient_name">Enter Patient name</string>
+    <string name="enter_patient_age">Enter Patient Age</string>
+    <string name="enter_validage">Enter Patient Age</string>
+    <string name="enter_natureofdisability">Enter nature of disability</string>
+    <string name="enter_start_date">Enter Start date</string>
+    <string name="enter_end_date">Enter End date</string>
+    <string name="Home_nursing">Home Nursing</string>
+    <string name="exit_home_nurse">Do you want exit from Request for Home Nurse?</string>
+    <string name="DaywiseFragment">DaywiseFragment</string>
+    <string name="NewOfficerHomeFragment">NewOfficerHomeFragment</string>
+    <string name="NewAllDistrictsFragment">NewAllDistrictsFragment</string>
+    <string name="PrivacyPolicyFragment">PrivacyPolicyFragment</string>
+    <string name="AllMandalsFragment">AllMandalsFragment</string>
+    <string name="AllVillageFragment">AllVillageFragment</string>
+    <string name="GetDrilldownFragment">GetDrilldownFragment</string>
+    <string name="NewTCFragment">NewTCFragment</string>
+    <string name="InstitutionCountsFrgament">InstitutionCountsFrgament</string>
+    <string name="EnrolledMemberEditFragment">EnrolledMemberEditFragment</string>
+    <string name="MemberDistrictFragment">MemberDistrictFragment</string>
+    <string name="AgewiseFragment">AgewiseFragment</string>
+    <string name="BloodwiseFragment">BloodwiseFragment</string>
+    <string name="GetMembershipDrilldown">GetMembershipDrilldown</string>
+    <string name="OnlyGenderwiseFragment">OnlyGenderwiseFragment</string>
+    <string name="OfficerChangePassword">OfficerChangePassword</string>
+
+</resources>
